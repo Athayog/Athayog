@@ -1,0 +1,79 @@
+{
+  "id": "upcoming_workshop",
+  "type": "SharedSlice",
+  "name": "WorkshopRow",
+  "description": "UpcomingWorkshop",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "row": {
+          "type": "Group",
+          "config": {
+            "label": "Row",
+            "repeat": true,
+            "fields": {
+              "month": {
+                "type": "Text",
+                "config": {
+                  "label": "Month",
+                  "placeholder": ""
+                }
+              },
+              "teacher": {
+                "type": "Text",
+                "config": {
+                  "label": "Teacher",
+                  "placeholder": ""
+                }
+              },
+              "date_time": {
+                "type": "Timestamp",
+                "config": {
+                  "label": "Date Time",
+                  "placeholder": ""
+                }
+              },
+              "topic": {
+                "type": "Text",
+                "config": {
+                  "label": "Topic",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text",
+            "placeholder": ""
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

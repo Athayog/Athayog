@@ -1,0 +1,57 @@
+{
+  "id": "left_content_right_slider_vertical",
+  "type": "SharedSlice",
+  "name": "LeftContentRightSliderVertical",
+  "description": "LeftContentRightSliderVertical",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "content": {
+          "type": "Group",
+          "config": {
+            "label": "Content",
+            "repeat": true,
+            "fields": {
+              "content_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Content Title",
+                  "placeholder": ""
+                }
+              },
+              "content_description": {
+                "type": "Text",
+                "config": {
+                  "label": "Content Description",
+                  "placeholder": ""
+                }
+              },
+              "slider_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Slider Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"row": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"month",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "drink",
+									"type": "Text"
+								}
+							],
+							[
+								"teacher",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "due",
+									"type": "Text"
+								}
+							],
+							[
+								"date_time",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Timestamp",
+									"value": "2024-09-12T08:34:23Z"
+								}
+							],
+							[
+								"topic",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "compass",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "line",
+				"type": "Text"
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "zoo",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

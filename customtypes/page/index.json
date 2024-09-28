@@ -1,0 +1,104 @@
+{
+    "id": "page",
+    "label": "Page",
+    "format": "page",
+    "repeatable": true,
+    "status": true,
+    "json": {
+        "Main": {
+            "uid": {
+                "type": "UID",
+                "config": {
+                    "label": "UID",
+                    "placeholder": ""
+                }
+            },
+            "title": {
+                "type": "StructuredText",
+                "config": {
+                    "label": "Title",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "single": "heading1"
+                }
+            },
+            "slices": {
+                "type": "Slices",
+                "fieldset": "Slice Zone",
+                "config": {
+                    "choices": {
+                        "faq": {
+                            "type": "SharedSlice"
+                        },
+                        "yoga_arambha": {
+                            "type": "SharedSlice"
+                        },
+                        "our_yoga_story": {
+                            "type": "SharedSlice"
+                        },
+                        "event_highlights_gallery": {
+                            "type": "SharedSlice"
+                        },
+                        "upcoming_workshop": {
+                            "type": "SharedSlice"
+                        },
+                        "right_content_left_slider_vertical": {
+                            "type": "SharedSlice"
+                        },
+                        "group_class": {
+                            "type": "SharedSlice"
+                        },
+                        "video_testimonials": {
+                            "type": "SharedSlice"
+                        },
+                        "left_content_right_image": {
+                            "type": "SharedSlice"
+                        },
+                        "left_image_righ_content": {
+                            "type": "SharedSlice"
+                        },
+                        "left_content_right_slider_vertical": {
+                            "type": "SharedSlice"
+                        },
+                        "recognition": {
+                            "type": "SharedSlice"
+                        },
+                        "slices": {
+                            "type": "SharedSlice"
+                        },
+                        "hero": {
+                            "type": "SharedSlice"
+                        }
+                    }
+                }
+            }
+        },
+        "SEO & Metadata": {
+            "meta_title": {
+                "type": "Text",
+                "config": {
+                    "label": "Meta Title",
+                    "placeholder": "A title of the page used for social media and search engines"
+                }
+            },
+            "meta_description": {
+                "type": "Text",
+                "config": {
+                    "label": "Meta Description",
+                    "placeholder": "A brief summary of the page"
+                }
+            },
+            "meta_image": {
+                "type": "Image",
+                "config": {
+                    "label": "Meta Image",
+                    "constraint": {
+                        "width": 2400,
+                        "height": 1260
+                    },
+                    "thumbnails": []
+                }
+            }
+        }
+    }
+}

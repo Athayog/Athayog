@@ -1,0 +1,49 @@
+{
+  "id": "video_testimonials",
+  "type": "SharedSlice",
+  "name": "VideoTestimonials",
+  "description": "VideoTestimonials",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        },
+        "video_links": {
+          "type": "Group",
+          "config": {
+            "label": "Video Links",
+            "repeat": true,
+            "fields": {
+              "youtube_embed_id": {
+                "type": "Text",
+                "config": {
+                  "label": "Youtube Embed ID",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

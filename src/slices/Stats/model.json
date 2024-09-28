@@ -1,0 +1,50 @@
+{
+  "id": "slices",
+  "type": "SharedSlice",
+  "name": "Stats",
+  "description": "Slices",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "statscollection": {
+          "type": "Group",
+          "config": {
+            "label": "StatsCollection",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "icon",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "label",
+                  "placeholder": ""
+                }
+              },
+              "count": {
+                "type": "Number",
+                "config": {
+                  "label": "count",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
