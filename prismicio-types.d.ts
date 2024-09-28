@@ -4,6 +4,256 @@ import type * as prismic from '@prismicio/client'
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] }
 
+/**
+ * Item in *Footer → Site Links*
+ */
+export interface FooterDocumentDataSectionTitleItem {
+    /**
+     * Label field in *Footer → Site Links*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.section_title[].label
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    label: prismic.KeyTextField
+
+    /**
+     * Link field in *Footer → Site Links*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.section_title[].link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link: prismic.LinkField
+}
+
+/**
+ * Item in *Footer → What We Offer*
+ */
+export interface FooterDocumentDataWhatWeOfferItem {
+    /**
+     * Label field in *Footer → What We Offer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.what_we_offer[].label
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    label: prismic.KeyTextField
+
+    /**
+     * Link field in *Footer → What We Offer*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.what_we_offer[].link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link: prismic.LinkField
+}
+
+/**
+ * Item in *Footer → Legal*
+ */
+export interface FooterDocumentDataLegalItem {
+    /**
+     * Label field in *Footer → Legal*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.legal[].label
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    label: prismic.KeyTextField
+
+    /**
+     * Link field in *Footer → Legal*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.legal[].link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link: prismic.LinkField
+}
+
+/**
+ * Item in *Footer → Talk To Us*
+ */
+export interface FooterDocumentDataTalkToUsItem {
+    /**
+     * phone field in *Footer → Talk To Us*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.talk_to_us[].phone
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    phone: prismic.KeyTextField
+
+    /**
+     * email field in *Footer → Talk To Us*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.talk_to_us[].email
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    email: prismic.KeyTextField
+
+    /**
+     * address field in *Footer → Talk To Us*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.talk_to_us[].address
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    address: prismic.KeyTextField
+}
+
+/**
+ * Item in *Footer → Social Links Icons*
+ */
+export interface FooterDocumentDataSocialLinksIconsItem {
+    /**
+     * Icon field in *Footer → Social Links Icons*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.social_links_icons[].icon
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    icon: prismic.LinkToMediaField
+
+    /**
+     * Link field in *Footer → Social Links Icons*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.social_links_icons[].link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link: prismic.LinkField
+}
+
+/**
+ * Content for Footer documents
+ */
+interface FooterDocumentData {
+    /**
+     * Site Links field in *Footer*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.section_title[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    section_title: prismic.GroupField<
+        Simplify<FooterDocumentDataSectionTitleItem>
+    >
+
+    /**
+     * What We Offer field in *Footer*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.what_we_offer[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    what_we_offer: prismic.GroupField<
+        Simplify<FooterDocumentDataWhatWeOfferItem>
+    >
+
+    /**
+     * Legal field in *Footer*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.legal[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    legal: prismic.GroupField<Simplify<FooterDocumentDataLegalItem>>
+
+    /**
+     * Talk To Us field in *Footer*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.talk_to_us[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    talk_to_us: prismic.GroupField<Simplify<FooterDocumentDataTalkToUsItem>>
+
+    /**
+     * Footer Logo field in *Footer*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.footer_logo
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    footer_logo: prismic.ImageField<never>
+
+    /**
+     * Copyright Title field in *Footer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.copyright_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    copyright_title: prismic.KeyTextField
+
+    /**
+     * Copyright Subtitle field in *Footer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.copyright_subtitle
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    copyright_subtitle: prismic.KeyTextField
+
+    /**
+     * Social Links Icons field in *Footer*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.social_links_icons[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    social_links_icons: prismic.GroupField<
+        Simplify<FooterDocumentDataSocialLinksIconsItem>
+    >
+}
+
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> =
+    prismic.PrismicDocumentWithoutUID<
+        Simplify<FooterDocumentData>,
+        'footer',
+        Lang
+    >
+
 type PageDocumentDataSlicesSlice =
     | FaqSlice
     | YogaArambhaSlice
@@ -90,7 +340,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
     prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
 
-export type AllDocumentTypes = PageDocument
+export type AllDocumentTypes = FooterDocument | PageDocument
 
 /**
  * Item in *EventHighlightsGallery → Default → Primary → Albums*
@@ -1457,6 +1707,13 @@ declare module '@prismicio/client' {
 
     namespace Content {
         export type {
+            FooterDocument,
+            FooterDocumentData,
+            FooterDocumentDataSectionTitleItem,
+            FooterDocumentDataWhatWeOfferItem,
+            FooterDocumentDataLegalItem,
+            FooterDocumentDataTalkToUsItem,
+            FooterDocumentDataSocialLinksIconsItem,
             PageDocument,
             PageDocumentData,
             PageDocumentDataSlicesSlice,

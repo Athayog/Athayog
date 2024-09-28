@@ -4,6 +4,7 @@ const nextConfig = {
         domains: [
             'img.youtube.com',
             'images.prismic.io',
+            'athayog.cdn.prismic.io',
             'images.unsplash.com',
         ],
     },
