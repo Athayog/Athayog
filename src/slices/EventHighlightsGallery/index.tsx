@@ -97,7 +97,7 @@ const EventHighlightsGallery = ({
                                             md: '400px',
                                             lg: '500px',
                                         },
-                                        width: '100%',
+                                        width: '99%',
                                     }}
                                 >
                                     <ResponsiveImage
