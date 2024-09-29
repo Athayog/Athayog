@@ -3,7 +3,13 @@
 import dynamic from 'next/dynamic'
 
 export const components = {
+    advantages_of_personal_training: dynamic(
+        () => import('./AdvantagesOfPersonalTraining')
+    ),
     causes_of_pcos: dynamic(() => import('./CausesOfPcos')),
+    consider_personal_training: dynamic(
+        () => import('./ConsiderPersonalTraining')
+    ),
     enroll_section: dynamic(() => import('./EnrollSection')),
     event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
     faq: dynamic(() => import('./Faq')),
@@ -17,6 +23,9 @@ export const components = {
     left_image_righ_content: dynamic(() => import('./LeftImageRighContent')),
     our_yoga_story: dynamic(() => import('./OurYogaStory')),
     pcos_hero: dynamic(() => import('./PcosHero')),
+    personal_content: dynamic(() => import('./PersonalContent')),
+    personal_session_hero: dynamic(() => import('./PersonalSessionHero')),
+    personal_session_pricing: dynamic(() => import('./PersonalSessionPricing')),
     recognition: dynamic(() => import('./Recognition')),
     right_content_left_slider_vertical: dynamic(
         () => import('./RightContentLeftSliderVertical')

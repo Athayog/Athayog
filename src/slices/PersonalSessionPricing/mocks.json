@@ -1,0 +1,123 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "present",
+				"type": "Text"
+			},
+			"courses": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"course_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "motion",
+									"type": "Text"
+								}
+							],
+							[
+								"course_days",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "60",
+									"type": "Number"
+								}
+							],
+							[
+								"course_price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "63",
+									"type": "Number"
+								}
+							],
+							[
+								"type",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "Online",
+									"type": "Select"
+								}
+							]
+						]
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Proident et nostrud nulla cupidatat incididunt in nisi nostrud sint occaecat. Deserunt ad do sint excepteur magna qui dolore excepteur non consectetur. Velit culpa velit exercitation in ipsum cillum irure aute exercitation."
+						}
+					}
+				]
+			},
+			"terms_and_conditions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Climate"
+						}
+					}
+				]
+			},
+			"contact_us_label": {
+				"__TYPE__": "FieldContent",
+				"value": "happily",
+				"type": "Text"
+			},
+			"enquire_now_button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "manner",
+				"type": "Text"
+			},
+			"enquire_now_button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"enquire_note_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+					"width": 2747,
+					"height": 4120
+				},
+				"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+				"width": 2747,
+				"height": 4120,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"enquire_note_text": {
+				"__TYPE__": "FieldContent",
+				"value": "equal",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

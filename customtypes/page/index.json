@@ -27,6 +27,21 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "personal_session_pricing": {
+                            "type": "SharedSlice"
+                        },
+                        "personal_content": {
+                            "type": "SharedSlice"
+                        },
+                        "consider_personal_training": {
+                            "type": "SharedSlice"
+                        },
+                        "personal_session_hero": {
+                            "type": "SharedSlice"
+                        },
+                        "advantages_of_personal_training": {
+                            "type": "SharedSlice"
+                        },
                         "enroll_section": {
                             "type": "SharedSlice"
                         },

@@ -255,6 +255,11 @@ export type FooterDocument<Lang extends string = string> =
     >
 
 type PageDocumentDataSlicesSlice =
+    | PersonalSessionPricingSlice
+    | PersonalContentSlice
+    | ConsiderPersonalTrainingSlice
+    | PersonalSessionHeroSlice
+    | AdvantagesOfPersonalTrainingSlice
     | EnrollSectionSlice
     | WhyJoinSlice
     | YogaPracticesSlice
@@ -350,6 +355,100 @@ export type PageDocument<Lang extends string = string> =
 export type AllDocumentTypes = FooterDocument | PageDocument
 
 /**
+ * Item in *AdvantagesOfPersonalTraining → Default → Primary → Content*
+ */
+export interface AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem {
+    /**
+     * Title field in *AdvantagesOfPersonalTraining → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: advantages_of_personal_training.default.primary.content[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Description field in *AdvantagesOfPersonalTraining → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: advantages_of_personal_training.default.primary.content[].description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *AdvantagesOfPersonalTraining → Default → Primary*
+ */
+export interface AdvantagesOfPersonalTrainingSliceDefaultPrimary {
+    /**
+     * Title field in *AdvantagesOfPersonalTraining → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: advantages_of_personal_training.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Image At The End field in *AdvantagesOfPersonalTraining → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: advantages_of_personal_training.default.primary.image_at_the_end
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image_at_the_end: prismic.ImageField<never>
+
+    /**
+     * Content field in *AdvantagesOfPersonalTraining → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: advantages_of_personal_training.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<
+        Simplify<AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem>
+    >
+}
+
+/**
+ * Default variation for AdvantagesOfPersonalTraining Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AdvantagesOfPersonalTrainingSliceDefault =
+    prismic.SharedSliceVariation<
+        'default',
+        Simplify<AdvantagesOfPersonalTrainingSliceDefaultPrimary>,
+        never
+    >
+
+/**
+ * Slice variation for *AdvantagesOfPersonalTraining*
+ */
+type AdvantagesOfPersonalTrainingSliceVariation =
+    AdvantagesOfPersonalTrainingSliceDefault
+
+/**
+ * AdvantagesOfPersonalTraining Shared Slice
+ *
+ * - **API ID**: `advantages_of_personal_training`
+ * - **Description**: AdvantagesOfPersonalTraining
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AdvantagesOfPersonalTrainingSlice = prismic.SharedSlice<
+    'advantages_of_personal_training',
+    AdvantagesOfPersonalTrainingSliceVariation
+>
+
+/**
  * Item in *CausesOfPcos → Default → Primary → Causes*
  */
 export interface CausesOfPcosSliceDefaultPrimaryCausesItem {
@@ -439,6 +538,99 @@ type CausesOfPcosSliceVariation = CausesOfPcosSliceDefault
 export type CausesOfPcosSlice = prismic.SharedSlice<
     'causes_of_pcos',
     CausesOfPcosSliceVariation
+>
+
+/**
+ * Item in *ConsiderPersonalTraining → Default → Primary → Content*
+ */
+export interface ConsiderPersonalTrainingSliceDefaultPrimaryContentItem {
+    /**
+     * Title field in *ConsiderPersonalTraining → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: consider_personal_training.default.primary.content[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Description field in *ConsiderPersonalTraining → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: consider_personal_training.default.primary.content[].description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *ConsiderPersonalTraining → Default → Primary*
+ */
+export interface ConsiderPersonalTrainingSliceDefaultPrimary {
+    /**
+     * Title field in *ConsiderPersonalTraining → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: consider_personal_training.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Subtitle field in *ConsiderPersonalTraining → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: consider_personal_training.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Content field in *ConsiderPersonalTraining → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: consider_personal_training.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<
+        Simplify<ConsiderPersonalTrainingSliceDefaultPrimaryContentItem>
+    >
+}
+
+/**
+ * Default variation for ConsiderPersonalTraining Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ConsiderPersonalTrainingSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<ConsiderPersonalTrainingSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *ConsiderPersonalTraining*
+ */
+type ConsiderPersonalTrainingSliceVariation =
+    ConsiderPersonalTrainingSliceDefault
+
+/**
+ * ConsiderPersonalTraining Shared Slice
+ *
+ * - **API ID**: `consider_personal_training`
+ * - **Description**: ConsiderPersonalTraining
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ConsiderPersonalTrainingSlice = prismic.SharedSlice<
+    'consider_personal_training',
+    ConsiderPersonalTrainingSliceVariation
 >
 
 /**
@@ -1506,6 +1698,315 @@ export type PcosHeroSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *PersonalContent → Default → Primary → Content*
+ */
+export interface PersonalContentSliceDefaultPrimaryContentItem {
+    /**
+     * Title field in *PersonalContent → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_content.default.primary.content[].title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Description field in *PersonalContent → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_content.default.primary.content[].description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *PersonalContent → Default → Primary*
+ */
+export interface PersonalContentSliceDefaultPrimary {
+    /**
+     * Content field in *PersonalContent → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_content.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<
+        Simplify<PersonalContentSliceDefaultPrimaryContentItem>
+    >
+}
+
+/**
+ * Default variation for PersonalContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PersonalContentSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<PersonalContentSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *PersonalContent*
+ */
+type PersonalContentSliceVariation = PersonalContentSliceDefault
+
+/**
+ * PersonalContent Shared Slice
+ *
+ * - **API ID**: `personal_content`
+ * - **Description**: PersonalContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PersonalContentSlice = prismic.SharedSlice<
+    'personal_content',
+    PersonalContentSliceVariation
+>
+
+/**
+ * Primary content in *PersonalSessionHero → Default → Primary*
+ */
+export interface PersonalSessionHeroSliceDefaultPrimary {
+    /**
+     * Title field in *PersonalSessionHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Desktop Image field in *PersonalSessionHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_hero.default.primary.desktop_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    desktop_image: prismic.ImageField<never>
+
+    /**
+     * Mobile Image field in *PersonalSessionHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_hero.default.primary.mobile_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    mobile_image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for PersonalSessionHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PersonalSessionHeroSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<PersonalSessionHeroSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *PersonalSessionHero*
+ */
+type PersonalSessionHeroSliceVariation = PersonalSessionHeroSliceDefault
+
+/**
+ * PersonalSessionHero Shared Slice
+ *
+ * - **API ID**: `personal_session_hero`
+ * - **Description**: PersonalSessionHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PersonalSessionHeroSlice = prismic.SharedSlice<
+    'personal_session_hero',
+    PersonalSessionHeroSliceVariation
+>
+
+/**
+ * Item in *PersonalSessionPricing → Default → Primary → Courses*
+ */
+export interface PersonalSessionPricingSliceDefaultPrimaryCoursesItem {
+    /**
+     * Course Name field in *PersonalSessionPricing → Default → Primary → Courses*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.courses[].course_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    course_name: prismic.KeyTextField
+
+    /**
+     * Course Days field in *PersonalSessionPricing → Default → Primary → Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.courses[].course_days
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    course_days: prismic.NumberField
+
+    /**
+     * Course Price field in *PersonalSessionPricing → Default → Primary → Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.courses[].course_price
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    course_price: prismic.NumberField
+
+    /**
+     * Type field in *PersonalSessionPricing → Default → Primary → Courses*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Select a course type
+     * - **API ID Path**: personal_session_pricing.default.primary.courses[].type
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    type: prismic.SelectField<'Onsite' | 'Studio' | 'Online'>
+}
+
+/**
+ * Primary content in *PersonalSessionPricing → Default → Primary*
+ */
+export interface PersonalSessionPricingSliceDefaultPrimary {
+    /**
+     * Title field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Subtitle field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Courses field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.courses[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    courses: prismic.GroupField<
+        Simplify<PersonalSessionPricingSliceDefaultPrimaryCoursesItem>
+    >
+
+    /**
+     * Terms And Conditions field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.terms_and_conditions
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    terms_and_conditions: prismic.RichTextField
+
+    /**
+     * Contact Us Label field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.contact_us_label
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    contact_us_label: prismic.KeyTextField
+
+    /**
+     * Enquire Now Button Text field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.enquire_now_button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    enquire_now_button_text: prismic.KeyTextField
+
+    /**
+     * Enquire Now Button Link field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.enquire_now_button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    enquire_now_button_link: prismic.LinkField
+
+    /**
+     * Enquire Note Image field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.enquire_note_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    enquire_note_image: prismic.ImageField<never>
+
+    /**
+     * Enquire Note Text field in *PersonalSessionPricing → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.enquire_note_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    enquire_note_text: prismic.KeyTextField
+}
+
+/**
+ * Default variation for PersonalSessionPricing Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PersonalSessionPricingSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<PersonalSessionPricingSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *PersonalSessionPricing*
+ */
+type PersonalSessionPricingSliceVariation = PersonalSessionPricingSliceDefault
+
+/**
+ * PersonalSessionPricing Shared Slice
+ *
+ * - **API ID**: `personal_session_pricing`
+ * - **Description**: PersonalSessionPricing
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PersonalSessionPricingSlice = prismic.SharedSlice<
+    'personal_session_pricing',
+    PersonalSessionPricingSliceVariation
+>
+
+/**
  * Item in *Recognition → Default → Primary → Logos*
  */
 export interface RecognitionSliceDefaultPrimaryLogosItem {
@@ -2311,11 +2812,21 @@ declare module '@prismicio/client' {
             PageDocumentData,
             PageDocumentDataSlicesSlice,
             AllDocumentTypes,
+            AdvantagesOfPersonalTrainingSlice,
+            AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem,
+            AdvantagesOfPersonalTrainingSliceDefaultPrimary,
+            AdvantagesOfPersonalTrainingSliceVariation,
+            AdvantagesOfPersonalTrainingSliceDefault,
             CausesOfPcosSlice,
             CausesOfPcosSliceDefaultPrimaryCausesItem,
             CausesOfPcosSliceDefaultPrimary,
             CausesOfPcosSliceVariation,
             CausesOfPcosSliceDefault,
+            ConsiderPersonalTrainingSlice,
+            ConsiderPersonalTrainingSliceDefaultPrimaryContentItem,
+            ConsiderPersonalTrainingSliceDefaultPrimary,
+            ConsiderPersonalTrainingSliceVariation,
+            ConsiderPersonalTrainingSliceDefault,
             EnrollSectionSlice,
             EnrollSectionSliceDefaultPrimary,
             EnrollSectionSliceVariation,
@@ -2365,6 +2876,20 @@ declare module '@prismicio/client' {
             PcosHeroSliceDefaultPrimary,
             PcosHeroSliceVariation,
             PcosHeroSliceDefault,
+            PersonalContentSlice,
+            PersonalContentSliceDefaultPrimaryContentItem,
+            PersonalContentSliceDefaultPrimary,
+            PersonalContentSliceVariation,
+            PersonalContentSliceDefault,
+            PersonalSessionHeroSlice,
+            PersonalSessionHeroSliceDefaultPrimary,
+            PersonalSessionHeroSliceVariation,
+            PersonalSessionHeroSliceDefault,
+            PersonalSessionPricingSlice,
+            PersonalSessionPricingSliceDefaultPrimaryCoursesItem,
+            PersonalSessionPricingSliceDefaultPrimary,
+            PersonalSessionPricingSliceVariation,
+            PersonalSessionPricingSliceDefault,
             RecognitionSlice,
             RecognitionSliceDefaultPrimaryLogosItem,
             RecognitionSliceDefaultPrimary,
