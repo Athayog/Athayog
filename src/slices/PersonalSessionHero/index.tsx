@@ -15,7 +15,6 @@ export type PersonalSessionHeroProps =
 const PersonalSessionHero = ({
     slice,
 }: PersonalSessionHeroProps): JSX.Element => {
-    console.log('s', slice)
     return (
         <section
             data-slice-type={slice.slice_type}
