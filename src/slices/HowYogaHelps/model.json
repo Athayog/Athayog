@@ -1,0 +1,51 @@
+{
+  "id": "how_yoga_helps",
+  "type": "SharedSlice",
+  "name": "HowYogaHelps",
+  "description": "HowYogaHelps",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "content": {
+          "type": "Group",
+          "config": {
+            "label": "Content",
+            "repeat": true,
+            "fields": {
+              "content_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Content Title",
+                  "placeholder": ""
+                }
+              },
+              "content_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Content Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,heading2,heading3,heading4,heading5,heading6,strong,em"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

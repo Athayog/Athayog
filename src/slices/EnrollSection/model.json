@@ -1,0 +1,70 @@
+{
+  "id": "enroll_section",
+  "type": "SharedSlice",
+  "name": "EnrollSection",
+  "description": "EnrollSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        },
+        "join_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Join Button Text",
+            "placeholder": ""
+          }
+        },
+        "join_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Join Button Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "date": {
+          "type": "Date",
+          "config": {
+            "label": "Date",
+            "placeholder": ""
+          }
+        },
+        "price": {
+          "type": "Text",
+          "config": {
+            "label": "Price",
+            "placeholder": ""
+          }
+        },
+        "time_and_week": {
+          "type": "Text",
+          "config": {
+            "label": "Time And Week",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
