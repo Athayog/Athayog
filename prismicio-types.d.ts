@@ -255,6 +255,8 @@ export type FooterDocument<Lang extends string = string> =
     >
 
 type PageDocumentDataSlicesSlice =
+    | CausesOfPcosSlice
+    | PcosHeroSlice
     | FaqSlice
     | YogaArambhaSlice
     | OurYogaStorySlice
@@ -341,6 +343,98 @@ export type PageDocument<Lang extends string = string> =
     prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
 
 export type AllDocumentTypes = FooterDocument | PageDocument
+
+/**
+ * Item in *CausesOfPcos → Default → Primary → Causes*
+ */
+export interface CausesOfPcosSliceDefaultPrimaryCausesItem {
+    /**
+     * Cause title field in *CausesOfPcos → Default → Primary → Causes*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: causes_of_pcos.default.primary.causes[].cause_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    cause_title: prismic.KeyTextField
+
+    /**
+     * Casue Description field in *CausesOfPcos → Default → Primary → Causes*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: causes_of_pcos.default.primary.causes[].casue_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    casue_description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *CausesOfPcos → Default → Primary*
+ */
+export interface CausesOfPcosSliceDefaultPrimary {
+    /**
+     * Title field in *CausesOfPcos → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: causes_of_pcos.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Image field in *CausesOfPcos → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: causes_of_pcos.default.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+
+    /**
+     * Causes field in *CausesOfPcos → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: causes_of_pcos.default.primary.causes[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    causes: prismic.GroupField<
+        Simplify<CausesOfPcosSliceDefaultPrimaryCausesItem>
+    >
+}
+
+/**
+ * Default variation for CausesOfPcos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CausesOfPcosSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<CausesOfPcosSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *CausesOfPcos*
+ */
+type CausesOfPcosSliceVariation = CausesOfPcosSliceDefault
+
+/**
+ * CausesOfPcos Shared Slice
+ *
+ * - **API ID**: `causes_of_pcos`
+ * - **Description**: CausesOfPcos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CausesOfPcosSlice = prismic.SharedSlice<
+    'causes_of_pcos',
+    CausesOfPcosSliceVariation
+>
 
 /**
  * Item in *EventHighlightsGallery → Default → Primary → Albums*
@@ -1135,6 +1229,91 @@ export type OurYogaStorySlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *PcosHero → Default → Primary*
+ */
+export interface PcosHeroSliceDefaultPrimary {
+    /**
+     * Title field in *PcosHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pcos_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Person Image field in *PcosHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pcos_hero.default.primary.person_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    person_image: prismic.ImageField<never>
+
+    /**
+     * Button Text field in *PcosHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pcos_hero.default.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    button_text: prismic.KeyTextField
+
+    /**
+     * Button Link field in *PcosHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pcos_hero.default.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button_link: prismic.LinkField
+
+    /**
+     * Subtitle field in *PcosHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pcos_hero.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+}
+
+/**
+ * Default variation for PcosHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PcosHeroSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<PcosHeroSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *PcosHero*
+ */
+type PcosHeroSliceVariation = PcosHeroSliceDefault
+
+/**
+ * PcosHero Shared Slice
+ *
+ * - **API ID**: `pcos_hero`
+ * - **Description**: PcosHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PcosHeroSlice = prismic.SharedSlice<
+    'pcos_hero',
+    PcosHeroSliceVariation
+>
+
+/**
  * Item in *Recognition → Default → Primary → Logos*
  */
 export interface RecognitionSliceDefaultPrimaryLogosItem {
@@ -1718,6 +1897,11 @@ declare module '@prismicio/client' {
             PageDocumentData,
             PageDocumentDataSlicesSlice,
             AllDocumentTypes,
+            CausesOfPcosSlice,
+            CausesOfPcosSliceDefaultPrimaryCausesItem,
+            CausesOfPcosSliceDefaultPrimary,
+            CausesOfPcosSliceVariation,
+            CausesOfPcosSliceDefault,
             EventHighlightsGallerySlice,
             EventHighlightsGallerySliceDefaultPrimaryAlbumsItem,
             EventHighlightsGallerySliceDefaultPrimary,
@@ -1754,6 +1938,10 @@ declare module '@prismicio/client' {
             OurYogaStorySliceDefaultPrimary,
             OurYogaStorySliceVariation,
             OurYogaStorySliceDefault,
+            PcosHeroSlice,
+            PcosHeroSliceDefaultPrimary,
+            PcosHeroSliceVariation,
+            PcosHeroSliceDefault,
             RecognitionSlice,
             RecognitionSliceDefaultPrimaryLogosItem,
             RecognitionSliceDefaultPrimary,

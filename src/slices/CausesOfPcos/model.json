@@ -1,0 +1,61 @@
+{
+  "id": "causes_of_pcos",
+  "type": "SharedSlice",
+  "name": "CausesOfPcos",
+  "description": "CausesOfPcos",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "causes": {
+          "type": "Group",
+          "config": {
+            "label": "Causes",
+            "repeat": true,
+            "fields": {
+              "cause_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Cause title",
+                  "placeholder": ""
+                }
+              },
+              "casue_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Casue Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,heading2,heading3,heading4,heading5,heading6,em,strong"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

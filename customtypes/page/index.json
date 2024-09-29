@@ -27,6 +27,12 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "causes_of_pcos": {
+                            "type": "SharedSlice"
+                        },
+                        "pcos_hero": {
+                            "type": "SharedSlice"
+                        },
                         "faq": {
                             "type": "SharedSlice"
                         },

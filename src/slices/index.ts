@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 
 export const components = {
+    causes_of_pcos: dynamic(() => import('./CausesOfPcos')),
     event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
     faq: dynamic(() => import('./Faq')),
     group_class: dynamic(() => import('./GroupClass')),
@@ -13,6 +14,7 @@ export const components = {
     ),
     left_image_righ_content: dynamic(() => import('./LeftImageRighContent')),
     our_yoga_story: dynamic(() => import('./OurYogaStory')),
+    pcos_hero: dynamic(() => import('./PcosHero')),
     recognition: dynamic(() => import('./Recognition')),
     right_content_left_slider_vertical: dynamic(
         () => import('./RightContentLeftSliderVertical')
