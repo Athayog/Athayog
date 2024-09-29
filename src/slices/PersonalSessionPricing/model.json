@@ -1,0 +1,124 @@
+{
+  "id": "personal_session_pricing",
+  "type": "SharedSlice",
+  "name": "PersonalSessionPricing",
+  "description": "PersonalSessionPricing",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,paragraph,heading3,heading4,heading5,heading6,em,strong"
+          }
+        },
+        "courses": {
+          "type": "Group",
+          "config": {
+            "label": "Courses",
+            "repeat": true,
+            "fields": {
+              "course_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Course Name",
+                  "placeholder": ""
+                }
+              },
+              "course_days": {
+                "type": "Number",
+                "config": {
+                  "label": "Course Days",
+                  "placeholder": ""
+                }
+              },
+              "course_price": {
+                "type": "Number",
+                "config": {
+                  "label": "Course Price",
+                  "placeholder": ""
+                }
+              },
+              "type": {
+                "type": "Select",
+                "config": {
+                  "label": "Type",
+                  "placeholder": "Select a course type",
+                  "options": [
+                    "Onsite",
+                    "Studio",
+                    "Online"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "terms_and_conditions": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Terms And Conditions",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item"
+          }
+        },
+        "contact_us_label": {
+          "type": "Text",
+          "config": {
+            "label": "Contact Us Label",
+            "placeholder": ""
+          }
+        },
+        "enquire_now_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Enquire Now Button Text",
+            "placeholder": ""
+          }
+        },
+        "enquire_now_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Enquire Now Button Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "enquire_note_image": {
+          "type": "Image",
+          "config": {
+            "label": "Enquire Note Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "enquire_note_text": {
+          "type": "Text",
+          "config": {
+            "label": "Enquire Note Text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
