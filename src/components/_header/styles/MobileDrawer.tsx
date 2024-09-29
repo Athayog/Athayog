@@ -8,32 +8,32 @@ import {
     ListItemButton,
     IconButton as MuiIconButton,
     Divider as MuiDivider,
-} from '@mui/material';
+} from '@mui/material'
 
 export const NavLinkButton = styled(ListItemButton, {
     shouldForwardProp: (prop) => prop !== 'pathname' && prop !== 'path',
 })<{
-    path: string;
-    pathname: string;
+    path: string
+    pathname: string
 }>(({ theme, pathname, path }) => ({
     fontSize: '18px',
-    color: pathname === path ? theme.palette.primary.main : 'white',
+    color: pathname === path ? '#945293' : 'white',
     padding: '12px 0px',
     minWidth: '50px',
-}));
+}))
 
 export const MenuButton = styled(Button)({
     color: 'white',
     fontSize: '18px',
-});
+})
 
 export const Menu = styled(MuiMenu)({
     '& .MuiPaper-root': {
         borderRadius: '8px',
         color: 'white',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        backgroundColor: '#181D13',
     },
-});
+})
 
 export const List = styled(MuiList, {
     shouldForwardProp: (prop) => prop !== 'active',
@@ -46,24 +46,26 @@ export const List = styled(MuiList, {
     paddingLeft: active ? '10px' : '0px',
     borderWidth: active ? '2px' : '0px',
     borderStyle: active ? 'solid' : 'none',
-    borderImage: active ? 'linear-gradient(180deg, rgba(217, 217, 217, 0.20) 0%, #AEFF47 100%) 1' : 'none',
+    borderImage: active
+        ? 'linear-gradient(180deg,rgba(217, 217, 217, 0) 0%, rgba(174,255, 71,0.20) 100%) 1'
+        : 'none',
     borderTop: '0px',
     borderRight: '0px',
     borderBottom: '0px',
-    borderLeft: active ? '1px' : '0px',
+    // borderLeft: active ? '1px' : '0px',
 
     '& .MuiListItem-root': {
         color: 'white',
         marginLeft: '0px',
         padding: '12px 0px',
     },
-}));
+}))
 
 export const DrawerParent = styled(Box)(({ theme }) => ({
     [theme.breakpoints.up('md')]: {
         display: 'none',
     },
-}));
+}))
 
 export const DrawerContent = styled(Box)({
     width: '100%',
@@ -72,7 +74,7 @@ export const DrawerContent = styled(Box)({
     justifyContent: 'space-between',
     alignItems: 'baseline',
     flexDirection: 'column',
-});
+})
 
 export const DrawerNavContainer = styled(Box)({
     width: '100%',
@@ -86,7 +88,7 @@ export const DrawerNavContainer = styled(Box)({
             fontSize: '18px',
         },
     },
-});
+})
 
 export const Drawer = styled(MuiDrawer)({
     '& .MuiDrawer-paper': {
@@ -97,17 +99,17 @@ export const Drawer = styled(MuiDrawer)({
         height: '100%',
         background: 'linear-gradient(180deg, #101010 20%, #1B2E08 100%)',
     },
-});
+})
 
 export const IconButton = styled(MuiIconButton)(({ theme }) => ({
     color: theme.palette.primary.main,
     padding: '0px',
-}));
+}))
 
 export const Divider = styled(MuiDivider)({
     minWidth: '176px',
     borderColor: 'rgba(255, 255, 255, 0.20)',
-});
+})
 
 export const TrialButton = styled(Button)(({ theme }) => ({
     fontSize: '18px',
@@ -120,4 +122,4 @@ export const TrialButton = styled(Button)(({ theme }) => ({
         color: theme.palette.primary.main,
         marginLeft: '5px',
     },
-}));
+}))

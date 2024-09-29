@@ -7,6 +7,7 @@ import Navbar from '@/components/_header'
 import theme from '@/styles/theme'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import Footer from '@/components/_footer'
+import '@/styles/global.css'
 
 const josefin = Josefin_Sans({ subsets: ['latin'] })
 
