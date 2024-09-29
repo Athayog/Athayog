@@ -97,6 +97,7 @@ const GroupClass = ({ slice }: GroupClassProps): JSX.Element => {
                         <PrismicNextImage
                             field={slice.primary.image}
                             fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             style={{ objectFit: 'cover' }}
                         />
                     </ImageContainer>
