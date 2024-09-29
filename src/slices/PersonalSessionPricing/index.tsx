@@ -1,5 +1,10 @@
 'use client'
-import { Content } from '@prismicio/client'
+import {
+    Content,
+    KeyTextField,
+    NumberField,
+    SelectField,
+} from '@prismicio/client'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 import { Box, Button, Typography } from '@mui/material'
 import React, { useState } from 'react'
@@ -21,10 +26,10 @@ const AdvantagesBox = ({
     type,
     course_price,
 }: {
-    course_name: string
-    course_days: string
-    type: string
-    course_price: string
+    course_name: any
+    course_days: any
+    type: any
+    course_price: any
 }) => {
     const getColorType = (type: string) => {
         switch (type) {
@@ -115,6 +120,13 @@ const getCoursesCategory = (courses: any[]) => {
     )
 }
 
+type PersonalSession = {
+    course_name: KeyTextField
+    course_days: NumberField
+    course_price: NumberField
+    type: SelectField<'Onsite' | 'Studio' | 'Online'>
+}
+
 const PersonalSessionPricing = ({
     slice,
 }: PersonalSessionPricingProps): JSX.Element => {
@@ -127,12 +139,12 @@ const PersonalSessionPricing = ({
     const courses = getCoursesCategory(slice.primary.courses)
     const allCourses = Object.values(courses).flat()
 
-    const filteredCourses =
+    const filteredCourses: PersonalSession[] =
         selectedType === 'all'
-            ? allCourses
-            : slice.primary.courses.filter(
-                  (course) => course.type === selectedType
-              )
+            ? allCourses.map((course) => course as PersonalSession)
+            : slice.primary.courses
+                  .filter((course) => course.type === selectedType)
+                  .map((course) => course as PersonalSession)
 
     return (
         <section
@@ -234,8 +246,8 @@ const PersonalSessionPricing = ({
                         marginTop: { xs: '40px', md: '80px' },
                     }}
                 >
-                    {filteredCourses.map((item) => (
-                        <AdvantagesBox key={item.course_name} {...item} />
+                    {filteredCourses.map((item: PersonalSession, index) => (
+                        <AdvantagesBox key={index} {...item} />
                     ))}
                 </Box>
 

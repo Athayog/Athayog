@@ -1,4 +1,4 @@
-import { Content, KeyTextField } from '@prismicio/client'
+import { Content, KeyTextField, RichTextField } from '@prismicio/client'
 import {
     PrismicRichText,
     PrismicRichTextProps,
@@ -21,7 +21,7 @@ const AdvantagesBox = ({
     description,
 }: {
     title: KeyTextField | null
-    description: PrismicRichTextProps | null
+    description: RichTextField | null
 }) => {
     return (
         <Grid item xs={12} md={6} lg={6} sx={{ padding: '20px' }}>
