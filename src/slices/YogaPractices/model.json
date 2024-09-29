@@ -1,0 +1,44 @@
+{
+  "id": "yoga_practices",
+  "type": "SharedSlice",
+  "name": "YogaPractices",
+  "description": "YogaPractices",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "list": {
+          "type": "Group",
+          "config": {
+            "label": "List",
+            "repeat": true,
+            "fields": {
+              "practice_item": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Practice Item",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

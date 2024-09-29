@@ -1,0 +1,42 @@
+{
+  "id": "symptoms",
+  "type": "SharedSlice",
+  "name": "Symptoms",
+  "description": "Symptoms",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "symptoms_list": {
+          "type": "Group",
+          "config": {
+            "label": "Symptoms List",
+            "repeat": true,
+            "fields": {
+              "symptom": {
+                "type": "Text",
+                "config": {
+                  "label": "Symptom",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

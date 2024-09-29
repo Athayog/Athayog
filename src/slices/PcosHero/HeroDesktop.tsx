@@ -3,6 +3,7 @@ import { PrismicRichText } from '@prismicio/react'
 import { PCOSLayout } from '@/components/_shared/PCOSLayout'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { Subtitle, Title } from '@/components/_shared/Typography/PCOS'
+import HeroVector from '/public/images/pcos-page/HeroVector.svg'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 
 const HeroDesktop = ({
@@ -62,13 +63,13 @@ const HeroDesktop = ({
                         overflow: 'hidden',
                     }}
                 >
-                    {/* <HeroVector
+                    <HeroVector
                         style={{
                             position: 'absolute',
-                            zIndex: '-1',
+                            zIndex: '0',
                             opacity: '0.5',
                         }}
-                    /> */}
+                    />
                     <PrismicNextImage
                         field={person_image}
                         layout="responsive"
@@ -77,6 +78,7 @@ const HeroDesktop = ({
                         style={{
                             WebkitTransform: 'scaleX(-1)', // for Safari
                             transform: 'scaleX(-1)',
+                            zIndex: '2',
                         }}
                     />
                 </Box>

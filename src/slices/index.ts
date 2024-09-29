@@ -4,10 +4,12 @@ import dynamic from 'next/dynamic'
 
 export const components = {
     causes_of_pcos: dynamic(() => import('./CausesOfPcos')),
+    enroll_section: dynamic(() => import('./EnrollSection')),
     event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
     faq: dynamic(() => import('./Faq')),
     group_class: dynamic(() => import('./GroupClass')),
     hero: dynamic(() => import('./Hero')),
+    how_yoga_helps: dynamic(() => import('./HowYogaHelps')),
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
     left_content_right_slider_vertical: dynamic(
         () => import('./LeftContentRightSliderVertical')
@@ -20,7 +22,10 @@ export const components = {
         () => import('./RightContentLeftSliderVertical')
     ),
     slices: dynamic(() => import('./Stats')),
+    symptoms: dynamic(() => import('./Symptoms')),
     upcoming_workshop: dynamic(() => import('./WorkshopRow')),
     video_testimonials: dynamic(() => import('./VideoTestimonials')),
+    why_join: dynamic(() => import('./WhyJoin')),
     yoga_arambha: dynamic(() => import('./YogaArambha')),
+    yoga_practices: dynamic(() => import('./YogaPractices')),
 }

@@ -255,6 +255,11 @@ export type FooterDocument<Lang extends string = string> =
     >
 
 type PageDocumentDataSlicesSlice =
+    | EnrollSectionSlice
+    | WhyJoinSlice
+    | YogaPracticesSlice
+    | SymptomsSlice
+    | HowYogaHelpsSlice
     | CausesOfPcosSlice
     | PcosHeroSlice
     | FaqSlice
@@ -434,6 +439,111 @@ type CausesOfPcosSliceVariation = CausesOfPcosSliceDefault
 export type CausesOfPcosSlice = prismic.SharedSlice<
     'causes_of_pcos',
     CausesOfPcosSliceVariation
+>
+
+/**
+ * Primary content in *EnrollSection → Default → Primary*
+ */
+export interface EnrollSectionSliceDefaultPrimary {
+    /**
+     * Title field in *EnrollSection → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: enroll_section.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Subtitle field in *EnrollSection → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: enroll_section.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Join Button Text field in *EnrollSection → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: enroll_section.default.primary.join_button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    join_button_text: prismic.KeyTextField
+
+    /**
+     * Join Button Link field in *EnrollSection → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: enroll_section.default.primary.join_button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    join_button_link: prismic.LinkField
+
+    /**
+     * Date field in *EnrollSection → Default → Primary*
+     *
+     * - **Field Type**: Date
+     * - **Placeholder**: *None*
+     * - **API ID Path**: enroll_section.default.primary.date
+     * - **Documentation**: https://prismic.io/docs/field#date
+     */
+    date: prismic.DateField
+
+    /**
+     * Price field in *EnrollSection → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: enroll_section.default.primary.price
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    price: prismic.KeyTextField
+
+    /**
+     * Time And Week field in *EnrollSection → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: enroll_section.default.primary.time_and_week
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    time_and_week: prismic.KeyTextField
+}
+
+/**
+ * Default variation for EnrollSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EnrollSectionSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<EnrollSectionSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *EnrollSection*
+ */
+type EnrollSectionSliceVariation = EnrollSectionSliceDefault
+
+/**
+ * EnrollSection Shared Slice
+ *
+ * - **API ID**: `enroll_section`
+ * - **Description**: EnrollSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EnrollSectionSlice = prismic.SharedSlice<
+    'enroll_section',
+    EnrollSectionSliceVariation
 >
 
 /**
@@ -831,6 +941,88 @@ type HeroSliceVariation = HeroSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>
+
+/**
+ * Item in *HowYogaHelps → Default → Primary → Content*
+ */
+export interface HowYogaHelpsSliceDefaultPrimaryContentItem {
+    /**
+     * Content Title field in *HowYogaHelps → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: how_yoga_helps.default.primary.content[].content_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    content_title: prismic.KeyTextField
+
+    /**
+     * Content Description field in *HowYogaHelps → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: how_yoga_helps.default.primary.content[].content_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    content_description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *HowYogaHelps → Default → Primary*
+ */
+export interface HowYogaHelpsSliceDefaultPrimary {
+    /**
+     * Title field in *HowYogaHelps → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: how_yoga_helps.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Content field in *HowYogaHelps → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: how_yoga_helps.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<
+        Simplify<HowYogaHelpsSliceDefaultPrimaryContentItem>
+    >
+}
+
+/**
+ * Default variation for HowYogaHelps Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HowYogaHelpsSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<HowYogaHelpsSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *HowYogaHelps*
+ */
+type HowYogaHelpsSliceVariation = HowYogaHelpsSliceDefault
+
+/**
+ * HowYogaHelps Shared Slice
+ *
+ * - **API ID**: `how_yoga_helps`
+ * - **Description**: HowYogaHelps
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HowYogaHelpsSlice = prismic.SharedSlice<
+    'how_yoga_helps',
+    HowYogaHelpsSliceVariation
+>
 
 /**
  * Primary content in *LeftContentRightImage → Default → Primary*
@@ -1577,6 +1769,78 @@ type SlicesSliceVariation = SlicesSliceDefault
 export type SlicesSlice = prismic.SharedSlice<'slices', SlicesSliceVariation>
 
 /**
+ * Item in *Symptoms → Default → Primary → Symptoms List*
+ */
+export interface SymptomsSliceDefaultPrimarySymptomsListItem {
+    /**
+     * Symptom field in *Symptoms → Default → Primary → Symptoms List*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: symptoms.default.primary.symptoms_list[].symptom
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    symptom: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *Symptoms → Default → Primary*
+ */
+export interface SymptomsSliceDefaultPrimary {
+    /**
+     * Title field in *Symptoms → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: symptoms.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Symptoms List field in *Symptoms → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: symptoms.default.primary.symptoms_list[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    symptoms_list: prismic.GroupField<
+        Simplify<SymptomsSliceDefaultPrimarySymptomsListItem>
+    >
+}
+
+/**
+ * Default variation for Symptoms Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SymptomsSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<SymptomsSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *Symptoms*
+ */
+type SymptomsSliceVariation = SymptomsSliceDefault
+
+/**
+ * Symptoms Shared Slice
+ *
+ * - **API ID**: `symptoms`
+ * - **Description**: Symptoms
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SymptomsSlice = prismic.SharedSlice<
+    'symptoms',
+    SymptomsSliceVariation
+>
+
+/**
  * Item in *WorkshopRow → Default → Primary → Row*
  */
 export interface UpcomingWorkshopSliceDefaultPrimaryRowItem {
@@ -1781,6 +2045,86 @@ export type VideoTestimonialsSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *WhyJoin → Default → Primary → Content*
+ */
+export interface WhyJoinSliceDefaultPrimaryContentItem {
+    /**
+     * Icon field in *WhyJoin → Default → Primary → Content*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_join.default.primary.content[].icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Label field in *WhyJoin → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_join.default.primary.content[].label
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    label: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *WhyJoin → Default → Primary*
+ */
+export interface WhyJoinSliceDefaultPrimary {
+    /**
+     * Title field in *WhyJoin → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_join.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Content field in *WhyJoin → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_join.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<Simplify<WhyJoinSliceDefaultPrimaryContentItem>>
+}
+
+/**
+ * Default variation for WhyJoin Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WhyJoinSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<WhyJoinSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *WhyJoin*
+ */
+type WhyJoinSliceVariation = WhyJoinSliceDefault
+
+/**
+ * WhyJoin Shared Slice
+ *
+ * - **API ID**: `why_join`
+ * - **Description**: WhyJoin
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WhyJoinSlice = prismic.SharedSlice<
+    'why_join',
+    WhyJoinSliceVariation
+>
+
+/**
  * Primary content in *YogaArambha → Default → Primary*
  */
 export interface YogaArambhaSliceDefaultPrimary {
@@ -1865,6 +2209,76 @@ export type YogaArambhaSlice = prismic.SharedSlice<
     YogaArambhaSliceVariation
 >
 
+/**
+ * Item in *YogaPractices → Default → Primary → List*
+ */
+export interface YogaPracticesSliceDefaultPrimaryListItem {
+    /**
+     * Practice Item field in *YogaPractices → Default → Primary → List*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_practices.default.primary.list[].practice_item
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    practice_item: prismic.RichTextField
+}
+
+/**
+ * Primary content in *YogaPractices → Default → Primary*
+ */
+export interface YogaPracticesSliceDefaultPrimary {
+    /**
+     * Title field in *YogaPractices → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_practices.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * List field in *YogaPractices → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_practices.default.primary.list[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    list: prismic.GroupField<Simplify<YogaPracticesSliceDefaultPrimaryListItem>>
+}
+
+/**
+ * Default variation for YogaPractices Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaPracticesSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<YogaPracticesSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *YogaPractices*
+ */
+type YogaPracticesSliceVariation = YogaPracticesSliceDefault
+
+/**
+ * YogaPractices Shared Slice
+ *
+ * - **API ID**: `yoga_practices`
+ * - **Description**: YogaPractices
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaPracticesSlice = prismic.SharedSlice<
+    'yoga_practices',
+    YogaPracticesSliceVariation
+>
+
 declare module '@prismicio/client' {
     interface CreateClient {
         (
@@ -1902,6 +2316,10 @@ declare module '@prismicio/client' {
             CausesOfPcosSliceDefaultPrimary,
             CausesOfPcosSliceVariation,
             CausesOfPcosSliceDefault,
+            EnrollSectionSlice,
+            EnrollSectionSliceDefaultPrimary,
+            EnrollSectionSliceVariation,
+            EnrollSectionSliceDefault,
             EventHighlightsGallerySlice,
             EventHighlightsGallerySliceDefaultPrimaryAlbumsItem,
             EventHighlightsGallerySliceDefaultPrimary,
@@ -1920,6 +2338,11 @@ declare module '@prismicio/client' {
             HeroSliceDefaultPrimary,
             HeroSliceVariation,
             HeroSliceDefault,
+            HowYogaHelpsSlice,
+            HowYogaHelpsSliceDefaultPrimaryContentItem,
+            HowYogaHelpsSliceDefaultPrimary,
+            HowYogaHelpsSliceVariation,
+            HowYogaHelpsSliceDefault,
             LeftContentRightImageSlice,
             LeftContentRightImageSliceDefaultPrimary,
             LeftContentRightImageSliceVariation,
@@ -1957,6 +2380,11 @@ declare module '@prismicio/client' {
             SlicesSliceDefaultPrimary,
             SlicesSliceVariation,
             SlicesSliceDefault,
+            SymptomsSlice,
+            SymptomsSliceDefaultPrimarySymptomsListItem,
+            SymptomsSliceDefaultPrimary,
+            SymptomsSliceVariation,
+            SymptomsSliceDefault,
             UpcomingWorkshopSlice,
             UpcomingWorkshopSliceDefaultPrimaryRowItem,
             UpcomingWorkshopSliceDefaultPrimary,
@@ -1967,10 +2395,20 @@ declare module '@prismicio/client' {
             VideoTestimonialsSliceDefaultPrimary,
             VideoTestimonialsSliceVariation,
             VideoTestimonialsSliceDefault,
+            WhyJoinSlice,
+            WhyJoinSliceDefaultPrimaryContentItem,
+            WhyJoinSliceDefaultPrimary,
+            WhyJoinSliceVariation,
+            WhyJoinSliceDefault,
             YogaArambhaSlice,
             YogaArambhaSliceDefaultPrimary,
             YogaArambhaSliceVariation,
             YogaArambhaSliceDefault,
+            YogaPracticesSlice,
+            YogaPracticesSliceDefaultPrimaryListItem,
+            YogaPracticesSliceDefaultPrimary,
+            YogaPracticesSliceVariation,
+            YogaPracticesSliceDefault,
         }
     }
 }

@@ -27,6 +27,21 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "enroll_section": {
+                            "type": "SharedSlice"
+                        },
+                        "why_join": {
+                            "type": "SharedSlice"
+                        },
+                        "yoga_practices": {
+                            "type": "SharedSlice"
+                        },
+                        "symptoms": {
+                            "type": "SharedSlice"
+                        },
+                        "how_yoga_helps": {
+                            "type": "SharedSlice"
+                        },
                         "causes_of_pcos": {
                             "type": "SharedSlice"
                         },
