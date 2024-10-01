@@ -27,6 +27,27 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "class_intensity_table": {
+                            "type": "SharedSlice"
+                        },
+                        "group_class_format": {
+                            "type": "SharedSlice"
+                        },
+                        "group_information": {
+                            "type": "SharedSlice"
+                        },
+                        "pros_and_cons": {
+                            "type": "SharedSlice"
+                        },
+                        "group_class_pricing": {
+                            "type": "SharedSlice"
+                        },
+                        "group_class_hero": {
+                            "type": "SharedSlice"
+                        },
+                        "class_format": {
+                            "type": "SharedSlice"
+                        },
                         "personal_session_pricing": {
                             "type": "SharedSlice"
                         },

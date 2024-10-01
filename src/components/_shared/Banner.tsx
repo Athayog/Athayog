@@ -11,7 +11,7 @@ interface BannerProps {
         lg?: string | null
         xl?: string | null
     }
-    imageAlt: string
+    imageAlt: string | null | undefined
     height: { xs?: string; sm?: string; md?: string; lg?: string; xl?: string }
     children: React.ReactNode
     blurHash: string
@@ -89,7 +89,7 @@ const Banner: React.FC<BannerProps> = ({
                 loading="lazy"
                 blurDataURL={blurHash}
                 placeholder="blur"
-                alt={imageAlt}
+                alt={imageAlt ?? 'Image'}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <Box

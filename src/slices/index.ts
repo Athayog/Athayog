@@ -7,6 +7,8 @@ export const components = {
         () => import('./AdvantagesOfPersonalTraining')
     ),
     causes_of_pcos: dynamic(() => import('./CausesOfPcos')),
+    class_format: dynamic(() => import('./ClassFormat')),
+    class_intensity_table: dynamic(() => import('./ClassIntensityTable')),
     consider_personal_training: dynamic(
         () => import('./ConsiderPersonalTraining')
     ),
@@ -14,6 +16,10 @@ export const components = {
     event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
     faq: dynamic(() => import('./Faq')),
     group_class: dynamic(() => import('./GroupClass')),
+    group_class_format: dynamic(() => import('./GroupClassFormat')),
+    group_class_hero: dynamic(() => import('./GroupClassHero')),
+    group_class_pricing: dynamic(() => import('./GroupClassPricing')),
+    group_information: dynamic(() => import('./GroupInformation')),
     hero: dynamic(() => import('./Hero')),
     how_yoga_helps: dynamic(() => import('./HowYogaHelps')),
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
@@ -26,6 +32,7 @@ export const components = {
     personal_content: dynamic(() => import('./PersonalContent')),
     personal_session_hero: dynamic(() => import('./PersonalSessionHero')),
     personal_session_pricing: dynamic(() => import('./PersonalSessionPricing')),
+    pros_and_cons: dynamic(() => import('./ProsAndCons')),
     recognition: dynamic(() => import('./Recognition')),
     right_content_left_slider_vertical: dynamic(
         () => import('./RightContentLeftSliderVertical')

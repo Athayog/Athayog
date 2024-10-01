@@ -1,0 +1,109 @@
+{
+  "id": "group_class_pricing",
+  "type": "SharedSlice",
+  "name": "GroupClassPricing",
+  "description": "GroupClassPricing",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subscriptionforindiranagar": {
+          "type": "Group",
+          "config": {
+            "label": "SubscriptionForIndiranagar",
+            "repeat": true,
+            "fields": {
+              "course_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Course Name",
+                  "placeholder": ""
+                }
+              },
+              "days": {
+                "type": "Number",
+                "config": {
+                  "label": "Days",
+                  "placeholder": ""
+                }
+              },
+              "price": {
+                "type": "Number",
+                "config": {
+                  "label": "Price",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "other_courses": {
+          "type": "Group",
+          "config": {
+            "label": "Other Courses",
+            "repeat": true,
+            "fields": {
+              "course_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Course Name",
+                  "placeholder": ""
+                }
+              },
+              "days": {
+                "type": "Number",
+                "config": {
+                  "label": "Days",
+                  "placeholder": ""
+                }
+              },
+              "price": {
+                "type": "Number",
+                "config": {
+                  "label": "Price",
+                  "placeholder": ""
+                }
+              },
+              "detail": {
+                "type": "Text",
+                "config": {
+                  "label": "Detail",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "terms_and_conditions": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Terms And Conditions",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,paragraph,o-list-item"
+          }
+        },
+        "register_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Register Button Text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

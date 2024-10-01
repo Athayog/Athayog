@@ -1,8 +1,8 @@
 export interface NavItem {
-    label: string;
-    path?: string;
-    type: 'nav' | 'menu';
-    children?: NavItem[];
+    label: string
+    path?: string
+    type: 'nav' | 'menu'
+    children?: NavItem[]
 }
 
 export const navItems: NavItem[] = [
@@ -13,7 +13,7 @@ export const navItems: NavItem[] = [
         type: 'menu',
         path: '/what-we-offer',
         children: [
-            { label: 'Group Class', path: '/group-class', type: 'nav' },
+            { label: 'Group Class', path: '/group-classes', type: 'nav' },
             {
                 label: 'Personal Training',
                 path: '/personal-session',
@@ -39,4 +39,4 @@ export const navItems: NavItem[] = [
     },
     { label: 'Others', path: '/others', type: 'nav' },
     { label: 'Contact Us', path: '/contact-us', type: 'nav' },
-];
+]

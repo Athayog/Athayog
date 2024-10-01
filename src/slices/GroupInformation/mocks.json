@@ -1,0 +1,43 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Non proident voluptate ad dolore ad nostrud sit pariatur dolor duis consectetur est incididunt sunt. Cillum incididunt culpa sint minim cillum irure ea proident aliqua eiusmod magna sit aute. Tempor est sint et irure aliquip magna cupidatat laboris nostrud incididunt."
+						}
+					}
+				]
+			},
+			"button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "cotton",
+				"type": "Text"
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nisi non consectetur culpa cillum nulla consequat eiusmod aliqua nostrud sunt cillum. Cupidatat proident minim dolore amet magna nostrud sit excepteur laboris dolor."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

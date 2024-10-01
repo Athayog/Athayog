@@ -1,0 +1,35 @@
+{
+  "id": "class_intensity_table",
+  "type": "SharedSlice",
+  "name": "ClassIntensityTable",
+  "description": "ClassIntensityTable",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "table": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Table",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "preformatted,embed"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
