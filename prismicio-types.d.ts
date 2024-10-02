@@ -255,6 +255,8 @@ export type FooterDocument<Lang extends string = string> =
     >
 
 type PageDocumentDataSlicesSlice =
+    | ContactUsFormSlice
+    | ContactUsHeroSlice
     | GroupScheduleSlice
     | ClassIntensityTableSlice
     | GroupClassFormatSlice
@@ -823,6 +825,186 @@ type ConsiderPersonalTrainingSliceVariation =
 export type ConsiderPersonalTrainingSlice = prismic.SharedSlice<
     'consider_personal_training',
     ConsiderPersonalTrainingSliceVariation
+>
+
+/**
+ * Primary content in *ContactUsForm → Default → Primary*
+ */
+export interface ContactUsFormSliceDefaultPrimary {
+    /**
+     * Left Title field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.left_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    left_title: prismic.KeyTextField
+
+    /**
+     * Description field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Location field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.location
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    location: prismic.KeyTextField
+
+    /**
+     * Location Icon field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.location_icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    location_icon: prismic.ImageField<never>
+
+    /**
+     * Number field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.number
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    number: prismic.KeyTextField
+
+    /**
+     * Number Icon field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.location_number
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    location_number: prismic.ImageField<never>
+
+    /**
+     * Email field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.email
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    email: prismic.KeyTextField
+
+    /**
+     * Email Icon field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.email_icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    email_icon: prismic.ImageField<never>
+
+    /**
+     * Action Button Text field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_form.default.primary.action_button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    action_button_text: prismic.KeyTextField
+
+    /**
+     * Link to email field in *ContactUsForm → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Where we want this form to send an email to: Eg: info@athayogliving.com
+     * - **API ID Path**: contact_us_form.default.primary.link_to_email
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link_to_email: prismic.LinkField
+}
+
+/**
+ * Default variation for ContactUsForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactUsFormSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<ContactUsFormSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *ContactUsForm*
+ */
+type ContactUsFormSliceVariation = ContactUsFormSliceDefault
+
+/**
+ * ContactUsForm Shared Slice
+ *
+ * - **API ID**: `contact_us_form`
+ * - **Description**: ContactUsForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactUsFormSlice = prismic.SharedSlice<
+    'contact_us_form',
+    ContactUsFormSliceVariation
+>
+
+/**
+ * Primary content in *ContactUsHero → Default → Primary*
+ */
+export interface ContactUsHeroSliceDefaultPrimary {
+    /**
+     * Image field in *ContactUsHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_hero.default.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for ContactUsHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactUsHeroSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<ContactUsHeroSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *ContactUsHero*
+ */
+type ContactUsHeroSliceVariation = ContactUsHeroSliceDefault
+
+/**
+ * ContactUsHero Shared Slice
+ *
+ * - **API ID**: `contact_us_hero`
+ * - **Description**: ContactUsHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactUsHeroSlice = prismic.SharedSlice<
+    'contact_us_hero',
+    ContactUsHeroSliceVariation
 >
 
 /**
@@ -3595,6 +3777,14 @@ declare module '@prismicio/client' {
             ConsiderPersonalTrainingSliceDefaultPrimary,
             ConsiderPersonalTrainingSliceVariation,
             ConsiderPersonalTrainingSliceDefault,
+            ContactUsFormSlice,
+            ContactUsFormSliceDefaultPrimary,
+            ContactUsFormSliceVariation,
+            ContactUsFormSliceDefault,
+            ContactUsHeroSlice,
+            ContactUsHeroSliceDefaultPrimary,
+            ContactUsHeroSliceVariation,
+            ContactUsHeroSliceDefault,
             EnrollSectionSlice,
             EnrollSectionSliceDefaultPrimary,
             EnrollSectionSliceVariation,

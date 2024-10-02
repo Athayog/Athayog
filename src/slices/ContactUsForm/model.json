@@ -1,0 +1,96 @@
+{
+  "id": "contact_us_form",
+  "type": "SharedSlice",
+  "name": "ContactUsForm",
+  "description": "ContactUsForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "left_title": {
+          "type": "Text",
+          "config": {
+            "label": "Left Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item"
+          }
+        },
+        "location": {
+          "type": "Text",
+          "config": {
+            "label": "Location",
+            "placeholder": ""
+          }
+        },
+        "location_icon": {
+          "type": "Image",
+          "config": {
+            "label": "Location Icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "number": {
+          "type": "Text",
+          "config": {
+            "label": "Number",
+            "placeholder": ""
+          }
+        },
+        "location_number": {
+          "type": "Image",
+          "config": {
+            "label": "Number Icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "email": {
+          "type": "Text",
+          "config": {
+            "label": "Email",
+            "placeholder": ""
+          }
+        },
+        "email_icon": {
+          "type": "Image",
+          "config": {
+            "label": "Email Icon",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "action_button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Action Button Text",
+            "placeholder": ""
+          }
+        },
+        "link_to_email": {
+          "type": "Link",
+          "config": {
+            "label": "Link to email",
+            "placeholder": "Where we want this form to send an email to: Eg: info@athayogliving.com",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
