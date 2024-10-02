@@ -154,10 +154,10 @@ const Navbar: React.FC = () => {
                         <Link href="/login">
                             <Button
                                 sx={{
-                                    background: '#47820D',
+                                    backgroundColor: '#47820D',
                                     color: '#FFFFFF',
-                                    height: '50px',
-                                    fontSize: '16px',
+                                    padding: '15px, 25px',
+                                    fontSize: '18px',
                                     fontWeight: '700',
                                     width: '115px',
                                 }}
