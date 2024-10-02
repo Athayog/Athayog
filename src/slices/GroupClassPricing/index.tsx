@@ -108,10 +108,10 @@ const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
             data-slice-variation={slice.variation}
         >
             <>
-                <Box sx={{ background: '#EAFEDF', blur: '100px' }}></Box>
                 <Box
                     sx={{
-                        background: '#EAFEDF',
+                        background:
+                            'linear-gradient(to bottom, #cdf7c9, #EAFEDF)',
                         height: '100%',
                         margin: 0,
                         padding: { xs: '30px 10px', md: '60px 50px' },

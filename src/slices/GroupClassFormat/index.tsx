@@ -25,7 +25,7 @@ const TrainingBox = ({
             sx={{
                 borderRadius: '8px',
                 border: '2px solid rgba(145, 216, 154, 0.50)',
-                background: '#EAFEDF',
+                background: '#D3F2C4',
                 padding: '20px',
                 flex: { xs: '1 1 100%', md: '1 1 calc(50% - 16px)' },
                 maxWidth: { xs: '100%', lg: '620px' },
@@ -61,7 +61,7 @@ const GroupClassFormat = ({ slice }: GroupClassFormatProps): JSX.Element => {
         >
             <Box
                 sx={{
-                    background: '#E7FAE3',
+                    background: '#EAFEDF',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',

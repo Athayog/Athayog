@@ -19,8 +19,7 @@ const ProsAndCons = ({ slice }: ProsAndConsProps): JSX.Element => {
         >
             <Box
                 sx={{
-                    background:
-                        'linear-gradient(to bottom, rgba(160, 233, 178,0.5) 0%, rgba(151, 235, 185,0.5) 50%, rgba(160, 233, 178,0.5) 100%)',
+                    background: 'linear-gradient(to bottom, #dffad1, #cdf7c9)',
                     height: '100%',
                     padding: { xs: '30px 20px', md: '60px 50px' },
                 }}
