@@ -89,7 +89,6 @@ const Banner: React.FC<BannerProps> = ({
                 blurDataURL={blurHash}
                 placeholder="blur"
                 alt={imageAlt ?? 'Image'}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
             <Box
                 sx={{

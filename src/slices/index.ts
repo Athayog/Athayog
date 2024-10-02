@@ -12,6 +12,8 @@ export const components = {
     consider_personal_training: dynamic(
         () => import('./ConsiderPersonalTraining')
     ),
+    contact_us_form: dynamic(() => import('./ContactUsForm')),
+    contact_us_hero: dynamic(() => import('./ContactUsHero')),
     enroll_section: dynamic(() => import('./EnrollSection')),
     event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
     faq: dynamic(() => import('./Faq')),

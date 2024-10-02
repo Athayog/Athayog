@@ -1,0 +1,27 @@
+{
+  "id": "contact_us_hero",
+  "type": "SharedSlice",
+  "name": "ContactUsHero",
+  "description": "ContactUsHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
