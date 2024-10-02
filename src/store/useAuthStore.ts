@@ -41,7 +41,7 @@ const useAuthStore = create<AuthState>((set) => ({
             set({ user })
         } catch (err) {
             set({ error: 'Failed to sign in' })
-            throw error
+            throw err
         } finally {
             set({ loading: false })
         }
