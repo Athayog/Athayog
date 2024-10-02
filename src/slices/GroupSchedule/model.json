@@ -1,0 +1,67 @@
+{
+  "id": "group_schedule",
+  "type": "SharedSlice",
+  "name": "GroupSchedule",
+  "description": "GroupSchedule",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "download_buton_text": {
+          "type": "Text",
+          "config": {
+            "label": "Download Buton Text",
+            "placeholder": ""
+          }
+        },
+        "download_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Download Button Link",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "highlighted_point": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Point",
+            "placeholder": ""
+          }
+        },
+        "list": {
+          "type": "Group",
+          "config": {
+            "label": "List",
+            "repeat": true,
+            "fields": {
+              "list_item": {
+                "type": "Text",
+                "config": {
+                  "label": "List Item",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

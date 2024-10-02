@@ -255,6 +255,7 @@ export type FooterDocument<Lang extends string = string> =
     >
 
 type PageDocumentDataSlicesSlice =
+    | GroupScheduleSlice
     | ClassIntensityTableSlice
     | GroupClassFormatSlice
     | GroupInformationSlice
@@ -630,6 +631,51 @@ export type ClassFormatSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *ClassIntensityTable → Default → Primary → Rows*
+ */
+export interface ClassIntensityTableSliceDefaultPrimaryRowsItem {
+    /**
+     * Class Name field in *ClassIntensityTable → Default → Primary → Rows*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[].class_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    class_name: prismic.KeyTextField
+
+    /**
+     * Body Engagement field in *ClassIntensityTable → Default → Primary → Rows*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[].body_engagement
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    body_engagement: prismic.NumberField
+
+    /**
+     * Breath Engagement field in *ClassIntensityTable → Default → Primary → Rows*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[].breath_engagement
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    breath_engagement: prismic.NumberField
+
+    /**
+     * Mind Engagement field in *ClassIntensityTable → Default → Primary → Rows*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[].mind_engagement
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    mind_engagement: prismic.NumberField
+}
+
+/**
  * Primary content in *ClassIntensityTable → Default → Primary*
  */
 export interface ClassIntensityTableSliceDefaultPrimary {
@@ -644,14 +690,16 @@ export interface ClassIntensityTableSliceDefaultPrimary {
     title: prismic.KeyTextField
 
     /**
-     * Table field in *ClassIntensityTable → Default → Primary*
+     * Rows field in *ClassIntensityTable → Default → Primary*
      *
-     * - **Field Type**: Rich Text
+     * - **Field Type**: Group
      * - **Placeholder**: *None*
-     * - **API ID Path**: class_intensity_table.default.primary.table
-     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     * - **API ID Path**: class_intensity_table.default.primary.rows[]
+     * - **Documentation**: https://prismic.io/docs/field#group
      */
-    table: prismic.RichTextField
+    rows: prismic.GroupField<
+        Simplify<ClassIntensityTableSliceDefaultPrimaryRowsItem>
+    >
 }
 
 /**
@@ -1565,6 +1613,106 @@ type GroupInformationSliceVariation = GroupInformationSliceDefault
 export type GroupInformationSlice = prismic.SharedSlice<
     'group_information',
     GroupInformationSliceVariation
+>
+
+/**
+ * Item in *GroupSchedule → Default → Primary → List*
+ */
+export interface GroupScheduleSliceDefaultPrimaryListItem {
+    /**
+     * List Item field in *GroupSchedule → Default → Primary → List*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.list[].list_item
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    list_item: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *GroupSchedule → Default → Primary*
+ */
+export interface GroupScheduleSliceDefaultPrimary {
+    /**
+     * Title field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Download Buton Text field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.download_buton_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    download_buton_text: prismic.KeyTextField
+
+    /**
+     * Download Button Link field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.download_button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    download_button_link: prismic.LinkField
+
+    /**
+     * Highlighted Point field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.highlighted_point
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    highlighted_point: prismic.KeyTextField
+
+    /**
+     * List field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.list[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    list: prismic.GroupField<Simplify<GroupScheduleSliceDefaultPrimaryListItem>>
+}
+
+/**
+ * Default variation for GroupSchedule Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupScheduleSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<GroupScheduleSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *GroupSchedule*
+ */
+type GroupScheduleSliceVariation = GroupScheduleSliceDefault
+
+/**
+ * GroupSchedule Shared Slice
+ *
+ * - **API ID**: `group_schedule`
+ * - **Description**: GroupSchedule
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupScheduleSlice = prismic.SharedSlice<
+    'group_schedule',
+    GroupScheduleSliceVariation
 >
 
 /**
@@ -3438,6 +3586,7 @@ declare module '@prismicio/client' {
             ClassFormatSliceVariation,
             ClassFormatSliceDefault,
             ClassIntensityTableSlice,
+            ClassIntensityTableSliceDefaultPrimaryRowsItem,
             ClassIntensityTableSliceDefaultPrimary,
             ClassIntensityTableSliceVariation,
             ClassIntensityTableSliceDefault,
@@ -3483,6 +3632,11 @@ declare module '@prismicio/client' {
             GroupInformationSliceDefaultPrimary,
             GroupInformationSliceVariation,
             GroupInformationSliceDefault,
+            GroupScheduleSlice,
+            GroupScheduleSliceDefaultPrimaryListItem,
+            GroupScheduleSliceDefaultPrimary,
+            GroupScheduleSliceVariation,
+            GroupScheduleSliceDefault,
             HeroSlice,
             HeroSliceDefaultPrimary,
             HeroSliceVariation,

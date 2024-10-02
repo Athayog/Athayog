@@ -8,14 +8,45 @@
 				"value": "victory",
 				"type": "Text"
 			},
-			"table": {
-				"__TYPE__": "StructuredTextContent",
+			"rows": {
+				"__TYPE__": "GroupContentType",
 				"value": [
 					{
-						"type": "paragraph",
-						"content": {
-							"text": "Sit amet cupidatat eu fugiat et sunt aute."
-						}
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"body_engagement",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "90",
+									"type": "Number"
+								}
+							],
+							[
+								"breath_engagement",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "1",
+									"type": "Number"
+								}
+							],
+							[
+								"mind_engagement",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "76",
+									"type": "Number"
+								}
+							],
+							[
+								"class_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "chance",
+									"type": "Text"
+								}
+							]
+						]
 					}
 				]
 			}

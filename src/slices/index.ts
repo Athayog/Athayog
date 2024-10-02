@@ -20,6 +20,7 @@ export const components = {
     group_class_hero: dynamic(() => import('./GroupClassHero')),
     group_class_pricing: dynamic(() => import('./GroupClassPricing')),
     group_information: dynamic(() => import('./GroupInformation')),
+    group_schedule: dynamic(() => import('./GroupSchedule')),
     hero: dynamic(() => import('./Hero')),
     how_yoga_helps: dynamic(() => import('./HowYogaHelps')),
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),

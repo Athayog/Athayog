@@ -21,8 +21,7 @@ const GroupInformation = ({ slice }: GroupInformationProps): JSX.Element => {
         >
             <Box
                 sx={{
-                    background:
-                        'linear-gradient(to bottom, rgba(100, 188, 202,0.5) 0%, rgba(151, 235, 185,0.5) 50%, rgba(160, 233, 178,0.5) 100%)',
+                    background: '#EAFEDF',
                     height: '100%',
                     padding: { xs: '30px 20px', md: '60px 50px' },
                 }}

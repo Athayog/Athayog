@@ -27,6 +27,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "group_schedule": {
+                            "type": "SharedSlice"
+                        },
                         "class_intensity_table": {
                             "type": "SharedSlice"
                         },

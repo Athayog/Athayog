@@ -1,0 +1,55 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Non non labore ullamco. Ullamco pariatur nulla dolore magna."
+						}
+					}
+				]
+			},
+			"download_buton_text": {
+				"__TYPE__": "FieldContent",
+				"value": "concerned",
+				"type": "Text"
+			},
+			"download_button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			},
+			"highlighted_point": {
+				"__TYPE__": "FieldContent",
+				"value": "distance",
+				"type": "Text"
+			},
+			"list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"list_item",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "game",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
