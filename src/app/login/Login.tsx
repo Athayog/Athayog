@@ -66,7 +66,7 @@ const Login = () => {
         setupRecaptcha()
         setOTPLoading(true)
         try {
-            const preFixed = '+91' + phone
+            const preFixed = phone.startsWith('+91') ? phone : '+91' + phone
             await sendOtp(preFixed)
         } catch (error) {
             setSnackbarMessage(
