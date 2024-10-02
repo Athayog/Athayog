@@ -1,0 +1,106 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "reader",
+				"type": "Text"
+			},
+			"subscriptionforindiranagar": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"course_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "being",
+									"type": "Text"
+								}
+							],
+							[
+								"days",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "56",
+									"type": "Number"
+								}
+							],
+							[
+								"price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "49",
+									"type": "Number"
+								}
+							]
+						]
+					}
+				]
+			},
+			"other_courses": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"course_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "ice",
+									"type": "Text"
+								}
+							],
+							[
+								"days",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "33",
+									"type": "Number"
+								}
+							],
+							[
+								"price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "20",
+									"type": "Number"
+								}
+							],
+							[
+								"detail",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "chart",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"terms_and_conditions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ipsum mollit nisi deserunt irure ipsum."
+						}
+					}
+				]
+			},
+			"register_button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "heard",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

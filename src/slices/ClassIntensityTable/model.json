@@ -1,0 +1,63 @@
+{
+  "id": "class_intensity_table",
+  "type": "SharedSlice",
+  "name": "ClassIntensityTable",
+  "description": "ClassIntensityTable",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "rows": {
+          "type": "Group",
+          "config": {
+            "label": "Rows",
+            "repeat": true,
+            "fields": {
+              "class_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Class Name",
+                  "placeholder": ""
+                }
+              },
+              "body_engagement": {
+                "type": "Number",
+                "config": {
+                  "label": "Body Engagement",
+                  "placeholder": ""
+                }
+              },
+              "breath_engagement": {
+                "type": "Number",
+                "config": {
+                  "label": "Breath Engagement",
+                  "placeholder": ""
+                }
+              },
+              "mind_engagement": {
+                "type": "Number",
+                "config": {
+                  "label": "Mind Engagement",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "class_format",
+  "type": "SharedSlice",
+  "name": "ClassFormat",
+  "description": "ClassFormat",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "formats": {
+          "type": "Group",
+          "config": {
+            "label": "Formats",
+            "repeat": true,
+            "fields": {
+              "format_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Format Title",
+                  "placeholder": ""
+                }
+              },
+              "format_description": {
+                "type": "Text",
+                "config": {
+                  "label": "Format Description",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

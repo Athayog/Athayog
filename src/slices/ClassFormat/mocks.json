@@ -1,0 +1,40 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "about",
+				"type": "Text"
+			},
+			"formats": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"format_title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "soon",
+									"type": "Text"
+								}
+							],
+							[
+								"format_description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "example",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

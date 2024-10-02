@@ -255,6 +255,14 @@ export type FooterDocument<Lang extends string = string> =
     >
 
 type PageDocumentDataSlicesSlice =
+    | GroupScheduleSlice
+    | ClassIntensityTableSlice
+    | GroupClassFormatSlice
+    | GroupInformationSlice
+    | ProsAndConsSlice
+    | GroupClassPricingSlice
+    | GroupClassHeroSlice
+    | ClassFormatSlice
     | PersonalSessionPricingSlice
     | PersonalContentSlice
     | ConsiderPersonalTrainingSlice
@@ -538,6 +546,190 @@ type CausesOfPcosSliceVariation = CausesOfPcosSliceDefault
 export type CausesOfPcosSlice = prismic.SharedSlice<
     'causes_of_pcos',
     CausesOfPcosSliceVariation
+>
+
+/**
+ * Item in *ClassFormat → Default → Primary → Formats*
+ */
+export interface ClassFormatSliceDefaultPrimaryFormatsItem {
+    /**
+     * Format Title field in *ClassFormat → Default → Primary → Formats*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_format.default.primary.formats[].format_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    format_title: prismic.KeyTextField
+
+    /**
+     * Format Description field in *ClassFormat → Default → Primary → Formats*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_format.default.primary.formats[].format_description
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    format_description: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *ClassFormat → Default → Primary*
+ */
+export interface ClassFormatSliceDefaultPrimary {
+    /**
+     * Title field in *ClassFormat → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_format.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Formats field in *ClassFormat → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_format.default.primary.formats[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    formats: prismic.GroupField<
+        Simplify<ClassFormatSliceDefaultPrimaryFormatsItem>
+    >
+}
+
+/**
+ * Default variation for ClassFormat Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ClassFormatSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<ClassFormatSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *ClassFormat*
+ */
+type ClassFormatSliceVariation = ClassFormatSliceDefault
+
+/**
+ * ClassFormat Shared Slice
+ *
+ * - **API ID**: `class_format`
+ * - **Description**: ClassFormat
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ClassFormatSlice = prismic.SharedSlice<
+    'class_format',
+    ClassFormatSliceVariation
+>
+
+/**
+ * Item in *ClassIntensityTable → Default → Primary → Rows*
+ */
+export interface ClassIntensityTableSliceDefaultPrimaryRowsItem {
+    /**
+     * Class Name field in *ClassIntensityTable → Default → Primary → Rows*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[].class_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    class_name: prismic.KeyTextField
+
+    /**
+     * Body Engagement field in *ClassIntensityTable → Default → Primary → Rows*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[].body_engagement
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    body_engagement: prismic.NumberField
+
+    /**
+     * Breath Engagement field in *ClassIntensityTable → Default → Primary → Rows*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[].breath_engagement
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    breath_engagement: prismic.NumberField
+
+    /**
+     * Mind Engagement field in *ClassIntensityTable → Default → Primary → Rows*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[].mind_engagement
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    mind_engagement: prismic.NumberField
+}
+
+/**
+ * Primary content in *ClassIntensityTable → Default → Primary*
+ */
+export interface ClassIntensityTableSliceDefaultPrimary {
+    /**
+     * Title field in *ClassIntensityTable → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Rows field in *ClassIntensityTable → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: class_intensity_table.default.primary.rows[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    rows: prismic.GroupField<
+        Simplify<ClassIntensityTableSliceDefaultPrimaryRowsItem>
+    >
+}
+
+/**
+ * Default variation for ClassIntensityTable Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ClassIntensityTableSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<ClassIntensityTableSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *ClassIntensityTable*
+ */
+type ClassIntensityTableSliceVariation = ClassIntensityTableSliceDefault
+
+/**
+ * ClassIntensityTable Shared Slice
+ *
+ * - **API ID**: `class_intensity_table`
+ * - **Description**: ClassIntensityTable
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ClassIntensityTableSlice = prismic.SharedSlice<
+    'class_intensity_table',
+    ClassIntensityTableSliceVariation
 >
 
 /**
@@ -1050,6 +1242,477 @@ type GroupClassSliceVariation = GroupClassSliceDefault
 export type GroupClassSlice = prismic.SharedSlice<
     'group_class',
     GroupClassSliceVariation
+>
+
+/**
+ * Item in *GroupClassFormat → Default → Primary → Content*
+ */
+export interface GroupClassFormatSliceDefaultPrimaryContentItem {
+    /**
+     * Content Title field in *GroupClassFormat → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_format.default.primary.content[].content_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    content_title: prismic.KeyTextField
+
+    /**
+     * Content Description field in *GroupClassFormat → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_format.default.primary.content[].content_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    content_description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *GroupClassFormat → Default → Primary*
+ */
+export interface GroupClassFormatSliceDefaultPrimary {
+    /**
+     * Title field in *GroupClassFormat → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_format.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Content field in *GroupClassFormat → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_format.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<
+        Simplify<GroupClassFormatSliceDefaultPrimaryContentItem>
+    >
+}
+
+/**
+ * Default variation for GroupClassFormat Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupClassFormatSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<GroupClassFormatSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *GroupClassFormat*
+ */
+type GroupClassFormatSliceVariation = GroupClassFormatSliceDefault
+
+/**
+ * GroupClassFormat Shared Slice
+ *
+ * - **API ID**: `group_class_format`
+ * - **Description**: GroupClassFormat
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupClassFormatSlice = prismic.SharedSlice<
+    'group_class_format',
+    GroupClassFormatSliceVariation
+>
+
+/**
+ * Primary content in *GroupClassHero → Default → Primary*
+ */
+export interface GroupClassHeroSliceDefaultPrimary {
+    /**
+     * Image field in *GroupClassHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_hero.default.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for GroupClassHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupClassHeroSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<GroupClassHeroSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *GroupClassHero*
+ */
+type GroupClassHeroSliceVariation = GroupClassHeroSliceDefault
+
+/**
+ * GroupClassHero Shared Slice
+ *
+ * - **API ID**: `group_class_hero`
+ * - **Description**: GroupClassHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupClassHeroSlice = prismic.SharedSlice<
+    'group_class_hero',
+    GroupClassHeroSliceVariation
+>
+
+/**
+ * Item in *GroupClassPricing → Default → Primary → SubscriptionForIndiranagar*
+ */
+export interface GroupClassPricingSliceDefaultPrimarySubscriptionforindiranagarItem {
+    /**
+     * Course Name field in *GroupClassPricing → Default → Primary → SubscriptionForIndiranagar*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.subscriptionforindiranagar[].course_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    course_name: prismic.KeyTextField
+
+    /**
+     * Days field in *GroupClassPricing → Default → Primary → SubscriptionForIndiranagar*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.subscriptionforindiranagar[].days
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    days: prismic.NumberField
+
+    /**
+     * Price field in *GroupClassPricing → Default → Primary → SubscriptionForIndiranagar*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.subscriptionforindiranagar[].price
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    price: prismic.NumberField
+}
+
+/**
+ * Item in *GroupClassPricing → Default → Primary → Other Courses*
+ */
+export interface GroupClassPricingSliceDefaultPrimaryOtherCoursesItem {
+    /**
+     * Course Name field in *GroupClassPricing → Default → Primary → Other Courses*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.other_courses[].course_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    course_name: prismic.KeyTextField
+
+    /**
+     * Days field in *GroupClassPricing → Default → Primary → Other Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.other_courses[].days
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    days: prismic.NumberField
+
+    /**
+     * Price field in *GroupClassPricing → Default → Primary → Other Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.other_courses[].price
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    price: prismic.NumberField
+
+    /**
+     * Detail field in *GroupClassPricing → Default → Primary → Other Courses*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.other_courses[].detail
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    detail: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *GroupClassPricing → Default → Primary*
+ */
+export interface GroupClassPricingSliceDefaultPrimary {
+    /**
+     * Title field in *GroupClassPricing → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * SubscriptionForIndiranagar field in *GroupClassPricing → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.subscriptionforindiranagar[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    subscriptionforindiranagar: prismic.GroupField<
+        Simplify<GroupClassPricingSliceDefaultPrimarySubscriptionforindiranagarItem>
+    >
+
+    /**
+     * Other Courses field in *GroupClassPricing → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.other_courses[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    other_courses: prismic.GroupField<
+        Simplify<GroupClassPricingSliceDefaultPrimaryOtherCoursesItem>
+    >
+
+    /**
+     * Terms And Conditions field in *GroupClassPricing → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.terms_and_conditions
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    terms_and_conditions: prismic.RichTextField
+
+    /**
+     * Register Button Text field in *GroupClassPricing → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.register_button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    register_button_text: prismic.KeyTextField
+}
+
+/**
+ * Default variation for GroupClassPricing Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupClassPricingSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<GroupClassPricingSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *GroupClassPricing*
+ */
+type GroupClassPricingSliceVariation = GroupClassPricingSliceDefault
+
+/**
+ * GroupClassPricing Shared Slice
+ *
+ * - **API ID**: `group_class_pricing`
+ * - **Description**: GroupClassPricing
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupClassPricingSlice = prismic.SharedSlice<
+    'group_class_pricing',
+    GroupClassPricingSliceVariation
+>
+
+/**
+ * Primary content in *GroupInformation → Default → Primary*
+ */
+export interface GroupInformationSliceDefaultPrimary {
+    /**
+     * Title field in *GroupInformation → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_information.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Button Text field in *GroupInformation → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_information.default.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    button_text: prismic.KeyTextField
+
+    /**
+     * Button Link field in *GroupInformation → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_information.default.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button_link: prismic.LinkField
+
+    /**
+     * Description field in *GroupInformation → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_information.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+}
+
+/**
+ * Default variation for GroupInformation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupInformationSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<GroupInformationSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *GroupInformation*
+ */
+type GroupInformationSliceVariation = GroupInformationSliceDefault
+
+/**
+ * GroupInformation Shared Slice
+ *
+ * - **API ID**: `group_information`
+ * - **Description**: GroupInformation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupInformationSlice = prismic.SharedSlice<
+    'group_information',
+    GroupInformationSliceVariation
+>
+
+/**
+ * Item in *GroupSchedule → Default → Primary → List*
+ */
+export interface GroupScheduleSliceDefaultPrimaryListItem {
+    /**
+     * List Item field in *GroupSchedule → Default → Primary → List*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.list[].list_item
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    list_item: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *GroupSchedule → Default → Primary*
+ */
+export interface GroupScheduleSliceDefaultPrimary {
+    /**
+     * Title field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Download Buton Text field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.download_buton_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    download_buton_text: prismic.KeyTextField
+
+    /**
+     * Download Button Link field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.download_button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    download_button_link: prismic.LinkField
+
+    /**
+     * Highlighted Point field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.highlighted_point
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    highlighted_point: prismic.KeyTextField
+
+    /**
+     * List field in *GroupSchedule → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_schedule.default.primary.list[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    list: prismic.GroupField<Simplify<GroupScheduleSliceDefaultPrimaryListItem>>
+}
+
+/**
+ * Default variation for GroupSchedule Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupScheduleSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<GroupScheduleSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *GroupSchedule*
+ */
+type GroupScheduleSliceVariation = GroupScheduleSliceDefault
+
+/**
+ * GroupSchedule Shared Slice
+ *
+ * - **API ID**: `group_schedule`
+ * - **Description**: GroupSchedule
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GroupScheduleSlice = prismic.SharedSlice<
+    'group_schedule',
+    GroupScheduleSliceVariation
 >
 
 /**
@@ -2007,6 +2670,101 @@ export type PersonalSessionPricingSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *ProsAndCons → Default → Primary → Pros*
+ */
+export interface ProsAndConsSliceDefaultPrimaryProsItem {
+    /**
+     * Item field in *ProsAndCons → Default → Primary → Pros*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pros_and_cons.default.primary.pros[].item
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    item: prismic.KeyTextField
+}
+
+/**
+ * Item in *ProsAndCons → Default → Primary → Cons*
+ */
+export interface ProsAndConsSliceDefaultPrimaryConsItem {
+    /**
+     * Item field in *ProsAndCons → Default → Primary → Cons*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pros_and_cons.default.primary.cons[].item
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    item: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *ProsAndCons → Default → Primary*
+ */
+export interface ProsAndConsSliceDefaultPrimary {
+    /**
+     * Title field in *ProsAndCons → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pros_and_cons.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Pros field in *ProsAndCons → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pros_and_cons.default.primary.pros[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    pros: prismic.GroupField<Simplify<ProsAndConsSliceDefaultPrimaryProsItem>>
+
+    /**
+     * Cons field in *ProsAndCons → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: pros_and_cons.default.primary.cons[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    cons: prismic.GroupField<Simplify<ProsAndConsSliceDefaultPrimaryConsItem>>
+}
+
+/**
+ * Default variation for ProsAndCons Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProsAndConsSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<ProsAndConsSliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *ProsAndCons*
+ */
+type ProsAndConsSliceVariation = ProsAndConsSliceDefault
+
+/**
+ * ProsAndCons Shared Slice
+ *
+ * - **API ID**: `pros_and_cons`
+ * - **Description**: ProsAndCons
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProsAndConsSlice = prismic.SharedSlice<
+    'pros_and_cons',
+    ProsAndConsSliceVariation
+>
+
+/**
  * Item in *Recognition → Default → Primary → Logos*
  */
 export interface RecognitionSliceDefaultPrimaryLogosItem {
@@ -2822,6 +3580,16 @@ declare module '@prismicio/client' {
             CausesOfPcosSliceDefaultPrimary,
             CausesOfPcosSliceVariation,
             CausesOfPcosSliceDefault,
+            ClassFormatSlice,
+            ClassFormatSliceDefaultPrimaryFormatsItem,
+            ClassFormatSliceDefaultPrimary,
+            ClassFormatSliceVariation,
+            ClassFormatSliceDefault,
+            ClassIntensityTableSlice,
+            ClassIntensityTableSliceDefaultPrimaryRowsItem,
+            ClassIntensityTableSliceDefaultPrimary,
+            ClassIntensityTableSliceVariation,
+            ClassIntensityTableSliceDefault,
             ConsiderPersonalTrainingSlice,
             ConsiderPersonalTrainingSliceDefaultPrimaryContentItem,
             ConsiderPersonalTrainingSliceDefaultPrimary,
@@ -2845,6 +3613,30 @@ declare module '@prismicio/client' {
             GroupClassSliceDefaultPrimary,
             GroupClassSliceVariation,
             GroupClassSliceDefault,
+            GroupClassFormatSlice,
+            GroupClassFormatSliceDefaultPrimaryContentItem,
+            GroupClassFormatSliceDefaultPrimary,
+            GroupClassFormatSliceVariation,
+            GroupClassFormatSliceDefault,
+            GroupClassHeroSlice,
+            GroupClassHeroSliceDefaultPrimary,
+            GroupClassHeroSliceVariation,
+            GroupClassHeroSliceDefault,
+            GroupClassPricingSlice,
+            GroupClassPricingSliceDefaultPrimarySubscriptionforindiranagarItem,
+            GroupClassPricingSliceDefaultPrimaryOtherCoursesItem,
+            GroupClassPricingSliceDefaultPrimary,
+            GroupClassPricingSliceVariation,
+            GroupClassPricingSliceDefault,
+            GroupInformationSlice,
+            GroupInformationSliceDefaultPrimary,
+            GroupInformationSliceVariation,
+            GroupInformationSliceDefault,
+            GroupScheduleSlice,
+            GroupScheduleSliceDefaultPrimaryListItem,
+            GroupScheduleSliceDefaultPrimary,
+            GroupScheduleSliceVariation,
+            GroupScheduleSliceDefault,
             HeroSlice,
             HeroSliceDefaultPrimary,
             HeroSliceVariation,
@@ -2890,6 +3682,12 @@ declare module '@prismicio/client' {
             PersonalSessionPricingSliceDefaultPrimary,
             PersonalSessionPricingSliceVariation,
             PersonalSessionPricingSliceDefault,
+            ProsAndConsSlice,
+            ProsAndConsSliceDefaultPrimaryProsItem,
+            ProsAndConsSliceDefaultPrimaryConsItem,
+            ProsAndConsSliceDefaultPrimary,
+            ProsAndConsSliceVariation,
+            ProsAndConsSliceDefault,
             RecognitionSlice,
             RecognitionSliceDefaultPrimaryLogosItem,
             RecognitionSliceDefaultPrimary,
