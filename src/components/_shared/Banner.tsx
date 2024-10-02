@@ -86,7 +86,6 @@ const Banner: React.FC<BannerProps> = ({
                     objectPosition: selectedObjectPosition,
                 }} // Use the selected object position
                 src={selectedImageSrc}
-                loading="lazy"
                 blurDataURL={blurHash}
                 placeholder="blur"
                 alt={imageAlt ?? 'Image'}
