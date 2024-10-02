@@ -1,25 +1,22 @@
 'use client'
-import { Content } from '@prismicio/client'
-import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
-import * as Yup from 'yup'
-import { styled } from '@mui/system'
-import React, { useState } from 'react'
-import theme from '@/styles/theme'
 import useFormStore from '@/store/useFormStore'
-import MapIcon from '@/app/images/contact-us/map.svg'
-import PhoneIcon from '@/app/images/contact-us/phone.svg'
-import MailIcon from '@/app/images/contact-us/contact.svg'
-import { Formik, Field, Form, ErrorMessage, FormikHelpers } from 'formik'
+import theme from '@/styles/theme'
 import {
+    Alert,
     Box,
     Button,
+    Snackbar,
     TextareaAutosize,
     TextField,
     Typography,
-    Snackbar,
-    Alert,
 } from '@mui/material'
+import { styled } from '@mui/system'
+import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
+import { useState } from 'react'
+import * as Yup from 'yup'
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -157,7 +154,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
         message: string
     } | null>(null)
     const { submitForm, loading, error } = useFormStore()
-
+    const linkUrl = (slice.primary.link_to_email as any).url
     const handleSubmit = async (
         values: FormData,
         { resetForm }: FormikHelpers<FormData>
@@ -166,7 +163,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
             await submitForm(
                 values,
                 'contactMessages',
-                slice.primary.link_to_email.url ?? 'info@athayogliving.com'
+                linkUrl ?? 'info@athayogliving.com'
             )
             setSnackbar({
                 type: 'success',
