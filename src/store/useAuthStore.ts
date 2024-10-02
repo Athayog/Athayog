@@ -41,6 +41,7 @@ const useAuthStore = create<AuthState>((set) => ({
             set({ user })
         } catch (err) {
             set({ error: 'Failed to sign in' })
+            throw error
         } finally {
             set({ loading: false })
         }
@@ -69,6 +70,7 @@ const useAuthStore = create<AuthState>((set) => ({
         } catch (error) {
             console.error('Error signing in with OTP:', error)
             set({ error: (error as Error).message })
+            throw error
         } finally {
             set({ loading: false })
         }

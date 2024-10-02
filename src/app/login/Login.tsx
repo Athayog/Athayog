@@ -8,6 +8,7 @@ import {
     Typography,
     Snackbar,
     Select,
+    Alert,
 } from '@mui/material'
 import { signInWithGoogle } from '@/lib/auth' // Import your Google sign-in function
 import { useEffect, useState } from 'react'
@@ -306,11 +307,11 @@ const Login = () => {
                 {/* Invisible reCAPTCHA */}
                 <div id="recaptcha-container"></div>
             </Box>
-            <Snackbar
-                open={snackbarOpen}
-                autoHideDuration={6000}
-                message={snackbarMessage}
-            />
+            <Snackbar open={snackbarOpen} autoHideDuration={6000}>
+                <Alert severity="error" variant="filled" sx={{ width: '100%' }}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
         </Box>
     )
 }
