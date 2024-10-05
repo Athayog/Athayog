@@ -255,6 +255,7 @@ export type FooterDocument<Lang extends string = string> =
     >
 
 type PageDocumentDataSlicesSlice =
+    | PrivacySlice
     | ContactUsFormSlice
     | ContactUsHeroSlice
     | GroupScheduleSlice
@@ -1110,6 +1111,108 @@ type EnrollSectionSliceVariation = EnrollSectionSliceDefault
 export type EnrollSectionSlice = prismic.SharedSlice<
     'enroll_section',
     EnrollSectionSliceVariation
+>
+
+/**
+ * Item in *EventHighlightsGallery → Default → Primary → Albums*
+ */
+export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
+    /**
+     * image field in *EventHighlightsGallery → Default → Primary → Albums*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_highlights_gallery.default.primary.albums[].image
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    image: prismic.LinkToMediaField
+
+    /**
+     * Album Name field in *EventHighlightsGallery → Default → Primary → Albums*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_highlights_gallery.default.primary.albums[].album_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    album_name: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *EventHighlightsGallery → Default → Primary*
+ */
+export interface EventHighlightsGallerySliceDefaultPrimary {
+    /**
+     * Section Title field in *EventHighlightsGallery → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_highlights_gallery.default.primary.section_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    section_title: prismic.KeyTextField
+
+    /**
+     * Albums field in *EventHighlightsGallery → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_highlights_gallery.default.primary.albums[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    albums: prismic.GroupField<
+        Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>
+    >
+
+    /**
+     * Button Text field in *EventHighlightsGallery → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_highlights_gallery.default.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    button_text: prismic.KeyTextField
+
+    /**
+     * Button Link field in *EventHighlightsGallery → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_highlights_gallery.default.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button_link: prismic.LinkField
+}
+
+/**
+ * Default variation for EventHighlightsGallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<EventHighlightsGallerySliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *EventHighlightsGallery*
+ */
+type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
+
+/**
+ * EventHighlightsGallery Shared Slice
+ *
+ * - **API ID**: `event_highlights_gallery`
+ * - **Description**: EventHighlightsGallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventHighlightsGallerySlice = prismic.SharedSlice<
+    'event_highlights_gallery',
+    EventHighlightsGallerySliceVariation
 >
 
 /**
@@ -2852,6 +2955,107 @@ export type PersonalSessionPricingSlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *Legal → Privacy → Primary*
+ */
+export interface PrivacySliceDefaultPrimary {
+    /**
+     * Title field in *Legal → Privacy → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Content is static and will not be changed through CMS
+     * - **API ID Path**: privacy.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Privacy variation for Legal Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacySliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<PrivacySliceDefaultPrimary>,
+    never
+>
+
+/**
+ * Primary content in *Legal → Terms And Conditions → Primary*
+ */
+export interface PrivacySliceTermsAndConditionsPrimary {
+    /**
+     * Title field in *Legal → Terms And Conditions → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Content is static and will not be changed through CMS
+     * - **API ID Path**: privacy.termsAndConditions.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Terms And Conditions variation for Legal Slice
+ *
+ * - **API ID**: `termsAndConditions`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacySliceTermsAndConditions = prismic.SharedSliceVariation<
+    'termsAndConditions',
+    Simplify<PrivacySliceTermsAndConditionsPrimary>,
+    never
+>
+
+/**
+ * Primary content in *Legal → Refund → Primary*
+ */
+export interface PrivacySliceRefundPrimary {
+    /**
+     * Title field in *Legal → Refund → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Content is static and will not be changed through CMS
+     * - **API ID Path**: privacy.refund.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Refund variation for Legal Slice
+ *
+ * - **API ID**: `refund`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacySliceRefund = prismic.SharedSliceVariation<
+    'refund',
+    Simplify<PrivacySliceRefundPrimary>,
+    never
+>
+
+/**
+ * Slice variation for *Legal*
+ */
+type PrivacySliceVariation =
+    | PrivacySliceDefault
+    | PrivacySliceTermsAndConditions
+    | PrivacySliceRefund
+
+/**
+ * Legal Shared Slice
+ *
+ * - **API ID**: `privacy`
+ * - **Description**: Privacy
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PrivacySlice = prismic.SharedSlice<'privacy', PrivacySliceVariation>
+
+/**
  * Item in *ProsAndCons → Default → Primary → Pros*
  */
 export interface ProsAndConsSliceDefaultPrimaryProsItem {
@@ -3794,6 +3998,11 @@ declare module '@prismicio/client' {
             EventHighlightsGallerySliceDefaultPrimary,
             EventHighlightsGallerySliceVariation,
             EventHighlightsGallerySliceDefault,
+            EventHighlightsGallerySlice,
+            EventHighlightsGallerySliceDefaultPrimaryAlbumsItem,
+            EventHighlightsGallerySliceDefaultPrimary,
+            EventHighlightsGallerySliceVariation,
+            EventHighlightsGallerySliceDefault,
             FaqSlice,
             FaqSliceDefaultPrimaryFaqsItem,
             FaqSliceDefaultPrimary,
@@ -3872,6 +4081,14 @@ declare module '@prismicio/client' {
             PersonalSessionPricingSliceDefaultPrimary,
             PersonalSessionPricingSliceVariation,
             PersonalSessionPricingSliceDefault,
+            PrivacySlice,
+            PrivacySliceDefaultPrimary,
+            PrivacySliceTermsAndConditionsPrimary,
+            PrivacySliceRefundPrimary,
+            PrivacySliceVariation,
+            PrivacySliceDefault,
+            PrivacySliceTermsAndConditions,
+            PrivacySliceRefund,
             ProsAndConsSlice,
             ProsAndConsSliceDefaultPrimaryProsItem,
             ProsAndConsSliceDefaultPrimaryConsItem,
