@@ -1,0 +1,62 @@
+{
+  "id": "privacy",
+  "type": "SharedSlice",
+  "name": "Legal",
+  "description": "Privacy",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Privacy",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Content is static and will not be changed through CMS"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "termsAndConditions",
+      "name": "Terms And Conditions",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Content is static and will not be changed through CMS"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "refund",
+      "name": "Refund",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Content is static and will not be changed through CMS"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
