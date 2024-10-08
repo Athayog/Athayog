@@ -1,8 +1,8 @@
 {
-  "id": "free_trial_form",
+  "id": "trial_class_form",
   "type": "SharedSlice",
-  "name": "FreeTrialForm",
-  "description": "FreeTrialForm",
+  "name": "TrialClassForm",
+  "description": "TrialClassForm",
   "variations": [
     {
       "id": "default",

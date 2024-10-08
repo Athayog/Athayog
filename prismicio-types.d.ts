@@ -244,6 +244,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | TrialClassFormSlice
     | PrivacySlice
     | ContactUsFormSlice
     | ContactUsHeroSlice
@@ -1320,44 +1321,6 @@ type FaqSliceVariation = FaqSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FaqSlice = prismic.SharedSlice<'faq', FaqSliceVariation>
-
-/**
- * Primary content in *FreeTrialForm → Default → Primary*
- */
-export interface FreeTrialFormSliceDefaultPrimary {
-    /**
-     * Title field in *FreeTrialForm → Default → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: free_trial_form.default.primary.title
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    title: prismic.KeyTextField
-}
-
-/**
- * Default variation for FreeTrialForm Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type FreeTrialFormSliceDefault = prismic.SharedSliceVariation<'default', Simplify<FreeTrialFormSliceDefaultPrimary>, never>
-
-/**
- * Slice variation for *FreeTrialForm*
- */
-type FreeTrialFormSliceVariation = FreeTrialFormSliceDefault
-
-/**
- * FreeTrialForm Shared Slice
- *
- * - **API ID**: `free_trial_form`
- * - **Description**: FreeTrialForm
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type FreeTrialFormSlice = prismic.SharedSlice<'free_trial_form', FreeTrialFormSliceVariation>
 
 /**
  * Primary content in *GroupClass → Default → Primary*
@@ -3239,6 +3202,44 @@ type SymptomsSliceVariation = SymptomsSliceDefault
 export type SymptomsSlice = prismic.SharedSlice<'symptoms', SymptomsSliceVariation>
 
 /**
+ * Primary content in *TrialClassForm → Default → Primary*
+ */
+export interface TrialClassFormSliceDefaultPrimary {
+    /**
+     * Title field in *TrialClassForm → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: trial_class_form.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Default variation for TrialClassForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TrialClassFormSliceDefault = prismic.SharedSliceVariation<'default', Simplify<TrialClassFormSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *TrialClassForm*
+ */
+type TrialClassFormSliceVariation = TrialClassFormSliceDefault
+
+/**
+ * TrialClassForm Shared Slice
+ *
+ * - **API ID**: `trial_class_form`
+ * - **Description**: TrialClassForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TrialClassFormSlice = prismic.SharedSlice<'trial_class_form', TrialClassFormSliceVariation>
+
+/**
  * Item in *WorkshopRow → Default → Primary → Row*
  */
 export interface UpcomingWorkshopSliceDefaultPrimaryRowItem {
@@ -3716,10 +3717,6 @@ declare module '@prismicio/client' {
             FaqSliceDefaultPrimary,
             FaqSliceVariation,
             FaqSliceDefault,
-            FreeTrialFormSlice,
-            FreeTrialFormSliceDefaultPrimary,
-            FreeTrialFormSliceVariation,
-            FreeTrialFormSliceDefault,
             GroupClassSlice,
             GroupClassSliceDefaultPrimary,
             GroupClassSliceVariation,
@@ -3827,6 +3824,10 @@ declare module '@prismicio/client' {
             SymptomsSliceDefaultPrimary,
             SymptomsSliceVariation,
             SymptomsSliceDefault,
+            TrialClassFormSlice,
+            TrialClassFormSliceDefaultPrimary,
+            TrialClassFormSliceVariation,
+            TrialClassFormSliceDefault,
             UpcomingWorkshopSlice,
             UpcomingWorkshopSliceDefaultPrimaryRowItem,
             UpcomingWorkshopSliceDefaultPrimary,

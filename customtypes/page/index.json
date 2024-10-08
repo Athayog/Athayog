@@ -27,6 +27,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "trial_class_form": {
+                            "type": "SharedSlice"
+                        },
                         "privacy": {
                             "type": "SharedSlice"
                         },
