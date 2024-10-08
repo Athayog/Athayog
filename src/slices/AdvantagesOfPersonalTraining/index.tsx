@@ -1,28 +1,11 @@
+import { Box, Grid, Typography } from '@mui/material'
 import { Content, KeyTextField, RichTextField } from '@prismicio/client'
-import {
-    PrismicRichText,
-    PrismicRichTextProps,
-    SliceComponentProps,
-} from '@prismicio/react'
-import { Box, Typography, Grid } from '@mui/material'
 import { PrismicNextImage } from '@prismicio/next'
-/**
- * Props for `AdvantagesOfPersonalTraining`.
- */
-export type AdvantagesOfPersonalTrainingProps =
-    SliceComponentProps<Content.AdvantagesOfPersonalTrainingSlice>
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 
-/**
- * Component for "AdvantagesOfPersonalTraining" Slices.
- */
+export type AdvantagesOfPersonalTrainingProps = SliceComponentProps<Content.AdvantagesOfPersonalTrainingSlice>
 
-const AdvantagesBox = ({
-    title,
-    description,
-}: {
-    title: KeyTextField | null
-    description: RichTextField | null
-}) => {
+const AdvantagesBox = ({ title, description }: { title: KeyTextField | null; description: RichTextField | null }) => {
     return (
         <Grid item xs={12} md={6} lg={6} sx={{ padding: '20px' }}>
             <Box
@@ -56,14 +39,9 @@ const AdvantagesBox = ({
         </Grid>
     )
 }
-const AdvantagesOfPersonalTraining = ({
-    slice,
-}: AdvantagesOfPersonalTrainingProps): JSX.Element => {
+const AdvantagesOfPersonalTraining = ({ slice }: AdvantagesOfPersonalTrainingProps): JSX.Element => {
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
                 sx={{
                     background: 'linear-gradient(to bottom, #e7ead8, #dffad1)',
@@ -97,9 +75,7 @@ const AdvantagesOfPersonalTraining = ({
                             display: { xs: 'none', md: 'flex' },
                         }}
                     >
-                        <PrismicNextImage
-                            field={slice.primary.image_at_the_end}
-                        />
+                        <PrismicNextImage field={slice.primary.image_at_the_end} />
                     </Grid>
                 </Grid>
             </Box>

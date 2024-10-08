@@ -1,9 +1,9 @@
 'use client'
+import theme from '@/styles/theme'
+import { LinkField, ImageFieldImage } from '@prismicio/client'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import ContentContainer from '@/components/_shared/ContentContainer'
 import { Box, Divider, Grid, styled, Typography } from '@mui/material'
-import { LinkField, ImageFieldImage } from '@prismicio/client'
-import theme from '@/styles/theme'
 
 export const HeadingTitle = styled(Typography)(({ theme }) => ({
     fontWeight: '700',

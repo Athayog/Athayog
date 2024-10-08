@@ -1,0 +1,26 @@
+{
+  "id": "free_trial_form",
+  "type": "SharedSlice",
+  "name": "FreeTrialForm",
+  "description": "FreeTrialForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

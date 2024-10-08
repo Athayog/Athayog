@@ -3,20 +3,18 @@
 import dynamic from 'next/dynamic'
 
 export const components = {
-    advantages_of_personal_training: dynamic(
-        () => import('./AdvantagesOfPersonalTraining')
-    ),
+    advantages_of_personal_training: dynamic(() => import('./AdvantagesOfPersonalTraining')),
     causes_of_pcos: dynamic(() => import('./CausesOfPcos')),
     class_format: dynamic(() => import('./ClassFormat')),
     class_intensity_table: dynamic(() => import('./ClassIntensityTable')),
-    consider_personal_training: dynamic(
-        () => import('./ConsiderPersonalTraining')
-    ),
+    consider_personal_training: dynamic(() => import('./ConsiderPersonalTraining')),
     contact_us_form: dynamic(() => import('./ContactUsForm')),
     contact_us_hero: dynamic(() => import('./ContactUsHero')),
     enroll_section: dynamic(() => import('./EnrollSection')),
     event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
+    event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
     faq: dynamic(() => import('./Faq')),
+    free_trial_form: dynamic(() => import('./FreeTrialForm')),
     group_class: dynamic(() => import('./GroupClass')),
     group_class_format: dynamic(() => import('./GroupClassFormat')),
     group_class_hero: dynamic(() => import('./GroupClassHero')),
@@ -26,9 +24,7 @@ export const components = {
     hero: dynamic(() => import('./Hero')),
     how_yoga_helps: dynamic(() => import('./HowYogaHelps')),
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
-    left_content_right_slider_vertical: dynamic(
-        () => import('./LeftContentRightSliderVertical')
-    ),
+    left_content_right_slider_vertical: dynamic(() => import('./LeftContentRightSliderVertical')),
     left_image_righ_content: dynamic(() => import('./LeftImageRighContent')),
     our_yoga_story: dynamic(() => import('./OurYogaStory')),
     pcos_hero: dynamic(() => import('./PcosHero')),
@@ -38,9 +34,7 @@ export const components = {
     privacy: dynamic(() => import('./Legal')),
     pros_and_cons: dynamic(() => import('./ProsAndCons')),
     recognition: dynamic(() => import('./Recognition')),
-    right_content_left_slider_vertical: dynamic(
-        () => import('./RightContentLeftSliderVertical')
-    ),
+    right_content_left_slider_vertical: dynamic(() => import('./RightContentLeftSliderVertical')),
     slices: dynamic(() => import('./Stats')),
     symptoms: dynamic(() => import('./Symptoms')),
     upcoming_workshop: dynamic(() => import('./WorkshopRow')),
