@@ -12,7 +12,6 @@ export const components = {
     contact_us_hero: dynamic(() => import('./ContactUsHero')),
     enroll_section: dynamic(() => import('./EnrollSection')),
     event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
-    event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
     faq: dynamic(() => import('./Faq')),
     group_class: dynamic(() => import('./GroupClass')),
     group_class_format: dynamic(() => import('./GroupClassFormat')),
