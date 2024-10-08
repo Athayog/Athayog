@@ -152,9 +152,7 @@ interface FooterDocumentData {
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    section_title: prismic.GroupField<
-        Simplify<FooterDocumentDataSectionTitleItem>
-    >
+    section_title: prismic.GroupField<Simplify<FooterDocumentDataSectionTitleItem>>
 
     /**
      * What We Offer field in *Footer*
@@ -165,9 +163,7 @@ interface FooterDocumentData {
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    what_we_offer: prismic.GroupField<
-        Simplify<FooterDocumentDataWhatWeOfferItem>
-    >
+    what_we_offer: prismic.GroupField<Simplify<FooterDocumentDataWhatWeOfferItem>>
 
     /**
      * Legal field in *Footer*
@@ -233,9 +229,7 @@ interface FooterDocumentData {
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    social_links_icons: prismic.GroupField<
-        Simplify<FooterDocumentDataSocialLinksIconsItem>
-    >
+    social_links_icons: prismic.GroupField<Simplify<FooterDocumentDataSocialLinksIconsItem>>
 }
 
 /**
@@ -247,14 +241,10 @@ interface FooterDocumentData {
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type FooterDocument<Lang extends string = string> =
-    prismic.PrismicDocumentWithoutUID<
-        Simplify<FooterDocumentData>,
-        'footer',
-        Lang
-    >
+export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | TrialClassFormSlice
     | PrivacySlice
     | ContactUsFormSlice
     | ContactUsHeroSlice
@@ -360,8 +350,7 @@ interface PageDocumentData {
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type PageDocument<Lang extends string = string> =
-    prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
+export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
 
 export type AllDocumentTypes = FooterDocument | PageDocument
 
@@ -422,9 +411,7 @@ export interface AdvantagesOfPersonalTrainingSliceDefaultPrimary {
      * - **API ID Path**: advantages_of_personal_training.default.primary.content[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    content: prismic.GroupField<
-        Simplify<AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem>
-    >
+    content: prismic.GroupField<Simplify<AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem>>
 }
 
 /**
@@ -434,18 +421,12 @@ export interface AdvantagesOfPersonalTrainingSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type AdvantagesOfPersonalTrainingSliceDefault =
-    prismic.SharedSliceVariation<
-        'default',
-        Simplify<AdvantagesOfPersonalTrainingSliceDefaultPrimary>,
-        never
-    >
+export type AdvantagesOfPersonalTrainingSliceDefault = prismic.SharedSliceVariation<'default', Simplify<AdvantagesOfPersonalTrainingSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *AdvantagesOfPersonalTraining*
  */
-type AdvantagesOfPersonalTrainingSliceVariation =
-    AdvantagesOfPersonalTrainingSliceDefault
+type AdvantagesOfPersonalTrainingSliceVariation = AdvantagesOfPersonalTrainingSliceDefault
 
 /**
  * AdvantagesOfPersonalTraining Shared Slice
@@ -454,10 +435,7 @@ type AdvantagesOfPersonalTrainingSliceVariation =
  * - **Description**: AdvantagesOfPersonalTraining
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type AdvantagesOfPersonalTrainingSlice = prismic.SharedSlice<
-    'advantages_of_personal_training',
-    AdvantagesOfPersonalTrainingSliceVariation
->
+export type AdvantagesOfPersonalTrainingSlice = prismic.SharedSlice<'advantages_of_personal_training', AdvantagesOfPersonalTrainingSliceVariation>
 
 /**
  * Item in *CausesOfPcos → Default → Primary → Causes*
@@ -516,9 +494,7 @@ export interface CausesOfPcosSliceDefaultPrimary {
      * - **API ID Path**: causes_of_pcos.default.primary.causes[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    causes: prismic.GroupField<
-        Simplify<CausesOfPcosSliceDefaultPrimaryCausesItem>
-    >
+    causes: prismic.GroupField<Simplify<CausesOfPcosSliceDefaultPrimaryCausesItem>>
 }
 
 /**
@@ -528,11 +504,7 @@ export interface CausesOfPcosSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type CausesOfPcosSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<CausesOfPcosSliceDefaultPrimary>,
-    never
->
+export type CausesOfPcosSliceDefault = prismic.SharedSliceVariation<'default', Simplify<CausesOfPcosSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *CausesOfPcos*
@@ -546,10 +518,7 @@ type CausesOfPcosSliceVariation = CausesOfPcosSliceDefault
  * - **Description**: CausesOfPcos
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type CausesOfPcosSlice = prismic.SharedSlice<
-    'causes_of_pcos',
-    CausesOfPcosSliceVariation
->
+export type CausesOfPcosSlice = prismic.SharedSlice<'causes_of_pcos', CausesOfPcosSliceVariation>
 
 /**
  * Item in *ClassFormat → Default → Primary → Formats*
@@ -598,9 +567,7 @@ export interface ClassFormatSliceDefaultPrimary {
      * - **API ID Path**: class_format.default.primary.formats[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    formats: prismic.GroupField<
-        Simplify<ClassFormatSliceDefaultPrimaryFormatsItem>
-    >
+    formats: prismic.GroupField<Simplify<ClassFormatSliceDefaultPrimaryFormatsItem>>
 }
 
 /**
@@ -610,11 +577,7 @@ export interface ClassFormatSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ClassFormatSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<ClassFormatSliceDefaultPrimary>,
-    never
->
+export type ClassFormatSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ClassFormatSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *ClassFormat*
@@ -628,10 +591,7 @@ type ClassFormatSliceVariation = ClassFormatSliceDefault
  * - **Description**: ClassFormat
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ClassFormatSlice = prismic.SharedSlice<
-    'class_format',
-    ClassFormatSliceVariation
->
+export type ClassFormatSlice = prismic.SharedSlice<'class_format', ClassFormatSliceVariation>
 
 /**
  * Item in *ClassIntensityTable → Default → Primary → Rows*
@@ -700,9 +660,7 @@ export interface ClassIntensityTableSliceDefaultPrimary {
      * - **API ID Path**: class_intensity_table.default.primary.rows[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    rows: prismic.GroupField<
-        Simplify<ClassIntensityTableSliceDefaultPrimaryRowsItem>
-    >
+    rows: prismic.GroupField<Simplify<ClassIntensityTableSliceDefaultPrimaryRowsItem>>
 }
 
 /**
@@ -712,11 +670,7 @@ export interface ClassIntensityTableSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ClassIntensityTableSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<ClassIntensityTableSliceDefaultPrimary>,
-    never
->
+export type ClassIntensityTableSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ClassIntensityTableSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *ClassIntensityTable*
@@ -730,10 +684,7 @@ type ClassIntensityTableSliceVariation = ClassIntensityTableSliceDefault
  * - **Description**: ClassIntensityTable
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ClassIntensityTableSlice = prismic.SharedSlice<
-    'class_intensity_table',
-    ClassIntensityTableSliceVariation
->
+export type ClassIntensityTableSlice = prismic.SharedSlice<'class_intensity_table', ClassIntensityTableSliceVariation>
 
 /**
  * Item in *ConsiderPersonalTraining → Default → Primary → Content*
@@ -792,9 +743,7 @@ export interface ConsiderPersonalTrainingSliceDefaultPrimary {
      * - **API ID Path**: consider_personal_training.default.primary.content[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    content: prismic.GroupField<
-        Simplify<ConsiderPersonalTrainingSliceDefaultPrimaryContentItem>
-    >
+    content: prismic.GroupField<Simplify<ConsiderPersonalTrainingSliceDefaultPrimaryContentItem>>
 }
 
 /**
@@ -804,17 +753,12 @@ export interface ConsiderPersonalTrainingSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ConsiderPersonalTrainingSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<ConsiderPersonalTrainingSliceDefaultPrimary>,
-    never
->
+export type ConsiderPersonalTrainingSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ConsiderPersonalTrainingSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *ConsiderPersonalTraining*
  */
-type ConsiderPersonalTrainingSliceVariation =
-    ConsiderPersonalTrainingSliceDefault
+type ConsiderPersonalTrainingSliceVariation = ConsiderPersonalTrainingSliceDefault
 
 /**
  * ConsiderPersonalTraining Shared Slice
@@ -823,10 +767,7 @@ type ConsiderPersonalTrainingSliceVariation =
  * - **Description**: ConsiderPersonalTraining
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ConsiderPersonalTrainingSlice = prismic.SharedSlice<
-    'consider_personal_training',
-    ConsiderPersonalTrainingSliceVariation
->
+export type ConsiderPersonalTrainingSlice = prismic.SharedSlice<'consider_personal_training', ConsiderPersonalTrainingSliceVariation>
 
 /**
  * Primary content in *ContactUsForm → Default → Primary*
@@ -940,11 +881,7 @@ export interface ContactUsFormSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContactUsFormSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<ContactUsFormSliceDefaultPrimary>,
-    never
->
+export type ContactUsFormSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ContactUsFormSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *ContactUsForm*
@@ -958,10 +895,7 @@ type ContactUsFormSliceVariation = ContactUsFormSliceDefault
  * - **Description**: ContactUsForm
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContactUsFormSlice = prismic.SharedSlice<
-    'contact_us_form',
-    ContactUsFormSliceVariation
->
+export type ContactUsFormSlice = prismic.SharedSlice<'contact_us_form', ContactUsFormSliceVariation>
 
 /**
  * Primary content in *ContactUsHero → Default → Primary*
@@ -985,11 +919,7 @@ export interface ContactUsHeroSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContactUsHeroSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<ContactUsHeroSliceDefaultPrimary>,
-    never
->
+export type ContactUsHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ContactUsHeroSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *ContactUsHero*
@@ -1003,10 +933,7 @@ type ContactUsHeroSliceVariation = ContactUsHeroSliceDefault
  * - **Description**: ContactUsHero
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ContactUsHeroSlice = prismic.SharedSlice<
-    'contact_us_hero',
-    ContactUsHeroSliceVariation
->
+export type ContactUsHeroSlice = prismic.SharedSlice<'contact_us_hero', ContactUsHeroSliceVariation>
 
 /**
  * Primary content in *EnrollSection → Default → Primary*
@@ -1090,11 +1017,7 @@ export interface EnrollSectionSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type EnrollSectionSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<EnrollSectionSliceDefaultPrimary>,
-    never
->
+export type EnrollSectionSliceDefault = prismic.SharedSliceVariation<'default', Simplify<EnrollSectionSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *EnrollSection*
@@ -1108,10 +1031,7 @@ type EnrollSectionSliceVariation = EnrollSectionSliceDefault
  * - **Description**: EnrollSection
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type EnrollSectionSlice = prismic.SharedSlice<
-    'enroll_section',
-    EnrollSectionSliceVariation
->
+export type EnrollSectionSlice = prismic.SharedSlice<'enroll_section', EnrollSectionSliceVariation>
 
 /**
  * Item in *EventHighlightsGallery → Default → Primary → Albums*
@@ -1160,9 +1080,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
      * - **API ID Path**: event_highlights_gallery.default.primary.albums[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    albums: prismic.GroupField<
-        Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>
-    >
+    albums: prismic.GroupField<Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>>
 
     /**
      * Button Text field in *EventHighlightsGallery → Default → Primary*
@@ -1192,11 +1110,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<EventHighlightsGallerySliceDefaultPrimary>,
-    never
->
+export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<'default', Simplify<EventHighlightsGallerySliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *EventHighlightsGallery*
@@ -1210,10 +1124,7 @@ type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
  * - **Description**: EventHighlightsGallery
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type EventHighlightsGallerySlice = prismic.SharedSlice<
-    'event_highlights_gallery',
-    EventHighlightsGallerySliceVariation
->
+export type EventHighlightsGallerySlice = prismic.SharedSlice<'event_highlights_gallery', EventHighlightsGallerySliceVariation>
 
 /**
  * Item in *EventHighlightsGallery → Default → Primary → Albums*
@@ -1262,9 +1173,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
      * - **API ID Path**: event_highlights_gallery.default.primary.albums[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    albums: prismic.GroupField<
-        Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>
-    >
+    albums: prismic.GroupField<Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>>
 
     /**
      * Button Text field in *EventHighlightsGallery → Default → Primary*
@@ -1294,11 +1203,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<EventHighlightsGallerySliceDefaultPrimary>,
-    never
->
+export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<'default', Simplify<EventHighlightsGallerySliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *EventHighlightsGallery*
@@ -1312,10 +1217,7 @@ type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
  * - **Description**: EventHighlightsGallery
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type EventHighlightsGallerySlice = prismic.SharedSlice<
-    'event_highlights_gallery',
-    EventHighlightsGallerySliceVariation
->
+export type EventHighlightsGallerySlice = prismic.SharedSlice<'event_highlights_gallery', EventHighlightsGallerySliceVariation>
 
 /**
  * Item in *Faq → Default → Primary → Faqs*
@@ -1404,11 +1306,7 @@ export interface FaqSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type FaqSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<FaqSliceDefaultPrimary>,
-    never
->
+export type FaqSliceDefault = prismic.SharedSliceVariation<'default', Simplify<FaqSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *Faq*
@@ -1506,11 +1404,7 @@ export interface GroupClassSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupClassSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<GroupClassSliceDefaultPrimary>,
-    never
->
+export type GroupClassSliceDefault = prismic.SharedSliceVariation<'default', Simplify<GroupClassSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *GroupClass*
@@ -1524,10 +1418,7 @@ type GroupClassSliceVariation = GroupClassSliceDefault
  * - **Description**: GroupClass
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupClassSlice = prismic.SharedSlice<
-    'group_class',
-    GroupClassSliceVariation
->
+export type GroupClassSlice = prismic.SharedSlice<'group_class', GroupClassSliceVariation>
 
 /**
  * Item in *GroupClassFormat → Default → Primary → Content*
@@ -1576,9 +1467,7 @@ export interface GroupClassFormatSliceDefaultPrimary {
      * - **API ID Path**: group_class_format.default.primary.content[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    content: prismic.GroupField<
-        Simplify<GroupClassFormatSliceDefaultPrimaryContentItem>
-    >
+    content: prismic.GroupField<Simplify<GroupClassFormatSliceDefaultPrimaryContentItem>>
 }
 
 /**
@@ -1588,11 +1477,7 @@ export interface GroupClassFormatSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupClassFormatSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<GroupClassFormatSliceDefaultPrimary>,
-    never
->
+export type GroupClassFormatSliceDefault = prismic.SharedSliceVariation<'default', Simplify<GroupClassFormatSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *GroupClassFormat*
@@ -1606,10 +1491,7 @@ type GroupClassFormatSliceVariation = GroupClassFormatSliceDefault
  * - **Description**: GroupClassFormat
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupClassFormatSlice = prismic.SharedSlice<
-    'group_class_format',
-    GroupClassFormatSliceVariation
->
+export type GroupClassFormatSlice = prismic.SharedSlice<'group_class_format', GroupClassFormatSliceVariation>
 
 /**
  * Primary content in *GroupClassHero → Default → Primary*
@@ -1633,11 +1515,7 @@ export interface GroupClassHeroSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupClassHeroSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<GroupClassHeroSliceDefaultPrimary>,
-    never
->
+export type GroupClassHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<GroupClassHeroSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *GroupClassHero*
@@ -1651,10 +1529,7 @@ type GroupClassHeroSliceVariation = GroupClassHeroSliceDefault
  * - **Description**: GroupClassHero
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupClassHeroSlice = prismic.SharedSlice<
-    'group_class_hero',
-    GroupClassHeroSliceVariation
->
+export type GroupClassHeroSlice = prismic.SharedSlice<'group_class_hero', GroupClassHeroSliceVariation>
 
 /**
  * Item in *GroupClassPricing → Default → Primary → SubscriptionForIndiranagar*
@@ -1758,9 +1633,7 @@ export interface GroupClassPricingSliceDefaultPrimary {
      * - **API ID Path**: group_class_pricing.default.primary.subscriptionforindiranagar[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    subscriptionforindiranagar: prismic.GroupField<
-        Simplify<GroupClassPricingSliceDefaultPrimarySubscriptionforindiranagarItem>
-    >
+    subscriptionforindiranagar: prismic.GroupField<Simplify<GroupClassPricingSliceDefaultPrimarySubscriptionforindiranagarItem>>
 
     /**
      * Other Courses field in *GroupClassPricing → Default → Primary*
@@ -1770,9 +1643,7 @@ export interface GroupClassPricingSliceDefaultPrimary {
      * - **API ID Path**: group_class_pricing.default.primary.other_courses[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    other_courses: prismic.GroupField<
-        Simplify<GroupClassPricingSliceDefaultPrimaryOtherCoursesItem>
-    >
+    other_courses: prismic.GroupField<Simplify<GroupClassPricingSliceDefaultPrimaryOtherCoursesItem>>
 
     /**
      * Terms And Conditions field in *GroupClassPricing → Default → Primary*
@@ -1802,11 +1673,7 @@ export interface GroupClassPricingSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupClassPricingSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<GroupClassPricingSliceDefaultPrimary>,
-    never
->
+export type GroupClassPricingSliceDefault = prismic.SharedSliceVariation<'default', Simplify<GroupClassPricingSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *GroupClassPricing*
@@ -1820,10 +1687,7 @@ type GroupClassPricingSliceVariation = GroupClassPricingSliceDefault
  * - **Description**: GroupClassPricing
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupClassPricingSlice = prismic.SharedSlice<
-    'group_class_pricing',
-    GroupClassPricingSliceVariation
->
+export type GroupClassPricingSlice = prismic.SharedSlice<'group_class_pricing', GroupClassPricingSliceVariation>
 
 /**
  * Primary content in *GroupInformation → Default → Primary*
@@ -1877,11 +1741,7 @@ export interface GroupInformationSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupInformationSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<GroupInformationSliceDefaultPrimary>,
-    never
->
+export type GroupInformationSliceDefault = prismic.SharedSliceVariation<'default', Simplify<GroupInformationSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *GroupInformation*
@@ -1895,10 +1755,7 @@ type GroupInformationSliceVariation = GroupInformationSliceDefault
  * - **Description**: GroupInformation
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupInformationSlice = prismic.SharedSlice<
-    'group_information',
-    GroupInformationSliceVariation
->
+export type GroupInformationSlice = prismic.SharedSlice<'group_information', GroupInformationSliceVariation>
 
 /**
  * Item in *GroupSchedule → Default → Primary → List*
@@ -1977,11 +1834,7 @@ export interface GroupScheduleSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupScheduleSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<GroupScheduleSliceDefaultPrimary>,
-    never
->
+export type GroupScheduleSliceDefault = prismic.SharedSliceVariation<'default', Simplify<GroupScheduleSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *GroupSchedule*
@@ -1995,10 +1848,7 @@ type GroupScheduleSliceVariation = GroupScheduleSliceDefault
  * - **Description**: GroupSchedule
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type GroupScheduleSlice = prismic.SharedSlice<
-    'group_schedule',
-    GroupScheduleSliceVariation
->
+export type GroupScheduleSlice = prismic.SharedSlice<'group_schedule', GroupScheduleSliceVariation>
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -2062,11 +1912,7 @@ export interface HeroSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type HeroSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<HeroSliceDefaultPrimary>,
-    never
->
+export type HeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<HeroSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *Hero*
@@ -2129,9 +1975,7 @@ export interface HowYogaHelpsSliceDefaultPrimary {
      * - **API ID Path**: how_yoga_helps.default.primary.content[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    content: prismic.GroupField<
-        Simplify<HowYogaHelpsSliceDefaultPrimaryContentItem>
-    >
+    content: prismic.GroupField<Simplify<HowYogaHelpsSliceDefaultPrimaryContentItem>>
 }
 
 /**
@@ -2141,11 +1985,7 @@ export interface HowYogaHelpsSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type HowYogaHelpsSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<HowYogaHelpsSliceDefaultPrimary>,
-    never
->
+export type HowYogaHelpsSliceDefault = prismic.SharedSliceVariation<'default', Simplify<HowYogaHelpsSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *HowYogaHelps*
@@ -2159,10 +1999,7 @@ type HowYogaHelpsSliceVariation = HowYogaHelpsSliceDefault
  * - **Description**: HowYogaHelps
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type HowYogaHelpsSlice = prismic.SharedSlice<
-    'how_yoga_helps',
-    HowYogaHelpsSliceVariation
->
+export type HowYogaHelpsSlice = prismic.SharedSlice<'how_yoga_helps', HowYogaHelpsSliceVariation>
 
 /**
  * Primary content in *LeftContentRightImage → Default → Primary*
@@ -2246,11 +2083,7 @@ export interface LeftContentRightImageSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type LeftContentRightImageSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<LeftContentRightImageSliceDefaultPrimary>,
-    never
->
+export type LeftContentRightImageSliceDefault = prismic.SharedSliceVariation<'default', Simplify<LeftContentRightImageSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *LeftContentRightImage*
@@ -2264,10 +2097,7 @@ type LeftContentRightImageSliceVariation = LeftContentRightImageSliceDefault
  * - **Description**: LeftContentRightImage
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type LeftContentRightImageSlice = prismic.SharedSlice<
-    'left_content_right_image',
-    LeftContentRightImageSliceVariation
->
+export type LeftContentRightImageSlice = prismic.SharedSlice<'left_content_right_image', LeftContentRightImageSliceVariation>
 
 /**
  * Item in *LeftContentRightSliderVertical → Default → Primary → Content*
@@ -2326,9 +2156,7 @@ export interface LeftContentRightSliderVerticalSliceDefaultPrimary {
      * - **API ID Path**: left_content_right_slider_vertical.default.primary.content[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    content: prismic.GroupField<
-        Simplify<LeftContentRightSliderVerticalSliceDefaultPrimaryContentItem>
-    >
+    content: prismic.GroupField<Simplify<LeftContentRightSliderVerticalSliceDefaultPrimaryContentItem>>
 }
 
 /**
@@ -2338,18 +2166,12 @@ export interface LeftContentRightSliderVerticalSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type LeftContentRightSliderVerticalSliceDefault =
-    prismic.SharedSliceVariation<
-        'default',
-        Simplify<LeftContentRightSliderVerticalSliceDefaultPrimary>,
-        never
-    >
+export type LeftContentRightSliderVerticalSliceDefault = prismic.SharedSliceVariation<'default', Simplify<LeftContentRightSliderVerticalSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *LeftContentRightSliderVertical*
  */
-type LeftContentRightSliderVerticalSliceVariation =
-    LeftContentRightSliderVerticalSliceDefault
+type LeftContentRightSliderVerticalSliceVariation = LeftContentRightSliderVerticalSliceDefault
 
 /**
  * LeftContentRightSliderVertical Shared Slice
@@ -2358,10 +2180,7 @@ type LeftContentRightSliderVerticalSliceVariation =
  * - **Description**: LeftContentRightSliderVertical
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type LeftContentRightSliderVerticalSlice = prismic.SharedSlice<
-    'left_content_right_slider_vertical',
-    LeftContentRightSliderVerticalSliceVariation
->
+export type LeftContentRightSliderVerticalSlice = prismic.SharedSlice<'left_content_right_slider_vertical', LeftContentRightSliderVerticalSliceVariation>
 
 /**
  * Primary content in *LeftImageRighContent → Default → Primary*
@@ -2435,11 +2254,7 @@ export interface LeftImageRighContentSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type LeftImageRighContentSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<LeftImageRighContentSliceDefaultPrimary>,
-    never
->
+export type LeftImageRighContentSliceDefault = prismic.SharedSliceVariation<'default', Simplify<LeftImageRighContentSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *LeftImageRighContent*
@@ -2453,10 +2268,7 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
  * - **Description**: LeftImageRighContent
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type LeftImageRighContentSlice = prismic.SharedSlice<
-    'left_image_righ_content',
-    LeftImageRighContentSliceVariation
->
+export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
 
 /**
  * Item in *OurYogaStory → Default → Primary → Content*
@@ -2525,9 +2337,7 @@ export interface OurYogaStorySliceDefaultPrimary {
      * - **API ID Path**: our_yoga_story.default.primary.content[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    content: prismic.GroupField<
-        Simplify<OurYogaStorySliceDefaultPrimaryContentItem>
-    >
+    content: prismic.GroupField<Simplify<OurYogaStorySliceDefaultPrimaryContentItem>>
 }
 
 /**
@@ -2537,11 +2347,7 @@ export interface OurYogaStorySliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type OurYogaStorySliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<OurYogaStorySliceDefaultPrimary>,
-    never
->
+export type OurYogaStorySliceDefault = prismic.SharedSliceVariation<'default', Simplify<OurYogaStorySliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *OurYogaStory*
@@ -2555,10 +2361,7 @@ type OurYogaStorySliceVariation = OurYogaStorySliceDefault
  * - **Description**: OurYogaStory
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type OurYogaStorySlice = prismic.SharedSlice<
-    'our_yoga_story',
-    OurYogaStorySliceVariation
->
+export type OurYogaStorySlice = prismic.SharedSlice<'our_yoga_story', OurYogaStorySliceVariation>
 
 /**
  * Primary content in *PcosHero → Default → Primary*
@@ -2622,11 +2425,7 @@ export interface PcosHeroSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PcosHeroSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<PcosHeroSliceDefaultPrimary>,
-    never
->
+export type PcosHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<PcosHeroSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *PcosHero*
@@ -2640,10 +2439,7 @@ type PcosHeroSliceVariation = PcosHeroSliceDefault
  * - **Description**: PcosHero
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PcosHeroSlice = prismic.SharedSlice<
-    'pcos_hero',
-    PcosHeroSliceVariation
->
+export type PcosHeroSlice = prismic.SharedSlice<'pcos_hero', PcosHeroSliceVariation>
 
 /**
  * Item in *PersonalContent → Default → Primary → Content*
@@ -2682,9 +2478,7 @@ export interface PersonalContentSliceDefaultPrimary {
      * - **API ID Path**: personal_content.default.primary.content[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    content: prismic.GroupField<
-        Simplify<PersonalContentSliceDefaultPrimaryContentItem>
-    >
+    content: prismic.GroupField<Simplify<PersonalContentSliceDefaultPrimaryContentItem>>
 }
 
 /**
@@ -2694,11 +2488,7 @@ export interface PersonalContentSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PersonalContentSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<PersonalContentSliceDefaultPrimary>,
-    never
->
+export type PersonalContentSliceDefault = prismic.SharedSliceVariation<'default', Simplify<PersonalContentSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *PersonalContent*
@@ -2712,10 +2502,7 @@ type PersonalContentSliceVariation = PersonalContentSliceDefault
  * - **Description**: PersonalContent
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PersonalContentSlice = prismic.SharedSlice<
-    'personal_content',
-    PersonalContentSliceVariation
->
+export type PersonalContentSlice = prismic.SharedSlice<'personal_content', PersonalContentSliceVariation>
 
 /**
  * Primary content in *PersonalSessionHero → Default → Primary*
@@ -2759,11 +2546,7 @@ export interface PersonalSessionHeroSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PersonalSessionHeroSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<PersonalSessionHeroSliceDefaultPrimary>,
-    never
->
+export type PersonalSessionHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<PersonalSessionHeroSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *PersonalSessionHero*
@@ -2777,10 +2560,7 @@ type PersonalSessionHeroSliceVariation = PersonalSessionHeroSliceDefault
  * - **Description**: PersonalSessionHero
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PersonalSessionHeroSlice = prismic.SharedSlice<
-    'personal_session_hero',
-    PersonalSessionHeroSliceVariation
->
+export type PersonalSessionHeroSlice = prismic.SharedSlice<'personal_session_hero', PersonalSessionHeroSliceVariation>
 
 /**
  * Item in *PersonalSessionPricing → Default → Primary → Courses*
@@ -2859,9 +2639,7 @@ export interface PersonalSessionPricingSliceDefaultPrimary {
      * - **API ID Path**: personal_session_pricing.default.primary.courses[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    courses: prismic.GroupField<
-        Simplify<PersonalSessionPricingSliceDefaultPrimaryCoursesItem>
-    >
+    courses: prismic.GroupField<Simplify<PersonalSessionPricingSliceDefaultPrimaryCoursesItem>>
 
     /**
      * Terms And Conditions field in *PersonalSessionPricing → Default → Primary*
@@ -2931,11 +2709,7 @@ export interface PersonalSessionPricingSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PersonalSessionPricingSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<PersonalSessionPricingSliceDefaultPrimary>,
-    never
->
+export type PersonalSessionPricingSliceDefault = prismic.SharedSliceVariation<'default', Simplify<PersonalSessionPricingSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *PersonalSessionPricing*
@@ -2949,10 +2723,7 @@ type PersonalSessionPricingSliceVariation = PersonalSessionPricingSliceDefault
  * - **Description**: PersonalSessionPricing
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PersonalSessionPricingSlice = prismic.SharedSlice<
-    'personal_session_pricing',
-    PersonalSessionPricingSliceVariation
->
+export type PersonalSessionPricingSlice = prismic.SharedSlice<'personal_session_pricing', PersonalSessionPricingSliceVariation>
 
 /**
  * Primary content in *Legal → Privacy → Primary*
@@ -2976,11 +2747,7 @@ export interface PrivacySliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PrivacySliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<PrivacySliceDefaultPrimary>,
-    never
->
+export type PrivacySliceDefault = prismic.SharedSliceVariation<'default', Simplify<PrivacySliceDefaultPrimary>, never>
 
 /**
  * Primary content in *Legal → Terms And Conditions → Primary*
@@ -3004,11 +2771,7 @@ export interface PrivacySliceTermsAndConditionsPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PrivacySliceTermsAndConditions = prismic.SharedSliceVariation<
-    'termsAndConditions',
-    Simplify<PrivacySliceTermsAndConditionsPrimary>,
-    never
->
+export type PrivacySliceTermsAndConditions = prismic.SharedSliceVariation<'termsAndConditions', Simplify<PrivacySliceTermsAndConditionsPrimary>, never>
 
 /**
  * Primary content in *Legal → Refund → Primary*
@@ -3032,19 +2795,12 @@ export interface PrivacySliceRefundPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type PrivacySliceRefund = prismic.SharedSliceVariation<
-    'refund',
-    Simplify<PrivacySliceRefundPrimary>,
-    never
->
+export type PrivacySliceRefund = prismic.SharedSliceVariation<'refund', Simplify<PrivacySliceRefundPrimary>, never>
 
 /**
  * Slice variation for *Legal*
  */
-type PrivacySliceVariation =
-    | PrivacySliceDefault
-    | PrivacySliceTermsAndConditions
-    | PrivacySliceRefund
+type PrivacySliceVariation = PrivacySliceDefault | PrivacySliceTermsAndConditions | PrivacySliceRefund
 
 /**
  * Legal Shared Slice
@@ -3127,11 +2883,7 @@ export interface ProsAndConsSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ProsAndConsSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<ProsAndConsSliceDefaultPrimary>,
-    never
->
+export type ProsAndConsSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ProsAndConsSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *ProsAndCons*
@@ -3145,10 +2897,7 @@ type ProsAndConsSliceVariation = ProsAndConsSliceDefault
  * - **Description**: ProsAndCons
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type ProsAndConsSlice = prismic.SharedSlice<
-    'pros_and_cons',
-    ProsAndConsSliceVariation
->
+export type ProsAndConsSlice = prismic.SharedSlice<'pros_and_cons', ProsAndConsSliceVariation>
 
 /**
  * Item in *Recognition → Default → Primary → Logos*
@@ -3197,11 +2946,7 @@ export interface RecognitionSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RecognitionSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<RecognitionSliceDefaultPrimary>,
-    never
->
+export type RecognitionSliceDefault = prismic.SharedSliceVariation<'default', Simplify<RecognitionSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *Recognition*
@@ -3215,10 +2960,7 @@ type RecognitionSliceVariation = RecognitionSliceDefault
  * - **Description**: Recognition
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RecognitionSlice = prismic.SharedSlice<
-    'recognition',
-    RecognitionSliceVariation
->
+export type RecognitionSlice = prismic.SharedSlice<'recognition', RecognitionSliceVariation>
 
 /**
  * Item in *RightContentLeftSliderVertical → Default → Primary → Slider Images*
@@ -3297,9 +3039,7 @@ export interface RightContentLeftSliderVerticalSliceDefaultPrimary {
      * - **API ID Path**: right_content_left_slider_vertical.default.primary.slider_images[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    slider_images: prismic.GroupField<
-        Simplify<RightContentLeftSliderVerticalSliceDefaultPrimarySliderImagesItem>
-    >
+    slider_images: prismic.GroupField<Simplify<RightContentLeftSliderVerticalSliceDefaultPrimarySliderImagesItem>>
 }
 
 /**
@@ -3309,18 +3049,12 @@ export interface RightContentLeftSliderVerticalSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RightContentLeftSliderVerticalSliceDefault =
-    prismic.SharedSliceVariation<
-        'default',
-        Simplify<RightContentLeftSliderVerticalSliceDefaultPrimary>,
-        never
-    >
+export type RightContentLeftSliderVerticalSliceDefault = prismic.SharedSliceVariation<'default', Simplify<RightContentLeftSliderVerticalSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *RightContentLeftSliderVertical*
  */
-type RightContentLeftSliderVerticalSliceVariation =
-    RightContentLeftSliderVerticalSliceDefault
+type RightContentLeftSliderVerticalSliceVariation = RightContentLeftSliderVerticalSliceDefault
 
 /**
  * RightContentLeftSliderVertical Shared Slice
@@ -3329,10 +3063,7 @@ type RightContentLeftSliderVerticalSliceVariation =
  * - **Description**: RightContentLeftSliderVertical
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type RightContentLeftSliderVerticalSlice = prismic.SharedSlice<
-    'right_content_left_slider_vertical',
-    RightContentLeftSliderVerticalSliceVariation
->
+export type RightContentLeftSliderVerticalSlice = prismic.SharedSlice<'right_content_left_slider_vertical', RightContentLeftSliderVerticalSliceVariation>
 
 /**
  * Item in *Stats → Default → Primary → StatsCollection*
@@ -3381,9 +3112,7 @@ export interface SlicesSliceDefaultPrimary {
      * - **API ID Path**: slices.default.primary.statscollection[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    statscollection: prismic.GroupField<
-        Simplify<SlicesSliceDefaultPrimaryStatscollectionItem>
-    >
+    statscollection: prismic.GroupField<Simplify<SlicesSliceDefaultPrimaryStatscollectionItem>>
 }
 
 /**
@@ -3393,11 +3122,7 @@ export interface SlicesSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type SlicesSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<SlicesSliceDefaultPrimary>,
-    never
->
+export type SlicesSliceDefault = prismic.SharedSliceVariation<'default', Simplify<SlicesSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *Stats*
@@ -3450,9 +3175,7 @@ export interface SymptomsSliceDefaultPrimary {
      * - **API ID Path**: symptoms.default.primary.symptoms_list[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    symptoms_list: prismic.GroupField<
-        Simplify<SymptomsSliceDefaultPrimarySymptomsListItem>
-    >
+    symptoms_list: prismic.GroupField<Simplify<SymptomsSliceDefaultPrimarySymptomsListItem>>
 }
 
 /**
@@ -3462,11 +3185,7 @@ export interface SymptomsSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type SymptomsSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<SymptomsSliceDefaultPrimary>,
-    never
->
+export type SymptomsSliceDefault = prismic.SharedSliceVariation<'default', Simplify<SymptomsSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *Symptoms*
@@ -3480,10 +3199,45 @@ type SymptomsSliceVariation = SymptomsSliceDefault
  * - **Description**: Symptoms
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type SymptomsSlice = prismic.SharedSlice<
-    'symptoms',
-    SymptomsSliceVariation
->
+export type SymptomsSlice = prismic.SharedSlice<'symptoms', SymptomsSliceVariation>
+
+/**
+ * Primary content in *TrialClassForm → Default → Primary*
+ */
+export interface TrialClassFormSliceDefaultPrimary {
+    /**
+     * Title field in *TrialClassForm → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: trial_class_form.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Default variation for TrialClassForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TrialClassFormSliceDefault = prismic.SharedSliceVariation<'default', Simplify<TrialClassFormSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *TrialClassForm*
+ */
+type TrialClassFormSliceVariation = TrialClassFormSliceDefault
+
+/**
+ * TrialClassForm Shared Slice
+ *
+ * - **API ID**: `trial_class_form`
+ * - **Description**: TrialClassForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TrialClassFormSlice = prismic.SharedSlice<'trial_class_form', TrialClassFormSliceVariation>
 
 /**
  * Item in *WorkshopRow → Default → Primary → Row*
@@ -3552,9 +3306,7 @@ export interface UpcomingWorkshopSliceDefaultPrimary {
      * - **API ID Path**: upcoming_workshop.default.primary.row[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    row: prismic.GroupField<
-        Simplify<UpcomingWorkshopSliceDefaultPrimaryRowItem>
-    >
+    row: prismic.GroupField<Simplify<UpcomingWorkshopSliceDefaultPrimaryRowItem>>
 
     /**
      * Button Text field in *WorkshopRow → Default → Primary*
@@ -3584,11 +3336,7 @@ export interface UpcomingWorkshopSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type UpcomingWorkshopSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<UpcomingWorkshopSliceDefaultPrimary>,
-    never
->
+export type UpcomingWorkshopSliceDefault = prismic.SharedSliceVariation<'default', Simplify<UpcomingWorkshopSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *WorkshopRow*
@@ -3602,10 +3350,7 @@ type UpcomingWorkshopSliceVariation = UpcomingWorkshopSliceDefault
  * - **Description**: UpcomingWorkshop
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type UpcomingWorkshopSlice = prismic.SharedSlice<
-    'upcoming_workshop',
-    UpcomingWorkshopSliceVariation
->
+export type UpcomingWorkshopSlice = prismic.SharedSlice<'upcoming_workshop', UpcomingWorkshopSliceVariation>
 
 /**
  * Item in *VideoTestimonials → Default → Primary → Video Links*
@@ -3654,9 +3399,7 @@ export interface VideoTestimonialsSliceDefaultPrimary {
      * - **API ID Path**: video_testimonials.default.primary.video_links[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    video_links: prismic.GroupField<
-        Simplify<VideoTestimonialsSliceDefaultPrimaryVideoLinksItem>
-    >
+    video_links: prismic.GroupField<Simplify<VideoTestimonialsSliceDefaultPrimaryVideoLinksItem>>
 }
 
 /**
@@ -3666,11 +3409,7 @@ export interface VideoTestimonialsSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type VideoTestimonialsSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<VideoTestimonialsSliceDefaultPrimary>,
-    never
->
+export type VideoTestimonialsSliceDefault = prismic.SharedSliceVariation<'default', Simplify<VideoTestimonialsSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *VideoTestimonials*
@@ -3684,10 +3423,7 @@ type VideoTestimonialsSliceVariation = VideoTestimonialsSliceDefault
  * - **Description**: VideoTestimonials
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type VideoTestimonialsSlice = prismic.SharedSlice<
-    'video_testimonials',
-    VideoTestimonialsSliceVariation
->
+export type VideoTestimonialsSlice = prismic.SharedSlice<'video_testimonials', VideoTestimonialsSliceVariation>
 
 /**
  * Item in *WhyJoin → Default → Primary → Content*
@@ -3746,11 +3482,7 @@ export interface WhyJoinSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type WhyJoinSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<WhyJoinSliceDefaultPrimary>,
-    never
->
+export type WhyJoinSliceDefault = prismic.SharedSliceVariation<'default', Simplify<WhyJoinSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *WhyJoin*
@@ -3764,10 +3496,7 @@ type WhyJoinSliceVariation = WhyJoinSliceDefault
  * - **Description**: WhyJoin
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type WhyJoinSlice = prismic.SharedSlice<
-    'why_join',
-    WhyJoinSliceVariation
->
+export type WhyJoinSlice = prismic.SharedSlice<'why_join', WhyJoinSliceVariation>
 
 /**
  * Primary content in *YogaArambha → Default → Primary*
@@ -3831,11 +3560,7 @@ export interface YogaArambhaSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type YogaArambhaSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<YogaArambhaSliceDefaultPrimary>,
-    never
->
+export type YogaArambhaSliceDefault = prismic.SharedSliceVariation<'default', Simplify<YogaArambhaSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *YogaArambha*
@@ -3849,10 +3574,7 @@ type YogaArambhaSliceVariation = YogaArambhaSliceDefault
  * - **Description**: YogaArambha
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type YogaArambhaSlice = prismic.SharedSlice<
-    'yoga_arambha',
-    YogaArambhaSliceVariation
->
+export type YogaArambhaSlice = prismic.SharedSlice<'yoga_arambha', YogaArambhaSliceVariation>
 
 /**
  * Item in *YogaPractices → Default → Primary → List*
@@ -3901,11 +3623,7 @@ export interface YogaPracticesSliceDefaultPrimary {
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type YogaPracticesSliceDefault = prismic.SharedSliceVariation<
-    'default',
-    Simplify<YogaPracticesSliceDefaultPrimary>,
-    never
->
+export type YogaPracticesSliceDefault = prismic.SharedSliceVariation<'default', Simplify<YogaPracticesSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *YogaPractices*
@@ -3919,24 +3637,15 @@ type YogaPracticesSliceVariation = YogaPracticesSliceDefault
  * - **Description**: YogaPractices
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type YogaPracticesSlice = prismic.SharedSlice<
-    'yoga_practices',
-    YogaPracticesSliceVariation
->
+export type YogaPracticesSlice = prismic.SharedSlice<'yoga_practices', YogaPracticesSliceVariation>
 
 declare module '@prismicio/client' {
     interface CreateClient {
-        (
-            repositoryNameOrEndpoint: string,
-            options?: prismic.ClientConfig
-        ): prismic.Client<AllDocumentTypes>
+        (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>
     }
 
     interface CreateWriteClient {
-        (
-            repositoryNameOrEndpoint: string,
-            options: prismic.WriteClientConfig
-        ): prismic.WriteClient<AllDocumentTypes>
+        (repositoryNameOrEndpoint: string, options: prismic.WriteClientConfig): prismic.WriteClient<AllDocumentTypes>
     }
 
     interface CreateMigration {
@@ -4115,6 +3824,10 @@ declare module '@prismicio/client' {
             SymptomsSliceDefaultPrimary,
             SymptomsSliceVariation,
             SymptomsSliceDefault,
+            TrialClassFormSlice,
+            TrialClassFormSliceDefaultPrimary,
+            TrialClassFormSliceVariation,
+            TrialClassFormSliceDefault,
             UpcomingWorkshopSlice,
             UpcomingWorkshopSliceDefaultPrimaryRowItem,
             UpcomingWorkshopSliceDefaultPrimary,

@@ -1,15 +1,7 @@
 'use client'
 import MobileDrawer from '@/components/_header/MobileDrawer'
 import { RenderMenuItems } from '@/components/_header/RenderMenuItems'
-import {
-    Menu,
-    MenuButton,
-    NavContainer,
-    NavLinkButton,
-    Toolbar,
-    TrialButton,
-    TrialAndAuth,
-} from '@/components/_header/styles/Index'
+import { Menu, MenuButton, NavContainer, NavLinkButton, Toolbar, TrialButton, TrialAndAuth } from '@/components/_header/styles/Index'
 import { navItems } from '@/constants/navItems'
 import Logo from '../../../public/images/Logo.png'
 import { AppBar, Box, Button } from '@mui/material'
@@ -24,17 +16,12 @@ import ScrollListener from '@/hooks/ScrollListener'
 
 const Navbar: React.FC = () => {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
-    const [subMenuAnchorEl, setSubMenuAnchorEl] = useState<HTMLElement | null>(
-        null
-    )
+    const [subMenuAnchorEl, setSubMenuAnchorEl] = useState<HTMLElement | null>(null)
     const pathname = usePathname()
     const { navigationVariant, isScrolled } = useThemeStore()
     const { user } = useAuthStore()
 
-    const handleClick = (
-        event: React.MouseEvent<HTMLElement>,
-        children?: unknown[]
-    ) => {
+    const handleClick = (event: React.MouseEvent<HTMLElement>, children?: unknown[]) => {
         setAnchorEl(event.currentTarget)
         if (children) {
             setSubMenuAnchorEl(null)
@@ -61,13 +48,10 @@ const Navbar: React.FC = () => {
         <AppBar
             position="fixed"
             sx={{
-                background: isScrolled
-                    ? '#556940'
-                    : 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)',
+                background: isScrolled ? '#556940' : 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)',
                 boxShadow: 'none',
                 padding: isScrolled ? '10px 20px' : '25px 20px',
-                transition:
-                    'padding 0.5s ease-in-out, background 0.5s ease-in-out',
+                transition: 'padding 0.5s ease-in-out, background 0.5s ease-in-out',
             }}
         >
             <ScrollListener />
@@ -80,13 +64,7 @@ const Navbar: React.FC = () => {
                 >
                     <Link href={'/'} passHref={true}>
                         {' '}
-                        <Image
-                            src={Logo}
-                            alt="athayog logo"
-                            width={67}
-                            height={67}
-                            style={{ width: '100%', height: 'auto' }}
-                        />
+                        <Image src={Logo} alt="athayog logo" width={67} height={67} style={{ width: '100%', height: 'auto' }} />
                     </Link>
                 </Box>
 
@@ -94,17 +72,8 @@ const Navbar: React.FC = () => {
                     {navItems.map(({ label, path, type, children }, index) => {
                         if (type === 'nav') {
                             return (
-                                <Link
-                                    href={path ? path : '/'}
-                                    passHref={true}
-                                    key={index}
-                                >
-                                    <NavLinkButton
-                                        variant="text"
-                                        pathname={pathname}
-                                        path={path ? path : '/'}
-                                        navigationVariant={navigationVariant}
-                                    >
+                                <Link href={path ? path : '/'} passHref={true} key={index}>
+                                    <NavLinkButton variant="text" pathname={pathname} path={path ? path : '/'} navigationVariant={navigationVariant}>
                                         {label}
                                     </NavLinkButton>
                                 </Link>
@@ -112,18 +81,7 @@ const Navbar: React.FC = () => {
                         } else if (type === 'menu' && children) {
                             return (
                                 <React.Fragment key={index}>
-                                    <MenuButton
-                                        variant="text"
-                                        aria-controls={
-                                            anchorEl
-                                                ? `submenu-${index}`
-                                                : undefined
-                                        }
-                                        aria-haspopup="true"
-                                        onClick={(event) =>
-                                            handleClick(event, children)
-                                        }
-                                    >
+                                    <MenuButton variant="text" aria-controls={anchorEl ? `submenu-${index}` : undefined} aria-haspopup="true" onClick={(event) => handleClick(event, children)}>
                                         {label}
                                     </MenuButton>
                                     <Menu
@@ -136,12 +94,7 @@ const Navbar: React.FC = () => {
                                             'aria-labelledby': `submenu-button-${index}`,
                                         }}
                                     >
-                                        {RenderMenuItems(
-                                            children,
-                                            handleClose,
-                                            handleSubMenuClick,
-                                            subMenuAnchorEl
-                                        )}
+                                        {RenderMenuItems(children, handleClose, handleSubMenuClick, subMenuAnchorEl)}
                                     </Menu>
                                 </React.Fragment>
                             )
@@ -167,7 +120,7 @@ const Navbar: React.FC = () => {
                         </Link>
                     )}
 
-                    <Link href={'/login'} passHref={true}>
+                    <Link href={'/trial-classes'} passHref={true}>
                         <TrialButton variant="text">
                             Get a<span>Free Trial</span>
                         </TrialButton>
