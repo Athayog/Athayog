@@ -27,6 +27,15 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "yoga_therapy_price": {
+                            "type": "SharedSlice"
+                        },
+                        "yoga_therapy_info": {
+                            "type": "SharedSlice"
+                        },
+                        "yoga_therapy_hero": {
+                            "type": "SharedSlice"
+                        },
                         "trial_class_form": {
                             "type": "SharedSlice"
                         },

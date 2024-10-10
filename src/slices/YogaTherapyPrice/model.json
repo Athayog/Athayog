@@ -1,0 +1,95 @@
+{
+  "id": "yoga_therapy_price",
+  "type": "SharedSlice",
+  "name": "YogaTherapyPrice",
+  "description": "YogaTherapyPrice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Courses Can Be Handled From Admin Dashboard"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        },
+        "subtitle_highlighted_part": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle Highlighted Part",
+            "placeholder": ""
+          }
+        },
+        "terms_and_conditions": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Terms And Conditions",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "list-item,o-list-item,strong,em,paragraph"
+          }
+        },
+        "courses": {
+          "type": "Group",
+          "config": {
+            "label": "Courses",
+            "repeat": true,
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": ""
+                }
+              },
+              "days": {
+                "type": "Number",
+                "config": {
+                  "label": "Days",
+                  "placeholder": ""
+                }
+              },
+              "information": {
+                "type": "Text",
+                "config": {
+                  "label": "Information",
+                  "placeholder": ""
+                }
+              },
+              "price": {
+                "type": "Number",
+                "config": {
+                  "label": "Price",
+                  "placeholder": ""
+                }
+              },
+              "enabled": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Enabled",
+                  "placeholder_false": "disabled",
+                  "placeholder_true": "enabled",
+                  "default_value": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
