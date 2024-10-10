@@ -244,6 +244,9 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | YogaTherapyPriceSlice
+    | YogaTherapyInfoSlice
+    | YogaTherapyHeroSlice
     | TrialClassFormSlice
     | PrivacySlice
     | ContactUsFormSlice
@@ -3639,6 +3642,256 @@ type YogaPracticesSliceVariation = YogaPracticesSliceDefault
  */
 export type YogaPracticesSlice = prismic.SharedSlice<'yoga_practices', YogaPracticesSliceVariation>
 
+/**
+ * Primary content in *YogaTherapyHero → Default → Primary*
+ */
+export interface YogaTherapyHeroSliceDefaultPrimary {
+    /**
+     * Title field in *YogaTherapyHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *YogaTherapyHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_hero.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Backgroud Image field in *YogaTherapyHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_hero.default.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for YogaTherapyHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaTherapyHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<YogaTherapyHeroSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *YogaTherapyHero*
+ */
+type YogaTherapyHeroSliceVariation = YogaTherapyHeroSliceDefault
+
+/**
+ * YogaTherapyHero Shared Slice
+ *
+ * - **API ID**: `yoga_therapy_hero`
+ * - **Description**: YogaTherapyHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaTherapyHeroSlice = prismic.SharedSlice<'yoga_therapy_hero', YogaTherapyHeroSliceVariation>
+
+/**
+ * Primary content in *YogaTherapyInfo → Default → Primary*
+ */
+export interface YogaTherapyInfoSliceDefaultPrimary {
+    /**
+     * First Content field in *YogaTherapyInfo → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_info.default.primary.first_content
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    first_content: prismic.RichTextField
+
+    /**
+     * Second Title field in *YogaTherapyInfo → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_info.default.primary.second_title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    second_title: prismic.RichTextField
+
+    /**
+     * Second Description field in *YogaTherapyInfo → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_info.default.primary.second_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    second_description: prismic.RichTextField
+}
+
+/**
+ * Default variation for YogaTherapyInfo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaTherapyInfoSliceDefault = prismic.SharedSliceVariation<'default', Simplify<YogaTherapyInfoSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *YogaTherapyInfo*
+ */
+type YogaTherapyInfoSliceVariation = YogaTherapyInfoSliceDefault
+
+/**
+ * YogaTherapyInfo Shared Slice
+ *
+ * - **API ID**: `yoga_therapy_info`
+ * - **Description**: YogaTherapyInfo
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaTherapyInfoSlice = prismic.SharedSlice<'yoga_therapy_info', YogaTherapyInfoSliceVariation>
+
+/**
+ * Item in *YogaTherapyPrice → Default → Primary → Courses*
+ */
+export interface YogaTherapyPriceSliceDefaultPrimaryCoursesItem {
+    /**
+     * Name field in *YogaTherapyPrice → Default → Primary → Courses*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_price.default.primary.courses[].name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    name: prismic.KeyTextField
+
+    /**
+     * Days field in *YogaTherapyPrice → Default → Primary → Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_price.default.primary.courses[].days
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    days: prismic.NumberField
+
+    /**
+     * Information field in *YogaTherapyPrice → Default → Primary → Courses*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_price.default.primary.courses[].information
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    information: prismic.KeyTextField
+
+    /**
+     * Price field in *YogaTherapyPrice → Default → Primary → Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_price.default.primary.courses[].price
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    price: prismic.NumberField
+
+    /**
+     * Enabled field in *YogaTherapyPrice → Default → Primary → Courses*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: yoga_therapy_price.default.primary.courses[].enabled
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    enabled: prismic.BooleanField
+}
+
+/**
+ * Primary content in *YogaTherapyPrice → Default → Primary*
+ */
+export interface YogaTherapyPriceSliceDefaultPrimary {
+    /**
+     * Title field in *YogaTherapyPrice → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Courses Can Be Handled From Admin Dashboard
+     * - **API ID Path**: yoga_therapy_price.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Subtitle field in *YogaTherapyPrice → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_price.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Subtitle Highlighted Part field in *YogaTherapyPrice → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_price.default.primary.subtitle_highlighted_part
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle_highlighted_part: prismic.KeyTextField
+
+    /**
+     * Terms And Conditions field in *YogaTherapyPrice → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_price.default.primary.terms_and_conditions
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    terms_and_conditions: prismic.RichTextField
+
+    /**
+     * Courses field in *YogaTherapyPrice → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_price.default.primary.courses[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    courses: prismic.GroupField<Simplify<YogaTherapyPriceSliceDefaultPrimaryCoursesItem>>
+}
+
+/**
+ * Default variation for YogaTherapyPrice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaTherapyPriceSliceDefault = prismic.SharedSliceVariation<'default', Simplify<YogaTherapyPriceSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *YogaTherapyPrice*
+ */
+type YogaTherapyPriceSliceVariation = YogaTherapyPriceSliceDefault
+
+/**
+ * YogaTherapyPrice Shared Slice
+ *
+ * - **API ID**: `yoga_therapy_price`
+ * - **Description**: YogaTherapyPrice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaTherapyPriceSlice = prismic.SharedSlice<'yoga_therapy_price', YogaTherapyPriceSliceVariation>
+
 declare module '@prismicio/client' {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>
@@ -3852,6 +4105,19 @@ declare module '@prismicio/client' {
             YogaPracticesSliceDefaultPrimary,
             YogaPracticesSliceVariation,
             YogaPracticesSliceDefault,
+            YogaTherapyHeroSlice,
+            YogaTherapyHeroSliceDefaultPrimary,
+            YogaTherapyHeroSliceVariation,
+            YogaTherapyHeroSliceDefault,
+            YogaTherapyInfoSlice,
+            YogaTherapyInfoSliceDefaultPrimary,
+            YogaTherapyInfoSliceVariation,
+            YogaTherapyInfoSliceDefault,
+            YogaTherapyPriceSlice,
+            YogaTherapyPriceSliceDefaultPrimaryCoursesItem,
+            YogaTherapyPriceSliceDefaultPrimary,
+            YogaTherapyPriceSliceVariation,
+            YogaTherapyPriceSliceDefault,
         }
     }
 }

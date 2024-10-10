@@ -12,6 +12,7 @@ export const components = {
     contact_us_hero: dynamic(() => import('./ContactUsHero')),
     enroll_section: dynamic(() => import('./EnrollSection')),
     event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
+    event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
     faq: dynamic(() => import('./Faq')),
     group_class: dynamic(() => import('./GroupClass')),
     group_class_format: dynamic(() => import('./GroupClassFormat')),
@@ -41,4 +42,7 @@ export const components = {
     why_join: dynamic(() => import('./WhyJoin')),
     yoga_arambha: dynamic(() => import('./YogaArambha')),
     yoga_practices: dynamic(() => import('./YogaPractices')),
+    yoga_therapy_hero: dynamic(() => import('./YogaTherapyHero')),
+    yoga_therapy_info: dynamic(() => import('./YogaTherapyInfo')),
+    yoga_therapy_price: dynamic(() => import('./YogaTherapyPrice')),
 }

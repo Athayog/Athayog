@@ -1,0 +1,84 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "trunk",
+				"type": "Text"
+			},
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"value": "sell",
+				"type": "Text"
+			},
+			"subtitle_highlighted_part": {
+				"__TYPE__": "FieldContent",
+				"value": "firm",
+				"type": "Text"
+			},
+			"terms_and_conditions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ad labore anim quis. Ad aliqua Lorem nisi tempor non veniam magna reprehenderit tempor exercitation. Labore magna ea enim irure dolor cupidatat adipisicing ea ad nostrud."
+						}
+					}
+				]
+			},
+			"courses": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "ate",
+									"type": "Text"
+								}
+							],
+							[
+								"days",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "43",
+									"type": "Number"
+								}
+							],
+							[
+								"information",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "movement",
+									"type": "Text"
+								}
+							],
+							[
+								"price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "84",
+									"type": "Number"
+								}
+							],
+							[
+								"enabled",
+								{
+									"__TYPE__": "BooleanContent",
+									"value": false
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
