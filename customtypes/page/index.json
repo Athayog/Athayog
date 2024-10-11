@@ -129,9 +129,6 @@
                         "our_yoga_story": {
                             "type": "SharedSlice"
                         },
-                        "event_highlights_gallery": {
-                            "type": "SharedSlice"
-                        },
                         "upcoming_workshop": {
                             "type": "SharedSlice"
                         },

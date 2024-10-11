@@ -278,7 +278,6 @@ type PageDocumentDataSlicesSlice =
     | FaqSlice
     | YogaArambhaSlice
     | OurYogaStorySlice
-    | EventHighlightsGallerySlice
     | UpcomingWorkshopSlice
     | RightContentLeftSliderVerticalSlice
     | GroupClassSlice
@@ -1201,11 +1200,11 @@ type EnrollSectionSliceVariation = EnrollSectionSliceDefault
 export type EnrollSectionSlice = prismic.SharedSlice<'enroll_section', EnrollSectionSliceVariation>
 
 /**
- * Item in *EventHighlightsGallery → Default → Primary → Albums*
+ * Item in *MultiGallerySlider → Default → Primary → Albums*
  */
 export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
     /**
-     * image field in *EventHighlightsGallery → Default → Primary → Albums*
+     * image field in *MultiGallerySlider → Default → Primary → Albums*
      *
      * - **Field Type**: Link to Media
      * - **Placeholder**: *None*
@@ -1215,7 +1214,7 @@ export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
     image: prismic.LinkToMediaField
 
     /**
-     * Album Name field in *EventHighlightsGallery → Default → Primary → Albums*
+     * Album Name field in *MultiGallerySlider → Default → Primary → Albums*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -1226,11 +1225,11 @@ export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
 }
 
 /**
- * Primary content in *EventHighlightsGallery → Default → Primary*
+ * Primary content in *MultiGallerySlider → Default → Primary*
  */
 export interface EventHighlightsGallerySliceDefaultPrimary {
     /**
-     * Section Title field in *EventHighlightsGallery → Default → Primary*
+     * Section Title field in *MultiGallerySlider → Default → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -1240,7 +1239,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
     section_title: prismic.KeyTextField
 
     /**
-     * Albums field in *EventHighlightsGallery → Default → Primary*
+     * Albums field in *MultiGallerySlider → Default → Primary*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -1250,7 +1249,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
     albums: prismic.GroupField<Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>>
 
     /**
-     * Button Text field in *EventHighlightsGallery → Default → Primary*
+     * Button Text field in *MultiGallerySlider → Default → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -1260,7 +1259,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
     button_text: prismic.KeyTextField
 
     /**
-     * Button Link field in *EventHighlightsGallery → Default → Primary*
+     * Button Link field in *MultiGallerySlider → Default → Primary*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
@@ -1271,7 +1270,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
 }
 
 /**
- * Default variation for EventHighlightsGallery Slice
+ * Default variation for MultiGallerySlider Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -1280,105 +1279,12 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
 export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<'default', Simplify<EventHighlightsGallerySliceDefaultPrimary>, never>
 
 /**
- * Slice variation for *EventHighlightsGallery*
+ * Slice variation for *MultiGallerySlider*
  */
 type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
 
 /**
- * EventHighlightsGallery Shared Slice
- *
- * - **API ID**: `event_highlights_gallery`
- * - **Description**: EventHighlightsGallery
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type EventHighlightsGallerySlice = prismic.SharedSlice<'event_highlights_gallery', EventHighlightsGallerySliceVariation>
-
-/**
- * Item in *EventHighlightsGallery → Default → Primary → Albums*
- */
-export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
-    /**
-     * image field in *EventHighlightsGallery → Default → Primary → Albums*
-     *
-     * - **Field Type**: Link to Media
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.albums[].image
-     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-     */
-    image: prismic.LinkToMediaField
-
-    /**
-     * Album Name field in *EventHighlightsGallery → Default → Primary → Albums*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.albums[].album_name
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    album_name: prismic.KeyTextField
-}
-
-/**
- * Primary content in *EventHighlightsGallery → Default → Primary*
- */
-export interface EventHighlightsGallerySliceDefaultPrimary {
-    /**
-     * Section Title field in *EventHighlightsGallery → Default → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.section_title
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    section_title: prismic.KeyTextField
-
-    /**
-     * Albums field in *EventHighlightsGallery → Default → Primary*
-     *
-     * - **Field Type**: Group
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.albums[]
-     * - **Documentation**: https://prismic.io/docs/field#group
-     */
-    albums: prismic.GroupField<Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>>
-
-    /**
-     * Button Text field in *EventHighlightsGallery → Default → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.button_text
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    button_text: prismic.KeyTextField
-
-    /**
-     * Button Link field in *EventHighlightsGallery → Default → Primary*
-     *
-     * - **Field Type**: Link
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.button_link
-     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-     */
-    button_link: prismic.LinkField
-}
-
-/**
- * Default variation for EventHighlightsGallery Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<'default', Simplify<EventHighlightsGallerySliceDefaultPrimary>, never>
-
-/**
- * Slice variation for *EventHighlightsGallery*
- */
-type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
-
-/**
- * EventHighlightsGallery Shared Slice
+ * MultiGallerySlider Shared Slice
  *
  * - **API ID**: `event_highlights_gallery`
  * - **Description**: EventHighlightsGallery
@@ -4280,11 +4186,6 @@ declare module '@prismicio/client' {
             EnrollSectionSliceDefaultPrimary,
             EnrollSectionSliceVariation,
             EnrollSectionSliceDefault,
-            EventHighlightsGallerySlice,
-            EventHighlightsGallerySliceDefaultPrimaryAlbumsItem,
-            EventHighlightsGallerySliceDefaultPrimary,
-            EventHighlightsGallerySliceVariation,
-            EventHighlightsGallerySliceDefault,
             EventHighlightsGallerySlice,
             EventHighlightsGallerySliceDefaultPrimaryAlbumsItem,
             EventHighlightsGallerySliceDefaultPrimary,
