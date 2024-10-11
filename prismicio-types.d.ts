@@ -358,6 +358,64 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 export type AllDocumentTypes = FooterDocument | PageDocument
 
 /**
+ * Primary content in *AboutUsHero → Default → Primary*
+ */
+export interface AboutUsHeroSliceDefaultPrimary {
+    /**
+     * Title field in *AboutUsHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_us_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *AboutUsHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_us_hero.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Backgroud Image field in *AboutUsHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_us_hero.default.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for AboutUsHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<AboutUsHeroSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *AboutUsHero*
+ */
+type AboutUsHeroSliceVariation = AboutUsHeroSliceDefault
+
+/**
+ * AboutUsHero Shared Slice
+ *
+ * - **API ID**: `about_us_hero`
+ * - **Description**: AboutUsHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsHeroSlice = prismic.SharedSlice<'about_us_hero', AboutUsHeroSliceVariation>
+
+/**
  * Item in *AdvantagesOfPersonalTraining → Default → Primary → Content*
  */
 export interface AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem {
@@ -937,6 +995,108 @@ type ContactUsHeroSliceVariation = ContactUsHeroSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ContactUsHeroSlice = prismic.SharedSlice<'contact_us_hero', ContactUsHeroSliceVariation>
+
+/**
+ * Primary content in *ContentWithImage → Left Content Right Image → Primary*
+ */
+export interface ContentWithImageSliceDefaultPrimary {
+    /**
+     * Title field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Description field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Image field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Left Content Right Image variation for ContentWithImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentWithImageSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ContentWithImageSliceDefaultPrimary>, never>
+
+/**
+ * Primary content in *ContentWithImage → Right Content Left Image → Primary*
+ */
+export interface ContentWithImageSliceRightContentLeftImagePrimary {
+    /**
+     * Title field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Description field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Image field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Right Content Left Image variation for ContentWithImage Slice
+ *
+ * - **API ID**: `rightContentLeftImage`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentWithImageSliceRightContentLeftImage = prismic.SharedSliceVariation<'rightContentLeftImage', Simplify<ContentWithImageSliceRightContentLeftImagePrimary>, never>
+
+/**
+ * Slice variation for *ContentWithImage*
+ */
+type ContentWithImageSliceVariation = ContentWithImageSliceDefault | ContentWithImageSliceRightContentLeftImage
+
+/**
+ * ContentWithImage Shared Slice
+ *
+ * - **API ID**: `content_with_image`
+ * - **Description**: ContentWithImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentWithImageSlice = prismic.SharedSlice<'content_with_image', ContentWithImageSliceVariation>
 
 /**
  * Primary content in *EnrollSection → Default → Primary*
@@ -3069,6 +3229,54 @@ type RightContentLeftSliderVerticalSliceVariation = RightContentLeftSliderVertic
 export type RightContentLeftSliderVerticalSlice = prismic.SharedSlice<'right_content_left_slider_vertical', RightContentLeftSliderVerticalSliceVariation>
 
 /**
+ * Primary content in *SimpleTextBlock → Default → Primary*
+ */
+export interface SimpleTextBlockSliceDefaultPrimary {
+    /**
+     * Content field in *SimpleTextBlock → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_text_block.default.primary.content
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    content: prismic.RichTextField
+
+    /**
+     * Background Color field in *SimpleTextBlock → Default → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_text_block.default.primary.background_color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    background_color: prismic.ColorField
+}
+
+/**
+ * Default variation for SimpleTextBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleTextBlockSliceDefault = prismic.SharedSliceVariation<'default', Simplify<SimpleTextBlockSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *SimpleTextBlock*
+ */
+type SimpleTextBlockSliceVariation = SimpleTextBlockSliceDefault
+
+/**
+ * SimpleTextBlock Shared Slice
+ *
+ * - **API ID**: `simple_text_block`
+ * - **Description**: SimpleTextBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleTextBlockSlice = prismic.SharedSlice<'simple_text_block', SimpleTextBlockSliceVariation>
+
+/**
  * Item in *Stats → Default → Primary → StatsCollection*
  */
 export interface SlicesSliceDefaultPrimaryStatscollectionItem {
@@ -3918,6 +4126,10 @@ declare module '@prismicio/client' {
             PageDocumentData,
             PageDocumentDataSlicesSlice,
             AllDocumentTypes,
+            AboutUsHeroSlice,
+            AboutUsHeroSliceDefaultPrimary,
+            AboutUsHeroSliceVariation,
+            AboutUsHeroSliceDefault,
             AdvantagesOfPersonalTrainingSlice,
             AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem,
             AdvantagesOfPersonalTrainingSliceDefaultPrimary,
@@ -3951,6 +4163,12 @@ declare module '@prismicio/client' {
             ContactUsHeroSliceDefaultPrimary,
             ContactUsHeroSliceVariation,
             ContactUsHeroSliceDefault,
+            ContentWithImageSlice,
+            ContentWithImageSliceDefaultPrimary,
+            ContentWithImageSliceRightContentLeftImagePrimary,
+            ContentWithImageSliceVariation,
+            ContentWithImageSliceDefault,
+            ContentWithImageSliceRightContentLeftImage,
             EnrollSectionSlice,
             EnrollSectionSliceDefaultPrimary,
             EnrollSectionSliceVariation,
@@ -4067,6 +4285,10 @@ declare module '@prismicio/client' {
             RightContentLeftSliderVerticalSliceDefaultPrimary,
             RightContentLeftSliderVerticalSliceVariation,
             RightContentLeftSliderVerticalSliceDefault,
+            SimpleTextBlockSlice,
+            SimpleTextBlockSliceDefaultPrimary,
+            SimpleTextBlockSliceVariation,
+            SimpleTextBlockSliceDefault,
             SlicesSlice,
             SlicesSliceDefaultPrimaryStatscollectionItem,
             SlicesSliceDefaultPrimary,
