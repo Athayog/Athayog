@@ -33,26 +33,27 @@ const AboutUsHero = ({ slice }: AboutUsHeroProps): JSX.Element => {
                         height: '100%',
                         color: '#2A5200',
                         padding: {
-                            xs: '150px 2px',
-                            sm: '200px 10px',
+                            xs: '150px 20px',
+                            sm: '200px 20px',
                             md: '0px 140px',
                         },
                     }}
                 >
                     <Box
                         sx={{
-                            fontSize: { xs: '30px', sm: '40px', md: '54px' },
-                            textAlign: { xs: 'center', sm: 'left', md: 'left' },
+                            fontSize: { xs: '40px', sm: '40px', md: '54px' },
+                            textAlign: { xs: 'left', sm: 'left', md: 'left' },
                             fontWeight: '700',
                             maxWidth: '800px',
                         }}
                     >
                         <Box
                             sx={{
-                                fontSize: { xs: '24px', md: '66px' },
+                                fontSize: { xs: '40px', sm: '40px', md: '54px' },
                                 fontWeight: '700',
                                 textAlign: 'left',
                                 color: '#2A5200',
+                                lineHeight: { xs: '64px', md: '66px' },
                                 '&& p': {
                                     margin: 0,
                                 },
@@ -60,7 +61,16 @@ const AboutUsHero = ({ slice }: AboutUsHeroProps): JSX.Element => {
                         >
                             <PrismicRichText field={slice.primary.title} />
                         </Box>
-                        <Box sx={{ fontSize: '22px', fontWeight: '500' }}>
+                        <Box
+                            sx={{
+                                fontSize: { xs: '23px', md: '44px' },
+                                fontWeight: '500',
+                                lineHeight: { xs: '47px', md: '70px' },
+                                '&& p': {
+                                    margin: 0,
+                                },
+                            }}
+                        >
                             <PrismicRichText field={slice.primary.subtitle} />
                         </Box>
                     </Box>

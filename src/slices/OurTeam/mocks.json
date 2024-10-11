@@ -14,8 +14,10 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Laboris sint reprehenderit est mollit ex quis elit eiusmod veniam in non cupidatat pariatur esse reprehenderit. Velit nostrud enim proident eu deserunt. Dolore aliquip sunt do reprehenderit."
-						}
+							"text": "Our team is a diverse group of young, energetic and dynamic individuals; our journeys stitched together, interweaving on the quest for true Yogic knowledge. A mutual faith in the institution of Yog, guides us onto the path of truth and illuminates the way ahead....",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			},
@@ -42,22 +44,6 @@
 								}
 							],
 							[
-								"employee_details",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Dolor sint nulla dolor quis aDolor sint nulla dolor quis amet proident sint reprehenderit culpa ea ex excepteur ullamco.Dolor sint nulla dolor quis amet proident sint reprehenderit culpa ea ex excepteur ullamco.met proident sint reprehenderit culpa ea ex excepteur ullamco.",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
 								"employee_image",
 								{
 									"origin": {
@@ -81,6 +67,22 @@
 									"alt": null,
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
+								}
+							],
+							[
+								"employee_details",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "one two three four",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
 								}
 							]
 						]
@@ -112,7 +114,7 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "asdasdasdasdasdasdasdasdasdasdaasdDolor sint nulla dolor quis amet proident sint reprehenderit culpa ea ex excepteur ullamco.Dolor sint nulla dolor quis amet proident sint reprehenderit culpa ea ex excepteur ullamco.sd",
+												"text": "Our team is a diverse group of young, energetic and dynamic individuals; our journeys stitched together, interweaving on the quest for true Yogic knowledge. A mutual faith in the institution of Yog, guides us onto the path of truth and illuminates the way ahead....",
 												"spans": []
 											},
 											"direction": "ltr"
@@ -124,16 +126,16 @@
 								"employee_image",
 								{
 									"provider": "imgix",
-									"url": "https://images.unsplash.com/photo-1597589022928-bb4002c099ec?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Mjg2MjQ0MzJ8MA&ixlib=rb-4.0.3&q=85",
-									"alt": "yellow lemon fruit beside green leaves",
+									"url": "https://images.unsplash.com/photo-1618381898514-2b6bcb4f8d40?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxM3x8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzI4NjI0NDMyfDA&ixlib=rb-4.0.3&q=85",
+									"alt": "yellow fruit with blue background",
 									"origin": {
-										"id": "3t8rQ3LD2JI",
-										"url": "https://images.unsplash.com/photo-1597589022928-bb4002c099ec?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Mjg2MjQ0MzJ8MA&ixlib=rb-4.0.3&q=85",
-										"width": 3024,
-										"height": 3024
+										"id": "CFTFkR6ydu0",
+										"url": "https://images.unsplash.com/photo-1618381898514-2b6bcb4f8d40?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxM3x8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzI4NjI0NDMyfDA&ixlib=rb-4.0.3&q=85",
+										"width": 4800,
+										"height": 6000
 									},
-									"width": 3024,
-									"height": 3024,
+									"width": 4800,
+									"height": 6000,
 									"edit": {
 										"background": "transparent",
 										"zoom": 1,

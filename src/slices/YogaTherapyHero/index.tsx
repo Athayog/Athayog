@@ -41,15 +41,18 @@ const YogaTherapyHero = ({ slice }: YogaTherapyHeroProps): JSX.Element => {
                 >
                     <Box
                         sx={{
-                            fontSize: { xs: '30px', sm: '40px', md: '54px' },
-                            textAlign: { xs: 'center', sm: 'right', md: 'right' },
+                            fontSize: { xs: '40px', sm: '40px', md: '54px' },
+                            textAlign: { xs: 'right', sm: 'right', md: 'right' },
+                            lineHeight: { xs: '64px', md: '66px' },
                             fontWeight: '700',
+                            padding: '20px',
                             maxWidth: '800px',
                         }}
                     >
                         <Box
                             sx={{
-                                fontSize: { xs: '24px', md: '66px' },
+                                lineHeight: { xs: '47px', md: '70px' },
+                                fontSize: { xs: '24px', md: '44px' },
                                 fontWeight: '700',
                                 textAlign: 'right',
                                 color: '#3C1C18',

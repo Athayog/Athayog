@@ -2,28 +2,17 @@
 import { Box, Typography } from '@mui/material'
 import { PrismicNextImage } from '@prismicio/next'
 import { PrismicRichText } from '@prismicio/react'
-import { useState, useEffect, useRef } from 'react'
-import gsap from 'gsap'
+import { useState } from 'react'
 import Button from '@/components/elements/button/Index'
 
 export type OurTeamProps = any
 
 const OurTeam = ({ slice }: OurTeamProps): JSX.Element => {
-    const [expanded, setExpanded] = useState<Record<string, boolean>>({})
-    const containerRef = useRef<HTMLDivElement | null>(null)
+    const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
     const handleReadMore = (index: number) => {
-        setExpanded((prev) => ({
-            ...prev,
-            [index]: !prev[index],
-        }))
+        setExpandedIndex(expandedIndex === index ? null : index)
     }
-
-    useEffect(() => {
-        if (containerRef.current) {
-            gsap.fromTo(containerRef.current, { opacity: 0 }, { opacity: 1, duration: 1 })
-        }
-    }, [])
 
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
@@ -35,7 +24,6 @@ const OurTeam = ({ slice }: OurTeamProps): JSX.Element => {
                 }}
             >
                 <Box
-                    ref={containerRef}
                     sx={{
                         display: 'flex',
                         justifyContent: 'center',
@@ -87,16 +75,17 @@ const OurTeam = ({ slice }: OurTeamProps): JSX.Element => {
                             >
                                 <Box
                                     sx={{
-                                        width: { xs: '100%', md: '368px' }, // Explicit square sizing for the box
-                                        height: { xs: '100%', md: '368px' }, // Same height as width to ensure perfect circle
+                                        width: { xs: '300px', md: '368px' }, // Change sizes as necessary
+                                        height: { xs: '300px', md: '368px' }, // Ensure width equals height
                                         overflow: 'hidden',
                                         borderRadius: '50%',
                                         position: 'relative',
+                                        margin: '0 auto',
                                         border: '4px solid transparent',
                                         background: 'linear-gradient(45deg, #F8BCC0, #8CCE5F)',
                                         display: 'flex',
                                         alignItems: 'center',
-                                        justifyContent: 'center', // Centering the image perfectly inside the box
+                                        justifyContent: 'center',
                                     }}
                                 >
                                     <PrismicNextImage
@@ -120,15 +109,15 @@ const OurTeam = ({ slice }: OurTeamProps): JSX.Element => {
 
                                     <Box
                                         sx={{
-                                            maxHeight: expanded[index] ? 'none' : '6.5em',
-                                            overflow: 'hidden',
-                                            textOverflow: 'ellipsis',
                                             fontSize: { xs: '17px', md: '24px' },
                                             fontWeight: '400',
                                             lineHeight: { xs: '29px', md: '49px' },
-                                            wordWrap: 'break-word',
-                                            whiteSpace: 'normal',
-                                            maxWidth: '100%',
+                                            marginTop: '10px',
+                                            overflow: 'hidden',
+                                            maxHeight: expandedIndex === index ? 'none' : '4.5em', // Adjust the maxHeight for 4 lines
+                                            display: '-webkit-box',
+                                            WebkitLineClamp: expandedIndex === index ? 'none' : 4, // Limits to 4 lines when collapsed
+                                            WebkitBoxOrient: 'vertical',
                                         }}
                                     >
                                         <PrismicRichText field={item.employee_details} />
@@ -143,7 +132,7 @@ const OurTeam = ({ slice }: OurTeamProps): JSX.Element => {
                                             marginTop: { xs: '30px', md: '30px' },
                                         }}
                                     >
-                                        {expanded[index] ? 'Read Less' : 'Read More'}
+                                        {expandedIndex === index ? 'Read Less' : 'Read More'}
                                     </Button>
                                 </Box>
                             </Box>
