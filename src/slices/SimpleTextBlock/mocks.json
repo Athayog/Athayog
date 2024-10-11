@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"content": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eu nisi ea excepteur culpa consectetur ullamco do laborum voluptate enim. Aute est nostrud duis nostrud aute excepteur magna aliqua pariatur est exercitation adipisicing occaecat. Laboris id labore et sunt sit eiusmod."
+						}
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#ab4692",
+				"type": "Color"
+			}
+		},
+		"items": []
+	}
+]

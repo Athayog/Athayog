@@ -244,6 +244,10 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | AboutUsHeroSlice
+    | SimpleTextBlockSlice
+    | OurTeamSlice
+    | ContentWithImageSlice
     | YogaTherapyPriceSlice
     | YogaTherapyInfoSlice
     | YogaTherapyHeroSlice
@@ -274,7 +278,6 @@ type PageDocumentDataSlicesSlice =
     | FaqSlice
     | YogaArambhaSlice
     | OurYogaStorySlice
-    | EventHighlightsGallerySlice
     | UpcomingWorkshopSlice
     | RightContentLeftSliderVerticalSlice
     | GroupClassSlice
@@ -356,6 +359,64 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
 
 export type AllDocumentTypes = FooterDocument | PageDocument
+
+/**
+ * Primary content in *AboutUsHero → Default → Primary*
+ */
+export interface AboutUsHeroSliceDefaultPrimary {
+    /**
+     * Title field in *AboutUsHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_us_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *AboutUsHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_us_hero.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Backgroud Image field in *AboutUsHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_us_hero.default.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for AboutUsHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<AboutUsHeroSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *AboutUsHero*
+ */
+type AboutUsHeroSliceVariation = AboutUsHeroSliceDefault
+
+/**
+ * AboutUsHero Shared Slice
+ *
+ * - **API ID**: `about_us_hero`
+ * - **Description**: AboutUsHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsHeroSlice = prismic.SharedSlice<'about_us_hero', AboutUsHeroSliceVariation>
 
 /**
  * Item in *AdvantagesOfPersonalTraining → Default → Primary → Content*
@@ -939,6 +1000,108 @@ type ContactUsHeroSliceVariation = ContactUsHeroSliceDefault
 export type ContactUsHeroSlice = prismic.SharedSlice<'contact_us_hero', ContactUsHeroSliceVariation>
 
 /**
+ * Primary content in *ContentWithImage → Left Content Right Image → Primary*
+ */
+export interface ContentWithImageSliceDefaultPrimary {
+    /**
+     * Title field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Description field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Image field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Left Content Right Image variation for ContentWithImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentWithImageSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ContentWithImageSliceDefaultPrimary>, never>
+
+/**
+ * Primary content in *ContentWithImage → Right Content Left Image → Primary*
+ */
+export interface ContentWithImageSliceRightContentLeftImagePrimary {
+    /**
+     * Title field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Description field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Image field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Right Content Left Image variation for ContentWithImage Slice
+ *
+ * - **API ID**: `rightContentLeftImage`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentWithImageSliceRightContentLeftImage = prismic.SharedSliceVariation<'rightContentLeftImage', Simplify<ContentWithImageSliceRightContentLeftImagePrimary>, never>
+
+/**
+ * Slice variation for *ContentWithImage*
+ */
+type ContentWithImageSliceVariation = ContentWithImageSliceDefault | ContentWithImageSliceRightContentLeftImage
+
+/**
+ * ContentWithImage Shared Slice
+ *
+ * - **API ID**: `content_with_image`
+ * - **Description**: ContentWithImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContentWithImageSlice = prismic.SharedSlice<'content_with_image', ContentWithImageSliceVariation>
+
+/**
  * Primary content in *EnrollSection → Default → Primary*
  */
 export interface EnrollSectionSliceDefaultPrimary {
@@ -1037,11 +1200,11 @@ type EnrollSectionSliceVariation = EnrollSectionSliceDefault
 export type EnrollSectionSlice = prismic.SharedSlice<'enroll_section', EnrollSectionSliceVariation>
 
 /**
- * Item in *EventHighlightsGallery → Default → Primary → Albums*
+ * Item in *MultiGallerySlider → Default → Primary → Albums*
  */
 export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
     /**
-     * image field in *EventHighlightsGallery → Default → Primary → Albums*
+     * image field in *MultiGallerySlider → Default → Primary → Albums*
      *
      * - **Field Type**: Link to Media
      * - **Placeholder**: *None*
@@ -1051,7 +1214,7 @@ export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
     image: prismic.LinkToMediaField
 
     /**
-     * Album Name field in *EventHighlightsGallery → Default → Primary → Albums*
+     * Album Name field in *MultiGallerySlider → Default → Primary → Albums*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -1062,11 +1225,11 @@ export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
 }
 
 /**
- * Primary content in *EventHighlightsGallery → Default → Primary*
+ * Primary content in *MultiGallerySlider → Default → Primary*
  */
 export interface EventHighlightsGallerySliceDefaultPrimary {
     /**
-     * Section Title field in *EventHighlightsGallery → Default → Primary*
+     * Section Title field in *MultiGallerySlider → Default → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -1076,7 +1239,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
     section_title: prismic.KeyTextField
 
     /**
-     * Albums field in *EventHighlightsGallery → Default → Primary*
+     * Albums field in *MultiGallerySlider → Default → Primary*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -1086,7 +1249,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
     albums: prismic.GroupField<Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>>
 
     /**
-     * Button Text field in *EventHighlightsGallery → Default → Primary*
+     * Button Text field in *MultiGallerySlider → Default → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -1096,7 +1259,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
     button_text: prismic.KeyTextField
 
     /**
-     * Button Link field in *EventHighlightsGallery → Default → Primary*
+     * Button Link field in *MultiGallerySlider → Default → Primary*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
@@ -1107,7 +1270,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
 }
 
 /**
- * Default variation for EventHighlightsGallery Slice
+ * Default variation for MultiGallerySlider Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -1116,105 +1279,12 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
 export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<'default', Simplify<EventHighlightsGallerySliceDefaultPrimary>, never>
 
 /**
- * Slice variation for *EventHighlightsGallery*
+ * Slice variation for *MultiGallerySlider*
  */
 type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
 
 /**
- * EventHighlightsGallery Shared Slice
- *
- * - **API ID**: `event_highlights_gallery`
- * - **Description**: EventHighlightsGallery
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type EventHighlightsGallerySlice = prismic.SharedSlice<'event_highlights_gallery', EventHighlightsGallerySliceVariation>
-
-/**
- * Item in *EventHighlightsGallery → Default → Primary → Albums*
- */
-export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
-    /**
-     * image field in *EventHighlightsGallery → Default → Primary → Albums*
-     *
-     * - **Field Type**: Link to Media
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.albums[].image
-     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-     */
-    image: prismic.LinkToMediaField
-
-    /**
-     * Album Name field in *EventHighlightsGallery → Default → Primary → Albums*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.albums[].album_name
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    album_name: prismic.KeyTextField
-}
-
-/**
- * Primary content in *EventHighlightsGallery → Default → Primary*
- */
-export interface EventHighlightsGallerySliceDefaultPrimary {
-    /**
-     * Section Title field in *EventHighlightsGallery → Default → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.section_title
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    section_title: prismic.KeyTextField
-
-    /**
-     * Albums field in *EventHighlightsGallery → Default → Primary*
-     *
-     * - **Field Type**: Group
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.albums[]
-     * - **Documentation**: https://prismic.io/docs/field#group
-     */
-    albums: prismic.GroupField<Simplify<EventHighlightsGallerySliceDefaultPrimaryAlbumsItem>>
-
-    /**
-     * Button Text field in *EventHighlightsGallery → Default → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.button_text
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    button_text: prismic.KeyTextField
-
-    /**
-     * Button Link field in *EventHighlightsGallery → Default → Primary*
-     *
-     * - **Field Type**: Link
-     * - **Placeholder**: *None*
-     * - **API ID Path**: event_highlights_gallery.default.primary.button_link
-     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-     */
-    button_link: prismic.LinkField
-}
-
-/**
- * Default variation for EventHighlightsGallery Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type EventHighlightsGallerySliceDefault = prismic.SharedSliceVariation<'default', Simplify<EventHighlightsGallerySliceDefaultPrimary>, never>
-
-/**
- * Slice variation for *EventHighlightsGallery*
- */
-type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
-
-/**
- * EventHighlightsGallery Shared Slice
+ * MultiGallerySlider Shared Slice
  *
  * - **API ID**: `event_highlights_gallery`
  * - **Description**: EventHighlightsGallery
@@ -2274,6 +2344,109 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
 export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
 
 /**
+ * Item in *OurTeam → Default → Primary → Employee*
+ */
+export interface OurTeamSliceDefaultPrimaryEmployeeItem {
+    /**
+     * Employee Name field in *OurTeam → Default → Primary → Employee*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[].employee_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    employee_name: prismic.KeyTextField
+
+    /**
+     * Employee Designation field in *OurTeam → Default → Primary → Employee*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[].employee_designation
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    employee_designation: prismic.KeyTextField
+
+    /**
+     * Employee Details field in *OurTeam → Default → Primary → Employee*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[].employee_details
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    employee_details: prismic.RichTextField
+
+    /**
+     * Employee Image field in *OurTeam → Default → Primary → Employee*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[].employee_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    employee_image: prismic.ImageField<never>
+}
+
+/**
+ * Primary content in *OurTeam → Default → Primary*
+ */
+export interface OurTeamSliceDefaultPrimary {
+    /**
+     * Title field in *OurTeam → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Description field in *OurTeam → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Employee field in *OurTeam → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    employee: prismic.GroupField<Simplify<OurTeamSliceDefaultPrimaryEmployeeItem>>
+}
+
+/**
+ * Default variation for OurTeam Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurTeamSliceDefault = prismic.SharedSliceVariation<'default', Simplify<OurTeamSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *OurTeam*
+ */
+type OurTeamSliceVariation = OurTeamSliceDefault
+
+/**
+ * OurTeam Shared Slice
+ *
+ * - **API ID**: `our_team`
+ * - **Description**: OurTeam
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurTeamSlice = prismic.SharedSlice<'our_team', OurTeamSliceVariation>
+
+/**
  * Item in *OurYogaStory → Default → Primary → Content*
  */
 export interface OurYogaStorySliceDefaultPrimaryContentItem {
@@ -3067,6 +3240,54 @@ type RightContentLeftSliderVerticalSliceVariation = RightContentLeftSliderVertic
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type RightContentLeftSliderVerticalSlice = prismic.SharedSlice<'right_content_left_slider_vertical', RightContentLeftSliderVerticalSliceVariation>
+
+/**
+ * Primary content in *SimpleTextBlock → Default → Primary*
+ */
+export interface SimpleTextBlockSliceDefaultPrimary {
+    /**
+     * Content field in *SimpleTextBlock → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_text_block.default.primary.content
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    content: prismic.RichTextField
+
+    /**
+     * Background Color field in *SimpleTextBlock → Default → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_text_block.default.primary.background_color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    background_color: prismic.ColorField
+}
+
+/**
+ * Default variation for SimpleTextBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleTextBlockSliceDefault = prismic.SharedSliceVariation<'default', Simplify<SimpleTextBlockSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *SimpleTextBlock*
+ */
+type SimpleTextBlockSliceVariation = SimpleTextBlockSliceDefault
+
+/**
+ * SimpleTextBlock Shared Slice
+ *
+ * - **API ID**: `simple_text_block`
+ * - **Description**: SimpleTextBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleTextBlockSlice = prismic.SharedSlice<'simple_text_block', SimpleTextBlockSliceVariation>
 
 /**
  * Item in *Stats → Default → Primary → StatsCollection*
@@ -3918,6 +4139,10 @@ declare module '@prismicio/client' {
             PageDocumentData,
             PageDocumentDataSlicesSlice,
             AllDocumentTypes,
+            AboutUsHeroSlice,
+            AboutUsHeroSliceDefaultPrimary,
+            AboutUsHeroSliceVariation,
+            AboutUsHeroSliceDefault,
             AdvantagesOfPersonalTrainingSlice,
             AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem,
             AdvantagesOfPersonalTrainingSliceDefaultPrimary,
@@ -3951,15 +4176,16 @@ declare module '@prismicio/client' {
             ContactUsHeroSliceDefaultPrimary,
             ContactUsHeroSliceVariation,
             ContactUsHeroSliceDefault,
+            ContentWithImageSlice,
+            ContentWithImageSliceDefaultPrimary,
+            ContentWithImageSliceRightContentLeftImagePrimary,
+            ContentWithImageSliceVariation,
+            ContentWithImageSliceDefault,
+            ContentWithImageSliceRightContentLeftImage,
             EnrollSectionSlice,
             EnrollSectionSliceDefaultPrimary,
             EnrollSectionSliceVariation,
             EnrollSectionSliceDefault,
-            EventHighlightsGallerySlice,
-            EventHighlightsGallerySliceDefaultPrimaryAlbumsItem,
-            EventHighlightsGallerySliceDefaultPrimary,
-            EventHighlightsGallerySliceVariation,
-            EventHighlightsGallerySliceDefault,
             EventHighlightsGallerySlice,
             EventHighlightsGallerySliceDefaultPrimaryAlbumsItem,
             EventHighlightsGallerySliceDefaultPrimary,
@@ -4020,6 +4246,11 @@ declare module '@prismicio/client' {
             LeftImageRighContentSliceDefaultPrimary,
             LeftImageRighContentSliceVariation,
             LeftImageRighContentSliceDefault,
+            OurTeamSlice,
+            OurTeamSliceDefaultPrimaryEmployeeItem,
+            OurTeamSliceDefaultPrimary,
+            OurTeamSliceVariation,
+            OurTeamSliceDefault,
             OurYogaStorySlice,
             OurYogaStorySliceDefaultPrimaryContentItem,
             OurYogaStorySliceDefaultPrimary,
@@ -4067,6 +4298,10 @@ declare module '@prismicio/client' {
             RightContentLeftSliderVerticalSliceDefaultPrimary,
             RightContentLeftSliderVerticalSliceVariation,
             RightContentLeftSliderVerticalSliceDefault,
+            SimpleTextBlockSlice,
+            SimpleTextBlockSliceDefaultPrimary,
+            SimpleTextBlockSliceVariation,
+            SimpleTextBlockSliceDefault,
             SlicesSlice,
             SlicesSliceDefaultPrimaryStatscollectionItem,
             SlicesSliceDefaultPrimary,

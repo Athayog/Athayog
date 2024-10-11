@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 
 export const components = {
+    about_us_hero: dynamic(() => import('./AboutUsHero')),
     advantages_of_personal_training: dynamic(() => import('./AdvantagesOfPersonalTraining')),
     causes_of_pcos: dynamic(() => import('./CausesOfPcos')),
     class_format: dynamic(() => import('./ClassFormat')),
@@ -10,8 +11,9 @@ export const components = {
     consider_personal_training: dynamic(() => import('./ConsiderPersonalTraining')),
     contact_us_form: dynamic(() => import('./ContactUsForm')),
     contact_us_hero: dynamic(() => import('./ContactUsHero')),
+    content_with_image: dynamic(() => import('./ContentWithImage')),
     enroll_section: dynamic(() => import('./EnrollSection')),
-    event_highlights_gallery: dynamic(() => import('./EventHighlightsGallery')),
+    event_highlights_gallery: dynamic(() => import('./MultiGallerySlider')),
     faq: dynamic(() => import('./Faq')),
     group_class: dynamic(() => import('./GroupClass')),
     group_class_format: dynamic(() => import('./GroupClassFormat')),
@@ -24,6 +26,7 @@ export const components = {
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
     left_content_right_slider_vertical: dynamic(() => import('./LeftContentRightSliderVertical')),
     left_image_righ_content: dynamic(() => import('./LeftImageRighContent')),
+    our_team: dynamic(() => import('./OurTeam')),
     our_yoga_story: dynamic(() => import('./OurYogaStory')),
     pcos_hero: dynamic(() => import('./PcosHero')),
     personal_content: dynamic(() => import('./PersonalContent')),
@@ -33,6 +36,7 @@ export const components = {
     pros_and_cons: dynamic(() => import('./ProsAndCons')),
     recognition: dynamic(() => import('./Recognition')),
     right_content_left_slider_vertical: dynamic(() => import('./RightContentLeftSliderVertical')),
+    simple_text_block: dynamic(() => import('./SimpleTextBlock')),
     slices: dynamic(() => import('./Stats')),
     symptoms: dynamic(() => import('./Symptoms')),
     trial_class_form: dynamic(() => import('./TrialClassForm')),
