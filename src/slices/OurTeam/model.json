@@ -67,13 +67,6 @@
               }
             }
           }
-        },
-        "button_text": {
-          "type": "Text",
-          "config": {
-            "label": "Button Text",
-            "placeholder": ""
-          }
         }
       },
       "items": {}

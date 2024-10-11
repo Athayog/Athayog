@@ -2511,16 +2511,6 @@ export interface OurTeamSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     employee: prismic.GroupField<Simplify<OurTeamSliceDefaultPrimaryEmployeeItem>>
-
-    /**
-     * Button Text field in *OurTeam → Default → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: our_team.default.primary.button_text
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    button_text: prismic.KeyTextField
 }
 
 /**
