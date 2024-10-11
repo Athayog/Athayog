@@ -2434,6 +2434,119 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
 export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
 
 /**
+ * Item in *OurTeam → Default → Primary → Employee*
+ */
+export interface OurTeamSliceDefaultPrimaryEmployeeItem {
+    /**
+     * Employee Name field in *OurTeam → Default → Primary → Employee*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[].employee_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    employee_name: prismic.KeyTextField
+
+    /**
+     * Employee Designation field in *OurTeam → Default → Primary → Employee*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[].employee_designation
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    employee_designation: prismic.KeyTextField
+
+    /**
+     * Employee Details field in *OurTeam → Default → Primary → Employee*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[].employee_details
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    employee_details: prismic.RichTextField
+
+    /**
+     * Employee Image field in *OurTeam → Default → Primary → Employee*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[].employee_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    employee_image: prismic.ImageField<never>
+}
+
+/**
+ * Primary content in *OurTeam → Default → Primary*
+ */
+export interface OurTeamSliceDefaultPrimary {
+    /**
+     * Title field in *OurTeam → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Description field in *OurTeam → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Employee field in *OurTeam → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.employee[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    employee: prismic.GroupField<Simplify<OurTeamSliceDefaultPrimaryEmployeeItem>>
+
+    /**
+     * Button Text field in *OurTeam → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: our_team.default.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    button_text: prismic.KeyTextField
+}
+
+/**
+ * Default variation for OurTeam Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurTeamSliceDefault = prismic.SharedSliceVariation<'default', Simplify<OurTeamSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *OurTeam*
+ */
+type OurTeamSliceVariation = OurTeamSliceDefault
+
+/**
+ * OurTeam Shared Slice
+ *
+ * - **API ID**: `our_team`
+ * - **Description**: OurTeam
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type OurTeamSlice = prismic.SharedSlice<'our_team', OurTeamSliceVariation>
+
+/**
  * Item in *OurYogaStory → Default → Primary → Content*
  */
 export interface OurYogaStorySliceDefaultPrimaryContentItem {
@@ -4238,6 +4351,11 @@ declare module '@prismicio/client' {
             LeftImageRighContentSliceDefaultPrimary,
             LeftImageRighContentSliceVariation,
             LeftImageRighContentSliceDefault,
+            OurTeamSlice,
+            OurTeamSliceDefaultPrimaryEmployeeItem,
+            OurTeamSliceDefaultPrimary,
+            OurTeamSliceVariation,
+            OurTeamSliceDefault,
             OurYogaStorySlice,
             OurYogaStorySliceDefaultPrimaryContentItem,
             OurYogaStorySliceDefaultPrimary,

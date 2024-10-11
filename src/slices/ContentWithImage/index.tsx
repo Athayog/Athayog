@@ -52,7 +52,7 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                                 border: '4px solid transparent', // Transparent border to hold the gradient
                                 background: 'linear-gradient(45deg, #F8BCC0, #8CCE5F)', // Gradient for border
                                 backgroundClip: 'border-box',
-                                padding: '4px', // Padding to ensure the gradient border is visible
+                                padding: '0px', // Padding to ensure the gradient border is visible
                                 '&::before': {
                                     content: '""',
                                     position: 'absolute',
@@ -63,8 +63,22 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                                 },
                             }}
                         >
-                            <Box sx={{ position: 'relative', zIndex: 2 }}>
-                                <PrismicNextImage field={slice.primary.image} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                            <Box
+                                sx={{
+                                    position: 'relative',
+                                    zIndex: 2,
+                                    width: '100%',
+                                    height: '100%',
+                                }}
+                            >
+                                <PrismicNextImage
+                                    field={slice.primary.image}
+                                    style={{
+                                        objectFit: 'cover', // Ensures the image fills the entire container
+                                        width: '100%',
+                                        height: '100%',
+                                    }}
+                                />
                             </Box>
                         </Box>
 
@@ -89,6 +103,7 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                                     color: '#00000',
                                     fontSize: { xs: '17px', md: '26px' },
                                     fontWeight: '400',
+                                    lineHeight: { xs: '29px', md: '49px' },
                                     textAlign: { xs: 'center', md: slice.variation === 'rightContentLeftImage' ? 'right' : 'left' },
                                     marginTop: { xs: '14px', md: '26px' },
                                 }}

@@ -27,6 +27,7 @@ export const components = {
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
     left_content_right_slider_vertical: dynamic(() => import('./LeftContentRightSliderVertical')),
     left_image_righ_content: dynamic(() => import('./LeftImageRighContent')),
+    our_team: dynamic(() => import('./OurTeam')),
     our_yoga_story: dynamic(() => import('./OurYogaStory')),
     pcos_hero: dynamic(() => import('./PcosHero')),
     personal_content: dynamic(() => import('./PersonalContent')),

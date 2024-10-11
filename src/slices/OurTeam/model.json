@@ -1,0 +1,82 @@
+{
+  "id": "our_team",
+  "type": "SharedSlice",
+  "name": "OurTeam",
+  "description": "OurTeam",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,rtl"
+          }
+        },
+        "employee": {
+          "type": "Group",
+          "config": {
+            "label": "Employee",
+            "repeat": true,
+            "fields": {
+              "employee_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Employee Name",
+                  "placeholder": ""
+                }
+              },
+              "employee_designation": {
+                "type": "Text",
+                "config": {
+                  "label": "Employee Designation",
+                  "placeholder": ""
+                }
+              },
+              "employee_details": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Employee Details",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,rtl"
+                }
+              },
+              "employee_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Employee Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
