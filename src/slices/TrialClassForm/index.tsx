@@ -142,7 +142,7 @@ const TrialClassForm = ({ slice }: TrialClassFormProps): JSX.Element => {
                         {/* Health Conditions */}
                         <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Health Conditions</Typography>
                         <FormControl component="fieldset" sx={{ mb: 3 }}>
-                            <Box sx={{ display: 'flex' }}>
+                            <Box sx={{ mb: 3, display: 'flex', flexWrap: 'wrap' }}>
                                 <FormControlLabel
                                     control={
                                         <Checkbox
@@ -179,7 +179,7 @@ const TrialClassForm = ({ slice }: TrialClassFormProps): JSX.Element => {
 
                         {/* How Did You Hear About Us */}
                         <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>How did you hear about us?</Typography>
-                        <FormControl component="fieldset" sx={{ mb: 3 }}>
+                        <FormControl component="fieldset" sx={{ mb: 3, display: 'flex', flexWrap: 'wrap' }}>
                             <RadioGroup name="referralSource" value={formik.values.referralSource} onChange={formik.handleChange} row>
                                 <FormControlLabel value="google" control={<Radio />} label="Google" />
                                 <FormControlLabel value="facebook" control={<Radio />} label="Facebook" />
