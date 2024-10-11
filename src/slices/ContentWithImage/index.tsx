@@ -17,7 +17,7 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
                 sx={{
-                    background: 'linear-gradient(to bottom, #c6f4e2, #dffad1)',
+                    background: '#E7FAE3',
                     height: '100%',
                     padding: { xs: '30px 20px', md: '60px 50px' },
                 }}
