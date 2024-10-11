@@ -27,6 +27,18 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "about_us_hero": {
+                            "type": "SharedSlice"
+                        },
+                        "simple_text_block": {
+                            "type": "SharedSlice"
+                        },
+                        "our_team": {
+                            "type": "SharedSlice"
+                        },
+                        "content_with_image": {
+                            "type": "SharedSlice"
+                        },
                         "yoga_therapy_price": {
                             "type": "SharedSlice"
                         },
@@ -115,9 +127,6 @@
                             "type": "SharedSlice"
                         },
                         "our_yoga_story": {
-                            "type": "SharedSlice"
-                        },
-                        "event_highlights_gallery": {
                             "type": "SharedSlice"
                         },
                         "upcoming_workshop": {
