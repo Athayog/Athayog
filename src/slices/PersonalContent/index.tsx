@@ -25,7 +25,7 @@ const Details = ({
             <Box
                 sx={{
                     color: '#284E01',
-                    fontSize: { xs: '33px', md: '42px' },
+                    fontSize: { xs: '28px', md: '42px' },
                     fontWeight: '700',
                 }}
             >
@@ -56,7 +56,7 @@ const PersonalContent = ({ slice }: PersonalContentProps): JSX.Element => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: { xs: '20px', md: '60px 130px' },
+                    padding: { xs: '20px 10px', md: '60px 130px' },
                     gap: '50px',
                 }}
             >
