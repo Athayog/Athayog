@@ -101,7 +101,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
                                 textAlign: { xs: 'left', md: 'left' }, // Center content on mobile
                                 display: 'flex',
                                 flexDirection: 'column',
-                                padding: { xs: '20px', md: '0px' },
+                                padding: { xs: '20px', md: '20px' },
                                 height: '100%',
                             }}
                         >

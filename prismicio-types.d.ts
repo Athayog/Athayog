@@ -244,6 +244,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | CallToActionSlice
     | MultiLeftRightInfoSectionSlice
     | EventHighlightsGallerySlice
     | HeroWithCenterTextSlice
