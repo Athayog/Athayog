@@ -244,6 +244,9 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | MultiLeftRightInfoSectionSlice
+    | EventHighlightsGallerySlice
+    | HeroWithCenterTextSlice
     | AboutUsHeroSlice
     | SimpleTextBlockSlice
     | OurTeamSlice
@@ -500,6 +503,119 @@ type AdvantagesOfPersonalTrainingSliceVariation = AdvantagesOfPersonalTrainingSl
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AdvantagesOfPersonalTrainingSlice = prismic.SharedSlice<'advantages_of_personal_training', AdvantagesOfPersonalTrainingSliceVariation>
+
+/**
+ * Item in *CallToAction → Default → Primary → Background Color*
+ */
+export interface CallToActionSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *CallToAction → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *CallToAction → Default → Primary*
+ */
+export interface CallToActionSliceDefaultPrimary {
+    /**
+     * Title field in *CallToAction → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Image field in *CallToAction → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.default.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+
+    /**
+     * CTA Title field in *CallToAction → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.default.primary.cta_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    cta_title: prismic.KeyTextField
+
+    /**
+     * CTA Info field in *CallToAction → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.default.primary.cta_info
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    cta_info: prismic.RichTextField
+
+    /**
+     * Button Text field in *CallToAction → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.default.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    button_text: prismic.KeyTextField
+
+    /**
+     * Button Link field in *CallToAction → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.default.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button_link: prismic.LinkField
+
+    /**
+     * Background Color field in *CallToAction → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<CallToActionSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for CallToAction Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSliceDefault = prismic.SharedSliceVariation<'default', Simplify<CallToActionSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *CallToAction*
+ */
+type CallToActionSliceVariation = CallToActionSliceDefault
+
+/**
+ * CallToAction Shared Slice
+ *
+ * - **API ID**: `call_to_action`
+ * - **Description**: CallToAction
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSlice = prismic.SharedSlice<'call_to_action', CallToActionSliceVariation>
 
 /**
  * Item in *CausesOfPcos → Default → Primary → Causes*
@@ -2002,6 +2118,54 @@ type HeroSliceVariation = HeroSliceDefault
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>
 
 /**
+ * Primary content in *HeroWithCenterText → Default → Primary*
+ */
+export interface HeroWithCenterTextSliceDefaultPrimary {
+    /**
+     * Backgroud Image field in *HeroWithCenterText → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_with_center_text.default.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Title field in *HeroWithCenterText → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_with_center_text.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+}
+
+/**
+ * Default variation for HeroWithCenterText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroWithCenterTextSliceDefault = prismic.SharedSliceVariation<'default', Simplify<HeroWithCenterTextSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *HeroWithCenterText*
+ */
+type HeroWithCenterTextSliceVariation = HeroWithCenterTextSliceDefault
+
+/**
+ * HeroWithCenterText Shared Slice
+ *
+ * - **API ID**: `hero_with_center_text`
+ * - **Description**: HeroWithCenterText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroWithCenterTextSlice = prismic.SharedSlice<'hero_with_center_text', HeroWithCenterTextSliceVariation>
+
+/**
  * Item in *HowYogaHelps → Default → Primary → Content*
  */
 export interface HowYogaHelpsSliceDefaultPrimaryContentItem {
@@ -2342,6 +2506,114 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
+
+/**
+ * Item in *MultiLeftRightInfoSection → Default → Primary → Content*
+ */
+export interface MultiLeftRightInfoSectionSliceDefaultPrimaryContentItem {
+    /**
+     * Title field in *MultiLeftRightInfoSection → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_info_section.default.primary.content[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Description field in *MultiLeftRightInfoSection → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_info_section.default.primary.content[].description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Image field in *MultiLeftRightInfoSection → Default → Primary → Content*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_info_section.default.primary.content[].image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Item in *MultiLeftRightInfoSection → Default → Primary → Background Color*
+ */
+export interface MultiLeftRightInfoSectionSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * Color field in *MultiLeftRightInfoSection → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_info_section.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *MultiLeftRightInfoSection → Default → Primary*
+ */
+export interface MultiLeftRightInfoSectionSliceDefaultPrimary {
+    /**
+     * Title field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_info_section.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Content field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_info_section.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<Simplify<MultiLeftRightInfoSectionSliceDefaultPrimaryContentItem>>
+
+    /**
+     * Background Color field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_info_section.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<MultiLeftRightInfoSectionSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for MultiLeftRightInfoSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MultiLeftRightInfoSectionSliceDefault = prismic.SharedSliceVariation<'default', Simplify<MultiLeftRightInfoSectionSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *MultiLeftRightInfoSection*
+ */
+type MultiLeftRightInfoSectionSliceVariation = MultiLeftRightInfoSectionSliceDefault
+
+/**
+ * MultiLeftRightInfoSection Shared Slice
+ *
+ * - **API ID**: `multi_left_right_info_section`
+ * - **Description**: MultiLeftRightInfoSection
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MultiLeftRightInfoSectionSlice = prismic.SharedSlice<'multi_left_right_info_section', MultiLeftRightInfoSectionSliceVariation>
 
 /**
  * Item in *OurTeam → Default → Primary → Employee*
@@ -4148,6 +4420,11 @@ declare module '@prismicio/client' {
             AdvantagesOfPersonalTrainingSliceDefaultPrimary,
             AdvantagesOfPersonalTrainingSliceVariation,
             AdvantagesOfPersonalTrainingSliceDefault,
+            CallToActionSlice,
+            CallToActionSliceDefaultPrimaryBackgroundColorItem,
+            CallToActionSliceDefaultPrimary,
+            CallToActionSliceVariation,
+            CallToActionSliceDefault,
             CausesOfPcosSlice,
             CausesOfPcosSliceDefaultPrimaryCausesItem,
             CausesOfPcosSliceDefaultPrimary,
@@ -4228,6 +4505,10 @@ declare module '@prismicio/client' {
             HeroSliceDefaultPrimary,
             HeroSliceVariation,
             HeroSliceDefault,
+            HeroWithCenterTextSlice,
+            HeroWithCenterTextSliceDefaultPrimary,
+            HeroWithCenterTextSliceVariation,
+            HeroWithCenterTextSliceDefault,
             HowYogaHelpsSlice,
             HowYogaHelpsSliceDefaultPrimaryContentItem,
             HowYogaHelpsSliceDefaultPrimary,
@@ -4246,6 +4527,12 @@ declare module '@prismicio/client' {
             LeftImageRighContentSliceDefaultPrimary,
             LeftImageRighContentSliceVariation,
             LeftImageRighContentSliceDefault,
+            MultiLeftRightInfoSectionSlice,
+            MultiLeftRightInfoSectionSliceDefaultPrimaryContentItem,
+            MultiLeftRightInfoSectionSliceDefaultPrimaryBackgroundColorItem,
+            MultiLeftRightInfoSectionSliceDefaultPrimary,
+            MultiLeftRightInfoSectionSliceVariation,
+            MultiLeftRightInfoSectionSliceDefault,
             OurTeamSlice,
             OurTeamSliceDefaultPrimaryEmployeeItem,
             OurTeamSliceDefaultPrimary,
