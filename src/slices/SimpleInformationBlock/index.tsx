@@ -1,7 +1,6 @@
 import { backgroundColorExtract } from '@/utils/color'
-import { Box, Typography } from '@mui/material'
-import { RichTextField } from '@prismicio/client'
-import { Content } from '@prismicio/client'
+import { Box } from '@mui/material'
+import { Content, RichTextField } from '@prismicio/client'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 
 /**
@@ -43,7 +42,7 @@ const PersonalContent = ({ slice }: PersonalContentProps): JSX.Element => {
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
                 sx={{
-                    background: backgroundGradient(),
+                    background: backgroundGradient,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
