@@ -42,7 +42,7 @@ const PersonalContent = ({ slice }: PersonalContentProps): JSX.Element => {
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
                 sx={{
-                    background: backgroundGradient(),
+                    background: backgroundGradient,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',

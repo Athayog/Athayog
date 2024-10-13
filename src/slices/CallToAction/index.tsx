@@ -19,7 +19,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
                 sx={{
-                    background: backgroundGradient(),
+                    background: backgroundGradient,
                     height: '100%',
                     padding: { xs: '30px 20px', md: '60px 50px' },
                 }}

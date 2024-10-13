@@ -1,4 +1,6 @@
-export const backgroundColorExtract = (colors: string[]) => {
+import { ColorField } from '@prismicio/client'
+
+export const backgroundColorExtract = (colors: ColorField[]) => {
     if (colors.length === 1) {
         return colors[0] // Single color background
     } else if (colors.length > 1) {
