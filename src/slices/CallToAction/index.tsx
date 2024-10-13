@@ -1,4 +1,5 @@
 import Button from '@/components/elements/button/Index'
+import { backgroundColorExtract } from '@/utils/color'
 import { Box, Typography } from '@mui/material'
 import { Content } from '@prismicio/client'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
@@ -13,16 +14,7 @@ export type CallToActionProps = SliceComponentProps<Content.CallToActionSlice>
  * Component for "CallToAction" Slices.
  */
 const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
-    const backgroundColorExtract = slice.primary.background_color.map((item) => item.color)
-    const backgroundGradient = () => {
-        if (backgroundColorExtract.length === 1) {
-            return backgroundColorExtract[0] // Single color background
-        } else if (backgroundColorExtract.length > 1) {
-            return `linear-gradient(to bottom, ${backgroundColorExtract.join(', ')})`
-        } else {
-            return '#ffffff' // Fallback to a default background color if no colors are provided
-        }
-    }
+    const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box

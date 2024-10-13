@@ -40,6 +40,24 @@
 						]
 					}
 				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#4466fe",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []

@@ -619,6 +619,74 @@ type CallToActionSliceVariation = CallToActionSliceDefault
 export type CallToActionSlice = prismic.SharedSlice<'call_to_action', CallToActionSliceVariation>
 
 /**
+ * Primary content in *CareerHero → Default → Primary*
+ */
+export interface CareerHeroSliceDefaultPrimary {
+    /**
+     * Title field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Button Text field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    button_text: prismic.KeyTextField
+
+    /**
+     * Background Image field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.background_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    background_image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for CareerHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CareerHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<CareerHeroSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *CareerHero*
+ */
+type CareerHeroSliceVariation = CareerHeroSliceDefault
+
+/**
+ * CareerHero Shared Slice
+ *
+ * - **API ID**: `career_hero`
+ * - **Description**: CareerHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CareerHeroSlice = prismic.SharedSlice<'career_hero', CareerHeroSliceVariation>
+
+/**
  * Item in *CausesOfPcos → Default → Primary → Causes*
  */
 export interface CausesOfPcosSliceDefaultPrimaryCausesItem {
@@ -2141,6 +2209,26 @@ export interface HeroWithCenterTextSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#rich-text-title
      */
     title: prismic.RichTextField
+
+    /**
+     * Text Color field in *HeroWithCenterText → Default → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_with_center_text.default.primary.text_color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    text_color: prismic.ColorField
+
+    /**
+     * BlurHash field in *HeroWithCenterText → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_with_center_text.default.primary.blurhash
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    blurhash: prismic.KeyTextField
 }
 
 /**
@@ -2891,11 +2979,11 @@ type PcosHeroSliceVariation = PcosHeroSliceDefault
 export type PcosHeroSlice = prismic.SharedSlice<'pcos_hero', PcosHeroSliceVariation>
 
 /**
- * Item in *PersonalContent → Default → Primary → Content*
+ * Item in *SimpleInformationBlock → Default → Primary → Content*
  */
 export interface PersonalContentSliceDefaultPrimaryContentItem {
     /**
-     * Title field in *PersonalContent → Default → Primary → Content*
+     * Title field in *SimpleInformationBlock → Default → Primary → Content*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
@@ -2905,7 +2993,7 @@ export interface PersonalContentSliceDefaultPrimaryContentItem {
     title: prismic.RichTextField
 
     /**
-     * Description field in *PersonalContent → Default → Primary → Content*
+     * Description field in *SimpleInformationBlock → Default → Primary → Content*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
@@ -2916,11 +3004,26 @@ export interface PersonalContentSliceDefaultPrimaryContentItem {
 }
 
 /**
- * Primary content in *PersonalContent → Default → Primary*
+ * Item in *SimpleInformationBlock → Default → Primary → Background Color*
+ */
+export interface PersonalContentSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *SimpleInformationBlock → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_content.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *SimpleInformationBlock → Default → Primary*
  */
 export interface PersonalContentSliceDefaultPrimary {
     /**
-     * Content field in *PersonalContent → Default → Primary*
+     * Content field in *SimpleInformationBlock → Default → Primary*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -2928,10 +3031,20 @@ export interface PersonalContentSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     content: prismic.GroupField<Simplify<PersonalContentSliceDefaultPrimaryContentItem>>
+
+    /**
+     * Background Color field in *SimpleInformationBlock → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_content.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<PersonalContentSliceDefaultPrimaryBackgroundColorItem>>
 }
 
 /**
- * Default variation for PersonalContent Slice
+ * Default variation for SimpleInformationBlock Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -2940,12 +3053,12 @@ export interface PersonalContentSliceDefaultPrimary {
 export type PersonalContentSliceDefault = prismic.SharedSliceVariation<'default', Simplify<PersonalContentSliceDefaultPrimary>, never>
 
 /**
- * Slice variation for *PersonalContent*
+ * Slice variation for *SimpleInformationBlock*
  */
 type PersonalContentSliceVariation = PersonalContentSliceDefault
 
 /**
- * PersonalContent Shared Slice
+ * SimpleInformationBlock Shared Slice
  *
  * - **API ID**: `personal_content`
  * - **Description**: PersonalContent
@@ -4426,6 +4539,10 @@ declare module '@prismicio/client' {
             CallToActionSliceDefaultPrimary,
             CallToActionSliceVariation,
             CallToActionSliceDefault,
+            CareerHeroSlice,
+            CareerHeroSliceDefaultPrimary,
+            CareerHeroSliceVariation,
+            CareerHeroSliceDefault,
             CausesOfPcosSlice,
             CausesOfPcosSliceDefaultPrimaryCausesItem,
             CausesOfPcosSliceDefaultPrimary,
@@ -4550,6 +4667,7 @@ declare module '@prismicio/client' {
             PcosHeroSliceDefault,
             PersonalContentSlice,
             PersonalContentSliceDefaultPrimaryContentItem,
+            PersonalContentSliceDefaultPrimaryBackgroundColorItem,
             PersonalContentSliceDefaultPrimary,
             PersonalContentSliceVariation,
             PersonalContentSliceDefault,
