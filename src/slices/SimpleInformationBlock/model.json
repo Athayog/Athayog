@@ -1,7 +1,7 @@
 {
   "id": "personal_content",
   "type": "SharedSlice",
-  "name": "PersonalContent",
+  "name": "SimpleInformationBlock",
   "description": "PersonalContent",
   "variations": [
     {
@@ -34,6 +34,22 @@
                   "placeholder": "",
                   "allowTargetBlank": true,
                   "multi": "heading2,heading3,heading4,heading5,heading6,strong,em,paragraph"
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "color",
+                  "placeholder": ""
                 }
               }
             }

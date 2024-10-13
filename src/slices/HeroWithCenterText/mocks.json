@@ -38,6 +38,16 @@
 						"direction": "ltr"
 					}
 				]
+			},
+			"text_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#bddee7",
+				"type": "Color"
+			},
+			"blurhash": {
+				"__TYPE__": "FieldContent",
+				"value": "freedom",
+				"type": "Text"
 			}
 		},
 		"items": []
