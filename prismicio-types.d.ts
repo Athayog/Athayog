@@ -3640,6 +3640,29 @@ type RightContentLeftSliderVerticalSliceVariation = RightContentLeftSliderVertic
 export type RightContentLeftSliderVerticalSlice = prismic.SharedSlice<'right_content_left_slider_vertical', RightContentLeftSliderVerticalSliceVariation>
 
 /**
+ * Default variation for SimpleGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleGridSliceDefault = prismic.SharedSliceVariation<'default', Record<string, never>, never>
+
+/**
+ * Slice variation for *SimpleGrid*
+ */
+type SimpleGridSliceVariation = SimpleGridSliceDefault
+
+/**
+ * SimpleGrid Shared Slice
+ *
+ * - **API ID**: `simple_grid`
+ * - **Description**: SimpleGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleGridSlice = prismic.SharedSlice<'simple_grid', SimpleGridSliceVariation>
+
+/**
  * Primary content in *SimpleTextBlock → Default → Primary*
  */
 export interface SimpleTextBlockSliceDefaultPrimary {
@@ -4804,6 +4827,9 @@ declare module '@prismicio/client' {
             RightContentLeftSliderVerticalSliceDefaultPrimary,
             RightContentLeftSliderVerticalSliceVariation,
             RightContentLeftSliderVerticalSliceDefault,
+            SimpleGridSlice,
+            SimpleGridSliceVariation,
+            SimpleGridSliceDefault,
             SimpleTextBlockSlice,
             SimpleTextBlockSliceDefaultPrimary,
             SimpleTextBlockSliceVariation,

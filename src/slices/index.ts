@@ -40,6 +40,7 @@ export const components = {
     pros_and_cons: dynamic(() => import('./ProsAndCons')),
     recognition: dynamic(() => import('./Recognition')),
     right_content_left_slider_vertical: dynamic(() => import('./RightContentLeftSliderVertical')),
+    simple_grid: dynamic(() => import('./SimpleGrid')),
     simple_text_block: dynamic(() => import('./SimpleTextBlock')),
     slices: dynamic(() => import('./Stats')),
     symptoms: dynamic(() => import('./Symptoms')),
