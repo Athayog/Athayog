@@ -76,6 +76,28 @@
             "placeholder_true": "Right",
             "default_value": true
           }
+        },
+        "description_alignment_on_mobile": {
+          "type": "Boolean",
+          "config": {
+            "label": "Description Alignment On Mobile",
+            "placeholder_false": "left",
+            "placeholder_true": "center",
+            "default_value": true
+          }
+        },
+        "description_alignment_on_desktop": {
+          "type": "Select",
+          "config": {
+            "label": "Description Alignment On Desktop",
+            "placeholder": "",
+            "options": [
+              "Align To Left",
+              "Align To Right",
+              "Align To Opposite of Image"
+            ],
+            "default_value": "Align To Left"
+          }
         }
       },
       "items": {}

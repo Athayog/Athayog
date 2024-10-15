@@ -156,6 +156,15 @@
 			"starting_direction": {
 				"__TYPE__": "BooleanContent",
 				"value": true
+			},
+			"description_alignment_on_mobile": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"description_alignment_on_desktop": {
+				"__TYPE__": "FieldContent",
+				"value": "Align To Left",
+				"type": "Select"
 			}
 		},
 		"items": []

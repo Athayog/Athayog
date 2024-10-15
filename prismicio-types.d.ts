@@ -2691,6 +2691,28 @@ export interface MultiLeftRightInfoSectionSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#boolean
      */
     starting_direction: prismic.BooleanField
+
+    /**
+     * Description Alignment On Mobile field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: multi_left_right_info_section.default.primary.description_alignment_on_mobile
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    description_alignment_on_mobile: prismic.BooleanField
+
+    /**
+     * Description Alignment On Desktop field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **Default Value**: Align To Left
+     * - **API ID Path**: multi_left_right_info_section.default.primary.description_alignment_on_desktop
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    description_alignment_on_desktop: prismic.SelectField<'Align To Left' | 'Align To Right' | 'Align To Opposite of Image', 'filled'>
 }
 
 /**
