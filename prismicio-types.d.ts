@@ -244,6 +244,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | WeightLossHeroSlice
     | CallToActionSlice
     | MultiLeftRightInfoSectionSlice
     | EventHighlightsGallerySlice
@@ -2679,6 +2680,17 @@ export interface MultiLeftRightInfoSectionSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     background_color: prismic.GroupField<Simplify<MultiLeftRightInfoSectionSliceDefaultPrimaryBackgroundColorItem>>
+
+    /**
+     * Starting Direction field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: multi_left_right_info_section.default.primary.starting_direction
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    starting_direction: prismic.BooleanField
 }
 
 /**
@@ -4036,6 +4048,94 @@ type VideoTestimonialsSliceVariation = VideoTestimonialsSliceDefault
 export type VideoTestimonialsSlice = prismic.SharedSlice<'video_testimonials', VideoTestimonialsSliceVariation>
 
 /**
+ * Primary content in *WeightLossHero → Default → Primary*
+ */
+export interface WeightLossHeroSliceDefaultPrimary {
+    /**
+     * Title field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Button Link field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button_link: prismic.LinkField
+
+    /**
+     * Background Image field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.background_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    background_image: prismic.ImageField<never>
+
+    /**
+     * Backgroud Image blurhash field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.backgroud_image_blurhash
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    backgroud_image_blurhash: prismic.KeyTextField
+
+    /**
+     * Person Image field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.person_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    person_image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for WeightLossHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<WeightLossHeroSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *WeightLossHero*
+ */
+type WeightLossHeroSliceVariation = WeightLossHeroSliceDefault
+
+/**
+ * WeightLossHero Shared Slice
+ *
+ * - **API ID**: `weight_loss_hero`
+ * - **Description**: WeightLossHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossHeroSlice = prismic.SharedSlice<'weight_loss_hero', WeightLossHeroSliceVariation>
+
+/**
  * Item in *WhyJoin → Default → Primary → Content*
  */
 export interface WhyJoinSliceDefaultPrimaryContentItem {
@@ -4732,6 +4832,10 @@ declare module '@prismicio/client' {
             VideoTestimonialsSliceDefaultPrimary,
             VideoTestimonialsSliceVariation,
             VideoTestimonialsSliceDefault,
+            WeightLossHeroSlice,
+            WeightLossHeroSliceDefaultPrimary,
+            WeightLossHeroSliceVariation,
+            WeightLossHeroSliceDefault,
             WhyJoinSlice,
             WhyJoinSliceDefaultPrimaryContentItem,
             WhyJoinSliceDefaultPrimary,

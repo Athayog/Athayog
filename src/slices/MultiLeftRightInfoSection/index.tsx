@@ -52,7 +52,7 @@ const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): J
                                 key={item.title}
                                 sx={{
                                     display: 'flex',
-                                    flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' },
+                                    flexDirection: { xs: 'column', md: slice.primary.starting_direction ? (index % 2 === 0 ? 'row-reverse' : 'row') : index % 2 === 0 ? 'row' : 'row-reverse' },
                                     alignItems: 'center',
                                     justifyContent: 'space-between', // Ensures spacing between content
                                     mb: { xs: '10px', md: '100px' },

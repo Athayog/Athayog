@@ -67,6 +67,15 @@
               }
             }
           }
+        },
+        "starting_direction": {
+          "type": "Boolean",
+          "config": {
+            "label": "Starting Direction",
+            "placeholder_false": "Left",
+            "placeholder_true": "Right",
+            "default_value": true
+          }
         }
       },
       "items": {}
