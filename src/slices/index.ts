@@ -44,6 +44,7 @@ export const components = {
     simple_text_block: dynamic(() => import('./SimpleTextBlock')),
     slices: dynamic(() => import('./Stats')),
     symptoms: dynamic(() => import('./Symptoms')),
+    testimonials: dynamic(() => import('./Testimonials')),
     trial_class_form: dynamic(() => import('./TrialClassForm')),
     upcoming_workshop: dynamic(() => import('./WorkshopRow')),
     video_testimonials: dynamic(() => import('./VideoTestimonials')),

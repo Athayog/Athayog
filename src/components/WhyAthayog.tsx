@@ -5,15 +5,12 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import React, { Key, useRef, useState } from 'react'
 import ArrowLeft from '/public/images/home/ArrowLeft.svg'
-import { Navigation, Pagination } from 'swiper/modules'
 import ArrowRight from '/public/images/home/ArrowRight.svg'
+import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material'
 import { Box, IconButton, Skeleton, Typography, styled } from '@mui/material'
-import {
-    SectionContent,
-    SectionPadding,
-} from '@/components/_shared/SectionContainer'
+import { SectionContent, SectionPadding } from '@/components/_shared/SectionContainer'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 import { LayoutContainer } from '@/components/_shared/LayoutContainer'
 
@@ -150,22 +147,11 @@ const AthayogSwiper = styled(Box)(({ theme }) => ({
 
 const SwiperSkeleton = () => (
     <Box sx={{ borderRadius: '270px', height: '500px', width: '436px' }}>
-        <Skeleton
-            variant="rectangular"
-            width="100%"
-            height="100%"
-            sx={{ borderRadius: '270px', width: '436px' }}
-        />
+        <Skeleton variant="rectangular" width="100%" height="100%" sx={{ borderRadius: '270px', width: '436px' }} />
     </Box>
 )
 
-const WhyAthayog = ({
-    title,
-    content,
-}: {
-    title: string | null
-    content: any
-}) => {
+const WhyAthayog = ({ title, content }: { title: string | null; content: any }) => {
     const swiperRef = useRef<SwiperRef>(null)
     const [isLoading, setIsLoading] = useState(true)
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0) // Track current slide index
@@ -175,9 +161,7 @@ const WhyAthayog = ({
         setIsLoading(false) // Hide skeleton loader once Swiper is initialized
     }
 
-    const images = content.map(
-        (image: { slider_image: any }) => image.slider_image
-    )
+    const images = content.map((image: { slider_image: any }) => image.slider_image)
 
     // Handle slide change event
     const handleSlideChange = (swiper: any) => {
@@ -193,30 +177,15 @@ const WhyAthayog = ({
                             <Title>{title}</Title>
                             <Box>
                                 {/* Update title and description dynamically based on current slide index */}
-                                <Subtitle>
-                                    {content[currentSlideIndex]?.content_title}
-                                </Subtitle>
-                                <Description>
-                                    {
-                                        content[currentSlideIndex]
-                                            ?.content_description
-                                    }
-                                </Description>
+                                <Subtitle>{content[currentSlideIndex]?.content_title}</Subtitle>
+                                <Description>{content[currentSlideIndex]?.content_description}</Description>
                             </Box>
 
                             <ButtonGroup>
-                                <StyledIconButton
-                                    onClick={() =>
-                                        swiperRef?.current?.swiper.slidePrev()
-                                    }
-                                >
+                                <StyledIconButton onClick={() => swiperRef?.current?.swiper.slidePrev()}>
                                     <ArrowBackIos />
                                 </StyledIconButton>
-                                <StyledIconButton
-                                    onClick={() =>
-                                        swiperRef?.current?.swiper.slideNext()
-                                    }
-                                >
+                                <StyledIconButton onClick={() => swiperRef?.current?.swiper.slideNext()}>
                                     <ArrowForwardIos />
                                 </StyledIconButton>
                             </ButtonGroup>
@@ -236,47 +205,30 @@ const WhyAthayog = ({
                                 onSlideChange={handleSlideChange} // Listen for slide changes
                                 ref={swiperRef}
                                 className="swiper-why"
-                                style={
-                                    isLoading
-                                        ? { display: 'none' }
-                                        : { display: 'flex' }
-                                }
+                                style={isLoading ? { display: 'none' } : { display: 'flex' }}
                             >
-                                {images.map(
-                                    (
-                                        images: { url: string | StaticImport },
-                                        index: Key | null | undefined
-                                    ) => (
-                                        <SwiperSlide key={index}>
-                                            <SwiperImageBox>
-                                                <Image
-                                                    src={images.url}
-                                                    fill
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                    style={{
-                                                        objectFit: 'cover',
-                                                    }}
-                                                    alt="Carousel Sample"
-                                                />
-                                            </SwiperImageBox>
-                                        </SwiperSlide>
-                                    )
-                                )}
+                                {images.map((images: { url: string | StaticImport }, index: Key | null | undefined) => (
+                                    <SwiperSlide key={index}>
+                                        <SwiperImageBox>
+                                            <Image
+                                                src={images.url}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                style={{
+                                                    objectFit: 'cover',
+                                                }}
+                                                alt="Carousel Sample"
+                                            />
+                                        </SwiperImageBox>
+                                    </SwiperSlide>
+                                ))}
                             </Swiper>
                         </AthayogSwiper>
                         <ButtonGroupBottom>
-                            <StyledIconButton
-                                onClick={() =>
-                                    swiperRef?.current?.swiper.slidePrev()
-                                }
-                            >
+                            <StyledIconButton onClick={() => swiperRef?.current?.swiper.slidePrev()}>
                                 <ArrowLeft />
                             </StyledIconButton>
-                            <StyledIconButton
-                                onClick={() =>
-                                    swiperRef?.current?.swiper.slideNext()
-                                }
-                            >
+                            <StyledIconButton onClick={() => swiperRef?.current?.swiper.slideNext()}>
                                 <ArrowRight />
                             </StyledIconButton>
                         </ButtonGroupBottom>
