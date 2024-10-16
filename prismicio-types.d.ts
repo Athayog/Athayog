@@ -244,6 +244,9 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | TestimonialsSlice
+    | SimpleGridSlice
+    | WeightLossHeroSlice
     | CallToActionSlice
     | MultiLeftRightInfoSectionSlice
     | EventHighlightsGallerySlice
@@ -521,6 +524,21 @@ export interface CallToActionSliceDefaultPrimaryBackgroundColorItem {
 }
 
 /**
+ * Item in *CallToAction → With Just Title → Primary → Background Color*
+ */
+export interface CallToActionSliceWithJustTitlePrimaryBackgroundColorItem {
+    /**
+     * color field in *CallToAction → With Just Title → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.withJustTitle.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
  * Primary content in *CallToAction → Default → Primary*
  */
 export interface CallToActionSliceDefaultPrimary {
@@ -605,9 +623,53 @@ export interface CallToActionSliceDefaultPrimary {
 export type CallToActionSliceDefault = prismic.SharedSliceVariation<'default', Simplify<CallToActionSliceDefaultPrimary>, never>
 
 /**
+ * Primary content in *CallToAction → With Just Title → Primary*
+ */
+export interface CallToActionSliceWithJustTitlePrimary {
+    /**
+     * Title field in *CallToAction → With Just Title → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.withJustTitle.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Button Link field in *CallToAction → With Just Title → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.withJustTitle.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button_link: prismic.LinkField
+
+    /**
+     * Background Color field in *CallToAction → With Just Title → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: call_to_action.withJustTitle.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<CallToActionSliceWithJustTitlePrimaryBackgroundColorItem>>
+}
+
+/**
+ * With Just Title variation for CallToAction Slice
+ *
+ * - **API ID**: `withJustTitle`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSliceWithJustTitle = prismic.SharedSliceVariation<'withJustTitle', Simplify<CallToActionSliceWithJustTitlePrimary>, never>
+
+/**
  * Slice variation for *CallToAction*
  */
-type CallToActionSliceVariation = CallToActionSliceDefault
+type CallToActionSliceVariation = CallToActionSliceDefault | CallToActionSliceWithJustTitle
 
 /**
  * CallToAction Shared Slice
@@ -2679,6 +2741,39 @@ export interface MultiLeftRightInfoSectionSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     background_color: prismic.GroupField<Simplify<MultiLeftRightInfoSectionSliceDefaultPrimaryBackgroundColorItem>>
+
+    /**
+     * Starting Direction field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: multi_left_right_info_section.default.primary.starting_direction
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    starting_direction: prismic.BooleanField
+
+    /**
+     * Description Alignment On Mobile field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: multi_left_right_info_section.default.primary.description_alignment_on_mobile
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    description_alignment_on_mobile: prismic.BooleanField
+
+    /**
+     * Description Alignment On Desktop field in *MultiLeftRightInfoSection → Default → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **Default Value**: Align To Left
+     * - **API ID Path**: multi_left_right_info_section.default.primary.description_alignment_on_desktop
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    description_alignment_on_desktop: prismic.SelectField<'Align To Left' | 'Align To Right' | 'Align To Opposite of Image', 'filled'>
 }
 
 /**
@@ -3628,6 +3723,104 @@ type RightContentLeftSliderVerticalSliceVariation = RightContentLeftSliderVertic
 export type RightContentLeftSliderVerticalSlice = prismic.SharedSlice<'right_content_left_slider_vertical', RightContentLeftSliderVerticalSliceVariation>
 
 /**
+ * Item in *SimpleGrid → Default → Primary → Grid*
+ */
+export interface SimpleGridSliceDefaultPrimaryGridItem {
+    /**
+     * Image field in *SimpleGrid → Default → Primary → Grid*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid.default.primary.grid[].image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+
+    /**
+     * title field in *SimpleGrid → Default → Primary → Grid*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid.default.primary.grid[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Item in *SimpleGrid → Default → Primary → Background Color*
+ */
+export interface SimpleGridSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *SimpleGrid → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *SimpleGrid → Default → Primary*
+ */
+export interface SimpleGridSliceDefaultPrimary {
+    /**
+     * Title field in *SimpleGrid → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Grid field in *SimpleGrid → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid.default.primary.grid[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    grid: prismic.GroupField<Simplify<SimpleGridSliceDefaultPrimaryGridItem>>
+
+    /**
+     * Background Color field in *SimpleGrid → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<SimpleGridSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for SimpleGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleGridSliceDefault = prismic.SharedSliceVariation<'default', Simplify<SimpleGridSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *SimpleGrid*
+ */
+type SimpleGridSliceVariation = SimpleGridSliceDefault
+
+/**
+ * SimpleGrid Shared Slice
+ *
+ * - **API ID**: `simple_grid`
+ * - **Description**: SimpleGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleGridSlice = prismic.SharedSlice<'simple_grid', SimpleGridSliceVariation>
+
+/**
  * Primary content in *SimpleTextBlock → Default → Primary*
  */
 export interface SimpleTextBlockSliceDefaultPrimary {
@@ -3810,6 +4003,124 @@ type SymptomsSliceVariation = SymptomsSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type SymptomsSlice = prismic.SharedSlice<'symptoms', SymptomsSliceVariation>
+
+/**
+ * Item in *Testimonials → Default → Primary → Data*
+ */
+export interface TestimonialsSliceDefaultPrimaryDataItem {
+    /**
+     * Image field in *Testimonials → Default → Primary → Data*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.default.primary.data[].image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+
+    /**
+     * Name field in *Testimonials → Default → Primary → Data*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.default.primary.data[].name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    name: prismic.KeyTextField
+
+    /**
+     * Subtitle field in *Testimonials → Default → Primary → Data*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.default.primary.data[].subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Testimonial Content field in *Testimonials → Default → Primary → Data*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.default.primary.data[].testimonial_content
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    testimonial_content: prismic.RichTextField
+}
+
+/**
+ * Item in *Testimonials → Default → Primary → Background Color*
+ */
+export interface TestimonialsSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *Testimonials → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *Testimonials → Default → Primary*
+ */
+export interface TestimonialsSliceDefaultPrimary {
+    /**
+     * Tilte field in *Testimonials → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.default.primary.tilte
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    tilte: prismic.KeyTextField
+
+    /**
+     * Data field in *Testimonials → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.default.primary.data[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    data: prismic.GroupField<Simplify<TestimonialsSliceDefaultPrimaryDataItem>>
+
+    /**
+     * Background Color field in *Testimonials → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: testimonials.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<TestimonialsSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for Testimonials Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSliceDefault = prismic.SharedSliceVariation<'default', Simplify<TestimonialsSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *Testimonials*
+ */
+type TestimonialsSliceVariation = TestimonialsSliceDefault
+
+/**
+ * Testimonials Shared Slice
+ *
+ * - **API ID**: `testimonials`
+ * - **Description**: Testimonials
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSlice = prismic.SharedSlice<'testimonials', TestimonialsSliceVariation>
 
 /**
  * Primary content in *TrialClassForm → Default → Primary*
@@ -4034,6 +4345,94 @@ type VideoTestimonialsSliceVariation = VideoTestimonialsSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type VideoTestimonialsSlice = prismic.SharedSlice<'video_testimonials', VideoTestimonialsSliceVariation>
+
+/**
+ * Primary content in *WeightLossHero → Default → Primary*
+ */
+export interface WeightLossHeroSliceDefaultPrimary {
+    /**
+     * Title field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Button Link field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button_link: prismic.LinkField
+
+    /**
+     * Background Image field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.background_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    background_image: prismic.ImageField<never>
+
+    /**
+     * Backgroud Image blurhash field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.backgroud_image_blurhash
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    backgroud_image_blurhash: prismic.KeyTextField
+
+    /**
+     * Person Image field in *WeightLossHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_hero.default.primary.person_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    person_image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for WeightLossHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<WeightLossHeroSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *WeightLossHero*
+ */
+type WeightLossHeroSliceVariation = WeightLossHeroSliceDefault
+
+/**
+ * WeightLossHero Shared Slice
+ *
+ * - **API ID**: `weight_loss_hero`
+ * - **Description**: WeightLossHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossHeroSlice = prismic.SharedSlice<'weight_loss_hero', WeightLossHeroSliceVariation>
 
 /**
  * Item in *WhyJoin → Default → Primary → Content*
@@ -4537,8 +4936,11 @@ declare module '@prismicio/client' {
             CallToActionSlice,
             CallToActionSliceDefaultPrimaryBackgroundColorItem,
             CallToActionSliceDefaultPrimary,
+            CallToActionSliceWithJustTitlePrimaryBackgroundColorItem,
+            CallToActionSliceWithJustTitlePrimary,
             CallToActionSliceVariation,
             CallToActionSliceDefault,
+            CallToActionSliceWithJustTitle,
             CareerHeroSlice,
             CareerHeroSliceDefaultPrimary,
             CareerHeroSliceVariation,
@@ -4704,6 +5106,12 @@ declare module '@prismicio/client' {
             RightContentLeftSliderVerticalSliceDefaultPrimary,
             RightContentLeftSliderVerticalSliceVariation,
             RightContentLeftSliderVerticalSliceDefault,
+            SimpleGridSlice,
+            SimpleGridSliceDefaultPrimaryGridItem,
+            SimpleGridSliceDefaultPrimaryBackgroundColorItem,
+            SimpleGridSliceDefaultPrimary,
+            SimpleGridSliceVariation,
+            SimpleGridSliceDefault,
             SimpleTextBlockSlice,
             SimpleTextBlockSliceDefaultPrimary,
             SimpleTextBlockSliceVariation,
@@ -4718,6 +5126,12 @@ declare module '@prismicio/client' {
             SymptomsSliceDefaultPrimary,
             SymptomsSliceVariation,
             SymptomsSliceDefault,
+            TestimonialsSlice,
+            TestimonialsSliceDefaultPrimaryDataItem,
+            TestimonialsSliceDefaultPrimaryBackgroundColorItem,
+            TestimonialsSliceDefaultPrimary,
+            TestimonialsSliceVariation,
+            TestimonialsSliceDefault,
             TrialClassFormSlice,
             TrialClassFormSliceDefaultPrimary,
             TrialClassFormSliceVariation,
@@ -4732,6 +5146,10 @@ declare module '@prismicio/client' {
             VideoTestimonialsSliceDefaultPrimary,
             VideoTestimonialsSliceVariation,
             VideoTestimonialsSliceDefault,
+            WeightLossHeroSlice,
+            WeightLossHeroSliceDefaultPrimary,
+            WeightLossHeroSliceVariation,
+            WeightLossHeroSliceDefault,
             WhyJoinSlice,
             WhyJoinSliceDefaultPrimaryContentItem,
             WhyJoinSliceDefaultPrimary,

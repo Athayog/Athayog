@@ -1,0 +1,68 @@
+{
+  "id": "simple_grid",
+  "type": "SharedSlice",
+  "name": "SimpleGrid",
+  "description": "SimpleGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "grid": {
+          "type": "Group",
+          "config": {
+            "label": "Grid",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "title",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

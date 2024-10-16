@@ -1,0 +1,82 @@
+{
+  "id": "testimonials",
+  "type": "SharedSlice",
+  "name": "Testimonials",
+  "description": "Testimonials",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "tilte": {
+          "type": "Text",
+          "config": {
+            "label": "Tilte",
+            "placeholder": ""
+          }
+        },
+        "data": {
+          "type": "Group",
+          "config": {
+            "label": "Data",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": ""
+                }
+              },
+              "subtitle": {
+                "type": "Text",
+                "config": {
+                  "label": "Subtitle",
+                  "placeholder": ""
+                }
+              },
+              "testimonial_content": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Testimonial Content",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"tilte": {
+				"__TYPE__": "FieldContent",
+				"value": "shape",
+				"type": "Text"
+			},
+			"data": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2",
+										"width": 3648,
+										"height": 4560
+									},
+									"url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2",
+									"width": 3648,
+									"height": 4560,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "ranch",
+									"type": "Text"
+								}
+							],
+							[
+								"subtitle",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "for",
+									"type": "Text"
+								}
+							],
+							[
+								"testimonial_content",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Proident non anim Lorem ipsum non fugiat velit culpa eu culpa aliquip.asdProident non anim Lorem ipsum non fugiat velit culpa eu culpa aliquip.asdProident non anim Lorem ipsum non fugiat velit culpa eu culpa aliquip.asdProident non anim Lorem ipsum non fugiat velit culpa eu culpa aliquip.asdProident non anim Lorem ipsum non fugiat velit culpa eu culpa aliquip.asd",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1587366317133-62e39082c34d?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw1fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MjkwNTIzMjJ8MA&ixlib=rb-4.0.3&q=85",
+									"alt": "sliced orange fruit on brown wooden table",
+									"origin": {
+										"id": "sQi9FM6NYVY",
+										"url": "https://images.unsplash.com/photo-1587366317133-62e39082c34d?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw1fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MjkwNTIzMjJ8MA&ixlib=rb-4.0.3&q=85",
+										"width": 4000,
+										"height": 6000
+									},
+									"width": 4000,
+									"height": 6000,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "ranch"
+								}
+							],
+							[
+								"subtitle",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "asdasdas"
+								}
+							],
+							[
+								"testimonial_content",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "As a 38-year-old woman working in IT, I know how challenging it can be to maintain a healthy lifestyle with a demanding job. ",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Three months ago, I decided to join the Athayog Weight Loss Program, and it has been a transformative experience. I’ve lost 7 kg, ",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "which is a significant achievement for me. But beyond the numbers on the scale, I’ve experienced improvements in other",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "areas of my life. My sleep cycle has dramatically improved, allowing me to wake up refreshed and ready for the day.",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "My energy levels have soared, and I no longer feel the mid-day slump that used to plague me. ",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "One of the most rewarding moments was being able to fit into my 7-year-old jeans again. It felt like a tangible reminder of",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "how far I’ve come. The Athayog program provided me with the guidance, support and motivation I needed to make these",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": " positive changes. I’m grateful for this journey and excited to continue living a healthier, more energetic life.",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#F1F5E1"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

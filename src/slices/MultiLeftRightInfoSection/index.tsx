@@ -14,6 +14,8 @@ export type MultiLeftRightInfoSectionProps = SliceComponentProps<Content.MultiLe
  */
 const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): JSX.Element => {
     const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
+    const descriptionAlignmentDesktop =
+        slice.primary.description_alignment_on_desktop === 'Align To Left' ? 'left' : slice.primary.description_alignment_on_desktop === 'Align To Right' ? 'right' : null
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
@@ -52,10 +54,10 @@ const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): J
                                 key={item.title}
                                 sx={{
                                     display: 'flex',
-                                    flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' },
+                                    flexDirection: { xs: 'column', md: slice.primary.starting_direction ? (index % 2 === 0 ? 'row-reverse' : 'row') : index % 2 === 0 ? 'row' : 'row-reverse' },
                                     alignItems: 'center',
                                     justifyContent: 'space-between', // Ensures spacing between content
-                                    mb: { xs: '10px', md: '100px' },
+                                    mb: { xs: '50px', md: '100px' },
                                     width: '100%',
                                     flexWrap: { xs: 'wrap', md: 'nowrap' }, // Prevent wrap on desktop
                                     gap: { xs: '0px', md: '50px' },
@@ -70,7 +72,7 @@ const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): J
                                         height: { xs: '200px', md: '300px' }, // Adjust height for mobile and desktop
                                         overflow: 'hidden',
                                         borderRadius: '20px',
-                                        mb: { xs: 2, md: 0 },
+                                        mb: { xs: 1, md: 0 },
                                         flexGrow: 1, // Allow image to grow with space
                                     }}
                                 >
@@ -99,6 +101,10 @@ const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): J
                                             color: '#000000',
                                             fontSize: { xs: '24px', md: '32px' },
                                             fontWeight: '700',
+                                            textAlign: {
+                                                xs: slice.primary.description_alignment_on_mobile ? 'center' : 'left',
+                                                md: descriptionAlignmentDesktop === null ? (index % 2 === 0 ? 'left' : 'right') : descriptionAlignmentDesktop,
+                                            },
                                         }}
                                         gutterBottom
                                     >
@@ -108,8 +114,17 @@ const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): J
                                         sx={{
                                             color: '#000000',
                                             fontSize: { xs: '17px', md: '26px' },
-                                            lineHeight: '34px',
+                                            lineHeight: { xs: '28px', md: '34px' },
                                             fontWeight: '400',
+
+                                            textAlign: {
+                                                xs: slice.primary.description_alignment_on_mobile ? 'center' : 'left',
+                                                md: descriptionAlignmentDesktop === null ? (index % 2 === 0 ? 'left' : 'right') : descriptionAlignmentDesktop,
+                                            },
+                                            '&& p': {
+                                                margin: 0,
+                                                display: { xs: 'inline', md: 'block' },
+                                            },
                                         }}
                                     >
                                         <PrismicRichText field={item.description} />

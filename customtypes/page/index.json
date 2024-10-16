@@ -27,6 +27,15 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "testimonials": {
+                            "type": "SharedSlice"
+                        },
+                        "simple_grid": {
+                            "type": "SharedSlice"
+                        },
+                        "weight_loss_hero": {
+                            "type": "SharedSlice"
+                        },
                         "call_to_action": {
                             "type": "SharedSlice"
                         },
