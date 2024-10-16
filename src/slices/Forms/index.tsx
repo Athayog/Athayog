@@ -122,7 +122,7 @@ const WeightLossForm = (): JSX.Element => {
                                     id="gender"
                                     name="gender"
                                     value={formik.values.gender}
-                                    placeHolder="Select Option"
+                                    placeholder="Select Option"
                                     onChange={formik.handleChange}
                                     error={formik.touched.gender && Boolean(formik.errors.gender)}
                                 >
