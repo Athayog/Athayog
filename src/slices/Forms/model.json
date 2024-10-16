@@ -1,0 +1,26 @@
+{
+  "id": "weight_loss_form",
+  "type": "SharedSlice",
+  "name": "Forms",
+  "description": "WeightLossForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Weight Loss",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

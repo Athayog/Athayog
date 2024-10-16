@@ -48,6 +48,7 @@ export const components = {
     trial_class_form: dynamic(() => import('./TrialClassForm')),
     upcoming_workshop: dynamic(() => import('./WorkshopRow')),
     video_testimonials: dynamic(() => import('./VideoTestimonials')),
+    weight_loss_form: dynamic(() => import('./Forms')),
     weight_loss_hero: dynamic(() => import('./WeightLossHero')),
     why_join: dynamic(() => import('./WhyJoin')),
     yoga_arambha: dynamic(() => import('./YogaArambha')),

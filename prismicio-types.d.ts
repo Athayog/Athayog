@@ -365,7 +365,78 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
 
-export type AllDocumentTypes = FooterDocument | PageDocument
+type RegistrationPageDocumentDataSlicesSlice = never
+
+/**
+ * Content for Registration Page documents
+ */
+interface RegistrationPageDocumentData {
+    /**
+     * Title field in *Registration Page*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_page.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Slice Zone field in *Registration Page*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_page.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<RegistrationPageDocumentDataSlicesSlice> /**
+     * Meta Title field in *Registration Page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A title of the page used for social media and search engines
+     * - **API ID Path**: registration_page.meta_title
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_title: prismic.KeyTextField
+
+    /**
+     * Meta Description field in *Registration Page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A brief summary of the page
+     * - **API ID Path**: registration_page.meta_description
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_description: prismic.KeyTextField
+
+    /**
+     * Meta Image field in *Registration Page*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_page.meta_image
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    meta_image: prismic.ImageField<never>
+}
+
+/**
+ * Registration Page document from Prismic
+ *
+ * - **API ID**: `registration_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type RegistrationPageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<RegistrationPageDocumentData>, 'registration_page', Lang>
+
+export type AllDocumentTypes = FooterDocument | PageDocument | RegistrationPageDocument
 
 /**
  * Primary content in *AboutUsHero → Default → Primary*
@@ -4347,6 +4418,44 @@ type VideoTestimonialsSliceVariation = VideoTestimonialsSliceDefault
 export type VideoTestimonialsSlice = prismic.SharedSlice<'video_testimonials', VideoTestimonialsSliceVariation>
 
 /**
+ * Primary content in *Forms → Weight Loss → Primary*
+ */
+export interface WeightLossFormSliceDefaultPrimary {
+    /**
+     * Title field in *Forms → Weight Loss → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_form.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Weight Loss variation for Forms Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossFormSliceDefault = prismic.SharedSliceVariation<'default', Simplify<WeightLossFormSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *Forms*
+ */
+type WeightLossFormSliceVariation = WeightLossFormSliceDefault
+
+/**
+ * Forms Shared Slice
+ *
+ * - **API ID**: `weight_loss_form`
+ * - **Description**: WeightLossForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossFormSlice = prismic.SharedSlice<'weight_loss_form', WeightLossFormSliceVariation>
+
+/**
  * Primary content in *WeightLossHero → Default → Primary*
  */
 export interface WeightLossHeroSliceDefaultPrimary {
@@ -4923,6 +5032,9 @@ declare module '@prismicio/client' {
             PageDocument,
             PageDocumentData,
             PageDocumentDataSlicesSlice,
+            RegistrationPageDocument,
+            RegistrationPageDocumentData,
+            RegistrationPageDocumentDataSlicesSlice,
             AllDocumentTypes,
             AboutUsHeroSlice,
             AboutUsHeroSliceDefaultPrimary,
@@ -5146,6 +5258,10 @@ declare module '@prismicio/client' {
             VideoTestimonialsSliceDefaultPrimary,
             VideoTestimonialsSliceVariation,
             VideoTestimonialsSliceDefault,
+            WeightLossFormSlice,
+            WeightLossFormSliceDefaultPrimary,
+            WeightLossFormSliceVariation,
+            WeightLossFormSliceDefault,
             WeightLossHeroSlice,
             WeightLossHeroSliceDefaultPrimary,
             WeightLossHeroSliceVariation,
