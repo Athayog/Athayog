@@ -51,6 +51,29 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"variant": {
+				"__TYPE__": "FieldContent",
+				"type": "Select",
+				"value": "Small Content"
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#fc3820",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": []
@@ -115,6 +138,29 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#7713a4",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
+			},
+			"variant": {
+				"__TYPE__": "FieldContent",
+				"value": "Large Content",
+				"type": "Select"
 			}
 		},
 		"items": [

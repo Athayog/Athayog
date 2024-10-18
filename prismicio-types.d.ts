@@ -244,6 +244,8 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | WeightLossFormSlice
+    | CareerHeroSlice
     | TestimonialsSlice
     | SimpleGridSlice
     | WeightLossHeroSlice
@@ -365,7 +367,7 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
 
-type RegistrationPageDocumentDataSlicesSlice = never
+type RegistrationPageDocumentDataSlicesSlice = WeightLossFormSlice
 
 /**
  * Content for Registration Page documents
@@ -776,16 +778,6 @@ export interface CareerHeroSliceDefaultPrimary {
     subtitle: prismic.KeyTextField
 
     /**
-     * Button Text field in *CareerHero → Default → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: career_hero.default.primary.button_text
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    button_text: prismic.KeyTextField
-
-    /**
      * Background Image field in *CareerHero → Default → Primary*
      *
      * - **Field Type**: Image
@@ -794,6 +786,26 @@ export interface CareerHeroSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     background_image: prismic.ImageField<never>
+
+    /**
+     * BlurHash field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.blurhash
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    blurhash: prismic.KeyTextField
+
+    /**
+     * Button Text field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    button_text: prismic.KeyTextField
 }
 
 /**
@@ -1318,6 +1330,36 @@ type ContactUsHeroSliceVariation = ContactUsHeroSliceDefault
 export type ContactUsHeroSlice = prismic.SharedSlice<'contact_us_hero', ContactUsHeroSliceVariation>
 
 /**
+ * Item in *ContentWithImage → Left Content Right Image → Primary → Background Color*
+ */
+export interface ContentWithImageSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *ContentWithImage → Left Content Right Image → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Item in *ContentWithImage → Right Content Left Image → Primary → Background Color*
+ */
+export interface ContentWithImageSliceRightContentLeftImagePrimaryBackgroundColorItem {
+    /**
+     * color field in *ContentWithImage → Right Content Left Image → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
  * Primary content in *ContentWithImage → Left Content Right Image → Primary*
  */
 export interface ContentWithImageSliceDefaultPrimary {
@@ -1350,6 +1392,27 @@ export interface ContentWithImageSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     image: prismic.ImageField<never>
+
+    /**
+     * Variant field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Select a variant
+     * - **Default Value**: Small Content
+     * - **API ID Path**: content_with_image.default.primary.variant
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    variant: prismic.SelectField<'Small Content' | 'Large Content', 'filled'>
+
+    /**
+     * Background Color field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<ContentWithImageSliceDefaultPrimaryBackgroundColorItem>>
 }
 
 /**
@@ -1394,6 +1457,27 @@ export interface ContentWithImageSliceRightContentLeftImagePrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     image: prismic.ImageField<never>
+
+    /**
+     * Background Color field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<ContentWithImageSliceRightContentLeftImagePrimaryBackgroundColorItem>>
+
+    /**
+     * Variant field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Select a variant
+     * - **Default Value**: Small Content
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.variant
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    variant: prismic.SelectField<'Small Content' | 'Large Content', 'filled'>
 }
 
 /**
@@ -4442,9 +4526,33 @@ export interface WeightLossFormSliceDefaultPrimary {
 export type WeightLossFormSliceDefault = prismic.SharedSliceVariation<'default', Simplify<WeightLossFormSliceDefaultPrimary>, never>
 
 /**
+ * Primary content in *Forms → Career Form → Primary*
+ */
+export interface WeightLossFormSliceCareerFormPrimary {
+    /**
+     * Title field in *Forms → Career Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_form.careerForm.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Career Form variation for Forms Slice
+ *
+ * - **API ID**: `careerForm`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossFormSliceCareerForm = prismic.SharedSliceVariation<'careerForm', Simplify<WeightLossFormSliceCareerFormPrimary>, never>
+
+/**
  * Slice variation for *Forms*
  */
-type WeightLossFormSliceVariation = WeightLossFormSliceDefault
+type WeightLossFormSliceVariation = WeightLossFormSliceDefault | WeightLossFormSliceCareerForm
 
 /**
  * Forms Shared Slice
@@ -5086,7 +5194,9 @@ declare module '@prismicio/client' {
             ContactUsHeroSliceVariation,
             ContactUsHeroSliceDefault,
             ContentWithImageSlice,
+            ContentWithImageSliceDefaultPrimaryBackgroundColorItem,
             ContentWithImageSliceDefaultPrimary,
+            ContentWithImageSliceRightContentLeftImagePrimaryBackgroundColorItem,
             ContentWithImageSliceRightContentLeftImagePrimary,
             ContentWithImageSliceVariation,
             ContentWithImageSliceDefault,
@@ -5260,8 +5370,10 @@ declare module '@prismicio/client' {
             VideoTestimonialsSliceDefault,
             WeightLossFormSlice,
             WeightLossFormSliceDefaultPrimary,
+            WeightLossFormSliceCareerFormPrimary,
             WeightLossFormSliceVariation,
             WeightLossFormSliceDefault,
+            WeightLossFormSliceCareerForm,
             WeightLossHeroSlice,
             WeightLossHeroSliceDefaultPrimary,
             WeightLossHeroSliceVariation,

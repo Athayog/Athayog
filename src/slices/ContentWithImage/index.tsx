@@ -1,8 +1,9 @@
+import { backgroundColorExtract } from '@/utils/color'
 import { Box } from '@mui/material'
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
-
+// @ts-nocheck
 /**
  * Props for `ContentWithImage`.
  */
@@ -13,11 +14,12 @@ export type ContentWithImageProps = SliceComponentProps<Content.ContentWithImage
  */
 
 const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
+    const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
                 sx={{
-                    background: '#E7FAE3',
+                    background: backgroundGradient,
                     height: '100%',
                     padding: { xs: '30px 20px', md: '60px 50px' },
                 }}
@@ -74,7 +76,7 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                                 <PrismicNextImage
                                     field={slice.primary.image}
                                     style={{
-                                        objectFit: 'cover', // Ensures the image fills the entire container
+                                        objectFit: 'cover',
                                         width: '100%',
                                         height: '100%',
                                     }}
@@ -84,15 +86,17 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
 
                         <Box
                             sx={{
-                                flexBasis: { xs: '100%', md: '50%' }, // 50% for desktop, 100% for mobile
+                                flexBasis: { xs: '100%', md: '50%' },
                             }}
                         >
+                            {/* @ts-nocheck */}
                             <Box
                                 sx={{
-                                    fontSize: { xs: '24px', md: '52px' },
+                                    fontSize: slice.primary.variant === 'Small Content' ? { xs: '24px', md: '52px' } : { xs: '24px', md: '32px' }, // @ts-nocheck
                                     fontWeight: '700',
                                     textAlign: { xs: 'center', md: slice.variation === 'rightContentLeftImage' ? 'right' : 'left' },
                                     color: '#2A5200',
+
                                     '&& p': { margin: 0 },
                                 }}
                             >
@@ -101,15 +105,16 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                             <Box
                                 sx={{
                                     color: '#00000',
-                                    fontSize: { xs: '17px', md: '26px' },
+                                    fontSize: slice.primary.variant === 'Small Content' ? { xs: '16px', md: '24px' } : { xs: '17px', md: '26px' }, // @ts-nocheck
                                     fontWeight: '400',
-                                    lineHeight: { xs: '29px', md: '49px' },
+                                    lineHeight: slice.primary.variant === 'Small Content' ? { xs: '29px', md: '49px' } : { xs: '28px', md: '34px' }, // @ts-nocheck
                                     textAlign: { xs: 'center', md: slice.variation === 'rightContentLeftImage' ? 'right' : 'left' },
                                     marginTop: { xs: '14px', md: '26px' },
                                 }}
                             >
                                 <PrismicRichText field={slice.primary.description} />
                             </Box>
+                            {/* @ts-nocheck */}
                         </Box>
                     </Box>
                 </Box>

@@ -28,19 +28,26 @@
             "placeholder": ""
           }
         },
-        "button_text": {
-          "type": "Text",
-          "config": {
-            "label": "Button Text",
-            "placeholder": ""
-          }
-        },
         "background_image": {
           "type": "Image",
           "config": {
             "label": "Background Image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "blurhash": {
+          "type": "Text",
+          "config": {
+            "label": "BlurHash",
+            "placeholder": ""
+          }
+        },
+        "button_text": {
+          "type": "Text",
+          "config": {
+            "label": "Button Text",
+            "placeholder": ""
           }
         }
       },
