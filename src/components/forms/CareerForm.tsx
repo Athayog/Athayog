@@ -1,10 +1,22 @@
 'use client'
-import RegisterButton from '@/components/elements/button/RegisterButton'
-import useFormStore from '@/store/useFormStore'
-import { Alert, Box, Divider, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography } from '@mui/material'
-import { useFormik } from 'formik'
-import { useState } from 'react'
 import * as Yup from 'yup'
+import { useState } from 'react'
+import { useFormik } from 'formik'
+import useFormStore from '@/store/useFormStore'
+import RegisterButton from '@/components/elements/button/RegisterButton'
+import { Alert, Box, Button, Divider, FormControl, FormHelperText, MenuItem, Select, Snackbar, styled, TextField, Typography } from '@mui/material'
+
+const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+})
 
 interface FormValuesCareer {
     fullName: string
@@ -84,7 +96,9 @@ const CareerForm = (): JSX.Element => {
         },
         validationSchema: validationSchemaCareer,
         onSubmit: async (values: FormValuesCareer, { resetForm }) => {
-            await submitForm(values, 'careerForm')
+            const { resumeFile, ...formDataWithoutFile } = values // Destructure to remove resumeFile from formData
+            const file = resumeFile // Keep a reference to the file
+            await submitForm(formDataWithoutFile, 'resume', 'info@athayogliving.com', file ?? undefined, 'resume')
             if (!error) {
                 resetForm()
             }
@@ -92,7 +106,7 @@ const CareerForm = (): JSX.Element => {
     })
 
     return (
-        <>
+        <div className="element" id="career-scroll-target">
             <form onSubmit={formik.handleSubmit}>
                 {/* Full Name */}
                 <Box>
@@ -348,14 +362,38 @@ const CareerForm = (): JSX.Element => {
                     />
 
                     {/* Resume File */}
-                    <Box sx={{ display: 'flex', gap: '20px', justifyContent: 'space-between' }}>
-                        <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+                    <Box sx={{ display: 'flex', gap: { xs: '50px', md: '20px' }, justifyContent: 'space-between', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center' }}>
+                        <Box sx={{ alignSelf: { xs: 'baseline', md: 'inherit' } }}>
                             <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Upload Resume</Typography>
-                            <input id="resumeFile" name="resumeFile" type="file" onChange={handleFileChange} />
+                            <Button
+                                sx={{
+                                    backgroundColor: '#EFEFEF',
+                                    padding: ' 21.607px 43.213px',
+                                    height: { xs: '41px', md: '68px' },
+                                    border: ' 2.161px solid rgba(64, 64, 64, 0.50)',
+                                    borderRadius: '14.405px',
+                                    boxShadow: 'none',
+                                    fontWeigth: '500',
+                                    fontSize: { xs: '13px', md: '23.047px' },
+                                    color: '#284E01',
+                                }}
+                                component="label"
+                                role={undefined}
+                                variant="contained"
+                                tabIndex={-1}
+                            >
+                                Choose File
+                                <VisuallyHiddenInput id="resumeFile" name="resumeFile" type="file" onChange={handleFileChange} multiple />
+                            </Button>
+                            {formik.values.resumeFile?.name ? (
+                                <Box sx={{ marginLeft: '10px', display: 'inline' }}>{formik.values.resumeFile.name}</Box>
+                            ) : (
+                                <Box sx={{ marginLeft: '10px', display: 'inline' }}>No file chosen</Box>
+                            )}
                             {formik.errors.resumeFile && <FormHelperText error>{formik.errors.resumeFile}</FormHelperText>}
                         </Box>
-                        <Box sx={{ width: { xs: '100%', md: '50%' } }}>
-                            <RegisterButton color="primary" variant="contained" fullWidth type="submit" sx={{ margin: '0 auto' }} disabled={loading}>
+                        <Box>
+                            <RegisterButton color="primary" variant="contained" fullWidth type="submit" sx={{ margin: { xs: '0 auto', md: 0 } }} disabled={loading}>
                                 {loading ? 'Submitting...' : 'Submit'}
                             </RegisterButton>
                         </Box>
@@ -377,7 +415,7 @@ const CareerForm = (): JSX.Element => {
                     {error}
                 </Alert>
             </Snackbar>
-        </>
+        </div>
     )
 }
 

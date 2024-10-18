@@ -1,10 +1,9 @@
+'use client'
 import { Box } from '@mui/material'
 import { Content } from '@prismicio/client'
 import Banner from '@/components/_shared/Banner'
-import { PrismicNextLink } from '@prismicio/next'
-import { PrismicRichText } from '@prismicio/react'
-import { SliceComponentProps } from '@prismicio/react'
 import Button from '@/components/elements/button/Index'
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 /**
  * Props for `CareerHero`.
  */
@@ -14,6 +13,17 @@ export type CareerHeroProps = SliceComponentProps<Content.CareerHeroSlice>
  * Component for "CareerHero" Slices.
  */
 const CareerHero = ({ slice }: CareerHeroProps): JSX.Element => {
+    const handleScrollToForm = () => {
+        const element = document.getElementById('career-scroll-target')
+        if (element) {
+            const elementPosition = element.getBoundingClientRect().top + window.scrollY
+            const offset = 200 // Adjust this value as needed
+            window.scrollTo({
+                top: elementPosition - offset,
+                behavior: 'smooth',
+            })
+        }
+    }
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Banner
@@ -75,23 +85,22 @@ const CareerHero = ({ slice }: CareerHeroProps): JSX.Element => {
                             {slice.primary.subtitle}
                         </Box>
 
-                        <PrismicNextLink field={slice.primary.button_link}>
-                            <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '30px', justifyContent: { xs: 'center', md: 'flex-start' } }}>
-                                <Button
-                                    sx={{
-                                        fontSize: '26px',
-                                        padding: '17.467px 23.289px',
-                                        width: '257px',
-                                        height: '60px',
-                                        backgroundColor: '#47820D',
-                                        boxShadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.44)',
-                                        color: '#fff',
-                                    }}
-                                >
-                                    {slice.primary.button_link.text}
-                                </Button>
-                            </Box>
-                        </PrismicNextLink>
+                        <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '30px', justifyContent: { xs: 'center', md: 'flex-start' } }}>
+                            <Button
+                                onClick={handleScrollToForm}
+                                sx={{
+                                    fontSize: '26px',
+                                    padding: '17.467px 23.289px',
+                                    width: '257px',
+                                    height: '60px',
+                                    backgroundColor: '#47820D',
+                                    boxShadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.44)',
+                                    color: '#fff',
+                                }}
+                            >
+                                {slice.primary.button_text}
+                            </Button>
+                        </Box>
                     </Box>
                 </Box>
             </Banner>
@@ -156,23 +165,22 @@ const CareerHero = ({ slice }: CareerHeroProps): JSX.Element => {
                         {slice.primary.subtitle}
                     </Box>
 
-                    <PrismicNextLink field={slice.primary.button_link}>
-                        <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '20px', justifyContent: { xs: 'center', md: 'flex-start' } }}>
-                            <Button
-                                sx={{
-                                    fontSize: '26px',
-                                    padding: '16px 33.501px;',
-                                    width: '257px',
-                                    height: '60px',
-                                    backgroundColor: '#47820D',
-                                    boxShadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.44)',
-                                    color: '#fff',
-                                }}
-                            >
-                                {slice.primary.button_link.text}
-                            </Button>
-                        </Box>
-                    </PrismicNextLink>
+                    <Box sx={{ display: 'flex', alignItems: 'center', marginTop: '20px', justifyContent: { xs: 'center', md: 'flex-start' } }}>
+                        <Button
+                            onClick={handleScrollToForm}
+                            sx={{
+                                fontSize: '26px',
+                                padding: '16px 33.501px;',
+                                width: '257px',
+                                height: '60px',
+                                backgroundColor: '#47820D',
+                                boxShadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.44)',
+                                color: '#fff',
+                            }}
+                        >
+                            {slice.primary.button_text}
+                        </Button>
+                    </Box>
                 </Box>
             </Box>
         </section>

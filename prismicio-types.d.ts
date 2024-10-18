@@ -244,6 +244,8 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | WeightLossFormSlice
+    | CareerHeroSlice
     | TestimonialsSlice
     | SimpleGridSlice
     | WeightLossHeroSlice
@@ -796,14 +798,14 @@ export interface CareerHeroSliceDefaultPrimary {
     blurhash: prismic.KeyTextField
 
     /**
-     * Button Link field in *CareerHero → Default → Primary*
+     * Button Text field in *CareerHero → Default → Primary*
      *
-     * - **Field Type**: Link
+     * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: career_hero.default.primary.button_link
-     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     * - **API ID Path**: career_hero.default.primary.button_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
      */
-    button_link: prismic.LinkField
+    button_text: prismic.KeyTextField
 }
 
 /**

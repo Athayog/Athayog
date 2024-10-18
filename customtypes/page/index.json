@@ -27,6 +27,12 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "weight_loss_form": {
+                            "type": "SharedSlice"
+                        },
+                        "career_hero": {
+                            "type": "SharedSlice"
+                        },
                         "testimonials": {
                             "type": "SharedSlice"
                         },

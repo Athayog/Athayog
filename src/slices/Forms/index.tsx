@@ -23,7 +23,7 @@ const Forms = ({ slice }: FormsProps): JSX.Element => {
                     },
                 }}
             >
-                <Typography sx={{ fontSize: { xs: '32px', md: '48px' }, fontWeight: '700', textAlign: 'center', color: '#2A5200', marginBottom: '38px' }}>Register for Weight Loss Program</Typography>
+                <Typography sx={{ fontSize: { xs: '32px', md: '48px' }, fontWeight: '700', textAlign: 'center', color: '#2A5200', marginBottom: '38px' }}>{slice.primary.title}</Typography>
 
                 {slice.variation === 'default' && <WeightLossForm />}
                 {slice.variation === 'careerForm' && <CareerForm />}
