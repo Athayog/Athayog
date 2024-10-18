@@ -37,6 +37,18 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "variant": {
+          "type": "Select",
+          "config": {
+            "label": "Variant",
+            "placeholder": "Select a variant",
+            "options": [
+              "Small Content",
+              "Large Content"
+            ],
+            "default_value": "Small Content"
+          }
         }
       },
       "items": {}

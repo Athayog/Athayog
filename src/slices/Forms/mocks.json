@@ -10,5 +10,22 @@
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "careerForm",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "song",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]

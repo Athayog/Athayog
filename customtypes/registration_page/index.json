@@ -25,7 +25,11 @@
                 "type": "Slices",
                 "fieldset": "Slice Zone",
                 "config": {
-                    "choices": {}
+                    "choices": {
+                        "weight_loss_form": {
+                            "type": "SharedSlice"
+                        }
+                    }
                 }
             }
         },

@@ -365,7 +365,7 @@ interface PageDocumentData {
  */
 export type PageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
 
-type RegistrationPageDocumentDataSlicesSlice = never
+type RegistrationPageDocumentDataSlicesSlice = WeightLossFormSlice
 
 /**
  * Content for Registration Page documents
@@ -776,16 +776,6 @@ export interface CareerHeroSliceDefaultPrimary {
     subtitle: prismic.KeyTextField
 
     /**
-     * Button Text field in *CareerHero → Default → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: career_hero.default.primary.button_text
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    button_text: prismic.KeyTextField
-
-    /**
      * Background Image field in *CareerHero → Default → Primary*
      *
      * - **Field Type**: Image
@@ -794,6 +784,26 @@ export interface CareerHeroSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     background_image: prismic.ImageField<never>
+
+    /**
+     * BlurHash field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.blurhash
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    blurhash: prismic.KeyTextField
+
+    /**
+     * Button Link field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button_link: prismic.LinkField
 }
 
 /**
@@ -1350,6 +1360,17 @@ export interface ContentWithImageSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     image: prismic.ImageField<never>
+
+    /**
+     * Variant field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Select a variant
+     * - **Default Value**: Small Content
+     * - **API ID Path**: content_with_image.default.primary.variant
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    variant: prismic.SelectField<'Small Content' | 'Large Content', 'filled'>
 }
 
 /**
@@ -4442,9 +4463,33 @@ export interface WeightLossFormSliceDefaultPrimary {
 export type WeightLossFormSliceDefault = prismic.SharedSliceVariation<'default', Simplify<WeightLossFormSliceDefaultPrimary>, never>
 
 /**
+ * Primary content in *Forms → Career Form → Primary*
+ */
+export interface WeightLossFormSliceCareerFormPrimary {
+    /**
+     * Title field in *Forms → Career Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_form.careerForm.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+}
+
+/**
+ * Career Form variation for Forms Slice
+ *
+ * - **API ID**: `careerForm`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossFormSliceCareerForm = prismic.SharedSliceVariation<'careerForm', Simplify<WeightLossFormSliceCareerFormPrimary>, never>
+
+/**
  * Slice variation for *Forms*
  */
-type WeightLossFormSliceVariation = WeightLossFormSliceDefault
+type WeightLossFormSliceVariation = WeightLossFormSliceDefault | WeightLossFormSliceCareerForm
 
 /**
  * Forms Shared Slice
@@ -5260,8 +5305,10 @@ declare module '@prismicio/client' {
             VideoTestimonialsSliceDefault,
             WeightLossFormSlice,
             WeightLossFormSliceDefaultPrimary,
+            WeightLossFormSliceCareerFormPrimary,
             WeightLossFormSliceVariation,
             WeightLossFormSliceDefault,
+            WeightLossFormSliceCareerForm,
             WeightLossHeroSlice,
             WeightLossHeroSliceDefaultPrimary,
             WeightLossHeroSliceVariation,

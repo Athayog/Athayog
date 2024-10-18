@@ -13,6 +13,7 @@ export type ContentWithImageProps = SliceComponentProps<Content.ContentWithImage
  */
 
 const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
+    console.log(slice)
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
@@ -89,7 +90,7 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                         >
                             <Box
                                 sx={{
-                                    fontSize: { xs: '24px', md: '52px' },
+                                    fontSize: slice.primary.variant === 'Small Content' ? { xs: '24px', md: '52px' } : { xs: '24px', md: '32px' },
                                     fontWeight: '700',
                                     textAlign: { xs: 'center', md: slice.variation === 'rightContentLeftImage' ? 'right' : 'left' },
                                     color: '#2A5200',
@@ -101,7 +102,7 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                             <Box
                                 sx={{
                                     color: '#00000',
-                                    fontSize: { xs: '17px', md: '26px' },
+                                    fontSize: slice.primary.variant === 'Small Content' ? { xs: '16px', md: '24px' } : { xs: '17px', md: '26px' },
                                     fontWeight: '400',
                                     lineHeight: { xs: '29px', md: '49px' },
                                     textAlign: { xs: 'center', md: slice.variation === 'rightContentLeftImage' ? 'right' : 'left' },
