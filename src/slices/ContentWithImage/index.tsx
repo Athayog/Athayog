@@ -1,3 +1,4 @@
+import { backgroundColorExtract } from '@/utils/color'
 import { Box } from '@mui/material'
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'
@@ -13,12 +14,12 @@ export type ContentWithImageProps = SliceComponentProps<Content.ContentWithImage
  */
 
 const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
-    console.log(slice)
+    const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
                 sx={{
-                    background: '#E7FAE3',
+                    background: backgroundGradient,
                     height: '100%',
                     padding: { xs: '30px 20px', md: '60px 50px' },
                 }}
@@ -106,7 +107,7 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                                     color: '#00000',
                                     fontSize: slice.primary.variant === 'Small Content' ? { xs: '16px', md: '24px' } : { xs: '17px', md: '26px' }, // @ts-nocheck
                                     fontWeight: '400',
-                                    lineHeight: slice.primary.variant === 'Small Content' ? { xs: '29px', md: '49px' } : { xs: '16px', md: '34px' }, // @ts-nocheck
+                                    lineHeight: slice.primary.variant === 'Small Content' ? { xs: '29px', md: '49px' } : { xs: '28px', md: '34px' }, // @ts-nocheck
                                     textAlign: { xs: 'center', md: slice.variation === 'rightContentLeftImage' ? 'right' : 'left' },
                                     marginTop: { xs: '14px', md: '26px' },
                                 }}

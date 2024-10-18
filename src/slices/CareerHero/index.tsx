@@ -106,6 +106,7 @@ const CareerHero = ({ slice }: CareerHeroProps): JSX.Element => {
             </Banner>
             <Box
                 sx={{
+                    backgroundColor: '#EAFEDF',
                     display: { xs: 'flex', md: 'none' },
                     justifyContent: { xs: 'center', md: 'space-between' },
                     alignItems: 'center',

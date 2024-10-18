@@ -49,6 +49,22 @@
             ],
             "default_value": "Small Content"
           }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
         }
       },
       "items": {}
@@ -85,6 +101,34 @@
             "label": "Image",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "variant": {
+          "type": "Select",
+          "config": {
+            "label": "Variant",
+            "placeholder": "Select a variant",
+            "options": [
+              "Small Content",
+              "Large Content"
+            ],
+            "default_value": "Small Content"
           }
         }
       },

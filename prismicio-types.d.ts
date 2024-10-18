@@ -1330,6 +1330,36 @@ type ContactUsHeroSliceVariation = ContactUsHeroSliceDefault
 export type ContactUsHeroSlice = prismic.SharedSlice<'contact_us_hero', ContactUsHeroSliceVariation>
 
 /**
+ * Item in *ContentWithImage → Left Content Right Image → Primary → Background Color*
+ */
+export interface ContentWithImageSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *ContentWithImage → Left Content Right Image → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Item in *ContentWithImage → Right Content Left Image → Primary → Background Color*
+ */
+export interface ContentWithImageSliceRightContentLeftImagePrimaryBackgroundColorItem {
+    /**
+     * color field in *ContentWithImage → Right Content Left Image → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
  * Primary content in *ContentWithImage → Left Content Right Image → Primary*
  */
 export interface ContentWithImageSliceDefaultPrimary {
@@ -1373,6 +1403,16 @@ export interface ContentWithImageSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#select
      */
     variant: prismic.SelectField<'Small Content' | 'Large Content', 'filled'>
+
+    /**
+     * Background Color field in *ContentWithImage → Left Content Right Image → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<ContentWithImageSliceDefaultPrimaryBackgroundColorItem>>
 }
 
 /**
@@ -1417,6 +1457,27 @@ export interface ContentWithImageSliceRightContentLeftImagePrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     image: prismic.ImageField<never>
+
+    /**
+     * Background Color field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<ContentWithImageSliceRightContentLeftImagePrimaryBackgroundColorItem>>
+
+    /**
+     * Variant field in *ContentWithImage → Right Content Left Image → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Select a variant
+     * - **Default Value**: Small Content
+     * - **API ID Path**: content_with_image.rightContentLeftImage.primary.variant
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    variant: prismic.SelectField<'Small Content' | 'Large Content', 'filled'>
 }
 
 /**
@@ -5133,7 +5194,9 @@ declare module '@prismicio/client' {
             ContactUsHeroSliceVariation,
             ContactUsHeroSliceDefault,
             ContentWithImageSlice,
+            ContentWithImageSliceDefaultPrimaryBackgroundColorItem,
             ContentWithImageSliceDefaultPrimary,
+            ContentWithImageSliceRightContentLeftImagePrimaryBackgroundColorItem,
             ContentWithImageSliceRightContentLeftImagePrimary,
             ContentWithImageSliceVariation,
             ContentWithImageSliceDefault,
