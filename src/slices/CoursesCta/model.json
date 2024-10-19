@@ -1,0 +1,259 @@
+{
+  "id": "courses_cta",
+  "type": "SharedSlice",
+  "name": "CoursesCta",
+  "description": "CoursesCta",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "highlighted_text": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Text",
+            "placeholder": "highlighted text that will come at the end"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item,rtl"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "backgroud_image": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "color_for_section_to_blend_to": {
+          "type": "Color",
+          "config": {
+            "label": "Color for section to blend to",
+            "placeholder": "Add color for section above and below to blend to"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "withSmallTitle",
+      "name": "With Small Title",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "highlighted_text": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Text",
+            "placeholder": "highlighted text that will come at the end"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item,rtl"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "backgroud_image": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "color_for_section_to_blend_to": {
+          "type": "Color",
+          "config": {
+            "label": "Color for section to blend to",
+            "placeholder": "Add color for section above and below to blend to"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "withPrice",
+      "name": "With Price",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "highlighted_text": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Text",
+            "placeholder": "highlighted text that will come at the end"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item,rtl"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "backgroud_image": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "color_for_section_to_blend_to": {
+          "type": "Color",
+          "config": {
+            "label": "Color for section to blend to",
+            "placeholder": "Add color for section above and below to blend to"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "withSubtext",
+      "name": "With Subtext",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "highlighted_text": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Text",
+            "placeholder": "highlighted text that will come at the end"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item,rtl"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "backgroud_image": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "subtext": {
+          "type": "Text",
+          "config": {
+            "label": "Subtext",
+            "placeholder": ""
+          }
+        },
+        "color_for_section_to_blend_to": {
+          "type": "Color",
+          "config": {
+            "label": "Color for section to blend to",
+            "placeholder": "Add color for section above and below to blend to"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

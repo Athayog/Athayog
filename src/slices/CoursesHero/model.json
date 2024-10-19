@@ -1,0 +1,93 @@
+{
+  "id": "courses_hero",
+  "type": "SharedSlice",
+  "name": "CoursesHero",
+  "description": "CoursesHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "banner_title": {
+          "type": "Text",
+          "config": {
+            "label": "Banner Title",
+            "placeholder": "Title that appears on top"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "Page Title",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink"
+          }
+        },
+        "highlighted_text": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Text",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink"
+          }
+        },
+        "register_button": {
+          "type": "Link",
+          "config": {
+            "label": "Register Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "backgroud_image": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "person_image": {
+          "type": "Image",
+          "config": {
+            "label": "Person Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "blurhash": {
+          "type": "Text",
+          "config": {
+            "label": "BlurHash",
+            "placeholder": "Image placeholder before actual image loads"
+          }
+        },
+        "show_flower": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Flower",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

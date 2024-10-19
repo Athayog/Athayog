@@ -1,0 +1,151 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "What will you learn",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Soemthign to be lean"
+			},
+			"content": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"content_title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "somehow",
+									"type": "Text"
+								}
+							],
+							[
+								"icon",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+										"width": 4000,
+										"height": 4000
+									},
+									"url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+									"width": 4000,
+									"height": 4000,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"content_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Duis laborum ea aliqua quis proident commodo eiusmod sunt sunt ex in est. Aliquip deserunt Lorem ullamco amet proident Lorem sunt mollit ullamco eu."
+											}
+										}
+									]
+								}
+							],
+							[
+								"content_image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+										"width": 4172,
+										"height": 4000
+									},
+									"url": "https://images.unsplash.com/photo-1586952518485-11b180e92764",
+									"width": 4172,
+									"height": 4000,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							]
+						]
+					}
+				]
+			},
+			"info_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Anim et consectetur aliquip in."
+						}
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#F1E9F7"
+								}
+							]
+						]
+					}
+				]
+			},
+			"info_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Commodo minim reprehenderit nulla minim labore proident labore occaecat amet labore proident dolor mollit elit nostrud."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
