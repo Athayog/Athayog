@@ -19,7 +19,8 @@ export const navItems: NavItem[] = [
                 path: '/personal-session',
                 type: 'nav',
             },
-            { label: 'Workshop', path: '/workshop', type: 'nav' },
+            { label: 'Workshop', path: '/workshops', type: 'nav' },
+            { label: 'Yoga Therapy', path: '/yoga-therapy', type: 'nav' },
             {
                 label: 'Yoga Academy',
                 type: 'menu',
@@ -34,9 +35,16 @@ export const navItems: NavItem[] = [
                     { label: 'TTC Online', path: '/ttc-online', type: 'nav' },
                 ],
             },
+            { label: 'Excurision / Picnics', path: '/picnics', type: 'nav' },
             { label: 'PCOS Yoga', path: '/pcos-yoga', type: 'nav' },
+            { label: 'Weight Loss Program', path: '/weight-loss-program', type: 'nav' },
         ],
     },
-    { label: 'Others', path: '/others', type: 'nav' },
+    {
+        label: 'Others',
+        type: 'menu',
+        path: '/Others',
+        children: [{ label: 'Career', path: '/career', type: 'nav' }],
+    },
     { label: 'Contact Us', path: '/contact-us', type: 'nav' },
 ]

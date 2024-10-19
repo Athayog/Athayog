@@ -216,9 +216,7 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
                             </Box>
                         </Box>
 
-                        <Box
-                            sx={{ display: { xs: 'none', md: 'block' }, position: 'relative', width: { xs: 'max-content', md: '100%', lg: '40%' }, height: '600px', zIndex: '2', position: 'relative' }}
-                        >
+                        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'relative', width: { xs: 'max-content', md: '100%', lg: '40%' }, height: '600px', zIndex: '2' }}>
                             <Box
                                 sx={{
                                     width: { xs: '400px', md: '100%' }, // Responsive width

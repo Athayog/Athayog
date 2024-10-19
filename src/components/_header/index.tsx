@@ -11,30 +11,37 @@ import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import useThemeStore from '@/store/useThemeStore'
 import AccountMenu from '@/components/_header/AccountMenu'
-import useAuthStore from '@/store/useAuthStore'
 import ScrollListener from '@/hooks/ScrollListener'
+import useAuthStore from '@/store/useAuthStore'
 
 const Navbar: React.FC = () => {
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
+    // State for managing open menus independently
+    const [anchorEls, setAnchorEls] = useState<{ [key: number]: HTMLElement | null }>({})
     const [subMenuAnchorEl, setSubMenuAnchorEl] = useState<HTMLElement | null>(null)
     const pathname = usePathname()
     const { navigationVariant, isScrolled } = useThemeStore()
     const { user } = useAuthStore()
+    const [gradient, setGradient] = useState('linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)')
 
-    const handleClick = (event: React.MouseEvent<HTMLElement>, children?: unknown[]) => {
-        setAnchorEl(event.currentTarget)
-        if (children) {
-            setSubMenuAnchorEl(null)
-        }
+    const handleClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
+        // Update the anchor element for the clicked menu
+        setAnchorEls((prev) => ({
+            ...prev,
+            [index]: event.currentTarget,
+        }))
+        setSubMenuAnchorEl(null) // Close submenu if any
+    }
+
+    const handleClose = (index: number) => {
+        // Close the specific menu
+        setAnchorEls((prev) => ({
+            ...prev,
+            [index]: null,
+        }))
     }
 
     const handleSubMenuClick = (event: React.MouseEvent<HTMLElement>) => {
         setSubMenuAnchorEl(event.currentTarget)
-    }
-
-    const handleClose = () => {
-        setAnchorEl(null)
-        setSubMenuAnchorEl(null)
     }
 
     const initializeAuth = useAuthStore((state) => state.initializeAuth)
@@ -48,7 +55,7 @@ const Navbar: React.FC = () => {
         <AppBar
             position="fixed"
             sx={{
-                background: isScrolled ? '#556940' : 'linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)',
+                background: isScrolled ? '#556940' : gradient,
                 boxShadow: 'none',
                 padding: isScrolled ? '10px 20px' : '25px 20px',
                 transition: 'padding 0.5s ease-in-out, background 0.5s ease-in-out',
@@ -63,7 +70,6 @@ const Navbar: React.FC = () => {
                     }}
                 >
                     <Link href={'/'} passHref={true}>
-                        {' '}
                         <Image src={Logo} alt="athayog logo" width={67} height={67} style={{ width: '100%', height: 'auto' }} />
                     </Link>
                 </Box>
@@ -72,8 +78,8 @@ const Navbar: React.FC = () => {
                     {navItems.map(({ label, path, type, children }, index) => {
                         if (type === 'nav') {
                             return (
-                                <Link href={path ? path : '/'} passHref={true} key={index}>
-                                    <NavLinkButton variant="text" pathname={pathname} path={path ? path : '/'} navigationVariant={navigationVariant}>
+                                <Link href={path || '/'} passHref={true} key={index}>
+                                    <NavLinkButton variant="text" pathname={pathname} path={path || '/'} navigationVariant={navigationVariant}>
                                         {label}
                                     </NavLinkButton>
                                 </Link>
@@ -81,20 +87,20 @@ const Navbar: React.FC = () => {
                         } else if (type === 'menu' && children) {
                             return (
                                 <React.Fragment key={index}>
-                                    <MenuButton variant="text" aria-controls={anchorEl ? `submenu-${index}` : undefined} aria-haspopup="true" onClick={(event) => handleClick(event, children)}>
+                                    <MenuButton variant="text" aria-controls={anchorEls[index] ? `submenu-${index}` : undefined} aria-haspopup="true" onClick={(event) => handleClick(event, index)}>
                                         {label}
                                     </MenuButton>
                                     <Menu
                                         id={`submenu-${index}`}
-                                        anchorEl={anchorEl}
-                                        open={Boolean(anchorEl)}
-                                        onClose={handleClose}
+                                        anchorEl={anchorEls[index]}
+                                        open={Boolean(anchorEls[index])}
+                                        onClose={() => handleClose(index)}
                                         disableScrollLock={true}
                                         MenuListProps={{
                                             'aria-labelledby': `submenu-button-${index}`,
                                         }}
                                     >
-                                        {RenderMenuItems(children, handleClose, handleSubMenuClick, subMenuAnchorEl)}
+                                        {RenderMenuItems(children, () => handleClose(index), handleSubMenuClick, subMenuAnchorEl)}
                                     </Menu>
                                 </React.Fragment>
                             )
@@ -119,7 +125,6 @@ const Navbar: React.FC = () => {
                             </Button>
                         </Link>
                     )}
-
                     <Link href={'/trial-classes'} passHref={true}>
                         <TrialButton variant="text">
                             Get a<span>Free Trial</span>
