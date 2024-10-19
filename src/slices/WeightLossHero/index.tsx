@@ -1,13 +1,11 @@
-import Banner from '@/components/_shared/Banner'
-import Button from '@/components/elements/button/Index'
 import { Box } from '@mui/material'
-
 import { Content } from '@prismicio/client'
+import Banner from '@/components/_shared/Banner'
+import Mandela from '/public/images/Mandela.svg'
+import Button from '@/components/elements/button/Index'
+import MandelDesktop from '/public/images/MadelaDesktop.svg'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
-import Mandela from '/public/images/Mandela.svg'
-import MandelDesktop from '/public/images/MadelaDesktop.svg'
-
 /**
  * Props for `WeightLossHero`.
  */

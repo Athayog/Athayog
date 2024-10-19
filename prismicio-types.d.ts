@@ -244,6 +244,10 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | WhyToChooseSlice
+    | CoursesCtaSlice
+    | MultiLeftRightCoursesSlice
+    | CoursesHeroSlice
     | WeightLossFormSlice
     | CareerHeroSlice
     | TestimonialsSlice
@@ -1502,6 +1506,445 @@ type ContentWithImageSliceVariation = ContentWithImageSliceDefault | ContentWith
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type ContentWithImageSlice = prismic.SharedSlice<'content_with_image', ContentWithImageSliceVariation>
+
+/**
+ * Primary content in *CoursesCta → Default → Primary*
+ */
+export interface CoursesCtaSliceDefaultPrimary {
+    /**
+     * Title field in *CoursesCta → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Highlighted Text field in *CoursesCta → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: highlighted text that will come at the end
+     * - **API ID Path**: courses_cta.default.primary.highlighted_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    highlighted_text: prismic.KeyTextField
+
+    /**
+     * Description field in *CoursesCta → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Button field in *CoursesCta → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.default.primary.button
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button: prismic.LinkField
+
+    /**
+     * Backgroud Image field in *CoursesCta → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.default.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Color for section to blend to field in *CoursesCta → Default → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: Add color for section above and below to blend to
+     * - **API ID Path**: courses_cta.default.primary.color_for_section_to_blend_to
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color_for_section_to_blend_to: prismic.ColorField
+}
+
+/**
+ * Default variation for CoursesCta Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesCtaSliceDefault = prismic.SharedSliceVariation<'default', Simplify<CoursesCtaSliceDefaultPrimary>, never>
+
+/**
+ * Primary content in *CoursesCta → With Small Title → Primary*
+ */
+export interface CoursesCtaSliceWithSmallTitlePrimary {
+    /**
+     * Title field in *CoursesCta → With Small Title → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSmallTitle.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Highlighted Text field in *CoursesCta → With Small Title → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: highlighted text that will come at the end
+     * - **API ID Path**: courses_cta.withSmallTitle.primary.highlighted_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    highlighted_text: prismic.KeyTextField
+
+    /**
+     * Description field in *CoursesCta → With Small Title → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSmallTitle.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Button field in *CoursesCta → With Small Title → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSmallTitle.primary.button
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button: prismic.LinkField
+
+    /**
+     * Backgroud Image field in *CoursesCta → With Small Title → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSmallTitle.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Color for section to blend to field in *CoursesCta → With Small Title → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: Add color for section above and below to blend to
+     * - **API ID Path**: courses_cta.withSmallTitle.primary.color_for_section_to_blend_to
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color_for_section_to_blend_to: prismic.ColorField
+}
+
+/**
+ * With Small Title variation for CoursesCta Slice
+ *
+ * - **API ID**: `withSmallTitle`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesCtaSliceWithSmallTitle = prismic.SharedSliceVariation<'withSmallTitle', Simplify<CoursesCtaSliceWithSmallTitlePrimary>, never>
+
+/**
+ * Primary content in *CoursesCta → With Price → Primary*
+ */
+export interface CoursesCtaSliceWithPricePrimary {
+    /**
+     * Title field in *CoursesCta → With Price → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withPrice.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Highlighted Text field in *CoursesCta → With Price → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: highlighted text that will come at the end
+     * - **API ID Path**: courses_cta.withPrice.primary.highlighted_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    highlighted_text: prismic.KeyTextField
+
+    /**
+     * Description field in *CoursesCta → With Price → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withPrice.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Button field in *CoursesCta → With Price → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withPrice.primary.button
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button: prismic.LinkField
+
+    /**
+     * Backgroud Image field in *CoursesCta → With Price → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withPrice.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Color for section to blend to field in *CoursesCta → With Price → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: Add color for section above and below to blend to
+     * - **API ID Path**: courses_cta.withPrice.primary.color_for_section_to_blend_to
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color_for_section_to_blend_to: prismic.ColorField
+}
+
+/**
+ * With Price variation for CoursesCta Slice
+ *
+ * - **API ID**: `withPrice`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesCtaSliceWithPrice = prismic.SharedSliceVariation<'withPrice', Simplify<CoursesCtaSliceWithPricePrimary>, never>
+
+/**
+ * Primary content in *CoursesCta → With Subtext → Primary*
+ */
+export interface CoursesCtaSliceWithSubtextPrimary {
+    /**
+     * Title field in *CoursesCta → With Subtext → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSubtext.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Highlighted Text field in *CoursesCta → With Subtext → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: highlighted text that will come at the end
+     * - **API ID Path**: courses_cta.withSubtext.primary.highlighted_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    highlighted_text: prismic.KeyTextField
+
+    /**
+     * Description field in *CoursesCta → With Subtext → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSubtext.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Button field in *CoursesCta → With Subtext → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSubtext.primary.button
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    button: prismic.LinkField
+
+    /**
+     * Backgroud Image field in *CoursesCta → With Subtext → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSubtext.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Subtext field in *CoursesCta → With Subtext → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_cta.withSubtext.primary.subtext
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtext: prismic.KeyTextField
+
+    /**
+     * Color for section to blend to field in *CoursesCta → With Subtext → Primary*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: Add color for section above and below to blend to
+     * - **API ID Path**: courses_cta.withSubtext.primary.color_for_section_to_blend_to
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color_for_section_to_blend_to: prismic.ColorField
+}
+
+/**
+ * With Subtext variation for CoursesCta Slice
+ *
+ * - **API ID**: `withSubtext`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesCtaSliceWithSubtext = prismic.SharedSliceVariation<'withSubtext', Simplify<CoursesCtaSliceWithSubtextPrimary>, never>
+
+/**
+ * Slice variation for *CoursesCta*
+ */
+type CoursesCtaSliceVariation = CoursesCtaSliceDefault | CoursesCtaSliceWithSmallTitle | CoursesCtaSliceWithPrice | CoursesCtaSliceWithSubtext
+
+/**
+ * CoursesCta Shared Slice
+ *
+ * - **API ID**: `courses_cta`
+ * - **Description**: CoursesCta
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesCtaSlice = prismic.SharedSlice<'courses_cta', CoursesCtaSliceVariation>
+
+/**
+ * Primary content in *CoursesHero → Default → Primary*
+ */
+export interface CoursesHeroSliceDefaultPrimary {
+    /**
+     * Banner Title field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Title that appears on top
+     * - **API ID Path**: courses_hero.default.primary.banner_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    banner_title: prismic.KeyTextField
+
+    /**
+     * Title field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Page Title
+     * - **API ID Path**: courses_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Highlighted Text field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_hero.default.primary.highlighted_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    highlighted_text: prismic.KeyTextField
+
+    /**
+     * Subtitle field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_hero.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Register Button field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_hero.default.primary.register_button
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    register_button: prismic.LinkField
+
+    /**
+     * Backgroud Image field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_hero.default.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Person Image field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_hero.default.primary.person_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    person_image: prismic.ImageField<never>
+
+    /**
+     * BlurHash field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Image placeholder before actual image loads
+     * - **API ID Path**: courses_hero.default.primary.blurhash
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    blurhash: prismic.KeyTextField
+
+    /**
+     * Show Flower field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: courses_hero.default.primary.show_flower
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    show_flower: prismic.BooleanField
+}
+
+/**
+ * Default variation for CoursesHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<CoursesHeroSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *CoursesHero*
+ */
+type CoursesHeroSliceVariation = CoursesHeroSliceDefault
+
+/**
+ * CoursesHero Shared Slice
+ *
+ * - **API ID**: `courses_hero`
+ * - **Description**: CoursesHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesHeroSlice = prismic.SharedSlice<'courses_hero', CoursesHeroSliceVariation>
 
 /**
  * Primary content in *EnrollSection → Default → Primary*
@@ -2812,6 +3255,154 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
+
+/**
+ * Item in *MultiLeftRightCourses → Default → Primary → Content*
+ */
+export interface MultiLeftRightCoursesSliceDefaultPrimaryContentItem {
+    /**
+     * Content Title field in *MultiLeftRightCourses → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.content[].content_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    content_title: prismic.KeyTextField
+
+    /**
+     * Icon field in *MultiLeftRightCourses → Default → Primary → Content*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.content[].icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Content Description field in *MultiLeftRightCourses → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.content[].content_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    content_description: prismic.RichTextField
+
+    /**
+     * Content Image field in *MultiLeftRightCourses → Default → Primary → Content*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.content[].content_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    content_image: prismic.ImageField<never>
+}
+
+/**
+ * Item in *MultiLeftRightCourses → Default → Primary → Background Color*
+ */
+export interface MultiLeftRightCoursesSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * Color field in *MultiLeftRightCourses → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *MultiLeftRightCourses → Default → Primary*
+ */
+export interface MultiLeftRightCoursesSliceDefaultPrimary {
+    /**
+     * Title field in *MultiLeftRightCourses → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *MultiLeftRightCourses → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Content field in *MultiLeftRightCourses → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<Simplify<MultiLeftRightCoursesSliceDefaultPrimaryContentItem>>
+
+    /**
+     * Info Title field in *MultiLeftRightCourses → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.info_title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    info_title: prismic.RichTextField
+
+    /**
+     * Info Description field in *MultiLeftRightCourses → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.info_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    info_description: prismic.RichTextField
+
+    /**
+     * Background Color field in *MultiLeftRightCourses → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: multi_left_right_courses.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<MultiLeftRightCoursesSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for MultiLeftRightCourses Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MultiLeftRightCoursesSliceDefault = prismic.SharedSliceVariation<'default', Simplify<MultiLeftRightCoursesSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *MultiLeftRightCourses*
+ */
+type MultiLeftRightCoursesSliceVariation = MultiLeftRightCoursesSliceDefault
+
+/**
+ * MultiLeftRightCourses Shared Slice
+ *
+ * - **API ID**: `multi_left_right_courses`
+ * - **Description**: MultiLeftRightCourses
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MultiLeftRightCoursesSlice = prismic.SharedSlice<'multi_left_right_courses', MultiLeftRightCoursesSliceVariation>
 
 /**
  * Item in *MultiLeftRightInfoSection → Default → Primary → Content*
@@ -4725,6 +5316,134 @@ type WhyJoinSliceVariation = WhyJoinSliceDefault
 export type WhyJoinSlice = prismic.SharedSlice<'why_join', WhyJoinSliceVariation>
 
 /**
+ * Item in *WhyToChoose → Default → Primary → Content*
+ */
+export interface WhyToChooseSliceDefaultPrimaryContentItem {
+    /**
+     * Title field in *WhyToChoose → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.content[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Description field in *WhyToChoose → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.content[].description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Image field in *WhyToChoose → Default → Primary → Content*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.content[].image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Item in *WhyToChoose → Default → Primary → Background Color*
+ */
+export interface WhyToChooseSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * Color field in *WhyToChoose → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *WhyToChoose → Default → Primary*
+ */
+export interface WhyToChooseSliceDefaultPrimary {
+    /**
+     * Logo field in *WhyToChoose → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.logo
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    logo: prismic.ImageField<never>
+
+    /**
+     * Title field in *WhyToChoose → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *WhyToChoose → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Content field in *WhyToChoose → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<Simplify<WhyToChooseSliceDefaultPrimaryContentItem>>
+
+    /**
+     * Background Color field in *WhyToChoose → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: why_to_choose.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<WhyToChooseSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for WhyToChoose Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WhyToChooseSliceDefault = prismic.SharedSliceVariation<'default', Simplify<WhyToChooseSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *WhyToChoose*
+ */
+type WhyToChooseSliceVariation = WhyToChooseSliceDefault
+
+/**
+ * WhyToChoose Shared Slice
+ *
+ * - **API ID**: `why_to_choose`
+ * - **Description**: WhyToChoose
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WhyToChooseSlice = prismic.SharedSlice<'why_to_choose', WhyToChooseSliceVariation>
+
+/**
  * Primary content in *YogaArambha → Default → Primary*
  */
 export interface YogaArambhaSliceDefaultPrimary {
@@ -5201,6 +5920,20 @@ declare module '@prismicio/client' {
             ContentWithImageSliceVariation,
             ContentWithImageSliceDefault,
             ContentWithImageSliceRightContentLeftImage,
+            CoursesCtaSlice,
+            CoursesCtaSliceDefaultPrimary,
+            CoursesCtaSliceWithSmallTitlePrimary,
+            CoursesCtaSliceWithPricePrimary,
+            CoursesCtaSliceWithSubtextPrimary,
+            CoursesCtaSliceVariation,
+            CoursesCtaSliceDefault,
+            CoursesCtaSliceWithSmallTitle,
+            CoursesCtaSliceWithPrice,
+            CoursesCtaSliceWithSubtext,
+            CoursesHeroSlice,
+            CoursesHeroSliceDefaultPrimary,
+            CoursesHeroSliceVariation,
+            CoursesHeroSliceDefault,
             EnrollSectionSlice,
             EnrollSectionSliceDefaultPrimary,
             EnrollSectionSliceVariation,
@@ -5269,6 +6002,12 @@ declare module '@prismicio/client' {
             LeftImageRighContentSliceDefaultPrimary,
             LeftImageRighContentSliceVariation,
             LeftImageRighContentSliceDefault,
+            MultiLeftRightCoursesSlice,
+            MultiLeftRightCoursesSliceDefaultPrimaryContentItem,
+            MultiLeftRightCoursesSliceDefaultPrimaryBackgroundColorItem,
+            MultiLeftRightCoursesSliceDefaultPrimary,
+            MultiLeftRightCoursesSliceVariation,
+            MultiLeftRightCoursesSliceDefault,
             MultiLeftRightInfoSectionSlice,
             MultiLeftRightInfoSectionSliceDefaultPrimaryContentItem,
             MultiLeftRightInfoSectionSliceDefaultPrimaryBackgroundColorItem,
@@ -5383,6 +6122,12 @@ declare module '@prismicio/client' {
             WhyJoinSliceDefaultPrimary,
             WhyJoinSliceVariation,
             WhyJoinSliceDefault,
+            WhyToChooseSlice,
+            WhyToChooseSliceDefaultPrimaryContentItem,
+            WhyToChooseSliceDefaultPrimaryBackgroundColorItem,
+            WhyToChooseSliceDefaultPrimary,
+            WhyToChooseSliceVariation,
+            WhyToChooseSliceDefault,
             YogaArambhaSlice,
             YogaArambhaSliceDefaultPrimary,
             YogaArambhaSliceVariation,

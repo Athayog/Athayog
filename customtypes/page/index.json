@@ -27,6 +27,18 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "why_to_choose": {
+                            "type": "SharedSlice"
+                        },
+                        "courses_cta": {
+                            "type": "SharedSlice"
+                        },
+                        "multi_left_right_courses": {
+                            "type": "SharedSlice"
+                        },
+                        "courses_hero": {
+                            "type": "SharedSlice"
+                        },
                         "weight_loss_form": {
                             "type": "SharedSlice"
                         },
