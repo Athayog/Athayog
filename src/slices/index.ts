@@ -4,7 +4,9 @@ import dynamic from 'next/dynamic'
 
 export const components = {
     about_us_hero: dynamic(() => import('./AboutUsHero')),
+    accommodation: dynamic(() => import('./Accommodation')),
     advantages_of_personal_training: dynamic(() => import('./AdvantagesOfPersonalTraining')),
+    amenities: dynamic(() => import('./Amenities')),
     call_to_action: dynamic(() => import('./CallToAction')),
     career_hero: dynamic(() => import('./CareerHero')),
     causes_of_pcos: dynamic(() => import('./CausesOfPcos')),

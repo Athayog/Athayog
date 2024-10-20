@@ -244,6 +244,8 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | AccommodationSlice
+    | AmenitiesSlice
     | WhyToChooseSlice
     | CoursesCtaSlice
     | MultiLeftRightCoursesSlice
@@ -503,6 +505,104 @@ type AboutUsHeroSliceVariation = AboutUsHeroSliceDefault
 export type AboutUsHeroSlice = prismic.SharedSlice<'about_us_hero', AboutUsHeroSliceVariation>
 
 /**
+ * Item in *Accommodation → Default → Primary → Gallery*
+ */
+export interface AccommodationSliceDefaultPrimaryGalleryItem {
+    /**
+     * image field in *Accommodation → Default → Primary → Gallery*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accommodation.default.primary.gallery[].image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Item in *Accommodation → Default → Primary → Background Color*
+ */
+export interface AccommodationSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * Color field in *Accommodation → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accommodation.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *Accommodation → Default → Primary*
+ */
+export interface AccommodationSliceDefaultPrimary {
+    /**
+     * Title field in *Accommodation → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accommodation.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Subtitle field in *Accommodation → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accommodation.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Gallery field in *Accommodation → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accommodation.default.primary.gallery[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    gallery: prismic.GroupField<Simplify<AccommodationSliceDefaultPrimaryGalleryItem>>
+
+    /**
+     * Background Color field in *Accommodation → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accommodation.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<AccommodationSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for Accommodation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AccommodationSliceDefault = prismic.SharedSliceVariation<'default', Simplify<AccommodationSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *Accommodation*
+ */
+type AccommodationSliceVariation = AccommodationSliceDefault
+
+/**
+ * Accommodation Shared Slice
+ *
+ * - **API ID**: `accommodation`
+ * - **Description**: Accommodation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AccommodationSlice = prismic.SharedSlice<'accommodation', AccommodationSliceVariation>
+
+/**
  * Item in *AdvantagesOfPersonalTraining → Default → Primary → Content*
  */
 export interface AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem {
@@ -584,6 +684,159 @@ type AdvantagesOfPersonalTrainingSliceVariation = AdvantagesOfPersonalTrainingSl
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AdvantagesOfPersonalTrainingSlice = prismic.SharedSlice<'advantages_of_personal_training', AdvantagesOfPersonalTrainingSliceVariation>
+
+/**
+ * Item in *Amenities → Default → Primary → Provided*
+ */
+export interface AmenitiesSliceDefaultPrimaryProvidedItem {
+    /**
+     * Icon field in *Amenities → Default → Primary → Provided*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.provided[].icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Label field in *Amenities → Default → Primary → Provided*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.provided[].label
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    label: prismic.KeyTextField
+}
+
+/**
+ * Item in *Amenities → Default → Primary → Notes*
+ */
+export interface AmenitiesSliceDefaultPrimaryNotesItem {
+    /**
+     * Icon field in *Amenities → Default → Primary → Notes*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.notes[].icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Label field in *Amenities → Default → Primary → Notes*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.notes[].label
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    label: prismic.KeyTextField
+
+    /**
+     * Subtext field in *Amenities → Default → Primary → Notes*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Add any subtext if any it will appear as smaller font
+     * - **API ID Path**: amenities.default.primary.notes[].subtext
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtext: prismic.KeyTextField
+}
+
+/**
+ * Item in *Amenities → Default → Primary → Background Color*
+ */
+export interface AmenitiesSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * Color field in *Amenities → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *Amenities → Default → Primary*
+ */
+export interface AmenitiesSliceDefaultPrimary {
+    /**
+     * Title field in *Amenities → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Provided field in *Amenities → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.provided[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    provided: prismic.GroupField<Simplify<AmenitiesSliceDefaultPrimaryProvidedItem>>
+
+    /**
+     * Note Title field in *Amenities → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.note_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    note_title: prismic.KeyTextField
+
+    /**
+     * Notes field in *Amenities → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.notes[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    notes: prismic.GroupField<Simplify<AmenitiesSliceDefaultPrimaryNotesItem>>
+
+    /**
+     * Background Color field in *Amenities → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: amenities.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<AmenitiesSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for Amenities Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AmenitiesSliceDefault = prismic.SharedSliceVariation<'default', Simplify<AmenitiesSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *Amenities*
+ */
+type AmenitiesSliceVariation = AmenitiesSliceDefault
+
+/**
+ * Amenities Shared Slice
+ *
+ * - **API ID**: `amenities`
+ * - **Description**: Amenities
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AmenitiesSlice = prismic.SharedSlice<'amenities', AmenitiesSliceVariation>
 
 /**
  * Item in *CallToAction → Default → Primary → Background Color*
@@ -5867,11 +6120,24 @@ declare module '@prismicio/client' {
             AboutUsHeroSliceDefaultPrimary,
             AboutUsHeroSliceVariation,
             AboutUsHeroSliceDefault,
+            AccommodationSlice,
+            AccommodationSliceDefaultPrimaryGalleryItem,
+            AccommodationSliceDefaultPrimaryBackgroundColorItem,
+            AccommodationSliceDefaultPrimary,
+            AccommodationSliceVariation,
+            AccommodationSliceDefault,
             AdvantagesOfPersonalTrainingSlice,
             AdvantagesOfPersonalTrainingSliceDefaultPrimaryContentItem,
             AdvantagesOfPersonalTrainingSliceDefaultPrimary,
             AdvantagesOfPersonalTrainingSliceVariation,
             AdvantagesOfPersonalTrainingSliceDefault,
+            AmenitiesSlice,
+            AmenitiesSliceDefaultPrimaryProvidedItem,
+            AmenitiesSliceDefaultPrimaryNotesItem,
+            AmenitiesSliceDefaultPrimaryBackgroundColorItem,
+            AmenitiesSliceDefaultPrimary,
+            AmenitiesSliceVariation,
+            AmenitiesSliceDefault,
             CallToActionSlice,
             CallToActionSliceDefaultPrimaryBackgroundColorItem,
             CallToActionSliceDefaultPrimary,

@@ -7,7 +7,7 @@ export interface NavItem {
 
 export const navItems: NavItem[] = [
     { label: 'Home', path: '/', type: 'nav' },
-    { label: 'Who We Are', path: '/who-we-are', type: 'nav' },
+    { label: 'Who We Are', path: '/about-us', type: 'nav' },
     {
         label: 'What We Offer',
         type: 'menu',

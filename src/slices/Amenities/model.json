@@ -1,0 +1,104 @@
+{
+  "id": "amenities",
+  "type": "SharedSlice",
+  "name": "Amenities",
+  "description": "Amenities",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "provided": {
+          "type": "Group",
+          "config": {
+            "label": "Provided",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "note_title": {
+          "type": "Text",
+          "config": {
+            "label": "Note Title",
+            "placeholder": ""
+          }
+        },
+        "notes": {
+          "type": "Group",
+          "config": {
+            "label": "Notes",
+            "repeat": true,
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label",
+                  "placeholder": ""
+                }
+              },
+              "subtext": {
+                "type": "Text",
+                "config": {
+                  "label": "Subtext",
+                  "placeholder": "Add any subtext if any it will appear as smaller font"
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

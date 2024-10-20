@@ -228,7 +228,7 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
                                     opacity: 0.4,
                                 }}
                             >
-                                <Image src={flowerMandela} alt="Flower Mandela" />
+                                <Image src={flowerMandela} alt="Flower Mandela" style={{ width: '100%', height: '100%' }} />
                             </Box>
 
                             {/* Responsive wrapper for Person image */}

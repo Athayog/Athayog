@@ -27,6 +27,12 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "accommodation": {
+                            "type": "SharedSlice"
+                        },
+                        "amenities": {
+                            "type": "SharedSlice"
+                        },
                         "why_to_choose": {
                             "type": "SharedSlice"
                         },
