@@ -1,0 +1,81 @@
+{
+  "id": "alumni_archive",
+  "type": "SharedSlice",
+  "name": "AlumniArchive",
+  "description": "AlumniArchive",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "alumni": {
+          "type": "Group",
+          "config": {
+            "label": "Alumni",
+            "repeat": true,
+            "fields": {
+              "youtube_embed_id": {
+                "type": "Text",
+                "config": {
+                  "label": "Youtube Embed ID",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item"
+                }
+              },
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": ""
+                }
+              },
+              "works_at": {
+                "type": "Text",
+                "config": {
+                  "label": "Works At",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "id": "three_video_layout",
+  "type": "SharedSlice",
+  "name": "ThreeVideoLayout",
+  "description": "ThreeVideoLayout",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "videos": {
+          "type": "Group",
+          "config": {
+            "label": "Videos",
+            "repeat": true,
+            "fields": {
+              "youtube_embed_id": {
+                "type": "Text",
+                "config": {
+                  "label": "Youtube Embed ID",
+                  "placeholder": ""
+                }
+              },
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

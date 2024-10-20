@@ -41,14 +41,13 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                 sx={{
                     position: 'relative',
                     padding: { xs: '30px 20px', md: '60px 50px' },
-                    backgroundColor: '#E1F9E5',
+                    backgroundColor: slice.primary.color_for_section_to_blend_to,
                     textAlign: 'center',
                     '&&::before': {
                         content: '""',
                         position: 'absolute',
                         top: 0,
                         left: 0,
-                        opacity: '0.4',
                         width: '100%',
                         height: '100%',
                         filter: 'blur(100px)',

@@ -27,6 +27,18 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "three_video_layout": {
+                            "type": "SharedSlice"
+                        },
+                        "gurus": {
+                            "type": "SharedSlice"
+                        },
+                        "eligible": {
+                            "type": "SharedSlice"
+                        },
+                        "alumni_archive": {
+                            "type": "SharedSlice"
+                        },
                         "accommodation": {
                             "type": "SharedSlice"
                         },
