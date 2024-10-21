@@ -27,6 +27,36 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "three_video_layout": {
+                            "type": "SharedSlice"
+                        },
+                        "gurus": {
+                            "type": "SharedSlice"
+                        },
+                        "eligible": {
+                            "type": "SharedSlice"
+                        },
+                        "alumni_archive": {
+                            "type": "SharedSlice"
+                        },
+                        "accommodation": {
+                            "type": "SharedSlice"
+                        },
+                        "amenities": {
+                            "type": "SharedSlice"
+                        },
+                        "why_to_choose": {
+                            "type": "SharedSlice"
+                        },
+                        "courses_cta": {
+                            "type": "SharedSlice"
+                        },
+                        "multi_left_right_courses": {
+                            "type": "SharedSlice"
+                        },
+                        "courses_hero": {
+                            "type": "SharedSlice"
+                        },
                         "weight_loss_form": {
                             "type": "SharedSlice"
                         },

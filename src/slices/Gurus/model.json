@@ -1,0 +1,73 @@
+{
+  "id": "gurus",
+  "type": "SharedSlice",
+  "name": "Gurus",
+  "description": "Gurus",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "guru": {
+          "type": "Group",
+          "config": {
+            "label": "Guru",
+            "repeat": true,
+            "fields": {
+              "guru_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Guru Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": ""
+                }
+              },
+              "designation": {
+                "type": "Text",
+                "config": {
+                  "label": "Designation",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
