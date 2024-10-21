@@ -1,7 +1,7 @@
 'use client'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState, useId } from 'react'
 import { Content } from '@prismicio/client'
 import { Navigation } from 'swiper/modules'
 import { Box, Typography } from '@mui/material'
@@ -11,19 +11,19 @@ import { YouTubeEmbed } from '@next/third-parties/google'
 import ArrowForward from '/public/images/OrangeArrowForward.svg'
 import ArrowBackward from '/public/images/OrangeArrowBackward.svg'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
+import { nanoid } from 'nanoid'
 
 export type AlumniArchiveProps = SliceComponentProps<Content.AlumniArchiveSlice>
 
 const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
     const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
-
     const prevRef = useRef(null)
     const nextRef = useRef(null)
 
     const handleSwiperInit = (swiper: { update: () => void }) => {
         swiper.update()
     }
-
+    const id = useId()
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
@@ -65,7 +65,7 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                         onInit={(swiper) => handleSwiperInit}
                     >
                         {slice.primary.alumni.map((item) => (
-                            <SwiperSlide key={item.youtube_embed_id}>
+                            <SwiperSlide key={item.youtube_embed_id + nanoid()}>
                                 <Box sx={{ display: 'flex', gap: { xs: '20px', md: '52px' }, flexDirection: { xs: 'column', md: 'row' } }}>
                                     <Box
                                         sx={{
@@ -79,7 +79,7 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                                                 width: '100% !important',
                                                 borderRadius: '22.2px',
                                             },
-                                            '.lite-youtube': { maxWidth: 'none' },
+                                            'lite-youtube': { maxWidth: 'none', borderRadius: '22.2px' },
                                         }}
                                     >
                                         <YouTubeEmbed style="height: 100%; width: 100%;" videoid={item.youtube_embed_id ?? ''} params="controls=0" />
@@ -123,6 +123,7 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                     </Swiper>
 
                     {/* Custom navigation buttons */}
+
                     <Box
                         sx={{
                             display: 'flex',

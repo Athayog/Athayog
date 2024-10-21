@@ -14,6 +14,7 @@ export type WhyToChooseProps = SliceComponentProps<Content.WhyToChooseSlice>
  */
 const WhyToChoose = ({ slice }: WhyToChooseProps): JSX.Element => {
     const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
+
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
@@ -28,12 +29,12 @@ const WhyToChoose = ({ slice }: WhyToChooseProps): JSX.Element => {
                         display: 'flex',
                         justifyContent: 'center',
                         flexDirection: 'column',
-                        alignItems: 'center',
+                        alignItems: { xs: 'flex-start', md: 'center' },
                         maxWidth: '1400px',
                         margin: '0 auto',
                     }}
                 >
-                    <PrismicNextImage field={slice.primary.logo} style={{ width: '100px', height: 'auto' }} />
+                    <PrismicNextImage field={slice.primary.logo} style={{ width: '100px', height: 'auto', alignSelf: 'center' }} />
                     <Box sx={{ fontSize: { xs: '28px', md: '56px' }, fontWeight: '700', textAlign: 'center' }}>
                         <PrismicRichText field={slice.primary.title} />
                         <Box sx={{ color: '#617E43' }}>{slice.primary.subtitle}</Box>

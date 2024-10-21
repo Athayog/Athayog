@@ -3,13 +3,13 @@ import { PrismicNextImage } from '@prismicio/next'
 import { backgroundColorExtract } from '@/utils/color'
 import { Box, Divider, Grid2, Typography } from '@mui/material'
 import { SliceComponentProps } from '@prismicio/react'
-import React from 'react'
+import React, { useId } from 'react'
 
 export type AmenitiesProps = SliceComponentProps<Content.AmenitiesSlice>
 
 const Amenities = ({ slice }: AmenitiesProps): JSX.Element => {
     const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
-
+    const id = useId()
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
@@ -36,7 +36,7 @@ const Amenities = ({ slice }: AmenitiesProps): JSX.Element => {
 
                 <Grid2 container spacing={2} sx={{ marginTop: { xs: '23px', md: '53px' } }}>
                     {slice.primary.provided.map((item, index) => (
-                        <Grid2 key={index} size={6}>
+                        <Grid2 key={index + id} size={6}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                                 <Box
                                     sx={{
@@ -79,7 +79,7 @@ const Amenities = ({ slice }: AmenitiesProps): JSX.Element => {
                 <Box sx={{ display: 'flex' }}>
                     {slice.primary.notes.map((item, index) => (
                         <Box
-                            key={item.label}
+                            key={id + index}
                             sx={{
                                 display: 'flex',
                                 alignItems: 'center',

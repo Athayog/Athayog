@@ -3,6 +3,7 @@ import { SliceComponentProps } from '@prismicio/react'
 import { backgroundColorExtract } from '@/utils/color'
 import { Box, Typography } from '@mui/material'
 import { PrismicNextImage } from '@prismicio/next'
+import { nanoid } from 'nanoid'
 
 export type EligibleProps = SliceComponentProps<Content.EligibleSlice>
 
@@ -48,7 +49,10 @@ const Eligible = ({ slice }: EligibleProps): JSX.Element => {
                     >
                         <Box>
                             {slice.primary.points.map((item) => (
-                                <Box key={item.title} sx={{ display: 'flex', gap: { xs: '20px', md: '50px' }, marginTop: '10px', marginBottom: { xs: '10px', md: '50px' }, alignItems: 'center' }}>
+                                <Box
+                                    key={item.title + nanoid()}
+                                    sx={{ display: 'flex', gap: { xs: '20px', md: '50px' }, marginTop: '10px', marginBottom: { xs: '10px', md: '50px' }, alignItems: 'center' }}
+                                >
                                     <Box sx={{ height: { xs: '28px', md: '50px' }, width: { xs: '28px', md: '50px' } }}>
                                         <PrismicNextImage field={item.icons} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                                     </Box>

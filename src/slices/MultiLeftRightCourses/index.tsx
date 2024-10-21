@@ -1,4 +1,5 @@
 import { backgroundColorExtract } from '@/utils/color'
+import { WidthFull } from '@mui/icons-material'
 import { Box, Typography } from '@mui/material'
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'
@@ -14,7 +15,7 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                 sx={{
                     background: backgroundGradient,
                     height: '100%',
-                    padding: { xs: '30px 20px', md: '60px 50px' },
+                    padding: { xs: '30px 20px', lg: '60px 50px' },
                 }}
             >
                 <Box
@@ -56,10 +57,10 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                     <Box sx={{ marginTop: { xs: '35px', lg: '100px' } }}>
                         {slice.primary.content.map((item, index) => (
                             <Box
-                                key={item.content_title}
+                                key={index + (item?.content_title ?? '')}
                                 sx={{
                                     display: 'flex',
-                                    flexDirection: { xs: 'column-reverse', md: index % 2 === 0 ? 'row-reverse' : 'row' },
+                                    flexDirection: { xs: 'column-reverse', sm: index % 2 === 0 ? 'row-reverse' : 'row' },
                                     alignItems: 'center',
                                     justifyContent: 'space-between',
                                     mb: { xs: '50px', md: '100px' },
@@ -72,12 +73,12 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                                 <Box
                                     sx={{
                                         display: { xs: 'none', lg: 'block' },
-                                        maxWidth: { xs: '100%', md: '448px' },
+                                        maxWidth: { xs: '100%', sm: '448px' },
                                         position: 'relative',
-                                        height: { xs: '200px', md: '340px' },
+                                        height: { xs: '200px', sm: '340px' },
                                         overflow: 'hidden',
                                         borderRadius: '20px',
-                                        mb: { xs: 1, md: 0 },
+                                        mb: { xs: 1, sm: 0 },
                                         flexGrow: 1,
                                     }}
                                 >
@@ -95,7 +96,7 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                                 {/* Content Section */}
                                 <Box
                                     sx={{
-                                        maxWidth: { xs: '100%', md: '60%' },
+                                        maxWidth: { xs: '100%', md: '100%' },
                                         p: 0,
                                         flexGrow: 1,
                                     }}
@@ -108,7 +109,9 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                                             flexDirection: { xs: 'row', lg: 'column' },
                                         }}
                                     >
-                                        <PrismicNextImage field={item.icon} />
+                                        <Box sx={{ width: '40px', height: '40px' }}>
+                                            <PrismicNextImage field={item.icon} style={{ height: '100%', width: '100%' }} />
+                                        </Box>
                                         <Typography
                                             sx={{
                                                 color: '#000000',
@@ -117,7 +120,8 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                                                 fontWeight: '700',
                                                 textAlign: {
                                                     xs: 'center',
-                                                    md: index % 2 === 0 ? 'left' : 'right',
+                                                    md: 'center',
+                                                    lg: index % 2 === 0 ? 'left' : 'right',
                                                 },
                                             }}
                                             gutterBottom
@@ -128,12 +132,12 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                                     <Box
                                         sx={{
                                             display: { xs: 'block', lg: 'none' },
-                                            maxWidth: { xs: '100%', md: '448px' },
+                                            maxWidth: { xs: '100%', sm: '448px' },
                                             position: 'relative',
-                                            height: { xs: '200px', md: '340px' },
+                                            height: { xs: '100%', sm: '340px' },
                                             overflow: 'hidden',
                                             borderRadius: '20px',
-                                            mb: { xs: 1, md: 0 },
+                                            mb: { xs: 1, sm: 1, md: 1, lg: 0 },
                                             flexGrow: 1,
                                         }}
                                     >
@@ -156,7 +160,8 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
 
                                             textAlign: {
                                                 xs: 'left',
-                                                md: index % 2 === 0 ? 'left' : 'right',
+                                                md: 'left',
+                                                lg: index % 2 === 0 ? 'left' : 'right',
                                             },
                                             '&& p,h1,h2,h3,h4,h5,h6': {
                                                 margin: 0,
