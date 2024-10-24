@@ -27,6 +27,24 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "courses_list": {
+                            "type": "SharedSlice"
+                        },
+                        "ttc_content_text": {
+                            "type": "SharedSlice"
+                        },
+                        "payment_gateway_group": {
+                            "type": "SharedSlice"
+                        },
+                        "scattered_gallery": {
+                            "type": "SharedSlice"
+                        },
+                        "quote": {
+                            "type": "SharedSlice"
+                        },
+                        "courses_simple_content": {
+                            "type": "SharedSlice"
+                        },
                         "three_video_layout": {
                             "type": "SharedSlice"
                         },

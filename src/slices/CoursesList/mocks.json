@@ -1,0 +1,335 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Syllabus",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Learn 50+ Asanas, Different Breathing Exercises & \nPranayama Techniques,Meditation and Relaxation \npractices, Explore cleansing techniques as per the \nYogic & Ayurvedic principals."
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Learn 50+ Asanas, Different Breathing Exercises & \nPranayama Techniques,Meditation and Relaxation \npractices, Explore cleansing techniques as per the \nYogic & Ayurvedic principals."
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Learn 50+ Asanas, Different Breathing Exercises & \nPranayama Techniques,Meditation and Relaxation \npractices, Explore cleansing techniques as per the \nYogic & Ayurvedic principals."
+								}
+							]
+						]
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#EBD6D3"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "withImage",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla et ex sunt voluptate ad cillum aliquap.",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "t blend of practical asdasasdasdasdasd"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "t blend of practical \nand theoreasdasd"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "asdasdasdasda asd asd asd asd asdasdas"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "asdasd asdasd asd"
+								}
+							]
+						]
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#EDFFE8"
+								}
+							]
+						]
+					}
+				]
+			},
+			"image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea",
+					"width": 3500,
+					"height": 2338
+				},
+				"url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea",
+				"width": 3500,
+				"height": 2338,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "onTwoColumn",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eiusmod aliquip ea deserunt ea fugiat ipsum minim. Ex incididunt ipsum dolore proident culpa minim esse velit pariatur velit cillum."
+						}
+					}
+				]
+			},
+			"list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "asdasdasdas"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "asdasdasdas"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "asdasdasd"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "adasdasdasd"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "asdasdasd"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"item",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "asdasdasdasd"
+								}
+							]
+						]
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#EDF5E9"
+								}
+							]
+						]
+					}
+				]
+			},
+			"devider": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

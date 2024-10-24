@@ -254,6 +254,59 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "withImagePrice",
+      "name": "With Image Price",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "button": {
+          "type": "Link",
+          "config": {
+            "label": "Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "person_image": {
+          "type": "Image",
+          "config": {
+            "label": "Person Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "backgroud_image": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "color_for_section_to_blend_to": {
+          "type": "Color",
+          "config": {
+            "label": "Color for section to blend to",
+            "placeholder": "Add color for section above and below to blend to"
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
