@@ -80,7 +80,7 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                             <PrismicNextImage field={slice.primary.person_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </Box>
                     )}
-                    <Box>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Box
                             sx={{
                                 fontSize: dynamicFontSize,
