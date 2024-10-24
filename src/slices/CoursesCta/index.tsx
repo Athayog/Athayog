@@ -95,7 +95,7 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                             }}
                         >
                             <PrismicRichText field={slice.primary.title} />
-                            <span style={{ color: '#528B16', marginLeft: '12px' }}>{slice.primary.highlighted_text}</span>
+                            {slice.primary.highlighted_text && <span style={{ color: '#528B16', marginLeft: '12px' }}>{slice.primary.highlighted_text}</span>}
                         </Box>
 
                         {/* Description */}
