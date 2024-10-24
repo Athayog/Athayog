@@ -67,20 +67,21 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                         zIndex: 1, // Bring content above the background
                         maxWidth: '1440px',
                         margin: '0 auto',
-                        ...(slice.variation === 'withImagePrice' ? { display: 'flex', alignItems: 'center' } : {}),
+                        ...(slice.variation === 'withImagePrice' ? { display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'space-between' }, gap: '100px' } : {}),
                     }}
                 >
                     {/* Title */}
                     {slice.variation === 'withImagePrice' && (
                         <Box
                             sx={{
+                                display: { xs: 'none', md: 'block' },
                                 width: { xs: '470px', md: '500px' },
                             }}
                         >
                             <PrismicNextImage field={slice.primary.person_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </Box>
                     )}
-                    <Box>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Box
                             sx={{
                                 fontSize: dynamicFontSize,
