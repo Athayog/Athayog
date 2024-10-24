@@ -98,24 +98,6 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                         </Box>
 
                         {/* Description */}
-                        <Box
-                            sx={{
-                                fontSize: {
-                                    xs: '18px',
-                                    md: '32px',
-                                },
-                                marginTop: '20px',
-                                '&& p,h2,h3,h4,h5,h6': {
-                                    fontSize: {
-                                        xs: '18px',
-                                        md: '32px',
-                                    },
-                                    lineHeight: { xs: '28px', lg: '44px' },
-                                },
-                            }}
-                        >
-                            <PrismicRichText field={slice.primary.description} />
-                        </Box>
 
                         {/* Button */}
                         <PrismicNextLink field={slice.primary.button}>
