@@ -1,0 +1,43 @@
+{
+  "id": "scattered_gallery",
+  "type": "SharedSlice",
+  "name": "ScatteredGallery",
+  "description": "ScatteredGallery",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

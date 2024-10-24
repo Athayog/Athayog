@@ -1,7 +1,7 @@
 import Button from '@/components/elements/button/Index'
 import { Box } from '@mui/material'
 import { Content } from '@prismicio/client'
-import { PrismicNextLink } from '@prismicio/next'
+import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 import { url } from 'inspector'
 
@@ -35,6 +35,9 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
     if (slice.variation === 'withSubtext') {
         dynamicFontColor = '#468803'
     }
+    if (slice.variation === 'withImagePrice') {
+        dynamicFontColor = '#625B11'
+    }
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
@@ -64,77 +67,70 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                         zIndex: 1, // Bring content above the background
                         maxWidth: '1440px',
                         margin: '0 auto',
+                        ...(slice.variation === 'withImagePrice' ? { display: 'flex', alignItems: 'center' } : {}),
                     }}
                 >
                     {/* Title */}
-                    <Box
-                        sx={{
-                            fontSize: dynamicFontSize,
-                            fontWeight: slice.variation === 'withPrice' ? '400' : '700',
-                            textAlign: 'center',
-                            color: dynamicFontColor,
-                            lineHeight: { xs: '38px', lg: 'normal' },
-                            display: 'inline',
-                            '&& p': {
+                    {slice.variation === 'withImagePrice' && (
+                        <Box
+                            sx={{
+                                width: { xs: '470px', md: '500px' },
+                            }}
+                        >
+                            <PrismicNextImage field={slice.primary.person_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        </Box>
+                    )}
+                    <Box>
+                        <Box
+                            sx={{
+                                fontSize: dynamicFontSize,
+                                fontWeight: slice.variation === 'withPrice' ? '400' : '700',
+                                textAlign: 'center',
+                                color: dynamicFontColor,
+                                lineHeight: { xs: '38px', lg: 'normal' },
                                 display: 'inline',
-                            },
-                        }}
-                    >
-                        <PrismicRichText field={slice.primary.title} />
-                        <span style={{ color: '#528B16', marginLeft: '12px' }}>{slice.primary.highlighted_text}</span>
-                    </Box>
+                                '&& p': {
+                                    display: 'inline',
+                                },
+                            }}
+                        >
+                            <PrismicRichText field={slice.primary.title} />
+                        </Box>
 
-                    {/* Description */}
-                    <Box
-                        sx={{
-                            fontSize: {
-                                xs: '18px',
-                                md: '32px',
-                            },
-                            marginTop: '20px',
-                            '&& p,h2,h3,h4,h5,h6': {
+                        {/* Description */}
+
+                        {/* Button */}
+                        <PrismicNextLink field={slice.primary.button}>
+                            <Button
+                                sx={{
+                                    margin: '30px auto 0px auto',
+                                    backgroundColor: '#47820D',
+                                    boxShadow: 'none',
+                                    alignSelf: 'flex-end',
+                                    color: '#fff',
+                                }}
+                            >
+                                {slice.primary.button.text}
+                            </Button>
+                        </PrismicNextLink>
+                        <Box
+                            sx={{
                                 fontSize: {
                                     xs: '18px',
                                     md: '32px',
                                 },
-                                lineHeight: { xs: '28px', lg: '44px' },
-                            },
-                        }}
-                    >
-                        <PrismicRichText field={slice.primary.description} />
-                    </Box>
-
-                    {/* Button */}
-                    <PrismicNextLink field={slice.primary.button}>
-                        <Button
-                            sx={{
-                                margin: '30px auto 0px auto',
-                                backgroundColor: '#47820D',
-                                boxShadow: 'none',
-                                alignSelf: 'flex-end',
-                                color: '#fff',
+                                marginTop: { xs: '24px', lg: '30px' },
+                                '&& p,h2,h3,h4,h5,h6': {
+                                    fontSize: {
+                                        xs: '22px',
+                                        md: '32px',
+                                    },
+                                    lineHeight: { xs: '28px', lg: '44px' },
+                                },
                             }}
                         >
-                            {slice.primary.button.text}
-                        </Button>
-                    </PrismicNextLink>
-                    <Box
-                        sx={{
-                            fontSize: {
-                                xs: '18px',
-                                md: '32px',
-                            },
-                            marginTop: { xs: '24px', lg: '30px' },
-                            '&& p,h2,h3,h4,h5,h6': {
-                                fontSize: {
-                                    xs: '22px',
-                                    md: '32px',
-                                },
-                                lineHeight: { xs: '28px', lg: '44px' },
-                            },
-                        }}
-                    >
-                        {slice.variation === 'withSubtext' && slice.primary.subtext}
+                            {slice.variation === 'withSubtext' && slice.primary.subtext}
+                        </Box>
                     </Box>
                 </Box>
             </Box>

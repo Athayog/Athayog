@@ -1,0 +1,50 @@
+{
+  "id": "payment_gateway_group",
+  "type": "SharedSlice",
+  "name": "PaymentGatewayGroup",
+  "description": "PaymentGatewayGroup",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "types_image": {
+          "type": "Image",
+          "config": {
+            "label": "Types Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

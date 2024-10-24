@@ -88,6 +88,92 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "withNoImage",
+      "name": "With No Image",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "banner_title": {
+          "type": "Text",
+          "config": {
+            "label": "Banner Title",
+            "placeholder": "Title that appears on top"
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "Page Title",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink"
+          }
+        },
+        "highlighted_text": {
+          "type": "Text",
+          "config": {
+            "label": "Highlighted Text",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink"
+          }
+        },
+        "register_button": {
+          "type": "Link",
+          "config": {
+            "label": "Register Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "person_image": {
+          "type": "Image",
+          "config": {
+            "label": "Person Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "show_flower": {
+          "type": "Boolean",
+          "config": {
+            "label": "Show Flower",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

@@ -1,0 +1,181 @@
+{
+  "id": "courses_list",
+  "type": "SharedSlice",
+  "name": "CoursesList",
+  "description": "CoursesList",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "list": {
+          "type": "Group",
+          "config": {
+            "label": "List",
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "Text",
+                "config": {
+                  "label": "Item",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "withImage",
+      "name": "With Image",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "list": {
+          "type": "Group",
+          "config": {
+            "label": "List",
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "Text",
+                "config": {
+                  "label": "Item",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "onTwoColumn",
+      "name": "On Two Column",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "list": {
+          "type": "Group",
+          "config": {
+            "label": "List",
+            "repeat": true,
+            "fields": {
+              "item": {
+                "type": "Text",
+                "config": {
+                  "label": "Item",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "Color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "devider": {
+          "type": "Boolean",
+          "config": {
+            "label": "Devider",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"content": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nulla et amet ad. Veniam veniam ut enim sit veniam officia laboris sint fugiat."
+											}
+										}
+									]
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Brief of TEACHER TRAINING COURSE - RYT 200",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "To be a good teacher, You have to be a good student. Start your learning journey ",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "with us and craft yourself into becoming a yoga teacher. Build own knowledge and ",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "practice and nurture others through the learning the skills of being a good teacher. ",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Athayog shikshanapada brings to you yoga instructor course (YIC) Affiliated to",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "VYASA, Bengaluru, RYT-200 Affiliated to Yoga alliance, USA",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#DAF2D0"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

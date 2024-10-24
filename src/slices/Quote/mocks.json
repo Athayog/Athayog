@@ -1,0 +1,43 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"quote": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Et anim exercitation ipsum veniam sint anim eu commodo ea adipisicing minim magna dolore. Tempor commodo excepteur ipsum magna pariatur sint."
+						}
+					}
+				]
+			},
+			"person_name": {
+				"__TYPE__": "FieldContent",
+				"value": "ahead",
+				"type": "Text"
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#d4ff2f",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

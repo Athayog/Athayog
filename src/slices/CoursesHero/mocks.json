@@ -76,5 +76,102 @@
 			}
 		},
 		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "withNoImage",
+		"primary": {
+			"banner_title": {
+				"__TYPE__": "FieldContent",
+				"value": "test",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Et enim qui excepteur ipsum aliquip est ullamco nulla Lorem et sint. Occaecat id sunt id quis consequat veniam proident Lorem eu."
+						}
+					}
+				]
+			},
+			"highlighted_text": {
+				"__TYPE__": "FieldContent",
+				"value": "careful",
+				"type": "Text"
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Non esse exercitation enim duis laboris excepteur sit magna commodo excepteur labore ex duis Lorem."
+						}
+					}
+				]
+			},
+			"register_button": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "sheep"
+				}
+			},
+			"person_image": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+					"width": 3212,
+					"height": 3880
+				},
+				"url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+				"width": 3212,
+				"height": 3880,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"show_flower": {
+				"__TYPE__": "BooleanContent",
+				"value": true
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#7a8aaf",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]
