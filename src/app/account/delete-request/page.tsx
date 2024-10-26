@@ -1,21 +1,9 @@
 'use client'
-import {
-    Box,
-    Button,
-    FormControl,
-    FormHelperText,
-    FormLabel,
-    TextField,
-    Typography,
-    TextareaAutosize,
-    Snackbar,
-    Alert,
-    styled,
-} from '@mui/material'
-import { useState } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import useFormStore from '@/store/useFormStore' // import your Zustand store
+import { useState } from 'react'
+import useFormStore from '@/store/useFormStore'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Box, Button, FormControl, FormHelperText, FormLabel, TextField, Typography, TextareaAutosize, Snackbar, Alert, styled } from '@mui/material'
 
 const ContactTextField = styled(TextField)(({}) => ({
     '& .MuiInputBase-root': {
@@ -76,15 +64,10 @@ const DeleteRequest: React.FC = () => {
     const [captcha, setCaptcha] = useState<string | null>(null)
     const [openSnackbar, setOpenSnackbar] = useState(false)
 
-    const { loading, error, success, submitForm, setError, setSuccess } =
-        useFormStore()
+    const { loading, error, success, submitForm, setError, setSuccess } = useFormStore()
 
     const handleSubmit = async (values: FormValues, { resetForm }: any) => {
-        await submitForm(
-            values,
-            'accountDeletionRequests',
-            `info@athayogliving.com`
-        )
+        await submitForm(values, 'accountDeletionRequests', `info@athayogliving.com`)
 
         // Display success or error notification
         if (success) {
@@ -121,11 +104,7 @@ const DeleteRequest: React.FC = () => {
                     },
                 }}
             >
-                <Typography
-                    variant="h3"
-                    component="h1"
-                    sx={{ fontSize: { xs: '30px', md: '40px' } }}
-                >
+                <Typography variant="h3" component="h1" sx={{ fontSize: { xs: '30px', md: '40px' } }}>
                     Account Deletion Request
                 </Typography>
                 <Box
@@ -156,79 +135,31 @@ const DeleteRequest: React.FC = () => {
                                     }}
                                 >
                                     <FormControl margin="normal">
-                                        <FormLabel htmlFor="name">
-                                            Name
-                                        </FormLabel>
-                                        <Field
-                                            name="name"
-                                            as={ContactTextField}
-                                            id="name"
-                                        />
-                                        <ErrorMessage
-                                            name="name"
-                                            component={FormHelperText}
-                                        />
+                                        <FormLabel htmlFor="name">Name</FormLabel>
+                                        <Field name="name" as={ContactTextField} id="name" />
+                                        <ErrorMessage name="name" component={FormHelperText} />
                                     </FormControl>
 
                                     <FormControl margin="normal">
-                                        <FormLabel htmlFor="email">
-                                            Email
-                                        </FormLabel>
-                                        <Field
-                                            name="email"
-                                            as={ContactTextField}
-                                            type="email"
-                                            id="email"
-                                        />
-                                        <ErrorMessage
-                                            name="email"
-                                            component={FormHelperText}
-                                        />
+                                        <FormLabel htmlFor="email">Email</FormLabel>
+                                        <Field name="email" as={ContactTextField} type="email" id="email" />
+                                        <ErrorMessage name="email" component={FormHelperText} />
                                     </FormControl>
 
                                     <FormControl margin="normal">
-                                        <FormLabel htmlFor="phone">
-                                            Phone
-                                        </FormLabel>
-                                        <Field
-                                            name="phone"
-                                            as={ContactTextField}
-                                            type="tel"
-                                            id="phone"
-                                        />
-                                        <ErrorMessage
-                                            name="phone"
-                                            component={FormHelperText}
-                                        />
+                                        <FormLabel htmlFor="phone">Phone</FormLabel>
+                                        <Field name="phone" as={ContactTextField} type="tel" id="phone" />
+                                        <ErrorMessage name="phone" component={FormHelperText} />
                                     </FormControl>
 
                                     <FormControl margin="normal">
-                                        <FormLabel htmlFor="reason">
-                                            Reason
-                                        </FormLabel>
-                                        <Field
-                                            name="reason"
-                                            as={ContactTextarea}
-                                            minRows={10}
-                                            id="reason"
-                                        />
-                                        <ErrorMessage
-                                            name="reason"
-                                            component={FormHelperText}
-                                        />
+                                        <FormLabel htmlFor="reason">Reason</FormLabel>
+                                        <Field name="reason" as={ContactTextarea} minRows={10} id="reason" />
+                                        <ErrorMessage name="reason" component={FormHelperText} />
                                     </FormControl>
 
-                                    <SubmitButton
-                                        type="submit"
-                                        variant="contained"
-                                        color="error"
-                                        size="large"
-                                        disabled={isSubmitting || loading}
-                                        fullWidth
-                                    >
-                                        {loading
-                                            ? 'Submitting...'
-                                            : 'Submit Request'}
+                                    <SubmitButton type="submit" variant="contained" color="error" size="large" disabled={isSubmitting || loading} fullWidth>
+                                        {loading ? 'Submitting...' : 'Submit Request'}
                                     </SubmitButton>
 
                                     <Typography
@@ -241,13 +172,8 @@ const DeleteRequest: React.FC = () => {
                                         }}
                                         color="textSecondary"
                                     >
-                                        By submitting this form, you acknowledge
-                                        that your account will be permanently
-                                        deleted. All associated data, including
-                                        your personal information and any
-                                        content, will be irreversibly removed
-                                        from our system. This action cannot be
-                                        undone, so please proceed with caution.
+                                        By submitting this form, you acknowledge that your account will be permanently deleted. All associated data, including your personal information and any
+                                        content, will be irreversibly removed from our system. This action cannot be undone, so please proceed with caution.
                                     </Typography>
                                 </Box>
                             </Form>
@@ -255,28 +181,14 @@ const DeleteRequest: React.FC = () => {
                     </Formik>
 
                     {/* Snackbar to show success or error messages */}
-                    <Snackbar
-                        open={openSnackbar}
-                        autoHideDuration={6000}
-                        onClose={handleSnackbarClose}
-                    >
+                    <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleSnackbarClose}>
                         {success ? (
-                            <Alert
-                                onClose={handleSnackbarClose}
-                                severity="success"
-                                sx={{ width: '100%' }}
-                            >
+                            <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
                                 Account Deletion Request Submitted Successfully!
                             </Alert>
                         ) : (
-                            <Alert
-                                onClose={handleSnackbarClose}
-                                severity="error"
-                                sx={{ width: '100%' }}
-                            >
-                                {error
-                                    ? error
-                                    : 'Failed to submit delete request. Please try again later.'}
+                            <Alert onClose={handleSnackbarClose} severity="error" sx={{ width: '100%' }}>
+                                {error ? error : 'Failed to submit delete request. Please try again later.'}
                             </Alert>
                         )}
                     </Snackbar>

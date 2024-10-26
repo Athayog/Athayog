@@ -19,7 +19,7 @@ function AccountMenu() {
 
     const handleAccountClick = () => {
         handleClose()
-        router.push('/account')
+        router.push('/user/account')
     }
 
     const handleLogoutClick = () => {
@@ -31,21 +31,10 @@ function AccountMenu() {
 
     return (
         <div>
-            <Avatar
-                id="menu-appbar"
-                sx={{ width: 40, height: 40 }}
-                onClick={handleMenu}
-            >
+            <Avatar id="menu-appbar" sx={{ width: 40, height: 40 }} onClick={handleMenu}>
                 {user?.displayName?.charAt(0)}
             </Avatar>
-            <Menu
-                disableScrollLock={true}
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                keepMounted
-                open={open}
-                onClose={handleClose}
-            >
+            <Menu disableScrollLock={true} id="menu-appbar" anchorEl={anchorEl} keepMounted open={open} onClose={handleClose}>
                 <MenuItem onClick={handleAccountClick}>
                     <Typography textAlign="center">Account</Typography>
                 </MenuItem>

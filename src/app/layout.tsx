@@ -8,6 +8,7 @@ import { Josefin_Sans } from 'next/font/google'
 import { PrismicPreview } from '@prismicio/next'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
+import { SnackbarProvider } from '@/components/SnackbarProvider'
 
 const josefin = Josefin_Sans({ subsets: ['latin'] })
 
@@ -24,12 +25,14 @@ export default function RootLayout({
             <body className={`${josefin.className}`}>
                 <AppRouterCacheProvider>
                     <ThemeProvider theme={theme}>
-                        <CssBaseline />
-                        <Navbar />
-                        <NextTopLoader />
-                        <div id="scroll-target" />
-                        {children}
-                        <Footer />
+                        <SnackbarProvider>
+                            <CssBaseline />
+                            <Navbar />
+                            <NextTopLoader />
+                            <div id="scroll-target" />
+                            {children}
+                            <Footer />
+                        </SnackbarProvider>
                     </ThemeProvider>
                 </AppRouterCacheProvider>
             </body>

@@ -33,8 +33,9 @@ export default function NotFound() {
                 <Typography
                     sx={{
                         color: '#6D1102',
-                        fontSize: '44px',
+                        fontSize: { x: '36px', md: '44px' },
                         fontWeight: '700',
+                        textAlign: 'center',
                         marginTop: '40px',
                     }}
                 >

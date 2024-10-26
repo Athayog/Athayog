@@ -1,41 +1,33 @@
 'use client'
-import RegisterButton from '@/components/elements/button/RegisterButton'
-import {
-    Box,
-    Button,
-    Divider,
-    TextField,
-    Typography,
-    Snackbar,
-    Select,
-    Alert,
-} from '@mui/material'
-import { signInWithGoogle } from '@/lib/auth' // Import your Google sign-in function
-import { useEffect, useState } from 'react'
-import GoogleIcon from './GoogleIcon.svg'
-import useAuthStore from '@/store/useAuthStore'
-import { useRouter } from 'next/navigation'
-import { RecaptchaVerifier } from 'firebase/auth'
-import { auth } from '@/lib/firebase' // Your Firebase configuration
 import theme from '@/styles/theme'
+import { auth } from '@/lib/firebase'
+import GoogleIcon from './GoogleIcon.svg'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { signInWithGoogle } from '@/lib/auth'
+import useAuthStore from '@/store/useAuthStore'
+import { RecaptchaVerifier } from 'firebase/auth'
+import RegisterButton from '@/components/elements/button/RegisterButton'
+import { Box, Button, Divider, TextField, Typography, Snackbar, Select, Alert } from '@mui/material'
 
 const Login = () => {
     const [loading, setLoading] = useState(false)
     const [otpLaoding, setOTPLoading] = useState(false)
     const [phone, setPhone] = useState('')
-    const [otp, setOtp] = useState(['', '', '', '', '', '']) // Array to hold each OTP digit
+    const [otp, setOtp] = useState(['', '', '', '', '', ''])
 
     const [otpSent, setOtpSent] = useState(false)
     const [snackbarOpen, setSnackbarOpen] = useState(false)
     const [snackbarMessage, setSnackbarMessage] = useState('')
-    const { user, handleSignIn, sendOtp, signInWithOtp } = useAuthStore() // Using Zustand store
+    const { user, setRedirectPath, sendOtp, signInWithOtp, redirectPath, handleSignIn } = useAuthStore()
     const router = useRouter()
 
     const handleGoogleLogin = async () => {
         setLoading(true)
         try {
-            const user = await signInWithGoogle()
+            const user = await handleSignIn()
         } catch (error) {
+            console.log(error)
             setSnackbarMessage('Google login failed. Please try again.')
             setSnackbarOpen(true)
         } finally {
@@ -45,21 +37,19 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            router.push('/')
+            const path = redirectPath || '/'
+            router.push(path)
+            setRedirectPath(null)
         }
-    }, [router, user])
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user, router])
     const setupRecaptcha = () => {
-        window.recaptchaVerifier = new RecaptchaVerifier(
-            auth,
-            'recaptcha-container',
-            {
-                size: 'invisible',
-                callback: () => {
-                    console.log('Recaptcha verified!')
-                },
-            }
-        )
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+            size: 'invisible',
+            callback: () => {
+                console.log('Recaptcha verified!')
+            },
+        })
     }
 
     const handleSendOtp = async () => {
@@ -68,10 +58,9 @@ const Login = () => {
         try {
             const preFixed = phone.startsWith('+91') ? phone : '+91' + phone
             await sendOtp(preFixed)
+            setOtpSent(true)
         } catch (error) {
-            setSnackbarMessage(
-                'Error sending OTP. Please check your phone number.'
-            )
+            setSnackbarMessage('Error sending OTP. Please check your phone number.')
             setSnackbarOpen(true)
         } finally {
             setOTPLoading(false)
@@ -133,9 +122,7 @@ const Login = () => {
             >
                 {otpSent ? (
                     <Box sx={{ width: '100%' }}>
-                        <Typography sx={{ fontSize: '32px' }}>
-                            OTP Verification
-                        </Typography>
+                        <Typography sx={{ fontSize: '32px' }}>OTP Verification</Typography>
                         <Typography
                             sx={{
                                 fontSize: '16px',
@@ -143,8 +130,7 @@ const Login = () => {
                                 marginTop: '13px',
                             }}
                         >
-                            Enter the code from the sms <br /> we sent to{' '}
-                            <span style={{ color: '#FFF' }}>{phone}</span>
+                            Enter the code from the sms <br /> we sent to <span style={{ color: '#FFF' }}>{phone}</span>
                         </Typography>
                         <Box
                             sx={{
@@ -159,9 +145,7 @@ const Login = () => {
                                     key={index}
                                     id={`otp-input-${index}`}
                                     value={digit}
-                                    onChange={(e) =>
-                                        handleChangeOtp(e.target.value, index)
-                                    }
+                                    onChange={(e) => handleChangeOtp(e.target.value, index)}
                                     inputProps={{
                                         maxLength: 1,
                                         style: { textAlign: 'center' },
@@ -201,19 +185,14 @@ const Login = () => {
                         </RegisterButton>
                         <Typography sx={{ marginTop: '37px' }}>
                             I didn&apos;t receive any code.{' '}
-                            <span
-                                style={{ color: '#4A9103', cursor: 'pointer' }}
-                                onClick={handleSendOtp}
-                            >
+                            <span style={{ color: '#4A9103', cursor: 'pointer' }} onClick={handleSendOtp}>
                                 RESEND
                             </span>
                         </Typography>
                     </Box>
                 ) : (
                     <>
-                        <Typography sx={{ fontSize: '32px' }}>
-                            Welcome Back to Wellness 👋
-                        </Typography>
+                        <Typography sx={{ fontSize: '32px' }}>Welcome Back to Wellness 👋</Typography>
                         <Button
                             onClick={handleGoogleLogin}
                             disabled={loading}
@@ -238,23 +217,13 @@ const Login = () => {
                                 my: 2,
                             }}
                         >
-                            <Divider
-                                sx={{ flexGrow: 1, borderColor: '#C1C1C1' }}
-                            />
-                            <Typography sx={{ mx: 2, color: '#626262' }}>
-                                Or
-                            </Typography>
-                            <Divider
-                                sx={{ flexGrow: 1, borderColor: '#C1C1C1' }}
-                            />
+                            <Divider sx={{ flexGrow: 1, borderColor: '#C1C1C1' }} />
+                            <Typography sx={{ mx: 2, color: '#626262' }}>Or</Typography>
+                            <Divider sx={{ flexGrow: 1, borderColor: '#C1C1C1' }} />
                         </Box>
 
                         <Box sx={{ width: '100%' }}>
-                            <Typography
-                                sx={{ fontSize: '24px', marginBottom: '10px' }}
-                            >
-                                Had an account with phone?
-                            </Typography>
+                            <Typography sx={{ fontSize: '24px', marginBottom: '10px' }}>Had an account with phone?</Typography>
                             <Typography>Phone</Typography>
 
                             <TextField
@@ -294,10 +263,7 @@ const Login = () => {
 
                         <Typography sx={{ textAlign: 'center' }}>
                             Don&apos;t have an account?{' '}
-                            <span
-                                style={{ color: '#4A9103', cursor: 'pointer' }}
-                                onClick={handleGoogleLogin}
-                            >
+                            <span style={{ color: '#4A9103', cursor: 'pointer' }} onClick={handleGoogleLogin}>
                                 Sign up with Google
                             </span>
                         </Typography>
