@@ -1,9 +1,8 @@
 import 'server-only'
-
 import { getFirestore } from 'firebase-admin/firestore'
 import { getDownloadURL, getStorage } from 'firebase-admin/storage'
 
-export const getLinks = async () => {
+export const getUserCourses = async () => {
     const firestore = getFirestore()
     const linkSnapshot = await firestore.collection('links').get()
     const documents = linkSnapshot.docs.map((link) => ({

@@ -19,12 +19,20 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-        const { userId, name } = notes
-        await firestore.collection('users').doc(userId).collection('courses').add({
-            name: name,
-            paymentStatus: 'verified',
-            createdAt: fieldValue.serverTimestamp(),
-        })
+        const { userId, name, type, days, price } = notes
+        await firestore
+            .collection('users')
+            .doc(userId)
+            .collection('courses')
+            .add({
+                userfid: userId,
+                name,
+                type,
+                days,
+                price: parseFloat(price),
+                paymentStatus: 'verified',
+                createdAt: fieldValue.serverTimestamp(),
+            })
 
         return NextResponse.json({ message: 'Payment verified successfully, course details saved.', isOk: true }, { status: 200 })
     } catch (error) {
