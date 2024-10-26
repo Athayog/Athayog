@@ -5,10 +5,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Box, Typography, styled } from '@mui/material'
 import RegisterButton from '@/components/elements/button/RegisterButton'
-import {
-    SectionContent,
-    SectionPadding,
-} from '@/components/_shared/SectionContainer'
+import { SectionContent, SectionPadding } from '@/components/_shared/SectionContainer'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import ContentContainer from '@/components/_shared/ContentContainer'
 
@@ -83,31 +80,20 @@ export type GroupClassProps = SliceComponentProps<Content.GroupClassSlice>
  */
 const GroupClass = ({ slice }: GroupClassProps): JSX.Element => {
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <ContentContainer>
                 <Container>
                     <Title colorText={slice.primary.title_coloured_color ?? ''}>
-                        {slice.primary.title}{' '}
-                        <span>{slice.primary.title_coloured}</span>
+                        {slice.primary.title} <span>{slice.primary.title_coloured}</span>
                     </Title>
                     <ImageContainer>
-                        <PrismicNextImage
-                            field={slice.primary.image}
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            style={{ objectFit: 'cover' }}
-                        />
+                        <PrismicNextImage field={slice.primary.image} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
                     </ImageContainer>
                     <Description>
                         <PrismicRichText field={slice.primary.description} />
                     </Description>
                     <PrismicNextLink field={slice.primary.button_link}>
-                        <RegisterActionButton variant="contained">
-                            {slice.primary.button_text}
-                        </RegisterActionButton>
+                        <RegisterActionButton variant="contained">{slice.primary.button_text}</RegisterActionButton>
                     </PrismicNextLink>
                 </Container>
             </ContentContainer>
