@@ -6682,9 +6682,43 @@ export interface WeightLossFormSliceCareerFormPrimary {
 export type WeightLossFormSliceCareerForm = prismic.SharedSliceVariation<'careerForm', Simplify<WeightLossFormSliceCareerFormPrimary>, never>
 
 /**
+ * Primary content in *Forms → EnquiryForm → Primary*
+ */
+export interface WeightLossFormSliceEnquiryFormPrimary {
+    /**
+     * Title field in *Forms → EnquiryForm → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_form.enquiryForm.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * pageSource field in *Forms → EnquiryForm → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Give the page name its from eg: Group Class.
+     * - **API ID Path**: weight_loss_form.enquiryForm.primary.pagesource
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    pagesource: prismic.KeyTextField
+}
+
+/**
+ * EnquiryForm variation for Forms Slice
+ *
+ * - **API ID**: `enquiryForm`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossFormSliceEnquiryForm = prismic.SharedSliceVariation<'enquiryForm', Simplify<WeightLossFormSliceEnquiryFormPrimary>, never>
+
+/**
  * Slice variation for *Forms*
  */
-type WeightLossFormSliceVariation = WeightLossFormSliceDefault | WeightLossFormSliceCareerForm
+type WeightLossFormSliceVariation = WeightLossFormSliceDefault | WeightLossFormSliceCareerForm | WeightLossFormSliceEnquiryForm
 
 /**
  * Forms Shared Slice
@@ -7734,9 +7768,11 @@ declare module '@prismicio/client' {
             WeightLossFormSlice,
             WeightLossFormSliceDefaultPrimary,
             WeightLossFormSliceCareerFormPrimary,
+            WeightLossFormSliceEnquiryFormPrimary,
             WeightLossFormSliceVariation,
             WeightLossFormSliceDefault,
             WeightLossFormSliceCareerForm,
+            WeightLossFormSliceEnquiryForm,
             WeightLossHeroSlice,
             WeightLossHeroSliceDefaultPrimary,
             WeightLossHeroSliceVariation,
