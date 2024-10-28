@@ -110,9 +110,14 @@ const PackagesBox = ({
     )
 }
 
+interface Purchase {
+    courseDetails: any
+    amount: number
+}
 const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
     const [process, setInProcess] = useState<boolean>(false)
     const { addPurchase, loading, error, resetError } = usePurchaseStore()
+    const [currentPurchse, setCurrentPurchase] = useState<Purchase | null>(null)
     const { showSnackbar } = useSnackbar()
     const { user, setRedirectPath } = useAuthStore()
     const router = useRouter()
@@ -120,7 +125,7 @@ const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
 
     const handlePaymentSuccess = async () => {
         setInProcess(false)
-        // await addPurchase(item, amount)
+        await addPurchase(currentPurchse?.courseDetails, currentPurchse?.amount ?? 0)
     }
 
     const handlePaymentFailure = () => {
@@ -133,6 +138,7 @@ const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
 
     const createOrder = (amount: number, courseDetails: any) => {
         if (user) {
+            setCurrentPurchase({ courseDetails, amount })
             setInProcess(true)
             initiateRazorpayPayment({
                 amount,

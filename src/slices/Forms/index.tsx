@@ -1,4 +1,5 @@
 import CareerForm from '@/components/forms/CareerForm'
+import EnquiryForm from '@/components/forms/EnquiryForm'
 import WeightLossForm from '@/components/forms/WeightLossForm'
 import { Box, Typography } from '@mui/material'
 import { Content } from '@prismicio/client'
@@ -27,6 +28,7 @@ const Forms = ({ slice }: FormsProps): JSX.Element => {
 
                 {slice.variation === 'default' && <WeightLossForm />}
                 {slice.variation === 'careerForm' && <CareerForm />}
+                {slice.variation === 'enquiryForm' && <EnquiryForm pageSource={slice.primary.pagesource} />}
             </Box>
         </Box>
     )

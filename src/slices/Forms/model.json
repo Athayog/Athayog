@@ -39,6 +39,31 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "enquiryForm",
+      "name": "EnquiryForm",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "pagesource": {
+          "type": "Text",
+          "config": {
+            "label": "pageSource",
+            "placeholder": "Give the page name its from eg: Group Class."
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

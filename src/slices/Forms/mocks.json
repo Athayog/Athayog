@@ -27,5 +27,27 @@
 				"value": []
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "enquiryForm",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "spirit",
+				"type": "Text"
+			},
+			"pagesource": {
+				"__TYPE__": "FieldContent",
+				"value": "success",
+				"type": "Text"
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]
