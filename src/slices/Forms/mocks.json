@@ -49,5 +49,34 @@
 				"value": []
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "academyForm",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "want",
+				"type": "Text"
+			},
+			"pagesource": {
+				"__TYPE__": "FieldContent",
+				"value": "partly",
+				"type": "Text"
+			},
+			"payment_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]
