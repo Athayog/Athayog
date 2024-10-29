@@ -6716,9 +6716,53 @@ export interface WeightLossFormSliceEnquiryFormPrimary {
 export type WeightLossFormSliceEnquiryForm = prismic.SharedSliceVariation<'enquiryForm', Simplify<WeightLossFormSliceEnquiryFormPrimary>, never>
 
 /**
+ * Primary content in *Forms → Academy Form → Primary*
+ */
+export interface WeightLossFormSliceAcademyFormPrimary {
+    /**
+     * Title field in *Forms → Academy Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_form.academyForm.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * pageSource field in *Forms → Academy Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Give the page name its from eg: Group Class.
+     * - **API ID Path**: weight_loss_form.academyForm.primary.pagesource
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    pagesource: prismic.KeyTextField
+
+    /**
+     * Payment Link field in *Forms → Academy Form → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Add Razorpay Payment Link
+     * - **API ID Path**: weight_loss_form.academyForm.primary.payment_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    payment_link: prismic.LinkField
+}
+
+/**
+ * Academy Form variation for Forms Slice
+ *
+ * - **API ID**: `academyForm`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossFormSliceAcademyForm = prismic.SharedSliceVariation<'academyForm', Simplify<WeightLossFormSliceAcademyFormPrimary>, never>
+
+/**
  * Slice variation for *Forms*
  */
-type WeightLossFormSliceVariation = WeightLossFormSliceDefault | WeightLossFormSliceCareerForm | WeightLossFormSliceEnquiryForm
+type WeightLossFormSliceVariation = WeightLossFormSliceDefault | WeightLossFormSliceCareerForm | WeightLossFormSliceEnquiryForm | WeightLossFormSliceAcademyForm
 
 /**
  * Forms Shared Slice
@@ -7769,10 +7813,12 @@ declare module '@prismicio/client' {
             WeightLossFormSliceDefaultPrimary,
             WeightLossFormSliceCareerFormPrimary,
             WeightLossFormSliceEnquiryFormPrimary,
+            WeightLossFormSliceAcademyFormPrimary,
             WeightLossFormSliceVariation,
             WeightLossFormSliceDefault,
             WeightLossFormSliceCareerForm,
             WeightLossFormSliceEnquiryForm,
+            WeightLossFormSliceAcademyForm,
             WeightLossHeroSlice,
             WeightLossHeroSliceDefaultPrimary,
             WeightLossHeroSliceVariation,

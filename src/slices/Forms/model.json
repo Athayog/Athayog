@@ -64,6 +64,41 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "academyForm",
+      "name": "Academy Form",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "pagesource": {
+          "type": "Text",
+          "config": {
+            "label": "pageSource",
+            "placeholder": "Give the page name its from eg: Group Class."
+          }
+        },
+        "payment_link": {
+          "type": "Link",
+          "config": {
+            "label": "Payment Link",
+            "placeholder": "Add Razorpay Payment Link",
+            "allowTargetBlank": false,
+            "select": null,
+            "allowText": false
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

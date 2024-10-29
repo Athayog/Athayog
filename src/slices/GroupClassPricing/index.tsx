@@ -91,7 +91,7 @@ const PackagesBox = ({
                     marginTop: { xs: '10px', md: '15px' },
                 }}
             >
-                {price}
+                ₹{price}
             </Typography>
             {price && (
                 <Button
