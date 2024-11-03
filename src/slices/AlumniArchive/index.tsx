@@ -1,7 +1,7 @@
 'use client'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import { useRef, useEffect, useState, useId } from 'react'
+import { useRef } from 'react'
 import { Content } from '@prismicio/client'
 import { Navigation } from 'swiper/modules'
 import { Box, Typography } from '@mui/material'
@@ -20,10 +20,6 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
     const prevRef = useRef(null)
     const nextRef = useRef(null)
 
-    const handleSwiperInit = (swiper: { update: () => void }) => {
-        swiper.update()
-    }
-    const id = useId()
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
@@ -62,7 +58,13 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                             prevEl: prevRef.current,
                             nextEl: nextRef.current,
                         }}
-                        onInit={(swiper) => handleSwiperInit}
+                        onBeforeInit={(swiper) => {
+                            // Assign navigation buttons after Swiper initialization
+                            swiper.params.navigation.prevEl = prevRef.current
+                            swiper.params.navigation.nextEl = nextRef.current
+                            swiper.navigation.init()
+                            swiper.navigation.update()
+                        }}
                     >
                         {slice.primary.alumni.map((item) => (
                             <SwiperSlide key={item.youtube_embed_id + nanoid()}>
@@ -115,7 +117,7 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                                             <PrismicRichText field={item.description} />
                                         </Box>
                                         <Typography sx={{ fontWeight: '700', marginTop: '27px' }}>{item.name}</Typography>
-                                        <Typography sx={{ color: '#404040', fontWeight: '500', fontSize: { xs: '20px', md: '30x' } }}>{item.works_at}</Typography>
+                                        <Typography sx={{ color: '#404040', fontWeight: '500', fontSize: { xs: '20px', md: '30px' } }}>{item.works_at}</Typography>
                                     </Box>
                                 </Box>
                             </SwiperSlide>

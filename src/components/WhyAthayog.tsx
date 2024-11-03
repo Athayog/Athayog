@@ -18,20 +18,27 @@ import { LayoutContainer } from '@/components/_shared/LayoutContainer'
 const Container = styled(Box)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     width: '100%',
-
     gap: '50px',
     [theme.breakpoints.down('md')]: {
         flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
         gap: '15px',
     },
 }))
 
-const TextBox = styled(Box)(({}) => ({
+const TextBox = styled(Box)(({ theme }) => ({
     maxWidth: '550px',
     position: 'relative',
+    height: '500px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    [theme.breakpoints.down('md')]: {
+        height: '100%',
+    },
 }))
 
 const Title = styled(Typography)(({ theme }) => ({
@@ -174,8 +181,8 @@ const WhyAthayog = ({ title, content }: { title: string | null; content: any }) 
                 <SectionContent>
                     <Container>
                         <TextBox>
-                            <Title>{title}</Title>
                             <Box>
+                                <Title>{title}</Title>
                                 {/* Update title and description dynamically based on current slide index */}
                                 <Subtitle>{content[currentSlideIndex]?.content_title}</Subtitle>
                                 <Description>{content[currentSlideIndex]?.content_description}</Description>

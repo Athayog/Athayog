@@ -2,17 +2,12 @@
 import Grid from '@mui/material/Grid2'
 import { styled } from '@mui/material/styles'
 import { Paper, Typography } from '@mui/material'
-import {
-    SectionContent,
-    SectionPadding,
-} from '@/components/_shared/SectionContainer'
+import { SectionContent, SectionPadding } from '@/components/_shared/SectionContainer'
 import Image from 'next/image'
 import { LayoutContainer, LayoutContent } from '../_shared/LayoutContainer'
 import { Key, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const StatBox = styled(Paper)(({ theme }) => ({
     display: 'flex',
@@ -101,34 +96,17 @@ export default function Stats({ statsData }: any) {
             <LayoutContent>
                 <SectionPadding>
                     <SectionContent>
-                        <Grid
-                            container
-                            spacing={4}
-                            gap={{ xs: '20px', md: '30px', lg: '80px' }}
-                            justifyContent="center"
-                            component="div"
-                        >
+                        <Grid container spacing={4} gap={{ xs: '20px', md: '30px', lg: '80px' }} justifyContent="center" component="div">
                             {statsData.map((stat: any, index: number) => {
                                 const Icon = stat.icon.url
                                 return (
                                     <Grid key={index} component="div">
                                         <StatBox>
-                                            <Image
-                                                src={Icon}
-                                                width={
-                                                    stat.icon.dimensions.width
-                                                }
-                                                height={
-                                                    stat.icon.dimensions.height
-                                                }
-                                                alt={stat.icon.alt}
-                                            />
+                                            <Image src={Icon} width={stat.icon.dimensions.width} height={stat.icon.dimensions.height} alt={stat.icon.alt} />
                                             <StatCount
                                                 ref={(el) => {
                                                     if (el) {
-                                                        countRefs.current[
-                                                            index
-                                                        ] = el as HTMLDivElement
+                                                        countRefs.current[index] = el as HTMLDivElement
                                                     }
                                                 }}
                                             >
