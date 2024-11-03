@@ -12,6 +12,7 @@ import ArrowForward from '/public/images/OrangeArrowForward.svg'
 import ArrowBackward from '/public/images/OrangeArrowBackward.svg'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 import { nanoid } from 'nanoid'
+import { NavigationOptions } from 'swiper/types'
 
 export type AlumniArchiveProps = SliceComponentProps<Content.AlumniArchiveSlice>
 
@@ -54,14 +55,17 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                         modules={[Navigation]}
                         spaceBetween={50}
                         slidesPerView={1}
-                        navigation={{
-                            prevEl: prevRef.current,
-                            nextEl: nextRef.current,
-                        }}
+                        navigation={
+                            {
+                                prevEl: prevRef.current,
+                                nextEl: nextRef.current,
+                            } as NavigationOptions
+                        } // Cast navigation to NavigationOptions
                         onBeforeInit={(swiper) => {
-                            // Assign navigation buttons after Swiper initialization
-                            swiper.params.navigation.prevEl = prevRef.current
-                            swiper.params.navigation.nextEl = nextRef.current
+                            if (swiper.params.navigation && typeof swiper.params.navigation === 'object') {
+                                swiper.params.navigation.prevEl = prevRef.current
+                                swiper.params.navigation.nextEl = nextRef.current
+                            }
                             swiper.navigation.init()
                             swiper.navigation.update()
                         }}

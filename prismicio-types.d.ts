@@ -244,6 +244,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | MentalHealthHeroSlice
     | CoursesListSlice
     | TtcContentTextSlice
     | PaymentGatewayGroupSlice
@@ -4383,6 +4384,29 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
 export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
 
 /**
+ * Default variation for MentalHealthHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MentalHealthHeroSliceDefault = prismic.SharedSliceVariation<'default', Record<string, never>, never>
+
+/**
+ * Slice variation for *MentalHealthHero*
+ */
+type MentalHealthHeroSliceVariation = MentalHealthHeroSliceDefault
+
+/**
+ * MentalHealthHero Shared Slice
+ *
+ * - **API ID**: `mental_health_hero`
+ * - **Description**: MentalHealthHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MentalHealthHeroSlice = prismic.SharedSlice<'mental_health_hero', MentalHealthHeroSliceVariation>
+
+/**
  * Item in *MultiLeftRightCourses → Default → Primary → Content*
  */
 export interface MultiLeftRightCoursesSliceDefaultPrimaryContentItem {
@@ -7677,6 +7701,9 @@ declare module '@prismicio/client' {
             LeftImageRighContentSliceDefaultPrimary,
             LeftImageRighContentSliceVariation,
             LeftImageRighContentSliceDefault,
+            MentalHealthHeroSlice,
+            MentalHealthHeroSliceVariation,
+            MentalHealthHeroSliceDefault,
             MultiLeftRightCoursesSlice,
             MultiLeftRightCoursesSliceDefaultPrimaryContentItem,
             MultiLeftRightCoursesSliceDefaultPrimaryBackgroundColorItem,
