@@ -1,0 +1,18 @@
+{
+  "id": "mental_health_hero",
+  "type": "SharedSlice",
+  "name": "MentalHealthHero",
+  "description": "MentalHealthHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {}
+    }
+  ]
+}

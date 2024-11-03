@@ -27,6 +27,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "mental_health_hero": {
+                            "type": "SharedSlice"
+                        },
                         "courses_list": {
                             "type": "SharedSlice"
                         },
