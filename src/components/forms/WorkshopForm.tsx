@@ -61,7 +61,7 @@ const WorkshopForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element 
                 setShowOverlay(true)
                 resetForm()
                 setTimeout(() => {
-                    window.location.href = paymentLink.url as unknown as string
+                    window.location.href = (paymentLink as { url: string }).url
                 }, 2000) // Redirect after 2 seconds
             }
         },
