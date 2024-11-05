@@ -1,25 +1,26 @@
 'use client'
 import * as Yup from 'yup'
+import { useState } from 'react'
 import { useFormik } from 'formik'
+import { LinkField } from '@prismicio/client'
 import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
-import { Box, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography, Alert, CircularProgress } from '@mui/material'
-import { KeyTextField, LinkField } from '@prismicio/client'
-import { useState } from 'react'
+import { Alert, Box, CircularProgress, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography } from '@mui/material'
 
-interface FormValuesAcademy {
+interface WorkshopForm {
     fullName: string
     phoneNumber: string
     email: string
     gender: string
     weight: string
     healthConditions: string
-    referralSource: string
-    qualification: string
-    pageSource: string | KeyTextField
+    currentLocation: string
+    emergencyContactNameAndRelation: string
+    emergencyContactNumber: string
+    preferredDietaryPreferences: string
 }
 
-const validationSchemaAcademy = Yup.object({
+const validationSchemaWorkshopForm = Yup.object({
     fullName: Yup.string().required('Full Name is required'),
     phoneNumber: Yup.string()
         .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits')
@@ -28,15 +29,19 @@ const validationSchemaAcademy = Yup.object({
     gender: Yup.string().required('Gender is required'),
     weight: Yup.string().required('Weight is required'),
     healthConditions: Yup.string().required('Health Condition is required'),
-    qualification: Yup.string().required('Qualification is required'),
-    referralSource: Yup.string().required('Please let us know how you heard about us'),
+    currentLocation: Yup.string().required('Current Location is required'),
+    emergencyContactNameAndRelation: Yup.string().required('Emergency Contact Name and Relation is required'),
+    emergencyContactNumber: Yup.string()
+        .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits')
+        .required('Emergency Contact Number is required'),
+    preferredDietaryPreferences: Yup.string().required('Preffered Diet is required'),
 })
 
-const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyTextField; paymentLink: LinkField }): JSX.Element => {
+const WorkshopForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element => {
     const { loading, error, success, submitForm } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
-    console.log(paymentLink)
-    const formik = useFormik<FormValuesAcademy>({
+
+    const formik = useFormik<WorkshopForm>({
         initialValues: {
             fullName: '',
             phoneNumber: '',
@@ -44,18 +49,19 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
             gender: '',
             weight: '',
             healthConditions: '',
-            referralSource: '',
-            qualification: '',
-            pageSource: pageSource,
+            currentLocation: '',
+            emergencyContactNameAndRelation: '',
+            emergencyContactNumber: '',
+            preferredDietaryPreferences: '',
         },
-        validationSchema: validationSchemaAcademy,
-        onSubmit: async (values: FormValuesAcademy, { resetForm }) => {
-            await submitForm(values, 'AcademyForm')
+        validationSchema: validationSchemaWorkshopForm,
+        onSubmit: async (values: WorkshopForm, { resetForm }) => {
+            await submitForm(values, 'workshopForm')
             if (!error) {
                 setShowOverlay(true)
                 resetForm()
                 setTimeout(() => {
-                    window.location.href = paymentLink as unknown as string
+                    window.location.href = paymentLink.url as unknown as string
                 }, 2000) // Redirect after 2 seconds
             }
         },
@@ -128,21 +134,34 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
                 </Box>
 
                 {/* Gender and Weight side by side */}
+                <Box sx={{ width: { xs: '100%', md: '100%' } }}>
+                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Current Location</Typography>
+                    <TextField
+                        fullWidth
+                        id="currentLocation"
+                        name="currentLocation"
+                        value={formik.values.currentLocation}
+                        onChange={formik.handleChange}
+                        error={Boolean(formik.errors.currentLocation)}
+                        helperText={formik.errors.currentLocation}
+                        sx={{ mb: 3 }}
+                    />
+                </Box>
                 <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>
                     <Box sx={{ width: { xs: '100%', md: '50%' } }}>
                         <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Gender</Typography>
                         <FormControl fullWidth sx={{ mb: 3 }}>
                             <Select
-                                id="gender"
-                                name="gender"
-                                value={formik.values.gender}
-                                placeholder="Select Option"
-                                onChange={formik.handleChange}
                                 sx={{
                                     '&& .MuiSelect-outlined': {
                                         backgroundColor: '#fff',
                                     },
                                 }}
+                                id="gender"
+                                name="gender"
+                                value={formik.values.gender}
+                                placeholder="Select Option"
+                                onChange={formik.handleChange}
                                 error={formik.touched.gender && Boolean(formik.errors.gender)}
                             >
                                 <MenuItem value="">
@@ -170,6 +189,32 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
                         />
                     </Box>
                 </Box>
+                <Box sx={{ width: { xs: '100%', md: '100%' } }}>
+                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Emergency Contact Name and Relation ( Eg: Amrutha / Wife )</Typography>
+                    <TextField
+                        fullWidth
+                        id="emergencyContactNameAndRelation"
+                        name="emergencyContactNameAndRelation"
+                        value={formik.values.emergencyContactNameAndRelation}
+                        onChange={formik.handleChange}
+                        error={Boolean(formik.errors.emergencyContactNameAndRelation)}
+                        helperText={formik.errors.emergencyContactNameAndRelation}
+                        sx={{ mb: 3 }}
+                    />
+                </Box>
+                <Box sx={{ width: { xs: '100%', md: '100%' } }}>
+                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Emergency Contact Number</Typography>
+                    <TextField
+                        fullWidth
+                        id="emergencyContactNumber"
+                        name="emergencyContactNumber"
+                        value={formik.values.emergencyContactNumber}
+                        onChange={formik.handleChange}
+                        error={Boolean(formik.errors.emergencyContactNumber)}
+                        helperText={formik.errors.emergencyContactNumber}
+                        sx={{ mb: 3 }}
+                    />
+                </Box>
 
                 {/* Health Conditions */}
                 <Box sx={{ mb: 3 }}>
@@ -177,38 +222,31 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
                     <TextField fullWidth id="healthConditions" name="healthConditions" value={formik.values.healthConditions} onChange={formik.handleChange} multiline rows={3} />
                     {formik.errors.healthConditions ? <FormHelperText error>{formik.errors.healthConditions}</FormHelperText> : null}
                 </Box>
-                <Box sx={{ mb: 3 }}>
-                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Qualifications</Typography>
-                    <TextField fullWidth id="qualification" name="qualification" value={formik.values.qualification} onChange={formik.handleChange} multiline rows={3} />
-                    {formik.errors.qualification ? <FormHelperText error>{formik.errors.qualification}</FormHelperText> : null}
-                </Box>
 
-                {/* Referral Source */}
-                <Box sx={{ mb: 3 }}>
-                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Where did you hear about us?</Typography>
-                    <FormControl fullWidth>
+                <Box sx={{ width: { xs: '100%', md: '100%' } }}>
+                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Preferred Dietary Preferences</Typography>
+                    <FormControl fullWidth sx={{ mb: 3 }}>
                         <Select
-                            id="referralSource"
-                            name="referralSource"
-                            value={formik.values.referralSource}
-                            onChange={formik.handleChange}
-                            error={formik.touched.referralSource && Boolean(formik.errors.referralSource)}
                             sx={{
                                 '&& .MuiSelect-outlined': {
                                     backgroundColor: '#fff',
                                 },
                             }}
+                            id="preferredDietaryPreferences"
+                            name="preferredDietaryPreferences"
+                            value={formik.values.preferredDietaryPreferences}
+                            placeholder="Select Option"
+                            onChange={formik.handleChange}
+                            error={formik.touched.preferredDietaryPreferences && Boolean(formik.errors.preferredDietaryPreferences)}
                         >
                             <MenuItem value="">
-                                <em>Select Option</em>
+                                <em>Select Preference Diet</em>
                             </MenuItem>
-                            <MenuItem value="google">Google</MenuItem>
-                            <MenuItem value="facebook">Facebook</MenuItem>
-                            <MenuItem value="instagram">Instagram</MenuItem>
-                            <MenuItem value="wordOfMouth">Word of Mouth</MenuItem>
-                            <MenuItem value="alumni">Alumni</MenuItem>
+                            <MenuItem value="male">Vegetarian</MenuItem>
+                            <MenuItem value="female">Non Vegetarian</MenuItem>
+                            <MenuItem value="other">Eggetarian</MenuItem>
                         </Select>
-                        {formik.errors.referralSource ? <FormHelperText error>{formik.errors.referralSource}</FormHelperText> : null}
+                        {formik.errors.preferredDietaryPreferences ? <FormHelperText error>{formik.errors.preferredDietaryPreferences}</FormHelperText> : null}
                     </FormControl>
                 </Box>
 
@@ -237,4 +275,4 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
     )
 }
 
-export default AcademyForm
+export default WorkshopForm

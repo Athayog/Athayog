@@ -5,6 +5,8 @@ import { Box, Typography } from '@mui/material'
 import { Content } from '@prismicio/client'
 import { SliceComponentProps } from '@prismicio/react'
 import AcademyForm from '../../components/forms/AcademyForm'
+import PicnicForm from '@/components/forms/PicnicForm'
+import WorkshopForm from '@/components/forms/WorkshopForm'
 
 export type FormsProps = SliceComponentProps<Content.WeightLossFormSlice>
 
@@ -31,6 +33,8 @@ const Forms = ({ slice }: FormsProps): JSX.Element => {
                 {slice.variation === 'careerForm' && <CareerForm />}
                 {slice.variation === 'enquiryForm' && <EnquiryForm pageSource={slice.primary.pagesource} />}
                 {slice.variation === 'academyForm' && <AcademyForm pageSource={slice.primary.pagesource} paymentLink={slice.primary.payment_link} />}
+                {slice.variation === 'picnic' && <PicnicForm paymentLink={slice.primary.payment_link} />}
+                {slice.variation === 'workshopForm' && <WorkshopForm paymentLink={slice.primary.payment_link} />}
             </Box>
         </Box>
     )

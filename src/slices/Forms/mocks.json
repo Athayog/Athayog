@@ -78,5 +78,63 @@
 				"value": []
 			}
 		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "picnic",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "us",
+				"type": "Text"
+			},
+			"pagesource": {
+				"__TYPE__": "FieldContent",
+				"value": "however",
+				"type": "Text"
+			},
+			"payment_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "workshopForm",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "laid",
+				"type": "Text"
+			},
+			"pagesource": {
+				"__TYPE__": "FieldContent",
+				"value": "became",
+				"type": "Text"
+			},
+			"payment_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]
