@@ -6784,9 +6784,103 @@ export interface WeightLossFormSliceAcademyFormPrimary {
 export type WeightLossFormSliceAcademyForm = prismic.SharedSliceVariation<'academyForm', Simplify<WeightLossFormSliceAcademyFormPrimary>, never>
 
 /**
+ * Primary content in *Forms → Picnic Form → Primary*
+ */
+export interface WeightLossFormSlicePicnicPrimary {
+    /**
+     * Title field in *Forms → Picnic Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_form.picnic.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * pageSource field in *Forms → Picnic Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Give the page name its from eg: Group Class.
+     * - **API ID Path**: weight_loss_form.picnic.primary.pagesource
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    pagesource: prismic.KeyTextField
+
+    /**
+     * Payment Link field in *Forms → Picnic Form → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Add Razorpay Payment Link
+     * - **API ID Path**: weight_loss_form.picnic.primary.payment_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    payment_link: prismic.LinkField
+}
+
+/**
+ * Picnic Form variation for Forms Slice
+ *
+ * - **API ID**: `picnic`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossFormSlicePicnic = prismic.SharedSliceVariation<'picnic', Simplify<WeightLossFormSlicePicnicPrimary>, never>
+
+/**
+ * Primary content in *Forms → Workshop Form → Primary*
+ */
+export interface WeightLossFormSliceWorkshopFormPrimary {
+    /**
+     * Title field in *Forms → Workshop Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_form.workshopForm.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * pageSource field in *Forms → Workshop Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Give the page name its from eg: Group Class.
+     * - **API ID Path**: weight_loss_form.workshopForm.primary.pagesource
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    pagesource: prismic.KeyTextField
+
+    /**
+     * Payment Link field in *Forms → Workshop Form → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Add Razorpay Payment Link
+     * - **API ID Path**: weight_loss_form.workshopForm.primary.payment_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    payment_link: prismic.LinkField
+}
+
+/**
+ * Workshop Form variation for Forms Slice
+ *
+ * - **API ID**: `workshopForm`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossFormSliceWorkshopForm = prismic.SharedSliceVariation<'workshopForm', Simplify<WeightLossFormSliceWorkshopFormPrimary>, never>
+
+/**
  * Slice variation for *Forms*
  */
-type WeightLossFormSliceVariation = WeightLossFormSliceDefault | WeightLossFormSliceCareerForm | WeightLossFormSliceEnquiryForm | WeightLossFormSliceAcademyForm
+type WeightLossFormSliceVariation =
+    | WeightLossFormSliceDefault
+    | WeightLossFormSliceCareerForm
+    | WeightLossFormSliceEnquiryForm
+    | WeightLossFormSliceAcademyForm
+    | WeightLossFormSlicePicnic
+    | WeightLossFormSliceWorkshopForm
 
 /**
  * Forms Shared Slice
@@ -7841,11 +7935,15 @@ declare module '@prismicio/client' {
             WeightLossFormSliceCareerFormPrimary,
             WeightLossFormSliceEnquiryFormPrimary,
             WeightLossFormSliceAcademyFormPrimary,
+            WeightLossFormSlicePicnicPrimary,
+            WeightLossFormSliceWorkshopFormPrimary,
             WeightLossFormSliceVariation,
             WeightLossFormSliceDefault,
             WeightLossFormSliceCareerForm,
             WeightLossFormSliceEnquiryForm,
             WeightLossFormSliceAcademyForm,
+            WeightLossFormSlicePicnic,
+            WeightLossFormSliceWorkshopForm,
             WeightLossHeroSlice,
             WeightLossHeroSliceDefaultPrimary,
             WeightLossHeroSliceVariation,
