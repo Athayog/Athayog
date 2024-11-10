@@ -1,14 +1,4 @@
-import {
-    Button,
-    styled,
-    Menu as MuiMenu,
-    List as MuiList,
-    Box,
-    Drawer as MuiDrawer,
-    ListItemButton,
-    IconButton as MuiIconButton,
-    Divider as MuiDivider,
-} from '@mui/material'
+import { Button, styled, Menu as MuiMenu, List as MuiList, Box, Drawer as MuiDrawer, ListItemButton, IconButton as MuiIconButton, Divider as MuiDivider } from '@mui/material'
 
 export const NavLinkButton = styled(ListItemButton, {
     shouldForwardProp: (prop) => prop !== 'pathname' && prop !== 'path',
@@ -46,9 +36,7 @@ export const List = styled(MuiList, {
     paddingLeft: active ? '10px' : '0px',
     borderWidth: active ? '2px' : '0px',
     borderStyle: active ? 'solid' : 'none',
-    borderImage: active
-        ? 'linear-gradient(180deg,rgba(217, 217, 217, 0) 0%, rgba(174,255, 71,0.20) 100%) 1'
-        : 'none',
+    borderImage: active ? 'linear-gradient(180deg,rgba(217, 217, 217, 0) 0%, rgba(174,255, 71,0.20) 100%) 1' : 'none',
     borderTop: '0px',
     borderRight: '0px',
     borderBottom: '0px',
@@ -69,8 +57,8 @@ export const DrawerParent = styled(Box)(({ theme }) => ({
 
 export const DrawerContent = styled(Box)({
     width: '100%',
-    height: '100%',
     display: 'flex',
+    padding: '10px 0px',
     justifyContent: 'space-between',
     alignItems: 'baseline',
     flexDirection: 'column',
@@ -97,7 +85,7 @@ export const Drawer = styled(MuiDrawer)({
         padding: '40px 35px',
         boxSizing: 'border-box',
         height: '100%',
-        background: 'linear-gradient(180deg, #101010 20%, #1B2E08 100%)',
+        background: '#181D13',
     },
 })
 
@@ -114,6 +102,7 @@ export const Divider = styled(MuiDivider)({
 export const TrialButton = styled(Button)(({ theme }) => ({
     fontSize: '18px',
     color: 'black',
+    marginTop: '10px',
     backgroundColor: 'white',
     padding: '15px, 25px',
     width: '100%',

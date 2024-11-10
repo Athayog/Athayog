@@ -67,7 +67,7 @@ const DeleteRequest: React.FC = () => {
     const { loading, error, success, submitForm, setError, setSuccess } = useFormStore()
 
     const handleSubmit = async (values: FormValues, { resetForm }: any) => {
-        await submitForm(values, 'accountDeletionRequests', `info@athayogliving.com`)
+        await submitForm(values, 'accountDeletionRequests', `contentmanager@athayogliving.com`)
 
         // Display success or error notification
         if (success) {

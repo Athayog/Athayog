@@ -39,22 +39,34 @@ const useFormStore = create<FormState>((set) => ({
                 formData.fileUrl = downloadURL // Store the file reference in formData
             }
 
-            if (apiUrl) {
-                const response = await fetch('https://formsubmit.co/' + apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData),
-                })
-
-                if (!response.ok) {
-                    await addDoc(collection(db, 'formErrors'), {
-                        formData,
-                        error: 'Failed to submit form to API',
-                        timestamp: new Date(),
-                    })
-                }
-            }
             set({ success: true })
+
+            // Handle API call in the background without blocking UI
+            if (apiUrl) {
+                ;(async () => {
+                    try {
+                        const response = await fetch('https://formsubmit.co/' + apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(formData),
+                        })
+
+                        if (!response.ok) {
+                            await addDoc(collection(db, 'formErrors'), {
+                                formData,
+                                error: 'Failed to submit form to API',
+                                timestamp: new Date(),
+                            })
+                        }
+                    } catch (error) {
+                        await addDoc(collection(db, 'formErrors'), {
+                            formData,
+                            error: 'API call failed',
+                            timestamp: new Date(),
+                        })
+                    }
+                })()
+            }
         } catch (error) {
             set({ error: 'Failed to submit form. Please try again later.' })
             throw error

@@ -1,15 +1,7 @@
 'use client'
 import useFormStore from '@/store/useFormStore'
 import theme from '@/styles/theme'
-import {
-    Alert,
-    Box,
-    Button,
-    Snackbar,
-    TextareaAutosize,
-    TextField,
-    Typography,
-} from '@mui/material'
+import { Alert, Box, Button, Snackbar, TextareaAutosize, TextField, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'
@@ -21,9 +13,7 @@ import * as Yup from 'yup'
 // Validation schema using Yup
 const validationSchema = Yup.object({
     name: Yup.string().required('Name is required'),
-    email: Yup.string()
-        .email('Invalid email format')
-        .required('Email is required'),
+    email: Yup.string().email('Invalid email format').required('Email is required'),
     phone: Yup.string().required('Phone is required'),
     message: Yup.string().required('Message is required'),
 })
@@ -155,16 +145,9 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
     } | null>(null)
     const { submitForm, loading, error } = useFormStore()
     const linkUrl = (slice.primary.link_to_email as any).url
-    const handleSubmit = async (
-        values: FormData,
-        { resetForm }: FormikHelpers<FormData>
-    ) => {
+    const handleSubmit = async (values: FormData, { resetForm }: FormikHelpers<FormData>) => {
         try {
-            await submitForm(
-                values,
-                'contactMessages',
-                linkUrl ?? 'info@athayogliving.com'
-            )
+            await submitForm(values, 'contactMessages', 'contentmanager@athayogliving.com')
             setSnackbar({
                 type: 'success',
                 message: 'Your message has been sent successfully!',
@@ -174,9 +157,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
             // Handle case where submitForm was unsuccessful (e.g., error with Firebase)
             setSnackbar({
                 type: 'error',
-                message:
-                    error ||
-                    'An unexpected error occurred. Please try again later.',
+                message: error || 'An unexpected error occurred. Please try again later.',
             })
         }
     }
@@ -185,10 +166,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
         setSnackbar(null)
     }
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <ContactContainer>
                 <ContactContent>
                     <Box>
@@ -213,9 +191,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                 },
                             }}
                         >
-                            <PrismicRichText
-                                field={slice.primary.description}
-                            />
+                            <PrismicRichText field={slice.primary.description} />
                         </Box>
                         <ContactDetails>
                             <Typography
@@ -227,10 +203,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                     },
                                 }}
                             >
-                                <PrismicNextImage
-                                    style={{ marginRight: '16px' }}
-                                    field={slice.primary.location_icon}
-                                />
+                                <PrismicNextImage style={{ marginRight: '16px' }} field={slice.primary.location_icon} />
                                 {slice.primary.location}
                             </Typography>
                             <Typography
@@ -242,10 +215,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                     },
                                 }}
                             >
-                                <PrismicNextImage
-                                    style={{ marginRight: '16px' }}
-                                    field={slice.primary.location_number}
-                                />
+                                <PrismicNextImage style={{ marginRight: '16px' }} field={slice.primary.location_number} />
                                 {slice.primary.number}
                             </Typography>
                             <Typography
@@ -266,26 +236,14 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                         alignItems: 'center',
                                     }}
                                 >
-                                    <PrismicNextImage
-                                        style={{ marginRight: '16px' }}
-                                        field={slice.primary.email_icon}
-                                    />
+                                    <PrismicNextImage style={{ marginRight: '16px' }} field={slice.primary.email_icon} />
                                     {slice.primary.email}
                                 </a>
                             </Typography>
                         </ContactDetails>
                     </Box>
-                    <Snackbar
-                        open={!!snackbar}
-                        autoHideDuration={6000}
-                        onClose={handleCloseSnackbar}
-                        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-                    >
-                        <Alert
-                            onClose={handleCloseSnackbar}
-                            severity={snackbar?.type}
-                            sx={{ width: '100%' }}
-                        >
+                    <Snackbar open={!!snackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+                        <Alert onClose={handleCloseSnackbar} severity={snackbar?.type} sx={{ width: '100%' }}>
                             {snackbar?.message}
                         </Alert>
                     </Snackbar>
@@ -304,58 +262,23 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                 <Form>
                                     <ContactFormContainer>
                                         {/* Name Field */}
-                                        <Field
-                                            as={ContactTextField}
-                                            name="name"
-                                            label="Name"
-                                            fullWidth
-                                        />
-                                        <StyledErrorMessage
-                                            name="name"
-                                            component="div"
-                                        />
+                                        <Field as={ContactTextField} name="name" label="Name" fullWidth />
+                                        <StyledErrorMessage name="name" component="div" />
 
                                         {/* Email Field */}
-                                        <Field
-                                            as={ContactTextField}
-                                            name="email"
-                                            label="Email"
-                                            fullWidth
-                                        />
-                                        <StyledErrorMessage
-                                            name="email"
-                                            component="div"
-                                        />
+                                        <Field as={ContactTextField} name="email" label="Email" fullWidth />
+                                        <StyledErrorMessage name="email" component="div" />
 
                                         {/* Phone Field */}
-                                        <Field
-                                            as={ContactTextField}
-                                            name="phone"
-                                            label="Phone number"
-                                            fullWidth
-                                        />
-                                        <StyledErrorMessage
-                                            name="phone"
-                                            component="div"
-                                        />
+                                        <Field as={ContactTextField} name="phone" label="Phone number" fullWidth />
+                                        <StyledErrorMessage name="phone" component="div" />
 
                                         {/* Message Field */}
-                                        <Field
-                                            as={ContactTextarea}
-                                            name="message"
-                                            placeholder="Your message"
-                                            minRows={3}
-                                        />
-                                        <StyledErrorMessage
-                                            name="message"
-                                            component="div"
-                                        />
+                                        <Field as={ContactTextarea} name="message" placeholder="Your message" minRows={10} />
+                                        <StyledErrorMessage name="message" component="div" />
 
                                         {/* Submit Button */}
-                                        <SubmitButton
-                                            type="submit"
-                                            disabled={isSubmitting}
-                                        >
+                                        <SubmitButton type="submit" disabled={isSubmitting}>
                                             {loading ? 'Submitting' : 'Submit'}
                                         </SubmitButton>
                                     </ContactFormContainer>

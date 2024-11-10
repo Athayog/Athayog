@@ -49,7 +49,7 @@ const TrialClassForm = ({ slice }: TrialClassFormProps): JSX.Element => {
         },
         validationSchema,
         onSubmit: async (values: FormValues, { resetForm }) => {
-            await submitForm(values, 'trialClasses')
+            await submitForm(values, 'trialClasses', `contentmanager@athayogliving.com`)
             if (!error) {
                 resetForm()
             }

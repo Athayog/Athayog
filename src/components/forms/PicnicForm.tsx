@@ -56,7 +56,7 @@ const PicnicForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element =>
         },
         validationSchema: validationSchemaWeightLoss,
         onSubmit: async (values: PicnicFormWeightLoss, { resetForm }) => {
-            await submitForm(values, 'picnicForm')
+            await submitForm(values, 'picnicForm', `contentmanager@athayogliving.com`)
             if (!error) {
                 setShowOverlay(true)
                 resetForm()
