@@ -103,7 +103,7 @@ const Privacy = ({ slice }: PrivacyProps): JSX.Element => {
                                 <Typography sx={{ fontSize: '18px' }}>
                                     If after you opt-in, you change your mind, you may withdraw your consent for us to contact you, for the continued collection, use or disclosure of your information,
                                     at anytime, by contacting us at
-                                    <span style={{ fontWeight: '700' }}> contentmanager@athayogliving.com</span> or mailing us at:
+                                    <span style={{ fontWeight: '700' }}> info@athayogliving.com</span> or mailing us at:
                                     <span style={{ fontWeight: '700' }}> No.3293, 1st floor, 12th main, HAL 2nd stage, Indiranagar, Bengaluru, Karnataka - 560038</span>{' '}
                                 </Typography>
                             </Stack>
@@ -335,8 +335,7 @@ const Privacy = ({ slice }: PrivacyProps): JSX.Element => {
                             <Stack gap="15px" marginTop="20px">
                                 <Typography sx={{ fontSize: '18px' }}>
                                     If you would like to: access, correct, amend or delete any personal information we have about you, register a complaint, or simply want more information contact our
-                                    Privacy Compliance Officer at contentmanager@athayogliving.com or by mail at No.3293, 1st floor, 12th main, HAL 2nd stage, Indiranagar, Bengaluru, Karnataka -
-                                    560038
+                                    Privacy Compliance Officer at info@athayogliving.com or by mail at No.3293, 1st floor, 12th main, HAL 2nd stage, Indiranagar, Bengaluru, Karnataka - 560038
                                 </Typography>
                             </Stack>
                         </Box>
@@ -491,7 +490,7 @@ const Privacy = ({ slice }: PrivacyProps): JSX.Element => {
 
                                 <Typography sx={{ fontSize: '18px' }}>
                                     Next contact your bank. There is often some processing time before a refund is posted. If you’ve done all of this and you still have not received your refund yet,
-                                    please contact us at contentmanager@athayogliving.com.
+                                    please contact us at info@athayogliving.com.
                                 </Typography>
                             </Stack>
                         </Box>
@@ -1191,7 +1190,7 @@ const Privacy = ({ slice }: PrivacyProps): JSX.Element => {
                             </Typography>
 
                             <Stack gap="15px" marginTop="20px">
-                                <Typography sx={{ fontSize: '18px' }}>Questions about the Terms of Service should be sent to us at contentmanager@athayogliving.com.</Typography>
+                                <Typography sx={{ fontSize: '18px' }}>Questions about the Terms of Service should be sent to us at info@athayogliving.com.</Typography>
                             </Stack>
                         </Box>
                     </Box>

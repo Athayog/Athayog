@@ -1647,7 +1647,7 @@ export interface ContactUsFormSliceDefaultPrimary {
      * Link to email field in *ContactUsForm → Default → Primary*
      *
      * - **Field Type**: Link
-     * - **Placeholder**: Where we want this form to send an email to: Eg: contentmanager@athayogliving.com
+     * - **Placeholder**: Where we want this form to send an email to: Eg: info@athayogliving.com
      * - **API ID Path**: contact_us_form.default.primary.link_to_email
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */

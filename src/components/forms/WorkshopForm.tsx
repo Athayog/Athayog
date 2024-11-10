@@ -56,7 +56,7 @@ const WorkshopForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element 
         },
         validationSchema: validationSchemaWorkshopForm,
         onSubmit: async (values: WorkshopForm, { resetForm }) => {
-            await submitForm(values, 'workshopForm', `contentmanager@athayogliving.com`)
+            await submitForm(values, 'workshopForm', `info@athayogliving.com`)
             if (!error) {
                 setShowOverlay(true)
                 resetForm()

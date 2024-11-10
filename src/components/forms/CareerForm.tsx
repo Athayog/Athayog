@@ -98,7 +98,7 @@ const CareerForm = (): JSX.Element => {
         onSubmit: async (values: FormValuesCareer, { resetForm }) => {
             const { resumeFile, ...formDataWithoutFile } = values // Destructure to remove resumeFile from formData
             const file = resumeFile // Keep a reference to the file
-            await submitForm(formDataWithoutFile, 'resume', 'contentmanager@athayogliving.com', file ?? undefined, 'resume')
+            await submitForm(formDataWithoutFile, 'resume', 'info@athayogliving.com', file ?? undefined, 'resume')
             if (!error) {
                 resetForm()
             }

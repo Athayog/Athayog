@@ -690,7 +690,7 @@ const Privacy = () => {
                     </Typography>
 
                     <Stack gap="15px" marginTop="20px">
-                        <Typography sx={{ fontSize: '18px' }}>Questions about the Terms of Service should be sent to us at contentmanager@athayogliving.com.</Typography>
+                        <Typography sx={{ fontSize: '18px' }}>Questions about the Terms of Service should be sent to us at info@athayogliving.com.</Typography>
                     </Stack>
                 </Box>
             </Box>

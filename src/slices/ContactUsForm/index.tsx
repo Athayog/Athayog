@@ -147,7 +147,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
     const linkUrl = (slice.primary.link_to_email as any).url
     const handleSubmit = async (values: FormData, { resetForm }: FormikHelpers<FormData>) => {
         try {
-            await submitForm(values, 'contactMessages', 'contentmanager@athayogliving.com')
+            await submitForm(values, 'contactMessages', 'info@athayogliving.com')
             setSnackbar({
                 type: 'success',
                 message: 'Your message has been sent successfully!',

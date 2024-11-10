@@ -39,7 +39,7 @@ const WeightLossForm = (): JSX.Element => {
         },
         validationSchema: validationSchemaWeightLoss,
         onSubmit: async (values: FormValuesWeightLoss, { resetForm }) => {
-            await submitForm(values, 'weightLossForm', `contentmanager@athayogliving.com`)
+            await submitForm(values, 'weightLossForm', `info@athayogliving.com`)
             if (!error) {
                 resetForm()
             }

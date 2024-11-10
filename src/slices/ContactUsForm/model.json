@@ -84,7 +84,7 @@
                     "type": "Link",
                     "config": {
                         "label": "Link to email",
-                        "placeholder": "Where we want this form to send an email to: Eg: contentmanager@athayogliving.com",
+                        "placeholder": "Where we want this form to send an email to: Eg: info@athayogliving.com",
                         "allowTargetBlank": false,
                         "select": null
                     }

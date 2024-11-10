@@ -45,7 +45,7 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
         },
         validationSchema: validationSchemaEnquiry,
         onSubmit: async (values: FormValuesEnquiry, { resetForm }) => {
-            await submitForm(values, 'EnquiryForm', `contentmanager@athayogliving.com`)
+            await submitForm(values, 'EnquiryForm', `info@athayogliving.com`)
             if (!error) {
                 resetForm()
             }

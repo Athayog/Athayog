@@ -152,7 +152,7 @@ const Privacy = () => {
 
                         <Typography sx={{ fontSize: '18px' }}>
                             Next contact your bank. There is often some processing time before a refund is posted. If you’ve done all of this and you still have not received your refund yet, please
-                            contact us at contentmanager@athayogliving.com.
+                            contact us at info@athayogliving.com.
                         </Typography>
                     </Stack>
                 </Box>
