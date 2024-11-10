@@ -50,7 +50,7 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
         },
         validationSchema: validationSchemaAcademy,
         onSubmit: async (values: FormValuesAcademy, { resetForm }) => {
-            await submitForm(values, 'AcademyForm')
+            await submitForm(values, 'AcademyForm', `info@athayogliving.com`)
             if (!error) {
                 setShowOverlay(true)
                 resetForm()
