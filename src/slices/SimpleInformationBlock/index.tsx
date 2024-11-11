@@ -14,7 +14,7 @@ export type PersonalContentProps = SliceComponentProps<Content.PersonalContentSl
 
 const Details = ({ title, description }: { title: RichTextField | null; description: RichTextField | null }) => {
     return (
-        <Box sx={{ maxWidth: '1000px', textAlign: 'center' }}>
+        <Box sx={{ maxWidth: '1400px', textAlign: 'center' }}>
             <Box
                 sx={{
                     color: '#284E01',

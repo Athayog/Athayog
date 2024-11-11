@@ -186,6 +186,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                 marginTop: '22px',
                                 maxWidth: '500px',
                                 fontWeight: '400',
+                                fontSize: '24px',
                                 [theme.breakpoints.down('md')]: {
                                     fontSize: '16px',
                                 },
@@ -198,6 +199,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'flex-start',
+                                    fontSize: '24px',
                                     [theme.breakpoints.down('md')]: {
                                         fontSize: '16px',
                                     },
@@ -210,6 +212,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'flex-start',
+                                    fontSize: '24px',
                                     [theme.breakpoints.down('md')]: {
                                         fontSize: '16px',
                                     },
@@ -223,6 +226,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                                     display: 'flex',
                                     alignItems: 'flex-start',
                                     color: 'black',
+                                    fontSize: '24px',
                                     [theme.breakpoints.down('md')]: {
                                         fontSize: '16px',
                                     },
