@@ -62,7 +62,7 @@ const CareerHero = ({ slice }: CareerHeroProps): JSX.Element => {
                                 fontSize: { xs: '32px', md: '42px', lg: '52px' },
                                 textAlign: { xs: 'center', md: 'left' },
                                 fontWeight: '700',
-                                lineHeight: { xs: '56px', lg: '86px' },
+                                lineHeight: { xs: '56px', lg: '77px' },
                             }}
                         >
                             <PrismicRichText field={slice.primary.title} />

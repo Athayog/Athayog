@@ -1,5 +1,5 @@
 import Button from '@/components/elements/button/Index'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { Content } from '@prismicio/client'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
@@ -67,7 +67,7 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                         zIndex: 1, // Bring content above the background
                         maxWidth: '1440px',
                         margin: '0 auto',
-                        ...(slice.variation === 'withImagePrice' ? { display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'space-between' }, gap: '100px' } : {}),
+                        ...(slice.variation === 'withImagePrice' ? { display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'center' }, gap: '100px' } : {}),
                     }}
                 >
                     {/* Title */}
@@ -90,15 +90,50 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                                 color: dynamicFontColor,
                                 lineHeight: { xs: '38px', lg: 'normal' },
                                 display: 'inline',
+                                maxWidth: '900px',
                                 '&& p': {
                                     display: 'inline',
                                 },
                             }}
                         >
                             <PrismicRichText field={slice.primary.title} />
+                            {slice.variation === 'default' ||
+                                slice.variation === 'withSmallTitle' ||
+                                (slice.variation === 'withPrice' && (
+                                    <Typography
+                                        sx={{
+                                            color: '#5B7F38',
+                                            fontSize: dynamicFontSize,
+                                            textAlign: 'center',
+                                            lineHeight: { xs: '38px', lg: 'normal' },
+                                            display: 'inline',
+                                            marginLeft: '10px',
+                                        }}
+                                    >
+                                        {slice.primary.highlighted_text}{' '}
+                                    </Typography>
+                                ))}
                         </Box>
 
                         {/* Description */}
+
+                        {slice.variation === 'default' ||
+                            slice.variation === 'withSmallTitle' ||
+                            (slice.variation === 'withPrice' && (
+                                <Box
+                                    sx={{
+                                        color: '#000',
+                                        fontSize: { xs: '18px', md: '32px' },
+                                        textAlign: 'center',
+                                        lineHeight: { xs: '38px', lg: '44px' },
+                                        fontWeight: '400',
+                                        display: 'inline',
+                                        maxWidth: '1184px',
+                                    }}
+                                >
+                                    <PrismicRichText field={slice.primary.description} />{' '}
+                                </Box>
+                            ))}
 
                         {/* Button */}
                         <PrismicNextLink field={slice.primary.button}>

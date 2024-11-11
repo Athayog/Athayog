@@ -41,7 +41,7 @@ const YogaTherapyHero = ({ slice }: YogaTherapyHeroProps): JSX.Element => {
                 >
                     <Box
                         sx={{
-                            fontSize: { xs: '40px', sm: '40px', md: '54px' },
+                            fontSize: { xs: '40px', sm: '40px', md: '66px' },
                             textAlign: { xs: 'right', sm: 'right', md: 'right' },
                             lineHeight: { xs: '64px', md: '66px' },
                             fontWeight: '700',
