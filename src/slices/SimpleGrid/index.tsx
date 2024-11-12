@@ -31,7 +31,7 @@ const SimpleGrid = ({ slice }: SimpleGridProps): JSX.Element => {
                         textAlign: 'center',
                     }}
                 >
-                    <Typography
+                    <Box
                         sx={{
                             color: '#255400',
                             fontSize: { xs: '34px', sm: '40px', md: '52px' },
@@ -42,7 +42,7 @@ const SimpleGrid = ({ slice }: SimpleGridProps): JSX.Element => {
                         }}
                     >
                         <PrismicRichText field={slice.primary.title} />
-                    </Typography>
+                    </Box>
 
                     {/* Responsive Grid */}
                     <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} justifyContent="center">

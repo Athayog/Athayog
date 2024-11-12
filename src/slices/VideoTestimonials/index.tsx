@@ -7,14 +7,11 @@ import ArrowLeft from '/public/images/home/ArrowLeft.svg'
 import ArrowRight from '/public/images/home/ArrowRight.svg'
 import { YouTubeEmbed } from '@next/third-parties/google'
 import { Box, IconButton, styled, Typography } from '@mui/material'
-import {
-    SectionContent,
-    SectionPadding,
-} from '@/components/_shared/SectionContainer'
-import {
-    LayoutContainer,
-    LayoutContent,
-} from '@/components/_shared/LayoutContainer'
+import { SectionContent, SectionPadding } from '@/components/_shared/SectionContainer'
+import { LayoutContainer, LayoutContent } from '@/components/_shared/LayoutContainer'
+import VideoImage from '/public/images/home/Video.jpeg'
+import { backgroundColorExtract } from '@/utils/color'
+import { PrismicNextImage } from '@prismicio/next'
 
 const Wrapper = styled(Box)(({}) => ({
     height: 'auto',
@@ -120,18 +117,15 @@ const ButtonGroup = styled(Box)(({ theme }) => ({
 /**
  * Props for `VideoTestimonials`.
  */
-export type VideoTestimonialsProps =
-    SliceComponentProps<Content.VideoTestimonialsSlice>
+export type VideoTestimonialsProps = SliceComponentProps<Content.VideoTestimonialsSlice>
 
 /**
  * Component for "VideoTestimonials" Slices.
  */
 const VideoTestimonials = ({ slice }: VideoTestimonialsProps): JSX.Element => {
     const [currentVideoIndex, setCurrentVideoIndex] = useState(3)
-    const [videoCollection, setVideoCollection] = useState([
-        ...slice.primary.video_links,
-    ])
-
+    const [videoCollection, setVideoCollection] = useState([...slice.primary.video_links])
+    const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
     const handleThumbnailClick = (index: number) => {
         setCurrentVideoIndex(index)
     }
@@ -143,9 +137,7 @@ const VideoTestimonials = ({ slice }: VideoTestimonialsProps): JSX.Element => {
             const updatedCollection = [lastItem, ...prevCollection.slice(0, -1)] // Move the last item to the front
             return updatedCollection
         })
-        setCurrentVideoIndex((prevIndex) =>
-            prevIndex > 0 ? prevIndex - 1 : videoCollection.length - 1
-        )
+        setCurrentVideoIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : videoCollection.length - 1))
     }
 
     // Rotate the array on "Next" click
@@ -155,240 +147,205 @@ const VideoTestimonials = ({ slice }: VideoTestimonialsProps): JSX.Element => {
             const updatedCollection = [...prevCollection.slice(1), firstItem] // Move the first item to the end
             return updatedCollection
         })
-        setCurrentVideoIndex((prevIndex) =>
-            prevIndex < videoCollection.length - 1 ? prevIndex + 1 : 0
-        )
+        setCurrentVideoIndex((prevIndex) => (prevIndex < videoCollection.length - 1 ? prevIndex + 1 : 0))
     }
 
     if (!videoCollection) return <></>
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
-            <LayoutContainer>
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+            <Box
+                sx={{
+                    background: backgroundGradient,
+                    height: '100%',
+                    padding: { xs: '30px 20px', md: '60px 50px' },
+                }}
+            >
                 <LayoutContent>
-                    <SectionPadding>
-                        <SectionContent>
-                            <Wrapper>
-                                <TitleBox>
-                                    <Title variant="h2">
-                                        {slice.primary.title}
-                                    </Title>
-                                    <Subtitle variant="h2">
-                                        {slice.primary.subtitle}
-                                    </Subtitle>
-                                </TitleBox>
+                    <Box sx={{ position: 'relative' }}>
+                        <SectionPadding>
+                            <Box sx={{ position: 'absolute', left: '0px', bottom: '0px', display: { xs: 'none', md: 'block' } }}>
+                                <PrismicNextImage field={slice.primary.vectorleft} />
+                            </Box>
+                            <Box sx={{ position: 'absolute', right: '0px', bottom: '0px', display: { xs: 'none', md: 'block' } }}>
+                                <PrismicNextImage field={slice.primary.vectorright} />
+                            </Box>
+                            <SectionContent>
+                                <Wrapper>
+                                    <TitleBox>
+                                        <Title variant="h2">{slice.primary.title}</Title>
+                                        <Subtitle variant="h2">{slice.primary.subtitle}</Subtitle>
+                                    </TitleBox>
 
-                                <VideoContainer>
-                                    <VideoParent>
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                gap: '20px',
-                                            }}
-                                        >
+                                    <VideoContainer>
+                                        <VideoParent>
                                             <Box
                                                 sx={{
-                                                    position: 'absolute',
-                                                    left: '80px',
-                                                    top: '0px',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    gap: '20px',
                                                 }}
                                             >
-                                                <StyledImage>
-                                                    <Image
-                                                        src={`https://img.youtube.com/vi/${videoCollection[0]?.youtube_embed_id}/maxresdefault.jpg`}
-                                                        onClick={() =>
-                                                            handleThumbnailClick(
-                                                                0
-                                                            )
-                                                        }
-                                                        fill
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                        style={{
-                                                            objectFit: 'cover',
-                                                        }}
-                                                        alt="Video"
-                                                    />
-                                                </StyledImage>
+                                                <Box
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        left: '80px',
+                                                        top: '0px',
+                                                    }}
+                                                >
+                                                    <StyledImage>
+                                                        <Image
+                                                            src={`https://img.youtube.com/vi/${videoCollection[0]?.youtube_embed_id}/maxresdefault.jpg`}
+                                                            onClick={() => handleThumbnailClick(0)}
+                                                            fill
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                            style={{
+                                                                objectFit: 'cover',
+                                                            }}
+                                                            alt="Video"
+                                                        />
+                                                    </StyledImage>
+                                                </Box>
+                                                <Box
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        left: '-50px',
+                                                        top: '150px',
+                                                    }}
+                                                >
+                                                    <StyledImage>
+                                                        <Image
+                                                            src={`https://img.youtube.com/vi/${videoCollection[1]?.youtube_embed_id}/maxresdefault.jpg`}
+                                                            onClick={() => handleThumbnailClick(1)}
+                                                            fill
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                            style={{
+                                                                objectFit: 'cover',
+                                                            }}
+                                                            alt="Video"
+                                                        />
+                                                    </StyledImage>
+                                                </Box>
+                                                <Box
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        left: '100px',
+                                                        top: '300px',
+                                                    }}
+                                                >
+                                                    <StyledImage>
+                                                        <Image
+                                                            src={`https://img.youtube.com/vi/${videoCollection[2]?.youtube_embed_id}/maxresdefault.jpg`}
+                                                            onClick={() => handleThumbnailClick(2)}
+                                                            fill
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                            style={{
+                                                                objectFit: 'cover',
+                                                            }}
+                                                            alt="Video"
+                                                        />
+                                                    </StyledImage>
+                                                </Box>
                                             </Box>
                                             <Box
                                                 sx={{
                                                     position: 'absolute',
-                                                    left: '-50px',
-                                                    top: '150px',
+                                                    left: '280px',
+                                                    top: '-50px',
                                                 }}
                                             >
-                                                <StyledImage>
-                                                    <Image
-                                                        src={`https://img.youtube.com/vi/${videoCollection[1]?.youtube_embed_id}/maxresdefault.jpg`}
-                                                        onClick={() =>
-                                                            handleThumbnailClick(
-                                                                1
-                                                            )
-                                                        }
-                                                        fill
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                        style={{
-                                                            objectFit: 'cover',
-                                                        }}
-                                                        alt="Video"
-                                                    />
-                                                </StyledImage>
+                                                <EmbeddYoutube>
+                                                    <YouTubeEmbed style="height: 520px;" videoid={videoCollection[currentVideoIndex]?.youtube_embed_id ?? ''} params="controls=0" />
+                                                </EmbeddYoutube>
                                             </Box>
                                             <Box
                                                 sx={{
-                                                    position: 'absolute',
-                                                    left: '100px',
-                                                    top: '300px',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    gap: '20px',
                                                 }}
                                             >
-                                                <StyledImage>
-                                                    <Image
-                                                        src={`https://img.youtube.com/vi/${videoCollection[2]?.youtube_embed_id}/maxresdefault.jpg`}
-                                                        onClick={() =>
-                                                            handleThumbnailClick(
-                                                                2
-                                                            )
-                                                        }
-                                                        fill
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                        style={{
-                                                            objectFit: 'cover',
-                                                        }}
-                                                        alt="Video"
-                                                    />
-                                                </StyledImage>
+                                                <Box
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        right: '50px',
+                                                        top: '-20px',
+                                                    }}
+                                                >
+                                                    <StyledImage>
+                                                        <Image
+                                                            src={`https://img.youtube.com/vi/${videoCollection[3]?.youtube_embed_id}/maxresdefault.jpg`}
+                                                            onClick={() => handleThumbnailClick(3)}
+                                                            fill
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                            style={{
+                                                                objectFit: 'cover',
+                                                            }}
+                                                            alt="Video"
+                                                        />
+                                                    </StyledImage>
+                                                </Box>
+                                                <Box
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        right: '-60px',
+                                                        top: '120px',
+                                                    }}
+                                                >
+                                                    <StyledImage>
+                                                        <Image
+                                                            src={`https://img.youtube.com/vi/${videoCollection[4]?.youtube_embed_id}/maxresdefault.jpg`}
+                                                            onClick={() => handleThumbnailClick(4)}
+                                                            fill
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                            style={{
+                                                                objectFit: 'cover',
+                                                            }}
+                                                            alt="Video"
+                                                        />
+                                                    </StyledImage>
+                                                </Box>
+                                                <Box
+                                                    sx={{
+                                                        position: 'absolute',
+                                                        right: '60px',
+                                                        top: '250px',
+                                                    }}
+                                                >
+                                                    <StyledImage>
+                                                        <Image
+                                                            alt="Video"
+                                                            src={`https://img.youtube.com/vi/${videoCollection[5]?.youtube_embed_id}/maxresdefault.jpg`}
+                                                            onClick={() => handleThumbnailClick(5)}
+                                                            fill
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                            style={{
+                                                                objectFit: 'cover',
+                                                            }}
+                                                        />
+                                                    </StyledImage>
+                                                </Box>
                                             </Box>
-                                        </Box>
-                                        <Box
-                                            sx={{
-                                                position: 'absolute',
-                                                left: '280px',
-                                                top: '-50px',
-                                            }}
-                                        >
-                                            <EmbeddYoutube>
-                                                <YouTubeEmbed
-                                                    style="height: 520px;"
-                                                    videoid={
-                                                        videoCollection[
-                                                            currentVideoIndex
-                                                        ]?.youtube_embed_id ??
-                                                        ''
-                                                    }
-                                                    params="controls=0"
-                                                />
-                                            </EmbeddYoutube>
-                                        </Box>
-                                        <Box
-                                            sx={{
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                gap: '20px',
-                                            }}
-                                        >
-                                            <Box
-                                                sx={{
-                                                    position: 'absolute',
-                                                    right: '50px',
-                                                    top: '-20px',
-                                                }}
-                                            >
-                                                <StyledImage>
-                                                    <Image
-                                                        src={`https://img.youtube.com/vi/${videoCollection[3]?.youtube_embed_id}/maxresdefault.jpg`}
-                                                        onClick={() =>
-                                                            handleThumbnailClick(
-                                                                3
-                                                            )
-                                                        }
-                                                        fill
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                        style={{
-                                                            objectFit: 'cover',
-                                                        }}
-                                                        alt="Video"
-                                                    />
-                                                </StyledImage>
-                                            </Box>
-                                            <Box
-                                                sx={{
-                                                    position: 'absolute',
-                                                    right: '-60px',
-                                                    top: '120px',
-                                                }}
-                                            >
-                                                <StyledImage>
-                                                    <Image
-                                                        src={`https://img.youtube.com/vi/${videoCollection[4]?.youtube_embed_id}/maxresdefault.jpg`}
-                                                        onClick={() =>
-                                                            handleThumbnailClick(
-                                                                4
-                                                            )
-                                                        }
-                                                        fill
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                        style={{
-                                                            objectFit: 'cover',
-                                                        }}
-                                                        alt="Video"
-                                                    />
-                                                </StyledImage>
-                                            </Box>
-                                            <Box
-                                                sx={{
-                                                    position: 'absolute',
-                                                    right: '60px',
-                                                    top: '250px',
-                                                }}
-                                            >
-                                                <StyledImage>
-                                                    <Image
-                                                        alt="Video"
-                                                        src={`https://img.youtube.com/vi/${videoCollection[5]?.youtube_embed_id}/maxresdefault.jpg`}
-                                                        onClick={() =>
-                                                            handleThumbnailClick(
-                                                                5
-                                                            )
-                                                        }
-                                                        fill
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                        style={{
-                                                            objectFit: 'cover',
-                                                        }}
-                                                    />
-                                                </StyledImage>
-                                            </Box>
-                                        </Box>
-                                    </VideoParent>
-                                </VideoContainer>
+                                        </VideoParent>
+                                    </VideoContainer>
 
-                                <EmbeddYoutubeMobile>
-                                    <YouTubeEmbed
-                                        style="height: 520px;"
-                                        videoid={
-                                            videoCollection[currentVideoIndex]
-                                                ?.youtube_embed_id ?? ''
-                                        }
-                                        params="controls=0"
-                                    />
-                                </EmbeddYoutubeMobile>
+                                    <EmbeddYoutubeMobile>
+                                        <YouTubeEmbed style="height: 520px;" videoid={videoCollection[currentVideoIndex]?.youtube_embed_id ?? ''} params="controls=0" />
+                                    </EmbeddYoutubeMobile>
 
-                                <ButtonGroup>
-                                    <StyledIconButton onClick={handlePrevClick}>
-                                        <ArrowLeft />
-                                    </StyledIconButton>
-                                    <StyledIconButton onClick={handleNextClick}>
-                                        <ArrowRight />
-                                    </StyledIconButton>
-                                </ButtonGroup>
-                            </Wrapper>
-                        </SectionContent>
-                    </SectionPadding>
+                                    <ButtonGroup>
+                                        <StyledIconButton onClick={handlePrevClick}>
+                                            <ArrowLeft />
+                                        </StyledIconButton>
+                                        <StyledIconButton onClick={handleNextClick}>
+                                            <ArrowRight />
+                                        </StyledIconButton>
+                                    </ButtonGroup>
+                                </Wrapper>
+                            </SectionContent>
+                        </SectionPadding>
+                    </Box>
                 </LayoutContent>
-            </LayoutContainer>
+            </Box>
         </section>
     )
 }

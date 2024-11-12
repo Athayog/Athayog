@@ -11,7 +11,86 @@
       "version": "initial",
       "description": "Default",
       "imageUrl": "",
-      "primary": {},
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em"
+          }
+        },
+        "date": {
+          "type": "Text",
+          "config": {
+            "label": "Date",
+            "placeholder": ""
+          }
+        },
+        "time": {
+          "type": "Text",
+          "config": {
+            "label": "Time",
+            "placeholder": ""
+          }
+        },
+        "duration": {
+          "type": "Text",
+          "config": {
+            "label": "Duration",
+            "placeholder": ""
+          }
+        },
+        "old_price": {
+          "type": "Number",
+          "config": {
+            "label": "Old Price",
+            "placeholder": ""
+          }
+        },
+        "new_price": {
+          "type": "Number",
+          "config": {
+            "label": "New Price",
+            "placeholder": ""
+          }
+        },
+        "register_button": {
+          "type": "Link",
+          "config": {
+            "label": "Register Button",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "backgroud_image": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "left_person": {
+          "type": "Image",
+          "config": {
+            "label": "Left Person",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "right_person": {
+          "type": "Image",
+          "config": {
+            "label": "Right Person",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
       "items": {}
     }
   ]

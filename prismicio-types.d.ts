@@ -244,6 +244,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | MentalHealthContentSlice
     | MentalHealthHeroSlice
     | CoursesListSlice
     | TtcContentTextSlice
@@ -4384,13 +4385,201 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
 export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
 
 /**
+ * Item in *MentalHealthContent → Default → Primary → Background Color*
+ */
+export interface MentalHealthContentSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * Color field in *MentalHealthContent → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_content.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *MentalHealthContent → Default → Primary*
+ */
+export interface MentalHealthContentSliceDefaultPrimary {
+    /**
+     * Title field in *MentalHealthContent → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_content.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * List field in *MentalHealthContent → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_content.default.primary.list
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    list: prismic.RichTextField
+
+    /**
+     * Image field in *MentalHealthContent → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_content.default.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+
+    /**
+     * Background Color field in *MentalHealthContent → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_content.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<MentalHealthContentSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for MentalHealthContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MentalHealthContentSliceDefault = prismic.SharedSliceVariation<'default', Simplify<MentalHealthContentSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *MentalHealthContent*
+ */
+type MentalHealthContentSliceVariation = MentalHealthContentSliceDefault
+
+/**
+ * MentalHealthContent Shared Slice
+ *
+ * - **API ID**: `mental_health_content`
+ * - **Description**: MentalHealthContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MentalHealthContentSlice = prismic.SharedSlice<'mental_health_content', MentalHealthContentSliceVariation>
+
+/**
+ * Primary content in *MentalHealthHero → Default → Primary*
+ */
+export interface MentalHealthHeroSliceDefaultPrimary {
+    /**
+     * Title field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Date field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.date
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    date: prismic.KeyTextField
+
+    /**
+     * Time field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.time
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    time: prismic.KeyTextField
+
+    /**
+     * Duration field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.duration
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    duration: prismic.KeyTextField
+
+    /**
+     * Old Price field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.old_price
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    old_price: prismic.NumberField
+
+    /**
+     * New Price field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.new_price
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    new_price: prismic.NumberField
+
+    /**
+     * Register Button field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.register_button
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    register_button: prismic.LinkField
+
+    /**
+     * Backgroud Image field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.backgroud_image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Left Person field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.left_person
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    left_person: prismic.ImageField<never>
+
+    /**
+     * Right Person field in *MentalHealthHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: mental_health_hero.default.primary.right_person
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    right_person: prismic.ImageField<never>
+}
+
+/**
  * Default variation for MentalHealthHero Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type MentalHealthHeroSliceDefault = prismic.SharedSliceVariation<'default', Record<string, never>, never>
+export type MentalHealthHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<MentalHealthHeroSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *MentalHealthHero*
@@ -6600,6 +6789,21 @@ export interface VideoTestimonialsSliceDefaultPrimaryVideoLinksItem {
 }
 
 /**
+ * Item in *VideoTestimonials → Default → Primary → Background Color*
+ */
+export interface VideoTestimonialsSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *VideoTestimonials → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: video_testimonials.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
  * Primary content in *VideoTestimonials → Default → Primary*
  */
 export interface VideoTestimonialsSliceDefaultPrimary {
@@ -6632,6 +6836,36 @@ export interface VideoTestimonialsSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     video_links: prismic.GroupField<Simplify<VideoTestimonialsSliceDefaultPrimaryVideoLinksItem>>
+
+    /**
+     * Background Color field in *VideoTestimonials → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: video_testimonials.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<VideoTestimonialsSliceDefaultPrimaryBackgroundColorItem>>
+
+    /**
+     * VectorLeft field in *VideoTestimonials → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: video_testimonials.default.primary.vectorleft
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    vectorleft: prismic.ImageField<never>
+
+    /**
+     * VectorRight field in *VideoTestimonials → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: video_testimonials.default.primary.vectorright
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    vectorright: prismic.ImageField<never>
 }
 
 /**
@@ -7795,7 +8029,13 @@ declare module '@prismicio/client' {
             LeftImageRighContentSliceDefaultPrimary,
             LeftImageRighContentSliceVariation,
             LeftImageRighContentSliceDefault,
+            MentalHealthContentSlice,
+            MentalHealthContentSliceDefaultPrimaryBackgroundColorItem,
+            MentalHealthContentSliceDefaultPrimary,
+            MentalHealthContentSliceVariation,
+            MentalHealthContentSliceDefault,
             MentalHealthHeroSlice,
+            MentalHealthHeroSliceDefaultPrimary,
             MentalHealthHeroSliceVariation,
             MentalHealthHeroSliceDefault,
             MultiLeftRightCoursesSlice,
@@ -7927,6 +8167,7 @@ declare module '@prismicio/client' {
             UpcomingWorkshopSliceDefault,
             VideoTestimonialsSlice,
             VideoTestimonialsSliceDefaultPrimaryVideoLinksItem,
+            VideoTestimonialsSliceDefaultPrimaryBackgroundColorItem,
             VideoTestimonialsSliceDefaultPrimary,
             VideoTestimonialsSliceVariation,
             VideoTestimonialsSliceDefault,

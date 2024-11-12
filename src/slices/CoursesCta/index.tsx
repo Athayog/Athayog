@@ -117,23 +117,21 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
 
                         {/* Description */}
 
-                        {slice.variation === 'default' ||
-                            slice.variation === 'withSmallTitle' ||
-                            (slice.variation === 'withPrice' && (
-                                <Box
-                                    sx={{
-                                        color: '#000',
-                                        fontSize: { xs: '18px', md: '32px' },
-                                        textAlign: 'center',
-                                        lineHeight: { xs: '38px', lg: '44px' },
-                                        fontWeight: '400',
-                                        display: 'inline',
-                                        maxWidth: '1184px',
-                                    }}
-                                >
-                                    <PrismicRichText field={slice.primary.description} />{' '}
-                                </Box>
-                            ))}
+                        {(slice.variation === 'default' || slice.variation === 'withSmallTitle' || slice.variation === 'withPrice') && (
+                            <Box
+                                sx={{
+                                    color: '#000',
+                                    fontSize: { xs: '18px', md: '32px' },
+                                    textAlign: 'center',
+                                    lineHeight: { xs: '38px', lg: '44px' },
+                                    fontWeight: '400',
+                                    display: 'inline',
+                                    maxWidth: '1184px',
+                                }}
+                            >
+                                <PrismicRichText field={slice.primary.description} />
+                            </Box>
+                        )}
 
                         {/* Button */}
                         <PrismicNextLink field={slice.primary.button}>
