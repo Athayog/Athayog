@@ -41,6 +41,38 @@
               }
             }
           }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "Background Color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "vectorleft": {
+          "type": "Image",
+          "config": {
+            "label": "VectorLeft",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "vectorright": {
+          "type": "Image",
+          "config": {
+            "label": "VectorRight",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}
