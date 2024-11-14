@@ -97,22 +97,20 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                             }}
                         >
                             <PrismicRichText field={slice.primary.title} />
-                            {slice.variation === 'default' ||
-                                slice.variation === 'withSmallTitle' ||
-                                (slice.variation === 'withPrice' && (
-                                    <Typography
-                                        sx={{
-                                            color: '#5B7F38',
-                                            fontSize: dynamicFontSize,
-                                            textAlign: 'center',
-                                            lineHeight: { xs: '38px', lg: 'normal' },
-                                            display: 'inline',
-                                            marginLeft: '10px',
-                                        }}
-                                    >
-                                        {slice.primary.highlighted_text}{' '}
-                                    </Typography>
-                                ))}
+                            {(slice.variation === 'default' || slice.variation === 'withSmallTitle' || slice.variation === 'withPrice') && (
+                                <Typography
+                                    sx={{
+                                        color: '#5B7F38',
+                                        fontSize: dynamicFontSize,
+                                        textAlign: 'center',
+                                        lineHeight: { xs: '38px', lg: 'normal' },
+                                        display: 'inline',
+                                        marginLeft: '10px',
+                                    }}
+                                >
+                                    {slice.primary.highlighted_text}{' '}
+                                </Typography>
+                            )}
                         </Box>
 
                         {/* Description */}
