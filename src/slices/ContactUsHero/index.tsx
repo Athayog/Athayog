@@ -17,7 +17,7 @@ export type ContactUsHeroProps = SliceComponentProps<Content.ContactUsHeroSlice>
 const ContactUsHero = ({ slice }: ContactUsHeroProps): JSX.Element => {
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-            <Box sx={{ height: '300px', position: 'relative' }}>
+            <Box sx={{ height: '600px', position: 'relative' }}>
                 <Banner
                     imageSrc={{
                         xs: slice.primary.image.url,
