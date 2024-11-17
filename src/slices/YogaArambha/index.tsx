@@ -113,7 +113,7 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                     >
                         {slice.primary.media.url !== '' ? (
                             <video controls width="100%" height="auto">
-                                <source src={slice.primary.media.url} type="video/mp4" controls={true} />
+                                <source src={slice.primary.media.url} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                         ) : (
