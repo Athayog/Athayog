@@ -50,6 +50,15 @@
             "label": "Youtube Embed ID",
             "placeholder": ""
           }
+        },
+        "media": {
+          "type": "Link",
+          "config": {
+            "label": "Media",
+            "placeholder": "If not youtube then uplaod the media and use (only if its very small)",
+            "select": "media",
+            "allowText": true
+          }
         }
       },
       "items": {}

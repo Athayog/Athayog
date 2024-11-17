@@ -147,7 +147,7 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                             sx={{
                                 width: '68px',
                                 height: '68px',
-                                border: '2px solid #F69B75',
+                                border: '2px solid #47820D',
                                 borderRadius: '500px',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -163,7 +163,7 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                             sx={{
                                 width: '68px',
                                 height: '68px',
-                                border: '2px solid #F69B75',
+                                border: '2px solid #47820D',
                                 borderRadius: '500px',
                                 display: 'flex',
                                 alignItems: 'center',

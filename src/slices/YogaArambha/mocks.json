@@ -35,6 +35,18 @@
 				"__TYPE__": "FieldContent",
 				"value": "idea",
 				"type": "Text"
+			},
+			"media": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "FileLink",
+					"id": "mock_Media_link",
+					"kind": "file",
+					"name": "mock_name",
+					"url": "https://source.unsplash.com/daily",
+					"size": "0",
+					"text": "steady"
+				}
 			}
 		},
 		"items": []

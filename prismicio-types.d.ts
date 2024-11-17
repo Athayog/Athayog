@@ -7467,6 +7467,16 @@ export interface YogaArambhaSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#key-text
      */
     youtube_embed_id: prismic.KeyTextField
+
+    /**
+     * Media field in *YogaArambha → Default → Primary*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: If not youtube then uplaod the media and use (only if its very small)
+     * - **API ID Path**: yoga_arambha.default.primary.media
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    media: prismic.LinkToMediaField
 }
 
 /**

@@ -10,6 +10,8 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { PrismicNextLink } from '@prismicio/next'
+import Video from 'next-video'
+import { LinkToMediaField } from '@prismicio/client'
 
 const Title = styled(Typography)(({ theme }) => ({
     marginBottom: '20px',
@@ -26,17 +28,23 @@ const Title = styled(Typography)(({ theme }) => ({
 /**
  * Props for `YogaArambha`.
  */
-export type YogaArambhaProps = SliceComponentProps<Content.YogaArambhaSlice>
+export type YogaArambhaProps = SliceComponentProps<Content.YogaArambhaSlice> &
+    LinkToMediaField & {
+        slice: {
+            primary: {
+                media: {
+                    url: string
+                }
+            }
+        }
+    }
 
 /**
  * Component for "YogaArambha" Slices.
  */
 const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <ContentContainer>
                 <Box
                     sx={{
@@ -73,11 +81,9 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                                 },
                             }}
                         >
-                            <PrismicRichText
-                                field={slice.primary.description}
-                            />
+                            <PrismicRichText field={slice.primary.description} />
                         </Box>
-                        <Box
+                        {/* <Box
                             sx={{
                                 display: 'flex',
                                 gap: '20px',
@@ -88,11 +94,9 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                             }}
                         >
                             <PrismicNextLink field={slice.primary.button_link}>
-                                <RegisterButton sx={{ width: 'max-content' }}>
-                                    {slice.primary.button_text}
-                                </RegisterButton>
+                                <RegisterButton sx={{ width: 'max-content' }}>{slice.primary.button_text}</RegisterButton>
                             </PrismicNextLink>
-                        </Box>
+                        </Box> */}
                     </Box>
                     <Box
                         sx={{
@@ -101,6 +105,8 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                             height: '500px',
                             width: '436px',
                             border: '4px solid #F8BCC0',
+                            padding: '55px',
+                            backgroundColor: '#000',
                             overflow: 'hidden',
                             [theme.breakpoints.down('md')]: {
                                 marginTop: '20px',
@@ -108,14 +114,16 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                             },
                         }}
                     >
-                        <YouTubeEmbed
-                            style="height: 520px;"
-                            videoid={slice.primary.youtube_embed_id ?? ''}
-                            params="controls=0"
-                        />
+                        {slice.primary.media.url !== '' ? (
+                            <>
+                                <Video src={slice.primary.media.url} />
+                            </>
+                        ) : (
+                            <YouTubeEmbed style="height: 520px;" videoid={slice.primary.youtube_embed_id ?? ''} params="controls=0" />
+                        )}
                     </Box>
                 </Box>
-                <Box
+                {/* <Box
                     sx={{
                         display: 'none',
                         justifyContent: 'center',
@@ -138,7 +146,7 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                     >
                         Dive Into Yoga Arambaha
                     </RegisterButton>
-                </Box>
+                </Box> */}
             </ContentContainer>
         </section>
     )

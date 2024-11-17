@@ -1,36 +1,21 @@
 'use client'
-import {
-    Content,
-    KeyTextField,
-    NumberField,
-    SelectField,
-} from '@prismicio/client'
+import { Content, KeyTextField, NumberField, SelectField } from '@prismicio/client'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 import { Box, Button, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
+import { formatToCurrency } from '@/lib/helpers'
 
 /**
  * Props for `PersonalSessionPricing`.
  */
-export type PersonalSessionPricingProps =
-    SliceComponentProps<Content.PersonalSessionPricingSlice>
+export type PersonalSessionPricingProps = SliceComponentProps<Content.PersonalSessionPricingSlice>
 
 /**
  * Component for "PersonalSessionPricing" Slices.
  */
 
-const AdvantagesBox = ({
-    course_name,
-    course_days,
-    type,
-    course_price,
-}: {
-    course_name: any
-    course_days: any
-    type: any
-    course_price: any
-}) => {
+const AdvantagesBox = ({ course_name, course_days, type, course_price }: { course_name: any; course_days: any; type: any; course_price: any }) => {
     const getColorType = (type: string) => {
         switch (type) {
             case 'studio':
@@ -40,7 +25,7 @@ const AdvantagesBox = ({
             case 'online':
                 return '#284E01'
             default:
-                return '#000000' // default color if type doesn't match
+                return '#519E05' // default color if type doesn't match
         }
     }
 
@@ -62,11 +47,7 @@ const AdvantagesBox = ({
                 flex: { xs: '1 1 100%', md: '1 1 calc(50% - 16px)' },
             }}
         >
-            <Typography
-                sx={{ fontWeight: '600', fontSize: { xs: '26px', md: '40px' } }}
-            >
-                {course_name}
-            </Typography>
+            <Typography sx={{ fontWeight: '600', fontSize: { xs: '26px', md: '40px' } }}>{course_name}</Typography>
             <Box
                 sx={{
                     display: 'flex',
@@ -100,7 +81,7 @@ const AdvantagesBox = ({
                     fontSize: { xs: '20px', md: '45px' },
                 }}
             >
-                ₹{course_price}
+                {course_price && formatToCurrency(course_price)}
             </Typography>
         </Box>
     )
@@ -127,9 +108,7 @@ type PersonalSession = {
     type: SelectField<'Onsite' | 'Studio' | 'Online'>
 }
 
-const PersonalSessionPricing = ({
-    slice,
-}: PersonalSessionPricingProps): JSX.Element => {
+const PersonalSessionPricing = ({ slice }: PersonalSessionPricingProps): JSX.Element => {
     const [selectedType, setSelectedType] = useState('all')
 
     const handleTypeChange = (type: string) => {
@@ -142,15 +121,10 @@ const PersonalSessionPricing = ({
     const filteredCourses: PersonalSession[] =
         selectedType === 'all'
             ? allCourses.map((course) => course as PersonalSession)
-            : slice.primary.courses
-                  .filter((course) => course.type === selectedType)
-                  .map((course) => course as PersonalSession)
+            : slice.primary.courses.filter((course) => course.type === selectedType).map((course) => course as PersonalSession)
 
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box
                 sx={{
                     background: 'linear-gradient(to bottom, #dffad1, #e5fbd3)',
@@ -187,17 +161,13 @@ const PersonalSessionPricing = ({
                     }}
                 >
                     <Button
-                        variant={
-                            selectedType === 'all' ? 'contained' : 'outlined'
-                        }
+                        variant={selectedType === 'all' ? 'contained' : 'outlined'}
                         sx={{
                             fontSize: { xs: '13px', md: '36px' },
                             borderRadius: '100px',
                             maxWidth: '200px',
-                            backgroundColor:
-                                selectedType === 'all' ? '#519E05' : '#FFFFFF',
-                            color:
-                                selectedType === 'all' ? '#FFFFFF' : '#000000',
+                            backgroundColor: selectedType === 'all' ? '#519E05' : '#FFFFFF',
+                            color: selectedType === 'all' ? '#FFFFFF' : '#000000',
                             padding: '5px 40px',
                             textTransform: 'capitalize',
                         }}
@@ -209,21 +179,13 @@ const PersonalSessionPricing = ({
                     {Object.keys(courses).map((type) => (
                         <Button
                             key={type}
-                            variant={
-                                selectedType === type ? 'contained' : 'outlined'
-                            }
+                            variant={selectedType === type ? 'contained' : 'outlined'}
                             sx={{
                                 fontSize: { xs: '13px', md: '36px' },
                                 borderRadius: '100px',
                                 maxWidth: '200px',
-                                backgroundColor:
-                                    selectedType === type
-                                        ? '#519E05'
-                                        : '#FFFFFF',
-                                color:
-                                    selectedType === type
-                                        ? '#FFFFFF'
-                                        : '#000000',
+                                backgroundColor: selectedType === type ? '#519E05' : '#FFFFFF',
+                                color: selectedType === type ? '#FFFFFF' : '#000000',
                                 padding: '5px 40px',
                                 textTransform: 'capitalize',
                             }}
@@ -257,9 +219,7 @@ const PersonalSessionPricing = ({
                         fontSize: { xs: '16px', md: '32px' },
                     }}
                 >
-                    <PrismicRichText
-                        field={slice.primary.terms_and_conditions}
-                    />
+                    <PrismicRichText field={slice.primary.terms_and_conditions} />
                 </Box>
 
                 <Box
@@ -283,9 +243,7 @@ const PersonalSessionPricing = ({
                     >
                         {slice.primary.contact_us_label}
                     </Typography>
-                    <PrismicNextLink
-                        field={slice.primary.enquire_now_button_link}
-                    >
+                    <PrismicNextLink field={slice.primary.enquire_now_button_link}>
                         <Button
                             variant="contained"
                             sx={{
@@ -310,14 +268,8 @@ const PersonalSessionPricing = ({
                             gap: '8px',
                         }}
                     >
-                        <PrismicNextImage
-                            field={slice.primary.enquire_note_image}
-                        />
-                        <Typography
-                            sx={{ fontSize: { xs: '16px', md: '20px' } }}
-                        >
-                            {slice.primary.enquire_note_text}
-                        </Typography>
+                        <PrismicNextImage field={slice.primary.enquire_note_image} />
+                        <Typography sx={{ fontSize: { xs: '16px', md: '20px' } }}>{slice.primary.enquire_note_text}</Typography>
                     </Box>
                 </Box>
             </Box>
