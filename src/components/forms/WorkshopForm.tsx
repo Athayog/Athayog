@@ -18,6 +18,7 @@ interface WorkshopForm {
     emergencyContactNameAndRelation: string
     emergencyContactNumber: string
     preferredDietaryPreferences: string
+    pageSource: any
 }
 
 const validationSchemaWorkshopForm = Yup.object({
