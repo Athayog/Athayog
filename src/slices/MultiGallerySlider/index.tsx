@@ -88,7 +88,7 @@ const EventHighlightsGallery = ({ slice }: EventHighlightsGalleryProps): JSX.Ele
                                         width: '99%',
                                     }}
                                 >
-                                    <ResponsiveImage src={workshop?.image?.url ?? ''} fill alt={(workshop?.image as any)?.name ?? ''} style={{ objectFit: 'cover' }} />
+                                    <ResponsiveImage src={workshop?.image?.url ?? ''} fill alt={(workshop?.image as any)?.name ?? ''} style={{ objectFit: 'contain' }} />
                                 </Box>
                             </SwiperSlide>
                         )
