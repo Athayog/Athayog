@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { Close } from '@mui/icons-material'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { navItems } from '@/constants/navItems'
 import NavMenuMobile from '/public/images/NavMenuMobile.svg'
-import { Collapse, ListItem, ListItemText } from '@mui/material'
+import { Avatar, Box, Button, Collapse, ListItem, ListItemText } from '@mui/material'
 import ArrowRightRoundedIcon from '@mui/icons-material/ArrowRightRounded'
 import ArrowDropDownRoundedIcon from '@mui/icons-material/ArrowDropDownRounded'
 import { Drawer, Divider, DrawerContent, List, NavLinkButton, DrawerParent, IconButton, DrawerNavContainer, TrialButton } from '@/components/_header/styles/MobileDrawer'
+import useAuthStore from '@/store/useAuthStore'
 
 interface MenuState {
     [key: string]: boolean
@@ -15,6 +16,8 @@ interface MenuState {
 export default function MobileDrawer() {
     const [open, setOpen] = useState(false)
     const [menuState, setMenuState] = useState<MenuState>({})
+    const { user } = useAuthStore()
+    const router = useRouter()
 
     const pathname = usePathname()
 
@@ -40,6 +43,11 @@ export default function MobileDrawer() {
             ...prevState,
             [`${mainIndex}-${subIndex}`]: !prevState[`${mainIndex}-${subIndex}`], // Toggle only the selected submenu
         }))
+    }
+
+    const handleAccount = () => {
+        router.push('/user/account')
+        handleDrawerClose()
     }
 
     const DrawerList = (
@@ -127,9 +135,33 @@ export default function MobileDrawer() {
                 </IconButton>
             </DrawerNavContainer>
 
-            <TrialButton variant="text">
-                Get a <span> Free Trial</span>
-            </TrialButton>
+            <Box sx={{ display: 'flex', gap: '5px', width: '100%', alignItems: 'center' }}>
+                <Link passHref href="/trial-classes" style={{ textDecoration: 'none', width: '100%' }}>
+                    <TrialButton variant="text" onClick={handleDrawerClose}>
+                        Get a <span> Free Trial</span>
+                    </TrialButton>
+                </Link>
+                {!user ? (
+                    <Link href="/login">
+                        <Button
+                            sx={{
+                                backgroundColor: '#47820D',
+                                color: '#FFFFFF',
+                                padding: '15px, 25px',
+                                fontSize: '18px',
+                                fontWeight: '700',
+                                width: '115px',
+                            }}
+                        >
+                            Login
+                        </Button>
+                    </Link>
+                ) : (
+                    <Avatar id="menu-appbar" sx={{ width: 45, height: 45 }} onClick={() => handleAccount()}>
+                        {user?.displayName?.charAt(0)}
+                    </Avatar>
+                )}
+            </Box>
         </DrawerContent>
     )
 
