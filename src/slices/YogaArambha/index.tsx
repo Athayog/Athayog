@@ -1,17 +1,14 @@
 'use client'
-import { Content } from '@prismicio/client'
-import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
-import RegisterButton from '@/components/elements/button/RegisterButton'
-import theme from '@/styles/theme'
-import ContentContainer from '@/components/_shared/ContentContainer'
-import { Box, styled, Typography } from '@mui/material'
-import { YouTubeEmbed } from '@next/third-parties/google'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { PrismicNextLink } from '@prismicio/next'
-import Video from 'next-video'
+import theme from '@/styles/theme'
+import { Content } from '@prismicio/client'
 import { LinkToMediaField } from '@prismicio/client'
+import { Box, styled, Typography } from '@mui/material'
+import { YouTubeEmbed } from '@next/third-parties/google'
+import ContentContainer from '@/components/_shared/ContentContainer'
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 
 const Title = styled(Typography)(({ theme }) => ({
     marginBottom: '20px',
@@ -105,7 +102,7 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                             height: '500px',
                             width: '436px',
                             border: '4px solid #F8BCC0',
-                            padding: '55px',
+
                             backgroundColor: '#000',
                             overflow: 'hidden',
                             [theme.breakpoints.down('md')]: {
@@ -115,9 +112,10 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                         }}
                     >
                         {slice.primary.media.url !== '' ? (
-                            <>
-                                <Video src={slice.primary.media.url} />
-                            </>
+                            <video controls width="100%" height="auto">
+                                <source src={slice.primary.media.url} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
                         ) : (
                             <YouTubeEmbed style="height: 520px;" videoid={slice.primary.youtube_embed_id ?? ''} params="controls=0" />
                         )}

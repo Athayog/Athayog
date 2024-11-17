@@ -50,34 +50,22 @@ const groupByAlbum = (album: any[]) => {
 /**
  * Props for `EventHighlightsGallery`.
  */
-export type EventHighlightsGalleryProps =
-    SliceComponentProps<Content.EventHighlightsGallerySlice>
+export type EventHighlightsGalleryProps = SliceComponentProps<Content.EventHighlightsGallerySlice>
 
 /**
  * Component for "EventHighlightsGallery" Slices.
  */
-const EventHighlightsGallery = ({
-    slice,
-}: EventHighlightsGalleryProps): JSX.Element => {
+const EventHighlightsGallery = ({ slice }: EventHighlightsGalleryProps): JSX.Element => {
     const groupedData = groupByAlbum(slice.primary.albums)
     const albumNames = Object.keys(groupedData)
     const [currentAlbum, setCurrentAlbum] = useState(albumNames[0])
 
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <ContentContainer>
                 <Title>{slice.primary.section_title}</Title>
 
-                <HorizontalSwiper
-                    slidesPerView={1}
-                    enablePagination={false}
-                    swiperWidth={{ xs: '80vw', md: '80vw', lg: '1000px' }}
-                    enableNavigation={true}
-                    disableNavOnMobile={true}
-                >
+                <HorizontalSwiper slidesPerView={1} enablePagination={false} swiperWidth={{ xs: '80vw', md: '80vw', lg: '1000px' }} enableNavigation={true} disableNavOnMobile={true}>
                     {groupedData[currentAlbum]?.map(
                         (
                             workshop: {
@@ -100,14 +88,7 @@ const EventHighlightsGallery = ({
                                         width: '99%',
                                     }}
                                 >
-                                    <ResponsiveImage
-                                        src={workshop?.image?.url ?? ''}
-                                        fill
-                                        alt={
-                                            (workshop?.image as any)?.name ?? ''
-                                        }
-                                        style={{ objectFit: 'cover' }}
-                                    />
+                                    <ResponsiveImage src={workshop?.image?.url ?? ''} fill alt={(workshop?.image as any)?.name ?? ''} style={{ objectFit: 'cover' }} />
                                 </Box>
                             </SwiperSlide>
                         )
@@ -166,7 +147,7 @@ const EventHighlightsGallery = ({
                     ))}
                 </Box>
 
-                <Box
+                {/* <Box
                     sx={{
                         display: 'flex',
                         justifyContent: 'center',
@@ -176,7 +157,7 @@ const EventHighlightsGallery = ({
                     <PrismicNextLink field={slice.primary.button_link}>
                         <StyledButton>{slice.primary.button_text}</StyledButton>
                     </PrismicNextLink>
-                </Box>
+                </Box> */}
             </ContentContainer>
         </section>
     )

@@ -35,7 +35,7 @@ const validationSchemaAcademy = Yup.object({
 const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyTextField; paymentLink: LinkField }): JSX.Element => {
     const { loading, error, success, submitForm } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
-    console.log(paymentLink)
+
     const formik = useFormik<FormValuesAcademy>({
         initialValues: {
             fullName: '',
