@@ -7,7 +7,6 @@ const withAuth = (WrappedComponent: React.ComponentType) => {
         const { isAuthenticated, loading, setRedirectPath } = useAuthStore()
         const router = useRouter()
         const pathname = usePathname()
-        console.log('isAuthenticated', isAuthenticated)
         useEffect(() => {
             if (!loading && !isAuthenticated) {
                 router.push('/')

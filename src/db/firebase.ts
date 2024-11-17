@@ -28,6 +28,5 @@ export const getLogoFromStorage = async () => {
     const bucket = getStorage().bucket()
     const file = bucket.file('logo.png')
     const imageUrl = await getDownloadURL(file)
-    console.log(imageUrl)
     return imageUrl
 }

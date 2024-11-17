@@ -127,7 +127,7 @@ const OurYogaStory = ({ slice }: OurYogaStoryProps): JSX.Element => {
     const handleSlideChange = (swiper: any) => {
         setCurrentSlideIndex(swiper.activeIndex) // Update active index on slide change
     }
-    console.log('as', slice)
+
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <ContentContainer>

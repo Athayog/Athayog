@@ -45,7 +45,7 @@ export const initiateRazorpayPayment = async ({ amount, onSuccess, onFailure, on
             },
             modal: {
                 ondismiss: () => {
-                    console.log('Razorpay modal dismissed')
+                    // console.log('Razorpay modal dismissed')
                     if (onDismiss) onDismiss()
                 },
             },

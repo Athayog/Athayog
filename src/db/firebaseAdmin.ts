@@ -35,9 +35,9 @@ function createFirebaseAdminApp(params: FirebaseAdminAppParams) {
         })
 
         firestore = admin.firestore() // Initialize Firestore here
-        console.log('Firebase Admin initialized successfully.')
+        // console.log('Firebase Admin initialized successfully.')
     } else {
-        console.log('Firebase Admin app already initialized. Using existing instance.')
+        // console.log('Firebase Admin app already initialized. Using existing instance.')
         firestore = admin.firestore() // Use existing Firestore instance
     }
 }

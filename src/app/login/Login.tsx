@@ -27,7 +27,6 @@ const Login = () => {
         try {
             const user = await handleSignIn()
         } catch (error) {
-            console.log(error)
             setSnackbarMessage('Google login failed. Please try again.')
             setSnackbarOpen(true)
         } finally {
@@ -47,7 +46,7 @@ const Login = () => {
         window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
             size: 'invisible',
             callback: () => {
-                console.log('Recaptcha verified!')
+                // console.log('Recaptcha verified!')
             },
         })
     }
