@@ -12,6 +12,7 @@ import useAuthStore from '@/store/useAuthStore'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSnackbar } from '@/components/SnackbarProvider'
 import usePurchaseStore from '@/store/usePurchases'
+import { formatToCurrency } from '@/lib/helpers'
 
 export type GroupClassPricingProps = SliceComponentProps<Content.GroupClassPricingSlice>
 
@@ -91,7 +92,7 @@ const PackagesBox = ({
                     marginTop: { xs: '10px', md: '15px' },
                 }}
             >
-                ₹{price}
+                {price && formatToCurrency(price)}
             </Typography>
             {price && (
                 <Button

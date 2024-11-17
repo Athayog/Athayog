@@ -122,18 +122,14 @@ const OurYogaStory = ({ slice }: OurYogaStoryProps): JSX.Element => {
         setIsLoading(false) // Hide skeleton loader once Swiper is initialized
     }
 
-    const images = slice.primary.content.map(
-        (image: { content_image: any }) => image.content_image
-    )
+    const images = slice.primary.content.map((image: { content_image: any }) => image.content_image)
 
     const handleSlideChange = (swiper: any) => {
         setCurrentSlideIndex(swiper.activeIndex) // Update active index on slide change
     }
+    console.log('as', slice)
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <ContentContainer>
                 <Box>
                     <Title>
@@ -164,50 +160,43 @@ const OurYogaStory = ({ slice }: OurYogaStoryProps): JSX.Element => {
                                     },
                                 }}
                             >
-                                <PrismicRichText
-                                    field={
-                                        slice.primary.content[currentSlideIndex]
-                                            ?.content_description
-                                    }
-                                />
+                                <PrismicRichText field={slice.primary.content[currentSlideIndex]?.content_description} />
                             </Description>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    gap: '20px',
-                                    marginTop: '27px',
-                                    [theme.breakpoints.down('sm')]: {
-                                        display: 'none',
-                                    },
-                                }}
-                            >
-                                <IconButton
+                            {/* {slice.primary.content.length > 0 && (
+                                <Box
                                     sx={{
-                                        backgroundColor: '#d7f0cd',
                                         display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
+                                        gap: '20px',
+                                        marginTop: '27px',
+                                        [theme.breakpoints.down('sm')]: {
+                                            display: 'none',
+                                        },
                                     }}
-                                    onClick={() =>
-                                        swiperRef?.current?.swiper.slidePrev()
-                                    }
                                 >
-                                    <ArrowLeft />
-                                </IconButton>
-                                <IconButton
-                                    sx={{
-                                        backgroundColor: '#d7f0cd',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                    }}
-                                    onClick={() =>
-                                        swiperRef?.current?.swiper.slideNext()
-                                    }
-                                >
-                                    <ArrowRight />
-                                </IconButton>
-                            </Box>
+                                    <IconButton
+                                        sx={{
+                                            backgroundColor: '#d7f0cd',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}
+                                        onClick={() => swiperRef?.current?.swiper.slidePrev()}
+                                    >
+                                        <ArrowLeft />
+                                    </IconButton>
+                                    <IconButton
+                                        sx={{
+                                            backgroundColor: '#d7f0cd',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}
+                                        onClick={() => swiperRef?.current?.swiper.slideNext()}
+                                    >
+                                        <ArrowRight />
+                                    </IconButton>
+                                </Box>
+                            )} */}
                         </Box>
                         <AthayogSwiper>
                             <Swiper
@@ -236,35 +225,32 @@ const OurYogaStory = ({ slice }: OurYogaStoryProps): JSX.Element => {
                                           }
                                 }
                             >
-                                {images.map(
-                                    (
-                                        images: { url: string | StaticImport },
-                                        index: Key | null | undefined
-                                    ) => (
-                                        <SwiperSlide key={index}>
-                                            <SwiperImageBox>
-                                                <Image
-                                                    src={images.url}
-                                                    fill
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                    style={{
-                                                        objectFit: 'cover',
-                                                    }}
-                                                    alt="Carousel Sample"
-                                                />
-                                            </SwiperImageBox>
-                                        </SwiperSlide>
-                                    )
-                                )}
+                                {images.map((images: { url: string | StaticImport }, index: Key | null | undefined) => (
+                                    <SwiperSlide key={index}>
+                                        <SwiperImageBox>
+                                            <Image
+                                                src={images.url}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                style={{
+                                                    objectFit: 'cover',
+                                                }}
+                                                alt="Carousel Sample"
+                                            />
+                                        </SwiperImageBox>
+                                    </SwiperSlide>
+                                ))}
                             </Swiper>
                         </AthayogSwiper>
                     </Box>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <PrismicNextLink field={slice.primary.button_link}>
-                        <StyledButton>{slice.primary.button_text}</StyledButton>
-                    </PrismicNextLink>
-                </Box>
+                {/* {slice.primary.button_link !== null && (
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <PrismicNextLink field={slice.primary.button_link}>
+                            <StyledButton>{slice.primary.button_text}</StyledButton>
+                        </PrismicNextLink>
+                    </Box>
+                )} */}
             </ContentContainer>
         </section>
     )

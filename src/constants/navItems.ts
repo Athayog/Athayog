@@ -36,7 +36,7 @@ export const navItems: NavItem[] = [
                 ],
             },
             { label: 'Excursion / Picnics', path: '/picnics', type: 'nav' },
-            { label: 'PCOS Yoga', path: '/pcos-yoga', type: 'nav' },
+            // { label: 'PCOS Yoga', path: '/pcos-yoga', type: 'nav' },
             { label: 'Weight Loss Program', path: '/weight-loss-program', type: 'nav' },
         ],
     },

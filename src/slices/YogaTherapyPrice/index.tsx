@@ -2,6 +2,7 @@
 import Script from 'next/script'
 import { useState } from 'react'
 import theme from '@/styles/theme'
+import { formatToCurrency } from '@/lib/helpers'
 import { Content } from '@prismicio/client'
 import useAuthStore from '@/store/useAuthStore'
 import { KeyTextField } from '@prismicio/client'
@@ -174,7 +175,7 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
                                                             fontWeight: '400',
                                                         }}
                                                     >
-                                                        {item.days}
+                                                        {item.days === 1 ? `${item.days} Day` : `${item.days} Days`}
                                                     </Typography>
                                                     <Typography
                                                         sx={{
@@ -208,7 +209,7 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
                                                         marginTop: { xs: '10px', md: '15px' },
                                                     }}
                                                 >
-                                                    ₹ {item.price}
+                                                    {item.price && formatToCurrency(item.price)}
                                                 </Typography>
                                                 {item.price !== null && item.price !== 0 && (
                                                     <Button
