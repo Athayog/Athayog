@@ -23,8 +23,6 @@ const useFormStore = create<FormState>((set) => ({
     submitForm: async (formData: { [key: string]: any }, collectionName, apiUrl, file, fileCollection) => {
         set({ loading: true, error: null, success: false })
         try {
-            await addDoc(collection(db, collectionName), formData)
-
             if (file) {
                 // Create a reference to the file in Firebase Storage
                 const storageRef = ref(storage, `${fileCollection ? fileCollection + '/' : ''}${file.name}`)
@@ -38,19 +36,20 @@ const useFormStore = create<FormState>((set) => ({
                 // Add the download URL to the formData
                 formData.fileUrl = downloadURL // Store the file reference in formData
             }
-
+            await addDoc(collection(db, collectionName), formData)
             set({ success: true })
 
             // Handle API call in the background without blocking UI
             if (apiUrl) {
                 ;(async () => {
                     try {
-                        const response = await fetch('https://formsubmit.co/' + apiUrl, {
+                        formData['access_key'] = process.env.WEB3FORMS_ACCESS_KEY
+                        const response = await fetch('https://api.web3forms.com/submit', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(formData),
                         })
-
+                        console.log(response)
                         if (!response.ok) {
                             await addDoc(collection(db, 'formErrors'), {
                                 formData,
