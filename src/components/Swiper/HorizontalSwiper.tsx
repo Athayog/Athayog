@@ -2,8 +2,8 @@ import 'swiper/css'
 import 'swiper/css/scrollbar'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { Swiper } from 'swiper/react'
-import React, { ReactNode, useRef } from 'react'
+import { Swiper, SwiperRef } from 'swiper/react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules'
@@ -26,6 +26,7 @@ interface HorizontalSwiperProps {
     swiperWidth?: string | { [breakpoint: string]: string | number } // Width of the swiper
     centerPage?: string // Centering style for the swiper
     disableNavOnMobile?: boolean // Disable navigation on mobile
+    resetSlide: () => void
 }
 
 interface NavigationIconProps {
@@ -36,8 +37,7 @@ interface NavigationIconProps {
 }
 
 const NavigationIcon: React.FC<NavigationIconProps> = ({ Icon, type }) => {
-    const style =
-        type === 'next' ? { marginRight: '0px' } : { marginLeft: '10px' }
+    const style = type === 'next' ? { marginRight: '0px' } : { marginLeft: '10px' }
 
     return <Icon style={style as React.CSSProperties} /> // Ensure style is a valid React.CSSProperties
 }
@@ -54,11 +54,25 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
     swiperWidth = '100%',
     centerPage = '0 auto',
     disableNavOnMobile = false,
+    resetSlide,
 }) => {
+    const swiperRef = useRef<SwiperRef>(null)
+    const [isLoading, setIsLoading] = useState(true)
     const prevRef = useRef<HTMLDivElement>(null)
     const nextRef = useRef<HTMLDivElement>(null)
     const theme = useTheme()
     const isMobile = useMediaQuery(theme.breakpoints.down(768))
+
+    const handleSwiperInit = (swiper: { update: () => void }) => {
+        swiper.update()
+        setIsLoading(false) // Hide skeleton loader once Swiper is initialized
+    }
+
+    useEffect(() => {
+        if (swiperRef?.current?.swiper) {
+            swiperRef?.current?.swiper.slideTo(0)
+        }
+    }, [swiperRef, resetSlide])
 
     return (
         <Box
@@ -72,7 +86,7 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
             {enableNavigation && disableNavOnMobile && !isMobile && (
                 <>
                     <div
-                        ref={prevRef}
+                        onClick={() => swiperRef?.current?.swiper.slidePrev()}
                         style={{
                             position: 'absolute',
                             top: '50%',
@@ -93,7 +107,7 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
                         <NavigationIcon Icon={customPrevIcon} type="prev" />
                     </div>
                     <div
-                        ref={nextRef}
+                        onClick={() => swiperRef?.current?.swiper.slideNext()}
                         style={{
                             position: 'absolute',
                             top: '50%',
@@ -120,6 +134,8 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
                 spaceBetween={spaceBetween}
                 slidesPerView={slidesPerView}
+                onInit={handleSwiperInit}
+                ref={swiperRef}
                 navigation={
                     enableNavigation && {
                         prevEl: prevRef.current,

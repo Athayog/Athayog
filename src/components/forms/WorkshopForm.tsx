@@ -18,6 +18,7 @@ interface WorkshopForm {
     emergencyContactNameAndRelation: string
     emergencyContactNumber: string
     preferredDietaryPreferences: string
+    pageSource: any
 }
 
 const validationSchemaWorkshopForm = Yup.object({
@@ -37,7 +38,7 @@ const validationSchemaWorkshopForm = Yup.object({
     preferredDietaryPreferences: Yup.string().required('Preffered Diet is required'),
 })
 
-const WorkshopForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element => {
+const WorkshopForm = ({ paymentLink, pageSource }: { paymentLink: LinkField; pageSource: any }): JSX.Element => {
     const { loading, error, success, submitForm } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
 
@@ -53,6 +54,7 @@ const WorkshopForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element 
             emergencyContactNameAndRelation: '',
             emergencyContactNumber: '',
             preferredDietaryPreferences: '',
+            pageSource: pageSource,
         },
         validationSchema: validationSchemaWorkshopForm,
         onSubmit: async (values: WorkshopForm, { resetForm }) => {

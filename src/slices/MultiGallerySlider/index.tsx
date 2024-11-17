@@ -65,7 +65,14 @@ const EventHighlightsGallery = ({ slice }: EventHighlightsGalleryProps): JSX.Ele
             <ContentContainer>
                 <Title>{slice.primary.section_title}</Title>
 
-                <HorizontalSwiper slidesPerView={1} enablePagination={false} swiperWidth={{ xs: '80vw', md: '80vw', lg: '1000px' }} enableNavigation={true} disableNavOnMobile={true}>
+                <HorizontalSwiper
+                    slidesPerView={1}
+                    enablePagination={false}
+                    swiperWidth={{ xs: '80vw', md: '80vw', lg: '1000px' }}
+                    enableNavigation={true}
+                    disableNavOnMobile={true}
+                    resetSlide={() => setCurrentAlbum(albumNames[0])}
+                >
                     {groupedData[currentAlbum]?.map(
                         (
                             workshop: {
