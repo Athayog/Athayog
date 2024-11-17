@@ -43,7 +43,7 @@ const useFormStore = create<FormState>((set) => ({
             if (apiUrl) {
                 ;(async () => {
                     try {
-                        formData['access_key'] = process.env.WEB3FORMS_ACCESS_KEY
+                        formData['access_key'] = process.env.WEB_THREE_FORM_KEY
                         const response = await fetch('https://api.web3forms.com/submit', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
