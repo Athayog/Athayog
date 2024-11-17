@@ -102,7 +102,7 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                             height: '500px',
                             width: '436px',
                             border: '4px solid #F8BCC0',
-                            padding: '55px',
+
                             backgroundColor: '#000',
                             overflow: 'hidden',
                             [theme.breakpoints.down('md')]: {
@@ -113,7 +113,7 @@ const YogaArambha = ({ slice }: YogaArambhaProps): JSX.Element => {
                     >
                         {slice.primary.media.url !== '' ? (
                             <video controls width="100%" height="auto">
-                                <source src={slice.primary.media.url} type="video/mp4" />
+                                <source src={slice.primary.media.url} type="video/mp4" controls={true} />
                                 Your browser does not support the video tag.
                             </video>
                         ) : (
