@@ -32,7 +32,7 @@ const validationSchemaAcademy = Yup.object({
     referralSource: Yup.string().required('Please let us know how you heard about us'),
 })
 
-const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyTextField; paymentLink: LinkField }): JSX.Element => {
+const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyTextField; paymentLink: any }): JSX.Element => {
     const { loading, error, success, submitForm } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
 
@@ -55,7 +55,7 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
                 setShowOverlay(true)
                 resetForm()
                 setTimeout(() => {
-                    window.location.href = paymentLink as unknown as string
+                    window.location.href = paymentLink.url as unknown as string
                 }, 2000) // Redirect after 2 seconds
             }
         },

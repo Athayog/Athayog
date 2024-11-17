@@ -36,6 +36,7 @@ const useFormStore = create<FormState>((set) => ({
                 // Add the download URL to the formData
                 formData.fileUrl = downloadURL // Store the file reference in formData
             }
+            formData.createdAt = new Date().toISOString()
             await addDoc(collection(db, collectionName), formData)
             set({ success: true })
 
@@ -43,20 +44,20 @@ const useFormStore = create<FormState>((set) => ({
             if (apiUrl) {
                 ;(async () => {
                     try {
-                        formData['access_key'] = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
-                        const response = await fetch('https://api.web3forms.com/submit', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(formData),
-                        })
-                        console.log(response)
-                        if (!response.ok) {
-                            await addDoc(collection(db, 'formErrors'), {
-                                formData,
-                                error: 'Failed to submit form to API',
-                                timestamp: new Date(),
-                            })
-                        }
+                        // formData['access_key'] = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
+                        // const response = await fetch('https://api.web3forms.com/submit', {
+                        //     method: 'POST',
+                        //     headers: { 'Content-Type': 'application/json' },
+                        //     body: JSON.stringify(formData),
+                        // })
+                        // console.log(response)
+                        // if (!response.ok) {
+                        //     await addDoc(collection(db, 'formErrors'), {
+                        //         formData,
+                        //         error: 'Failed to submit form to API',
+                        //         timestamp: new Date(),
+                        //     })
+                        // }
                     } catch (error) {
                         await addDoc(collection(db, 'formErrors'), {
                             formData,

@@ -34,7 +34,7 @@ const Forms = ({ slice }: FormsProps): JSX.Element => {
                 {slice.variation === 'enquiryForm' && <EnquiryForm pageSource={slice.primary.pagesource} />}
                 {slice.variation === 'academyForm' && <AcademyForm pageSource={slice.primary.pagesource} paymentLink={slice.primary.payment_link} />}
                 {slice.variation === 'picnic' && <PicnicForm paymentLink={slice.primary.payment_link} />}
-                {slice.variation === 'workshopForm' && <WorkshopForm paymentLink={slice.primary.payment_link} />}
+                {slice.variation === 'workshopForm' && <WorkshopForm paymentLink={slice.primary.payment_link} pageSource={slice.primary.pagesource} />}
             </Box>
         </Box>
     )
