@@ -35,7 +35,8 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
                 >
                     {slice.variation === 'default' && (
                         <>
-                            <Typography
+                            {slice.primary.title && (  
+                                <Typography
                                 sx={{
                                     color: '#255400',
                                     fontSize: { xs: '34px', sm: '40px', md: '52px' },
@@ -47,6 +48,7 @@ const CallToAction = ({ slice }: CallToActionProps): JSX.Element => {
                             >
                                 {slice.primary.title}
                             </Typography>
+                            )}  
                             <Box
                                 sx={{
                                     borderRadius: '20px',
