@@ -59,12 +59,15 @@ const WorkshopForm = ({ paymentLink, pageSource }: { paymentLink: LinkField; pag
         validationSchema: validationSchemaWorkshopForm,
         onSubmit: async (values: WorkshopForm, { resetForm }) => {
             await submitForm(values, 'workshopForm', `info@athayogliving.com`)
-            if (!error) {
-                setShowOverlay(true)
-                resetForm()
+           if (!error) {
+                const redirectUrl = (paymentLink as { url: string }).url;
+                if (redirectUrl !== '/') {
+                    setShowOverlay(true);
+                }
+                resetForm();
                 setTimeout(() => {
-                    window.location.href = (paymentLink as { url: string }).url
-                }, 2000) // Redirect after 2 seconds
+                    window.location.href = redirectUrl;
+                }, 2000); // Redirect after 2 seconds
             }
         },
     })
