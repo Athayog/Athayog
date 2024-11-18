@@ -244,6 +244,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | BulletedContentSlice
     | MentalHealthContentSlice
     | MentalHealthHeroSlice
     | CoursesListSlice
@@ -967,6 +968,89 @@ type AmenitiesSliceVariation = AmenitiesSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AmenitiesSlice = prismic.SharedSlice<'amenities', AmenitiesSliceVariation>
+
+/**
+ * Item in *BulletedContent → Default → Primary → Background Color*
+ */
+export interface BulletedContentSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * Color field in *BulletedContent → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: bulleted_content.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *BulletedContent → Default → Primary*
+ */
+export interface BulletedContentSliceDefaultPrimary {
+    /**
+     * Title field in *BulletedContent → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: bulleted_content.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *BulletedContent → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: bulleted_content.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Bulleted field in *BulletedContent → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: bulleted_content.default.primary.bulleted
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    bulleted: prismic.RichTextField
+
+    /**
+     * Background Color field in *BulletedContent → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: bulleted_content.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<BulletedContentSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for BulletedContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BulletedContentSliceDefault = prismic.SharedSliceVariation<'default', Simplify<BulletedContentSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *BulletedContent*
+ */
+type BulletedContentSliceVariation = BulletedContentSliceDefault
+
+/**
+ * BulletedContent Shared Slice
+ *
+ * - **API ID**: `bulleted_content`
+ * - **Description**: BulletedContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BulletedContentSlice = prismic.SharedSlice<'bulleted_content', BulletedContentSliceVariation>
 
 /**
  * Item in *CallToAction → Default → Primary → Background Color*
@@ -7872,6 +7956,11 @@ declare module '@prismicio/client' {
             AmenitiesSliceDefaultPrimary,
             AmenitiesSliceVariation,
             AmenitiesSliceDefault,
+            BulletedContentSlice,
+            BulletedContentSliceDefaultPrimaryBackgroundColorItem,
+            BulletedContentSliceDefaultPrimary,
+            BulletedContentSliceVariation,
+            BulletedContentSliceDefault,
             CallToActionSlice,
             CallToActionSliceDefaultPrimaryBackgroundColorItem,
             CallToActionSliceDefaultPrimary,
