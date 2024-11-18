@@ -32,7 +32,8 @@ const BulletedContent = ({ slice }: BulletedContentProps): JSX.Element => {
                         fontSize: { xs: '18px', md: '20px', lg: '24px' },
                         lineHeight: { xs: '30px', lg: '46px' },
                         marginTop: { xs: '10px', md: '20px' },
-                        textAlign: { xs: 'center', md: 'left' },
+                        textAlign: 'center',
+                        maxWidth:'850px',
                         color: '#000',
                         '&& p': {
                             display: { xs: 'inline', lg: 'block' },
@@ -49,9 +50,9 @@ const BulletedContent = ({ slice }: BulletedContentProps): JSX.Element => {
                         color: '#00000',
                         fontSize: { xs: '18px', md: '20px', lg: '24px' },
                         fontWeight: '400',
-                        lineHeight: { xs: '30px', lg: '45px' },
+                        lineHeight: { xs: '30px', lg: '47px' },
                         textAlign: 'left',
-                        marginTop: { xs: '21px', md: '45px' },
+                        marginTop: { xs: '21px', md: '40px' },
                         ul: {
                             paddingLeft: '12px',
                         },
