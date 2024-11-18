@@ -27,6 +27,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "bulleted_content": {
+                            "type": "SharedSlice"
+                        },
                         "mental_health_content": {
                             "type": "SharedSlice"
                         },

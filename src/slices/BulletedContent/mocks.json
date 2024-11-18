@@ -1,0 +1,104 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ea irure eu eu. Laboris elit proident est commodo."
+						}
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "courtasdasdasd asdasdasda s"
+			},
+			"bulleted": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "list-item",
+						"content": {
+							"text": "Connect with Others: Practice alongside like-minded individuals and feel the energy of a community",
+							"spans": [
+								{
+									"type": "strong",
+									"start": 0,
+									"end": 20
+								}
+							]
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "list-item",
+						"content": {
+							"text": "Positive Lifestyle Changes: Yoga is more than asanas it helps improve your overall well-being",
+							"spans": [
+								{
+									"type": "strong",
+									"start": 0,
+									"end": 26
+								}
+							]
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "list-item",
+						"content": {
+							"text": "Mind-Body Harmony: Find balance and peace as you strengthen your body and calm your mind.",
+							"spans": [
+								{
+									"type": "strong",
+									"start": 0,
+									"end": 18
+								}
+							]
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "list-item",
+						"content": {
+							"text": "Expert Guidance: Learn from experienced instructors who guide you every step of the way.",
+							"spans": [
+								{
+									"type": "strong",
+									"start": 0,
+									"end": 15
+								}
+							]
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "#42cfb0",
+									"type": "Color"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
