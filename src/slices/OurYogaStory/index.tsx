@@ -244,13 +244,13 @@ const OurYogaStory = ({ slice }: OurYogaStoryProps): JSX.Element => {
                         </AthayogSwiper>
                     </Box>
                 </Box>
-                {/* {slice.primary.button_link !== null && (
+                {slice.primary.button_link !== null && (
                     <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                         <PrismicNextLink field={slice.primary.button_link}>
                             <StyledButton>{slice.primary.button_text}</StyledButton>
                         </PrismicNextLink>
                     </Box>
-                )} */}
+                )}
             </ContentContainer>
         </section>
     )

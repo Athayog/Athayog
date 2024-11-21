@@ -34,8 +34,8 @@ const WhyToChoose = ({ slice }: WhyToChooseProps): JSX.Element => {
                         margin: '0 auto',
                     }}
                 >
-                    <PrismicNextImage field={slice.primary.logo} style={{ width: '100px', height: 'auto', alignSelf: 'center' }} />
-                    <Box sx={{ fontSize: { xs: '28px', md: '56px' }, fontWeight: '700', textAlign: 'center' }}>
+                    <PrismicNextImage field={slice.primary.logo} style={{ width: '100px', height: 'auto', alignSelf: 'center', marginBottom: '20px' }} />
+                    <Box sx={{ fontSize: { xs: '28px', md: '56px' }, fontWeight: '700', textAlign: 'center', '& p': { margin: '0px' } }}>
                         <PrismicRichText field={slice.primary.title} />
                         <Box sx={{ color: '#617E43' }}>{slice.primary.subtitle}</Box>
                     </Box>

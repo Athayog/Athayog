@@ -22,7 +22,7 @@ const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): J
                 sx={{
                     background: backgroundGradient,
                     height: '100%',
-                    padding: { xs: '30px 20px', md: '60px 50px' },
+                    padding: '30px 20px',
                 }}
             >
                 <Box
@@ -42,7 +42,7 @@ const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): J
                             fontSize: { xs: '34px', sm: '40px', md: '52px' },
                             textAlign: 'center',
                             fontWeight: '700',
-                            maxWidth: '800px',
+                            maxWidth: '1000px',
                             marginBottom: { xs: '20px', md: '70px' },
                         }}
                     >
@@ -57,7 +57,7 @@ const MultiLeftRightInfoSection = ({ slice }: MultiLeftRightInfoSectionProps): J
                                     flexDirection: { xs: 'column', md: slice.primary.starting_direction ? (index % 2 === 0 ? 'row-reverse' : 'row') : index % 2 === 0 ? 'row' : 'row-reverse' },
                                     alignItems: 'center',
                                     justifyContent: 'space-between', // Ensures spacing between content
-                                    mb: { xs: '50px', md: '100px' },
+                                    mb: index === slice.primary.content.length - 1 ? 0 : { xs: '50px', md: '100px' },
                                     width: '100%',
                                     flexWrap: { xs: 'wrap', md: 'nowrap' }, // Prevent wrap on desktop
                                     gap: { xs: '0px', md: '50px' },

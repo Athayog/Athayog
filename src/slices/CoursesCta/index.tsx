@@ -90,7 +90,7 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                                 color: dynamicFontColor,
                                 lineHeight: { xs: '38px', lg: 'normal' },
                                 display: 'inline',
-                                maxWidth: '900px',
+                                maxWidth: '1000px',
                                 '&& p': {
                                     display: 'inline',
                                 },
@@ -106,6 +106,7 @@ const CoursesCta = ({ slice }: CoursesCtaProps): JSX.Element => {
                                         lineHeight: { xs: '38px', lg: 'normal' },
                                         display: 'inline',
                                         marginLeft: '10px',
+                                        fontWeight: '700',
                                     }}
                                 >
                                     {slice.primary.highlighted_text}{' '}

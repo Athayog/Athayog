@@ -44,14 +44,20 @@ const Eligible = ({ slice }: EligibleProps): JSX.Element => {
                             width: '100%',
                             justifyContent: 'space-between',
                             flexDirection: { xs: 'column-reverse', md: 'row' },
-                            alignItems: { xs: 'center', md: 'flex-start' },
+                            alignItems: { xs: 'center', md: 'flex-end' },
                         }}
                     >
                         <Box>
-                            {slice.primary.points.map((item) => (
+                            {slice.primary.points.map((item, index) => (
                                 <Box
                                     key={item.title + nanoid()}
-                                    sx={{ display: 'flex', gap: { xs: '20px', md: '50px' }, marginTop: '10px', marginBottom: { xs: '10px', md: '50px' }, alignItems: 'center' }}
+                                    sx={{
+                                        display: 'flex',
+                                        gap: { xs: '20px', md: '50px' },
+                                        marginTop: '10px',
+                                        marginBottom: index === slice.primary.points.length - 1 ? '0px' : { xs: '10px', md: '50px' },
+                                        alignItems: 'center',
+                                    }}
                                 >
                                     <Box sx={{ height: { xs: '28px', md: '50px' }, width: { xs: '28px', md: '50px' } }}>
                                         <PrismicNextImage field={item.icons} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
@@ -73,8 +79,8 @@ const Eligible = ({ slice }: EligibleProps): JSX.Element => {
                         </Box>
                         <Box
                             sx={{
-                                width: { xs: '306px', md: '540px' },
-                                height: { xs: '415px', md: '800px' },
+                                width: { xs: '306px', md: '600px' },
+                                height: { xs: '415px', md: '600px' },
                                 borderRadius: '300px 300px 0px 0px',
                                 borderTop: '6px solid #C9EEC0',
                                 borderRight: '6px solid #C9EEC0',
@@ -84,7 +90,7 @@ const Eligible = ({ slice }: EligibleProps): JSX.Element => {
                                 overflow: 'hidden',
                             }}
                         >
-                            <PrismicNextImage field={slice.primary.main_image} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                            <PrismicNextImage field={slice.primary.main_image} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'bottom' }} />
                         </Box>
                     </Box>
                 </Box>

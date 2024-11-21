@@ -48,7 +48,7 @@ const HeroWithCenterText = ({ slice }: HeroWithCenterTextProps): JSX.Element => 
                             textAlign: 'center',
                             fontWeight: '700',
                             maxWidth: '800px',
-                            marginTop: { xs: '0%', md: '15%' },
+                            marginTop: { xs: '0%', md: '200px' },
                         }}
                     >
                         <PrismicRichText field={slice.primary.title} />
