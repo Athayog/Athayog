@@ -37,6 +37,7 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                             maxWidth: '800px',
                             '&& p,h1,h2,h3,h4,h5,h6': {
                                 fontSize: { xs: '28px', md: '56px' },
+                                margin: '0px',
                             },
                         }}
                     >
@@ -54,7 +55,7 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                     >
                         {slice.primary.subtitle}
                     </Typography>
-                    <Box sx={{ marginTop: { xs: '35px', lg: '100px' } }}>
+                    <Box sx={{ marginTop: { xs: '35px', lg: '50px' } }}>
                         {slice.primary.content.map((item, index) => (
                             <Box
                                 key={index + (item?.content_title ?? '')}

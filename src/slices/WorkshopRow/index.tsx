@@ -147,18 +147,19 @@ const UpcomingWorkshop = ({ slice }: UpcomingWorkshopProps): JSX.Element => {
                             sx={{
                                 backgroundColor: 'transparent',
                                 boxShadow: 'none',
+                                fontWeight: '600',
                             }}
                         >
                             <Table>
                                 <TableHead>
-                                    <TableRow sx={{ color: '#4E4E4E' }}>
-                                        <TableCell>Date</TableCell>
-                                        <TableCell>Time</TableCell>
-                                        <TableCell>Topic</TableCell>
-                                        <TableCell>Teacher</TableCell>
+                                    <TableRow sx={{ color: '#4E4E4E', fontWeight: '500' }}>
+                                        <TableCell sx={{ color: '#4E4E4E', fontWeight: '500' }}>Date</TableCell>
+                                        <TableCell sx={{ color: '#4E4E4E', fontWeight: '500' }}>Time</TableCell>
+                                        <TableCell sx={{ color: '#4E4E4E', fontWeight: '500' }}>Topic</TableCell>
+                                        <TableCell sx={{ color: '#4E4E4E', fontWeight: '500' }}>Teacher</TableCell>
                                     </TableRow>
                                 </TableHead>
-                                <TableBody>
+                                <TableBody sx={{ fontWeight: '600' }}>
                                     {groupedData[selectedMonth]?.map(
                                         (
                                             row: {
@@ -189,22 +190,22 @@ const UpcomingWorkshop = ({ slice }: UpcomingWorkshopProps): JSX.Element => {
                                             index: React.Key | null | undefined
                                         ) => (
                                             <TableRowBody key={index}>
-                                                <TableCell>
+                                                <TableCell sx={{ fontWeight: '600' }}>
                                                     {new Date(row.date_time).toLocaleDateString('en-IN', {
                                                         day: '2-digit',
                                                         month: '2-digit',
                                                         year: 'numeric',
                                                     })}
                                                 </TableCell>
-                                                <TableCell>
+                                                <TableCell sx={{ fontWeight: '600' }}>
                                                     {new Date(row.date_time).toLocaleTimeString('en-IN', {
                                                         hour: '2-digit',
                                                         minute: '2-digit',
                                                         hour12: true,
                                                     })}
                                                 </TableCell>
-                                                <TableCell>{row.topic}</TableCell>
-                                                <TableCell>{row.teacher}</TableCell>
+                                                <TableCell sx={{ fontWeight: '600' }}>{row.topic}</TableCell>
+                                                <TableCell sx={{ fontWeight: '600' }}>{row.teacher}</TableCell>
                                             </TableRowBody>
                                         )
                                     )}

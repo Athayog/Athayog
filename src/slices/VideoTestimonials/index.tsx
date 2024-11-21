@@ -132,22 +132,30 @@ const VideoTestimonials = ({ slice }: VideoTestimonialsProps): JSX.Element => {
 
     // Rotate the array on "Prev" click
     const handlePrevClick = () => {
-        setVideoCollection((prevCollection) => {
-            const lastItem = prevCollection[prevCollection.length - 1] // Get the last item
-            const updatedCollection = [lastItem, ...prevCollection.slice(0, -1)] // Move the last item to the front
-            return updatedCollection
+        // setVideoCollection((prevCollection) => {
+        //     const lastItem = prevCollection[prevCollection.length - 1] // Get the last item
+        //     const updatedCollection = [lastItem, ...prevCollection.slice(0, -1)] // Move the last item to the front
+        //     return updatedCollection
+        // })
+        setCurrentVideoIndex((prevIndex) => {
+            // Make sure to correctly cycle the index
+            const newIndex = prevIndex === 0 ? videoCollection.length - 1 : prevIndex - 1
+            return newIndex
         })
-        setCurrentVideoIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : videoCollection.length - 1))
     }
 
     // Rotate the array on "Next" click
     const handleNextClick = () => {
-        setVideoCollection((prevCollection) => {
-            const firstItem = prevCollection[0] // Get the first item
-            const updatedCollection = [...prevCollection.slice(1), firstItem] // Move the first item to the end
-            return updatedCollection
+        // setVideoCollection((prevCollection) => {
+        //     const firstItem = prevCollection[0] // Get the first item
+        //     const updatedCollection = [...prevCollection.slice(1), firstItem] // Move the first item to the end
+        //     return updatedCollection
+        // })
+        setCurrentVideoIndex((prevIndex) => {
+            // Make sure to correctly cycle the index
+            const newIndex = prevIndex === videoCollection.length - 1 ? 0 : prevIndex + 1
+            return newIndex
         })
-        setCurrentVideoIndex((prevIndex) => (prevIndex < videoCollection.length - 1 ? prevIndex + 1 : 0))
     }
 
     if (!videoCollection) return <></>

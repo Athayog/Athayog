@@ -98,11 +98,11 @@ const Amenities = ({ slice }: AmenitiesProps): JSX.Element => {
                                 <Box
                                     sx={{
                                         position: 'relative',
-                                        width: { xs: '23px', md: '60px' },
+                                        width: { xs: '23px', md: '100px' },
                                         height: { xs: '23px', md: '60px' },
                                     }}
                                 >
-                                    <PrismicNextImage field={item.icon} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                    <PrismicNextImage field={item.icon} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                                 </Box>
                                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                                     <Typography

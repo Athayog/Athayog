@@ -10,7 +10,7 @@ import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import ContentContainer from '@/components/_shared/ContentContainer'
 
 const Container = styled(Box)(({ theme }) => ({
-    marginTop: '100px',
+    marginTop: '0px',
     textAlign: 'center',
     [theme.breakpoints.down('sm')]: {
         marginTop: '0px',
