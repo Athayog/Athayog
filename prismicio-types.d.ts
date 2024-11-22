@@ -244,6 +244,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | WeightLossVideosSlice
     | BulletedContentSlice
     | MentalHealthContentSlice
     | MentalHealthHeroSlice
@@ -7298,6 +7299,94 @@ type WeightLossHeroSliceVariation = WeightLossHeroSliceDefault
 export type WeightLossHeroSlice = prismic.SharedSlice<'weight_loss_hero', WeightLossHeroSliceVariation>
 
 /**
+ * Item in *WeightLossVideos → Default → Primary → Videos*
+ */
+export interface WeightLossVideosSliceDefaultPrimaryVideosItem {
+    /**
+     * Youtube Embed ID field in *WeightLossVideos → Default → Primary → Videos*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_videos.default.primary.videos[].youtube_embed_id
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    youtube_embed_id: prismic.KeyTextField
+}
+
+/**
+ * Item in *WeightLossVideos → Default → Primary → Background Color*
+ */
+export interface WeightLossVideosSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * Color field in *WeightLossVideos → Default → Primary → Background Color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_videos.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *WeightLossVideos → Default → Primary*
+ */
+export interface WeightLossVideosSliceDefaultPrimary {
+    /**
+     * Title field in *WeightLossVideos → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_videos.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Videos field in *WeightLossVideos → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_videos.default.primary.videos[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    videos: prismic.GroupField<Simplify<WeightLossVideosSliceDefaultPrimaryVideosItem>>
+
+    /**
+     * Background Color field in *WeightLossVideos → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: weight_loss_videos.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<WeightLossVideosSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for WeightLossVideos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossVideosSliceDefault = prismic.SharedSliceVariation<'default', Simplify<WeightLossVideosSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *WeightLossVideos*
+ */
+type WeightLossVideosSliceVariation = WeightLossVideosSliceDefault
+
+/**
+ * WeightLossVideos Shared Slice
+ *
+ * - **API ID**: `weight_loss_videos`
+ * - **Description**: WeightLossVideos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WeightLossVideosSlice = prismic.SharedSlice<'weight_loss_videos', WeightLossVideosSliceVariation>
+
+/**
  * Item in *WhyJoin → Default → Primary → Content*
  */
 export interface WhyJoinSliceDefaultPrimaryContentItem {
@@ -8288,6 +8377,12 @@ declare module '@prismicio/client' {
             WeightLossHeroSliceDefaultPrimary,
             WeightLossHeroSliceVariation,
             WeightLossHeroSliceDefault,
+            WeightLossVideosSlice,
+            WeightLossVideosSliceDefaultPrimaryVideosItem,
+            WeightLossVideosSliceDefaultPrimaryBackgroundColorItem,
+            WeightLossVideosSliceDefaultPrimary,
+            WeightLossVideosSliceVariation,
+            WeightLossVideosSliceDefault,
             WhyJoinSlice,
             WhyJoinSliceDefaultPrimaryContentItem,
             WhyJoinSliceDefaultPrimary,

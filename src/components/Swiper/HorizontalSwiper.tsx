@@ -85,9 +85,9 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
         >
             {enableNavigation && disableNavOnMobile && !isMobile && (
                 <>
-                    <div
-                        onClick={() => swiperRef?.current?.swiper.slidePrev()}
-                        style={{
+                    <Box
+                        className="swiper-button-prev-ath"
+                        sx={{
                             position: 'absolute',
                             top: '50%',
                             left: '-10%',
@@ -105,10 +105,10 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
                         }}
                     >
                         <NavigationIcon Icon={customPrevIcon} type="prev" />
-                    </div>
-                    <div
-                        onClick={() => swiperRef?.current?.swiper.slideNext()}
-                        style={{
+                    </Box>
+                    <Box
+                        className="swiper-button-next-ath"
+                        sx={{
                             position: 'absolute',
                             top: '50%',
                             right: '-10%',
@@ -126,7 +126,7 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
                         }}
                     >
                         <NavigationIcon Icon={customNextIcon} type="next" />
-                    </div>
+                    </Box>
                 </>
             )}
 
@@ -138,8 +138,8 @@ const HorizontalSwiper: React.FC<HorizontalSwiperProps> = ({
                 ref={swiperRef}
                 navigation={
                     enableNavigation && {
-                        prevEl: prevRef.current,
-                        nextEl: nextRef.current,
+                        nextEl: '.swiper-button-next-ath',
+                        prevEl: '.swiper-button-prev-ath',
                     }
                 }
                 pagination={enablePagination ? { clickable: true } : false}
