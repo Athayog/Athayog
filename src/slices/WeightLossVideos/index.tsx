@@ -158,7 +158,6 @@ const WeightLossVideos = ({ slice }: WeightLossVideosProps): JSX.Element => {
                                 }}
                             >
                                 <Box
-                                    onClick={() => swiperRef?.current?.swiper.slidePrev()}
                                     className="swiper-button-prev-ath"
                                     sx={{
                                         backgroundColor: '#fff',
@@ -176,7 +175,6 @@ const WeightLossVideos = ({ slice }: WeightLossVideosProps): JSX.Element => {
                                     <ArrowBackIosIcon />
                                 </Box>
                                 <Box
-                                    onClick={() => swiperRef?.current?.swiper.slideNext()}
                                     className="swiper-button-next-ath"
                                     sx={{
                                         backgroundColor: '#fff',
