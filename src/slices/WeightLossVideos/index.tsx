@@ -146,13 +146,14 @@ const WeightLossVideos = ({ slice }: WeightLossVideosProps): JSX.Element => {
                         >
                             <ArrowForwardIosIcon />
                         </Box>
-                        {isMobile && (
+                      
                             <Box
                                 sx={{
-                                    display: 'flex',
+                         
                                     justifyContent: 'center',
                                     width: '100%%',
                                     margin: '0 auto',
+                                    display: isMobile ? 'flex' : 'none',
                                     gap: '20px',
                                     marginTop: '10px',
                                 }}
@@ -192,7 +193,7 @@ const WeightLossVideos = ({ slice }: WeightLossVideosProps): JSX.Element => {
                                     <ArrowForwardIosIcon />
                                 </Box>
                             </Box>
-                        )}
+                        
                     </Box>
                 </Box>
             </BackgroundColorLayout>
