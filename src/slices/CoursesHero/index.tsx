@@ -1,15 +1,12 @@
-import { Box, Typography } from '@mui/material'
+import Image from 'next/image'
 import { Content } from '@prismicio/client'
+import { Box, Typography } from '@mui/material'
 import Banner from '@/components/_shared/Banner'
-import Mandela from '/public/images/Mandela.svg'
+import { backgroundColorExtract } from '@/utils/color'
 import Button from '@/components/elements/button/Index'
 import flowerMandela from '/public/images/FlowerMandela.png'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
-import Image from 'next/image'
-import RichTextComponent from '@/components/RichTextComponent'
-import { backgroundColorExtract } from '@/utils/color'
-
 /**
  * Props for `CoursesHero`.
  */
@@ -25,15 +22,16 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             {/* TODO: CHECK BLUR */}
             {slice.variation === 'default' && (
-                <Box>
+                <Box sx={{ height: '100%' }}>
                     <Banner
                         imageSrc={{
-                            xs: slice.primary.backgroud_image.url,
-                            sm: slice.primary.backgroud_image.url,
+                            xs: slice.primary.backgroud_image_mobile ? slice.primary.backgroud_image_mobile.url : slice.primary.backgroud_image.url,
+                            sm: slice.primary.backgroud_image_mobile ? slice.primary.backgroud_image_mobile.url : slice.primary.backgroud_image.url,
                             md: slice.primary.backgroud_image.url,
                         }}
+                        minHeight={{ xs: '50vh', md: '100%', lg: '100%' }}
                         imageAlt={slice.primary.backgroud_image.alt}
-                        height={{ xs: '500px', md: '700px', lg: '896px' }}
+                        height={{ xs: '100%', md: '800px', lg: '896px' }}
                         objectPosition={{ xs: 'right', sm: 'bottom', md: 'bottom' }}
                         blurHash={
                             slice.primary.blurhash || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII'
@@ -254,7 +252,7 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
                                 height: '100%',
                                 maxWidth: '1400px',
                                 flexDirection: { xs: 'column', md: 'row' },
-                                margin: { xs: '100px auto 0px auto', lg: '0 auto' },
+                                margin: { xs: '0px auto 0px auto', lg: '0 auto' },
                                 padding: {
                                     xs: '100px 20px 10px 20px',
                                     md: '0px 50px',

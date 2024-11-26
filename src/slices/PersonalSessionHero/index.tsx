@@ -6,20 +6,14 @@ import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 /**
  * Props for `PersonalSessionHero`.
  */
-export type PersonalSessionHeroProps =
-    SliceComponentProps<Content.PersonalSessionHeroSlice>
+export type PersonalSessionHeroProps = SliceComponentProps<Content.PersonalSessionHeroSlice>
 
 /**
  * Component for "PersonalSessionHero" Slices.
  */
-const PersonalSessionHero = ({
-    slice,
-}: PersonalSessionHeroProps): JSX.Element => {
+const PersonalSessionHero = ({ slice }: PersonalSessionHeroProps): JSX.Element => {
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Banner
                 imageSrc={{
                     xs: slice.primary.mobile_image.url,

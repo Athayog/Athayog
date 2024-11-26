@@ -15,17 +15,18 @@ export type ContactUsHeroProps = SliceComponentProps<Content.ContactUsHeroSlice>
  */
 
 const ContactUsHero = ({ slice }: ContactUsHeroProps): JSX.Element => {
+    const mobileUrl = slice.primary.backgroud_image_mobile ? slice.primary.backgroud_image_mobile.url : slice.primary.image.url
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-            <Box sx={{ height: '600px', position: 'relative' }}>
+            <Box sx={{ height: '100%', position: 'relative' }}>
                 <Banner
                     imageSrc={{
-                        xs: slice.primary.image.url,
-                        sm: slice.primary.image.url,
+                        xs: mobileUrl,
+                        sm: mobileUrl,
                         md: slice.primary.image.url,
                     }}
                     imageAlt="Personal Session"
-                    height={{ xs: '100%', sm: '600px', md: '600px' }}
+                    height={{ xs: '390px', sm: '500px', md: '600px' }}
                     objectPosition={{
                         xs: 'bottom',
                         sm: 'bottom',

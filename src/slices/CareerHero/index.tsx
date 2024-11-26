@@ -13,6 +13,7 @@ export type CareerHeroProps = SliceComponentProps<Content.CareerHeroSlice>
  * Component for "CareerHero" Slices.
  */
 const CareerHero = ({ slice }: CareerHeroProps): JSX.Element => {
+    const mobileUrl = slice.primary.backgroud_image_mobile ? slice.primary.backgroud_image_mobile.url : slice.primary.background_image.url
     const handleScrollToForm = () => {
         const element = document.getElementById('career-scroll-target')
         if (element) {
@@ -28,12 +29,12 @@ const CareerHero = ({ slice }: CareerHeroProps): JSX.Element => {
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Banner
                 imageSrc={{
-                    xs: slice.primary.background_image.url,
-                    sm: slice.primary.background_image.url,
+                    xs: mobileUrl,
+                    sm: mobileUrl,
                     md: slice.primary.background_image.url,
                 }}
                 imageAlt={slice.primary.background_image.alt}
-                height={{ xs: '400px', md: '600px', lg: '830px' }}
+                height={{ xs: '320px', sm: '500px', md: '600px', lg: '830px' }}
                 objectPosition={{ xs: 'bottom', sm: 'bottom', md: 'bottom' }}
                 blurHash={slice.primary.blurhash || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAIAQMAAAD+wSzIAAAABlBMVEX///+/v7+jQ3Y5AAAADklEQVQI12P4AIX8EAgALgAD/aNpbtEAAAAASUVORK5CYII'}
             >

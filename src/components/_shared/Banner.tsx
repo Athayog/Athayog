@@ -22,20 +22,12 @@ interface BannerProps {
         lg?: string
         xl?: string
     } // Adjusted for responsive objectPosition
+    minHeight?: { xs?: string; sm?: string; md?: string; lg?: string; xl?: string }
 }
 
-const Banner: React.FC<BannerProps> = ({
-    imageSrc,
-    imageAlt,
-    height,
-    objectPosition,
-    children,
-    blurHash,
-}) => {
+const Banner: React.FC<BannerProps> = ({ imageSrc, imageAlt, height, objectPosition, children, blurHash, minHeight }) => {
     const [selectedImageSrc, setSelectedImageSrc] = useState(imageSrc.xs)
-    const [selectedObjectPosition, setSelectedObjectPosition] = useState(
-        objectPosition.xs
-    ) // Default to xs
+    const [selectedObjectPosition, setSelectedObjectPosition] = useState(objectPosition.xs) // Default to xs
 
     useEffect(() => {
         const updateImageSrcAndPosition = () => {
@@ -44,24 +36,16 @@ const Banner: React.FC<BannerProps> = ({
             // Update the selected image source based on the width
             if (width >= 1536 && imageSrc.xl) {
                 setSelectedImageSrc(imageSrc.xl)
-                setSelectedObjectPosition(
-                    objectPosition.xl || objectPosition.xs
-                )
+                setSelectedObjectPosition(objectPosition.xl || objectPosition.xs)
             } else if (width >= 1200 && imageSrc.lg) {
                 setSelectedImageSrc(imageSrc.lg)
-                setSelectedObjectPosition(
-                    objectPosition.lg || objectPosition.xs
-                )
+                setSelectedObjectPosition(objectPosition.lg || objectPosition.xs)
             } else if (width >= 900 && imageSrc.md) {
                 setSelectedImageSrc(imageSrc.md)
-                setSelectedObjectPosition(
-                    objectPosition.md || objectPosition.xs
-                )
+                setSelectedObjectPosition(objectPosition.md || objectPosition.xs)
             } else if (width >= 600 && imageSrc.sm) {
                 setSelectedImageSrc(imageSrc.sm)
-                setSelectedObjectPosition(
-                    objectPosition.sm || objectPosition.xs
-                )
+                setSelectedObjectPosition(objectPosition.sm || objectPosition.xs)
             } else {
                 setSelectedImageSrc(imageSrc.xs)
                 setSelectedObjectPosition(objectPosition.xs)
@@ -78,7 +62,7 @@ const Banner: React.FC<BannerProps> = ({
     if (!selectedImageSrc) return null
 
     return (
-        <Box sx={{ position: 'relative', height, overflow: 'hidden' }}>
+        <Box sx={{ position: 'relative', height, overflow: 'hidden', minHeight: minHeight ?? '100%' }}>
             <Image
                 fill
                 style={{
