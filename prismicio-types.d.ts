@@ -493,6 +493,16 @@ export interface AboutUsHeroSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Backgroud Image Mobile field in *AboutUsHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about_us_hero.default.primary.backgroud_image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image_mobile: prismic.ImageField<never>
 }
 
 /**
@@ -1278,6 +1288,16 @@ export interface CareerHeroSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#key-text
      */
     button_text: prismic.KeyTextField
+
+    /**
+     * Backgroud Image Mobile field in *CareerHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: career_hero.default.primary.backgroud_image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image_mobile: prismic.ImageField<never>
 }
 
 /**
@@ -1776,6 +1796,16 @@ export interface ContactUsHeroSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     image: prismic.ImageField<never>
+
+    /**
+     * Backgroud Image Mobile field in *ContactUsHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact_us_hero.default.primary.backgroud_image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image_mobile: prismic.ImageField<never>
 }
 
 /**
@@ -2468,6 +2498,16 @@ export interface CoursesHeroSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#boolean
      */
     show_flower: prismic.BooleanField
+
+    /**
+     * Backgroud Image Mobile field in *CoursesHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_hero.default.primary.backgroud_image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image_mobile: prismic.ImageField<never>
 }
 
 /**
@@ -2563,6 +2603,16 @@ export interface CoursesHeroSliceWithNoImagePrimary {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     background_color: prismic.GroupField<Simplify<CoursesHeroSliceWithNoImagePrimaryBackgroundColorItem>>
+
+    /**
+     * Backgroud Image Mobile field in *CoursesHero → With No Image → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: courses_hero.withNoImage.primary.backgroud_image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image_mobile: prismic.ImageField<never>
 }
 
 /**
@@ -3529,6 +3579,16 @@ export interface GroupClassHeroSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     image: prismic.ImageField<never>
+
+    /**
+     * Backgroud Image Mobile field in *GroupClassHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_hero.default.primary.backgroud_image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image_mobile: prismic.ImageField<never>
 }
 
 /**
@@ -4102,6 +4162,16 @@ export interface HeroWithCenterTextSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#key-text
      */
     blurhash: prismic.KeyTextField
+
+    /**
+     * Backgroud Image Mobile field in *HeroWithCenterText → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_with_center_text.default.primary.backgroud_image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image_mobile: prismic.ImageField<never>
 }
 
 /**
@@ -7771,6 +7841,16 @@ export interface YogaTherapyHeroSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     backgroud_image: prismic.ImageField<never>
+
+    /**
+     * Backgroud Image Mobile field in *YogaTherapyHero → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_therapy_hero.default.primary.backgroud_image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    backgroud_image_mobile: prismic.ImageField<never>
 }
 
 /**

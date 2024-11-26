@@ -35,6 +35,14 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "backgroud_image_mobile": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image Mobile",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}

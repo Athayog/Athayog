@@ -85,6 +85,14 @@
             "placeholder_true": "true",
             "default_value": true
           }
+        },
+        "backgroud_image_mobile": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image Mobile",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}
@@ -170,6 +178,14 @@
                 }
               }
             }
+          }
+        },
+        "backgroud_image_mobile": {
+          "type": "Image",
+          "config": {
+            "label": "Backgroud Image Mobile",
+            "constraint": {},
+            "thumbnails": []
           }
         }
       },

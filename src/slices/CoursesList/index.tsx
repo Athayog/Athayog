@@ -26,8 +26,9 @@ const CoursesList = ({ slice }: CoursesListProps): JSX.Element => {
                                         marginBottom: { xs: '10px', md: '30px' },
                                         '&& p': {
                                             margin: 0,
-                                            fontSize: { xs: '22px', md: '34px' },
-                                            lineHeight: { xs: '30px', md: '46px' },
+                                            fontSize: { xs: '34px', md: '34px' },
+                                            lineHeight: { xs: '44px', md: '46px' },
+                                            minWidth: '154px',
                                         },
                                     }}
                                 >

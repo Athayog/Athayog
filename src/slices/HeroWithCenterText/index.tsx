@@ -12,12 +12,13 @@ export type HeroWithCenterTextProps = SliceComponentProps<Content.HeroWithCenter
  * Component for "HeroWithCenterText" Slices.
  */
 const HeroWithCenterText = ({ slice }: HeroWithCenterTextProps): JSX.Element => {
+    const mobileUrl = slice.primary.backgroud_image_mobile ? slice.primary.backgroud_image_mobile.url : slice.primary.backgroud_image.url
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Banner
                 imageSrc={{
-                    xs: slice.primary.backgroud_image.url,
-                    sm: slice.primary.backgroud_image.url,
+                    xs: mobileUrl,
+                    sm: mobileUrl,
                     md: slice.primary.backgroud_image.url,
                 }}
                 imageAlt={slice.primary.backgroud_image.alt}

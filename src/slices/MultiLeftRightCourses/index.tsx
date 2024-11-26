@@ -117,7 +117,7 @@ const MultiLeftRightCourses = ({ slice }: MultiLeftRightCoursesProps): JSX.Eleme
                                             sx={{
                                                 color: '#000000',
                                                 fontSize: { xs: '24px', md: '30px' },
-                                                lineHeight: '80px',
+                                                lineHeight: { xs: '40px', md: '80px' },
                                                 fontWeight: '700',
                                                 textAlign: {
                                                     xs: 'center',

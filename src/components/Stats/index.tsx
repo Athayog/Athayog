@@ -22,7 +22,6 @@ const StatBox = styled(Paper)(({ theme }) => ({
     height: '100%',
     width: '200px',
     [theme.breakpoints.down('md')]: {
-        backgroundColor: '#eff3e4',
         borderRadius: '7.978px ',
         width: '120px',
     },

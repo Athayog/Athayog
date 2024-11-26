@@ -77,7 +77,7 @@ const WhyToChoose = ({ slice }: WhyToChooseProps): JSX.Element => {
                             </Box>
                             <Box
                                 sx={{
-                                    width: { xs: '360px', md: '458px' }, // Set width based on screen size
+                                    width: { xs: '100%', md: '458px' }, // Set width based on screen size
                                     height: { xs: '200px', md: '270px' },
                                     position: 'relative',
                                     borderRadius: '15px',

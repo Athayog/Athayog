@@ -156,6 +156,7 @@ const PersonalSessionPricing = ({ slice }: PersonalSessionPricingProps): JSX.Ele
                     sx={{
                         display: 'flex',
                         justifyContent: 'center',
+                        flexWrap: 'wrap',
                         gap: { xs: 1, lg: 2 },
                         marginBottom: '30px',
                     }}

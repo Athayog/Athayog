@@ -46,8 +46,8 @@ const ContentWithImage = ({ slice }: ContentWithImageProps): JSX.Element => {
                     >
                         <Box
                             sx={{
-                                width: { xs: '341.04px', md: '436px' }, // Smaller width for mobile, larger for desktop
-                                height: { xs: '395.02px', md: '505px' }, // Smaller height for mobile, larger for desktop
+                                width: { xs: '100%', sm: '341.04px', md: '436px' }, // Smaller width for mobile, larger for desktop
+                                height: { xs: '300px', sm: '395.02px', md: '505px' }, // Smaller height for mobile, larger for desktop
                                 overflow: 'hidden',
                                 borderRadius: '270px',
                                 position: 'relative',
