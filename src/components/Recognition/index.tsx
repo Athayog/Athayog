@@ -35,6 +35,7 @@ const Description = styled(Typography)(({ theme }) => ({
 
 const ImageStack = styled(Stack)(({}) => ({
   flexDirection: "row",
+  flexWrap:'wrap',
   gap: "50px",
 }));
 
