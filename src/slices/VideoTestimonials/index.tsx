@@ -87,12 +87,11 @@ const EmbeddYoutubeMobile = styled(Box)(({ theme }) => ({
     position: 'relative',
     borderRadius: '22.2px',
     height: '520px',
-    width: '321px',
+    mwxWidth: '321px',
     border: '4px solid #F8BCC0',
     overflow: 'hidden',
     display: 'none',
     margin: '50px auto 0 auto',
-
     [theme.breakpoints.down('md')]: {
         display: 'block',
     },
