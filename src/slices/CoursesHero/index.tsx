@@ -29,7 +29,7 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
                             sm: slice.primary.backgroud_image_mobile ? slice.primary.backgroud_image_mobile.url : slice.primary.backgroud_image.url,
                             md: slice.primary.backgroud_image.url,
                         }}
-                        minHeight={{ xs: '50vh', md: '100%', lg: '100%' }}
+                        minHeight={{ xs: '80vh', md: '100%', lg: '100%' }}
                         imageAlt={slice.primary.backgroud_image.alt}
                         height={{ xs: '100%', md: '800px', lg: '896px' }}
                         objectPosition={{ xs: 'right', sm: 'bottom', md: 'bottom' }}
