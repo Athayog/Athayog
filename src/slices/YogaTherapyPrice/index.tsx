@@ -149,7 +149,7 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
                                         <Box
                                             sx={{
                                                 background: '#E7FFCEB2',
-
+                                                flexWrap:'wrap',
                                                 display: 'flex',
                                                 flexDirection: 'row',
                                                 justifyContent: 'space-between',
