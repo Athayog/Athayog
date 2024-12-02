@@ -142,28 +142,20 @@ const StyledButton = styled(RegisterButton)(({ theme }) => ({
 }))
 
 const SwiperSkeleton = () => (
-    <Box sx={{ borderRadius: '270px', height: '500px', width: '436px' }}>
-        <Skeleton
-            variant="rectangular"
-            width="100%"
-            height="100%"
-            sx={{ borderRadius: '270px', width: '436px' }}
-        />
+    <Box sx={{ borderRadius: '270px', height: '400px', width: '100%', maxWidth: '436px' }}>
+        <Skeleton variant="rectangular" width="100%" height="100%" sx={{ borderRadius: '270px', width: '436px' }} />
     </Box>
 )
 
 /**
  * Props for `RightContentLeftSliderVertical`.
  */
-export type RightContentLeftSliderVerticalProps =
-    SliceComponentProps<Content.RightContentLeftSliderVerticalSlice>
+export type RightContentLeftSliderVerticalProps = SliceComponentProps<Content.RightContentLeftSliderVerticalSlice>
 
 /**
  * Component for "RightContentLeftSliderVertical" Slices.
  */
-const RightContentLeftSliderVertical = ({
-    slice,
-}: RightContentLeftSliderVerticalProps): JSX.Element => {
+const RightContentLeftSliderVertical = ({ slice }: RightContentLeftSliderVerticalProps): JSX.Element => {
     const [isLoading, setIsLoading] = useState(true)
 
     const handleSwiperInit = (swiper: { update: () => void }) => {
@@ -171,10 +163,7 @@ const RightContentLeftSliderVertical = ({
         setIsLoading(false) // Hide skeleton loader once Swiper is initialized
     }
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <ContentContainer>
                 <Container>
                     {isLoading && <SwiperSkeleton />}
@@ -188,23 +177,15 @@ const RightContentLeftSliderVertical = ({
                                 nextEl: '.swiper-button-next',
                                 prevEl: '.swiper-button-prev',
                             }}
+                            allowTouchMove={false}
                             onInit={handleSwiperInit}
                             className="swiper-yoga"
-                            style={
-                                isLoading
-                                    ? { display: 'none' }
-                                    : { display: 'flex' }
-                            }
+                            style={isLoading ? { display: 'none' } : { display: 'flex' }}
                         >
                             {slice.primary.slider_images.map((item, index) => (
                                 <SwiperSlide key={index}>
                                     <SwiperContainer>
-                                        <PrismicNextImage
-                                            field={item.image}
-                                            fill
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            style={{ objectFit: 'cover' }}
-                                        />
+                                        <PrismicNextImage field={item.image} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
                                     </SwiperContainer>
                                 </SwiperSlide>
                             ))}
@@ -216,14 +197,10 @@ const RightContentLeftSliderVertical = ({
                             <PrismicRichText field={slice.primary.subtitle} />
                         </Subtitle>
                         <Description>
-                            <PrismicRichText
-                                field={slice.primary.description}
-                            />
+                            <PrismicRichText field={slice.primary.description} />
                         </Description>
                         <PrismicNextLink field={slice.primary.button_link}>
-                            <StyledButton>
-                                {slice.primary.button_text}
-                            </StyledButton>
+                            <StyledButton>{slice.primary.button_text}</StyledButton>
                         </PrismicNextLink>
                     </ContentBox>
                 </Container>

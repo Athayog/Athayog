@@ -153,7 +153,7 @@ const AthayogSwiper = styled(Box)(({ theme }) => ({
 }))
 
 const SwiperSkeleton = () => (
-    <Box sx={{ borderRadius: '270px', height: '500px', width: '436px' }}>
+    <Box sx={{ borderRadius: '270px', height: '500px', width: '100%', maxWidth: '436px' }}>
         <Skeleton variant="rectangular" width="100%" height="100%" sx={{ borderRadius: '270px', width: '436px' }} />
     </Box>
 )
@@ -206,11 +206,12 @@ const WhyAthayog = ({ title, content }: { title: string | null; content: any }) 
                                 navigation={{
                                     nextEl: '.swiper-button-next',
                                     prevEl: '.swiper-button-prev',
-                                }}   
+                                }}
                                 autoplay={true}
                                 onInit={handleSwiperInit}
                                 onSlideChange={handleSlideChange} // Listen for slide changes
                                 ref={swiperRef}
+                                allowTouchMove={false}
                                 className="swiper-why"
                                 style={isLoading ? { display: 'none' } : { display: 'flex' }}
                             >
