@@ -206,19 +206,7 @@ const WhyAthayog = ({ title, content }: { title: string | null; content: any }) 
                                 navigation={{
                                     nextEl: '.swiper-button-next',
                                     prevEl: '.swiper-button-prev',
-                                }}
-                                breakpoints={{
-                                    0: {
-                                        slidesPerView: 1,
-                                        direction: 'horizontal',
-                                    },
-                                    768: {
-                                        slidesPerView: 1,
-                                    },
-                                    1200: {
-                                        slidesPerView: 1,
-                                    },
-                                }}
+                                }}   
                                 autoplay={true}
                                 onInit={handleSwiperInit}
                                 onSlideChange={handleSlideChange} // Listen for slide changes
