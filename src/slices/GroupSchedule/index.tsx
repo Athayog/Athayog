@@ -1,16 +1,5 @@
 import { ActionButton } from '@/components/Hero'
-import {
-    Box,
-    List,
-    ListItem,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-} from '@mui/material'
+import { Box, List, ListItem, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import { Content } from '@prismicio/client'
 import { PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
@@ -25,10 +14,7 @@ export type GroupScheduleProps = SliceComponentProps<Content.GroupScheduleSlice>
  */
 const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
     return (
-        <section
-            data-slice-type={slice.slice_type}
-            data-slice-variation={slice.variation}
-        >
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <div>
                 <Box
                     sx={{
@@ -179,24 +165,12 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 6.00 AM - 7.00 AM
                                             </TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
-                                            <TableCell>
-                                                Universal Harmony
-                                            </TableCell>
-                                            <TableCell>
-                                                Rhythm of Being
-                                            </TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
+                                            <TableCell>Rhythm of Being</TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
                                             <TableCell>Deep Space</TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -210,23 +184,13 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 7.00 AM - 8.00 AM
                                             </TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
-                                            <TableCell>
-                                                Universal Harmony
-                                            </TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
                                             <TableCell>Deep Space</TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell
@@ -239,23 +203,13 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 8.00 AM - 9.00 AM
                                             </TableCell>
-                                            <TableCell>
-                                                Universal Harmony
-                                            </TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
                                             <TableCell>Deep Space</TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell
@@ -273,8 +227,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                     backgroundColor: '#a9d58b',
                                                 }}
                                             >
-                                                Restoration Yoga (Relaxing and
-                                                Stretching)
+                                                Restoration Yoga (Relaxing and Stretching)
                                             </TableCell>
                                             <TableCell
                                                 sx={{
@@ -305,9 +258,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                 Strength Training
                                             </TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
-                                            <TableCell>
-                                                Universal Harmony
-                                            </TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell
@@ -320,25 +271,33 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 10.00 AM - 11.00 AM
                                             </TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
                                             <TableCell>Deep Space</TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
-                                            <TableCell>
-                                                Universal Harmony
-                                            </TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
                                         </TableRow>
-
+                                        <TableRow>
+                                            <TableCell
+                                                sx={{
+                                                    backgroundColor: '#eff3d7',
+                                                    position: 'sticky',
+                                                    left: 0,
+                                                    zIndex: 2,
+                                                }}
+                                            >
+                                                11.00 AM - 12.00 PM
+                                            </TableCell>
+                                            <TableCell>Power Vinyasa</TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
+                                            <TableCell>Power Vinyasa</TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
+                                        </TableRow>
                                         <TableRow>
                                             <TableCell
                                                 colSpan={8}
@@ -362,21 +321,13 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 4.00 PM - 5.00 PM
                                             </TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
                                             <TableCell>Inner World</TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
-                                            <TableCell>
-                                                Universal Harmony
-                                            </TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
                                             <TableCell>Deep Space</TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell
@@ -389,24 +340,12 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 5.00 PM - 6.00 PM
                                             </TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
-                                            <TableCell>
-                                                Universal Harmony
-                                            </TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -421,17 +360,11 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                 6.00 PM - 7.00 PM
                                             </TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
                                             <TableCell>Deep Space</TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
-                                            <TableCell>Bhakti Yoga</TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
                                             <TableCell>Deep Space</TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -445,25 +378,13 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 7.00 PM - 8.00 PM
                                             </TableCell>
-                                            <TableCell>
-                                                Universal Harmony
-                                            </TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
-                                            <TableCell>
-                                                Advance Hatha Yoga
-                                            </TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
+                                            <TableCell>Advance Hatha Yoga</TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell
@@ -476,19 +397,11 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 8.00 PM - 9.00 PM
                                             </TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
-                                            <TableCell>
-                                                Hatha Pradipika
-                                            </TableCell>
-                                            <TableCell>
-                                                Rhythm Of Being
-                                            </TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Hatha Pradipika</TableCell>
+                                            <TableCell>Rhythm Of Being</TableCell>
                                             <TableCell>Inner World</TableCell>
-                                            <TableCell>
-                                                Transcending Transition
-                                            </TableCell>
+                                            <TableCell>Transcending Transition</TableCell>
                                             <TableCell>Inner World</TableCell>
                                             <TableCell>Power Vinyasa</TableCell>
                                         </TableRow>
@@ -521,25 +434,14 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                         {slice.primary.highlighted_point}
                                     </ListItem>
                                     {slice.primary.list.map((item, index) => (
-                                        <ListItem
-                                            key={index}
-                                            sx={{ display: 'list-item' }}
-                                        >
+                                        <ListItem key={index} sx={{ display: 'list-item' }}>
                                             {item.list_item}
                                         </ListItem>
                                     ))}
                                 </List>
                                 <Box>
-                                    <PrismicNextLink
-                                        field={
-                                            slice.primary.download_button_link
-                                        }
-                                    >
-                                        <ActionButton
-                                            variant="contained"
-                                            fullWidth
-                                            sx={{ marginTop: 0 }}
-                                        >
+                                    <PrismicNextLink field={slice.primary.download_button_link} target="_blank">
+                                        <ActionButton variant="contained" fullWidth sx={{ marginTop: 0 }}>
                                             {slice.primary.download_buton_text}
                                         </ActionButton>
                                     </PrismicNextLink>
