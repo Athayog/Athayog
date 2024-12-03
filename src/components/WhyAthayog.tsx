@@ -103,6 +103,7 @@ const SwiperImageBox = styled(Box)(({ theme }) => ({
     width: '436px',
     border: '4px solid #F8BCC0',
     overflow: 'hidden',
+    margin: '0 auto',
     [theme.breakpoints.down('md')]: {
         width: '300px',
         height: '356px',
@@ -110,12 +111,14 @@ const SwiperImageBox = styled(Box)(({ theme }) => ({
 }))
 
 const AthayogSwiper = styled(Box)(({ theme }) => ({
+    width: '100%',
     '.swiper-why': {
         height: '510px',
         width: '100%',
         marginLeft: '0',
         marginRight: '0px',
         paddingRight: '70px',
+        margin: '0 auto', // Center horizontally
         '.swiper-vertical': {
             width: '100%',
             flexDirection: 'column',
@@ -200,18 +203,23 @@ const WhyAthayog = ({ title, content }: { title: string | null; content: any }) 
                         {isLoading && <SwiperSkeleton />}
                         <AthayogSwiper>
                             <Swiper
-                                direction={'vertical'}
+                                direction={'horizontal'}
+                                breakpoints={{
+                                    1024: {
+                                        direction: 'vertical',
+                                    },
+                                }}
                                 pagination={{ clickable: true }}
                                 modules={[Pagination, Navigation]}
+                                centeredSlides={true}
                                 navigation={{
                                     nextEl: '.swiper-button-next',
                                     prevEl: '.swiper-button-prev',
                                 }}
                                 autoplay={true}
                                 onInit={handleSwiperInit}
-                                onSlideChange={handleSlideChange} // Listen for slide changes
+                                onSlideChange={handleSlideChange}
                                 ref={swiperRef}
-                                allowTouchMove={false}
                                 className="swiper-why"
                                 style={isLoading ? { display: 'none' } : { display: 'flex' }}
                             >

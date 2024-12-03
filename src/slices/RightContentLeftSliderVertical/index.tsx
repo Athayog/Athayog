@@ -20,6 +20,7 @@ const SwiperContainer = styled(Box)(({ theme }) => ({
     width: '436px',
     border: '4px solid #F8BCC0',
     overflow: 'hidden',
+    margin: '0 auto',
     [theme.breakpoints.down('md')]: {
         width: '300px',
         height: '356px',
@@ -92,12 +93,15 @@ const Description = styled(Box)(({ theme }) => ({
 }))
 
 const AthayogSwiper = styled(Box)(({ theme }) => ({
+    width: '100%',
     '.swiper-yoga': {
         height: '510px',
         marginLeft: '0',
         marginRight: '0px',
         paddingLeft: '45px',
         paddingRight: '70px',
+        width: '100%',
+        margin: '0 auto', // Center horizontally
         [theme.breakpoints.down('md')]: {
             height: '366px',
             paddingLeft: '0px',
@@ -169,7 +173,12 @@ const RightContentLeftSliderVertical = ({ slice }: RightContentLeftSliderVertica
                     {isLoading && <SwiperSkeleton />}
                     <AthayogSwiper>
                         <Swiper
-                            direction="vertical"
+                            direction={'horizontal'}
+                            breakpoints={{
+                                1024: {
+                                    direction: 'vertical',
+                                },
+                            }}
                             autoplay
                             pagination={{ clickable: true }}
                             modules={[Pagination, Navigation]}
@@ -177,7 +186,6 @@ const RightContentLeftSliderVertical = ({ slice }: RightContentLeftSliderVertica
                                 nextEl: '.swiper-button-next',
                                 prevEl: '.swiper-button-prev',
                             }}
-                            allowTouchMove={false}
                             onInit={handleSwiperInit}
                             className="swiper-yoga"
                             style={isLoading ? { display: 'none' } : { display: 'flex' }}
