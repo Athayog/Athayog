@@ -44,7 +44,7 @@ export default async function Index() {
     )
 }
 
-export const PostGrid = ({ posts }: { posts: any[] }) => {
+const PostGrid = ({ posts }: { posts: any[] }) => {
     return (
         <Box
             sx={{
