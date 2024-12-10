@@ -6,6 +6,7 @@ import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 import { PrismicNextImage } from '@prismicio/next'
 import { RichTextBlog } from '@/components/RichTextBlog'
+import { Box, Typography } from '@mui/material'
 
 type Params = { uid: string }
 
@@ -47,37 +48,49 @@ export default async function Page({ params }: { params: Params }) {
         limit: 2,
     })
 
-    // Destructure out the content of the current page
     const { slices, title, publication_date, description, featured_image } = page.data
 
     return (
-        <div className="flex flex-col gap-12 w-full max-w-3xl">
-            {/* Display the "hero" section of the blog post */}
-            <section className="flex flex-col gap-12">
-                <div className="flex flex-col items-center gap-3 w-full">
-                    <div className="flex flex-col gap-6 items-center">
-                        <p className="opacity-75 border-b-2 w-min pb-1">{new Date(publication_date || '').toLocaleDateString()}</p>
-                        <div className="text-center">
-                            <RichTextBlog field={title} />
-                        </div>
-                    </div>
-                    <div className="text-center">
-                        <RichTextBlog field={description} />
-                    </div>
-                </div>
-                <PrismicNextImage field={featured_image} sizes="100vw" className="w-full max-w-3xl max-h-96 rounded-xl object-cover" />
-            </section>
-
-            {/* Display the content of the blog post */}
+        <div style={{ backgroundColor: '#e9fdde' }}>
+            <Box sx={{ maxWidth: '1110px', padding: { xs: '120px 26px', md: '200px 26px' }, margin: '0 auto' }}>
+                <RichTextBlog field={title} />
+                <Typography sx={{ color: '#505050', fontSize: { xs: '14px', md: '28px' }, fontWeight: '600', margin: { xs: '15px 0px 20px 0px', md: '22px 0px 40px 0px' } }}>
+                    {new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(publication_date || ''))}
+                </Typography>
+                <Box
+                    sx={{
+                        position: 'relative',
+                        borderRadius: '5px',
+                        overflow: 'hidden',
+                        img: {
+                            height: '100%',
+                            width: '100%',
+                            borderRadius: '5px',
+                            overflow: 'hidden',
+                        },
+                    }}
+                >
+                    <PrismicNextImage field={featured_image} />
+                </Box>
+                <Box
+                    sx={{
+                        marginTop: { xs: '10px', md: '50px' },
+                        fontSize: { xs: '14px', md: '28px' },
+                        fontWeight: '500',
+                        lineHeight: { xs: '22px', md: '38px' },
+                        color: '#202020',
+                        p: {
+                            fontSize: { xs: '14px', md: '28px' },
+                            fontWeight: '500',
+                            lineHeight: { xs: '22px', md: '38px' },
+                            color: '#202020',
+                        },
+                    }}
+                >
+                    <RichTextBlog field={description} />
+                </Box>
+            </Box>
             <SliceZone slices={slices} components={components} />
-
-            {/* Display the Recommended Posts section using the posts we requested earlier */}
-            <h2 className="font-bold text-3xl">Recommended Posts</h2>
-            <section className="grid grid-cols-1 gap-8 max-w-3xl w-full">
-                {posts.map((post) => (
-                    <>asd</>
-                ))}
-            </section>
         </div>
     )
 }

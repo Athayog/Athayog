@@ -1,11 +1,10 @@
-import { Metadata } from 'next'
-import * as prismic from '@prismicio/client'
-import { createClient } from '@/prismicio'
-import { Card, CardContent, CardMedia, Typography, Box, Grid } from '@mui/material'
-import { PrismicNextImage } from '@prismicio/next'
-import { PrismicText } from '@prismicio/react'
-import { RichTextBlog } from '@/components/RichTextBlog'
 import { PostCard } from '@/components/PostCard'
+import { createClient } from '@/prismicio'
+import { Box, Typography } from '@mui/material'
+import * as prismic from '@prismicio/client'
+import { Metadata } from 'next'
+import { components } from '@/slices'
+import { SliceZone } from '@prismicio/react'
 
 export async function generateMetadata(): Promise<Metadata> {
     const client = createClient()
@@ -27,74 +26,43 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Index() {
     const client = createClient()
-    const home = await client.getByUID('page', 'home')
-
+    const blogs = await client.getByUID('page', 'blogs')
     const posts = await client.getAllByType('blog_post', {
         orderings: [
             { field: 'my.blog_post.publication_date', direction: 'desc' },
             { field: 'document.first_publication_date', direction: 'desc' },
         ],
     })
-    console.log('posrt', posts)
+
     return (
-        <>
-            {/* Map over each of the blog posts created and display a `PostCard` for it */}
-            <section style={{ backgroundColor: '#e9fdde' }}>
-                <Box sx={{ padding: { xs: '100px 20px', md: '150px 50px' } }}>
-                    <Typography
-                        sx={{
-                            color: '#202020',
-                            textAlign: 'center',
-                            fontSize: { xs: '26px', md: '62px' },
-                            fontStyle: 'normal',
-                            fontWeight: 700,
-                            lineHeight: { xs: '22px', md: '90px' },
-                            '&& h1': {
-                                fontSize: { xs: '26px', md: '62px' },
-                                lineHeight: { xs: '22px', md: '90px' },
-                                marginBottom: '10px',
-                            },
-                        }}
-                    >
-                        Blogs
-                    </Typography>
-                    <Typography
-                        sx={{
-                            textAlign: 'center',
-                            fontSize: { xs: '18px', md: '26px' },
-                            fontWeight: '400',
-                            lineHeight: { xs: '26px', md: '30px' },
-                            '&& p': {
-                                margin: 0,
-                            },
-                        }}
-                    >
-                        Explore yoga&apos;s benefits with tips, poses and insights for holistic well-being.
-                    </Typography>
-                    <Grid container spacing={4} mt="40px">
-                        {posts.map((post) => (
-                            <Grid item xs={12} sm={6} md={4} key={post.id}>
-                                <PostCard post={post} />
-                            </Grid>
-                        ))}
-                        {posts.map((post) => (
-                            <Grid item xs={12} sm={6} md={4} key={post.id}>
-                                <PostCard post={post} />
-                            </Grid>
-                        ))}
-                        {posts.map((post) => (
-                            <Grid item xs={12} sm={6} md={4} key={post.id}>
-                                <PostCard post={post} />
-                            </Grid>
-                        ))}
-                        {posts.map((post) => (
-                            <Grid item xs={12} sm={6} md={4} key={post.id}>
-                                <PostCard post={post} />
-                            </Grid>
-                        ))}
-                    </Grid>
-                </Box>
-            </section>
-        </>
+        <section style={{ backgroundColor: '#e9fdde' }}>
+            <Box sx={{ padding: { xs: '100px 20px', md: '150px 50px' } }}>
+                <SliceZone slices={blogs.data.slices} components={components} />
+                <PostGrid posts={posts} />
+            </Box>
+        </section>
+    )
+}
+
+export const PostGrid = ({ posts }: { posts: any[] }) => {
+    return (
+        <Box
+            sx={{
+                display: 'grid',
+                gridTemplateColumns: {
+                    xs: posts.length < 3 ? 'repeat(auto-fill, minmax(300px, 1fr))' : 'repeat(auto-fit, minmax(300px, 1fr))',
+                    md: posts.length < 3 ? 'repeat(auto-fill, minmax(427px, 1fr))' : 'repeat(auto-fit, minmax(427px, 1fr))',
+                },
+                gap: '20px',
+                maxWidth: '1440px',
+                margin: '40px auto',
+                justifyItems: posts.length < 3 ? 'start' : 'stretch',
+                padding: '0px',
+            }}
+        >
+            {posts.map((post) => (
+                <PostCard post={post} key={`post-${post.id}`} />
+            ))}
+        </Box>
     )
 }

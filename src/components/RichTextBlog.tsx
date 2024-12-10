@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material'
 import { RichTextField } from '@prismicio/client'
 import { JSXMapSerializer, PrismicRichText, PrismicLink } from '@prismicio/react'
 
@@ -7,15 +8,23 @@ export const richTextComponents: JSXMapSerializer = {
             return <code>{children}</code>
         }
     },
-    heading1: ({ children }) => <h1 className="font-bold text-4xl">{children}</h1>,
-    heading2: ({ children }) => <h2 className="font-bold text-xl">{children}</h2>,
-    heading3: ({ children }) => <h3 className="font-bold text-lg">{children}</h3>,
-    paragraph: ({ children }) => <p>{children}</p>,
-    hyperlink: ({ children, node }) => (
-        <PrismicLink field={node.data} className="font-bold underline">
+    heading1: ({ children }) => (
+        <Typography variant="h1" sx={{ fontWeight: '700', fontSize: { xs: '22px', md: '60px' }, lineHeigth: '60px' }}>
             {children}
-        </PrismicLink>
+        </Typography>
     ),
+    heading2: ({ children }) => (
+        <Typography variant="h2" sx={{ fontWeight: '700', fontSize: '50px', lineHeigth: '60px' }}>
+            {children}
+        </Typography>
+    ),
+    heading3: ({ children }) => (
+        <Typography variant="h3" sx={{ fontWeight: '700', fontSize: '40px', lineHeigth: '60px' }}>
+            {children}
+        </Typography>
+    ),
+    paragraph: ({ children }) => <p>{children}</p>,
+    hyperlink: ({ children, node }) => <PrismicLink field={node.data}>{children}</PrismicLink>,
 }
 
 interface RichTextProps {

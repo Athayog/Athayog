@@ -8,13 +8,14 @@ export const PostCard = ({ post }: { post: Content.BlogPostDocument }): JSX.Elem
     const { data } = post
 
     return (
-        <Link href={`/blogs/${post.uid}`} style={{ textDecoration: 'none' }} passHref={true}>
+        <Link href={`/blogs/${post.uid}`} style={{ textDecoration: 'none', width: '100%' }} passHref={true}>
             <Box
                 sx={{
                     backgroundColor: '#fff',
                     display: 'flex',
                     flexDirection: 'column',
-                    maxWidth: 425,
+                    width: { xs: '100%', md: '100%' },
+                    maxWidth: '100%',
                     height: '350px',
                     padding: '12px',
                     margin: 'auto',
@@ -23,10 +24,9 @@ export const PostCard = ({ post }: { post: Content.BlogPostDocument }): JSX.Elem
                 }}
             >
                 {/* Featured Image */}
-                <Box sx={{ minHeight: '190px', borderRadius: 2, overflow: 'hidden' }}>
+                <Box sx={{ maxHeight: '190px', minHeight: '190px', borderRadius: 2, overflow: 'hidden' }}>
                     <PrismicNextImage
                         field={data.featured_image}
-                        sizes="100vw"
                         style={{
                             width: '100%',
                             height: '190px',
@@ -49,6 +49,7 @@ export const PostCard = ({ post }: { post: Content.BlogPostDocument }): JSX.Elem
                         sx={{
                             fontWeight: '700',
                             fontSize: '23px',
+                            lineHeight: '30px',
                         }}
                     >
                         <PrismicText field={data.title} />

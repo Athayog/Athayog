@@ -8,6 +8,7 @@ export const components = {
     advantages_of_personal_training: dynamic(() => import('./AdvantagesOfPersonalTraining')),
     alumni_archive: dynamic(() => import('./AlumniArchive')),
     amenities: dynamic(() => import('./Amenities')),
+    blogs_title: dynamic(() => import('./BlogsTitle')),
     bulleted_content: dynamic(() => import('./BulletedContent')),
     call_to_action: dynamic(() => import('./CallToAction')),
     career_hero: dynamic(() => import('./CareerHero')),

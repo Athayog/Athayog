@@ -348,6 +348,8 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | RichTextSlice
+    | BlogsTitleSlice
     | WeightLossVideosSlice
     | BulletedContentSlice
     | MentalHealthContentSlice
@@ -1083,6 +1085,54 @@ type AmenitiesSliceVariation = AmenitiesSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AmenitiesSlice = prismic.SharedSlice<'amenities', AmenitiesSliceVariation>
+
+/**
+ * Primary content in *BlogsTitle → Default → Primary*
+ */
+export interface BlogsTitleSliceDefaultPrimary {
+    /**
+     * Title field in *BlogsTitle → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blogs_title.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *BlogsTitle → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: blogs_title.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+}
+
+/**
+ * Default variation for BlogsTitle Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogsTitleSliceDefault = prismic.SharedSliceVariation<'default', Simplify<BlogsTitleSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *BlogsTitle*
+ */
+type BlogsTitleSliceVariation = BlogsTitleSliceDefault
+
+/**
+ * BlogsTitle Shared Slice
+ *
+ * - **API ID**: `blogs_title`
+ * - **Description**: BlogsTitle
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogsTitleSlice = prismic.SharedSlice<'blogs_title', BlogsTitleSliceVariation>
 
 /**
  * Item in *BulletedContent → Default → Primary → Background Color*
@@ -8270,6 +8320,10 @@ declare module '@prismicio/client' {
             AmenitiesSliceDefaultPrimary,
             AmenitiesSliceVariation,
             AmenitiesSliceDefault,
+            BlogsTitleSlice,
+            BlogsTitleSliceDefaultPrimary,
+            BlogsTitleSliceVariation,
+            BlogsTitleSliceDefault,
             BulletedContentSlice,
             BulletedContentSliceDefaultPrimaryBackgroundColorItem,
             BulletedContentSliceDefaultPrimary,
