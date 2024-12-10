@@ -27,6 +27,12 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "rich_text": {
+                            "type": "SharedSlice"
+                        },
+                        "blogs_title": {
+                            "type": "SharedSlice"
+                        },
                         "weight_loss_videos": {
                             "type": "SharedSlice"
                         },

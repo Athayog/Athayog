@@ -44,7 +44,10 @@ export const navItems: NavItem[] = [
         label: 'Others',
         type: 'menu',
         path: '/Others',
-        children: [{ label: 'Career', path: '/career', type: 'nav' }],
+        children: [
+            { label: 'Career', path: '/career', type: 'nav' },
+            { label: 'Blog', path: '/blogs', type: 'nav' },
+        ],
     },
     { label: 'Contact Us', path: '/contact-us', type: 'nav' },
 ]
