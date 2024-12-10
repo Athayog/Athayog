@@ -1,12 +1,15 @@
+import Link from 'next/link'
 import { Metadata } from 'next'
+import { components } from '@/slices'
 import { notFound } from 'next/navigation'
+import { createClient } from '@/prismicio'
 import * as prismic from '@prismicio/client'
 import { SliceZone } from '@prismicio/react'
-import { createClient } from '@/prismicio'
-import { components } from '@/slices'
-import { PrismicNextImage } from '@prismicio/next'
-import { RichTextBlog } from '@/components/RichTextBlog'
 import { Box, Typography } from '@mui/material'
+import { PrismicNextImage } from '@prismicio/next'
+import Button from '@/components/elements/button/Index'
+import { RichTextBlog } from '@/components/RichTextBlog'
+import { ArrowForward, ArrowRight } from '@mui/icons-material'
 
 type Params = { uid: string }
 
@@ -33,20 +36,21 @@ export default async function Page({ params }: { params: Params }) {
 
     // Fetch the current blog post page being displayed by the UID of the page
     const page = await client.getByUID('blog_post', params.uid).catch(() => notFound())
-
-    /**
-     * Fetch all of the blog posts in Prismic (max 2), excluding the current one, and ordered by publication date.
-     *
-     * We use this data to display our "recommended posts" section at the end of the blog post
-     */
     const posts = await client.getAllByType('blog_post', {
-        predicates: [prismic.filter.not('my.blog_post.uid', params.uid)],
-        orderings: [
-            { field: 'my.blog_post.publication_date', direction: 'desc' },
-            { field: 'document.first_publication_date', direction: 'desc' },
-        ],
-        limit: 2,
+        orderings: [{ field: 'my.blog_post.publication_date', direction: 'asc' }],
     })
+
+    const getNextPost = () => {
+        if (posts.length === 1) return null
+        // Find the index of the current post
+        const currentIndex = posts.findIndex((post) => post.uid === params.uid)
+
+        // Determine the next post
+        const nextIndex = (currentIndex + 1) % posts.length // Loop to the first post if it's the last one
+        return posts[nextIndex]
+    }
+
+    const nextPost = getNextPost()
 
     const { slices, title, publication_date, description, featured_image } = page.data
 
@@ -89,6 +93,33 @@ export default async function Page({ params }: { params: Params }) {
                 >
                     <RichTextBlog field={description} />
                 </Box>
+                {nextPost && (
+                    <Link href={`/blogs/${nextPost.uid}`} passHref={true}>
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+                            <Button
+                                endIcon={<ArrowForward />}
+                                sx={{
+                                    marginTop: '10px',
+                                    boxShadow: '0px 1px 2px 0px rgba(0, 0, 0, 0.44)',
+                                    padding: { xs: '12px 20px', md: '17px 23px' },
+                                    borderRadius: '46px',
+                                    backgroundColor: '#47820D',
+                                    height: '56px',
+                                    fontWeight: '600',
+                                    color: 'white',
+                                    fontSize: { xs: '15px', md: '24px' },
+                                    svg: {
+                                        height: { xs: '20px', md: '30px' },
+                                        width: { xs: '20px', md: '30px' },
+                                    },
+                                    width: 'max-content',
+                                }}
+                            >
+                                Next Blog
+                            </Button>
+                        </Box>
+                    </Link>
+                )}
             </Box>
             <SliceZone slices={slices} components={components} />
         </div>
