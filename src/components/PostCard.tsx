@@ -16,7 +16,7 @@ export const PostCard = ({ post }: { post: Content.BlogPostDocument }): JSX.Elem
                     flexDirection: 'column',
                     width: { xs: '100%', md: '100%' },
                     maxWidth: '100%',
-                    height: '350px',
+                    height: { xs: '100%', md: '350px' },
                     padding: '12px',
                     margin: 'auto',
                     borderRadius: 2,
