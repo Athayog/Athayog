@@ -21,6 +21,7 @@ export default function RootLayout({
         <html lang="en">
             <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
+                <meta name="google-site-verification" content="MFdD5TUc66yWX-w0hwFHmVkJWyt8BAkzk-g3jR4KLlo" />
             </head>
             <body className={`${josefin.className}`}>
                 <AppRouterCacheProvider>
