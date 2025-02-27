@@ -248,7 +248,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell>Shakthi Yoga (Legs)</TableCell>
                                             <TableCell>Power Yoga</TableCell>
                                         </TableRow>
-                                        <TableRow>
+                                        <TableRow sx={{ backgroundColor: '#fef4eb' }}>
                                             <TableCell
                                                 sx={{
                                                     backgroundColor: '#eff3d7',
