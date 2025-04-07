@@ -146,10 +146,10 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                 5.00 AM - 6.00 AM
                                             </TableCell>
                                             <TableCell>Shakthi Yoga (Arms Day)</TableCell>
-                                            <TableCell>Universal Harmony</TableCell>
+                                            <TableCell>>Uttama Sadhana (Arms Day)</TableCell>
                                             <TableCell>Rythm Of Being</TableCell>
-                                            <TableCell>Surya Yoga</TableCell>
                                             <TableCell>Power Yoga</TableCell>
+                                            <TableCell>Trataka & Pranayama</TableCell>
                                             <TableCell>Uttama Sadhana (Inversions)</TableCell>
                                             <TableCell>Transcending Transition</TableCell>
                                         </TableRow>
@@ -187,7 +187,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell>Shakthi Yoga (Core)</TableCell>
                                             <TableCell>Rythm of Being</TableCell>
                                             <TableCell>Uttama Sadhana (Inversions)</TableCell>
-                                            <TableCell>Transcending Transition</TableCell>
+                                            <TableCell>Chair Yoga</TableCell>
                                             <TableCell>Power Yoga</TableCell>
                                             <TableCell>Surya Yoga</TableCell>
                                         </TableRow>
@@ -203,10 +203,10 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                 8.00 AM - 9.00 AM
                                             </TableCell>
                                             <TableCell>Uttama Sadhana (Arm Balance)</TableCell>
-                                            <TableCell>Universal Harmony</TableCell>
+                                            <TableCell>Deep Space</TableCell>
                                             <TableCell>Transcending Transition</TableCell>
                                             <TableCell>Power Yoga</TableCell>
-                                            <TableCell>Surya Yoga</TableCell>
+                                            <TableCell>Shakthi Yoag (Spine)</TableCell>
                                             <TableCell>Rythm Of Being</TableCell>
                                             <TableCell>Uttama Sadhana (Advance Asana)</TableCell>
                                         </TableRow>
@@ -221,13 +221,13 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 9.00 AM - 10.00 AM
                                             </TableCell>
-                                            <TableCell>Shakthi Yoga (Core)</TableCell>
+                                            <TableCell>Universal Harmony</TableCell>
                                             <TableCell>Chair Yoga</TableCell>
                                             <TableCell>Power Yoga</TableCell>
                                             <TableCell>Transcending Transition</TableCell>
                                             <TableCell>Uttama Sadhana (Advance Asana)</TableCell>
                                             <TableCell>Shakthi Yoga (Core)</TableCell>
-                                            <TableCell>Universal Harmony</TableCell>
+                                            <TableCell>Rythm of Being</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell
@@ -242,10 +242,10 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             </TableCell>
                                             <TableCell>Power Yoga</TableCell>
                                             <TableCell>Uttama Sadhana (Inversions)</TableCell>
-                                            <TableCell>Shakthi Yoga (Core)</TableCell>
+                                            <TableCell>Chair Yoga</TableCell>
                                             <TableCell>Rythm of Being</TableCell>
                                             <TableCell>Shakthi Yoga (Arms Day)</TableCell>
-                                            <TableCell>Shakthi Yoga (Legs)</TableCell>
+                                            <TableCell>Deep Space</TableCell>
                                             <TableCell>Power Yoga</TableCell>
                                         </TableRow>
                                         <TableRow sx={{ backgroundColor: '#fef4eb' }}>
@@ -266,7 +266,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell>Uttama Sadhana (Advance Asana)</TableCell>
                                             <TableCell>Power Yoga</TableCell>
                                             <TableCell>Universal Harmony</TableCell>
-                                            <TableCell>Surya Yoga</TableCell>
+                                            <TableCell>Uttama Sadhana (Arm Balance)</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell
@@ -315,7 +315,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell>Uttama Sadhana (Inversions)</TableCell>
                                             <TableCell>Universal Harmony</TableCell>
                                             <TableCell>Power Yoga</TableCell>
-                                            <TableCell>Surya Yoga</TableCell>
+                                            <TableCell>Uttama Sadhana (Advance Asana)</TableCell>
                                             <TableCell>Chair Yoga</TableCell>
                                         </TableRow>
                                         <TableRow sx={{ backgroundColor: '#fef4eb' }}>
@@ -332,10 +332,10 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell>Uttama Sadhana (Advanced Asana)</TableCell>
                                             <TableCell>Universal Harmony</TableCell>
                                             <TableCell>Power Yoga</TableCell>
-                                            <TableCell>Shakthi Yoga (Arms Day)</TableCell>
+                                            <TableCell>Sound Meditation</TableCell>
                                             <TableCell>Shakthi Yoga (Core)</TableCell>
                                             <TableCell>Shakthi Yoga (Arms Day)</TableCell>
-                                            <TableCell>Yoga Nidra</TableCell>
+                                            <TableCell>Deep Space</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell
@@ -348,11 +348,11 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 7.00 PM - 8.00 PM
                                             </TableCell>
-                                            <TableCell>Rhythm Of Being</TableCell>
-                                            <TableCell>Power Yoga</TableCell>
+                                            <TableCell>Sound Meditation</TableCell>
+                                            <TableCell>Trataka & MSRT</TableCell>
                                             <TableCell>Transcending Transition</TableCell>
                                             <TableCell>Uttama Sadhana (Inversions)</TableCell>
-                                            <TableCell>Rhythm Of Being</TableCell>
+                                            <TableCell>Power Yoga</TableCell>
                                             <TableCell>Universal Harmony</TableCell>
                                             <TableCell>Uttama Sadhana (Arms Balance)</TableCell>
                                         </TableRow>
@@ -367,13 +367,13 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             >
                                                 8.00 PM - 9.00 PM
                                             </TableCell>
-                                            <TableCell>Trataka & MSRT</TableCell>
-                                            <TableCell>Yoga Nidra</TableCell>
-                                            <TableCell>Chair Yoga</TableCell>
-                                            <TableCell>Trataka & MSRT</TableCell>
-                                            <TableCell>Shakthi Yoga (Core)</TableCell>
-                                            <TableCell>Chair Yoga</TableCell>
-                                            <TableCell>Universal Harmony</TableCell>
+                                            <TableCell>Weight Loss Batch</TableCell>
+                                            <TableCell>Weight Loss Batch</TableCell>
+                                            <TableCell>Weight Loss Batch</TableCell>
+                                            <TableCell>Weight Loss Batch</TableCell>
+                                            <TableCell>Weight Loss Batch</TableCell>
+                                            <TableCell>Weight Loss Batch</TableCell>
+                                            <TableCell>Weight Loss Batch</TableCell>
                                         </TableRow>
                                         {/* Add the remaining rows in similar fashion */}
                                     </TableBody>
