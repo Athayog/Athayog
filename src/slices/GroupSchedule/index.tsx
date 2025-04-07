@@ -146,7 +146,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                 5.00 AM - 6.00 AM
                                             </TableCell>
                                             <TableCell>Shakthi Yoga (Arms Day)</TableCell>
-                                            <TableCell>>Uttama Sadhana (Arms Day)</TableCell>
+                                            <TableCell>Uttama Sadhana (Arms Day)</TableCell>
                                             <TableCell>Rythm Of Being</TableCell>
                                             <TableCell>Power Yoga</TableCell>
                                             <TableCell>Trataka & Pranayama</TableCell>
