@@ -24,13 +24,7 @@ const HighlightedText: React.FC<HighlightedTextProps> = ({ subtitle, highlight }
     const parts = subtitle?.split(new RegExp(`(${highlight})`, 'gi'))
 
     return (
-        <Typography
-            sx={{
-                color: '#000',
-                fontSize: { xs: '18px', md: '30px' },
-                fontWeight: '400',
-            }}
-        >
+        <Typography sx={{ color: '#000', fontSize: { xs: '18px', md: '30px' }, fontWeight: '400' }}>
             {parts?.map((part, index) =>
                 part.toLowerCase() === highlight?.toLowerCase() ? (
                     <Box component="span" key={index} sx={{ color: '#3E7A00', fontWeight: 'bold' }}>
@@ -77,16 +71,7 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
         if (user) {
             setCurrentPurchase({ courseDetails, amount })
             setInProcess(true)
-            initiateRazorpayPayment({
-                amount,
-                onSuccess: handlePaymentSuccess,
-                onFailure: handlePaymentFailure,
-                onDismiss: handleModalDismiss,
-                notes: {
-                    userId: user.uid,
-                    ...courseDetails,
-                },
-            })
+            initiateRazorpayPayment({ amount, onSuccess: handlePaymentSuccess, onFailure: handlePaymentFailure, onDismiss: handleModalDismiss, notes: { userId: user.uid, ...courseDetails } })
         } else {
             setRedirectPath(pathname)
             showSnackbar('Please login or register to continue', 'warning')
@@ -97,36 +82,10 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js" />
-            <Box
-                sx={{
-                    background: 'linear-gradient(to bottom, #e5fbd3, #EAFEDF)',
-                    height: '100%',
-                    margin: 0,
-                    padding: { xs: '30px 10px', md: '60px 50px' },
-                }}
-            >
+            <Box sx={{ background: 'linear-gradient(to bottom, #e5fbd3, #EAFEDF)', height: '100%', margin: 0, padding: { xs: '30px 10px', md: '60px 50px' } }}>
                 <Box sx={{ margin: '0 auto', maxWidth: '1400px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                    <Typography
-                        sx={{
-                            fontSize: '48px',
-                            color: '#284E01',
-                            fontWeight: '700',
-                            [theme.breakpoints.down('md')]: {
-                                fontSize: '28px',
-                            },
-                        }}
-                    >
-                        {slice.primary.title}
-                    </Typography>
-                    <Box
-                        sx={{
-                            color: '#000',
-                            fontSize: { xs: '18px', md: '30px' },
-                            fontWeight: '400',
-                            marginTop: { xs: '14px', md: '26px' },
-                            textAlign: 'center',
-                        }}
-                    >
+                    <Typography sx={{ fontSize: '48px', color: '#284E01', fontWeight: '700', [theme.breakpoints.down('md')]: { fontSize: '28px' } }}>{slice.primary.title}</Typography>
+                    <Box sx={{ color: '#000', fontSize: { xs: '18px', md: '30px' }, fontWeight: '400', marginTop: { xs: '14px', md: '26px' }, textAlign: 'center' }}>
                         {' '}
                         <HighlightedText subtitle={slice.primary.subtitle} highlight={slice.primary.subtitle_highlighted_part} />
                     </Box>
@@ -136,20 +95,11 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
                                 const courseDetails = { name: item.name, days: item.days, type: item.information, price: item.price }
                                 return (
                                     <Box key={item.name} sx={{ marginTop: '40px', padding: { xs: '20px 25px', md: '30px 40px', borderRadius: '12px', border: '1.838px solid #549610' } }}>
-                                        <Typography
-                                            sx={{
-                                                fontSize: { xs: '25px', md: '38px' },
-                                                color: '#303030',
-                                                display: { xs: 'block', md: 'none' },
-                                                fontWeight: '600',
-                                            }}
-                                        >
-                                            {item.name}
-                                        </Typography>
+                                        <Typography sx={{ fontSize: { xs: '25px', md: '38px' }, color: '#303030', display: { xs: 'block', md: 'none' }, fontWeight: '600' }}>{item.name}</Typography>
                                         <Box
                                             sx={{
                                                 background: '#E7FFCEB2',
-                                                flexWrap:'wrap',
+                                                flexWrap: 'wrap',
                                                 display: 'flex',
                                                 flexDirection: 'row',
                                                 justifyContent: 'space-between',
@@ -158,33 +108,14 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
                                             }}
                                         >
                                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: '10px', md: '20px' } }}>
-                                                <Typography
-                                                    sx={{
-                                                        fontSize: { xs: '25px', md: '38px' },
-                                                        color: '#303030',
-                                                        display: { xs: 'none', md: 'block' },
-                                                        fontWeight: '600',
-                                                    }}
-                                                >
+                                                <Typography sx={{ fontSize: { xs: '25px', md: '38px' }, color: '#303030', display: { xs: 'none', md: 'block' }, fontWeight: '600' }}>
                                                     {item.name}
                                                 </Typography>
                                                 <Box sx={{ display: 'flex', gap: { xs: '50px', md: '100px' } }}>
-                                                    <Typography
-                                                        sx={{
-                                                            fontSize: { xs: '21px', md: '32px' },
-                                                            fontWeight: '400',
-                                                        }}
-                                                    >
+                                                    <Typography sx={{ fontSize: { xs: '21px', md: '32px' }, fontWeight: '400' }}>
                                                         {item.days === 1 ? `${item.days} Day` : `${item.days} Days`}
                                                     </Typography>
-                                                    <Typography
-                                                        sx={{
-                                                            fontSize: { xs: '21px', md: '32px' },
-                                                            fontWeight: '400',
-                                                        }}
-                                                    >
-                                                        {item.information}
-                                                    </Typography>
+                                                    <Typography sx={{ fontSize: { xs: '21px', md: '32px' }, fontWeight: '400' }}>{item.information}</Typography>
                                                 </Box>
                                                 <Typography
                                                     sx={{
@@ -211,10 +142,11 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
                                                 >
                                                     {item.price && formatToCurrency(item.price)}
                                                 </Typography>
+
                                                 {item.price !== null && item.price !== 0 && (
                                                     <Button
                                                         disabled={process}
-                                                        onClick={() => createOrder(item.price ?? 0, courseDetails)}
+                                                        onClick={() => createOrder((item.price ?? 0) + (item.gst ?? 0), courseDetails)}
                                                         sx={{
                                                             width: 'max-content',
                                                             marginTop: '30px',
@@ -232,13 +164,7 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
                                 )
                             })}
                         </Box>
-                        <Box
-                            sx={{
-                                marginTop: '60px',
-                                width: '100%',
-                                fontSize: { xs: '16px', md: '32px' },
-                            }}
-                        >
+                        <Box sx={{ marginTop: '60px', width: '100%', fontSize: { xs: '16px', md: '32px' } }}>
                             <PrismicRichText field={slice.primary.terms_and_conditions} />
                         </Box>
                     </Box>

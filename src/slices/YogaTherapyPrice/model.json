@@ -73,7 +73,14 @@
                 "type": "Number",
                 "config": {
                   "label": "Price",
-                  "placeholder": ""
+                  "placeholder": "Add Base Price (GST Exlusive)"
+                }
+              },
+              "gst": {
+                "type": "Number",
+                "config": {
+                  "label": "GST",
+                  "placeholder": "Add GST Amount"
                 }
               },
               "enabled": {

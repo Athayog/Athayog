@@ -130,7 +130,7 @@ export interface FooterDocumentDataSectionTitleItem {
      * - **API ID Path**: footer.section_title[].link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    link: prismic.LinkField
+    link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -155,7 +155,7 @@ export interface FooterDocumentDataWhatWeOfferItem {
      * - **API ID Path**: footer.what_we_offer[].link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    link: prismic.LinkField
+    link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -180,7 +180,7 @@ export interface FooterDocumentDataLegalItem {
      * - **API ID Path**: footer.legal[].link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    link: prismic.LinkField
+    link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -230,7 +230,7 @@ export interface FooterDocumentDataSocialLinksIconsItem {
      * - **API ID Path**: footer.social_links_icons[].icon
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    icon: prismic.LinkToMediaField
+    icon: prismic.LinkToMediaField<prismic.FieldState, never>
 
     /**
      * Link field in *Footer → Social Links Icons*
@@ -240,7 +240,7 @@ export interface FooterDocumentDataSocialLinksIconsItem {
      * - **API ID Path**: footer.social_links_icons[].link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    link: prismic.LinkField
+    link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -1309,7 +1309,7 @@ export interface CallToActionSliceDefaultPrimary {
      * - **API ID Path**: call_to_action.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Background Color field in *CallToAction → Default → Primary*
@@ -1353,7 +1353,7 @@ export interface CallToActionSliceWithJustTitlePrimary {
      * - **API ID Path**: call_to_action.withJustTitle.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Background Color field in *CallToAction → With Just Title → Primary*
@@ -1911,7 +1911,7 @@ export interface ContactUsFormSliceDefaultPrimary {
      * - **API ID Path**: contact_us_form.default.primary.link_to_email
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    link_to_email: prismic.LinkField
+    link_to_email: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -2201,7 +2201,7 @@ export interface CoursesCtaSliceDefaultPrimary {
      * - **API ID Path**: courses_cta.default.primary.button
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button: prismic.LinkField
+    button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Backgroud Image field in *CoursesCta → Default → Primary*
@@ -2275,7 +2275,7 @@ export interface CoursesCtaSliceWithSmallTitlePrimary {
      * - **API ID Path**: courses_cta.withSmallTitle.primary.button
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button: prismic.LinkField
+    button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Backgroud Image field in *CoursesCta → With Small Title → Primary*
@@ -2349,7 +2349,7 @@ export interface CoursesCtaSliceWithPricePrimary {
      * - **API ID Path**: courses_cta.withPrice.primary.button
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button: prismic.LinkField
+    button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Backgroud Image field in *CoursesCta → With Price → Primary*
@@ -2423,7 +2423,7 @@ export interface CoursesCtaSliceWithSubtextPrimary {
      * - **API ID Path**: courses_cta.withSubtext.primary.button
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button: prismic.LinkField
+    button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Backgroud Image field in *CoursesCta → With Subtext → Primary*
@@ -2487,7 +2487,7 @@ export interface CoursesCtaSliceWithImagePricePrimary {
      * - **API ID Path**: courses_cta.withImagePrice.primary.button
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button: prismic.LinkField
+    button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Person Image field in *CoursesCta → With Image Price → Primary*
@@ -2610,7 +2610,7 @@ export interface CoursesHeroSliceDefaultPrimary {
      * - **API ID Path**: courses_hero.default.primary.register_button
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    register_button: prismic.LinkField
+    register_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Backgroud Image field in *CoursesHero → Default → Primary*
@@ -2725,7 +2725,7 @@ export interface CoursesHeroSliceWithNoImagePrimary {
      * - **API ID Path**: courses_hero.withNoImage.primary.register_button
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    register_button: prismic.LinkField
+    register_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Person Image field in *CoursesHero → With No Image → Primary*
@@ -3297,7 +3297,7 @@ export interface EnrollSectionSliceDefaultPrimary {
      * - **API ID Path**: enroll_section.default.primary.join_button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    join_button_link: prismic.LinkField
+    join_button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Date field in *EnrollSection → Default → Primary*
@@ -3365,7 +3365,7 @@ export interface EventHighlightsGallerySliceDefaultPrimaryAlbumsItem {
      * - **API ID Path**: event_highlights_gallery.default.primary.albums[].image
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    image: prismic.LinkToMediaField
+    image: prismic.LinkToMediaField<prismic.FieldState, never>
 
     /**
      * Album Name field in *MultiGallerySlider → Default → Primary → Albums*
@@ -3420,7 +3420,7 @@ export interface EventHighlightsGallerySliceDefaultPrimary {
      * - **API ID Path**: event_highlights_gallery.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -3523,7 +3523,7 @@ export interface FaqSliceDefaultPrimary {
      * - **API ID Path**: faq.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -3611,7 +3611,7 @@ export interface GroupClassSliceDefaultPrimary {
      * - **API ID Path**: group_class.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Image field in *GroupClass → Default → Primary*
@@ -3796,11 +3796,21 @@ export interface GroupClassPricingSliceDefaultPrimarySubscriptionforindiranagarI
      * Price field in *GroupClassPricing → Default → Primary → SubscriptionForIndiranagar*
      *
      * - **Field Type**: Number
-     * - **Placeholder**: *None*
+     * - **Placeholder**: Add Base Price (GST Exlusive)
      * - **API ID Path**: group_class_pricing.default.primary.subscriptionforindiranagar[].price
      * - **Documentation**: https://prismic.io/docs/field#number
      */
     price: prismic.NumberField
+
+    /**
+     * GST field in *GroupClassPricing → Default → Primary → SubscriptionForIndiranagar*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: Add GST Amount
+     * - **API ID Path**: group_class_pricing.default.primary.subscriptionforindiranagar[].gst
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    gst: prismic.NumberField
 }
 
 /**
@@ -3831,11 +3841,21 @@ export interface GroupClassPricingSliceDefaultPrimaryOtherCoursesItem {
      * Price field in *GroupClassPricing → Default → Primary → Other Courses*
      *
      * - **Field Type**: Number
-     * - **Placeholder**: *None*
+     * - **Placeholder**: Add Base Price (GST Exlusive)
      * - **API ID Path**: group_class_pricing.default.primary.other_courses[].price
      * - **Documentation**: https://prismic.io/docs/field#number
      */
     price: prismic.NumberField
+
+    /**
+     * GST field in *GroupClassPricing → Default → Primary → Other Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: Add GST Amount
+     * - **API ID Path**: group_class_pricing.default.primary.other_courses[].gst
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    gst: prismic.NumberField
 
     /**
      * Detail field in *GroupClassPricing → Default → Primary → Other Courses*
@@ -3958,7 +3978,7 @@ export interface GroupInformationSliceDefaultPrimary {
      * - **API ID Path**: group_information.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Description field in *GroupInformation → Default → Primary*
@@ -4041,7 +4061,7 @@ export interface GroupScheduleSliceDefaultPrimary {
      * - **API ID Path**: group_schedule.default.primary.download_button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    download_button_link: prismic.LinkField
+    download_button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Highlighted Point field in *GroupSchedule → Default → Primary*
@@ -4237,7 +4257,7 @@ export interface HeroSliceDefaultPrimary {
      * - **API ID Path**: hero.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Video Background Link field in *Hero → Default → Primary*
@@ -4247,7 +4267,7 @@ export interface HeroSliceDefaultPrimary {
      * - **API ID Path**: hero.default.primary.video_background_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    video_background_link: prismic.LinkToMediaField
+    video_background_link: prismic.LinkToMediaField<prismic.FieldState, never>
 }
 
 /**
@@ -4486,7 +4506,7 @@ export interface LeftContentRightImageSliceDefaultPrimary {
      * - **API ID Path**: left_content_right_image.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Right Image field in *LeftContentRightImage → Default → Primary*
@@ -4667,7 +4687,7 @@ export interface LeftImageRighContentSliceDefaultPrimary {
      * - **API ID Path**: left_image_righ_content.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -4848,7 +4868,7 @@ export interface MentalHealthHeroSliceDefaultPrimary {
      * - **API ID Path**: mental_health_hero.default.primary.register_button
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    register_button: prismic.LinkField
+    register_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Backgroud Image field in *MentalHealthHero → Default → Primary*
@@ -5353,7 +5373,7 @@ export interface OurYogaStorySliceDefaultPrimary {
      * - **API ID Path**: our_yoga_story.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Content field in *OurYogaStory → Default → Primary*
@@ -5504,7 +5524,7 @@ export interface PcosHeroSliceDefaultPrimary {
      * - **API ID Path**: pcos_hero.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Subtitle field in *PcosHero → Default → Primary*
@@ -5714,11 +5734,21 @@ export interface PersonalSessionPricingSliceDefaultPrimaryCoursesItem {
      * Course Price field in *PersonalSessionPricing → Default → Primary → Courses*
      *
      * - **Field Type**: Number
-     * - **Placeholder**: *None*
+     * - **Placeholder**: Add Base Price (GST Exlusive)
      * - **API ID Path**: personal_session_pricing.default.primary.courses[].course_price
      * - **Documentation**: https://prismic.io/docs/field#number
      */
     course_price: prismic.NumberField
+
+    /**
+     * GST field in *PersonalSessionPricing → Default → Primary → Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: Add GST Amount
+     * - **API ID Path**: personal_session_pricing.default.primary.courses[].gst
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    gst: prismic.NumberField
 
     /**
      * Type field in *PersonalSessionPricing → Default → Primary → Courses*
@@ -5803,7 +5833,7 @@ export interface PersonalSessionPricingSliceDefaultPrimary {
      * - **API ID Path**: personal_session_pricing.default.primary.enquire_now_button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    enquire_now_button_link: prismic.LinkField
+    enquire_now_button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Enquire Note Image field in *PersonalSessionPricing → Default → Primary*
@@ -6264,7 +6294,7 @@ export interface RightContentLeftSliderVerticalSliceDefaultPrimary {
      * - **API ID Path**: right_content_left_slider_vertical.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Slider Images field in *RightContentLeftSliderVertical → Default → Primary*
@@ -7094,7 +7124,7 @@ export interface UpcomingWorkshopSliceDefaultPrimary {
      * - **API ID Path**: upcoming_workshop.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -7352,7 +7382,7 @@ export interface WeightLossFormSliceAcademyFormPrimary {
      * - **API ID Path**: weight_loss_form.academyForm.primary.payment_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    payment_link: prismic.LinkField
+    payment_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -7396,7 +7426,7 @@ export interface WeightLossFormSlicePicnicPrimary {
      * - **API ID Path**: weight_loss_form.picnic.primary.payment_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    payment_link: prismic.LinkField
+    payment_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -7440,7 +7470,7 @@ export interface WeightLossFormSliceWorkshopFormPrimary {
      * - **API ID Path**: weight_loss_form.workshopForm.primary.payment_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    payment_link: prismic.LinkField
+    payment_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -7504,7 +7534,7 @@ export interface WeightLossHeroSliceDefaultPrimary {
      * - **API ID Path**: weight_loss_hero.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Background Image field in *WeightLossHero → Default → Primary*
@@ -7891,7 +7921,7 @@ export interface YogaArambhaSliceDefaultPrimary {
      * - **API ID Path**: yoga_arambha.default.primary.button_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    button_link: prismic.LinkField
+    button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
      * Youtube Embed ID field in *YogaArambha → Default → Primary*
@@ -7911,7 +7941,7 @@ export interface YogaArambhaSliceDefaultPrimary {
      * - **API ID Path**: yoga_arambha.default.primary.media
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    media: prismic.LinkToMediaField
+    media: prismic.LinkToMediaField<prismic.FieldState, never>
 }
 
 /**
@@ -8164,11 +8194,21 @@ export interface YogaTherapyPriceSliceDefaultPrimaryCoursesItem {
      * Price field in *YogaTherapyPrice → Default → Primary → Courses*
      *
      * - **Field Type**: Number
-     * - **Placeholder**: *None*
+     * - **Placeholder**: Add Base Price (GST Exlusive)
      * - **API ID Path**: yoga_therapy_price.default.primary.courses[].price
      * - **Documentation**: https://prismic.io/docs/field#number
      */
     price: prismic.NumberField
+
+    /**
+     * GST field in *YogaTherapyPrice → Default → Primary → Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: Add GST Amount
+     * - **API ID Path**: yoga_therapy_price.default.primary.courses[].gst
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    gst: prismic.NumberField
 
     /**
      * Enabled field in *YogaTherapyPrice → Default → Primary → Courses*

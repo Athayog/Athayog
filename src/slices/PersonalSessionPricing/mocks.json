@@ -34,7 +34,7 @@
 								"course_price",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "63",
+									"value": "11",
 									"type": "Number"
 								}
 							],
@@ -44,6 +44,14 @@
 									"__TYPE__": "FieldContent",
 									"value": "Online",
 									"type": "Select"
+								}
+							],
+							[
+								"gst",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "59",
+									"type": "Number"
 								}
 							]
 						]
