@@ -63,7 +63,7 @@
 								"price",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "84",
+									"value": "23",
 									"type": "Number"
 								}
 							],
@@ -72,6 +72,14 @@
 								{
 									"__TYPE__": "BooleanContent",
 									"value": false
+								}
+							],
+							[
+								"gst",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "89",
+									"type": "Number"
 								}
 							]
 						]
