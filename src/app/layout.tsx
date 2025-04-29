@@ -9,6 +9,7 @@ import { PrismicPreview } from '@prismicio/next'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import { SnackbarProvider } from '@/components/SnackbarProvider'
+import { GoogleTagManager } from '@next/third-parties/google'
 
 const josefin = Josefin_Sans({ subsets: ['latin'] })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
             <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <meta name="google-site-verification" content="MFdD5TUc66yWX-w0hwFHmVkJWyt8BAkzk-g3jR4KLlo" />
+                <GoogleTagManager gtmId="GTM-N4LH3M3" />
             </head>
             <body className={`${josefin.className}`}>
                 <AppRouterCacheProvider>
