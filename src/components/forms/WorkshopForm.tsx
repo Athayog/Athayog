@@ -39,7 +39,7 @@ const validationSchemaWorkshopForm = Yup.object({
 })
 
 const WorkshopForm = ({ paymentLink, pageSource }: { paymentLink: LinkField; pageSource: any }): JSX.Element => {
-    const { loading, error, success, submitForm } = useFormStore()
+    const { loading, error, success, submitForm, setSuccess } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
 
     const formik = useFormik<WorkshopForm>({
@@ -59,12 +59,13 @@ const WorkshopForm = ({ paymentLink, pageSource }: { paymentLink: LinkField; pag
         validationSchema: validationSchemaWorkshopForm,
         onSubmit: async (values: WorkshopForm, { resetForm }) => {
             await submitForm(values, 'workshopForm', `info@athayogliving.com`)
-           if (!error) {
+            if (!error) {
                 const redirectUrl = (paymentLink as { url: string }).url;
                 if (redirectUrl !== '/') {
                     setShowOverlay(true);
                 }
                 resetForm();
+                setSuccess(false)
                 setTimeout(() => {
                     window.location.href = redirectUrl;
                 }, 2000); // Redirect after 2 seconds

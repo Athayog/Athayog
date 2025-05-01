@@ -25,7 +25,7 @@ const validationSchemaAcademy = Yup.object({
 })
 
 const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyTextField; paymentLink: any }): JSX.Element => {
-    const { loading, error, success, submitForm } = useFormStore()
+    const { loading, error, success, submitForm, setSuccess } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
 
     const formik = useFormik<FormValuesAcademy>({
@@ -42,6 +42,7 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
             if (!error) {
                 setShowOverlay(true)
                 resetForm()
+                setSuccess(false)
                 setTimeout(() => {
                     window.location.href = paymentLink.url as unknown as string
                 }, 2000) // Redirect after 2 seconds

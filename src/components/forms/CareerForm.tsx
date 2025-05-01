@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
-import { Alert, Box, Button, Divider, FormControl, FormHelperText, MenuItem, Select, Snackbar, styled, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, Divider, FormControl, FormHelperText, MenuItem, Select, styled, TextField, Typography } from '@mui/material'
+import { useRouter } from 'next/navigation'
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -56,8 +57,9 @@ const validationSchemaCareer = Yup.object({
 })
 
 const CareerForm = (): JSX.Element => {
-    const { loading, error, success, submitForm } = useFormStore()
+    const { loading, error, success, submitForm, setSuccess } = useFormStore()
     const [fileError, setFileError] = useState('')
+    const router = useRouter()
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.currentTarget.files ? event.currentTarget.files[0] : null
@@ -101,6 +103,8 @@ const CareerForm = (): JSX.Element => {
             await submitForm(formDataWithoutFile, 'resume', 'info@athayogliving.com', file ?? undefined, 'resume')
             if (!error) {
                 resetForm()
+                setSuccess(false)
+                router.push('/thank-you')
             }
         },
     })
@@ -401,20 +405,6 @@ const CareerForm = (): JSX.Element => {
                 </Box>
                 {/* Submit Button */}
             </form>
-
-            {/* Snackbar for success or error */}
-            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={success} autoHideDuration={4000} onClose={() => useFormStore.setState({ success: false })}>
-                <Alert onClose={() => useFormStore.setState({ success: false })} severity="success">
-                    Form submitted successfully!
-                </Alert>
-            </Snackbar>
-
-            {/* Error Snackbar */}
-            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
-                <Alert onClose={() => useFormStore.setState({ error: null })} severity="error">
-                    {error}
-                </Alert>
-            </Snackbar>
         </div>
     )
 }

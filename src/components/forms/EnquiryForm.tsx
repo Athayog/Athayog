@@ -25,7 +25,7 @@ const validationSchemaEnquiry = Yup.object({
 })
 
 const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX.Element => {
-    const { loading, error, success, submitForm } = useFormStore()
+    const { loading, error, success, submitForm, setSuccess } = useFormStore()
     const router = useRouter()
     const formik = useFormik<FormValuesEnquiry>({
         initialValues: {
@@ -40,6 +40,7 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
             await submitForm(values, 'enquiryFormsv2', `info@athayogliving.com`)
             if (!error) {
                 resetForm()
+                setSuccess(false)
                 router.push('/thank-you')
             }
         },

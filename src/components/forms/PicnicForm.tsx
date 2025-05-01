@@ -38,7 +38,7 @@ const validationSchemaWeightLoss = Yup.object({
 })
 
 const PicnicForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element => {
-    const { loading, error, success, submitForm } = useFormStore()
+    const { loading, error, success, submitForm, setSuccess } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
 
     const formik = useFormik<PicnicFormWeightLoss>({
@@ -60,6 +60,7 @@ const PicnicForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element =>
             if (!error) {
                 setShowOverlay(true)
                 resetForm()
+                setSuccess(false)
                 setTimeout(() => {
                     window.location.href = (paymentLink as { url: string }).url
                 }, 2000) // Redirect after 2 seconds

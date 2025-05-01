@@ -4,6 +4,7 @@ import { useFormik } from 'formik'
 import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 import { Box, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography, Alert } from '@mui/material'
+import { useRouter } from 'next/navigation'
 
 interface FormValuesWeightLoss {
     fullName: string
@@ -26,8 +27,8 @@ const validationSchemaWeightLoss = Yup.object({
 })
 
 const WeightLossForm = (): JSX.Element => {
-    const { loading, error, success, submitForm } = useFormStore()
-
+    const { loading, error, success, submitForm, setSuccess } = useFormStore()
+    const router = useRouter()
     const formik = useFormik<FormValuesWeightLoss>({
         initialValues: {
             fullName: '',
@@ -42,6 +43,8 @@ const WeightLossForm = (): JSX.Element => {
             await submitForm(values, 'weightLossForm', `info@athayogliving.com`)
             if (!error) {
                 resetForm()
+                setSuccess(false);
+                router.push('/thank-you')
             }
         },
     })
@@ -151,19 +154,7 @@ const WeightLossForm = (): JSX.Element => {
                 </Box>
             </form>
 
-            {/* Success Snackbar */}
-            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={success} autoHideDuration={4000} onClose={() => useFormStore.setState({ success: false })}>
-                <Alert onClose={() => useFormStore.setState({ success: false })} severity="success">
-                    Form submitted successfully!
-                </Alert>
-            </Snackbar>
 
-            {/* Error Snackbar */}
-            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
-                <Alert onClose={() => useFormStore.setState({ error: null })} severity="error">
-                    {error}
-                </Alert>
-            </Snackbar>
         </>
     )
 }

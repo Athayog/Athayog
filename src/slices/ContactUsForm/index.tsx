@@ -8,6 +8,7 @@ import { PrismicNextImage } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import * as Yup from 'yup'
 
 // Validation schema using Yup
@@ -18,7 +19,7 @@ const validationSchema = Yup.object({
     message: Yup.string().required('Message is required'),
 })
 
-const ContactContent = styled(Box)(({}) => ({
+const ContactContent = styled(Box)(({ }) => ({
     background: '#E7FDDA',
     display: 'flex',
     justifyContent: 'space-between',
@@ -71,7 +72,7 @@ const ContactFormContainer = styled(Box)(({ theme }) => ({
     },
 }))
 
-const ContactTextField = styled(TextField)(({}) => ({
+const ContactTextField = styled(TextField)(({ }) => ({
     '& .MuiInputBase-root': {
         borderRadius: '10px',
         background: '#F9F9F9',
@@ -88,7 +89,7 @@ const ContactTextField = styled(TextField)(({}) => ({
     },
 }))
 
-const ContactTextarea = styled(TextareaAutosize)(({}) => ({
+const ContactTextarea = styled(TextareaAutosize)(({ }) => ({
     border: '1px solid #CDCDCD',
     width: '100%',
     borderRadius: '10px',
@@ -101,7 +102,7 @@ const ContactTextarea = styled(TextareaAutosize)(({}) => ({
     },
 }))
 
-const SubmitButton = styled(Button)(({}) => ({
+const SubmitButton = styled(Button)(({ }) => ({
     backgroundColor: '#417A07',
     color: '#fff',
     border: '1px solid #417A07',
@@ -135,7 +136,7 @@ export type ContactUsFormProps = SliceComponentProps<Content.ContactUsFormSlice>
  * Component for "ContactUsForm" Slices.
  */
 
-const ContactContainer = styled(Box)(({}) => ({
+const ContactContainer = styled(Box)(({ }) => ({
     backgroundColor: '#E7FDDA',
 }))
 const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
@@ -143,18 +144,16 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
         type: 'success' | 'error'
         message: string
     } | null>(null)
-    const { submitForm, loading, error } = useFormStore()
+    const { submitForm, loading, error, setSuccess } = useFormStore()
     const linkUrl = (slice.primary.link_to_email as any).url
+    const router = useRouter()
     const handleSubmit = async (values: FormData, { resetForm }: FormikHelpers<FormData>) => {
         try {
             await submitForm(values, 'contactMessages', 'info@athayogliving.com')
-            setSnackbar({
-                type: 'success',
-                message: 'Your message has been sent successfully!',
-            })
+            setSuccess(false)
+            router.push('/thank-you')
             resetForm()
         } catch {
-            // Handle case where submitForm was unsuccessful (e.g., error with Firebase)
             setSnackbar({
                 type: 'error',
                 message: error || 'An unexpected error occurred. Please try again later.',
