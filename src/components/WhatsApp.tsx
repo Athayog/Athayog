@@ -32,7 +32,13 @@ const WhatsAppWidget: React.FC = () => {
                 <WhatsAppIcon />
             </Fab>
             <Fab
-                sx={{ backgroundColor: '#fefefe' }}
+                sx={{
+                    backgroundColor: '#fefefe',
+                    color: '#000',
+                    '&:hover': {
+                        backgroundColor: '#f0f0f0',
+                    },
+                }}
                 aria-label="phone"
                 onClick={() => {
                     const phoneNumber = '+919611771434'; // Replace with your phone number
