@@ -23,7 +23,7 @@ const useFormStore = create<FormState>((set) => ({
     submitForm: async (formData: { [key: string]: any }, collectionName, apiUrl, file, fileCollection) => {
         set({ loading: true, error: null, success: false })
         try {
-
+            // throw new Error('Test error') // Simulate an error for testing
             if (file) {
                 // Create a reference to the file in Firebase Storage
                 const storageRef = ref(storage, `${fileCollection ? fileCollection + '/' : ''}${file.name}`)

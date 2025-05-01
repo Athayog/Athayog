@@ -152,9 +152,14 @@ const WeightLossForm = (): JSX.Element => {
                         {loading ? 'Submitting...' : 'Register'}
                     </RegisterButton>
                 </Box>
+
+                {/* Error Snackbar */}
+                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
+                    <Alert onClose={() => useFormStore.setState({ error: null })} severity="error">
+                        {error}
+                    </Alert>
+                </Snackbar>
             </form>
-
-
         </>
     )
 }

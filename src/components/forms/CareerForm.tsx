@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useFormik } from 'formik'
 import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
-import { Alert, Box, Button, Divider, FormControl, FormHelperText, MenuItem, Select, styled, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, Divider, FormControl, FormHelperText, MenuItem, Select, Snackbar, styled, TextField, Typography } from '@mui/material'
 import { useRouter } from 'next/navigation'
 import ResetError from '../FormErrorReset'
 
@@ -404,6 +404,12 @@ const CareerForm = (): JSX.Element => {
                     </Box>
                 </Box>
                 {/* Submit Button */}
+                {/* Error Snackbar */}
+                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
+                    <Alert onClose={() => useFormStore.setState({ error: null })} severity="error">
+                        {error}
+                    </Alert>
+                </Snackbar>
             </form>
         </div>
     )
