@@ -6,6 +6,7 @@ import RegisterButton from '@/components/elements/button/RegisterButton'
 import { Box, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography, Alert, CircularProgress } from '@mui/material'
 import { KeyTextField, LinkField } from '@prismicio/client'
 import { useState } from 'react'
+import ResetError from '../FormErrorReset'
 
 interface FormValuesAcademy {
     fullName: string
@@ -71,6 +72,7 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
                     </Typography>
                 </Box>
             )}
+            <ResetError />
             <form onSubmit={formik.handleSubmit}>
                 {/* Full Name */}
                 <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>

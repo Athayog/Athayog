@@ -5,6 +5,8 @@ import { useFormik } from 'formik'
 import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 import { Alert, Box, Button, Divider, FormControl, FormHelperText, MenuItem, Select, Snackbar, styled, TextField, Typography } from '@mui/material'
+import { useRouter } from 'next/navigation'
+import ResetError from '../FormErrorReset'
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -56,8 +58,9 @@ const validationSchemaCareer = Yup.object({
 })
 
 const CareerForm = (): JSX.Element => {
-    const { loading, error, success, submitForm } = useFormStore()
+    const { loading, error, success, submitForm, } = useFormStore()
     const [fileError, setFileError] = useState('')
+    const router = useRouter()
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.currentTarget.files ? event.currentTarget.files[0] : null
@@ -101,6 +104,7 @@ const CareerForm = (): JSX.Element => {
             await submitForm(formDataWithoutFile, 'resume', 'info@athayogliving.com', file ?? undefined, 'resume')
             if (!error) {
                 resetForm()
+                router.push('/thank-you')
             }
         },
     })
@@ -167,7 +171,7 @@ const CareerForm = (): JSX.Element => {
                     />
                 </Box>
                 <Divider sx={{ borderColor: '#7D9571', height: '3px', margin: '50px 0px' }} />
-
+                <ResetError />
                 {/* Designation and Current Company side by side */}
                 <Box>
                     <Typography sx={{ marginBottom: '30px', color: '#284E01', fontWeight: '700', fontSize: { xs: '28px', md: '35px' } }}>Work Information</Typography>
@@ -400,21 +404,13 @@ const CareerForm = (): JSX.Element => {
                     </Box>
                 </Box>
                 {/* Submit Button */}
+                {/* Error Snackbar */}
+                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
+                    <Alert onClose={() => useFormStore.setState({ error: null })} severity="error">
+                        {error}
+                    </Alert>
+                </Snackbar>
             </form>
-
-            {/* Snackbar for success or error */}
-            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={success} autoHideDuration={4000} onClose={() => useFormStore.setState({ success: false })}>
-                <Alert onClose={() => useFormStore.setState({ success: false })} severity="success">
-                    Form submitted successfully!
-                </Alert>
-            </Snackbar>
-
-            {/* Error Snackbar */}
-            <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
-                <Alert onClose={() => useFormStore.setState({ error: null })} severity="error">
-                    {error}
-                </Alert>
-            </Snackbar>
         </div>
     )
 }

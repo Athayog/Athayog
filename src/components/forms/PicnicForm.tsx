@@ -6,6 +6,7 @@ import { LinkField } from '@prismicio/client'
 import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 import { Alert, Box, CircularProgress, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography } from '@mui/material'
+import ResetError from '../FormErrorReset'
 
 interface PicnicFormWeightLoss {
     fullName: string
@@ -38,7 +39,7 @@ const validationSchemaWeightLoss = Yup.object({
 })
 
 const PicnicForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element => {
-    const { loading, error, success, submitForm } = useFormStore()
+    const { loading, error, success, submitForm, setSuccess } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
 
     const formik = useFormik<PicnicFormWeightLoss>({
@@ -258,6 +259,7 @@ const PicnicForm = ({ paymentLink }: { paymentLink: LinkField }): JSX.Element =>
                 </Box>
             </form>
 
+            <ResetError />
             {/* Success Snackbar */}
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={success} autoHideDuration={4000} onClose={() => useFormStore.setState({ success: false })}>
                 <Alert onClose={() => useFormStore.setState({ success: false })} severity="success">

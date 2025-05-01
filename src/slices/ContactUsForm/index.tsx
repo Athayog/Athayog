@@ -1,14 +1,16 @@
 'use client'
-import useFormStore from '@/store/useFormStore'
-import theme from '@/styles/theme'
 import { Alert, Box, Button, Snackbar, TextareaAutosize, TextField, Typography } from '@mui/material'
-import { styled } from '@mui/system'
 import { Content } from '@prismicio/client'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import { PrismicNextImage } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
-import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
+import { styled } from '@mui/system'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import * as Yup from 'yup'
+import ResetError from '@/components/FormErrorReset'
+import theme from '@/styles/theme'
+import useFormStore from '@/store/useFormStore'
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -18,7 +20,7 @@ const validationSchema = Yup.object({
     message: Yup.string().required('Message is required'),
 })
 
-const ContactContent = styled(Box)(({}) => ({
+const ContactContent = styled(Box)(({ }) => ({
     background: '#E7FDDA',
     display: 'flex',
     justifyContent: 'space-between',
@@ -71,7 +73,7 @@ const ContactFormContainer = styled(Box)(({ theme }) => ({
     },
 }))
 
-const ContactTextField = styled(TextField)(({}) => ({
+const ContactTextField = styled(TextField)(({ }) => ({
     '& .MuiInputBase-root': {
         borderRadius: '10px',
         background: '#F9F9F9',
@@ -88,7 +90,7 @@ const ContactTextField = styled(TextField)(({}) => ({
     },
 }))
 
-const ContactTextarea = styled(TextareaAutosize)(({}) => ({
+const ContactTextarea = styled(TextareaAutosize)(({ }) => ({
     border: '1px solid #CDCDCD',
     width: '100%',
     borderRadius: '10px',
@@ -101,7 +103,7 @@ const ContactTextarea = styled(TextareaAutosize)(({}) => ({
     },
 }))
 
-const SubmitButton = styled(Button)(({}) => ({
+const SubmitButton = styled(Button)(({ }) => ({
     backgroundColor: '#417A07',
     color: '#fff',
     border: '1px solid #417A07',
@@ -135,7 +137,7 @@ export type ContactUsFormProps = SliceComponentProps<Content.ContactUsFormSlice>
  * Component for "ContactUsForm" Slices.
  */
 
-const ContactContainer = styled(Box)(({}) => ({
+const ContactContainer = styled(Box)(({ }) => ({
     backgroundColor: '#E7FDDA',
 }))
 const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
@@ -145,16 +147,13 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
     } | null>(null)
     const { submitForm, loading, error } = useFormStore()
     const linkUrl = (slice.primary.link_to_email as any).url
+    const router = useRouter()
     const handleSubmit = async (values: FormData, { resetForm }: FormikHelpers<FormData>) => {
         try {
             await submitForm(values, 'contactMessages', 'info@athayogliving.com')
-            setSnackbar({
-                type: 'success',
-                message: 'Your message has been sent successfully!',
-            })
+            router.push('/thank-you')
             resetForm()
         } catch {
-            // Handle case where submitForm was unsuccessful (e.g., error with Firebase)
             setSnackbar({
                 type: 'error',
                 message: error || 'An unexpected error occurred. Please try again later.',
@@ -246,6 +245,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                             </Typography>
                         </ContactDetails>
                     </Box>
+                    <ResetError />
                     <Snackbar open={!!snackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
                         <Alert onClose={handleCloseSnackbar} severity={snackbar?.type} sx={{ width: '100%' }}>
                             {snackbar?.message}
