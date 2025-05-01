@@ -10,6 +10,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import { SnackbarProvider } from '@/components/SnackbarProvider'
 import { GoogleTagManager } from '@next/third-parties/google'
+import WhatsAppWidget from '@/components/WhatsApp'
 
 const josefin = Josefin_Sans({ subsets: ['latin'] })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
                             <NextTopLoader />
                             <div id="scroll-target" />
                             {children}
+                            <WhatsAppWidget/>
                             <Footer />
                         </SnackbarProvider>
                     </ThemeProvider>

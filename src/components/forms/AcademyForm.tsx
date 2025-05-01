@@ -11,11 +11,7 @@ interface FormValuesAcademy {
     fullName: string
     phoneNumber: string
     email: string
-    gender: string
-    weight: string
-    healthConditions: string
-    referralSource: string
-    qualification: string
+    location: string
     pageSource: string | KeyTextField
 }
 
@@ -25,11 +21,7 @@ const validationSchemaAcademy = Yup.object({
         .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits')
         .required('Phone number is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
-    gender: Yup.string().required('Gender is required'),
-    weight: Yup.string().required('Weight is required'),
-    healthConditions: Yup.string().required('Health Condition is required'),
-    qualification: Yup.string().required('Qualification is required'),
-    referralSource: Yup.string().required('Please let us know how you heard about us'),
+    location: Yup.string().required('Location is required'),
 })
 
 const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyTextField; paymentLink: any }): JSX.Element => {
@@ -41,16 +33,12 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
             fullName: '',
             phoneNumber: '',
             email: '',
-            gender: '',
-            weight: '',
-            healthConditions: '',
-            referralSource: '',
-            qualification: '',
+            location: '',
             pageSource: pageSource,
         },
         validationSchema: validationSchemaAcademy,
         onSubmit: async (values: FormValuesAcademy, { resetForm }) => {
-            await submitForm(values, 'academyForm', `info@athayogliving.com`)
+            await submitForm(values, 'academyFormv2', `info@athayogliving.com`)
             if (!error) {
                 setShowOverlay(true)
                 resetForm()
@@ -85,17 +73,34 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
             )}
             <form onSubmit={formik.handleSubmit}>
                 {/* Full Name */}
-                <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Full Name</Typography>
-                <TextField
-                    fullWidth
-                    id="fullName"
-                    name="fullName"
-                    value={formik.values.fullName}
-                    onChange={formik.handleChange}
-                    error={Boolean(formik.errors.fullName)}
-                    helperText={formik.errors.fullName}
-                    sx={{ mb: 3 }}
-                />
+                <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>
+                    <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+                        <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Full Name</Typography>
+                        <TextField
+                            fullWidth
+                            id="fullName"
+                            name="fullName"
+                            value={formik.values.fullName}
+                            onChange={formik.handleChange}
+                            error={Boolean(formik.errors.fullName)}
+                            helperText={formik.errors.fullName}
+                            sx={{ mb: 3 }}
+                        />
+                    </Box>
+                    <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+                        <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Location</Typography>
+                        <TextField
+                            fullWidth
+                            id="location"
+                            name="location"
+                            value={formik.values.location}
+                            onChange={formik.handleChange}
+                            error={Boolean(formik.errors.location)}
+                            helperText={formik.errors.location}
+                            sx={{ mb: 3 }}
+                        />
+                    </Box>
+                </Box>
 
                 {/* Email and Phone Number side by side */}
                 <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>
@@ -125,91 +130,6 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
                             sx={{ mb: 3 }}
                         />
                     </Box>
-                </Box>
-
-                {/* Gender and Weight side by side */}
-                <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>
-                    <Box sx={{ width: { xs: '100%', md: '50%' } }}>
-                        <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Gender</Typography>
-                        <FormControl fullWidth sx={{ mb: 3 }}>
-                            <Select
-                                id="gender"
-                                name="gender"
-                                value={formik.values.gender}
-                                placeholder="Select Option"
-                                onChange={formik.handleChange}
-                                sx={{
-                                    '&& .MuiSelect-outlined': {
-                                        backgroundColor: '#fff',
-                                    },
-                                }}
-                                error={formik.touched.gender && Boolean(formik.errors.gender)}
-                            >
-                                <MenuItem value="">
-                                    <em>Select Gender</em>
-                                </MenuItem>
-                                <MenuItem value="male">Male</MenuItem>
-                                <MenuItem value="female">Female</MenuItem>
-                                <MenuItem value="other">Other</MenuItem>
-                            </Select>
-                            {formik.errors.gender ? <FormHelperText error>{formik.errors.gender}</FormHelperText> : null}
-                        </FormControl>
-                    </Box>
-
-                    <Box sx={{ width: { xs: '100%', md: '50%' } }}>
-                        <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Weight</Typography>
-                        <TextField
-                            fullWidth
-                            id="weight"
-                            name="weight"
-                            value={formik.values.weight}
-                            onChange={formik.handleChange}
-                            error={Boolean(formik.errors.weight)}
-                            helperText={formik.errors.weight}
-                            sx={{ mb: 3 }}
-                        />
-                    </Box>
-                </Box>
-
-                {/* Health Conditions */}
-                <Box sx={{ mb: 3 }}>
-                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Health Conditions</Typography>
-                    <TextField fullWidth id="healthConditions" name="healthConditions" value={formik.values.healthConditions} onChange={formik.handleChange} multiline rows={3} />
-                    {formik.errors.healthConditions ? <FormHelperText error>{formik.errors.healthConditions}</FormHelperText> : null}
-                </Box>
-                <Box sx={{ mb: 3 }}>
-                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Qualifications</Typography>
-                    <TextField fullWidth id="qualification" name="qualification" value={formik.values.qualification} onChange={formik.handleChange} multiline rows={3} />
-                    {formik.errors.qualification ? <FormHelperText error>{formik.errors.qualification}</FormHelperText> : null}
-                </Box>
-
-                {/* Referral Source */}
-                <Box sx={{ mb: 3 }}>
-                    <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Where did you hear about us?</Typography>
-                    <FormControl fullWidth>
-                        <Select
-                            id="referralSource"
-                            name="referralSource"
-                            value={formik.values.referralSource}
-                            onChange={formik.handleChange}
-                            error={formik.touched.referralSource && Boolean(formik.errors.referralSource)}
-                            sx={{
-                                '&& .MuiSelect-outlined': {
-                                    backgroundColor: '#fff',
-                                },
-                            }}
-                        >
-                            <MenuItem value="">
-                                <em>Select Option</em>
-                            </MenuItem>
-                            <MenuItem value="google">Google</MenuItem>
-                            <MenuItem value="facebook">Facebook</MenuItem>
-                            <MenuItem value="instagram">Instagram</MenuItem>
-                            <MenuItem value="wordOfMouth">Word of Mouth</MenuItem>
-                            <MenuItem value="alumni">Alumni</MenuItem>
-                        </Select>
-                        {formik.errors.referralSource ? <FormHelperText error>{formik.errors.referralSource}</FormHelperText> : null}
-                    </FormControl>
                 </Box>
 
                 {/* Submit Button */}
