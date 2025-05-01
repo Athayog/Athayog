@@ -6,6 +6,7 @@ import { LinkField } from '@prismicio/client'
 import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 import { Alert, Box, CircularProgress, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography } from '@mui/material'
+import ResetError from '../FormErrorReset'
 
 interface WorkshopForm {
     fullName: string
@@ -65,7 +66,6 @@ const WorkshopForm = ({ paymentLink, pageSource }: { paymentLink: LinkField; pag
                     setShowOverlay(true);
                 }
                 resetForm();
-                setSuccess(false)
                 setTimeout(() => {
                     window.location.href = redirectUrl;
                 }, 2000); // Redirect after 2 seconds
@@ -263,6 +263,8 @@ const WorkshopForm = ({ paymentLink, pageSource }: { paymentLink: LinkField; pag
                     </RegisterButton>
                 </Box>
             </form>
+
+            <ResetError />
 
             {/* Success Snackbar */}
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={success} autoHideDuration={4000} onClose={() => useFormStore.setState({ success: false })}>

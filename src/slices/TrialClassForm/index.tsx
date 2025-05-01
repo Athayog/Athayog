@@ -129,7 +129,12 @@ const TrialClassForm = ({ slice }: TrialClassFormProps): JSX.Element => {
                                 />
                             </Box>
                         </Box>
-
+                        {/* Error Snackbar */}
+                        <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
+                            <Alert onClose={() => useFormStore.setState({ error: null })} severity="error">
+                                {error}
+                            </Alert>
+                        </Snackbar>
 
                         {/* Submit Button */}
                         <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>

@@ -6,6 +6,7 @@ import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 import { Alert, Box, Button, Divider, FormControl, FormHelperText, MenuItem, Select, styled, TextField, Typography } from '@mui/material'
 import { useRouter } from 'next/navigation'
+import ResetError from '../FormErrorReset'
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -57,7 +58,7 @@ const validationSchemaCareer = Yup.object({
 })
 
 const CareerForm = (): JSX.Element => {
-    const { loading, error, success, submitForm, setSuccess } = useFormStore()
+    const { loading, error, success, submitForm, } = useFormStore()
     const [fileError, setFileError] = useState('')
     const router = useRouter()
 
@@ -103,7 +104,6 @@ const CareerForm = (): JSX.Element => {
             await submitForm(formDataWithoutFile, 'resume', 'info@athayogliving.com', file ?? undefined, 'resume')
             if (!error) {
                 resetForm()
-                setSuccess(false)
                 router.push('/thank-you')
             }
         },
@@ -171,7 +171,7 @@ const CareerForm = (): JSX.Element => {
                     />
                 </Box>
                 <Divider sx={{ borderColor: '#7D9571', height: '3px', margin: '50px 0px' }} />
-
+                <ResetError />
                 {/* Designation and Current Company side by side */}
                 <Box>
                     <Typography sx={{ marginBottom: '30px', color: '#284E01', fontWeight: '700', fontSize: { xs: '28px', md: '35px' } }}>Work Information</Typography>

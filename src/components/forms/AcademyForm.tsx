@@ -6,6 +6,7 @@ import RegisterButton from '@/components/elements/button/RegisterButton'
 import { Box, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography, Alert, CircularProgress } from '@mui/material'
 import { KeyTextField, LinkField } from '@prismicio/client'
 import { useState } from 'react'
+import ResetError from '../FormErrorReset'
 
 interface FormValuesAcademy {
     fullName: string
@@ -25,7 +26,7 @@ const validationSchemaAcademy = Yup.object({
 })
 
 const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyTextField; paymentLink: any }): JSX.Element => {
-    const { loading, error, success, submitForm, setSuccess } = useFormStore()
+    const { loading, error, success, submitForm } = useFormStore()
     const [showOverlay, setShowOverlay] = useState(false)
 
     const formik = useFormik<FormValuesAcademy>({
@@ -42,7 +43,6 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
             if (!error) {
                 setShowOverlay(true)
                 resetForm()
-                setSuccess(false)
                 setTimeout(() => {
                     window.location.href = paymentLink.url as unknown as string
                 }, 2000) // Redirect after 2 seconds
@@ -72,6 +72,7 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
                     </Typography>
                 </Box>
             )}
+            <ResetError />
             <form onSubmit={formik.handleSubmit}>
                 {/* Full Name */}
                 <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>

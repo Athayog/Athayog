@@ -1,15 +1,16 @@
 'use client'
-import useFormStore from '@/store/useFormStore'
-import theme from '@/styles/theme'
 import { Alert, Box, Button, Snackbar, TextareaAutosize, TextField, Typography } from '@mui/material'
-import { styled } from '@mui/system'
 import { Content } from '@prismicio/client'
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
 import { PrismicNextImage } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
-import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik'
-import { useState } from 'react'
+import { styled } from '@mui/system'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import * as Yup from 'yup'
+import ResetError from '@/components/FormErrorReset'
+import theme from '@/styles/theme'
+import useFormStore from '@/store/useFormStore'
 
 // Validation schema using Yup
 const validationSchema = Yup.object({
@@ -144,13 +145,12 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
         type: 'success' | 'error'
         message: string
     } | null>(null)
-    const { submitForm, loading, error, setSuccess } = useFormStore()
+    const { submitForm, loading, error } = useFormStore()
     const linkUrl = (slice.primary.link_to_email as any).url
     const router = useRouter()
     const handleSubmit = async (values: FormData, { resetForm }: FormikHelpers<FormData>) => {
         try {
             await submitForm(values, 'contactMessages', 'info@athayogliving.com')
-            setSuccess(false)
             router.push('/thank-you')
             resetForm()
         } catch {
@@ -245,6 +245,7 @@ const ContactUsForm = ({ slice }: ContactUsFormProps): JSX.Element => {
                             </Typography>
                         </ContactDetails>
                     </Box>
+                    <ResetError />
                     <Snackbar open={!!snackbar} autoHideDuration={6000} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
                         <Alert onClose={handleCloseSnackbar} severity={snackbar?.type} sx={{ width: '100%' }}>
                             {snackbar?.message}

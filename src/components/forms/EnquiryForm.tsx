@@ -4,8 +4,10 @@ import { useFormik } from 'formik'
 import { useRouter } from 'next/navigation'
 import useFormStore from '@/store/useFormStore'
 import { KeyTextField } from '@prismicio/client'
-import { Box, TextField, Typography } from '@mui/material'
+import { Alert, Box, Snackbar, TextField, Typography } from '@mui/material'
 import RegisterButton from '@/components/elements/button/RegisterButton'
+import { useEffect } from 'react'
+import ResetError from '../FormErrorReset'
 
 interface FormValuesEnquiry {
     fullName: string
@@ -25,7 +27,7 @@ const validationSchemaEnquiry = Yup.object({
 })
 
 const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX.Element => {
-    const { loading, error, success, submitForm, setSuccess } = useFormStore()
+    const { loading, error, success, submitForm } = useFormStore()
     const router = useRouter()
     const formik = useFormik<FormValuesEnquiry>({
         initialValues: {
@@ -40,7 +42,6 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
             await submitForm(values, 'enquiryFormsv2', `info@athayogliving.com`)
             if (!error) {
                 resetForm()
-                setSuccess(false)
                 router.push('/thank-you')
             }
         },
@@ -81,7 +82,7 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
 
                     </Box>
                 </Box>
-
+                <ResetError />
                 {/* Email and Phone Number side by side */}
                 <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>
                     <Box sx={{ width: { xs: '100%', md: '50%' } }}>
@@ -112,6 +113,12 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
                     </Box>
                 </Box>
 
+                {/* Error Snackbar */}
+                <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
+                    <Alert onClose={() => useFormStore.setState({ error: null })} severity="error">
+                        {error}
+                    </Alert>
+                </Snackbar>
 
                 {/* Submit Button */}
                 <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>

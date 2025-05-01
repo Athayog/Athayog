@@ -23,6 +23,7 @@ const useFormStore = create<FormState>((set) => ({
     submitForm: async (formData: { [key: string]: any }, collectionName, apiUrl, file, fileCollection) => {
         set({ loading: true, error: null, success: false })
         try {
+
             if (file) {
                 // Create a reference to the file in Firebase Storage
                 const storageRef = ref(storage, `${fileCollection ? fileCollection + '/' : ''}${file.name}`)
@@ -42,7 +43,7 @@ const useFormStore = create<FormState>((set) => ({
 
             // Handle API call in the background without blocking UI
             if (apiUrl) {
-                ;(async () => {
+                ; (async () => {
                     try {
                         formData['access_key'] = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
                         const response = await fetch('https://api.web3forms.com/submit', {

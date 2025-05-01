@@ -5,6 +5,7 @@ import useFormStore from '@/store/useFormStore'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 import { Box, FormControl, FormHelperText, MenuItem, Select, Snackbar, TextField, Typography, Alert } from '@mui/material'
 import { useRouter } from 'next/navigation'
+import ResetError from '../FormErrorReset'
 
 interface FormValuesWeightLoss {
     fullName: string
@@ -27,7 +28,7 @@ const validationSchemaWeightLoss = Yup.object({
 })
 
 const WeightLossForm = (): JSX.Element => {
-    const { loading, error, success, submitForm, setSuccess } = useFormStore()
+    const { loading, error, success, submitForm } = useFormStore()
     const router = useRouter()
     const formik = useFormik<FormValuesWeightLoss>({
         initialValues: {
@@ -43,7 +44,6 @@ const WeightLossForm = (): JSX.Element => {
             await submitForm(values, 'weightLossForm', `info@athayogliving.com`)
             if (!error) {
                 resetForm()
-                setSuccess(false);
                 router.push('/thank-you')
             }
         },
@@ -94,7 +94,7 @@ const WeightLossForm = (): JSX.Element => {
                         />
                     </Box>
                 </Box>
-
+                <ResetError />
                 {/* Gender and Weight side by side */}
                 <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>
                     <Box sx={{ width: { xs: '100%', md: '50%' } }}>
