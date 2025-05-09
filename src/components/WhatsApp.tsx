@@ -26,6 +26,7 @@ const WhatsAppWidget: React.FC = () => {
             <Fab
                 color="success"
                 aria-label="whatsapp"
+                data-gtm="whatsapp-click"
                 onClick={handleWhatsAppClick}
             >
                 <WhatsAppIcon />
@@ -39,6 +40,7 @@ const WhatsAppWidget: React.FC = () => {
                     },
                 }}
                 aria-label="phone"
+                data-gtm="phone-click"
                 onClick={() => {
                     const phoneNumber = '+919611771434'; // Replace with your phone number
                     window.open(`tel:${phoneNumber}`, '_self');
