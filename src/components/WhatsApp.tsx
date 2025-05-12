@@ -7,7 +7,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 const WhatsAppWidget: React.FC = () => {
     const handleWhatsAppClick = () => {
         const phoneNumber = '+919611771434';
-        const whatsappUrl = `https://wa.me/${phoneNumber}}`;
+        const whatsappUrl = `https://wa.me/${phoneNumber}`;
         window.open(whatsappUrl, '_blank');
     };
 
