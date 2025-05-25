@@ -1,0 +1,51 @@
+{
+  "id": "arambha_registration",
+  "type": "SharedSlice",
+  "name": "ArambhaRegistration",
+  "description": "ArambhaRegistration",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "leftimage": {
+          "type": "Image",
+          "config": {
+            "label": "LeftImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "rightimage": {
+          "type": "Image",
+          "config": {
+            "label": "RightImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "background_color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

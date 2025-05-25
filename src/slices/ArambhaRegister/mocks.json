@@ -1,0 +1,188 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Yoga Aarambha 2025"
+			},
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Yoga for One Earth, One Health"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Join AthaYoga’s International Day of Yoga Celebration!",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"dates": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "June 21st, 2025 - Empower Your Mind, Body & Spirit",
+							"spans": [
+								{
+									"type": "strong",
+									"start": 0,
+									"end": 15
+								}
+							]
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"leftimage": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+					"width": 6000,
+					"height": 4000
+				},
+				"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+				"width": 6000,
+				"height": 4000,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "thank",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"rightimage": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+					"width": 3344,
+					"height": 2509
+				},
+				"url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+				"width": 3344,
+				"height": 2509,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"alt": "outline",
+				"credits": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"abouteventtitle": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "About the Event"
+			},
+			"abouteventdescription": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Yoga Aarambha 2025 invites you to move, heal and connect under the theme 'Yoga for One Earth, One Health.' This transformative gathering embraces the idea that personal well-being and planetary health are deeply intertwined.",
+							"spans": [
+								{
+									"type": "strong",
+									"start": 59,
+									"end": 120
+								}
+							]
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Organized by AthaYoga Living in association with OIS and BIYM, the event brings together individuals from all walks of life to experience yoga as more than just movement as a powerful tool for unity, sustainability, and collective healing.",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Through breath, mindfulness, and movement, we honour both our inner ecosystem and the world we inhabit. Let’s come together to nurture harmony within ourselves and with our planet.Magna voluptate officia exercitation velit ad enim consequat dolore occaecat excepteur. Eiusmod nostrud est excepteur occaecat nisi mollit commodo laboris nisi et minim minim.",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"background_color": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#F0E6EF"
+								}
+							]
+						]
+					}
+				]
+			},
+			"lineart": {
+				"__TYPE__": "ImageContent",
+				"provider": "imgix",
+				"url": "https://images.unsplash.com/photo-1616679312958-a86d9539afae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDgwMDc2MjZ8MA&ixlib=rb-4.1.0&q=85",
+				"alt": "orange fruit on white ceramic plate",
+				"origin": {
+					"id": "Jr7t5QviCDM",
+					"url": "https://images.unsplash.com/photo-1616679312958-a86d9539afae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDgwMDc2MjZ8MA&ixlib=rb-4.1.0&q=85",
+					"width": 3024,
+					"height": 4032
+				},
+				"width": 3024,
+				"height": 4032,
+				"edit": {
+					"background": "transparent",
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					}
+				},
+				"thumbnails": {}
+			},
+			"registration_button_title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Register Now"
+			},
+			"registration_button_subtitle": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Free & For Everyone"
+			}
+		},
+		"items": []
+	}
+]

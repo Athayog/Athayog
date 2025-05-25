@@ -1087,6 +1087,252 @@ type AmenitiesSliceVariation = AmenitiesSliceDefault
 export type AmenitiesSlice = prismic.SharedSlice<'amenities', AmenitiesSliceVariation>
 
 /**
+ * Item in *ArambhaRegister → Default → Primary → background_color*
+ */
+export interface ArambhaRegisterSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *ArambhaRegister → Default → Primary → background_color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *ArambhaRegister → Default → Primary*
+ */
+export interface ArambhaRegisterSliceDefaultPrimary {
+    /**
+     * Title field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Subtitle field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * Description field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+
+    /**
+     * Dates field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.dates
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    dates: prismic.RichTextField
+
+    /**
+     * Registration Button Title field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.registration_button_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    registration_button_title: prismic.KeyTextField
+
+    /**
+     * Registration Button Subtitle field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.registration_button_subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    registration_button_subtitle: prismic.KeyTextField
+
+    /**
+     * LeftImage field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.leftimage
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    leftimage: prismic.ImageField<never>
+
+    /**
+     * RightImage field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.rightimage
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    rightimage: prismic.ImageField<never>
+
+    /**
+     * LineArt field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.lineart
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    lineart: prismic.ImageField<never>
+
+    /**
+     * AboutEventTitle field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.abouteventtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    abouteventtitle: prismic.KeyTextField
+
+    /**
+     * AboutEventDescription field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.abouteventdescription
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    abouteventdescription: prismic.RichTextField
+
+    /**
+     * background_color field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<ArambhaRegisterSliceDefaultPrimaryBackgroundColorItem>>
+
+    /**
+     * Registration Button Link field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.registration_button_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    registration_button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Default variation for ArambhaRegister Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArambhaRegisterSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ArambhaRegisterSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *ArambhaRegister*
+ */
+type ArambhaRegisterSliceVariation = ArambhaRegisterSliceDefault
+
+/**
+ * ArambhaRegister Shared Slice
+ *
+ * - **API ID**: `arambha_register`
+ * - **Description**: ArambhaRegister
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArambhaRegisterSlice = prismic.SharedSlice<'arambha_register', ArambhaRegisterSliceVariation>
+
+/**
+ * Item in *ArambhaRegistration → Default → Primary → background_color*
+ */
+export interface ArambhaRegistrationSliceDefaultPrimaryBackgroundColorItem {
+    /**
+     * color field in *ArambhaRegistration → Default → Primary → background_color*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_registration.default.primary.background_color[].color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    color: prismic.ColorField
+}
+
+/**
+ * Primary content in *ArambhaRegistration → Default → Primary*
+ */
+export interface ArambhaRegistrationSliceDefaultPrimary {
+    /**
+     * LeftImage field in *ArambhaRegistration → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_registration.default.primary.leftimage
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    leftimage: prismic.ImageField<never>
+
+    /**
+     * RightImage field in *ArambhaRegistration → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_registration.default.primary.rightimage
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    rightimage: prismic.ImageField<never>
+
+    /**
+     * background_color field in *ArambhaRegistration → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_registration.default.primary.background_color[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    background_color: prismic.GroupField<Simplify<ArambhaRegistrationSliceDefaultPrimaryBackgroundColorItem>>
+}
+
+/**
+ * Default variation for ArambhaRegistration Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArambhaRegistrationSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ArambhaRegistrationSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *ArambhaRegistration*
+ */
+type ArambhaRegistrationSliceVariation = ArambhaRegistrationSliceDefault
+
+/**
+ * ArambhaRegistration Shared Slice
+ *
+ * - **API ID**: `arambha_registration`
+ * - **Description**: ArambhaRegistration
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArambhaRegistrationSlice = prismic.SharedSlice<'arambha_registration', ArambhaRegistrationSliceVariation>
+
+/**
  * Primary content in *BlogsTitle → Default → Primary*
  */
 export interface BlogsTitleSliceDefaultPrimary {
@@ -8360,6 +8606,16 @@ declare module '@prismicio/client' {
             AmenitiesSliceDefaultPrimary,
             AmenitiesSliceVariation,
             AmenitiesSliceDefault,
+            ArambhaRegisterSlice,
+            ArambhaRegisterSliceDefaultPrimaryBackgroundColorItem,
+            ArambhaRegisterSliceDefaultPrimary,
+            ArambhaRegisterSliceVariation,
+            ArambhaRegisterSliceDefault,
+            ArambhaRegistrationSlice,
+            ArambhaRegistrationSliceDefaultPrimaryBackgroundColorItem,
+            ArambhaRegistrationSliceDefaultPrimary,
+            ArambhaRegistrationSliceVariation,
+            ArambhaRegistrationSliceDefault,
             BlogsTitleSlice,
             BlogsTitleSliceDefaultPrimary,
             BlogsTitleSliceVariation,
