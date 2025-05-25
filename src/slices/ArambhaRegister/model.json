@@ -1,0 +1,132 @@
+{
+  "id": "arambha_register",
+  "type": "SharedSlice",
+  "name": "ArambhaRegister",
+  "description": "ArambhaRegister",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink"
+          }
+        },
+        "dates": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Dates",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading2,heading3,heading4,heading5,heading6,strong,em,paragraph"
+          }
+        },
+        "registration_button_title": {
+          "type": "Text",
+          "config": {
+            "label": "Registration Button Title",
+            "placeholder": ""
+          }
+        },
+        "registration_button_subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Registration Button Subtitle",
+            "placeholder": ""
+          }
+        },
+        "leftimage": {
+          "type": "Image",
+          "config": {
+            "label": "LeftImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "rightimage": {
+          "type": "Image",
+          "config": {
+            "label": "RightImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "lineart": {
+          "type": "Image",
+          "config": {
+            "label": "LineArt",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "abouteventtitle": {
+          "type": "Text",
+          "config": {
+            "label": "AboutEventTitle",
+            "placeholder": ""
+          }
+        },
+        "abouteventdescription": {
+          "type": "StructuredText",
+          "config": {
+            "label": "AboutEventDescription",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "background_color": {
+          "type": "Group",
+          "config": {
+            "label": "background_color",
+            "repeat": true,
+            "fields": {
+              "color": {
+                "type": "Color",
+                "config": {
+                  "label": "color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "registration_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Registration Button Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

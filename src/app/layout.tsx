@@ -4,7 +4,7 @@ import Navbar from '@/components/_header'
 import Footer from '@/components/_footer'
 import { repositoryName } from '@/prismicio'
 import NextTopLoader from 'nextjs-toploader'
-import { Josefin_Sans } from 'next/font/google'
+import { Josefin_Sans, Montserrat } from 'next/font/google'
 import { PrismicPreview } from '@prismicio/next'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
@@ -12,7 +12,17 @@ import { SnackbarProvider } from '@/components/SnackbarProvider'
 import { GoogleTagManager } from '@next/third-parties/google'
 import WhatsAppWidget from '@/components/WhatsApp'
 
-const josefin = Josefin_Sans({ subsets: ['latin'] })
+const josefin = Josefin_Sans({
+    subsets: ['latin'],
+    variable: '--font-josefin',
+    display: 'swap',
+})
+
+const monsterrat = Montserrat({
+    subsets: ['latin'],
+    variable: '--font-montserrat',
+    display: 'swap',
+})
 
 export default function RootLayout({
     children,
@@ -20,13 +30,13 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" className={`${josefin.variable} ${monsterrat.variable}`}>
             <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
-                <meta name="google-site-verification" content="MFdD5TUc66yWX-w0hwFHmVkJWyt8BAkzk-g3jR4KLlo" />
+                <meta name="google-site-verification" content="MFdD5TUc66yWX-w0hwFHmVkJWyt8BAkzk-g3jR4KLlo" />
                 <GoogleTagManager gtmId="GTM-N4LH3M3" />
             </head>
-            <body className={`${josefin.className}`}>
+            <body >
                 <AppRouterCacheProvider>
                     <ThemeProvider theme={theme}>
                         <SnackbarProvider>
@@ -35,7 +45,7 @@ export default function RootLayout({
                             <NextTopLoader />
                             <div id="scroll-target" />
                             {children}
-                            <WhatsAppWidget/>
+                            <WhatsAppWidget />
                             <Footer />
                         </SnackbarProvider>
                     </ThemeProvider>

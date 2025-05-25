@@ -6,3 +6,13 @@ a {
 .swiper-button-disabled {
     opacity: 0.5;
 }
+
+/* Default font */
+body {
+    font-family: var(--font-josefin), sans-serif;
+}
+
+/* Use Montserrat anywhere like this: */
+.montserrat {
+    font-family: var(--font-montserrat), sans-serif;
+}
