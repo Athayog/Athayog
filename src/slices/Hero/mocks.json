@@ -19,6 +19,7 @@
 				"type": "Text"
 			},
 			"button_link": {
+				"key": "87701afc-5287-4bb3-bbba-e6feaf6d2ef4",
 				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
@@ -27,13 +28,11 @@
 			},
 			"video_background_link": {
 				"__TYPE__": "LinkContent",
+				"key": "d0b2b9f5-7bb3-4ee0-885f-b3b72e4c22e2",
 				"value": {
-					"__TYPE__": "FileLink",
-					"id": "mock_Media_link",
-					"kind": "file",
-					"name": "mock_name",
-					"url": "https://source.unsplash.com/daily",
-					"size": "0"
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "possible"
 				}
 			}
 		},

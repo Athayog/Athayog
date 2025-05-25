@@ -4260,14 +4260,14 @@ export interface HeroSliceDefaultPrimary {
     button_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 
     /**
-     * Video Background Link field in *Hero → Default → Primary*
+     * Video background field in *Hero → Default → Primary*
      *
-     * - **Field Type**: Link to Media
+     * - **Field Type**: Link
      * - **Placeholder**: *None*
      * - **API ID Path**: hero.default.primary.video_background_link
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    video_background_link: prismic.LinkToMediaField<prismic.FieldState, never>
+    video_background_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
