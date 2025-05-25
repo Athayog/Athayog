@@ -348,6 +348,9 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | HighlightedGuestListSlice
+    | ArambhaRegisterSlice
+    | ArambhaRegistrationSlice
     | RichTextSlice
     | BlogsTitleSlice
     | WeightLossVideosSlice
@@ -4618,6 +4621,99 @@ type HeroWithCenterTextSliceVariation = HeroWithCenterTextSliceDefault
 export type HeroWithCenterTextSlice = prismic.SharedSlice<'hero_with_center_text', HeroWithCenterTextSliceVariation>
 
 /**
+ * Item in *HighlightedGuestList → With Image → Primary → Special Invitees*
+ */
+export interface HighlightedGuestListSliceWithImagePrimaryInviteesItem {
+    /**
+     * Invitee Description field in *HighlightedGuestList → With Image → Primary → Special Invitees*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: highlighted_guest_list.with_image.primary.invitees[].invitee_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    invitee_description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *HighlightedGuestList → With Image → Primary*
+ */
+export interface HighlightedGuestListSliceWithImagePrimary {
+    /**
+     * Section Title field in *HighlightedGuestList → With Image → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: highlighted_guest_list.with_image.primary.section_title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    section_title: prismic.TitleField
+
+    /**
+     * Chief Guest field in *HighlightedGuestList → With Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: highlighted_guest_list.with_image.primary.highlighted_guest
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    highlighted_guest: prismic.RichTextField
+
+    /**
+     * Chief Guest Role/Title field in *HighlightedGuestList → With Image → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: highlighted_guest_list.with_image.primary.highlighted_guest_role
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    highlighted_guest_role: prismic.RichTextField
+
+    /**
+     * Special Invitees field in *HighlightedGuestList → With Image → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: highlighted_guest_list.with_image.primary.invitees[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    invitees: prismic.GroupField<Simplify<HighlightedGuestListSliceWithImagePrimaryInviteesItem>>
+
+    /**
+     * Side Image field in *HighlightedGuestList → With Image → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: highlighted_guest_list.with_image.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * With Image variation for HighlightedGuestList Slice
+ *
+ * - **API ID**: `with_image`
+ * - **Description**: Displays a guest list with a highlighted chief guest and invitees, alongside an accompanying image.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightedGuestListSliceWithImage = prismic.SharedSliceVariation<'with_image', Simplify<HighlightedGuestListSliceWithImagePrimary>, never>
+
+/**
+ * Slice variation for *HighlightedGuestList*
+ */
+type HighlightedGuestListSliceVariation = HighlightedGuestListSliceWithImage
+
+/**
+ * HighlightedGuestList Shared Slice
+ *
+ * - **API ID**: `highlighted_guest_list`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightedGuestListSlice = prismic.SharedSlice<'highlighted_guest_list', HighlightedGuestListSliceVariation>
+
+/**
  * Item in *HowYogaHelps → Default → Primary → Content*
  */
 export interface HowYogaHelpsSliceDefaultPrimaryContentItem {
@@ -8774,6 +8870,11 @@ declare module '@prismicio/client' {
             HeroWithCenterTextSliceDefaultPrimary,
             HeroWithCenterTextSliceVariation,
             HeroWithCenterTextSliceDefault,
+            HighlightedGuestListSlice,
+            HighlightedGuestListSliceWithImagePrimaryInviteesItem,
+            HighlightedGuestListSliceWithImagePrimary,
+            HighlightedGuestListSliceVariation,
+            HighlightedGuestListSliceWithImage,
             HowYogaHelpsSlice,
             HowYogaHelpsSliceDefaultPrimaryContentItem,
             HowYogaHelpsSliceDefaultPrimary,

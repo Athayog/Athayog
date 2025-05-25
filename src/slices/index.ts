@@ -38,6 +38,7 @@ export const components = {
     gurus: dynamic(() => import('./Gurus')),
     hero: dynamic(() => import('./Hero')),
     hero_with_center_text: dynamic(() => import('./HeroWithCenterText')),
+    highlighted_guest_list: dynamic(() => import('./HighlightedGuestList')),
     how_yoga_helps: dynamic(() => import('./HowYogaHelps')),
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
     left_content_right_slider_vertical: dynamic(() => import('./LeftContentRightSliderVertical')),

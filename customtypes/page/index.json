@@ -27,6 +27,15 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "highlighted_guest_list": {
+                            "type": "SharedSlice"
+                        },
+                        "arambha_register": {
+                            "type": "SharedSlice"
+                        },
+                        "arambha_registration": {
+                            "type": "SharedSlice"
+                        },
                         "rich_text": {
                             "type": "SharedSlice"
                         },

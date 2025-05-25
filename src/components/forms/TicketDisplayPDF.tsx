@@ -60,7 +60,7 @@ const TicketDisplay: React.FC<TicketDisplayProps> = ({ submittedData, qrData }) 
             <Box
                 ref={ticketRef}
                 sx={{
-                    padding: 4,
+
                     backgroundColor: '#fff',
                     borderRadius: 2,
                     boxShadow: 3,
