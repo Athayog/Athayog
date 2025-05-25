@@ -90,7 +90,7 @@ const Hero = ({
     return (
         <HeroContainer>
             <video autoPlay loop muted playsInline style={videoStyles as React.CSSProperties}>
-                <source src={videoUrl} type="video/mp4" />
+                <source src={'https://firebasestorage.googleapis.com/v0/b/athayog-e4ff7.appspot.com/o/ZvWlkrVsGrYSwDM7_Source.mp4?alt=media&token=dc6a3d66-9dfc-4225-a24b-57e634ac6216'} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <Gradient />

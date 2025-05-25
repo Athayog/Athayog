@@ -45,9 +45,12 @@
         "video_background_link": {
           "type": "Link",
           "config": {
-            "label": "Video Background Link",
+            "label": "Video background",
             "placeholder": "",
-            "select": "media"
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
           }
         }
       },
