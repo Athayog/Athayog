@@ -348,6 +348,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | EventScheduleDetailsSlice
     | HighlightedGuestListSlice
     | ArambhaRegisterSlice
     | ArambhaRegistrationSlice
@@ -3694,6 +3695,109 @@ type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type EventHighlightsGallerySlice = prismic.SharedSlice<'event_highlights_gallery', EventHighlightsGallerySliceVariation>
+
+/**
+ * Item in *EventScheduleDetails → Default → Primary → Schedule Items*
+ */
+export interface EventScheduleDetailsSliceDefaultPrimaryScheduleItemsItem {
+    /**
+     * Time Range field in *EventScheduleDetails → Default → Primary → Schedule Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_schedule_details.default.primary.schedule_items[].time_range
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    time_range: prismic.KeyTextField
+
+    /**
+     * Activity Description field in *EventScheduleDetails → Default → Primary → Schedule Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_schedule_details.default.primary.schedule_items[].activity_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    activity_description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *EventScheduleDetails → Default → Primary*
+ */
+export interface EventScheduleDetailsSliceDefaultPrimary {
+    /**
+     * Event Date field in *EventScheduleDetails → Default → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_schedule_details.default.primary.date
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    date: prismic.TitleField
+
+    /**
+     * Day of Week field in *EventScheduleDetails → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_schedule_details.default.primary.day_of_week
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    day_of_week: prismic.KeyTextField
+
+    /**
+     * Event Location field in *EventScheduleDetails → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_schedule_details.default.primary.location
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    location: prismic.RichTextField
+
+    /**
+     * Schedule Items field in *EventScheduleDetails → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_schedule_details.default.primary.schedule_items[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    schedule_items: prismic.GroupField<Simplify<EventScheduleDetailsSliceDefaultPrimaryScheduleItemsItem>>
+
+    /**
+     * CTA Button field in *EventScheduleDetails → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_schedule_details.default.primary.cta_register
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    cta_register: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Default variation for EventScheduleDetails Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Displays all event meta information and lists scheduled items with time and description.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventScheduleDetailsSliceDefault = prismic.SharedSliceVariation<'default', Simplify<EventScheduleDetailsSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *EventScheduleDetails*
+ */
+type EventScheduleDetailsSliceVariation = EventScheduleDetailsSliceDefault
+
+/**
+ * EventScheduleDetails Shared Slice
+ *
+ * - **API ID**: `event_schedule_details`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventScheduleDetailsSlice = prismic.SharedSlice<'event_schedule_details', EventScheduleDetailsSliceVariation>
 
 /**
  * Item in *Faq → Default → Primary → Faqs*
@@ -8823,6 +8927,11 @@ declare module '@prismicio/client' {
             EventHighlightsGallerySliceDefaultPrimary,
             EventHighlightsGallerySliceVariation,
             EventHighlightsGallerySliceDefault,
+            EventScheduleDetailsSlice,
+            EventScheduleDetailsSliceDefaultPrimaryScheduleItemsItem,
+            EventScheduleDetailsSliceDefaultPrimary,
+            EventScheduleDetailsSliceVariation,
+            EventScheduleDetailsSliceDefault,
             FaqSlice,
             FaqSliceDefaultPrimaryFaqsItem,
             FaqSliceDefaultPrimary,

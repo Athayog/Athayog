@@ -28,6 +28,7 @@ export const components = {
     eligible: dynamic(() => import('./Eligible')),
     enroll_section: dynamic(() => import('./EnrollSection')),
     event_highlights_gallery: dynamic(() => import('./MultiGallerySlider')),
+    event_schedule_details: dynamic(() => import('./EventScheduleDetails')),
     faq: dynamic(() => import('./Faq')),
     group_class: dynamic(() => import('./GroupClass')),
     group_class_format: dynamic(() => import('./GroupClassFormat')),
