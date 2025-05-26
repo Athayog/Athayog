@@ -27,6 +27,12 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "icon_feature_grid": {
+                            "type": "SharedSlice"
+                        },
+                        "map": {
+                            "type": "SharedSlice"
+                        },
                         "event_schedule_details": {
                             "type": "SharedSlice"
                         },

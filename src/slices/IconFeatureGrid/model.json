@@ -1,0 +1,51 @@
+{
+    "type": "SharedSlice",
+    "id": "icon_feature_grid",
+    "name": "IconFeatureGrid",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "description": "A standard grid layout for showcasing multiple features or activities with icons.",
+            "version": "initial",
+            "imageUrl": "",
+            "docURL": "...",
+            "primary": {
+                "title": {
+                    "type": "StructuredText",
+                    "config": {
+                        "single": "heading2",
+                        "label": "Title"
+                    }
+                },
+                "items": {
+                    "type": "Group",
+                    "config": {
+                        "label": "Items",
+                        "fields": {
+                            "icon": {
+                                "type": "Image",
+                                "config": {
+                                    "label": "Icon"
+                                }
+                            },
+                            "item_title": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Item Title"
+                                }
+                            },
+                            "item_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "label": "Item Description"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

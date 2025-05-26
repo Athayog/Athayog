@@ -348,6 +348,8 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | IconFeatureGridSlice
+    | MapSlice
     | EventScheduleDetailsSlice
     | HighlightedGuestListSlice
     | ArambhaRegisterSlice
@@ -4891,6 +4893,89 @@ type HowYogaHelpsSliceVariation = HowYogaHelpsSliceDefault
 export type HowYogaHelpsSlice = prismic.SharedSlice<'how_yoga_helps', HowYogaHelpsSliceVariation>
 
 /**
+ * Item in *IconFeatureGrid → Default → Primary → Items*
+ */
+export interface IconFeatureGridSliceDefaultPrimaryItemsItem {
+    /**
+     * Icon field in *IconFeatureGrid → Default → Primary → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_feature_grid.default.primary.items[].icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Item Title field in *IconFeatureGrid → Default → Primary → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_feature_grid.default.primary.items[].item_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    item_title: prismic.KeyTextField
+
+    /**
+     * Item Description field in *IconFeatureGrid → Default → Primary → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_feature_grid.default.primary.items[].item_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    item_description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *IconFeatureGrid → Default → Primary*
+ */
+export interface IconFeatureGridSliceDefaultPrimary {
+    /**
+     * Title field in *IconFeatureGrid → Default → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_feature_grid.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.TitleField
+
+    /**
+     * Items field in *IconFeatureGrid → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_feature_grid.default.primary.items[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    items: prismic.GroupField<Simplify<IconFeatureGridSliceDefaultPrimaryItemsItem>>
+}
+
+/**
+ * Default variation for IconFeatureGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: A standard grid layout for showcasing multiple features or activities with icons.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IconFeatureGridSliceDefault = prismic.SharedSliceVariation<'default', Simplify<IconFeatureGridSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *IconFeatureGrid*
+ */
+type IconFeatureGridSliceVariation = IconFeatureGridSliceDefault
+
+/**
+ * IconFeatureGrid Shared Slice
+ *
+ * - **API ID**: `icon_feature_grid`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IconFeatureGridSlice = prismic.SharedSlice<'icon_feature_grid', IconFeatureGridSliceVariation>
+
+/**
  * Primary content in *LeftContentRightImage → Default → Primary*
  */
 export interface LeftContentRightImageSliceDefaultPrimary {
@@ -5158,6 +5243,44 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
+
+/**
+ * Primary content in *Map → Default → Primary*
+ */
+export interface MapSliceDefaultPrimary {
+    /**
+     * Map field in *Map → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: map.default.primary.map
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    map: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for Map Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MapSliceDefault = prismic.SharedSliceVariation<'default', Simplify<MapSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *Map*
+ */
+type MapSliceVariation = MapSliceDefault
+
+/**
+ * Map Shared Slice
+ *
+ * - **API ID**: `map`
+ * - **Description**: Map
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MapSlice = prismic.SharedSlice<'map', MapSliceVariation>
 
 /**
  * Item in *MentalHealthContent → Default → Primary → Background Color*
@@ -8989,6 +9112,11 @@ declare module '@prismicio/client' {
             HowYogaHelpsSliceDefaultPrimary,
             HowYogaHelpsSliceVariation,
             HowYogaHelpsSliceDefault,
+            IconFeatureGridSlice,
+            IconFeatureGridSliceDefaultPrimaryItemsItem,
+            IconFeatureGridSliceDefaultPrimary,
+            IconFeatureGridSliceVariation,
+            IconFeatureGridSliceDefault,
             LeftContentRightImageSlice,
             LeftContentRightImageSliceDefaultPrimary,
             LeftContentRightImageSliceVariation,
@@ -9002,6 +9130,10 @@ declare module '@prismicio/client' {
             LeftImageRighContentSliceDefaultPrimary,
             LeftImageRighContentSliceVariation,
             LeftImageRighContentSliceDefault,
+            MapSlice,
+            MapSliceDefaultPrimary,
+            MapSliceVariation,
+            MapSliceDefault,
             MentalHealthContentSlice,
             MentalHealthContentSliceDefaultPrimaryBackgroundColorItem,
             MentalHealthContentSliceDefaultPrimary,
