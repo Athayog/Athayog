@@ -22,7 +22,9 @@ const SimpleGridWithDescription: FC<SimpleGridWithDescriptionProps> = ({ slice }
     return (
         <Box component="section" sx={{ px: 3, py: 5, maxWidth: 1120, mx: 'auto' }}>
             {/* Title */}
-            <Typography variant="h3" align="center" color="success.main" fontWeight="bold">
+            <Typography variant="h3" align="center" color="success.main" fontWeight="bold" sx={{
+                fontSize: { xs: '26px', md: '42px' }
+            }}>
                 {title}
             </Typography>
 

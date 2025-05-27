@@ -21,7 +21,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
 
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-            <Box sx={{ background: backgroundGradient, padding: { xs: '20px 30px', md: '60px 0px' } }}>
+            <Box sx={{ background: backgroundGradient, padding: { xs: '60px 30px', md: '100px 30px' } }}>
                 <Box
                     sx={{
                         display: 'flex',
@@ -65,21 +65,21 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                     {slice.primary.subtitle}
                                 </Typography>
                                 <Box sx={{
-                                    mb: 2, textAlign: 'center', fontSize: { xs: '20px', md: '24px' }, width: { xs: 'auto', md: "max-content" }, fontWeight: 600, '&& p': {
+                                    mb: '40px', textAlign: 'center', fontSize: { xs: '20px', md: '24px' }, width: { xs: 'auto', md: "max-content" }, fontWeight: 600, '&& p': {
                                         margin: 0,
-                                    }, 'p:first-of-type': { marginTop: 0, marginBottom: '0px', fontFamily: 'var(--font-montserrat)' }
+                                    }, 'p:first-of-type': { marginTop: 0, fontFamily: 'var(--font-montserrat)', marginBottom: '10px' }
                                 }}>
                                     <PrismicRichText field={slice.primary.description} />
                                     <PrismicRichText field={slice.primary.dates} />
                                 </Box>
 
                                 <Box display="flex" justifyContent="center" mb={4} >
-                                    <RegisterButton variant="contained" sx={{ backgroundColor: "#FF5B02", boxShadow: 'none' }} size="large">
+                                    <RegisterButton variant="contained" sx={{ backgroundColor: "#FF5B02", boxShadow: 'none', width: 'max-content', padding: { xs: '30px 40px', md: '50px 80px' } }} >
                                         <Box>
-                                            <Typography sx={{ fontWeight: 700, fontFamily: 'var(--font-montserrat)' }}>
+                                            <Typography sx={{ fontWeight: 700, fontSize: { xs: '19px', md: '32px' } }}>
                                                 {slice.primary.registration_button_title}
                                             </Typography>
-                                            <Typography sx={{ fontWeight: 600 }}>
+                                            <Typography sx={{ fontWeight: 600, fontSize: { xs: '19px', md: '28px' } }}>
                                                 {slice.primary.registration_button_subtitle}
                                             </Typography>
                                         </Box>
@@ -240,7 +240,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                         {slice.primary.abouteventtitle}
                     </Typography>
                     <Box sx={{
-                        textAlign: 'center', '&& p': {
+                        textAlign: 'center', maxWidth: '1200px', margin: '0 auto', '&& p': {
                             margin: 0,
                             fontSize: { xs: '16px', md: '26px' }
                         }
@@ -249,7 +249,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                     </Box>
                 </Box>
             </Box>
-        </section>
+        </section >
     )
 }
 

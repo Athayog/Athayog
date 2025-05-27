@@ -102,6 +102,19 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     },
 }))
 
+const RegisterActionButton = styled(RegisterButton)(({ theme }) => ({
+    marginTop: '30px',
+    width: 'auto',
+    [theme.breakpoints.down('md')]: {
+        margin: '13px  auto 0 auto',
+        fontSize: '18px',
+        height: '50px',
+        width: '100%',
+
+    },
+}))
+
+
 const EventScheduleDetails: FC<EventScheduleDetailsProps> = ({ slice }) => {
     const scheduleItems = slice.primary.schedule_items || []
 
@@ -196,9 +209,9 @@ const EventScheduleDetails: FC<EventScheduleDetailsProps> = ({ slice }) => {
                 {/* CTA Button */}
                 {slice.primary.cta_register && (
                     <Box mt={4} textAlign="center">
-                        <RegisterButton variant="contained">
+                        <RegisterActionButton >
                             {slice.primary.cta_register.text}
-                        </RegisterButton>
+                        </RegisterActionButton>
                     </Box>
                 )}
             </Section>

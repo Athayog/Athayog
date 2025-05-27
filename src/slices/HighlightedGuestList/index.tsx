@@ -6,6 +6,7 @@ import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import SuryaLogo from '/public/images/Surya.png'
+import Blur from '/public/images/blur.jpg'
 
 /**
  * Props for `HighlightedGuestList`.
@@ -42,17 +43,35 @@ const HighlightedGuestList: FC<HighlightedGuestListProps> = ({ slice }) => {
                     {/* Left Section */}
                     <Grid item xs={12} md={7}>
                         <Box>
-                            <Typography component="div" sx={{ fontWeight: "bold", color: "green", mb: 2 }}>
-                                <PrismicRichText field={section_title} />
-                            </Typography>
+                            <Box sx={{
+                                fontWeight: "bold", color: "#316200",
+                                marginBottom: '20px',
+                                '&& p,h1,h2,h3,h4,h5': {
+                                    margin: '0px',
+                                    fontSize: {
+                                        xs: '28px', md: '42px',
 
-                            <Typography sx={{ fontWeight: "bold", mb: 1 }}>Chief Guest:</Typography>
+                                    }
+                                }
+                            }
+                            } >
+                                <PrismicRichText field={section_title} />
+                            </Box>
+
+                            <Typography sx={{
+                                fontWeight: "bold", mb: 1, fontSize: {
+                                    xs: '20px', md: '32px'
+                                }
+                            }}>Chief Guest:</Typography>
 
                             <Box
                                 sx={{
                                     mb: 2,
                                     '&& p,h1,h2,h3': {
                                         display: 'inline',
+                                        fontSize: {
+                                            xs: '20px', md: '32px'
+                                        }
                                     },
                                 }}
                             >
@@ -60,11 +79,23 @@ const HighlightedGuestList: FC<HighlightedGuestListProps> = ({ slice }) => {
                                 <PrismicRichText field={highlighted_guest_role} />
                             </Box>
 
-                            <Typography sx={{ fontWeight: "bold", mb: 0 }}>Special Invitees:</Typography>
+                            <Typography sx={{
+                                fontWeight: "bold", mb: 0, fontSize: {
+                                    xs: '20px', md: '32px'
+                                }
+                            }}>Special Invitees:</Typography>
 
                             <List>
                                 {invitees.map((item, index) => (
-                                    <ListItem key={index} sx={{ pl: 0 }}>
+                                    <ListItem key={index}
+                                        sx={{
+                                            '&& p,h1,h2,h3,h4,h5,li,span': {
+                                                fontWeight: '600',
+                                                fontSize: {
+                                                    xs: '20px', md: '30px'
+                                                }
+                                            }
+                                        }}>
                                         <PrismicRichText
                                             field={item.invitee_description}
                                             components={{
@@ -88,8 +119,8 @@ const HighlightedGuestList: FC<HighlightedGuestListProps> = ({ slice }) => {
                                 sx={{
                                     position: "relative",
                                     width: "100%",
-                                    height: "100%",
-                                    minHeight: "400px", // fallback height
+                                    aspectRatio: "4 / 3", // Maintain aspect ratio (adjust as needed)
+
                                 }}
                             >
                                 <Image
@@ -97,7 +128,7 @@ const HighlightedGuestList: FC<HighlightedGuestListProps> = ({ slice }) => {
                                     alt={image.alt || "Chief Guest"}
                                     fill
                                     style={{
-                                        objectFit: "cover",
+                                        objectFit: "contain", // Ensures full image is visible
                                         borderRadius: "0px",
                                     }}
                                 />
@@ -122,9 +153,11 @@ const HighlightedGuestList: FC<HighlightedGuestListProps> = ({ slice }) => {
                             </Box>
                         )}
                     </Grid>
+
+
                 </Grid>
             </Box>
-        </section>
+        </section >
 
     );
 };

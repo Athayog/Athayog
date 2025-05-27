@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { SliceComponentProps } from '@prismicio/react'
 import { PrismicRichText, PrismicImage } from '@prismicio/react'
 import { Content } from '@prismicio/client'
@@ -14,7 +14,7 @@ const ArambhaContent: FC<ArambhaContentProps> = ({ slice }) => {
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
         >
-            <Container maxWidth="lg">
+            <Box>
                 <Grid container spacing={4} alignItems="stretch">
                     {/* Left Line Art - bottom aligned */}
                     {slice.primary.line_art_left?.url && (
@@ -82,7 +82,7 @@ const ArambhaContent: FC<ArambhaContentProps> = ({ slice }) => {
                         </Grid>
                     )}
                 </Grid>
-            </Container>
+            </Box>
         </Box>
     )
 }
