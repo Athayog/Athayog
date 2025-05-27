@@ -209,7 +209,7 @@ const EventScheduleDetails: FC<EventScheduleDetailsProps> = ({ slice }) => {
                 {/* CTA Button */}
                 {slice.primary.cta_register && (
                     <Box mt={4} textAlign="center">
-                        <RegisterActionButton >
+                        <RegisterActionButton href="#register-form">
                             {slice.primary.cta_register.text}
                         </RegisterActionButton>
                     </Box>

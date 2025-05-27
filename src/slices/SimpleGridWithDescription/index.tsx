@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { Box, Grid, IconButton, Typography } from '@mui/material'
 import { asLink } from '@prismicio/helpers'
 import { PauseCircleOutline, PlayArrowOutlined } from '@mui/icons-material'
+import RegisterButton from '@/components/elements/button/RegisterButton'
 
 export type SimpleGridWithDescriptionProps = SliceComponentProps<Content.SimpleGridWithDescriptionSlice>
 
@@ -21,6 +22,11 @@ const SimpleGridWithDescription: FC<SimpleGridWithDescriptionProps> = ({ slice }
 
     return (
         <Box component="section" sx={{ px: 3, py: 5, maxWidth: 1120, mx: 'auto' }}>
+            <Box sx={{ margin: "10px auto 80px auto", display: 'flex', justifyContent: 'center' }}>
+                <RegisterButton href="#register-form" variant="contained" sx={{ backgroundColor: "#FF5B02", boxShadow: 'none' }} >
+                    Register Now
+                </RegisterButton>
+            </Box>
             {/* Title */}
             <Typography variant="h3" align="center" color="success.main" fontWeight="bold" sx={{
                 fontSize: { xs: '26px', md: '42px' }

@@ -16,3 +16,7 @@ body {
 .montserrat {
     font-family: var(--font-montserrat), sans-serif;
 }
+
+html {
+    scroll-behavior: smooth;
+}
