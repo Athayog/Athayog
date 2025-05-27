@@ -23,6 +23,7 @@
     "@next/third-parties": "^15.3.1",
     "@opentelemetry/api": "^1.9.0",
     "@prismicio/client": "^7.11.0",
+    "@prismicio/helpers": "^2.3.9",
     "@prismicio/next": "^1.7.0",
     "@prismicio/react": "^2.9.0",
     "@svgr/webpack": "^8.1.0",

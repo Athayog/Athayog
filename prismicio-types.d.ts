@@ -348,6 +348,9 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | SimpleGridWithDescriptionSlice
+    | ArambhaContentSlice
+    | YogaDayHeroSlice
     | IconFeatureGridSlice
     | MapSlice
     | EventScheduleDetailsSlice
@@ -1091,6 +1094,89 @@ type AmenitiesSliceVariation = AmenitiesSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AmenitiesSlice = prismic.SharedSlice<'amenities', AmenitiesSliceVariation>
+
+/**
+ * Item in *ArambhaContent → Default → Primary → Content*
+ */
+export interface ArambhaContentSliceDefaultPrimaryContentItem {
+    /**
+     * Title field in *ArambhaContent → Default → Primary → Content*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_content.default.primary.content[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Description field in *ArambhaContent → Default → Primary → Content*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_content.default.primary.content[].description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *ArambhaContent → Default → Primary*
+ */
+export interface ArambhaContentSliceDefaultPrimary {
+    /**
+     * Line Art Left field in *ArambhaContent → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_content.default.primary.line_art_left
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    line_art_left: prismic.ImageField<never>
+
+    /**
+     * Line Art Right field in *ArambhaContent → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_content.default.primary.line_art_right
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    line_art_right: prismic.ImageField<never>
+
+    /**
+     * Content field in *ArambhaContent → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_content.default.primary.content[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content: prismic.GroupField<Simplify<ArambhaContentSliceDefaultPrimaryContentItem>>
+}
+
+/**
+ * Default variation for ArambhaContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArambhaContentSliceDefault = prismic.SharedSliceVariation<'default', Simplify<ArambhaContentSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *ArambhaContent*
+ */
+type ArambhaContentSliceVariation = ArambhaContentSliceDefault
+
+/**
+ * ArambhaContent Shared Slice
+ *
+ * - **API ID**: `arambha_content`
+ * - **Description**: ArambhaContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArambhaContentSlice = prismic.SharedSlice<'arambha_content', ArambhaContentSliceVariation>
 
 /**
  * Item in *ArambhaRegister → Default → Primary → background_color*
@@ -6963,6 +7049,69 @@ type ScatteredGallerySliceVariation = ScatteredGallerySliceDefault
 export type ScatteredGallerySlice = prismic.SharedSlice<'scattered_gallery', ScatteredGallerySliceVariation>
 
 /**
+ * Item in *SectionDualTextBlocks → Default → Primary → Content Blocks*
+ */
+export interface SectionDualTextBlocksSliceDefaultPrimaryContentBlocksItem {
+    /**
+     * Title field in *SectionDualTextBlocks → Default → Primary → Content Blocks*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: section_dual_text_blocks.default.primary.content_blocks[].title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.TitleField
+
+    /**
+     * Description field in *SectionDualTextBlocks → Default → Primary → Content Blocks*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: section_dual_text_blocks.default.primary.content_blocks[].description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *SectionDualTextBlocks → Default → Primary*
+ */
+export interface SectionDualTextBlocksSliceDefaultPrimary {
+    /**
+     * Content Blocks field in *SectionDualTextBlocks → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: section_dual_text_blocks.default.primary.content_blocks[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    content_blocks: prismic.GroupField<Simplify<SectionDualTextBlocksSliceDefaultPrimaryContentBlocksItem>>
+}
+
+/**
+ * Default variation for SectionDualTextBlocks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard variation with two headline+description pairs.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionDualTextBlocksSliceDefault = prismic.SharedSliceVariation<'default', Simplify<SectionDualTextBlocksSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *SectionDualTextBlocks*
+ */
+type SectionDualTextBlocksSliceVariation = SectionDualTextBlocksSliceDefault
+
+/**
+ * SectionDualTextBlocks Shared Slice
+ *
+ * - **API ID**: `section_dual_text_blocks`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SectionDualTextBlocksSlice = prismic.SharedSlice<'section_dual_text_blocks', SectionDualTextBlocksSliceVariation>
+
+/**
  * Item in *SimpleGrid → Default → Primary → Grid*
  */
 export interface SimpleGridSliceDefaultPrimaryGridItem {
@@ -7059,6 +7208,139 @@ type SimpleGridSliceVariation = SimpleGridSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type SimpleGridSlice = prismic.SharedSlice<'simple_grid', SimpleGridSliceVariation>
+
+/**
+ * Item in *SimpleGridWithDescription → Default → Primary → Grid*
+ */
+export interface SimpleGridWithDescriptionSliceDefaultPrimaryGridItem {
+    /**
+     * Images field in *SimpleGridWithDescription → Default → Primary → Grid*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.grid[].images
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    images: prismic.ImageField<never>
+
+    /**
+     * Title field in *SimpleGridWithDescription → Default → Primary → Grid*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.grid[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Description field in *SimpleGridWithDescription → Default → Primary → Grid*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.grid[].description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *SimpleGridWithDescription → Default → Primary*
+ */
+export interface SimpleGridWithDescriptionSliceDefaultPrimary {
+    /**
+     * Title field in *SimpleGridWithDescription → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * Grid field in *SimpleGridWithDescription → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.grid[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    grid: prismic.GroupField<Simplify<SimpleGridWithDescriptionSliceDefaultPrimaryGridItem>>
+
+    /**
+     * SubTitle field in *SimpleGridWithDescription → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    subtitle: prismic.KeyTextField
+
+    /**
+     * SubDescription field in *SimpleGridWithDescription → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.subdescription
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subdescription: prismic.RichTextField
+
+    /**
+     * First Video field in *SimpleGridWithDescription → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.first_video
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    first_video: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+
+    /**
+     * Second Youtube field in *SimpleGridWithDescription → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.second_youtube
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    second_youtube: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+
+    /**
+     * Third Youtube field in *SimpleGridWithDescription → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: simple_grid_with_description.default.primary.third_youtube
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    third_youtube: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Default variation for SimpleGridWithDescription Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleGridWithDescriptionSliceDefault = prismic.SharedSliceVariation<'default', Simplify<SimpleGridWithDescriptionSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *SimpleGridWithDescription*
+ */
+type SimpleGridWithDescriptionSliceVariation = SimpleGridWithDescriptionSliceDefault
+
+/**
+ * SimpleGridWithDescription Shared Slice
+ *
+ * - **API ID**: `simple_grid_with_description`
+ * - **Description**: SimpleGridWithDescription
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SimpleGridWithDescriptionSlice = prismic.SharedSlice<'simple_grid_with_description', SimpleGridWithDescriptionSliceVariation>
 
 /**
  * Primary content in *SimpleTextBlock → Default → Primary*
@@ -8537,13 +8819,48 @@ type YogaArambhaSliceVariation = YogaArambhaSliceDefault
 export type YogaArambhaSlice = prismic.SharedSlice<'yoga_arambha', YogaArambhaSliceVariation>
 
 /**
+ * Primary content in *YogaDayHero → Default → Primary*
+ */
+export interface YogaDayHeroSliceDefaultPrimary {
+    /**
+     * Left Youtube field in *YogaDayHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Left Youtube Video
+     * - **API ID Path**: yoga_day_hero.default.primary.left_youtube
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    left_youtube: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+
+    /**
+     * Middel Youtube field in *YogaDayHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_day_hero.default.primary.middel_youtube
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    middel_youtube: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+
+    /**
+     * Right Youtube field in *YogaDayHero → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: yoga_day_hero.default.primary.right_youtube
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    right_youtube: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
  * Default variation for YogaDayHero Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type YogaDayHeroSliceDefault = prismic.SharedSliceVariation<'default', Record<string, never>, never>
+export type YogaDayHeroSliceDefault = prismic.SharedSliceVariation<'default', Simplify<YogaDayHeroSliceDefaultPrimary>, never>
 
 /**
  * Slice variation for *YogaDayHero*
@@ -8952,6 +9269,11 @@ declare module '@prismicio/client' {
             AmenitiesSliceDefaultPrimary,
             AmenitiesSliceVariation,
             AmenitiesSliceDefault,
+            ArambhaContentSlice,
+            ArambhaContentSliceDefaultPrimaryContentItem,
+            ArambhaContentSliceDefaultPrimary,
+            ArambhaContentSliceVariation,
+            ArambhaContentSliceDefault,
             ArambhaRegisterSlice,
             ArambhaRegisterSliceDefaultPrimaryBackgroundColorItem,
             ArambhaRegisterSliceDefaultPrimary,
@@ -9250,12 +9572,22 @@ declare module '@prismicio/client' {
             ScatteredGallerySliceDefaultPrimary,
             ScatteredGallerySliceVariation,
             ScatteredGallerySliceDefault,
+            SectionDualTextBlocksSlice,
+            SectionDualTextBlocksSliceDefaultPrimaryContentBlocksItem,
+            SectionDualTextBlocksSliceDefaultPrimary,
+            SectionDualTextBlocksSliceVariation,
+            SectionDualTextBlocksSliceDefault,
             SimpleGridSlice,
             SimpleGridSliceDefaultPrimaryGridItem,
             SimpleGridSliceDefaultPrimaryBackgroundColorItem,
             SimpleGridSliceDefaultPrimary,
             SimpleGridSliceVariation,
             SimpleGridSliceDefault,
+            SimpleGridWithDescriptionSlice,
+            SimpleGridWithDescriptionSliceDefaultPrimaryGridItem,
+            SimpleGridWithDescriptionSliceDefaultPrimary,
+            SimpleGridWithDescriptionSliceVariation,
+            SimpleGridWithDescriptionSliceDefault,
             SimpleTextBlockSlice,
             SimpleTextBlockSliceDefaultPrimary,
             SimpleTextBlockSliceVariation,
@@ -9343,6 +9675,7 @@ declare module '@prismicio/client' {
             YogaArambhaSliceVariation,
             YogaArambhaSliceDefault,
             YogaDayHeroSlice,
+            YogaDayHeroSliceDefaultPrimary,
             YogaDayHeroSliceVariation,
             YogaDayHeroSliceDefault,
             YogaPracticesSlice,

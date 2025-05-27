@@ -1,0 +1,60 @@
+{
+  "id": "arambha_content",
+  "type": "SharedSlice",
+  "name": "ArambhaContent",
+  "description": "ArambhaContent",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "line_art_left": {
+          "type": "Image",
+          "config": {
+            "label": "Line Art Left",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "line_art_right": {
+          "type": "Image",
+          "config": {
+            "label": "Line Art Right",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "content": {
+          "type": "Group",
+          "config": {
+            "label": "Content",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,list-item,o-list-item"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

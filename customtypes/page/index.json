@@ -27,6 +27,15 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "simple_grid_with_description": {
+                            "type": "SharedSlice"
+                        },
+                        "arambha_content": {
+                            "type": "SharedSlice"
+                        },
+                        "yoga_day_hero": {
+                            "type": "SharedSlice"
+                        },
                         "icon_feature_grid": {
                             "type": "SharedSlice"
                         },

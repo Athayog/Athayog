@@ -2,7 +2,35 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"left_youtube": {
+				"key": "74b00951-c60e-4f5d-95b1-10f49187cfe6",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://prismic.io",
+					"text": "support"
+				}
+			},
+			"middel_youtube": {
+				"key": "1d74d379-64ab-47df-812c-51402984023a",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "wait"
+				}
+			},
+			"right_youtube": {
+				"key": "d754f135-b34a-4a93-aad0-23f117374b42",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "nuts"
+				}
+			}
+		},
 		"items": []
 	}
 ]
