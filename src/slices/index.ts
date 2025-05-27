@@ -80,6 +80,7 @@ export const components = {
     why_join: dynamic(() => import('./WhyJoin')),
     why_to_choose: dynamic(() => import('./WhyToChoose')),
     yoga_arambha: dynamic(() => import('./YogaArambha')),
+    yoga_day_hero: dynamic(() => import('./YogaDayHero')),
     yoga_practices: dynamic(() => import('./YogaPractices')),
     yoga_therapy_hero: dynamic(() => import('./YogaTherapyHero')),
     yoga_therapy_info: dynamic(() => import('./YogaTherapyInfo')),

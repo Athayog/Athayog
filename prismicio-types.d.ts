@@ -8537,6 +8537,29 @@ type YogaArambhaSliceVariation = YogaArambhaSliceDefault
 export type YogaArambhaSlice = prismic.SharedSlice<'yoga_arambha', YogaArambhaSliceVariation>
 
 /**
+ * Default variation for YogaDayHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaDayHeroSliceDefault = prismic.SharedSliceVariation<'default', Record<string, never>, never>
+
+/**
+ * Slice variation for *YogaDayHero*
+ */
+type YogaDayHeroSliceVariation = YogaDayHeroSliceDefault
+
+/**
+ * YogaDayHero Shared Slice
+ *
+ * - **API ID**: `yoga_day_hero`
+ * - **Description**: YogaDayHero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type YogaDayHeroSlice = prismic.SharedSlice<'yoga_day_hero', YogaDayHeroSliceVariation>
+
+/**
  * Item in *YogaPractices → Default → Primary → List*
  */
 export interface YogaPracticesSliceDefaultPrimaryListItem {
@@ -9319,6 +9342,9 @@ declare module '@prismicio/client' {
             YogaArambhaSliceDefaultPrimary,
             YogaArambhaSliceVariation,
             YogaArambhaSliceDefault,
+            YogaDayHeroSlice,
+            YogaDayHeroSliceVariation,
+            YogaDayHeroSliceDefault,
             YogaPracticesSlice,
             YogaPracticesSliceDefaultPrimaryListItem,
             YogaPracticesSliceDefaultPrimary,

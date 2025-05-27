@@ -1,0 +1,16 @@
+{
+    "id": "yoga_day_hero",
+    "type": "SharedSlice",
+    "name": "YogaDayHero",
+    "description": "YogaDayHero",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "docURL": "...",
+            "version": "initial",
+            "description": "Default",
+            "imageUrl": ""
+        }
+    ]
+}
