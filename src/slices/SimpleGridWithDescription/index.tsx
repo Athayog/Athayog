@@ -19,6 +19,31 @@ const SimpleGridWithDescription: FC<SimpleGridWithDescriptionProps> = ({ slice }
         asLink(third_youtube)
     ].filter(Boolean)
 
+    // Place these hooks at the top of your component
+    const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+    const [playingStates, setPlayingStates] = useState<boolean[]>(videoLinks.map(() => false))
+
+    const handlePlay = (idx: number) => {
+        const video = videoRefs.current[idx]
+        if (video) {
+            if (video.paused) {
+                video.play()
+                updatePlayingState(idx, true)
+            } else {
+                video.pause()
+                updatePlayingState(idx, false)
+            }
+        }
+    }
+
+    const updatePlayingState = (idx: number, isPlaying: boolean) => {
+        setPlayingStates(prev => {
+            const updated = [...prev]
+            updated[idx] = isPlaying
+            return updated
+        })
+    }
+
 
     return (
         <Box component="section" sx={{ px: 3, py: 5, maxWidth: 1120, mx: 'auto' }}>
@@ -108,67 +133,52 @@ const SimpleGridWithDescription: FC<SimpleGridWithDescriptionProps> = ({ slice }
             )}
 
             <Grid container spacing={3} sx={{ mt: 6 }}>
-                {videoLinks.map((url, idx) => {
-                    const videoRef = useRef<HTMLVideoElement | null>(null)
-                    const [isPlaying, setIsPlaying] = useState(false)
-
-                    const handlePlay = () => {
-                        if (videoRef.current) {
-                            if (videoRef.current.paused) {
-                                videoRef.current.play()
-                                setIsPlaying(true)
-                            } else {
-                                videoRef.current.pause()
-                                setIsPlaying(false)
-                            }
-                        }
-                    }
-
-                    return (
-                        <Grid key={idx} item xs={12} md={4}>
-                            <Box sx={{ position: 'relative', width: '100%', height: 500 }}>
-                                <Box
-                                    component="video"
-                                    ref={videoRef}
-                                    width="100%"
-                                    height="100%"
-                                    sx={{
-                                        objectFit: 'cover',
-                                        display: 'block',
-                                        borderRadius: 0,
-                                    }}
-                                    controls={true}
-                                >
-                                    <source src={url || ''} type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </Box>
-
-                                {!isPlaying && (
-                                    <IconButton
-                                        onClick={handlePlay}
-                                        sx={{
-                                            position: 'absolute',
-                                            top: '50%',
-                                            left: '50%',
-                                            transform: 'translate(-50%, -50%)',
-                                            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                                            color: 'white',
-                                            width: 64,
-                                            height: 64,
-                                            '&:hover': {
-                                                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                            },
-                                        }}
-                                    >
-                                        {isPlaying ? <PauseCircleOutline sx={{ fontSize: 40 }} /> : <PlayArrowOutlined sx={{ fontSize: 40 }} />}
-
-                                    </IconButton>
-                                )}
+                {videoLinks.map((url, idx) => (
+                    <Grid key={idx} item xs={12} md={4}>
+                        <Box sx={{ position: 'relative', width: '100%', height: 500 }}>
+                            <Box
+                                component="video"
+                                ref={el => { videoRefs.current[idx] = el as HTMLVideoElement | null }}
+                                width="100%"
+                                height="100%"
+                                sx={{
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                    borderRadius: 0,
+                                }}
+                                controls={true}
+                            >
+                                <source src={url || ''} type="video/mp4" />
+                                Your browser does not support the video tag.
                             </Box>
-                        </Grid>
-                    )
-                })}
+
+                            {!playingStates[idx] && (
+                                <IconButton
+                                    onClick={() => handlePlay(idx)}
+                                    sx={{
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '50%',
+                                        transform: 'translate(-50%, -50%)',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                                        color: 'white',
+                                        width: 64,
+                                        height: 64,
+                                        '&:hover': {
+                                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                        },
+                                    }}
+                                >
+                                    {playingStates[idx]
+                                        ? <PauseCircleOutline sx={{ fontSize: 40 }} />
+                                        : <PlayArrowOutlined sx={{ fontSize: 40 }} />}
+                                </IconButton>
+                            )}
+                        </Box>
+                    </Grid>
+                ))}
             </Grid>
+
 
 
         </Box>
