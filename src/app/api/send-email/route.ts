@@ -12,14 +12,9 @@ export async function POST(req: Request) {
             name,
             email,
             ticketID,
-            eventSource,
             location,
-            phone,
-            tShirtSize,
-            gender,
-            age,
-            experience,
-            qrDataUrl
+            qrDataUrl,
+            fileUrl
         } = body;
 
         console.log('Received body:', body);
@@ -31,19 +26,19 @@ export async function POST(req: Request) {
         const { data, error } = await resend.emails.send({
             from: 'AthayogLiving <info@athayogliving.com>',
             to: [email],
-            subject: `Your Yoga Day Ticket – ${ticketID}`,
+            subject: `You're All Set for Yoga Arambha 2025 with Athayog!`,
             react: EmailTemplate({
                 name,
                 ticketID,
-                eventSource,
                 location,
-                phone,
-                tShirtSize,
-                gender,
-                age,
-                experience,
-                qrDataUrl
+                qrDataUrl,
             }),
+            attachments: [
+                {
+                    path: fileUrl,
+                    filename: ticketID + '.pdf',
+                },
+            ],
         });
 
         if (error) {

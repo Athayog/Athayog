@@ -1,30 +1,14 @@
 'use client'
-import useFormStore from '@/store/useFormStore';
-import {
-    Alert,
-    Box,
-    Button,
-    CircularProgress,
-    FormControl,
-    FormControlLabel,
-    FormHelperText,
-    MenuItem,
-    Radio,
-    RadioGroup,
-    Select,
-    Snackbar,
-    TextField,
-    Typography
-} from '@mui/material';
-import { useFormik } from 'formik';
+
+import * as Yup from 'yup';
 import QRCode from 'qrcode';
 import { useState } from 'react';
+import { useFormik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
-import * as Yup from 'yup';
-import RegisterButton from '../elements/button/RegisterButton';
-import TicketDisplay from './TicketDisplayPDF';
-import IDYFormImage from '/public/images/IDY_FORM.png'; // Placeholder image, replace with actual image path
-import Image from 'next/image';
+import useFormStore from '@/store/useFormStore';
+import TicketDisplay from '@/components/forms/TicketDisplayPDF';
+import RegisterButton from '@/components/elements/button/RegisterButton';
+import { Alert, Box, Button, CircularProgress, FormControl, FormControlLabel, FormHelperText, MenuItem, Radio, RadioGroup, Select, Snackbar, TextField, Typography } from '@mui/material';
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Required'),
@@ -41,24 +25,17 @@ const validationSchema = Yup.object({
 
 const generateTicketID = (phone: string, email: string) => {
     const prefix = 'ATH-';
-
-    // Get digits from phone, take first 2
     const phoneDigits = phone.replace(/\D/g, '').slice(0, 2);
-
-    // Get first 2 letters from email prefix (before @), only alphabets
     const emailPrefix = email.split('@')[0].replace(/[^a-zA-Z]/g, '').slice(0, 2).toUpperCase();
-
-    // Generate UUID and take first 2 alphanumeric chars (skip dashes)
     const uuid = uuidv4().replace(/-/g, '').toUpperCase();
     const randomChars = uuid.slice(0, 2);
 
-    return prefix + phoneDigits + emailPrefix + randomChars; // 6 chars after ATH-
+    return prefix + phoneDigits + emailPrefix + randomChars;
 };
 
 const ArambhaForm = ({ data }: any) => {
-    const uniqueID = uuidv4(); // Unique ID
     const [qrData, setQrData] = useState<string | null>(null);
-    const { loading, error, success, submitForm } = useFormStore()
+    const { loading, error, success, submitForm, fileURL } = useFormStore()
     const [submittedData, setSubmittedData] = useState<any>(null);
     const [apiError, setApiError] = useState<string | null>(null);
 
@@ -77,65 +54,86 @@ const ArambhaForm = ({ data }: any) => {
 
         validationSchema,
         onSubmit: async (values, { setSubmitting, resetForm }) => {
-            setApiError(null); // Reset any previous API error
+            setApiError(null);
+            setSubmitting(true);
+
+            try {
+                const res = await fetch('/api/yoga-day-duplicate/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: values.phone, email: values.email }),
+                });
+
+                if (res.status === 409) {
+                    const data = await res.json();
+                    setApiError(data.message || 'Either phone or email is already registered for this event.');
+                    return;
+                } else if (!res.ok) {
+                    setApiError('Something went wrong checking registration. Please try again.');
+                    return;
+                }
+
+                const ticketID = generateTicketID(values.phone, values.email);
+                const qrDataUrl = await QRCode.toDataURL(ticketID);
+                setQrData(ticketID);
 
 
 
-            // Check for duplicate registration
-            const res = await fetch('/api/yoga-day-duplicate/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ phone: values.phone, email: values.email }),
-            });
+                const resPDF = await fetch('/api/generate-pdf', {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: values.name, ticketId: ticketID, qrDataUrl: qrDataUrl }),
+                })
 
-            // Handle duplicate registration
-            if (res.status === 409) {
-                const data = await res.json();
-                setApiError(data.message || 'Either phone or email is already registered for this event.');
+                if (!resPDF.ok) {
+                    setApiError('Something went wrong. Please try again.');
+                    return;
+                }
+
+                // Get the PDF blob
+                const pdfBlob = await resPDF.blob()
+
+                // Convert blob to a File object
+                const pdfFile = new File([pdfBlob], 'entry-pass.pdf', { type: 'application/pdf' })
+
+                let fullData = {
+                    ...values,
+                    ticketID,
+                    qrDataUrl,
+                    fileURL: fileURL
+                };
+                // Now call your other submitForm function and pass the file
+                await submitForm(fullData, 'arambhaForm25', 'info@athayogliving.com', pdfFile, 'arambhaForm25')
+
+                const emailRes = await fetch('/api/send-email', {
+                    method: 'POST',
+                    body: JSON.stringify(fullData),
+                    headers: { 'Content-Type': 'application/json' },
+
+                });
+
+                if (!emailRes.ok) {
+                    setApiError('Form submitted, but failed to send confirmation email.');
+                }
+
+                setSubmittedData(fullData);
+                resetForm();
+
+            } catch (error) {
+
+                setApiError('Unexpected error occurred. Please try again.');
+            } finally {
                 setSubmitting(false);
-                return; // stop submission
-            } else if (!res.ok) {
-                setApiError('Something went wrong checking registration. Please try again.');
-                setSubmitting(false);
-                return;
             }
-
-            // Proceed with form submission
-            const ticketID = generateTicketID(values.phone, values.email);
-            // Generate QR code data
-            const qrString = ticketID
-            const qrDataUrl = await QRCode.toDataURL(qrString);
-            setQrData(qrString);
-
-            const fullData = {
-                ...values,
-                ticketID: ticketID,
-                qrDataUrl: qrDataUrl,
-            };
-
-            await submitForm(fullData, 'arambhaForm25', ``)
-
-            await fetch('/api/send-email', {
-                method: 'POST',
-                body: JSON.stringify(fullData),
-                headers: { 'Content-Type': 'application/json' },
-            })
-
-            console.log('QR code base64 length:', qrDataUrl.length);
-            setSubmitting(false)
-            setSubmittedData(fullData);
-
-
-            resetForm()
-        },
+        }
     });
 
     return (
         <Box sx={{ width: '100%', padding: { xs: '0px 30px', md: 'inherit' } }}>
             {submittedData && (
                 <Box textAlign="center">
-                    <TicketDisplay submittedData={submittedData} qrData={qrData || ''} />
-                    <Button sx={{ marginTop: '10px' }} variant='contained' onClick={() => setSubmittedData(false)}>Register Another</Button>
+                    <TicketDisplay name={submittedData.name} ticketId={submittedData.ticketID} qrDataUrl={submittedData.qrDataUrl} />
+                    <RegisterButton sx={{ marginTop: '30px' }} variant='contained' onClick={() => setSubmittedData(false)}>Register Another</RegisterButton>
                 </Box>
             )}
 

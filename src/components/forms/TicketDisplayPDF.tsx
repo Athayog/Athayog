@@ -1,107 +1,95 @@
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-import {
-    Box,
-    Button,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableRow,
-    Typography,
-    Paper,
-} from '@mui/material';
-import { QRCodeSVG } from 'qrcode.react';
-import { useRef } from 'react';
+import React from 'react'
+import { Box, Typography, List, ListItem, ListItemText } from '@mui/material'
 
-interface TicketDisplayProps {
-    submittedData: {
-        ticketID: string;
-        name: string;
-        email: string;
-        phone: string;
-        age: string | number;
-        gender: string;
-        tShirtSize: string;
-    };
-    qrData: string;
+interface TicketContentProps {
+    name: string
+    ticketId: string
+    qrDataUrl: string
 }
 
-const TicketDisplay: React.FC<TicketDisplayProps> = ({ submittedData, qrData }) => {
-    const ticketRef = useRef<HTMLDivElement>(null);
-
-    const handleDownloadPDF = async () => {
-        if (!ticketRef.current) return;
-
-        const canvas = await html2canvas(ticketRef.current);
-        const imgData = canvas.toDataURL('image/png');
-
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgProps = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save(`ATH-Ticket-${submittedData.ticketID}.pdf`);
-    };
-
-    const dataRows = [
-        ['Ticket ID', submittedData.ticketID],
-        ['Name', submittedData.name],
-        ['Email', submittedData.email],
-        ['Phone', submittedData.phone],
-        ['Age', submittedData.age],
-        ['Gender', submittedData.gender],
-        ['T-Shirt Size', submittedData.tShirtSize],
-    ];
-
+const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl }) => {
     return (
-        <Box>
+        <Box
+            sx={{
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                color: '#222',
+                padding: 4,
+                background: '#fff',
+                maxWidth: 600,
+                mx: 'auto',
+                textAlign: 'left'
+            }}
+        >
+            <Typography variant="h5" component="h3" gutterBottom>
+                Namaste {name} <span role="img" aria-label="praying hands">🙏</span>
+            </Typography>
+
+            <Typography paragraph fontSize={14} lineHeight={1.5}>
+                Thank you for registering for the International Day of Yoga 2025 with Athayog,
+                <br />
+                in association with Shri Tejasvi Surya, Member of Parliament, Bengaluru South.{' '}
+                <span role="img" aria-label="praying hands">🙏</span>
+            </Typography>
+
+            <Typography paragraph fontSize={14} lineHeight={1.5}>
+                We’re honored to have your presence as we unite to celebrate yoga, wellness, and collective harmony on June 21st.
+            </Typography>
+
+            <Typography variant="h6" component="h4" gutterBottom>
+                Here are your registration details:
+            </Typography>
+
+            <Typography paragraph fontSize={14} lineHeight={1.5}>
+                📅 <b>Event:</b> International Day of Yoga 2025<br />
+                📍 <b>Venue:</b> Kittur Rani Chennamma stadium, Jaynagar<br />
+                🕒 <b>Timing:</b> 6:00 am Onwards.
+            </Typography>
+
+            <Typography paragraph fontSize={14} lineHeight={1.5}>
+                🔐 <b>Registration ID:</b> {ticketId}
+            </Typography>
+
+            <Typography paragraph fontSize={14} lineHeight={1.5}>
+                Your unique QR code is attached below. Please present it at the registration counter for a seamless check-in experience.
+            </Typography>
+
             <Box
-                ref={ticketRef}
-                sx={{
+                component="img"
+                src={qrDataUrl}
+                alt="QR Code"
+                sx={{ width: 150, height: 150, mt: 3, mb: 3 }}
+            />
 
-                    backgroundColor: '#fff',
-                    borderRadius: 2,
-                    boxShadow: 3,
-                    maxWidth: 600,
-                    margin: '0 auto',
-                }}
-            >
-                <Typography variant="h5" fontWeight="bold" gutterBottom>
-                    🎟️ Yoga Aarambha 2025
-                </Typography>
+            <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                Important Notes:
+            </Typography>
 
-                <TableContainer component={Paper} elevation={0}>
-                    <Table>
-                        <TableBody>
-                            {dataRows.map(([label, value], index) => (
-                                <TableRow key={index}>
-                                    <TableCell sx={{ fontWeight: 600, width: '40%' }}>{label}</TableCell>
-                                    <TableCell>{value}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+            <List sx={{ pl: 2 }}>
+                <ListItem disablePadding>
+                    <ListItemText primary="Please arrive 15 minutes early to avoid queues." />
+                </ListItem>
+                <ListItem disablePadding>
+                    <ListItemText primary="Wear comfortable yoga attire and bring your own mat." />
+                </ListItem>
+                <ListItem disablePadding>
+                    <ListItemText primary="Follow us on Instagram for updates and sneak peeks! 📸" />
+                </ListItem>
+            </List>
 
-                <Box sx={{ mt: 4, textAlign: 'center' }}>
-                    <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                        Scan QR Code at Entry
-                    </Typography>
-                    <QRCodeSVG value={qrData || ''} size={128} />
-                </Box>
-            </Box>
+            <Typography paragraph fontSize={14} lineHeight={1.5}>
+                If you have any questions, feel free to reach out at <b>info@athayogliving.com</b> or WhatsApp us at <b>+91 9535689394</b>.
+            </Typography>
 
-            <Button
-                onClick={handleDownloadPDF}
-                variant="contained"
-                sx={{ mt: 3, display: 'block', mx: 'auto' }}
-            >
-                DOWNLOAD TICKET PDF
-            </Button>
+            <Typography paragraph fontSize={14} lineHeight={1.5}>
+                We can’t wait to see you on the mat! <span role="img" aria-label="person in lotus position">🧘</span>
+            </Typography>
+
+            <Typography fontWeight="bold">
+                With gratitude, <br />
+                Team Athayog <span role="img" aria-label="praying hands">🙏</span>
+            </Typography>
         </Box>
-    );
-};
+    )
+}
 
-export default TicketDisplay;
+export default TicketContent
