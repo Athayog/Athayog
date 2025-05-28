@@ -28,7 +28,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
 }) => (
     <div style={{ fontFamily: 'Arial, sans-serif', color: '#333', lineHeight: 1.6 }}>
         <h2>🧘‍♂️ Thank you for registering, {name}!</h2>
-        <p>We're excited to have you join us for the International Yoga Day event. Here are your ticket details:</p>
+        <p>We&apos;re excited to have you join us for the International Yoga Day event. Here are your ticket details:</p>
 
         {qrDataUrl && (
             <img
