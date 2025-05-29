@@ -3,15 +3,11 @@ import * as React from 'react';
 interface EmailTemplateProps {
     name: string;
     ticketID: string;
-    location: string;
-    qrDataUrl: string;
 }
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     name,
     ticketID,
-    location,
-    qrDataUrl,
 }) => (
     <div style={{ fontFamily: 'Arial, sans-serif', color: '#333', lineHeight: 1.6 }}>
         <h2>Namaste {name},</h2>
@@ -28,11 +24,14 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         <p><strong>Here are your registration details:</strong></p>
 
         <p>📅 <strong>Event:</strong> International Day of Yoga 2025<br />
-            📍 <strong>Venue:</strong> {location}<br />
+            📍 <strong>Venue:</strong> Kittur Rani Chennamma stadium, Jaynagar<br />
             🕒 <strong>Timing:</strong> 6:00 AM onwards<br />
             🔐
         </p>
-        <strong> 🔐 Registration ID:</strong> ATH-{ticketID}
+        <strong> 🔐 Registration ID:</strong> {ticketID}
+
+        <p>Your unique QR code is attached below. Please present it at the registration counter for a seamless check-in experience.</p>
+        <p><strong>👇 Download Your Entry Pass (PDF)</strong></p>
 
         <p><strong>Important Notes:</strong></p>
         <ul>

@@ -12,8 +12,6 @@ export async function POST(req: Request) {
             name,
             email,
             ticketID,
-            location,
-            qrDataUrl,
             fileUrl
         } = body;
 
@@ -30,8 +28,6 @@ export async function POST(req: Request) {
             react: EmailTemplate({
                 name,
                 ticketID,
-                location,
-                qrDataUrl,
             }),
             attachments: [
                 {
