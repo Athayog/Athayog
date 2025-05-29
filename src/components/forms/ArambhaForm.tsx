@@ -114,7 +114,7 @@ const ArambhaForm = ({ data }: any) => {
                 if (!emailRes.ok) {
                     setApiError('Form submitted, but failed to send confirmation email.');
                 }
-                debugger
+
                 const whatsAppRes = await fetch('/api/send-whatsapp', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
