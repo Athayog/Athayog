@@ -1,80 +1,60 @@
-import { NextRequest, NextResponse } from 'next/server';
+// app/api/send-message/route.js (or .ts if using TypeScript)
 
-export async function POST(request: NextRequest) {
+import { NextResponse } from 'next/server';
+
+export async function POST(request: Request) {
+    const { name, ticketId, media_url, phoneNumber } = await request.json();
+
+    if (!name || !ticketId || !media_url || !phoneNumber) {
+        return NextResponse.json(
+            { error: 'Missing required fields' },
+            { status: 400 }
+        );
+    }
+
+    const userid = '2000216557'
+    const password = 'AYLvyasa@2020$$'
+    const caption = `ATHAYOG | YOGA ARAMBHA 2025 CONFIRMATION
+
+Namaste ${name} 🙏,
+
+Thank you for registering for the International Day of Yoga 2025 with Athayog,
+in association with Shri Tejasvi Surya, Member of Parliament – Bengaluru South.
+
+📅 Date: June 21, 2025  
+📍 Venue: Kittur Rani Chennamma stadium, Jaynagar  
+🕒 Timing: 6:00 am onwards  
+🧾 Registration ID: ${ticketId}
+
+Your unique entry QR code and event pass are ready ✅  
+
+Please Note  
+✅ Bring your yoga mat & water bottle  
+✅ Wear comfortable yoga attire  
+✅ Arrive at least 15 minutes early  
+✅ Show the QR code at the entry gate
+
+Let’s come together to celebrate yoga, health & harmony 🌿
+
+See you on the mat!  
+Team Athayog`;
+
+    const encodedCaption = encodeURIComponent(caption);
+    const encodedMediaUrl = encodeURIComponent(media_url);
+    // const encodeFileName = encodeURIComponent(ticketId + "_Ticket.pdf")
+
+    const fullUrl = `https://media.smsgupshup.com/GatewayAPI/rest?userid=${encodeURIComponent(userid)}&password=${encodeURIComponent(password)}&send_to=${encodeURIComponent(phoneNumber)}&v=1.1&format=json&msg_type=DOCUMENT&method=SENDMEDIAMESSAGE&caption=${encodedCaption}&media_url=${encodedMediaUrl}`;
+
     try {
-        // Parse the request body as JSON
-        const body = await request.json();
-        const { phoneNumber, message } = body;
-
-        // Retrieve Gupshup credentials from environment variables
-        const gupshupUserId = ""
-        const gupshupPassword = '';
-
-        // Basic validation for credentials and incoming data
-        if (!gupshupUserId || !gupshupPassword) {
-            return NextResponse.json(
-                { success: false, message: 'Gupshup API credentials are not configured in environment variables.' },
-                { status: 500 }
-            );
-        }
-
-        if (!phoneNumber || !message) {
-            return NextResponse.json(
-                { success: false, message: 'Phone number and message are required in the request body.' },
-                { status: 400 }
-            );
-        }
-
-        const gupshupApiUrl = 'https://mediaapi.smsgupshup.com/GatewayAPI/rest'; // Gupshup API Endpoint
-
-        // Construct URL-encoded form data for the Gupshup API call
-        const params = new URLSearchParams();
-        params.append('method', 'sendMessage');
-        params.append('userid', gupshupUserId); // Your Gupshup user ID
-        params.append('password', gupshupPassword); // Your Gupshup password
-        params.append('send_to', phoneNumber); // Recipient's phone number in E.164 format
-        params.append('msg', encodeURIComponent(message)); // The text message, URL encoded
-        params.append('msg_type', 'TEXT');
-        params.append('isHSM', 'true'); // Indicates a pre-approved message template [cite: 22]
-        params.append('v', '1.1'); // API version [cite: 22]
-        params.append('auth_scheme', 'plain'); // Authentication scheme [cite: 22]
-        params.append('format', 'json'); // API response format [cite: 22]
-
-        // Make the POST request to the Gupshup API
-        const gupshupResponse = await fetch(gupshupApiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: params.toString(), // Send the URL-encoded parameters
+        const response = await fetch(fullUrl, {
+            method: 'GET',
+            redirect: 'follow',
         });
 
-        const gupshupData = await gupshupResponse.json(); // Gupshup API returns JSON for 'format=json'
+        const text = await response.text();
 
-        // Check Gupshup's response status
-        if (gupshupResponse.ok && gupshupData.response?.status === 'success') {
-            console.log('WhatsApp message sent successfully:', gupshupData);
-            return NextResponse.json(
-                { success: true, message: 'WhatsApp message sent successfully!', gupshupResponse: gupshupData.response },
-                { status: 200 }
-            );
-        } else {
-            console.error('Failed to send WhatsApp message via Gupshup:', gupshupData);
-            return NextResponse.json(
-                {
-                    success: false,
-                    message: gupshupData.response?.details || 'Failed to send WhatsApp message via Gupshup.',
-                    errorCode: gupshupData.response?.id,
-                    gupshupResponse: gupshupData,
-                },
-                { status: gupshupData.response?.id || 500 } // Use Gupshup's error code if available
-            );
-        }
+        return NextResponse.json({ result: text });
     } catch (error) {
-        console.error('Error in send-whatsapp-message API route:', error);
-        return NextResponse.json(
-            { success: false, message: 'Internal server error processing WhatsApp message request.' },
-            { status: 500 }
-        );
+        return NextResponse.json({ error: 'Failed to fetch message API' }, { status: 500 });
     }
 }
