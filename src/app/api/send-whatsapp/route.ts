@@ -39,11 +39,14 @@ Let’s come together to celebrate yoga, health & harmony 🌿
 See you on the mat!  
 Team Athayog`;
 
+
+
     const encodedCaption = encodeURIComponent(caption);
     const encodedMediaUrl = encodeURIComponent(media_url);
-    // const encodeFileName = encodeURIComponent(ticketId + "_Ticket.pdf")
+    const encodedFileName = encodeURIComponent(ticketId + "_Ticket")
 
-    const fullUrl = `https://media.smsgupshup.com/GatewayAPI/rest?userid=${encodeURIComponent(userid)}&password=${encodeURIComponent(password)}&send_to=${encodeURIComponent(phoneNumber)}&v=1.1&format=json&msg_type=DOCUMENT&method=SENDMEDIAMESSAGE&caption=${encodedCaption}&media_url=${encodedMediaUrl}`;
+    const fullUrl = `https://media.smsgupshup.com/GatewayAPI/rest?userid=${encodeURIComponent(userid)}&password=${encodeURIComponent(password)}&send_to=${encodeURIComponent(phoneNumber)}&v=1.1&format=json&msg_type=DOCUMENT&method=SENDMEDIAMESSAGE&caption=${encodedCaption}&media_url=${encodedMediaUrl}&filename=${encodedFileName}`;
+
 
     try {
         const response = await fetch(fullUrl, {

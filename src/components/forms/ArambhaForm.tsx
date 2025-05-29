@@ -109,11 +109,25 @@ const ArambhaForm = ({ data }: any) => {
                     method: 'POST',
                     body: JSON.stringify(fullData),
                     headers: { 'Content-Type': 'application/json' },
-
                 });
 
                 if (!emailRes.ok) {
                     setApiError('Form submitted, but failed to send confirmation email.');
+                }
+
+                const whatsAppRes = await fetch('/api/send-whatsapp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        phoneNumber: values.phone,
+                        name: values.name,
+                        ticketId: ticketID,
+                        media_url: fileURL
+                    })
+                });
+
+                if (!whatsAppRes.ok) {
+                    setApiError('Form submitted, but failed to send whatsapp ticket.');
                 }
 
                 setSubmittedData(fullData);
