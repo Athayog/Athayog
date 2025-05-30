@@ -131,7 +131,12 @@ const EventScheduleDetails: FC<EventScheduleDetailsProps> = ({ slice }) => {
                     }}>
                         <InfoBox>
                             <Box display="flex" alignItems="center" justifyContent="center">
-                                <CalendarIcon style={{ fontSize: 40, color: '#003744' }} />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="51" height="51" viewBox="0 0 51 51" fill="none">
+                                    <path d="M39.9872 8.73749H10.515C8.18971 8.73749 6.30469 10.6225 6.30469 12.9478V42.42C6.30469 44.7453 8.18971 46.6303 10.515 46.6303H39.9872C42.3125 46.6303 44.1975 44.7453 44.1975 42.42V12.9478C44.1975 10.6225 42.3125 8.73749 39.9872 8.73749Z" stroke="#FF7700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M33.6758 4.5271V12.9477" stroke="#FF7700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16.8398 4.5271V12.9477" stroke="#FF7700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M6.30469 21.3685H44.1975" stroke="#FF7700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
                                 <InfoTitle>Date</InfoTitle>
                             </Box>
                             <InfoText>
@@ -151,7 +156,17 @@ const EventScheduleDetails: FC<EventScheduleDetailsProps> = ({ slice }) => {
                     }}>
                         <InfoBox>
                             <Box display="flex" alignItems="center" justifyContent="center">
-                                <MapIcon style={{ fontSize: 40, color: '#003744' }} />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38" fill="none">
+                                    <g clip-path="url(#clip0_199_422)">
+                                        <path d="M32.5668 15.5734C32.5668 26.429 18.6096 35.7338 18.6096 35.7338C18.6096 35.7338 4.65234 26.429 4.65234 15.5734C4.65234 11.8717 6.12283 8.32167 8.74032 5.70418C11.3578 3.0867 14.9079 1.61621 18.6096 1.61621C22.3112 1.61621 25.8613 3.0867 28.4788 5.70418C31.0963 8.32167 32.5668 11.8717 32.5668 15.5734Z" stroke="#FF7700" stroke-width="3.1016" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M18.6055 20.2258C21.175 20.2258 23.2579 18.1429 23.2579 15.5734C23.2579 13.004 21.175 10.921 18.6055 10.921C16.0361 10.921 13.9531 13.004 13.9531 15.5734C13.9531 18.1429 16.0361 20.2258 18.6055 20.2258Z" stroke="#FF7700" stroke-width="3.1016" stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_199_422">
+                                            <rect width="37.2192" height="37.2192" fill="white" transform="translate(0 0.0654297)" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
                                 <InfoTitle>Location</InfoTitle>
                             </Box>
                             <InfoText>
@@ -163,7 +178,10 @@ const EventScheduleDetails: FC<EventScheduleDetailsProps> = ({ slice }) => {
 
                 {/* Time */}
                 <TimeBox>
-                    <ClockIcon />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="51" height="47" viewBox="0 0 51 47" fill="none">
+                        <path d="M24.075 44.1473C35.1621 44.1473 44.15 35.16 44.15 24.0737C44.15 12.9873 35.1621 4 24.075 4C12.9879 4 4 12.9873 4 24.0737C4 35.16 12.9879 44.1473 24.075 44.1473Z" stroke="#FF7700" stroke-width="3.66434" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M23.7812 13.0294V25.0736L32.4941 29.0884" stroke="#FF7700" stroke-width="3.66434" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                     <Typography sx={{ color: '#003744', fontSize: { xs: '26px', md: '32px' } }}>Time</Typography>
                 </TimeBox>
 

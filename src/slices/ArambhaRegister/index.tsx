@@ -249,7 +249,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                     </Box>
                 </Box>
                 {/* About the Event */}
-                <Box>
+                <Box sx={{ padding: { xs: 2, md: 6 } }}>
                     <Typography sx={
                         {
                             fontWeight: 700,
