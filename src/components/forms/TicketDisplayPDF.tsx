@@ -1,94 +1,73 @@
+import { Box, Typography, Button } from '@mui/material'
 import React from 'react'
-import { Box, Typography, List, ListItem, ListItemText } from '@mui/material'
 
 interface TicketContentProps {
     name: string
     ticketId: string
     qrDataUrl: string
+    downloadUrl: string
 }
 
-const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl }) => {
+const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl, downloadUrl }) => {
     return (
         <Box
             sx={{
                 fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
                 color: '#222',
-                padding: 4,
                 background: '#fff',
-                maxWidth: 600,
+                maxWidth: 500,
                 mx: 'auto',
-                textAlign: 'left'
+                px: 3,
+                py: 4,
+                textAlign: 'left',
+                borderRadius: 2,
+                boxShadow: '0 1px 8px rgba(0,0,0,0.04)',
             }}
         >
-            <Typography variant="h5" component="h3" gutterBottom>
-                Namaste {name} <span role="img" aria-label="praying hands">🙏</span>
+            <Typography variant="h6" fontWeight="bold" gutterBottom>
+                Athayog Yoga Day 2025
             </Typography>
 
-            <Typography paragraph fontSize={14} lineHeight={1.5}>
-                Thank you for registering for the International Day of Yoga 2025 with Athayog,
-                <br />
-                in association with Shri Tejasvi Surya, Member of Parliament, Bengaluru South.{' '}
-                <span role="img" aria-label="praying hands">🙏</span>
+            <Typography fontSize={14} mb={1.5}>
+                👤 <b>{name}</b>
             </Typography>
 
-            <Typography paragraph fontSize={14} lineHeight={1.5}>
-                We’re honored to have your presence as we unite to celebrate yoga, wellness, and collective harmony on June 21st.
+            <Typography fontSize={14} mb={1.5}>
+                🔐 <b>Ticket ID:</b> {ticketId}
             </Typography>
 
-            <Typography variant="h6" component="h4" gutterBottom>
-                Here are your registration details:
+            <Typography fontSize={14} mb={1.5}>
+                📅 <b>Date:</b> June 21, 6:00 AM
             </Typography>
 
-            <Typography paragraph fontSize={14} lineHeight={1.5}>
-                📅 <b>Event:</b> International Day of Yoga 2025<br />
-                📍 <b>Venue:</b> Kittur Rani Chennamma stadium, Jaynagar<br />
-                🕒 <b>Timing:</b> 6:00 am Onwards.
-            </Typography>
-
-            <Typography paragraph fontSize={14} lineHeight={1.5}>
-                🔐 <b>Registration ID:</b> {ticketId}
-            </Typography>
-
-            <Typography paragraph fontSize={14} lineHeight={1.5}>
-                Your unique QR code is attached below. Please present it at the registration counter for a seamless check-in experience.
+            <Typography fontSize={14} mb={2}>
+                📍 <b>Venue:</b> Kittur Rani Chennamma Stadium, Jayanagar
             </Typography>
 
             <Box
                 component="img"
                 src={qrDataUrl}
                 alt="QR Code"
-                sx={{ width: 150, height: 150, mt: 3, mb: 3 }}
+                sx={{ width: 130, height: 130, display: 'block', mx: 'auto', my: 2 }}
             />
 
-            <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                Important Notes:
-            </Typography>
-
-            <List sx={{ pl: 2 }}>
-                <ListItem disablePadding>
-                    <ListItemText primary="Please arrive 15 minutes early to avoid queues." />
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemText primary="Wear comfortable yoga attire and bring your own mat." />
-                </ListItem>
-                <ListItem disablePadding>
-                    <ListItemText primary="Follow us on Instagram for updates and sneak peeks! 📸" />
-                </ListItem>
-            </List>
-
-            <Typography paragraph fontSize={14} lineHeight={1.5}>
-                If you have any questions, feel free to reach out at <b>info@athayogliving.com</b> or WhatsApp us at <b>+91 9535689394</b>.
-            </Typography>
-
-            <Typography paragraph fontSize={14} lineHeight={1.5}>
-                We can’t wait to see you on the mat! <span role="img" aria-label="person in lotus position">🧘</span>
-            </Typography>
-
-            <Typography fontWeight="bold">
-                With gratitude, <br />
-                Team Athayog <span role="img" aria-label="praying hands">🙏</span>
-            </Typography>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Button onClick={() => {
+                    if (downloadUrl) {
+                        const link = document.createElement('a');
+                        link.href = downloadUrl;
+                        link.download = 'entry-pass.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } else {
+                        alert('No file available yet!');
+                    }
+                }} variant="outlined" sx={{ display: 'flex', justifyContent: 'center' }}>Download Ticket</Button>
+            </Box>
         </Box>
+
+
     )
 }
 

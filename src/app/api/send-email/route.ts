@@ -12,7 +12,7 @@ export async function POST(req: Request) {
             name,
             email,
             ticketID,
-            fileURL
+            fileUrl
         } = body;
 
         console.log('Received body:', body);
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
             }),
             attachments: [
                 {
-                    path: fileURL,
+                    path: fileUrl,
                     filename: ticketID + '.pdf',
                 },
             ],
