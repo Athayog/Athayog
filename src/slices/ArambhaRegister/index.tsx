@@ -74,7 +74,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                 </Box>
 
                                 <Box display="flex" justifyContent="center" mb={4} >
-                                    <RegisterButton href="#register-form" variant="contained" sx={{ backgroundColor: "#FF5B02", boxShadow: 'none', width: 'max-content', padding: { xs: '30px 40px', md: '50px 80px' } }} >
+                                    <RegisterButton href="#register-form" variant="contained" sx={{ backgroundColor: "#FF5B02", boxShadow: 'none', width: 'max-content', textAlign: 'center', padding: { xs: '30px 40px', md: '50px 80px' } }} >
                                         <Box>
                                             <Typography sx={{ fontWeight: 700, fontSize: { xs: '19px', md: '32px' } }}>
                                                 {slice.primary.registration_button_title}

@@ -197,11 +197,11 @@ const ArambhaForm = ({ data }: any) => {
                 sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: '#fff', flexDirection: 'column' }}
             >
 
-                <Box sx={{ width: '500px' }}>
+                <Box sx={{ maxWidth: '300px', minWidth: '200px' }}>
                     <BorderLinearProgress variant="determinate" value={percentage} />
                 </Box>
-                <Typography variant="body1" sx={{ mt: 2, fontSize: '26px' }}>
-                    {progressStep || 'Please wait...'}
+                <Typography variant="body1" sx={{ mt: 2, fontSize: '22px' }}>
+                    {progressStep}
                 </Typography>
 
             </Backdrop>
@@ -280,6 +280,7 @@ const ArambhaForm = ({ data }: any) => {
                                                 value={formik.values.eventSource}
                                                 placeholder="How did you hear about this event?"
                                                 onChange={formik.handleChange}
+                                                onBlur={formik.handleBlur}
                                                 displayEmpty
                                                 error={formik.touched.eventSource && Boolean(formik.errors.eventSource)}
                                             >
