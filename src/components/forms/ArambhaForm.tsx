@@ -147,7 +147,7 @@ const ArambhaForm = ({ data }: any) => {
                             phoneNumber: fullData.phone,
                             name: fullData.name,
                             ticketId: fullData.ticketID,
-                            media_url: fileURL,
+                            media_url: (fullData as any).fileUrl,
                         }),
                     })
                 ]);
