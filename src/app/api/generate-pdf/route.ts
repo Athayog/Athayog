@@ -2,15 +2,15 @@ import { NextResponse } from 'next/server'
 import puppeteer from 'puppeteer'
 
 export async function POST(req: Request) {
-    try {
-        const { name, ticketId, qrDataUrl } = await req.json()
+  try {
+    const { name, ticketId, qrDataUrl } = await req.json()
 
-        if (!name || !ticketId || !qrDataUrl) {
-            return new NextResponse(JSON.stringify({ error: 'Missing parameters' }), { status: 400 })
-        }
+    if (!name || !ticketId || !qrDataUrl) {
+      return new NextResponse(JSON.stringify({ error: 'Missing parameters' }), { status: 400 })
+    }
 
-        // HTML content with inline styles, emojis, and embedded QR code image
-        const htmlContent = `
+    // HTML content with inline styles, emojis, and embedded QR code image
+    const htmlContent = `
     <html>
       <head>
         <style>
@@ -77,32 +77,32 @@ export async function POST(req: Request) {
     </html>
   `
 
-        // Launch Puppeteer browser
-        const browser = await puppeteer.launch({
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        })
-        const page = await browser.newPage()
+    // Launch Puppeteer browser
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    })
+    const page = await browser.newPage()
 
-        // Set page content to your HTML string
-        await page.setContent(htmlContent, { waitUntil: 'networkidle0' })
+    // Set page content to your HTML string
+    await page.setContent(htmlContent, { waitUntil: 'networkidle0' })
 
-        // Generate PDF buffer
-        const pdfBuffer = await page.pdf({
-            format: 'A4',
-            printBackground: true,
-            margin: { top: '40px', bottom: '40px', left: '40px', right: '40px' },
-        })
+    // Generate PDF buffer
+    const pdfBuffer = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      margin: { top: '40px', bottom: '40px', left: '40px', right: '40px' },
+    })
 
-        await browser.close()
+    await browser.close()
 
-        return new NextResponse(pdfBuffer, {
-            headers: {
-                'Content-Type': 'application/pdf',
-                'Content-Disposition': 'attachment; filename="entry-pass.pdf"',
-            },
-        })
-    } catch (error) {
-        console.error('Error generating PDF:', error)
-        return new NextResponse(JSON.stringify({ error: 'Failed to generate PDF' }), { status: 500 })
-    }
+    return new NextResponse(pdfBuffer, {
+      headers: {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': 'attachment; filename="entry-pass.pdf"',
+      },
+    })
+  } catch (error) {
+    console.error('Error generating PDF:', error)
+    return new NextResponse(JSON.stringify({ error: 'Failed to generate PDF' }), { status: 500 })
+  }
 }
