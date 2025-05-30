@@ -176,7 +176,7 @@ const ArambhaForm = ({ data }: any) => {
 
     return (
 
-        <Box sx={{ width: '100%', padding: { xs: '0px 30px', md: 'inherit' } }}>
+        <Box sx={{ width: '100%', padding: { xs: '0px 10px', md: 'inherit' } }}>
             {submittedData && (
                 <Box textAlign="center">
                     <TicketDisplay name={submittedData.name} ticketId={submittedData.ticketID} qrDataUrl={submittedData.qrDataUrl} downloadUrl={downloadUrl || ''} />

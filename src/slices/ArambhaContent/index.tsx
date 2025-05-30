@@ -10,7 +10,7 @@ const ArambhaContent: FC<ArambhaContentProps> = ({ slice }) => {
     return (
         <Box
             component="section"
-            sx={{ py: 8, px: 4, position: 'relative', backgroundColor: '#f9f9f9' }}
+            sx={{ py: { xs: 2, md: 8 }, px: { xs: 2, md: 4 }, position: 'relative' }}
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
         >

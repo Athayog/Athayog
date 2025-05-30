@@ -18,10 +18,10 @@ export type ArambhaRegisterProps = SliceComponentProps<Content.ArambhaRegisterSl
  */
 const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
     const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color))
-
+    console.log(slice.primary.dates_mobile)
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-            <Box sx={{ background: backgroundGradient, padding: { xs: '60px 30px', md: '100px 30px' } }}>
+            <Box sx={{ background: backgroundGradient, padding: { xs: '30px 0px', md: '100px 0px' } }}>
                 <Box
                     sx={{
                         display: 'flex',
@@ -65,13 +65,28 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                     {slice.primary.subtitle}
                                 </Typography>
                                 <Box sx={{
-                                    mb: '40px', textAlign: 'center', fontSize: { xs: '20px', md: '24px' }, width: { xs: 'auto', md: "max-content" }, fontWeight: 600, '&& p': {
+                                    mb: '0px', textAlign: 'center', fontSize: { xs: '20px', md: '24px' }, width: { xs: 'auto', md: "max-content" }, fontWeight: 600, '&& p': {
                                         margin: 0,
-                                    }, 'p:first-of-type': { marginTop: 0, fontFamily: 'var(--font-montserrat)', marginBottom: '10px' }
+                                    }, 'p:first-of-type': { marginTop: 0, fontFamily: 'var(--font-montserrat)', marginBottom: '0px' }
                                 }}>
                                     <PrismicRichText field={slice.primary.description} />
-                                    <PrismicRichText field={slice.primary.dates} />
+
                                 </Box>
+
+                                <Box sx={{
+                                    margin: "40px auto", textAlign: 'center', fontSize: { xs: '20px', md: '24px' }, width: { xs: 'auto', md: "max-content" }, fontWeight: 600, '&& p': {
+                                        margin: 0,
+                                    }, 'p': { marginTop: '20px', marginBottom: '40px', textAlign: 'center' }
+                                }}>
+                                    <Box sx={{ display: { xs: "none", md: 'block' } }}>
+                                        <PrismicRichText field={slice.primary.dates} />
+                                    </Box>
+                                    <Box sx={{ display: { xs: "block", md: 'none' } }}>
+                                        <PrismicRichText field={slice.primary.dates_mobile} />
+                                    </Box>
+
+                                </Box>
+
 
                                 <Box display="flex" justifyContent="center" mb={4} >
                                     <RegisterButton href="#register-form" variant="contained" sx={{ backgroundColor: "#FF5B02", boxShadow: 'none', width: 'max-content', textAlign: 'center', padding: { xs: '30px 40px', md: '50px 80px' } }} >
@@ -109,7 +124,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                 sx={{
                                     flex: '1 1 200px',
                                     aspectRatio: '2/3',
-                                    maxWidth: 150,
+                                    maxWidth: 200,
                                     width: '100%',
                                 }}
                             >
@@ -143,7 +158,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                 sx={{
                                     flex: '1 1 200px',
                                     aspectRatio: '2/3',
-                                    maxWidth: 150,
+                                    maxWidth: 200,
                                     width: '100%',
                                 }}
                             >
@@ -153,7 +168,9 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                     alt="background right"
                                     fill
                                     style={{
-                                        objectFit: 'contain',
+                                        objectFit: 'fill',
+                                        height: '100%',
+                                        width: '100%',
                                         zIndex: 1,
                                         opacity: 0.3,
                                     }}
@@ -205,7 +222,11 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                 src={RightBack}
                                 alt="background"
                                 fill
-                                style={{ objectFit: 'contain' }}
+                                style={{
+                                    objectFit: 'fill',
+                                    height: '100%',
+                                    width: '100%'
+                                }}
                             />
                         </Box>
 

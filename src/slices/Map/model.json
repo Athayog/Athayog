@@ -19,6 +19,14 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "map_mobile": {
+          "type": "Image",
+          "config": {
+            "label": "Map Mobile",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}

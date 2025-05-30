@@ -20,3 +20,19 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+@media (max-width: 768px) {
+    p:has(.mobile-break-after) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-break-after::after {
+        content: "";
+    }
+
+    .mobile-break-after+* {
+        display: none;
+        /* hides dash */
+    }
+}

@@ -44,6 +44,15 @@
             "multi": "heading2,heading3,heading4,heading5,heading6,strong,em,paragraph"
           }
         },
+        "dates_mobile": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Dates Mobile",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,strong,em"
+          }
+        },
         "registration_button_title": {
           "type": "Text",
           "config": {

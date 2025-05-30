@@ -1238,6 +1238,16 @@ export interface ArambhaRegisterSliceDefaultPrimary {
     dates: prismic.RichTextField
 
     /**
+     * Dates Mobile field in *ArambhaRegister → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: arambha_register.default.primary.dates_mobile
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    dates_mobile: prismic.RichTextField
+
+    /**
      * Registration Button Title field in *ArambhaRegister → Default → Primary*
      *
      * - **Field Type**: Text
@@ -5343,6 +5353,16 @@ export interface MapSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     map: prismic.ImageField<never>
+
+    /**
+     * Map Mobile field in *Map → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: map.default.primary.map_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    map_mobile: prismic.ImageField<never>
 }
 
 /**
