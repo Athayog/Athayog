@@ -47,15 +47,31 @@ const validationSchema = Yup.object({
 });
 
 
-const generateTicketID = (phone: string, email: string) => {
-    const prefix = 'ATH-';
-    const phoneDigits = phone.replace(/\D/g, '').slice(0, 2);
-    const emailPrefix = email.split('@')[0].replace(/[^a-zA-Z]/g, '').slice(0, 2).toUpperCase();
-    const uuid = uuidv4().replace(/-/g, '').toUpperCase();
-    const randomChars = uuid.slice(0, 2);
 
-    return prefix + phoneDigits + emailPrefix + randomChars;
-};
+function generateTicketID(): string {
+    const prefix = 'ATH-';
+
+    // Get base36 timestamp (compact and time-sensitive)
+    const timestampPart = Date.now().toString(36).toUpperCase();
+
+    // Get 4 characters from UUID (randomness)
+    const uuidPart = uuidv4().replace(/-/g, '').slice(0, 4).toUpperCase();
+
+    // Merge and rehash as base36 again
+    const merged = `${timestampPart}${uuidPart}`;
+
+    // Convert the merged string to a hash code number (ensuring numeric conversion)
+    let hash = 0;
+    for (let i = 0; i < merged.length; i++) {
+        hash = (hash * 31 + merged.charCodeAt(i)) >>> 0; // Unsigned 32-bit int
+    }
+
+    const finalId = hash.toString(36).toUpperCase().slice(0, 6);
+
+    return `${prefix}${finalId}`;
+}
+
+
 
 const ArambhaForm = ({ data }: any) => {
     const [qrData, setQrData] = useState<string | null>(null);
@@ -87,7 +103,7 @@ const ArambhaForm = ({ data }: any) => {
             setProgressStep('');
             try {
                 setPercentage(20)
-                setProgressStep('Checking for duplicates...');
+                setProgressStep('Verifying Data...');
                 const res = await fetch('/api/yoga-day-duplicate/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -107,7 +123,7 @@ const ArambhaForm = ({ data }: any) => {
 
 
                 setProgressStep('Generating your ticket...');
-                const ticketID = generateTicketID(values.phone, values.email);
+                const ticketID = generateTicketID();
                 const qrDataUrl = await QRCode.toDataURL(ticketID);
                 setQrData(ticketID);
 
@@ -193,6 +209,8 @@ const ArambhaForm = ({ data }: any) => {
 
                 </Box>
             )}
+
+
 
             <Backdrop
                 open={formik.isSubmitting}

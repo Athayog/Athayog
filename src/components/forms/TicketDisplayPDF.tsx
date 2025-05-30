@@ -56,7 +56,7 @@ const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl
                     if (downloadUrl) {
                         const link = document.createElement('a');
                         link.href = downloadUrl;
-                        link.download = 'entry-pass.pdf';
+                        link.download = ticketId + '.pdf';
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
