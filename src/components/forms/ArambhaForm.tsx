@@ -6,13 +6,37 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
 import useFormStore from '@/store/useFormStore';
+import { Backdrop, CircularProgress, InputAdornment, LinearProgress, linearProgressClasses, styled } from '@mui/material';
 import TicketDisplay from '@/components/forms/TicketDisplayPDF';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 import RegisterButton from '@/components/elements/button/RegisterButton';
-import { Alert, Box, Button, CircularProgress, FormControl, FormControlLabel, FormHelperText, MenuItem, Radio, RadioGroup, Select, Snackbar, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, FormControl, FormControlLabel, FormHelperText, MenuItem, Radio, RadioGroup, Select, Snackbar, TextField, Typography } from '@mui/material';
+
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+    height: 10,
+    borderRadius: 5,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+        backgroundColor: theme.palette.grey[200],
+        ...theme.applyStyles('dark', {
+            backgroundColor: theme.palette.grey[800],
+        }),
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+        borderRadius: 5,
+        backgroundColor: '#47820D',
+        ...theme.applyStyles('dark', {
+            backgroundColor: '#308fe8',
+        }),
+    },
+}));
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Required'),
-    phone: Yup.string().required('Required'),
+    phone: Yup.string().required('Required').test('is-valid-phone', 'Enter a valid phone number with country code', (value) => {
+        const phoneNumber = parsePhoneNumberFromString(value || '');
+        return phoneNumber?.isValid() ?? false;
+    }),
     email: Yup.string().email('Invalid email').required('Required'),
     location: Yup.string().required('Required'),
     experience: Yup.string().required('Please select an option'),
@@ -38,11 +62,13 @@ const ArambhaForm = ({ data }: any) => {
     const { loading, error, success, submitForm, fileURL } = useFormStore()
     const [submittedData, setSubmittedData] = useState<any>(null);
     const [apiError, setApiError] = useState<string | null>(null);
+    const [progressStep, setProgressStep] = useState('');
+    const [percentage, setPercentage] = useState(0)
 
     const formik = useFormik({
         initialValues: {
             name: '',
-            phone: '',
+            phone: '+91',
             email: '',
             location: '',
             eventSource: '',
@@ -56,8 +82,11 @@ const ArambhaForm = ({ data }: any) => {
         onSubmit: async (values, { setSubmitting, resetForm }) => {
             setApiError(null);
             setSubmitting(true);
-
+            setPercentage(0)
+            setProgressStep('');
             try {
+                setPercentage(20)
+                setProgressStep('Checking for duplicates...');
                 const res = await fetch('/api/yoga-day-duplicate/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -66,26 +95,30 @@ const ArambhaForm = ({ data }: any) => {
 
                 if (res.status === 409) {
                     const data = await res.json();
+                    setProgressStep('');
                     setApiError(data.message || 'Either phone or email is already registered for this event.');
                     return;
                 } else if (!res.ok) {
+                    setProgressStep('');
                     setApiError('Something went wrong checking registration. Please try again.');
                     return;
                 }
 
+
+                setProgressStep('Generating your ticket...');
                 const ticketID = generateTicketID(values.phone, values.email);
                 const qrDataUrl = await QRCode.toDataURL(ticketID);
                 setQrData(ticketID);
-
-
 
                 const resPDF = await fetch('/api/generate-pdf', {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name: values.name, ticketId: ticketID, qrDataUrl: qrDataUrl }),
                 })
+                setPercentage(40)
 
                 if (!resPDF.ok) {
+                    setProgressStep('');
                     setApiError('Something went wrong. Please try again.');
                     return;
                 }
@@ -102,39 +135,46 @@ const ArambhaForm = ({ data }: any) => {
                     qrDataUrl,
                     fileURL: fileURL
                 };
+
                 // Now call your other submitForm function and pass the file
+                setProgressStep('Saving your details...');
                 await submitForm(fullData, 'arambhaForm25', 'info@athayogliving.com', pdfFile, 'arambhaForm25')
+                setPercentage(80)
+                setProgressStep('Sending confirmation email and WhatsApp...');
 
-                const emailRes = await fetch('/api/send-email', {
-                    method: 'POST',
-                    body: JSON.stringify(fullData),
-                    headers: { 'Content-Type': 'application/json' },
-                });
+                const [emailRes, whatsAppRes] = await Promise.allSettled([
+                    fetch('/api/send-email', {
+                        method: 'POST',
+                        body: JSON.stringify(fullData),
+                        headers: { 'Content-Type': 'application/json' },
+                    }),
+                    fetch('/api/send-whatsapp', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            phoneNumber: fullData.phone,
+                            name: fullData.name,
+                            ticketId: fullData.ticketID,
+                            media_url: fullData.fileURL,
+                        }),
+                    })
+                ]);
 
-                if (!emailRes.ok) {
+                // Error handling
+                if (emailRes.status === 'rejected' || !emailRes.value.ok) {
                     setApiError('Form submitted, but failed to send confirmation email.');
                 }
 
-                const whatsAppRes = await fetch('/api/send-whatsapp', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        phoneNumber: values.phone,
-                        name: values.name,
-                        ticketId: ticketID,
-                        media_url: fileURL
-                    })
-                });
-
-                if (!whatsAppRes.ok) {
-                    setApiError('Form submitted, but failed to send whatsapp ticket.');
+                if (whatsAppRes.status === 'rejected' || !whatsAppRes.value.ok) {
+                    setApiError('Form submitted, but failed to send WhatsApp ticket.');
                 }
+                setPercentage(100)
+                setProgressStep('✅ All done!');
 
                 setSubmittedData(fullData);
                 resetForm();
 
             } catch (error) {
-
                 setApiError('Unexpected error occurred. Please try again.');
             } finally {
                 setSubmitting(false);
@@ -143,6 +183,7 @@ const ArambhaForm = ({ data }: any) => {
     });
 
     return (
+
         <Box sx={{ width: '100%', padding: { xs: '0px 30px', md: 'inherit' } }}>
             {submittedData && (
                 <Box textAlign="center">
@@ -150,6 +191,20 @@ const ArambhaForm = ({ data }: any) => {
                     <RegisterButton sx={{ marginTop: '30px' }} variant='contained' onClick={() => setSubmittedData(false)}>Register Another</RegisterButton>
                 </Box>
             )}
+
+            <Backdrop
+                open={formik.isSubmitting}
+                sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: '#fff', flexDirection: 'column' }}
+            >
+
+                <Box sx={{ width: '500px' }}>
+                    <BorderLinearProgress variant="determinate" value={percentage} />
+                </Box>
+                <Typography variant="body1" sx={{ mt: 2, fontSize: '26px' }}>
+                    {progressStep || 'Please wait...'}
+                </Typography>
+
+            </Backdrop>
 
             {!submittedData && (
                 <Box sx={{ width: '100%' }}>
@@ -189,8 +244,15 @@ const ArambhaForm = ({ data }: any) => {
                                             placeholder="Whatsapp Number"
                                             sx={{ backgroundColor: '#FFFFFF' }}
                                             type="tel"
-                                            value={formik.values.phone}
-                                            onChange={formik.handleChange}
+                                            value={formik.values.phone.slice(3)} // Only show 10-digit number
+                                            onChange={(e) => {
+                                                const digits = e.target.value.replace(/[^\d]/g, '').slice(0, 10);
+                                                formik.setFieldValue('phone', '+91' + digits);
+                                            }}
+                                            InputProps={{
+                                                startAdornment: <InputAdornment position="start">+91</InputAdornment>,
+                                                inputProps: { maxLength: 10 }
+                                            }}
                                             onBlur={formik.handleBlur}
                                             error={formik.touched.phone && Boolean(formik.errors.phone)}
                                             helperText={formik.touched.phone && formik.errors.phone}
