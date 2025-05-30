@@ -1,4 +1,5 @@
 import * as React from 'react';
+import LogoFilled from '/public/images/LogoFilled.jpg'
 
 interface EmailTemplateProps {
     name: string;
@@ -10,11 +11,14 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     ticketID,
 }) => (
     <div style={{ fontFamily: 'Arial, sans-serif', color: '#333', lineHeight: 1.6 }}>
+        <div style={{ display: 'flex' }}>
+            <img height="60px" width="60px" src='https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/ar24_logo.png?alt=media&token=a3971691-5c65-4467-92ab-42580d3ed5cd' />
+            <img height="60px" width="60px" src="https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/LogoFilled.jpg?alt=media&token=2e593810-bb55-4340-8614-f8052f8f63fa" />
+        </div>
         <h2>Namaste {name},</h2>
 
         <p>
-            Thank you for registering for the International Day of Yoga 2025 with Athayog,
-            in association with Shri Tejasvi Surya, Member of Parliament, Bengaluru South. 🙏
+            Thank you for registering for the Yoga Arambha 2025 with Athayog, in association with Shri Tejasvi Surya, Member of Parliament, Bengaluru South. 🙏
         </p>
 
         <p>
@@ -26,8 +30,10 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         <p>📅 <strong>Event:</strong> International Day of Yoga 2025<br />
             📍 <strong>Venue:</strong> Kittur Rani Chennamma stadium, Jaynagar<br />
             🕒 <strong>Timing:</strong> 6:00 AM onwards<br />
-            🔐 <strong> Registration ID:</strong> {ticketID}
+            🔐
         </p>
+
+        <p><strong> Registration ID:</strong> {ticketID}</p>
 
         <p>Your unique QR code is attached below. Please present it at the registration counter for a seamless check-in experience.</p>
         <p><strong>👇 Download Your Entry Pass (PDF)</strong></p>

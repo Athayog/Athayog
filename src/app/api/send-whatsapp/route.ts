@@ -12,44 +12,16 @@ export async function POST(request: Request) {
         );
     }
 
-    const userid = '2000216557'
-    const password = 'AYLvyasa@2020$$'
-    const caption = `ATHAYOG | YOGA ARAMBHA 2025 CONFIRMATION
+    const userid = process.env.NEXT_PUBLIC_GUPSHUP_USER_ID
+    const password = process.env.NEXT_PUBLIC_GUPSHUP_PASSOWRD
 
-Namaste ${name} 🙏,
-
-Thank you for registering for the International Day of Yoga 2025 with Athayog,
-in association with Shri Tejasvi Surya, Member of Parliament – Bengaluru South.
-
-📅 Date: June 21, 2025  
-📍 Venue: Kittur Rani Chennamma stadium, Jaynagar  
-🕒 Timing: 6:00 am onwards  
-🧾 Registration ID: ${ticketId}
-
-Your unique entry QR code and event pass are ready ✅  
-
-Please Note  
-✅ Bring your yoga mat & water bottle  
-✅ Wear comfortable yoga attire  
-✅ Arrive at least 15 minutes early  
-✅ Show the QR code at the entry gate
-
-Let’s come together to celebrate yoga, health & harmony 🌿
-
-See you on the mat!  
-Team Athayog`;
-
-
-
-    const encodedCaption = encodeURIComponent(caption);
     const encodedMediaUrl = encodeURIComponent(media_url);
     const encodedFileName = encodeURIComponent(ticketId + "_Ticket")
 
-    const fullUrl = `https://media.smsgupshup.com/GatewayAPI/rest?userid=${encodeURIComponent(userid)}&password=${encodeURIComponent(password)}&send_to=${encodeURIComponent(phoneNumber)}&v=1.1&format=json&msg_type=DOCUMENT&method=SENDMEDIAMESSAGE&caption=${encodedCaption}&media_url=${encodedMediaUrl}&filename=${encodedFileName}`;
-
-
+    const updatedURL = `https://media.smsgupshup.com/GatewayAPI/rest?userid=${userid}&password=${password}&send_to=${phoneNumber}&v=1.1&format=json&msg_type=DOCUMENT&method=SENDMEDIAMESSAGE&caption=ATHAYOG+%7C+YOGA+ARAMBHA+2025+CONFIRMATION%0A%0ANamaste+${name}+%F0%9F%99%8F%2C%0A%0AThank+you+for+registering+for+the+Yoga+Arambha+2025+with+Athayog%2C%0Ain+association+with+Shri+Tejasvi+Surya%2C+Member+of+Parliament+%E2%80%93+Bengaluru+South.%0A%0A%F0%9F%93%85+Date%3A+June+21%2C+2025++%0A%F0%9F%93%8D+Venue%3A+Kittur+Rani+Chennamma+stadium%2C+Jayanagar%0A%F0%9F%95%92+Timing%3A+6%3A00+am+onwards++%0A%F0%9F%A7%BE+Registration+ID%3A+ATH-3434%0A%0AYour+unique+entry+QR+code+and+event+pass+are+ready+%E2%9C%85%0A%0APlease+Note++%0A%E2%9C%85+Bring+your+yoga+mat+%26+water+bottle++%0A%E2%9C%85+Wear+comfortable+yoga+attire++%0A%E2%9C%85+Arrive+at+least+15+minutes+early++%0A%E2%9C%85+Show+the+QR+code+at+the+entry+gate%0A%0ALet%E2%80%99s+come+together+to+celebrate+yoga%2C+health+%26+harmony+%F0%9F%8C%BF%0A%0ASee+you+on+the+mat%21++%0ATeam+Athayog&media_url=${encodedMediaUrl}&filename=${encodedFileName}`
+    console.log(updatedURL)
     try {
-        const response = await fetch(fullUrl, {
+        const response = await fetch(updatedURL, {
             method: 'GET',
             redirect: 'follow',
         });

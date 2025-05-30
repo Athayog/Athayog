@@ -116,7 +116,7 @@ const ArambhaForm = ({ data }: any) => {
                 setPercentage(40);
 
                 const pdfBlob = await resPDF;
-                const pdfFile = new File([pdfBlob], 'entry-pass.pdf', { type: 'application/pdf' });
+                const pdfFile = new File([pdfBlob], ticketID.toString() + '.pdf', { type: 'application/pdf' });
                 const pdfUrl = URL.createObjectURL(pdfBlob);
                 setDownloadUrl(pdfUrl);
                 let fullData = {
