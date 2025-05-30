@@ -41,7 +41,7 @@ const YogaDayHero: FC<YogaDayHeroProps> = ({ slice }) => {
                                     <video
                                         src={url}
                                         autoPlay
-
+                                        muted
                                         loop
                                         playsInline
                                         preload="auto"

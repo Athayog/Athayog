@@ -152,28 +152,7 @@ const SimpleGridWithDescription: FC<SimpleGridWithDescriptionProps> = ({ slice }
                                 Your browser does not support the video tag.
                             </Box>
 
-                            {!playingStates[idx] && (
-                                <IconButton
-                                    onClick={() => handlePlay(idx)}
-                                    sx={{
-                                        position: 'absolute',
-                                        top: '50%',
-                                        left: '50%',
-                                        transform: 'translate(-50%, -50%)',
-                                        backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                                        color: 'white',
-                                        width: 64,
-                                        height: 64,
-                                        '&:hover': {
-                                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                        },
-                                    }}
-                                >
-                                    {playingStates[idx]
-                                        ? <PauseCircleOutline sx={{ fontSize: 40 }} />
-                                        : <PlayArrowOutlined sx={{ fontSize: 40 }} />}
-                                </IconButton>
-                            )}
+
                         </Box>
                     </Grid>
                 ))}

@@ -25,7 +25,7 @@ const ArambhaRegistration: FC<ArambhaRegistrationProps> = ({ slice }) => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: { xs: '20px 5px', md: '60px 130px' },
+                    padding: { xs: '20px 15px', md: '60px 60px' },
                 }}
             >
 

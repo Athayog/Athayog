@@ -53,11 +53,11 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                         </Box>
                     </Box>
 
-                    <Box width="100%">
+                    <Box width="100%" >
                         <Grid spacing={4} alignItems="center" justifyContent="center">
 
                             {/* Center Content */}
-                            <Grid item xs={6} md={6}>
+                            <Grid item xs={6} md={6} sx={{ padding: { xs: 2, md: 6 } }}>
                                 <Typography align="center" sx={{ color: '#007B48', fontWeight: 700, fontSize: { xs: '36px', md: '38px' } }}>
                                     {slice.primary.title}
                                 </Typography>
@@ -168,7 +168,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                     alt="background right"
                                     fill
                                     style={{
-                                        objectFit: 'fill',
+                                        objectFit: 'contain',
                                         height: '100%',
                                         width: '100%',
                                         zIndex: 1,
@@ -223,7 +223,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                 alt="background"
                                 fill
                                 style={{
-                                    objectFit: 'fill',
+                                    objectFit: 'contain',
                                     height: '100%',
                                     width: '100%'
                                 }}
