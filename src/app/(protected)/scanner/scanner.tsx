@@ -151,7 +151,6 @@ export default function ScannerPage() {
                                 <Typography><strong>TicketID:</strong> {userDetails.ticketID || 'N/A'}</Typography>
                                 <Typography><strong>Name:</strong> {userDetails.name || 'N/A'}</Typography>
                                 <Typography><strong>Email:</strong> {userDetails.email || 'N/A'}</Typography>
-                                <Typography><strong>Ticket ID:</strong> {userDetails.ticketID || 'N/A'}</Typography>
                                 <Typography><strong>Phone:</strong> {userDetails.phone || 'N/A'}</Typography>
                                 <Typography><strong>Location:</strong> {userDetails.location || 'N/A'}</Typography>
                                 <Typography><strong>T Shirt Size:</strong> {userDetails.tShirtSize.toUpperCase() || 'N/A'}</Typography>

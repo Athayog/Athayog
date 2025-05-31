@@ -189,7 +189,7 @@ const ArambhaForm = ({ data }: any) => {
             }
         }
     });
-
+    console.log(formik.touched)
     return (
 
         <Box sx={{ width: '100%', padding: { xs: '0px 10px', md: 'inherit' } }}>
@@ -315,7 +315,7 @@ const ArambhaForm = ({ data }: any) => {
                                                     <MenuItem value="poster flyer">Poster or flyer</MenuItem>
                                                     <MenuItem value="online advertisement">Online advertisement</MenuItem>
                                                 </Select>
-                                                {formik.errors.eventSource ? <FormHelperText error>{formik.errors.eventSource}</FormHelperText> : null}
+                                                {formik.touched.eventSource && Boolean(formik.errors.eventSource) ? <FormHelperText error>{formik.errors.eventSource}</FormHelperText> : null}
                                             </FormControl>
                                             <TextField
                                                 fullWidth
