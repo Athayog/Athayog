@@ -1,0 +1,108 @@
+{
+  "id": "simple_grid_with_description",
+  "type": "SharedSlice",
+  "name": "SimpleGridWithDescription",
+  "description": "SimpleGridWithDescription",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "grid": {
+          "type": "Group",
+          "config": {
+            "label": "Grid",
+            "repeat": true,
+            "fields": {
+              "images": {
+                "type": "Image",
+                "config": {
+                  "label": "Images",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,o-list-item,list-item"
+                }
+              }
+            }
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "SubTitle",
+            "placeholder": ""
+          }
+        },
+        "subdescription": {
+          "type": "StructuredText",
+          "config": {
+            "label": "SubDescription",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "preformatted,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,o-list-item,paragraph,list-item"
+          }
+        },
+        "first_video": {
+          "type": "Link",
+          "config": {
+            "label": "First Video",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "second_youtube": {
+          "type": "Link",
+          "config": {
+            "label": "Second Youtube",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "third_youtube": {
+          "type": "Link",
+          "config": {
+            "label": "Third Youtube",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

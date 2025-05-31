@@ -16,6 +16,7 @@ let initialized = false // Flag to check initialization
 
 // Global variable to store Firestore instance
 let firestore: admin.firestore.Firestore
+let storage: admin.storage.Storage
 
 // Function to create Firebase Admin App
 function createFirebaseAdminApp(params: FirebaseAdminAppParams) {
@@ -36,9 +37,11 @@ function createFirebaseAdminApp(params: FirebaseAdminAppParams) {
 
         firestore = admin.firestore() // Initialize Firestore here
         // console.log('Firebase Admin initialized successfully.')
+        storage = admin.storage()
     } else {
         // console.log('Firebase Admin app already initialized. Using existing instance.')
         firestore = admin.firestore() // Use existing Firestore instance
+        storage = admin.storage()
     }
 }
 
@@ -58,6 +61,7 @@ export async function initAdmin() {
 
     return {
         firestore, // Return the initialized Firestore instance
+        storage,
         fieldValue: admin.firestore.FieldValue,
     }
 }

@@ -150,7 +150,6 @@
 				]
 			},
 			"lineart": {
-				"__TYPE__": "ImageContent",
 				"provider": "imgix",
 				"url": "https://images.unsplash.com/photo-1616679312958-a86d9539afae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NDgwMDc2MjZ8MA&ixlib=rb-4.1.0&q=85",
 				"alt": "orange fruit on white ceramic plate",
@@ -170,6 +169,8 @@
 						"y": 0
 					}
 				},
+				"credits": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
 			"registration_button_title": {
@@ -181,6 +182,17 @@
 				"__TYPE__": "FieldContent",
 				"type": "Text",
 				"value": "Free & For Everyone"
+			},
+			"dates_mobile": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Et enim cillum Lorem ex. Ipsum cillum magna exercitation dolore ipsum ea Lorem aliqua reprehenderit cupidatat consequat proident nisi tempor proident. Sint ex aute irure aliquip excepteur qui ex do pariatur aliquip velit enim fugiat."
+						}
+					}
+				]
 			}
 		},
 		"items": []

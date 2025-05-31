@@ -1,0 +1,59 @@
+{
+    "type": "SharedSlice",
+    "id": "highlighted_guest_list",
+    "name": "HighlightedGuestList",
+    "variations": [
+        {
+            "id": "with_image",
+            "name": "With Image",
+            "description": "Displays a guest list with a highlighted chief guest and invitees, alongside an accompanying image.",
+            "version": "initial",
+            "imageUrl": "",
+            "docURL": "...",
+            "primary": {
+                "section_title": {
+                    "type": "StructuredText",
+                    "config": {
+                        "single": "heading2",
+                        "label": "Section Title"
+                    }
+                },
+                "highlighted_guest": {
+                    "type": "StructuredText",
+                    "config": {
+                        "multi": "heading3,strong,em,hyperlink",
+                        "label": "Chief Guest"
+                    }
+                },
+                "highlighted_guest_role": {
+                    "type": "StructuredText",
+                    "config": {
+                        "multi": "paragraph,strong,em,hyperlink",
+                        "label": "Chief Guest Role/Title"
+                    }
+                },
+                "invitees": {
+                    "type": "Group",
+                    "config": {
+                        "label": "Special Invitees",
+                        "fields": {
+                            "invitee_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "label": "Invitee Description"
+                                }
+                            }
+                        }
+                    }
+                },
+                "image": {
+                    "type": "Image",
+                    "config": {
+                        "label": "Side Image"
+                    }
+                }
+            }
+        }
+    ]
+}

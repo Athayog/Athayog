@@ -9,6 +9,7 @@ interface FormState {
     setLoading: (loading: boolean) => void
     setError: (error: string | null) => void
     setSuccess: (success: boolean) => void
+    fileURL: string
     submitForm: (formData: { [key: string]: any }, collectionName: string, apiUrl?: string, file?: File, fileCollection?: string) => Promise<void>
 }
 
@@ -18,6 +19,7 @@ const useFormStore = create<FormState>((set) => ({
     success: false,
     setLoading: (loading) => set({ loading }),
     setError: (error) => set({ error }),
+    fileURL: '',
     setSuccess: (success) => set({ success }),
 
     submitForm: async (formData: { [key: string]: any }, collectionName, apiUrl, file, fileCollection) => {
@@ -36,6 +38,7 @@ const useFormStore = create<FormState>((set) => ({
 
                 // Add the download URL to the formData
                 formData.fileUrl = downloadURL // Store the file reference in formData
+                set({ fileURL: downloadURL })
             }
             formData.createdAt = new Date().toISOString()
             await addDoc(collection(db, collectionName), formData)

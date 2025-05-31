@@ -1,107 +1,74 @@
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-import {
-    Box,
-    Button,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableRow,
-    Typography,
-    Paper,
-} from '@mui/material';
-import { QRCodeSVG } from 'qrcode.react';
-import { useRef } from 'react';
+import { Box, Typography, Button } from '@mui/material'
+import React from 'react'
 
-interface TicketDisplayProps {
-    submittedData: {
-        ticketID: string;
-        name: string;
-        email: string;
-        phone: string;
-        age: string | number;
-        gender: string;
-        tShirtSize: string;
-    };
-    qrData: string;
+interface TicketContentProps {
+    name: string
+    ticketId: string
+    qrDataUrl: string
+    downloadUrl: string
 }
 
-const TicketDisplay: React.FC<TicketDisplayProps> = ({ submittedData, qrData }) => {
-    const ticketRef = useRef<HTMLDivElement>(null);
-
-    const handleDownloadPDF = async () => {
-        if (!ticketRef.current) return;
-
-        const canvas = await html2canvas(ticketRef.current);
-        const imgData = canvas.toDataURL('image/png');
-
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgProps = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save(`ATH-Ticket-${submittedData.ticketID}.pdf`);
-    };
-
-    const dataRows = [
-        ['Ticket ID', submittedData.ticketID],
-        ['Name', submittedData.name],
-        ['Email', submittedData.email],
-        ['Phone', submittedData.phone],
-        ['Age', submittedData.age],
-        ['Gender', submittedData.gender],
-        ['T-Shirt Size', submittedData.tShirtSize],
-    ];
-
+const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl, downloadUrl }) => {
     return (
-        <Box>
+        <Box
+            sx={{
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                color: '#222',
+                background: '#fff',
+                maxWidth: 500,
+                mx: 'auto',
+                px: 3,
+                py: 4,
+                textAlign: 'left',
+                borderRadius: 2,
+                boxShadow: '0 1px 8px rgba(0,0,0,0.04)',
+            }}
+        >
+            <Typography variant="h6" fontWeight="bold" gutterBottom>
+                Athayog Yoga Day 2025
+            </Typography>
+
+            <Typography fontSize={14} mb={1.5}>
+                👤 <b>{name}</b>
+            </Typography>
+
+            <Typography fontSize={14} mb={1.5}>
+                🔐 <b>Ticket ID:</b> {ticketId}
+            </Typography>
+
+            <Typography fontSize={14} mb={1.5}>
+                📅 <b>Date:</b> June 21, 6:00 AM
+            </Typography>
+
+            <Typography fontSize={14} mb={2}>
+                📍 <b>Venue:</b> Kittur Rani Chennamma Stadium, Jayanagar
+            </Typography>
+
             <Box
-                ref={ticketRef}
-                sx={{
-                    padding: 4,
-                    backgroundColor: '#fff',
-                    borderRadius: 2,
-                    boxShadow: 3,
-                    maxWidth: 600,
-                    margin: '0 auto',
-                }}
-            >
-                <Typography variant="h5" fontWeight="bold" gutterBottom>
-                    🎟️ Yoga Aarambha 2025
-                </Typography>
+                component="img"
+                src={qrDataUrl}
+                alt="QR Code"
+                sx={{ width: 130, height: 130, display: 'block', mx: 'auto', my: 2 }}
+            />
 
-                <TableContainer component={Paper} elevation={0}>
-                    <Table>
-                        <TableBody>
-                            {dataRows.map(([label, value], index) => (
-                                <TableRow key={index}>
-                                    <TableCell sx={{ fontWeight: 600, width: '40%' }}>{label}</TableCell>
-                                    <TableCell>{value}</TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-
-                <Box sx={{ mt: 4, textAlign: 'center' }}>
-                    <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                        Scan QR Code at Entry
-                    </Typography>
-                    <QRCodeSVG value={qrData || ''} size={128} />
-                </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Button onClick={() => {
+                    if (downloadUrl) {
+                        const link = document.createElement('a');
+                        link.href = downloadUrl;
+                        link.download = ticketId + '.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } else {
+                        alert('No file available yet!');
+                    }
+                }} variant="outlined" sx={{ display: 'flex', justifyContent: 'center' }}>Download Ticket</Button>
             </Box>
-
-            <Button
-                onClick={handleDownloadPDF}
-                variant="contained"
-                sx={{ mt: 3, display: 'block', mx: 'auto' }}
-            >
-                DOWNLOAD TICKET PDF
-            </Button>
         </Box>
-    );
-};
 
-export default TicketDisplay;
+
+    )
+}
+
+export default TicketContent

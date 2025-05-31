@@ -1,0 +1,52 @@
+{
+  "id": "yoga_day_hero",
+  "type": "SharedSlice",
+  "name": "YogaDayHero",
+  "description": "YogaDayHero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "left_youtube": {
+          "type": "Link",
+          "config": {
+            "label": "Left Youtube",
+            "placeholder": "Left Youtube Video",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "middel_youtube": {
+          "type": "Link",
+          "config": {
+            "label": "Middel Youtube",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        },
+        "right_youtube": {
+          "type": "Link",
+          "config": {
+            "label": "Right Youtube",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

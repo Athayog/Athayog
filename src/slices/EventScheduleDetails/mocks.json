@@ -1,0 +1,77 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"date": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Doctor"
+						}
+					}
+				]
+			},
+			"day_of_week": {
+				"__TYPE__": "FieldContent",
+				"value": "sharp",
+				"type": "Text"
+			},
+			"location": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore reprehenderit irure eu nisi do commodo nisi aliquip ullamco amet. Id veniam quis enim sint. Adipisicing proident commodo ad pariatur officia."
+						}
+					}
+				]
+			},
+			"schedule_items": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"time_range",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "chapter",
+									"type": "Text"
+								}
+							],
+							[
+								"activity_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nostrud id est exercitation in sunt minim culpa exercitation irure. Sit labore non aliqua ea deserunt sint commodo velit laborum velit et qui mollit deserunt. Culpa aliquip occaecat anim aliquip."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"cta_register": {
+				"__TYPE__": "LinkContent",
+				"key": "31b4c006-1da7-4040-921d-806834f9ac83",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com",
+					"text": "ring"
+				}
+			}
+		},
+		"items": []
+	}
+]

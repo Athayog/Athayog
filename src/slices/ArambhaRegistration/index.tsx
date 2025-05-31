@@ -17,7 +17,7 @@ const ArambhaRegistration: FC<ArambhaRegistrationProps> = ({ slice }) => {
     const backgroundGradient = backgroundColorExtract(slice.primary.background_color.map((item) => item.color));
 
     return (
-        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+        <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} id="register-form">
             <Box
                 sx={{
                     background: backgroundGradient,
@@ -25,7 +25,7 @@ const ArambhaRegistration: FC<ArambhaRegistrationProps> = ({ slice }) => {
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    padding: { xs: '20px 10px', md: '60px 130px' },
+                    padding: { xs: '20px 15px', md: '60px 60px' },
                 }}
             >
 

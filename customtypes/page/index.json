@@ -27,6 +27,33 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "simple_grid_with_description": {
+                            "type": "SharedSlice"
+                        },
+                        "arambha_content": {
+                            "type": "SharedSlice"
+                        },
+                        "yoga_day_hero": {
+                            "type": "SharedSlice"
+                        },
+                        "icon_feature_grid": {
+                            "type": "SharedSlice"
+                        },
+                        "map": {
+                            "type": "SharedSlice"
+                        },
+                        "event_schedule_details": {
+                            "type": "SharedSlice"
+                        },
+                        "highlighted_guest_list": {
+                            "type": "SharedSlice"
+                        },
+                        "arambha_register": {
+                            "type": "SharedSlice"
+                        },
+                        "arambha_registration": {
+                            "type": "SharedSlice"
+                        },
                         "rich_text": {
                             "type": "SharedSlice"
                         },

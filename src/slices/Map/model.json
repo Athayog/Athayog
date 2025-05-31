@@ -1,0 +1,35 @@
+{
+  "id": "map",
+  "type": "SharedSlice",
+  "name": "Map",
+  "description": "Map",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "map": {
+          "type": "Image",
+          "config": {
+            "label": "Map",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "map_mobile": {
+          "type": "Image",
+          "config": {
+            "label": "Map Mobile",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

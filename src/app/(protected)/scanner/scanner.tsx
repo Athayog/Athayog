@@ -1,10 +1,12 @@
 'use client';
 import axios from 'axios';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Scanner } from '@yudiel/react-qr-scanner';
 import type { IDetectedBarcode } from '@yudiel/react-qr-scanner';
 import { Box, Typography, Paper, Stack, CircularProgress, Alert, TextField, Button, Divider, InputAdornment, } from '@mui/material';
 import { Container, PaperBox, ScannerBox } from './styles/Scanner';
+import useAuthStore from '@/store/useAuthStore';
+import { useRouter } from 'next/navigation';
 
 type UserDetails = {
     name: string;
@@ -20,6 +22,25 @@ export default function ScannerPage() {
     const [manualId, setManualId] = useState('');
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
     const isVerifyingRef = useRef(false);
+    const { user, handleLogout } = useAuthStore()
+    const router = useRouter();
+
+    useEffect(() => {
+        if (user) {
+            if (!user.email?.includes('athayogliving.com') && !user.phoneNumber?.includes('+918971613155')) {
+                router.push('/')
+            }
+        }
+    }, [user, router])
+
+    if (!user) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <Typography variant="h5">Please Wait...</Typography>
+            </Box>
+        )
+    }
+
 
     const resetStates = () => {
         setScanResult('');
@@ -126,19 +147,15 @@ export default function ScannerPage() {
                             <Typography variant="h6" fontWeight={600} gutterBottom>
                                 Attendee Details
                             </Typography>
-                            <Stack spacing={1}>
+                            <Stack spacing={1} >
+                                <Typography><strong>TicketID:</strong> {userDetails.ticketID || 'N/A'}</Typography>
                                 <Typography><strong>Name:</strong> {userDetails.name || 'N/A'}</Typography>
                                 <Typography><strong>Email:</strong> {userDetails.email || 'N/A'}</Typography>
-                                <Typography><strong>Ticket ID:</strong> {userDetails.ticketID || 'N/A'}</Typography>
-                                {Object.entries(userDetails).map(([key, val]) => {
-                                    if (['name', 'email', 'ticketId'].includes(key)) return null;
-                                    return (
-                                        <Typography key={key} variant="body2">
-                                            <strong>{key.replace(/_/g, ' ')}:</strong> {String(val)}
-                                        </Typography>
-                                    );
-                                })}
+                                <Typography><strong>Phone:</strong> {userDetails.phone || 'N/A'}</Typography>
+                                <Typography><strong>Location:</strong> {userDetails.location || 'N/A'}</Typography>
+                                <Typography><strong>T Shirt Size:</strong> {userDetails.tShirtSize.toUpperCase() || 'N/A'}</Typography>
                             </Stack>
+
                         </Paper>
                     )}
 

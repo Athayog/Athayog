@@ -1,0 +1,67 @@
+{
+    "type": "SharedSlice",
+    "id": "event_schedule_details",
+    "name": "EventScheduleDetails",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "description": "Displays all event meta information and lists scheduled items with time and description.",
+            "version": "initial",
+            "imageUrl": "",
+            "docURL": "...",
+            "primary": {
+                "date": {
+                    "type": "StructuredText",
+                    "config": {
+                        "single": "heading2",
+                        "label": "Event Date"
+                    }
+                },
+                "day_of_week": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Day of Week"
+                    }
+                },
+                "location": {
+                    "type": "StructuredText",
+                    "config": {
+                        "single": "paragraph",
+                        "label": "Event Location"
+                    }
+                },
+                "schedule_items": {
+                    "type": "Group",
+                    "config": {
+                        "label": "Schedule Items",
+                        "fields": {
+                            "time_range": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Time Range"
+                                }
+                            },
+                            "activity_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em",
+                                    "label": "Activity Description"
+                                }
+                            }
+                        }
+                    }
+                },
+                "cta_register": {
+                    "type": "Link",
+                    "config": {
+                        "label": "CTA Button",
+                        "allowText": true,
+                        "repeat": false,
+                        "select": null
+                    }
+                }
+            }
+        }
+    ]
+}
