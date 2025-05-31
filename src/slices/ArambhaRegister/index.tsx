@@ -124,7 +124,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                 sx={{
                                     flex: '1 1 200px',
                                     aspectRatio: '2/3',
-                                    maxWidth: 200,
+                                    maxWidth: 150,
                                     width: '100%',
                                 }}
                             >
@@ -158,7 +158,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                 sx={{
                                     flex: '1 1 200px',
                                     aspectRatio: '2/3',
-                                    maxWidth: 200,
+                                    maxWidth: 150,
                                     width: '100%',
                                 }}
                             >
