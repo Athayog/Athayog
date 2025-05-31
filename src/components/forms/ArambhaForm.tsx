@@ -14,22 +14,29 @@ import { Backdrop, Button, CircularProgress, InputAdornment, LinearProgress, lin
 import { Alert, Box, FormControl, FormControlLabel, FormHelperText, MenuItem, Radio, RadioGroup, Select, Snackbar, TextField, Typography } from '@mui/material';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-    height: 10,
-    borderRadius: 5,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-        backgroundColor: theme.palette.grey[200],
-        ...theme.applyStyles('dark', {
-            backgroundColor: theme.palette.grey[800],
-        }),
-    },
+    height: 12,
+    borderRadius: 6,
+    backgroundColor:
+        theme.palette.mode === 'dark'
+            ? 'rgba(255, 255, 255, 0.1)'
+            : theme.palette.grey[300],
+
     [`& .${linearProgressClasses.bar}`]: {
-        borderRadius: 5,
-        backgroundColor: '#47820D',
-        ...theme.applyStyles('dark', {
-            backgroundColor: '#308fe8',
-        }),
+        borderRadius: 6,
+        backgroundImage:
+            theme.palette.mode === 'dark'
+                ? 'linear-gradient(90deg, #00c6ff 0%, #0072ff 100%)'
+                : 'linear-gradient(90deg, #00c853 0%, #b2ff59 100%)',
+        animation: 'progress-glow 1.5s ease-in-out infinite',
+    },
+
+    '@keyframes progress-glow': {
+        '0%': { boxShadow: '0 0 5px rgba(0, 195, 255, 0.4)' },
+        '50%': { boxShadow: '0 0 15px rgba(0, 195, 255, 0.9)' },
+        '100%': { boxShadow: '0 0 5px rgba(0, 195, 255, 0.4)' },
     },
 }));
+
 
 const validationSchema = Yup.object({
     name: Yup.string().required('Required'),
@@ -103,7 +110,7 @@ const ArambhaForm = ({ data }: any) => {
             setProgressStep('');
             try {
                 setPercentage(20)
-                setProgressStep('Verifying Data...');
+                setProgressStep('🔍 Verifying your information...');
                 const res = await fetch('/api/yoga-day-duplicate/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -122,7 +129,7 @@ const ArambhaForm = ({ data }: any) => {
                 }
 
 
-                setProgressStep('Generating your ticket...');
+                setProgressStep('🎫 Generating your ticket...');
                 const ticketID = generateTicketID();
                 const qrDataUrl = await QRCode.toDataURL(ticketID);
                 setQrData(ticketID);
@@ -143,12 +150,12 @@ const ArambhaForm = ({ data }: any) => {
 
 
                 // Now call your other submitForm function and pass the file
-                setProgressStep('Saving your details...');
+                setProgressStep('💾 Saving your details securely...');
                 await submitForm(fullData, 'arambhaForm25', 'info@athayogliving.com', pdfFile, 'arambhaForm25')
 
 
                 setPercentage(80)
-                setProgressStep('Sending confirmation email and WhatsApp...');
+                setProgressStep('📧 Sending tickets to your inbox...');
 
                 const [emailRes, whatsAppRes] = await Promise.allSettled([
                     fetch('/api/send-email', {
@@ -177,8 +184,8 @@ const ArambhaForm = ({ data }: any) => {
                     setApiError('Form submitted, but failed to send WhatsApp ticket.');
                 }
                 setPercentage(100)
-                setProgressStep('✅ All done!');
-
+                setProgressStep('✅ All done! You’re all set!');
+                await new Promise((resolve) => setTimeout(resolve, 2000));
                 setSubmittedData(fullData);
                 resetForm();
 
@@ -186,10 +193,12 @@ const ArambhaForm = ({ data }: any) => {
                 setApiError('Unexpected error occurred. Please try again.');
             } finally {
                 setSubmitting(false);
+                setPercentage(0)
+                setProgressStep('');
             }
         }
     });
-    console.log(formik.touched)
+
     return (
 
         <Box sx={{ width: '100%', padding: { xs: '0px 10px', md: 'inherit' } }}>
@@ -210,8 +219,6 @@ const ArambhaForm = ({ data }: any) => {
                 </Box>
             )}
 
-
-
             <Backdrop
                 open={formik.isSubmitting}
                 sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: '#fff', flexDirection: 'column' }}
@@ -220,8 +227,18 @@ const ArambhaForm = ({ data }: any) => {
                 <Box sx={{ maxWidth: '300px', minWidth: '200px' }}>
                     <BorderLinearProgress variant="determinate" value={percentage} />
                 </Box>
-                <Typography variant="body1" sx={{ mt: 2, fontSize: '22px' }}>
-                    {progressStep}
+                <Typography variant="body1" sx={{
+                    mt: 1,
+                    fontSize: { xs: '16px', md: '22px' },
+                    color: '#ffffff', // force white text
+                    textShadow: '0px 1px 4px rgba(0, 0, 0, 0.9)', // subtle glow for readability
+                    px: 1.5,
+                    py: 0.5,
+                    textAlign: 'center',
+                    borderRadius: 1,
+                    backgroundColor: 'rgba(0, 0, 0, 0.3)' // optional background to lift from Backdrop
+                }}>
+                    {progressStep || "Please wait..."}
                 </Typography>
 
             </Backdrop>
