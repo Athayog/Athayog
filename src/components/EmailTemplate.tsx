@@ -30,10 +30,9 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         <p>📅 <strong>Event:</strong> International Day of Yoga 2025<br />
             📍 <strong>Venue:</strong> Kittur Rani Chennamma stadium, Jaynagar<br />
             🕒 <strong>Timing:</strong> 6:00 AM onwards<br />
-            🔐
         </p>
 
-        <p><strong> Registration ID:</strong> {ticketID}</p>
+        <p>🔐<strong> Registration ID:</strong> {ticketID}</p>
 
         <p>Your unique QR code is attached below. Please present it at the registration counter for a seamless check-in experience.</p>
         <p><strong>👇 Download Your Entry Pass (PDF)</strong></p>
