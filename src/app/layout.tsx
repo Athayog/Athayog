@@ -34,7 +34,7 @@ export default function RootLayout({
             <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <meta name="google-site-verification" content="MFdD5TUc66yWX-w0hwFHmVkJWyt8BAkzk-g3jR4KLlo" />
-                <GoogleTagManager gtmId="GTM-N4LH3M3" />
+                <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
@@ -46,7 +46,7 @@ export default function RootLayout({
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
                 'https://connect.facebook.net/en_US/fbevents.js');
-                fbq('init', '1011750923226651');
+                fbq('init', ${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL});
                 fbq('track', 'PageView');
             `,
                     }}
@@ -56,7 +56,7 @@ export default function RootLayout({
                         height="1"
                         width="1"
                         style={{ display: 'none' }}
-                        src="https://www.facebook.com/tr?id=1011750923226651&ev=PageView&noscript=1"
+                        src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_FACEBOOK_PIXEL}&ev=PageView&noscript=1`}
                     />
                 </noscript>
             </head>
