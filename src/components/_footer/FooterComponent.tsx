@@ -4,6 +4,7 @@ import { LinkField, ImageFieldImage } from '@prismicio/client'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import ContentContainer from '@/components/_shared/ContentContainer'
 import { Box, Divider, Grid, styled, Typography } from '@mui/material'
+import { usePathname } from 'next/navigation'
 
 export const HeadingTitle = styled(Typography)(({ theme }) => ({
     fontWeight: '700',
@@ -34,6 +35,7 @@ const FooterComponent = ({ data }: { data: any }) => {
     const whatWeOffer = data.what_we_offer || []
     const legal = data.legal || []
     const talkToUs = data.talk_to_us || []
+    const pathname = usePathname()
 
     return (
         <Box sx={{ backgroundColor: '#e9fdde' }}>
@@ -48,7 +50,7 @@ const FooterComponent = ({ data }: { data: any }) => {
                     }}
                 >
                     {/* Site Links */}
-                    <Grid item xs={4} sm={3} md={3}>
+                    <Grid item xs={4} sm={3} md={3} sx={pathname === '/yoga-arambha-25' ? { display: 'none' } : {}}>
                         <HeadingTitle variant="h6" gutterBottom>
                             Site Links
                         </HeadingTitle>
@@ -62,7 +64,7 @@ const FooterComponent = ({ data }: { data: any }) => {
                     </Grid>
 
                     {/* What We Offer */}
-                    <Grid item xs={4} sm={3} md={3}>
+                    <Grid item xs={4} sm={3} md={3} sx={pathname === '/yoga-arambha-25' ? { display: 'none' } : {}}>
                         <HeadingTitle variant="h6" gutterBottom>
                             What We Offer
                         </HeadingTitle>
@@ -76,7 +78,7 @@ const FooterComponent = ({ data }: { data: any }) => {
                     </Grid>
 
                     {/* Legal */}
-                    <Grid item xs={4} sm={3} md={3}>
+                    <Grid item xs={4} sm={3} md={3} sx={pathname === '/yoga-arambha-25' ? { display: 'none' } : {}}>
                         <HeadingTitle variant="h6" gutterBottom>
                             Legal
                         </HeadingTitle>
@@ -190,7 +192,7 @@ const FooterComponent = ({ data }: { data: any }) => {
                     </Box>
                 </Box>
             </ContentContainer>
-        </Box>
+        </Box >
     )
 }
 
