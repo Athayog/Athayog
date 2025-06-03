@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Thanks from '@/app/thank-you-for-registering/thanks'
+import { Suspense } from 'react'
 
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 }
 
 const LoginPage = () => {
-    return <Thanks />
+    return <Suspense fallback={<div>Loading...</div>}><Thanks /> </Suspense>
 }
 
 export default LoginPage
