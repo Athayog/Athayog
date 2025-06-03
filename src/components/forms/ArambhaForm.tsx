@@ -1,18 +1,16 @@
 'use client'
 
-import * as Yup from 'yup';
+import RegisterButton from '@/components/elements/button/RegisterButton';
+import { generatePDFBlob } from '@/components/forms/generatePdf';
+import useFormStore from '@/store/useFormStore';
+import { Alert, Backdrop, Box, CircularProgress, FormControl, FormControlLabel, FormHelperText, InputAdornment, LinearProgress, linearProgressClasses, MenuItem, Radio, RadioGroup, Select, Snackbar, styled, TextField, Typography } from '@mui/material';
+import { useFormik } from 'formik';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import { useRouter } from 'next/navigation';
 import QRCode from 'qrcode';
 import { useState } from 'react';
-import { useFormik } from 'formik';
 import { v4 as uuidv4 } from 'uuid';
-import useFormStore from '@/store/useFormStore';
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
-import { generatePDFBlob } from '@/components/forms/generatePdf';
-import TicketDisplay from '@/components/forms/TicketDisplayPDF';
-import RegisterButton from '@/components/elements/button/RegisterButton';
-import { Backdrop, Button, CircularProgress, InputAdornment, LinearProgress, linearProgressClasses, styled } from '@mui/material';
-import { Alert, Box, FormControl, FormControlLabel, FormHelperText, MenuItem, Radio, RadioGroup, Select, Snackbar, TextField, Typography } from '@mui/material';
-import { sendErrorLog } from '@/utils/sendErrors';
+import * as Yup from 'yup';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 12,
@@ -89,6 +87,7 @@ const ArambhaForm = ({ data }: any) => {
     const [progressStep, setProgressStep] = useState('');
     const [percentage, setPercentage] = useState(0)
     const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+    const router = useRouter();
 
     const formik = useFormik({
         initialValues: {
@@ -109,9 +108,12 @@ const ArambhaForm = ({ data }: any) => {
             setSubmitting(true);
             setPercentage(0)
             setProgressStep('');
+
+            let globalTicketID = '';
             try {
                 setPercentage(20)
                 setProgressStep('🔍 Verifying your information...');
+
                 const res = await fetch('/api/yoga-day-duplicate/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -132,6 +134,7 @@ const ArambhaForm = ({ data }: any) => {
 
                 setProgressStep('🎫 Generating your ticket...');
                 const ticketID = generateTicketID();
+                globalTicketID = ticketID;
                 const qrDataUrl = await QRCode.toDataURL(ticketID);
                 setQrData(ticketID);
 
@@ -189,14 +192,9 @@ const ArambhaForm = ({ data }: any) => {
                 await new Promise((resolve) => setTimeout(resolve, 2000));
                 setSubmittedData(fullData);
                 resetForm();
-
+                router.push(`/thank-you-for-registering?ticketID=${globalTicketID}`);
             } catch (error) {
                 setApiError('Unexpected error occurred. Please try again.');
-                await sendErrorLog({
-                    message: 'Arambha Form Submission Error',
-                    formData: error,
-                    errorDetails: error,
-                });
             } finally {
                 setSubmitting(false);
                 setPercentage(0)
@@ -208,22 +206,6 @@ const ArambhaForm = ({ data }: any) => {
     return (
 
         <Box sx={{ width: '100%', padding: { xs: '0px 10px', md: 'inherit' } }}>
-            {submittedData && (
-                <Box textAlign="center">
-                    <TicketDisplay name={submittedData.name} ticketId={submittedData.ticketID} qrDataUrl={submittedData.qrDataUrl} downloadUrl={downloadUrl || ''} />
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-
-                        <RegisterButton
-                            sx={{ mt: 3 }}  // shorthand for marginTop: 24px (3 * 8px)
-                            variant="contained"
-                            onClick={() => setSubmittedData(false)}
-                        >
-                            Register Another
-                        </RegisterButton>
-                    </Box>
-
-                </Box>
-            )}
 
             <Backdrop
                 open={formik.isSubmitting}
@@ -249,231 +231,231 @@ const ArambhaForm = ({ data }: any) => {
 
             </Backdrop>
 
-            {
-                !submittedData && (
-                    <Box sx={{ width: '100%' }}>
-                        <Typography sx={{ fontSize: { xs: '34px', md: '48px' }, fontWeight: '700' }} align="center" gutterBottom color="green">
-                            Registration Form
-                        </Typography>
-                        <Box sx={{ width: '100%' }}>
-                            <form onSubmit={formik.handleSubmit}>
-                                <Box display='flex' gap={5} alignItems="center" justifyContent="center">
-                                    {/* Left Image */}
 
-                                    <Box
-                                        component="img"
-                                        src={data?.leftimage.url || '/placeholder.png'} // Replace with actual path
-                                        alt="Yoga Pose"
-                                        sx={{ width: '100%', maxWidth: 200, display: { xs: 'none', md: 'block' }, mx: 'auto' }}
+
+            <Box sx={{ width: '100%' }}>
+                <Typography sx={{ fontSize: { xs: '34px', md: '48px' }, fontWeight: '700' }} align="center" gutterBottom color="green">
+                    Registration Form
+                </Typography>
+                <Box sx={{ width: '100%' }}>
+                    <form onSubmit={formik.handleSubmit}>
+                        <Box display='flex' gap={5} alignItems="center" justifyContent="center">
+                            {/* Left Image */}
+
+                            <Box
+                                component="img"
+                                src={data?.leftimage.url || '/placeholder.png'} // Replace with actual path
+                                alt="Yoga Pose"
+                                sx={{ width: '100%', maxWidth: 200, display: { xs: 'none', md: 'block' }, mx: 'auto' }}
+                            />
+
+
+                            {/* Form */}
+                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: { xs: '100%', md: '800px' } }}>
+                                <Box display="flex" flexDirection="column" gap={2}>
+                                    <TextField
+                                        fullWidth
+                                        name="name"
+                                        sx={{ backgroundColor: '#FFFFFF' }}
+                                        placeholder="Name"
+                                        value={formik.values.name}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        error={formik.touched.name && Boolean(formik.errors.name)}
+                                        helperText={formik.touched.name && formik.errors.name}
+                                    />
+                                    <TextField
+                                        fullWidth
+                                        name="phone"
+                                        placeholder="Whatsapp Number"
+                                        sx={{ backgroundColor: '#FFFFFF' }}
+                                        type="tel"
+                                        value={formik.values.phone.slice(3)} // Only show 10-digit number
+                                        onChange={(e) => {
+                                            const digits = e.target.value.replace(/[^\d]/g, '').slice(0, 10);
+                                            formik.setFieldValue('phone', '+91' + digits);
+                                        }}
+                                        InputProps={{
+                                            startAdornment: <InputAdornment position="start">+91</InputAdornment>,
+                                            inputProps: { maxLength: 10 }
+                                        }}
+                                        onBlur={formik.handleBlur}
+                                        error={formik.touched.phone && Boolean(formik.errors.phone)}
+                                        helperText={formik.touched.phone && formik.errors.phone}
+                                    />
+                                    <TextField
+                                        fullWidth
+                                        name="email"
+                                        sx={{ backgroundColor: '#FFFFFF' }}
+                                        placeholder="Email Address"
+                                        value={formik.values.email}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        error={formik.touched.email && Boolean(formik.errors.email)}
+                                        helperText={formik.touched.email && formik.errors.email}
+                                    />
+                                    <FormControl fullWidth>
+                                        <Select
+                                            sx={{
+                                                '&& .MuiSelect-outlined': {
+                                                    backgroundColor: '#fff',
+                                                },
+                                            }}
+                                            id="eventSource"
+                                            name="eventSource"
+                                            value={formik.values.eventSource}
+                                            placeholder="How did you hear about this event?"
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
+                                            displayEmpty
+                                            error={formik.touched.eventSource && Boolean(formik.errors.eventSource)}
+                                        >
+                                            <MenuItem value="">
+                                                <em>How did you hear about this event?</em>
+                                            </MenuItem>
+                                            <MenuItem value="social media">Social media</MenuItem>
+                                            <MenuItem value="whatsapp group">WhatsApp group message</MenuItem>
+                                            <MenuItem value="friend family referral">Friend or family referral</MenuItem>
+                                            <MenuItem value="event website">Event website</MenuItem>
+                                            <MenuItem value="poster flyer">Poster or flyer</MenuItem>
+                                            <MenuItem value="online advertisement">Online advertisement</MenuItem>
+                                        </Select>
+                                        {formik.touched.eventSource && Boolean(formik.errors.eventSource) ? <FormHelperText error>{formik.errors.eventSource}</FormHelperText> : null}
+                                    </FormControl>
+                                    <TextField
+                                        fullWidth
+                                        name="location"
+                                        sx={{ backgroundColor: '#FFFFFF' }}
+                                        placeholder="Residential Location"
+                                        value={formik.values.location}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        error={formik.touched.location && Boolean(formik.errors.location)}
+                                        helperText={formik.touched.location && formik.errors.location}
+                                    />
+                                    <FormControl fullWidth error={formik.touched.gender && Boolean(formik.errors.gender)}>
+                                        <Select
+                                            name="gender"
+                                            value={formik.values.gender}
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
+                                            sx={{
+                                                '&& .MuiSelect-outlined': {
+                                                    backgroundColor: '#fff',
+                                                },
+                                            }}
+                                            displayEmpty
+                                        >
+                                            <MenuItem value=""><em>Select Gender</em></MenuItem>
+                                            <MenuItem value="male">Male</MenuItem>
+                                            <MenuItem value="female">Female</MenuItem>
+                                            <MenuItem value="other">Other</MenuItem>
+                                        </Select>
+                                        <FormHelperText>{formik.touched.gender && formik.errors.gender}</FormHelperText>
+                                    </FormControl>
+
+                                    <FormControl fullWidth error={formik.touched.tShirtSize && Boolean(formik.errors.tShirtSize)}>
+                                        <Select
+                                            name="tShirtSize"
+                                            value={formik.values.tShirtSize}
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
+                                            sx={{
+                                                '&& .MuiSelect-outlined': {
+                                                    backgroundColor: '#fff',
+                                                },
+                                            }}
+                                            displayEmpty
+                                        >
+                                            <MenuItem value=""><em>Select T-Shirt Size</em></MenuItem>
+                                            <MenuItem value="xs">XS</MenuItem>
+                                            <MenuItem value="s">S</MenuItem>
+                                            <MenuItem value="m">M</MenuItem>
+                                            <MenuItem value="l">L</MenuItem>
+                                            <MenuItem value="xl">XL</MenuItem>
+                                            <MenuItem value="xxl">XXL</MenuItem>
+                                        </Select>
+                                        <FormHelperText>{formik.touched.tShirtSize && formik.errors.tShirtSize}</FormHelperText>
+                                    </FormControl>
+
+                                    <TextField
+                                        fullWidth
+                                        name="age"
+                                        type="number"
+                                        sx={{ backgroundColor: '#FFFFFF' }}
+                                        placeholder="Age"
+                                        value={formik.values.age}
+                                        onChange={formik.handleChange}
+                                        onBlur={formik.handleBlur}
+                                        error={formik.touched.age && Boolean(formik.errors.age)}
+                                        helperText={formik.touched.age && formik.errors.age}
                                     />
 
-
-                                    {/* Form */}
-                                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: { xs: '100%', md: '800px' } }}>
-                                        <Box display="flex" flexDirection="column" gap={2}>
-                                            <TextField
-                                                fullWidth
-                                                name="name"
-                                                sx={{ backgroundColor: '#FFFFFF' }}
-                                                placeholder="Name"
-                                                value={formik.values.name}
-                                                onChange={formik.handleChange}
-                                                onBlur={formik.handleBlur}
-                                                error={formik.touched.name && Boolean(formik.errors.name)}
-                                                helperText={formik.touched.name && formik.errors.name}
-                                            />
-                                            <TextField
-                                                fullWidth
-                                                name="phone"
-                                                placeholder="Whatsapp Number"
-                                                sx={{ backgroundColor: '#FFFFFF' }}
-                                                type="tel"
-                                                value={formik.values.phone.slice(3)} // Only show 10-digit number
-                                                onChange={(e) => {
-                                                    const digits = e.target.value.replace(/[^\d]/g, '').slice(0, 10);
-                                                    formik.setFieldValue('phone', '+91' + digits);
-                                                }}
-                                                InputProps={{
-                                                    startAdornment: <InputAdornment position="start">+91</InputAdornment>,
-                                                    inputProps: { maxLength: 10 }
-                                                }}
-                                                onBlur={formik.handleBlur}
-                                                error={formik.touched.phone && Boolean(formik.errors.phone)}
-                                                helperText={formik.touched.phone && formik.errors.phone}
-                                            />
-                                            <TextField
-                                                fullWidth
-                                                name="email"
-                                                sx={{ backgroundColor: '#FFFFFF' }}
-                                                placeholder="Email Address"
-                                                value={formik.values.email}
-                                                onChange={formik.handleChange}
-                                                onBlur={formik.handleBlur}
-                                                error={formik.touched.email && Boolean(formik.errors.email)}
-                                                helperText={formik.touched.email && formik.errors.email}
-                                            />
-                                            <FormControl fullWidth>
-                                                <Select
-                                                    sx={{
-                                                        '&& .MuiSelect-outlined': {
-                                                            backgroundColor: '#fff',
-                                                        },
-                                                    }}
-                                                    id="eventSource"
-                                                    name="eventSource"
-                                                    value={formik.values.eventSource}
-                                                    placeholder="How did you hear about this event?"
-                                                    onChange={formik.handleChange}
-                                                    onBlur={formik.handleBlur}
-                                                    displayEmpty
-                                                    error={formik.touched.eventSource && Boolean(formik.errors.eventSource)}
-                                                >
-                                                    <MenuItem value="">
-                                                        <em>How did you hear about this event?</em>
-                                                    </MenuItem>
-                                                    <MenuItem value="social media">Social media</MenuItem>
-                                                    <MenuItem value="whatsapp group">WhatsApp group message</MenuItem>
-                                                    <MenuItem value="friend family referral">Friend or family referral</MenuItem>
-                                                    <MenuItem value="event website">Event website</MenuItem>
-                                                    <MenuItem value="poster flyer">Poster or flyer</MenuItem>
-                                                    <MenuItem value="online advertisement">Online advertisement</MenuItem>
-                                                </Select>
-                                                {formik.touched.eventSource && Boolean(formik.errors.eventSource) ? <FormHelperText error>{formik.errors.eventSource}</FormHelperText> : null}
-                                            </FormControl>
-                                            <TextField
-                                                fullWidth
-                                                name="location"
-                                                sx={{ backgroundColor: '#FFFFFF' }}
-                                                placeholder="Residential Location"
-                                                value={formik.values.location}
-                                                onChange={formik.handleChange}
-                                                onBlur={formik.handleBlur}
-                                                error={formik.touched.location && Boolean(formik.errors.location)}
-                                                helperText={formik.touched.location && formik.errors.location}
-                                            />
-                                            <FormControl fullWidth error={formik.touched.gender && Boolean(formik.errors.gender)}>
-                                                <Select
-                                                    name="gender"
-                                                    value={formik.values.gender}
-                                                    onChange={formik.handleChange}
-                                                    onBlur={formik.handleBlur}
-                                                    sx={{
-                                                        '&& .MuiSelect-outlined': {
-                                                            backgroundColor: '#fff',
-                                                        },
-                                                    }}
-                                                    displayEmpty
-                                                >
-                                                    <MenuItem value=""><em>Select Gender</em></MenuItem>
-                                                    <MenuItem value="male">Male</MenuItem>
-                                                    <MenuItem value="female">Female</MenuItem>
-                                                    <MenuItem value="other">Other</MenuItem>
-                                                </Select>
-                                                <FormHelperText>{formik.touched.gender && formik.errors.gender}</FormHelperText>
-                                            </FormControl>
-
-                                            <FormControl fullWidth error={formik.touched.tShirtSize && Boolean(formik.errors.tShirtSize)}>
-                                                <Select
-                                                    name="tShirtSize"
-                                                    value={formik.values.tShirtSize}
-                                                    onChange={formik.handleChange}
-                                                    onBlur={formik.handleBlur}
-                                                    sx={{
-                                                        '&& .MuiSelect-outlined': {
-                                                            backgroundColor: '#fff',
-                                                        },
-                                                    }}
-                                                    displayEmpty
-                                                >
-                                                    <MenuItem value=""><em>Select T-Shirt Size</em></MenuItem>
-                                                    <MenuItem value="xs">XS</MenuItem>
-                                                    <MenuItem value="s">S</MenuItem>
-                                                    <MenuItem value="m">M</MenuItem>
-                                                    <MenuItem value="l">L</MenuItem>
-                                                    <MenuItem value="xl">XL</MenuItem>
-                                                    <MenuItem value="xxl">XXL</MenuItem>
-                                                </Select>
-                                                <FormHelperText>{formik.touched.tShirtSize && formik.errors.tShirtSize}</FormHelperText>
-                                            </FormControl>
-
-                                            <TextField
-                                                fullWidth
-                                                name="age"
-                                                type="number"
-                                                sx={{ backgroundColor: '#FFFFFF' }}
-                                                placeholder="Age"
-                                                value={formik.values.age}
-                                                onChange={formik.handleChange}
-                                                onBlur={formik.handleBlur}
-                                                error={formik.touched.age && Boolean(formik.errors.age)}
-                                                helperText={formik.touched.age && formik.errors.age}
-                                            />
-
-                                            <Box display="flex" alignItems="center">
-                                                <Typography variant="body1" mr={2}>
-                                                    Any Yoga Experience?
-                                                </Typography>
-                                                <RadioGroup
-                                                    row
-                                                    name="experience"
-                                                    value={formik.values.experience}
-                                                    onChange={formik.handleChange}
-                                                >
-                                                    <FormControlLabel value="yes" control={<Radio sx={{ color: 'green' }} />} label="Yes" />
-                                                    <FormControlLabel value="no" control={<Radio />} label="No" />
-                                                </RadioGroup>
-                                            </Box>
-                                            {formik.touched.experience && formik.errors.experience && (
-                                                <Typography variant="caption" color="error">
-                                                    {formik.errors.experience}
-                                                </Typography>
-                                            )}
-
-                                            <RegisterButton
-                                                type="submit"
-                                                variant="contained"
-                                                color="error"
-                                                disabled={formik.isSubmitting}
-                                                sx={{
-                                                    fontWeight: 'bold',
-                                                    margin: '20px auto',
-                                                    fontSize: { xs: '22px', md: '29px' },
-                                                    backgroundColor: '#FF5B02',
-                                                    position: 'relative',
-                                                }}
-                                            >
-                                                {formik.isSubmitting ? (
-                                                    <>
-                                                        <CircularProgress
-                                                            size={24}
-                                                            color="inherit"
-                                                            sx={{ position: 'absolute', top: '50%', left: '50%', marginTop: '-12px', marginLeft: '-12px' }}
-                                                        />
-                                                        Submitting...
-                                                    </>
-                                                ) : (
-                                                    'Register Now'
-                                                )}
-                                            </RegisterButton>
-                                        </Box>
-
+                                    <Box display="flex" alignItems="center">
+                                        <Typography variant="body1" mr={2}>
+                                            Any Yoga Experience?
+                                        </Typography>
+                                        <RadioGroup
+                                            row
+                                            name="experience"
+                                            value={formik.values.experience}
+                                            onChange={formik.handleChange}
+                                        >
+                                            <FormControlLabel value="yes" control={<Radio sx={{ color: 'green' }} />} label="Yes" />
+                                            <FormControlLabel value="no" control={<Radio />} label="No" />
+                                        </RadioGroup>
                                     </Box>
+                                    {formik.touched.experience && formik.errors.experience && (
+                                        <Typography variant="caption" color="error">
+                                            {formik.errors.experience}
+                                        </Typography>
+                                    )}
 
-                                    {/* Right Image */}
-
-                                    <Box
-                                        component="img"
-                                        src={data?.rightimage.url || '/placeholder.png'} // Replace with actual path
-                                        alt="Assisted Yoga Pose"
-                                        sx={{ width: '100%', maxWidth: 200, display: { xs: 'none', md: 'block' }, mx: 'auto' }}
-                                    />
-
+                                    <RegisterButton
+                                        type="submit"
+                                        variant="contained"
+                                        color="error"
+                                        disabled={formik.isSubmitting}
+                                        sx={{
+                                            fontWeight: 'bold',
+                                            margin: '20px auto',
+                                            fontSize: { xs: '22px', md: '29px' },
+                                            backgroundColor: '#FF5B02',
+                                            position: 'relative',
+                                        }}
+                                    >
+                                        {formik.isSubmitting ? (
+                                            <>
+                                                <CircularProgress
+                                                    size={24}
+                                                    color="inherit"
+                                                    sx={{ position: 'absolute', top: '50%', left: '50%', marginTop: '-12px', marginLeft: '-12px' }}
+                                                />
+                                                Submitting...
+                                            </>
+                                        ) : (
+                                            'Register Now'
+                                        )}
+                                    </RegisterButton>
                                 </Box>
-                            </form>
+
+                            </Box>
+
+                            {/* Right Image */}
+
+                            <Box
+                                component="img"
+                                src={data?.rightimage.url || '/placeholder.png'} // Replace with actual path
+                                alt="Assisted Yoga Pose"
+                                sx={{ width: '100%', maxWidth: 200, display: { xs: 'none', md: 'block' }, mx: 'auto' }}
+                            />
+
                         </Box>
-                    </Box>
-                )
-            }
+                    </form>
+                </Box>
+            </Box>
+
+
 
             {/* Error Snackbar */}
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'center' }} open={!!error || !!apiError} autoHideDuration={4000} onClose={() => useFormStore.setState({ error: null })}>
