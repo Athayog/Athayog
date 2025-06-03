@@ -63,7 +63,6 @@ const Navbar: React.FC = () => {
                 transition: 'padding 0.5s ease-in-out, background 0.5s ease-in-out',
                 ...(pathname === '/yoga-arambha-25' && {
                     pointerEvents: 'none',
-
                 }),
             }}
         >
