@@ -12,6 +12,7 @@ import TicketDisplay from '@/components/forms/TicketDisplayPDF';
 import RegisterButton from '@/components/elements/button/RegisterButton';
 import { Backdrop, Button, CircularProgress, InputAdornment, LinearProgress, linearProgressClasses, styled } from '@mui/material';
 import { Alert, Box, FormControl, FormControlLabel, FormHelperText, MenuItem, Radio, RadioGroup, Select, Snackbar, TextField, Typography } from '@mui/material';
+import { sendErrorLog } from '@/utils/sendErrors';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 12,
@@ -191,6 +192,11 @@ const ArambhaForm = ({ data }: any) => {
 
             } catch (error) {
                 setApiError('Unexpected error occurred. Please try again.');
+                await sendErrorLog({
+                    message: 'Arambha Form Submission Error',
+                    formData: error,
+                    errorDetails: error,
+                });
             } finally {
                 setSubmitting(false);
                 setPercentage(0)
