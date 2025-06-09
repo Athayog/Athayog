@@ -7,6 +7,8 @@ import { Box, Typography, Container, Button, Grid } from '@mui/material'
 import Image from 'next/image'
 import LeftBack from '/public/images/IDY-1.png'
 import RightBack from '/public/images/IDY-Right.png'
+import Y1 from '/public/images/Y1.png'
+import Y2 from '/public/images/Y2.png'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 /**
  * Props for `ArambhaRegister`.
@@ -21,7 +23,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
     console.log(slice.primary.dates_mobile)
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-            <Box sx={{ background: backgroundGradient, padding: { xs: '30px 0px', md: '100px 0px' } }}>
+            <Box sx={{ background: backgroundGradient, padding: { xs: '30px 0px', md: '60px 0px' } }}>
                 <Box
                     sx={{
                         display: 'flex',
@@ -30,10 +32,11 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                         justifyContent: 'center',
                     }}
                 >
+                    {/* Left Image */}
 
                     <Box position="relative" sx={{ zIndex: 2, width: '100%', height: 600, display: { xs: 'none', md: 'block' } }}>
                         {/* Background Image */}
-                        <Box sx={{ position: 'absolute', top: 250, left: 0, width: '100%', height: '200px', zIndex: 1 }}>
+                        <Box sx={{ position: 'absolute', top: 350, left: 0, width: '100%', height: '200px', zIndex: 1 }}>
                             <Image
                                 src={LeftBack}
                                 alt="background"
@@ -43,7 +46,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                         </Box>
 
                         {/* Foreground Image */}
-                        <Box sx={{ position: 'relative', zIndex: 2, width: '100%', height: '100%' }}>
+                        <Box sx={{ position: 'relative', zIndex: 2, width: '100%', height: '100%', top: 100 }}>
                             <Image
                                 src={slice.primary.leftimage.url || '/placeholder.png'}
                                 alt="Yoga Pose Left"
@@ -56,8 +59,25 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                     <Box width="100%" >
                         <Grid spacing={4} alignItems="center" justifyContent="center">
 
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    gap: 3,
+                                    alignItems: 'center',
+                                    mb: 2,
+                                }}
+                            >
+                                <Box sx={{ width: { xs: '70px', md: '100px' }, position: 'relative' }}>
+                                    <Image src={Y2} alt="ss" layout="responsive" />
+                                </Box>
+                                <Box sx={{ width: { xs: '50px', md: '80px' }, position: 'relative' }}>
+                                    <Image src={Y1} alt="ss" layout="responsive" />
+                                </Box>
+                            </Box>
                             {/* Center Content */}
                             <Grid item xs={6} md={6} sx={{ padding: { xs: 2, md: 6 } }}>
+
                                 <Typography align="center" sx={{ color: '#007B48', fontWeight: 700, fontSize: { xs: '36px', md: '38px' } }}>
                                     {slice.primary.title}
                                 </Typography>
@@ -210,7 +230,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                         <Box
                             sx={{
                                 position: 'absolute',
-                                top: 0,
+                                top: 100,
                                 left: 0,
                                 width: '100%',
                                 height: '100%',
@@ -237,6 +257,7 @@ const ArambhaRegister: FC<ArambhaRegisterProps> = ({ slice }) => {
                                 width: '100%',
                                 height: '100%',
                                 zIndex: 2,
+                                top: 100
                             }}
                         >
                             <Image
