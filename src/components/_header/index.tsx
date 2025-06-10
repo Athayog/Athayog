@@ -52,10 +52,10 @@ const Navbar: React.FC = () => {
         return unsubscribe
     }, [initializeAuth])
 
-
+    const blockedPaths = ['/yoga-arambha-25', '/thank-you-for-registering']
     return (
         <>
-            {pathname !== '/yoga-arambha-25' && (
+            {!blockedPaths.includes(pathname) && (
                 <Box sx={{ backgroundColor: '#FFF0D8', color: '#000', textAlign: 'center', p: '5px', zIndex: 9999, position: 'fixed', top: 0, width: '100%', mb: 2 }}>
                     🧘‍♀️ <strong>Yoga Arambha 2025</strong> registration is now open!{' '}
                     <Link href="/yoga-arambha-25" style={{ color: '#000', textDecoration: 'underline' }}>Register for free here</Link>. ✨
@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
                 sx={{
                     background: isScrolled ? '#556940' : gradient,
                     boxShadow: 'none',
-                    mt: { xs: pathname !== '/yoga-arambha-25' ? 6 : 0, md: pathname !== '/yoga-arambha-25' ? 4 : 0 },
+                    mt: { xs: !blockedPaths.includes(pathname) ? 6 : 0, md: !blockedPaths.includes(pathname) ? 4 : 0 },
                     padding: isScrolled ? '10px 20px' : '25px 20px',
                     transition: 'padding 0.5s ease-in-out, background 0.5s ease-in-out',
                     ...(pathname === '/yoga-arambha-25' && {
