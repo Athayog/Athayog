@@ -155,7 +155,7 @@ const ArambhaForm = ({ data }: any) => {
 
                 // Now call your other submitForm function and pass the file
                 setProgressStep('💾 Saving your details securely...');
-                await submitForm(fullData, 'arambhaForm25', 'info@athayogliving.com', pdfFile, 'arambhaForm25')
+                await submitForm(fullData, 'arambhaForm25', '', pdfFile, 'arambhaForm25')
 
 
                 setPercentage(80)
@@ -319,6 +319,7 @@ const ArambhaForm = ({ data }: any) => {
                                             <MenuItem value="event website">Event website</MenuItem>
                                             <MenuItem value="poster flyer">Poster or flyer</MenuItem>
                                             <MenuItem value="online advertisement">Online advertisement</MenuItem>
+                                            <MenuItem value="indiranagar run club">Indiranagar run club</MenuItem>
                                         </Select>
                                         {formik.touched.eventSource && Boolean(formik.errors.eventSource) ? <FormHelperText error>{formik.errors.eventSource}</FormHelperText> : null}
                                     </FormControl>

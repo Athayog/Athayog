@@ -48,13 +48,11 @@ const useFormStore = create<FormState>((set) => ({
             if (apiUrl) {
                 ; (async () => {
                     try {
-                        formData['access_key'] = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY
-                        const response = await fetch('https://api.web3forms.com/submit', {
+                        const response = await fetch('https://formsubmit.co/ajax/' + apiUrl, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(formData),
                         })
-                        console.log(response)
                         if (!response.ok) {
                             await addDoc(collection(db, 'formErrors'), {
                                 formData,

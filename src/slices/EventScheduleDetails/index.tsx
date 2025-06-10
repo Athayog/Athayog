@@ -10,6 +10,8 @@ import ClockIcon from '/public/images/clock.svg'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 import { styled } from '@mui/material/styles'
 import { fontWeight } from 'html2canvas/dist/types/css/property-descriptors/font-weight'
+import Image from 'next/image'
+import { PrismicNextImage } from '@prismicio/next'
 
 export type EventScheduleDetailsProps = SliceComponentProps<Content.EventScheduleDetailsSlice>
 
@@ -218,8 +220,26 @@ const EventScheduleDetails: FC<EventScheduleDetailsProps> = ({ slice }) => {
 
                                             }
                                         }}>
-                                            <PrismicRichText field={item.activity_description} />
+                                            <Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', gap: { xs: 1, md: '20px' }, alignItems: 'center' }}>
+                                                <Box>
+                                                    <PrismicRichText field={item.activity_description} />
+
+                                                </Box>
+
+                                                {Object.keys(item.image).length > 0 &&
+                                                    <Box
+                                                        sx={{
+                                                            width: { xs: '50px', md: '100px' }, // Responsive width
+                                                            height: 'auto', // Maintain aspect ratio
+                                                            zIndex: 0,
+                                                        }}
+                                                    >
+                                                        <PrismicNextImage field={item.image} style={{ width: '100%', height: '100%' }} />
+                                                    </Box>
+                                                }
+                                            </Box>
                                         </StyledTableCell>
+
                                     </TableRow>
                                 ))}
                             </TableBody>
