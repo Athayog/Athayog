@@ -3817,6 +3817,16 @@ export interface EventScheduleDetailsSliceDefaultPrimaryScheduleItemsItem {
      * - **Documentation**: https://prismic.io/docs/field#rich-text-title
      */
     activity_description: prismic.RichTextField
+
+    /**
+     * image field in *EventScheduleDetails → Default → Primary → Schedule Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: event_schedule_details.default.primary.schedule_items[].image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
 }
 
 /**
