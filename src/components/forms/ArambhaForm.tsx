@@ -155,7 +155,7 @@ const ArambhaForm = ({ data }: any) => {
 
                 // Now call your other submitForm function and pass the file
                 setProgressStep('💾 Saving your details securely...');
-                await submitForm(fullData, 'arambhaForm25', null, pdfFile, 'arambhaForm25')
+                await submitForm(fullData, 'arambhaForm25', '', pdfFile, 'arambhaForm25')
 
 
                 setPercentage(80)
