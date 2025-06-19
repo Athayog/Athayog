@@ -1,16 +1,18 @@
 'use client'
-import React from 'react';
 import { Fab } from '@mui/material';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { usePathname } from 'next/navigation';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import React from 'react';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const WhatsAppWidget: React.FC = () => {
+    const pathname = usePathname();
     const handleWhatsAppClick = () => {
         const phoneNumber = '+919611771434';
         const whatsappUrl = `https://wa.me/${phoneNumber}`;
         window.open(whatsappUrl, '_blank');
     };
-
+    if (pathname === '/scanner') return null
     return (
         <div
             style={{

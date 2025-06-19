@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'Invalid or missing ticketId' }, { status: 400 });
         }
 
-        const { firestore } = await initAdmin();
+        const { firestore, fieldValue } = await initAdmin();
 
         const querySnapshot = await firestore
             .collection('arambhaForm25')
@@ -22,12 +22,17 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'Ticket not found or invalid' }, { status: 404 });
         }
 
-        const userData = querySnapshot.docs[0].data();
+        const doc = querySnapshot.docs[0];
+        const userData = doc.data();
+        const docRef = doc.ref;
+
+        // Atomically increment the scanned field
+        await docRef.update({ scanned: fieldValue.increment(1) });
 
         return NextResponse.json(
             {
                 message: 'Ticket verified successfully. Entry allowed.',
-                user: userData,
+                user: { ...userData, scanned: (userData.scanned || 0) + 1 }, // for response clarity
             },
             { status: 200 }
         );

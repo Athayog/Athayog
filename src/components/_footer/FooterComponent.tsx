@@ -36,6 +36,7 @@ const FooterComponent = ({ data }: { data: any }) => {
     const legal = data.legal || []
     const talkToUs = data.talk_to_us || []
     const pathname = usePathname()
+    if (pathname === '/scanner') return null
 
     return (
         <Box sx={{ backgroundColor: '#e9fdde' }}>

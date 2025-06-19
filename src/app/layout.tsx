@@ -4,7 +4,7 @@ import Navbar from '@/components/_header'
 import Footer from '@/components/_footer'
 import { repositoryName } from '@/prismicio'
 import NextTopLoader from 'nextjs-toploader'
-import { Josefin_Sans, Montserrat } from 'next/font/google'
+import { Inter, Josefin_Sans, Montserrat } from 'next/font/google'
 import { PrismicPreview } from '@prismicio/next'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
@@ -24,13 +24,19 @@ const monsterrat = Montserrat({
     display: 'swap',
 })
 
+const inter = Inter({
+    subsets: ['latin'],
+    variable: '--font-inter',
+    display: 'swap',
+})
+
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en" className={`${josefin.variable} ${monsterrat.variable}`}>
+        <html lang="en" className={`${josefin.variable} ${monsterrat.variable} ${inter.variable}`}>
             <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <meta name="google-site-verification" content="MFdD5TUc66yWX-w0hwFHmVkJWyt8BAkzk-g3jR4KLlo" />
