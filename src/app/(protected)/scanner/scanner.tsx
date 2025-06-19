@@ -233,13 +233,30 @@ const formatReadableDate = (dateStr: string) => {
     return `${day}${getDaySuffix(day)} ${month} ${year}`;
 };
 
-const AttendeeCard = ({ userDetails }: any) => {
-    const fields = [
-        { label: 'Location', value: userDetails.location },
-    ];
+const InfoItem = ({ label, value }: { label: string; value: React.ReactNode }) => (
+    <Grid item xs={6} sm={6}>
+        <Typography sx={{ fontWeight: 600, color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>
+            {label}
+        </Typography>
+        <Typography
+            sx={{
+                fontWeight: 800,
+                fontFamily: 'var(--font-montserrat)',
+                fontSize: '12px',
+                wordBreak: 'break-word',
+                whiteSpace: 'normal',
+                overflowWrap: 'break-word',
+                mt: 0.5,
+            }}
+        >
+            {value || 'N/A'}
+        </Typography>
+    </Grid>
+);
 
-    const tShirtSize = userDetails.tShirtSize?.toUpperCase();
+export const AttendeeCard = ({ userDetails }: any) => {
     const scanned = userDetails.scanned;
+    const tShirtSize = userDetails.tShirtSize?.toUpperCase();
 
     return (
         <Card
@@ -254,103 +271,71 @@ const AttendeeCard = ({ userDetails }: any) => {
                 width: '100%',
             }}
         >
-
             <CardContent sx={{ p: 0 }}>
-                <Box display="flex" flexDirection="column" gap={2}>
-                    <Box sx={{ backgroundColor: '#003da8', width: '100%', p: 2 }}>
-                        <Typography
-                            variant="body1"
-                            color="#deecfb"
-                            fontWeight={800}
-                            sx={{ fontSize: '1rem' }}
-                        >
+                {/* Header Bar */}
+                <Box sx={{ backgroundColor: '#003da8', width: '100%', p: 2 }}>
+                    <Typography
+                        variant="body1"
+                        color="#deecfb"
+                        fontWeight={800}
+                        sx={{ fontSize: '1rem' }}
+                    >
+                        {userDetails.name}
+                    </Typography>
+                    <Typography
+                        variant="body1"
+                        color="#ecbc57"
+                        fontWeight={800}
+                        sx={{ fontSize: '1rem' }}
+                    >
+                        {userDetails.ticketID || 'N/A'}
+                    </Typography>
+                </Box>
 
-                            {userDetails.name}
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            color="#ecbc57"
-                            fontWeight={800}
-                            sx={{ fontSize: '1rem' }}
-                        >
-                            {userDetails.ticketID || 'N/A'}
+                {/* Grid Info */}
+                <Box sx={{ px: 2, py: 2 }}>
+                    <Grid container spacing={2}>
+                        <InfoItem label="Email" value={userDetails.email} />
+                        <InfoItem label="Phone" value={userDetails.phone} />
+                        <InfoItem label="Registered On" value={formatReadableDate(userDetails.createdAt)} />
+                        <InfoItem label="Event Source" value={userDetails.eventSource} />
+                        <InfoItem label="Location" value={userDetails.location} />
+                        <InfoItem label="Age" value={userDetails.age} />
+                        <InfoItem label="Experience" value={userDetails.experience} />
 
-                        </Typography>
+                        {/* T-Shirt Size as Chip */}
+                        <Grid item xs={6} sm={6}>
+                            <Typography sx={{ fontWeight: 600, color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>
+                                T-Shirt Size
+                            </Typography>
+                            <Chip
+                                label={tShirtSize || 'N/A'}
+                                color="success"
+                                size="medium"
+                                sx={{ mt: 0.5, fontWeight: 500, fontFamily: 'var(--font-montserrat)' }}
+                            />
+                        </Grid>
 
-                    </Box>
-                    <Box sx={{ width: '100%', px: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, px: 0, justifyContent: 'space-between' }}>
-                            <Box>
-                                <Typography sx={{ fontWeight: '600', color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '14px' }}>Contact Details </Typography>
-                                <Typography sx={{
-                                    fontWeight: 800,
+                        {/* Scanned Count as Chip */}
+                        <Grid item xs={6} sm={6}>
+                            <Typography sx={{ fontWeight: 600, color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>
+                                Scanned Count
+                            </Typography>
+                            <Chip
+                                label={scanned || '0'}
+                                sx={{
+                                    mt: 0.5,
+                                    fontWeight: 500,
                                     fontFamily: 'var(--font-montserrat)',
-                                    fontSize: '12px',
-                                    wordBreak: 'break-word',
-                                    maxWidth: '220px',   // allow breaking long words
-                                    whiteSpace: 'normal',      // allow wrapping
-                                    overflowWrap: 'break-word' // fallback for older engines
-                                }}>{userDetails.email}</Typography>
-                                <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{userDetails.phone}</Typography>
-                            </Box>
-                            <Box sx={{ borderRadius: '4px' }}>
-                                <Typography sx={{ fontWeight: '600', color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>Registered On</Typography>
-                                <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{formatReadableDate(userDetails.createdAt)}</Typography>
-                            </Box>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, px: 0, justifyContent: 'space-between' }}>
-                            <Box>
-                                <Typography sx={{ fontWeight: '600', color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '14px' }}>Event Source </Typography>
-                                <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{userDetails.eventSource}</Typography>
-                            </Box>
-                            <Box sx={{ borderRadius: '4px' }}>
-                                <Typography sx={{ fontWeight: '600', color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>Location</Typography>
-                                <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{userDetails.location}</Typography>
-                            </Box>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, px: 0, justifyContent: 'space-between' }}>
-                            <Box>
-                                <Typography sx={{ fontWeight: '600', color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '14px' }}>Age </Typography>
-                                <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{userDetails.age}</Typography>
-                            </Box>
-                            <Box sx={{ borderRadius: '4px' }}>
-                                <Typography sx={{ fontWeight: '600', color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>Experience</Typography>
-                                <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{userDetails.experience}</Typography>
-                            </Box>
-                        </Box>
-                        <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, px: 0, justifyContent: 'space-between' }}>
-                            <Box sx={{ px: 0 }}>
-                                <Typography sx={{ fontWeight: '600', color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>T Shirt Size</Typography>
-                                <Chip
-                                    label={userDetails.tShirtSize.toUpperCase() || 'N/A'}
-                                    color="success"
-                                    size="medium"
-                                    sx={{ mt: 0.5, fontWeight: 500, fontFamily: 'var(--font-montserrat)' }}
-                                />
-                            </Box>
-
-                            <Box sx={{ borderRadius: '4px' }}>
-                                <Typography sx={{ fontWeight: '600', color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>Scanned Count</Typography>
-                                <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>
-                                    <Chip
-                                        label={scanned || 'N/A'}
-                                        sx={{
-                                            '&.MuiChip-root.MuiChip-filled': {
-                                                backgroundColor: '#4f4c4c',
-                                                color: '#fff',
-                                            },
-                                            mt: 0.5, fontWeight: 500, fontFamily: 'var(--font-montserrat)'
-                                        }}
-                                        size="medium"
-
-                                    /></Typography>
-                            </Box>
-                        </Box>
-
-
-                    </Box>
+                                    backgroundColor: '#4f4c4c',
+                                    color: '#fff',
+                                }}
+                                size="medium"
+                            />
+                        </Grid>
+                    </Grid>
                 </Box>
             </CardContent>
-        </Card >
+        </Card>
     );
 };
