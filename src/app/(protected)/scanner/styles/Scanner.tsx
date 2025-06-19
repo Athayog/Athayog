@@ -12,7 +12,7 @@ export const Container = styled(Box)(({ theme }) => ({
 
 export const PaperBox = styled(Paper)(({ theme }) => ({
     width: '100%',
-    padding: '20px 0px',
+    padding: '0px 0px',
     height: '100%',
     boxShadow: 'none'
     // borderRadius: 10,

@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useState, useRef, useEffect } from 'react';
 import { Scanner } from '@yudiel/react-qr-scanner';
 import type { IDetectedBarcode } from '@yudiel/react-qr-scanner';
-import { Paper, Stack, CircularProgress, Alert, TextField, Button, InputAdornment, Card, CardContent, Grid, Typography, Divider, Box, Chip } from '@mui/material';
+import { Paper, Stack, CircularProgress, Alert, TextField, Button, InputAdornment, Card, CardContent, Grid, Typography, Divider, Box, Chip, Avatar } from '@mui/material';
 import { Container, PaperBox, ScannerBox } from './styles/Scanner';
 import useAuthStore from '@/store/useAuthStore';
 import { useRouter } from 'next/navigation';
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 type UserDetails = {
     name: string;
@@ -98,12 +100,13 @@ export default function ScannerPage() {
                     <Typography
                         sx={{
                             fontFamily: 'var(--font-montserrat)',
-                            borderBottom: '2px solid #ddd',
                             paddingBottom: '10px',
                             width: '100%',
                             textAlign: 'center',
                             fontWeight: 700,
-                            fontSize: '24px'
+                            padding: '14px 0',
+                            fontSize: '24px',
+                            backgroundColor: '#d9ffe7'
                         }}>
                         Event Ticket Scanner
                     </Typography>
@@ -128,7 +131,10 @@ export default function ScannerPage() {
                                     <Typography sx={{ fontFamily: 'var(--font-inter)' }} color="primary">Verifying Details...</Typography>
                                 </Stack>
                             )}
-
+                            {/* User details */}
+                            {userDetails && (
+                                <AttendeeCard userDetails={userDetails} />
+                            )}
                             {/* Show success or error result */}
                             {!loading && (scanResult || error) && (
                                 <>
@@ -145,25 +151,22 @@ export default function ScannerPage() {
                                     <Button
                                         variant="contained"
                                         onClick={resetStates}
-                                        sx={{ mt: 2, fontFamily: 'var(--font-inter)', borderRadius: '2.5px', backgroundColor: '#003da8', boxShadow: 'none' }}
-                                    >
-                                        SCAN AGAIN
+                                        startIcon={<DocumentScannerIcon />}
+                                        sx={{ mt: 2, fontFamily: 'var(--font-inter)', width: '100%', borderRadius: '30px', py: '12px', backgroundColor: '#003da8', boxShadow: 'none' }}
+                                    > Start Scanning
                                     </Button>
                                 </>
                             )}
 
-                            {/* User details */}
-                            {userDetails && (
-                                <AttendeeCard userDetails={userDetails} />
-                            )}
 
-                            <Typography variant="caption" color="text.secondary" sx={{ mt: 2, fontFamily: 'var(--font-inter)' }}>
+
+                            <Typography variant="caption" sx={{ mt: 2, fontFamily: 'var(--font-inter)', color: "#191c27" }}>
                                 Allow camera access and scan a valid ticket QR code.
                             </Typography>
 
                             <Divider sx={{ width: '100%', my: 3 }} />
 
-                            <Typography variant="h6" fontWeight={600} sx={{ alignSelf: 'flex-start', fontFamily: 'var(--font-inter)' }}>
+                            <Typography variant="h6" fontWeight={600} sx={{ alignSelf: 'flex-start', fontFamily: 'var(--font-montserrat)' }}>
                                 Or enter registration ID manually:
                             </Typography>
 
@@ -195,9 +198,10 @@ export default function ScannerPage() {
                                     type="submit"
                                     variant="contained"
                                     disabled={loading}
-                                    sx={{ minWidth: 120, fontSize: '14px', fontWeight: 'bold', fontFamily: 'var(--font-inter)', borderRadius: '2.5px', backgroundColor: '#003da8', boxShadow: 'none' }}
+                                    startIcon={<CheckCircleIcon />}
+                                    sx={{ minWidth: 120, width: '100%', borderRadius: '30px', fontSize: '14px', fontWeight: 'normal', fontFamily: 'var(--font-inter)', backgroundColor: '#003da8', boxShadow: 'none' }}
                                 >
-                                    VERIFY
+                                    Verify ID
                                 </Button>
                             </Box>
                         </Stack>
@@ -209,19 +213,27 @@ export default function ScannerPage() {
 
 }
 
+const formatReadableDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    const day = date.getDate();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+
+    const getDaySuffix = (day: number) => {
+        if (day >= 11 && day <= 13) return 'th';
+        switch (day % 10) {
+            case 1: return 'st';
+            case 2: return 'nd';
+            case 3: return 'rd';
+            default: return 'th';
+        }
+    };
+
+    return `${day}${getDaySuffix(day)} ${month} ${year}`;
+};
+
 const AttendeeCard = ({ userDetails }: any) => {
     const fields = [
-        { label: 'Name', value: userDetails.name },
-        { label: 'Email', value: userDetails.email },
-        { label: 'Phone', value: userDetails.phone },
-        { label: 'Age', value: userDetails.age },
-        { label: 'Gender', value: userDetails.gender },
-        {
-            label: 'Registration Date',
-            value: userDetails.createdAt
-                ? new Date(userDetails.createdAt).toLocaleDateString()
-                : 'N/A',
-        },
         { label: 'Location', value: userDetails.location },
     ];
 
@@ -261,71 +273,34 @@ const AttendeeCard = ({ userDetails }: any) => {
                             {userDetails.ticketID || 'N/A'}
                         </Typography>
                     </Box>
-                    {fields.map((field, index) => (
-                        <Box key={index}>
-                            <Typography
-                                variant="caption"
-                                color="text.secondary"
-                                sx={{ fontSize: '0.75rem' }}
-                            >
-                                {field.label}
-                            </Typography>
-                            <Typography
-                                variant="body1"
-                                fontWeight={500}
-                                sx={{ fontSize: '1rem' }}
-                            >
-                                {field.value || 'N/A'}
-                            </Typography>
+                    <Box sx={{ width: '100%', px: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, px: 1, justifyContent: 'space-between' }}>
+                            <Box>
+                                <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '14px' }}>{userDetails.name} </Typography>
+                                <Typography sx={{ fontWeight: '600', color: '#888', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{userDetails.email}</Typography>
+                                <Typography sx={{ fontWeight: '600', color: '#888', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{userDetails.phone}</Typography>
+                            </Box>
                         </Box>
-                    ))}
-
-                    <Box>
-                        <Typography
-                            variant="caption"
-                            color="text.secondary"
-                            sx={{ fontSize: '0.75rem' }}
-                        >
-                            T-Shirt Size
-                        </Typography>
-                        {tShirtSize ? (
+                        <Box sx={{ px: 1 }}>
+                            <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '14px' }}>T Shirt Size</Typography>
                             <Chip
-                                label={tShirtSize}
-                                color="secondary"
-                                size="small"
-                                sx={{ mt: 0.5, fontWeight: 500 }}
+                                label={userDetails.tShirtSize.toUpperCase() || 'N/A'}
+                                color="primary"
+                                size="medium"
+                                sx={{ mt: 0.5, fontWeight: 500, fontFamily: 'var(--font-montserrat)' }}
                             />
-                        ) : (
-                            <Typography
-                                variant="body1"
-                                fontWeight={500}
-                                sx={{ fontSize: '1rem' }}
-                            >
-                                N/A
-                            </Typography>
-                        )}
-                    </Box>
-
-                    {typeof scanned !== 'undefined' && (
-                        <Box>
-                            <Typography
-                                variant="caption"
-                                color="text.secondary"
-                                sx={{ fontSize: '0.75rem' }}
-                            >
-                                Check-ins
-                            </Typography>
-                            <Typography
-                                variant="body1"
-                                fontWeight={500}
-                                sx={{ fontSize: '1rem' }}
-                            >
-                                {scanned}
-                            </Typography>
                         </Box>
-                    )}
+                        <Box sx={{ borderRadius: '4px', p: '10px' }}>
+                            <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '14px' }}>Registered On</Typography>
+                            <Typography sx={{ fontWeight: '600', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{formatReadableDate(userDetails.createdAt)}</Typography>
+                        </Box>
+                        <Box sx={{ borderRadius: '4px', p: '10px' }}>
+                            <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '14px' }}>Checked In Count</Typography>
+                            <Typography sx={{ fontWeight: '600', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>{scanned}</Typography>
+                        </Box>
+                    </Box>
                 </Box>
             </CardContent>
-        </Card>
+        </Card >
     );
 };
