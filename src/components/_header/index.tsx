@@ -52,7 +52,10 @@ const Navbar: React.FC = () => {
         return unsubscribe
     }, [initializeAuth])
 
-    const blockedPaths = ['/yoga-arambha-25', '/thank-you-for-registering']
+    const blockedPaths = ['/yoga-arambha-25', '/thank-you-for-registering', '/scanner']
+
+    if (pathname === '/scanner') return null
+
     return (
         <>
             {!blockedPaths.includes(pathname) && (
