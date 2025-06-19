@@ -27,21 +27,21 @@ export default function ScannerPage() {
     const { user, handleLogout } = useAuthStore()
     const router = useRouter();
 
-    // useEffect(() => {
-    //     if (user) {
-    //         if (!user.email?.includes('athayogliving.com') && !user.phoneNumber?.includes('+918971613155')) {
-    //             router.push('/')
-    //         }
-    //     }
-    // }, [user, router])
+    useEffect(() => {
+        if (user) {
+            if (!user.email?.includes('athayogliving.com') && !user.phoneNumber?.includes('+918971613155')) {
+                router.push('/')
+            }
+        }
+    }, [user, router])
 
-    // if (!user) {
-    //     return (
-    //         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-    //             <Typography variant="h5">Please Wait...</Typography>
-    //         </Box>
-    //     )
-    // }
+    if (!user) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+                <Typography variant="h5">Please Wait...</Typography>
+            </Box>
+        )
+    }
 
 
     const resetStates = () => {
