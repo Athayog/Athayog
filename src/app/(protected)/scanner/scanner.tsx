@@ -106,7 +106,8 @@ export default function ScannerPage() {
                             fontWeight: 700,
                             padding: '14px 0',
                             fontSize: '24px',
-                            backgroundColor: '#d9ffe7'
+                            color: '#fff',
+                            backgroundColor: '#003da8'
                         }}>
                         Event Ticket Scanner
                     </Typography>
@@ -285,7 +286,7 @@ const AttendeeCard = ({ userDetails }: any) => {
                             <Typography sx={{ fontWeight: '800', fontFamily: 'var(--font-montserrat)', fontSize: '14px' }}>T Shirt Size</Typography>
                             <Chip
                                 label={userDetails.tShirtSize.toUpperCase() || 'N/A'}
-                                color="primary"
+                                color="success"
                                 size="medium"
                                 sx={{ mt: 0.5, fontWeight: 500, fontFamily: 'var(--font-montserrat)' }}
                             />
