@@ -14,6 +14,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@emotion/cache": "^11.13.1",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -31,6 +32,7 @@
     "@yudiel/react-qr-scanner": "^2.3.1",
     "axios": "^1.9.0",
     "date-fns": "^4.1.0",
+    "emailjs-com": "^3.2.0",
     "firebase": "^10.13.2",
     "firebase-admin": "^12.7.0",
     "fontkit": "^2.0.4",
