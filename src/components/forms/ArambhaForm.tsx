@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import QRCode from 'qrcode';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import emailjs from '@emailjs/browser';
 import * as Yup from 'yup';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -181,7 +182,28 @@ const ArambhaForm = ({ data }: any) => {
 
                 // Error handling
                 if (emailRes.status === 'rejected' || !emailRes.value.ok) {
-                    setApiError('Form submitted, but failed to send confirmation email.');
+
+                    emailjs.send(
+                        "service_33jio54",
+                        "template_9mruadf",
+                        {
+                            email: fullData.email,
+                            name: fullData.name,
+                            ticketID: fullData.ticketID,
+                            tiketURL: (fullData as any).fileUrl,
+                        },
+                        "user_Zp6dTdYGxn4E5rxeiLLCh"
+                    ).then(
+                        () => {
+                            console.log('✅ SUCCESS!');
+                        },
+                        (error) => {
+                            console.error('❌ EmailJS error:', error);
+                            setApiError('Form submitted, but failed to send confirmation email.');
+                        }
+                    );
+
+
                 }
 
                 if (whatsAppRes.status === 'rejected' || !whatsAppRes.value.ok) {
