@@ -7,9 +7,6 @@ const BroadcastTemplate: React.FC = () => {
             fontSize: 16,
             lineHeight: 1.55,
             color: "#333",
-            maxWidth: 600,
-            margin: "auto",
-            padding: 20
         }}>
             <p>
                 Namaste! 🙏<br />
@@ -53,7 +50,7 @@ const BroadcastTemplate: React.FC = () => {
                 src="https://resend-attachments.s3.amazonaws.com/wyfJjoGOWzrx4bC"
                 alt="Athayog Event Banner 1"
                 style={{
-                    maxWidth: "100%",
+                    maxWidth: 600,
                     borderRadius: 8,
                     marginTop: 20
                 }}
@@ -63,7 +60,7 @@ const BroadcastTemplate: React.FC = () => {
                 src="https://resend-attachments.s3.amazonaws.com/HzlJ40vsm0FnVpp"
                 alt="Athayog Event Banner 2"
                 style={{
-                    maxWidth: "100%",
+                    maxWidth: 600,
                     borderRadius: 8,
                     marginTop: 10
                 }}
