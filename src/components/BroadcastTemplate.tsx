@@ -55,8 +55,8 @@ const BroadcastTemplate: React.FC = () => {
                     marginTop: 20
                 }}
             />
-
-            <img
+<br/>
+                <img
                 src="https://resend-attachments.s3.amazonaws.com/HzlJ40vsm0FnVpp"
                 alt="Athayog Event Banner 2"
                 style={{
