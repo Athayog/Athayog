@@ -46,8 +46,8 @@ export default function MobileDrawer() {
     }
 
     const handleAccount = () => {
-        router.push('/user/account')
         handleDrawerClose()
+        router.push('/user/account')
     }
 
     const DrawerList = (
@@ -144,6 +144,7 @@ export default function MobileDrawer() {
                 {!user ? (
                     <Link href="/login">
                         <Button
+                            onClick={() => handleDrawerClose()}
                             sx={{
                                 backgroundColor: '#47820D',
                                 color: '#FFFFFF',

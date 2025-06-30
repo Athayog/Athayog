@@ -64,7 +64,6 @@ const Navbar: React.FC = () => {
                 sx={{
                     background: isScrolled ? '#556940' : gradient,
                     boxShadow: 'none',
-                    mt: { xs: !blockedPaths.includes(pathname) ? 6 : 0, md: !blockedPaths.includes(pathname) ? 4 : 0 },
                     padding: isScrolled ? '10px 20px' : '25px 20px',
                     transition: 'padding 0.5s ease-in-out, background 0.5s ease-in-out',
                     ...(pathname === '/yoga-arambha-25' && {
