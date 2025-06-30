@@ -58,12 +58,6 @@ const Navbar: React.FC = () => {
 
     return (
         <>
-            {!blockedPaths.includes(pathname) && (
-                <Box sx={{ backgroundColor: '#FFF0D8', color: '#000', textAlign: 'center', p: '5px', zIndex: 9999, position: 'fixed', top: 0, width: '100%', mb: 2 }}>
-                    🧘‍♀️ <strong>Yoga Arambha 2025</strong> registration is now open!{' '}
-                    <Link href="/yoga-arambha-25" style={{ color: '#000', textDecoration: 'underline' }}>Register for free here</Link>. ✨
-                </Box>
-            )}
 
             <AppBar
                 position="fixed"
