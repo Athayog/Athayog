@@ -4272,6 +4272,16 @@ export interface GroupClassPricingSliceDefaultPrimarySubscriptionforindiranagarI
      * - **Documentation**: https://prismic.io/docs/field#number
      */
     gst: prismic.NumberField
+
+    /**
+     * Old Price field in *GroupClassPricing → Default → Primary → SubscriptionForIndiranagar*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.subscriptionforindiranagar[].old_price
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    old_price: prismic.NumberField
 }
 
 /**
@@ -4327,6 +4337,16 @@ export interface GroupClassPricingSliceDefaultPrimaryOtherCoursesItem {
      * - **Documentation**: https://prismic.io/docs/field#key-text
      */
     detail: prismic.KeyTextField
+
+    /**
+     * Old Price field in *GroupClassPricing → Default → Primary → Other Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: group_class_pricing.default.primary.other_courses[].old_price
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    old_price: prismic.NumberField
 }
 
 /**

@@ -45,6 +45,14 @@
 									"value": "5",
 									"type": "Number"
 								}
+							],
+							[
+								"old_price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "27",
+									"type": "Number"
+								}
 							]
 						]
 					}
@@ -93,6 +101,14 @@
 								{
 									"__TYPE__": "FieldContent",
 									"value": "19",
+									"type": "Number"
+								}
+							],
+							[
+								"old_price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "92",
 									"type": "Number"
 								}
 							]
