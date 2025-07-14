@@ -24,6 +24,7 @@ const PackagesBox = ({
     createOrder,
     process,
     gst,
+    oldPrice,
 }: {
     name: string | KeyTextField
     type: string | KeyTextField
@@ -32,6 +33,7 @@ const PackagesBox = ({
     gst: NumberField
     createOrder: (price: number, courseDetails: any) => void
     process: boolean
+    oldPrice?: NumberField
 }) => {
     const totalPrice = (price ?? 0) + (gst ?? 0)
     const courseDetails = { name, type, days, price: totalPrice }
@@ -52,9 +54,16 @@ const PackagesBox = ({
                 <Typography sx={{ fontSize: { xs: '21px', md: '32px' }, fontWeight: '400', textAlign: 'center' }}>{type}</Typography>
                 <Typography sx={{ fontSize: { xs: '21px', md: '32px' }, fontWeight: '400', textAlign: 'center' }}>{days} Days</Typography>
             </Box>
-            <Typography sx={{ fontSize: { xs: '30px', md: '45px' }, color: '#303030', fontWeight: '600', textAlign: 'center', marginTop: { xs: '10px', md: '15px' } }}>
-                {price && formatToCurrency(price)}
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%', gap: '10px' }}>
+                <Typography sx={{ fontSize: { xs: '30px', md: '45px' }, color: '#303030', fontWeight: '600', textAlign: 'center', marginTop: { xs: '10px', md: '15px' } }}>
+                    {price && formatToCurrency(price)}
+                </Typography>
+                {oldPrice && (
+                    <Typography sx={{ fontSize: { xs: '18px', md: '24px' }, fontWeight: '400', color: '#606060', textDecoration: 'line-through', marginTop: { xs: '10px', md: '15px' } }}>
+                        {formatToCurrency(oldPrice)}
+                    </Typography>
+                )}
+            </Box>
             {price && (
                 <Button
                     disabled={process}
@@ -122,7 +131,16 @@ const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
                                 <Grid container xs={12} lg={12} spacing={4} sx={{ marginTop: { xs: '0px', md: '20px' } }}>
                                     {slice.primary.subscriptionforindiranagar.map((item, index) => (
                                         <Grid item xs={12} md={6} key={index}>
-                                            <PackagesBox createOrder={createOrder} name={item.course_name} type="Indiranagar" days={item.days} price={item.price} process={process} gst={item.gst} />
+                                            <PackagesBox
+                                                createOrder={createOrder}
+                                                name={item.course_name}
+                                                type="Indiranagar"
+                                                days={item.days}
+                                                price={item.price}
+                                                process={process}
+                                                gst={item.gst}
+                                                oldPrice={item.old_price}
+                                            />
                                         </Grid>
                                     ))}
                                 </Grid>
@@ -134,7 +152,16 @@ const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
                             <Grid container xs={12} lg={12} spacing={4} sx={{ marginTop: { xs: '0px', md: '20px' } }}>
                                 {slice.primary.other_courses.map((item, index) => (
                                     <Grid item xs={12} md={6} key={index}>
-                                        <PackagesBox createOrder={createOrder} name={item.course_name} type={item.detail} days={item.days} price={item.price} process={process} gst={item.gst} />
+                                        <PackagesBox
+                                            createOrder={createOrder}
+                                            name={item.course_name}
+                                            type={item.detail}
+                                            days={item.days}
+                                            price={item.price}
+                                            process={process}
+                                            gst={item.gst}
+                                            oldPrice={item.old_price}
+                                        />
                                     </Grid>
                                 ))}
                             </Grid>

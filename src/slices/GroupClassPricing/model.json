@@ -52,6 +52,13 @@
                   "label": "GST",
                   "placeholder": "Add GST Amount"
                 }
+              },
+              "old_price": {
+                "type": "Number",
+                "config": {
+                  "label": "Old Price",
+                  "placeholder": ""
+                }
               }
             }
           }
@@ -94,6 +101,13 @@
                 "type": "Text",
                 "config": {
                   "label": "Detail",
+                  "placeholder": ""
+                }
+              },
+              "old_price": {
+                "type": "Number",
+                "config": {
+                  "label": "Old Price",
                   "placeholder": ""
                 }
               }
