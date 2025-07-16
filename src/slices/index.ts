@@ -41,6 +41,7 @@ export const components = {
     hero: dynamic(() => import('./Hero')),
     hero_with_center_text: dynamic(() => import('./HeroWithCenterText')),
     highlighted_guest_list: dynamic(() => import('./HighlightedGuestList')),
+    home_banner: dynamic(() => import('./HomeBanner')),
     how_yoga_helps: dynamic(() => import('./HowYogaHelps')),
     icon_feature_grid: dynamic(() => import('./IconFeatureGrid')),
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
