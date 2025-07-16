@@ -19,6 +19,14 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "mobile": {
+          "type": "Image",
+          "config": {
+            "label": "Mobile",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {}

@@ -4959,6 +4959,16 @@ export interface HomeBannerSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#image
      */
     desktop: prismic.ImageField<never>
+
+    /**
+     * Mobile field in *HomeBanner → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_banner.default.primary.mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    mobile: prismic.ImageField<never>
 }
 
 /**
