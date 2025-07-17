@@ -1,5 +1,6 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
 import useAuthStore from '@/store/useAuthStore'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import { Box, Typography, Container, Button, CircularProgress } from '@mui/material'
