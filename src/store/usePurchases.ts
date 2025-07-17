@@ -29,7 +29,7 @@ const usePurchaseStore = create<PurchaseState>((set) => ({
         try {
             // Define the path for the user's purchases subcollection
             const userPurchasesRef = collection(db, `users/${user.uid}/purchases`)
-
+            
             // Add purchase to user's subcollection in Firestore
             const purchaseRef = await addDoc(userPurchasesRef, {
                 item,

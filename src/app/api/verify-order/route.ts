@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
 
     try {
         const { userId, name, type, days, price } = notes
-        await firestore
+        const docRef = await firestore
             .collection('users')
             .doc(userId)
             .collection('courses')
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
                 createdAt: fieldValue.serverTimestamp(),
             })
 
-        return NextResponse.json({ message: 'Payment verified successfully, course details saved.', isOk: true }, { status: 200 })
+        return NextResponse.json({ message: 'Payment verified successfully, course details saved.', isOk: true, id: docRef.id }, { status: 200 })
     } catch (error) {
         console.error('Error saving course details:', error)
         return NextResponse.json({ message: 'Error saving course details', isOk: false }, { status: 500 })

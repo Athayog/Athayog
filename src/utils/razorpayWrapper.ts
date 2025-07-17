@@ -6,7 +6,7 @@ interface PaymentResponse {
 
 interface PaymentOptions {
     amount: number
-    onSuccess: () => void
+    onSuccess: (data:any) => void
     onFailure: () => void
     onDismiss?: () => void
     notes?: any
@@ -38,7 +38,7 @@ export const initiateRazorpayPayment = async ({ amount, onSuccess, onFailure, on
                 const verifyData = await verifyRes.json()
 
                 if (verifyData.isOk) {
-                    onSuccess()
+                    onSuccess(verifyData)
                 } else {
                     onFailure()
                 }
