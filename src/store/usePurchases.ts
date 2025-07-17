@@ -7,7 +7,7 @@ interface PurchaseState {
     purchases: Array<{ id: string; item: string; amount: number; date: string }>
     loading: boolean
     error: string | null
-    addPurchase: (item: string, amount: number) => Promise<void>
+    addPurchase: (item: string, amount: number) => Promise<string | undefined>
     resetError: () => void
 }
 
@@ -29,7 +29,7 @@ const usePurchaseStore = create<PurchaseState>((set) => ({
         try {
             // Define the path for the user's purchases subcollection
             const userPurchasesRef = collection(db, `users/${user.uid}/purchases`)
-
+            
             // Add purchase to user's subcollection in Firestore
             const purchaseRef = await addDoc(userPurchasesRef, {
                 item,
@@ -41,6 +41,8 @@ const usePurchaseStore = create<PurchaseState>((set) => ({
             set((state) => ({
                 purchases: [...state.purchases, { id: purchaseRef.id, item, amount, date: new Date().toISOString() }],
             }))
+
+            return purchaseRef.id // Return the ID of the newly created purchase
         } catch (error) {
             console.error('Error adding purchase:', error)
             set({ error: (error as Error).message }) // Set error message

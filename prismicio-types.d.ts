@@ -348,6 +348,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | HomeBannerSlice
     | SimpleGridWithDescriptionSlice
     | ArambhaContentSlice
     | YogaDayHeroSlice
@@ -4946,6 +4947,54 @@ type HighlightedGuestListSliceVariation = HighlightedGuestListSliceWithImage
 export type HighlightedGuestListSlice = prismic.SharedSlice<'highlighted_guest_list', HighlightedGuestListSliceVariation>
 
 /**
+ * Primary content in *HomeBanner → Default → Primary*
+ */
+export interface HomeBannerSliceDefaultPrimary {
+    /**
+     * Desktop field in *HomeBanner → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_banner.default.primary.desktop
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    desktop: prismic.ImageField<never>
+
+    /**
+     * Mobile field in *HomeBanner → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_banner.default.primary.mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    mobile: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for HomeBanner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeBannerSliceDefault = prismic.SharedSliceVariation<'default', Simplify<HomeBannerSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *HomeBanner*
+ */
+type HomeBannerSliceVariation = HomeBannerSliceDefault
+
+/**
+ * HomeBanner Shared Slice
+ *
+ * - **API ID**: `home_banner`
+ * - **Description**: HomeBanner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeBannerSlice = prismic.SharedSlice<'home_banner', HomeBannerSliceVariation>
+
+/**
  * Item in *HowYogaHelps → Default → Primary → Content*
  */
 export interface HowYogaHelpsSliceDefaultPrimaryContentItem {
@@ -9502,6 +9551,10 @@ declare module '@prismicio/client' {
             HighlightedGuestListSliceWithImagePrimary,
             HighlightedGuestListSliceVariation,
             HighlightedGuestListSliceWithImage,
+            HomeBannerSlice,
+            HomeBannerSliceDefaultPrimary,
+            HomeBannerSliceVariation,
+            HomeBannerSliceDefault,
             HowYogaHelpsSlice,
             HowYogaHelpsSliceDefaultPrimaryContentItem,
             HowYogaHelpsSliceDefaultPrimary,
