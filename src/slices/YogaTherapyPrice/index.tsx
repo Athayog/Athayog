@@ -56,7 +56,8 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
 
     const handlePaymentSuccess = async () => {
         setInProcess(false)
-        await addPurchase(currentPurchse?.courseDetails, currentPurchse?.amount ?? 0)
+        const purchaseId = await addPurchase(currentPurchse?.courseDetails, currentPurchse?.amount ?? 0)
+        router.push(`/payment-success?id=${purchaseId}`)
     }
 
     const handlePaymentFailure = () => {

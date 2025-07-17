@@ -83,7 +83,7 @@ interface Purchase {
 }
 const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
     const [process, setInProcess] = useState<boolean>(false)
-    const { addPurchase, loading, error, resetError } = usePurchaseStore()
+    const { addPurchase, loading, error, resetError, purchases } = usePurchaseStore()
     const [currentPurchse, setCurrentPurchase] = useState<Purchase | null>(null)
     const { showSnackbar } = useSnackbar()
     const { user, setRedirectPath } = useAuthStore()
@@ -92,7 +92,8 @@ const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
 
     const handlePaymentSuccess = async () => {
         setInProcess(false)
-        await addPurchase(currentPurchse?.courseDetails, currentPurchse?.amount ?? 0)
+        const purchaseId = await addPurchase(currentPurchse?.courseDetails, currentPurchse?.amount ?? 0)
+        router.push(`/payment-success?id=${purchaseId}`)
     }
 
     const handlePaymentFailure = () => {
