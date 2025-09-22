@@ -119,10 +119,10 @@ const FooterComponent = ({ data }: { data: any }) => {
                                     {data?.address?.map((item: { title: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; locations: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; link_to_map: LinkField | null | undefined }) => {
                                         return (
                                             <>
-                                            <Typography sx={{fontSize:'18px', fontWeight:'bold',marginBottom:'5px'}}>{item.title}</Typography>
+                                            <Typography sx={{fontSize:{ xs: '12px', md: '18px' }, fontWeight:'bold',marginBottom:'5px'}}>{item.title}</Typography>
                                             <LinksItem>{item.locations}                                                 </LinksItem>
                                             <Box sx={{marginBottom:'15px', textDecoration:"underline",color:
-                                            'green'}}>
+                                            'green','a':{fontSize:{ xs: '12px', md: '18px' }}}}>
 
                                             <PrismicNextLink field={item.link_to_map} />
                                             </Box>
