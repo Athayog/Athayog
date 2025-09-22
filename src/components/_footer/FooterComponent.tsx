@@ -3,8 +3,10 @@ import theme from '@/styles/theme'
 import { LinkField, ImageFieldImage } from '@prismicio/client'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import ContentContainer from '@/components/_shared/ContentContainer'
-import { Box, Divider, Grid, styled, Typography } from '@mui/material'
+import { Box, Button, Divider, Grid, styled, Typography } from '@mui/material'
 import { usePathname } from 'next/navigation'
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from 'react'
+import { green } from '@mui/material/colors'
 
 export const HeadingTitle = styled(Typography)(({ theme }) => ({
     fontWeight: '700',
@@ -114,7 +116,19 @@ const FooterComponent = ({ data }: { data: any }) => {
                                     <LinksItem>{item.email}</LinksItem>
                                 </Box>
                                 <Box>
-                                    <LinksItem>{item.address}</LinksItem>
+                                    {data?.address?.map((item: { title: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; locations: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined; link_to_map: LinkField | null | undefined }) => {
+                                        return (
+                                            <>
+                                            <Typography sx={{fontSize:'18px', fontWeight:'bold',marginBottom:'5px'}}>{item.title}</Typography>
+                                            <LinksItem>{item.locations}                                                 </LinksItem>
+                                            <Box sx={{marginBottom:'15px', textDecoration:"underline",color:
+                                            'green'}}>
+
+                                            <PrismicNextLink field={item.link_to_map} />
+                                            </Box>
+                                            </>
+                                        )
+                                    })}
                                 </Box>
                             </Box>
                         ))}
