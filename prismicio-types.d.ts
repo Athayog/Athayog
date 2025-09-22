@@ -206,16 +206,6 @@ export interface FooterDocumentDataTalkToUsItem {
      * - **Documentation**: https://prismic.io/docs/field#key-text
      */
     email: prismic.KeyTextField
-
-    /**
-     * address field in *Footer → Talk To Us*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: footer.talk_to_us[].address
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    address: prismic.KeyTextField
 }
 
 /**
@@ -241,6 +231,41 @@ export interface FooterDocumentDataSocialLinksIconsItem {
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
     link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Item in *Footer → Address*
+ */
+export interface FooterDocumentDataAddressItem {
+    /**
+     * locations field in *Footer → Address*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Add full address of the locations
+     * - **API ID Path**: footer.address[].locations
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    locations: prismic.KeyTextField
+
+    /**
+     * Title field in *Footer → Address*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Location Title
+     * - **API ID Path**: footer.address[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField
+
+    /**
+     * link to map field in *Footer → Address*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Google Map
+     * - **API ID Path**: footer.address[].link_to_map
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    link_to_map: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
 }
 
 /**
@@ -334,6 +359,17 @@ interface FooterDocumentData {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     social_links_icons: prismic.GroupField<Simplify<FooterDocumentDataSocialLinksIconsItem>>
+
+    /**
+     * Address field in *Footer*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.address[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    address: prismic.GroupField<Simplify<FooterDocumentDataAddressItem>>
 }
 
 /**
@@ -9333,6 +9369,7 @@ declare module '@prismicio/client' {
             FooterDocumentDataLegalItem,
             FooterDocumentDataTalkToUsItem,
             FooterDocumentDataSocialLinksIconsItem,
+            FooterDocumentDataAddressItem,
             PageDocument,
             PageDocumentData,
             PageDocumentDataSlicesSlice,

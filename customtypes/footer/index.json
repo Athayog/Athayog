@@ -100,13 +100,6 @@
                                 "label": "email",
                                 "placeholder": ""
                             }
-                        },
-                        "address": {
-                            "type": "Text",
-                            "config": {
-                                "label": "address",
-                                "placeholder": ""
-                            }
                         }
                     }
                 }
@@ -154,6 +147,40 @@
                                 "placeholder": "",
                                 "allowTargetBlank": false,
                                 "select": null
+                            }
+                        }
+                    }
+                }
+            },
+            "address": {
+                "type": "Group",
+                "config": {
+                    "label": "Address",
+                    "repeat": true,
+                    "fields": {
+                        "locations": {
+                            "type": "Text",
+                            "config": {
+                                "label": "locations",
+                                "placeholder": "Add full address of the locations"
+                            }
+                        },
+                        "title": {
+                            "type": "Text",
+                            "config": {
+                                "label": "Title",
+                                "placeholder": "Location Title"
+                            }
+                        },
+                        "link_to_map": {
+                            "type": "Link",
+                            "config": {
+                                "label": "link to map",
+                                "placeholder": "Google Map",
+                                "select": null,
+                                "allowTargetBlank": true,
+                                "allowText": true,
+                                "repeat": false
                             }
                         }
                     }
