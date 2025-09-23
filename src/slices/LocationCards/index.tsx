@@ -18,7 +18,6 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
       sx={{
         backgroundColor: "#E3EFE1",
         p: { xs: 3, md: 6 },
-        mt: 6,
         borderRadius: 3,
         fontFamily: "'Poppins', sans-serif",
         color: "#2A2A2A",
@@ -114,7 +113,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                 {address}
               </Typography>
               <Link
-                href={mapLink?.link_type}
+                href={mapLink?.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 underline="hover"
