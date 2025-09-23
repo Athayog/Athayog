@@ -105,7 +105,7 @@ const FooterComponent = ({ data }: { data: any }) => {
                                 key={index}
                                 sx={{
                                     display: 'flex',
-                                    flexDirection: { xs: 'row', md: 'column' },
+                                    flexDirection: { xs: 'column', md: 'column' },
                                     gap: { xs: '30px', md: '0px' },
                                     justifyContent: 'space-between',
                                 }}

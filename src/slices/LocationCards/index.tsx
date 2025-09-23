@@ -1,26 +1,12 @@
 'use client';
-import React, { useState } from "react";
-import { Box, Typography, Link, Dialog, DialogContent, IconButton } from "@mui/material";
+import React from "react";
+import { Box, Typography, Link } from "@mui/material";
 import { SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
-import CloseIcon from '@mui/icons-material/Close';
 
 export type LocationCardsProps = SliceComponentProps<Content.LocationCardsSlice>;
 
 const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
-  const [open, setOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const handleOpen = (imageUrl: string) => {
-    setSelectedImage(imageUrl);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-    setSelectedImage(null);
-  };
-
   const sectionTitle =
     slice.primary.section_title?.[0]?.text || "Two Studios, One Purpose";
 
@@ -64,24 +50,23 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
           alignItems: 'stretch',
           width: '100%',
           maxWidth: '800px',
+
         }}
       >
         {slice.primary.locations.map((location, index) => {
           const iconUrl = location.icon?.url;
           const title = location.location_title?.[0]?.text || "";
           const address = location.address || "";
-          const mapLink = location.map_link
+          const mapLink = location.map_link;
 
           return (
             <Box
               key={index}
-              boxShadow='md'
               sx={{
-                backgroundColor: "white",
+                backgroundColor: "#f3f9ef",
                 borderRadius: 3,
-             
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
                 p: 3,
-                cursor: "pointer",
                 textAlign: "center",
                 display: "flex",
                 flexDirection: "column",
@@ -93,14 +78,6 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                 '&:hover': {
                   transform: 'translateY(-4px)',
                   boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-                }
-              }}
-              onClick={() => iconUrl && handleOpen(iconUrl)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={e => {
-                if (e.key === "Enter") {
-                  iconUrl && handleOpen(iconUrl);
                 }
               }}
             >
@@ -125,7 +102,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                   textAlign: 'center'
                 }}
               >
-             {title}
+                {title}
               </Typography>
               <Typography 
                 variant="body1" 
@@ -138,7 +115,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                 {address}
               </Typography>
               <Link
-                href={mapLink.link_type}
+                href={mapLink?.link_type}
                 target="_blank"
                 rel="noopener noreferrer"
                 underline="hover"
@@ -149,7 +126,6 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                     color: "#2A5F47"
                   }
                 }}
-                onClick={(e) => e.stopPropagation()}
               >
                 {mapLink.text}
               </Link>
@@ -168,43 +144,8 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
           maxWidth: '600px'
         }}
       >
-      {slice.primary.section_footer}
+        {slice.primary.section_footer}
       </Typography>
-
-      <Dialog onClose={handleClose} open={open} maxWidth="sm" fullWidth>
-        <DialogContent sx={{ p: 0, position: "relative" }}>
-          <IconButton
-            aria-label="close"
-            onClick={handleClose}
-            sx={{ 
-              position: "absolute", 
-              right: 8, 
-              top: 8, 
-              color: "white", 
-              zIndex: 10,
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              '&:hover': {
-                backgroundColor: 'rgba(0,0,0,0.7)'
-              }
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-          {selectedImage && (
-            <Box
-              component="img"
-              src={selectedImage}
-              alt="Studio"
-              sx={{ 
-                width: "100%", 
-                height: "auto", 
-                borderRadius: 2,
-                display: 'block'
-              }}
-            />
-          )}
-        </DialogContent>
-      </Dialog>
     </Box>
   );
 };
