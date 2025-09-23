@@ -89,8 +89,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                   sx={{ 
                     width: 50, 
                     height: 50, 
-                    borderRadius: 2,
-                    objectFit: 'cover'
+                    objectFit: 'contain'
                   }}
                 />
               )}
