@@ -56,7 +56,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
           const iconUrl = location.icon?.url;
           const title = location.location_title?.[0]?.text || "";
           const address = location.address || "";
-          const mapLink = location.map_link;
+          const mapLink = location.map_link as any;
 
           return (
             <Box
