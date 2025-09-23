@@ -1,8 +1,22 @@
 'use client';
 import React from "react";
-import { Box, Typography, Link } from "@mui/material";
+import { Box, Typography, Link, styled, Button } from "@mui/material";
 import { SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
+
+const Title = styled(Typography, {
+    shouldForwardProp: (prop) => prop !== 'colorText',
+})<{ colorText?: string }>(({ theme, colorText }) => ({
+    fontSize: '48px',
+    color: '#303030',
+    fontWeight: '700',
+    [theme.breakpoints.down('md')]: {
+        fontSize: '26px',
+    },
+    span: {
+        color: colorText || '#237306', // Default color if colorText isn't provided
+    },
+}))
 
 export type LocationCardsProps = SliceComponentProps<Content.LocationCardsSlice>;
 
@@ -16,7 +30,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       sx={{
-        backgroundColor: "#E3EFE1",
+        background: "linear-gradient(to bottom, #E9FDDE, #daf8e1, #E9FDDE)",
         p: { xs: 3, md: 6 },
         borderRadius: 3,
         fontFamily: "'Poppins', sans-serif",
@@ -27,7 +41,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
         textAlign: 'center',
       }}
     >
-      <Typography
+      <Title
         variant="h4"
         sx={{ 
           color: "#154734", 
@@ -38,7 +52,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
         }}
       >
         {sectionTitle}
-      </Typography>
+      </Title>
       
       <Box
         sx={{
@@ -71,13 +85,9 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                 flexDirection: "column",
                 alignItems: "center",
                 gap: 2,
-                width: { xs: '100%', sm: '280px' },
-                minHeight: '200px',
+                width: { xs: '100%', sm: '350px' },
+                minHeight: '300px',
                 transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
-                  boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-                }
               }}
             >
               {iconUrl && (
@@ -87,6 +97,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                   alt={`${title} icon`}
                   sx={{ 
                     width: 50, 
+                    color:'green',
                     height: 50, 
                     objectFit: 'contain'
                   }}
@@ -97,7 +108,9 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                 sx={{ 
                   color: "#154734",
                   fontWeight: 'bold',
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  textTransform:'uppercase',
+                  fontSize:{xs:'24px',md:'28px'}
                 }}
               >
                 {title}
@@ -120,12 +133,15 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                 sx={{ 
                   fontWeight: "medium",
                   color: "#154734",
+                  marginTop:'10px',
                   '&:hover': {
                     color: "#2A5F47"
                   }
                 }}
               >
-                {mapLink.text}
+               <Button  size='large' variant='outlined' sx={{boxShadow:'none'}}>
+                 {mapLink.text}
+               </Button>
               </Link>
             </Box>
           );
