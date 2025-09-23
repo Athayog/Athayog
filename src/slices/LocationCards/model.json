@@ -1,0 +1,68 @@
+{
+  "type": "SharedSlice",
+  "id": "location_cards",
+  "name": "LocationCards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Default two-column layout with location cards, each having an icon, title, address, and map link/button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Section Title"
+          }
+        },
+        "locations": {
+          "type": "Group",
+          "config": {
+            "label": "Locations",
+            "fields": {
+              "icon": {
+                "type": "Image",
+                "config": {
+                  "label": "Icon"
+                }
+              },
+              "location_title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Location Title"
+                }
+              },
+              "address": {
+                "type": "Text",
+                "config": {
+                  "label": "Address"
+                }
+              },
+              "map_link": {
+                "type": "Link",
+                "config": {
+                  "label": "View on Map Button",
+                  "allowText": true,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        },
+        "section_footer": {
+          "type": "Text",
+          "config": {
+            "label": "Section Footer",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -47,6 +47,7 @@ export const components = {
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
     left_content_right_slider_vertical: dynamic(() => import('./LeftContentRightSliderVertical')),
     left_image_righ_content: dynamic(() => import('./LeftImageRighContent')),
+    location_cards: dynamic(() => import('./LocationCards')),
     map: dynamic(() => import('./Map')),
     mental_health_content: dynamic(() => import('./MentalHealthContent')),
     mental_health_hero: dynamic(() => import('./MentalHealthHero')),

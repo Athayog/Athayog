@@ -27,6 +27,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "location_cards": {
+                            "type": "SharedSlice"
+                        },
                         "home_banner": {
                             "type": "SharedSlice"
                         },
