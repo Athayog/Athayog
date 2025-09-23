@@ -1,0 +1,194 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Two Studios, One Purpose",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"locations": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"icon",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1616435577207-ca90abc6b732?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxfHxsb3R1c3xlbnwwfHx8fDE3NTg2NDM2MDZ8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "pink lotus flower in bloom",
+									"origin": {
+										"id": "B1cJcYPoFxY",
+										"url": "https://images.unsplash.com/photo-1616435577207-ca90abc6b732?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxfHxsb3R1c3xlbnwwfHx8fDE3NTg2NDM2MDZ8MA&ixlib=rb-4.1.0&q=85",
+										"width": 2959,
+										"height": 3437
+									},
+									"width": 2959,
+									"height": 3437,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									}
+								}
+							],
+							[
+								"location_title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading4",
+											"content": {
+												"text": "Indiranagar",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"address",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": " No. 3293, 1st Floor, 12th Main, HAL 2nd Stage, Bengaluru – 560038"
+								}
+							],
+							[
+								"location_links",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Non fugiat consectetur eiusmod. Nisi non consequat magna esse sunt laboris."
+											}
+										}
+									]
+								}
+							],
+							[
+								"map_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "8ea4013a-28db-4519-ae6b-7c7b5ca33dbe",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com",
+										"text": "View on Map"
+									}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"icon",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NTg1OTQ2MTZ8MA&ixlib=rb-4.1.0&q=85",
+									"alt": "assorted sliced citrus fruits on brown wooden chopping board",
+									"origin": {
+										"id": "1CsaVdwfIew",
+										"url": "https://images.unsplash.com/photo-1511688878353-3a2f5be94cd7?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw0fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3NTg1OTQ2MTZ8MA&ixlib=rb-4.1.0&q=85",
+										"width": 3709,
+										"height": 5563
+									},
+									"width": 3709,
+									"height": 5563,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									}
+								}
+							],
+							[
+								"location_title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading4",
+											"content": {
+												"text": "Jayanagat",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"address",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": " No. 3293, 1st Floor, 12th Main, HAL 2nd Stage, Bengaluru – 560038"
+								}
+							],
+							[
+								"location_links",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "asdasd",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"map_link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "095c2a2d-b502-462a-aa22-1c3f5b2b3690",
+									"value": {
+										"__TYPE__": "AnyLink",
+										"kind": "any",
+										"text": "View on Map"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"section_footer": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": " “Whichever location you join, you’ll experience the same warmth, guidance, and transformation that define AthaYog Living.”"
+			}
+		},
+		"items": []
+	}
+]

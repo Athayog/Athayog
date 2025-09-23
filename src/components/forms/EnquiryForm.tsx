@@ -68,7 +68,7 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
                     </Box>
                     <Box sx={{ width: { xs: '100%', md: '50%' } }}>
                         {/* Full Name */}
-                        <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Full Name</Typography>
+                        <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Location</Typography>
                         <TextField
                             fullWidth
                             id="location"

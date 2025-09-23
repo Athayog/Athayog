@@ -384,6 +384,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | LocationCardsSlice
     | HomeBannerSlice
     | SimpleGridWithDescriptionSlice
     | ArambhaContentSlice
@@ -5456,6 +5457,109 @@ type LeftImageRighContentSliceVariation = LeftImageRighContentSliceDefault
 export type LeftImageRighContentSlice = prismic.SharedSlice<'left_image_righ_content', LeftImageRighContentSliceVariation>
 
 /**
+ * Item in *LocationCards → Default → Primary → Locations*
+ */
+export interface LocationCardsSliceDefaultPrimaryLocationsItem {
+    /**
+     * Icon field in *LocationCards → Default → Primary → Locations*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: location_cards.default.primary.locations[].icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Location Title field in *LocationCards → Default → Primary → Locations*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: location_cards.default.primary.locations[].location_title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    location_title: prismic.TitleField
+
+    /**
+     * Address field in *LocationCards → Default → Primary → Locations*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: location_cards.default.primary.locations[].address
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    address: prismic.KeyTextField
+
+    /**
+     * View on Map Button field in *LocationCards → Default → Primary → Locations*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: location_cards.default.primary.locations[].map_link
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    map_link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Primary content in *LocationCards → Default → Primary*
+ */
+export interface LocationCardsSliceDefaultPrimary {
+    /**
+     * Section Title field in *LocationCards → Default → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: location_cards.default.primary.section_title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    section_title: prismic.TitleField
+
+    /**
+     * Locations field in *LocationCards → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: location_cards.default.primary.locations[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    locations: prismic.GroupField<Simplify<LocationCardsSliceDefaultPrimaryLocationsItem>>
+
+    /**
+     * Section Footer field in *LocationCards → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: location_cards.default.primary.section_footer
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    section_footer: prismic.KeyTextField
+}
+
+/**
+ * Default variation for LocationCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default two-column layout with location cards, each having an icon, title, address, and map link/button.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocationCardsSliceDefault = prismic.SharedSliceVariation<'default', Simplify<LocationCardsSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *LocationCards*
+ */
+type LocationCardsSliceVariation = LocationCardsSliceDefault
+
+/**
+ * LocationCards Shared Slice
+ *
+ * - **API ID**: `location_cards`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LocationCardsSlice = prismic.SharedSlice<'location_cards', LocationCardsSliceVariation>
+
+/**
  * Primary content in *Map → Default → Primary*
  */
 export interface MapSliceDefaultPrimary {
@@ -9615,6 +9719,11 @@ declare module '@prismicio/client' {
             LeftImageRighContentSliceDefaultPrimary,
             LeftImageRighContentSliceVariation,
             LeftImageRighContentSliceDefault,
+            LocationCardsSlice,
+            LocationCardsSliceDefaultPrimaryLocationsItem,
+            LocationCardsSliceDefaultPrimary,
+            LocationCardsSliceVariation,
+            LocationCardsSliceDefault,
             MapSlice,
             MapSliceDefaultPrimary,
             MapSliceVariation,
