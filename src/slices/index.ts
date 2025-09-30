@@ -44,6 +44,7 @@ export const components = {
     highlighted_guest_list: dynamic(() => import('./HighlightedGuestList')),
     home_banner: dynamic(() => import('./HomeBanner')),
     how_yoga_helps: dynamic(() => import('./HowYogaHelps')),
+    icon_column_content_highlight: dynamic(() => import('./BaliWhyJoin')),
     icon_feature_grid: dynamic(() => import('./IconFeatureGrid')),
     left_content_right_image: dynamic(() => import('./LeftContentRightImage')),
     left_content_right_slider_vertical: dynamic(() => import('./LeftContentRightSliderVertical')),

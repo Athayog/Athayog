@@ -1,0 +1,74 @@
+{
+    "type": "SharedSlice",
+    "id": "icon_column_content_highlight",
+    "name": "BaliWhyJoin",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "description": "Heading, intro, decorative images/icons, and a row of 2–4 content columns each with icon, title, and description.",
+            "version": "initial",
+            "imageUrl": "",
+            "docURL": "...",
+            "primary": {
+                "title": {
+                    "type": "StructuredText",
+                    "config": {
+                        "single": "heading2",
+                        "label": "Title"
+                    }
+                },
+                "intro": {
+                    "type": "StructuredText",
+                    "config": {
+                        "multi": "paragraph,strong,em,hyperlink",
+                        "label": "Introductory Text"
+                    }
+                },
+                "highlighted_images": {
+                    "type": "Group",
+                    "config": {
+                        "label": "Decorative Images",
+                        "fields": {
+                            "image": {
+                                "type": "Image",
+                                "config": {
+                                    "label": "Image"
+                                }
+                            }
+                        }
+                    }
+                },
+                "columns": {
+                    "type": "Group",
+                    "config": {
+                        "label": "Content Columns",
+                        "fields": {
+                            "icon": {
+                                "type": "Image",
+                                "config": {
+                                    "label": "Icon"
+                                }
+                            },
+                            "column_title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "heading3,strong,em",
+                                    "label": "Column Title"
+                                }
+                            },
+                            "column_description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "label": "Column Description"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "items": {}
+        }
+    ]
+}

@@ -384,6 +384,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | IconColumnContentHighlightSlice
     | HeroCtaImageTextSlice
     | LocationCardsSlice
     | HomeBannerSlice
@@ -5184,6 +5185,124 @@ type HowYogaHelpsSliceVariation = HowYogaHelpsSliceDefault
 export type HowYogaHelpsSlice = prismic.SharedSlice<'how_yoga_helps', HowYogaHelpsSliceVariation>
 
 /**
+ * Item in *BaliWhyJoin → Default → Primary → Decorative Images*
+ */
+export interface IconColumnContentHighlightSliceDefaultPrimaryHighlightedImagesItem {
+    /**
+     * Image field in *BaliWhyJoin → Default → Primary → Decorative Images*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_column_content_highlight.default.primary.highlighted_images[].image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+}
+
+/**
+ * Item in *BaliWhyJoin → Default → Primary → Content Columns*
+ */
+export interface IconColumnContentHighlightSliceDefaultPrimaryColumnsItem {
+    /**
+     * Icon field in *BaliWhyJoin → Default → Primary → Content Columns*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_column_content_highlight.default.primary.columns[].icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Column Title field in *BaliWhyJoin → Default → Primary → Content Columns*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_column_content_highlight.default.primary.columns[].column_title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    column_title: prismic.RichTextField
+
+    /**
+     * Column Description field in *BaliWhyJoin → Default → Primary → Content Columns*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_column_content_highlight.default.primary.columns[].column_description
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    column_description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *BaliWhyJoin → Default → Primary*
+ */
+export interface IconColumnContentHighlightSliceDefaultPrimary {
+    /**
+     * Title field in *BaliWhyJoin → Default → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_column_content_highlight.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.TitleField
+
+    /**
+     * Introductory Text field in *BaliWhyJoin → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_column_content_highlight.default.primary.intro
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    intro: prismic.RichTextField
+
+    /**
+     * Decorative Images field in *BaliWhyJoin → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_column_content_highlight.default.primary.highlighted_images[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    highlighted_images: prismic.GroupField<Simplify<IconColumnContentHighlightSliceDefaultPrimaryHighlightedImagesItem>>
+
+    /**
+     * Content Columns field in *BaliWhyJoin → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_column_content_highlight.default.primary.columns[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    columns: prismic.GroupField<Simplify<IconColumnContentHighlightSliceDefaultPrimaryColumnsItem>>
+}
+
+/**
+ * Default variation for BaliWhyJoin Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Heading, intro, decorative images/icons, and a row of 2–4 content columns each with icon, title, and description.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IconColumnContentHighlightSliceDefault = prismic.SharedSliceVariation<'default', Simplify<IconColumnContentHighlightSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *BaliWhyJoin*
+ */
+type IconColumnContentHighlightSliceVariation = IconColumnContentHighlightSliceDefault
+
+/**
+ * BaliWhyJoin Shared Slice
+ *
+ * - **API ID**: `icon_column_content_highlight`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type IconColumnContentHighlightSlice = prismic.SharedSlice<'icon_column_content_highlight', IconColumnContentHighlightSliceVariation>
+
+/**
  * Item in *IconFeatureGrid → Default → Primary → Items*
  */
 export interface IconFeatureGridSliceDefaultPrimaryItemsItem {
@@ -9784,6 +9903,12 @@ declare module '@prismicio/client' {
             HowYogaHelpsSliceDefaultPrimary,
             HowYogaHelpsSliceVariation,
             HowYogaHelpsSliceDefault,
+            IconColumnContentHighlightSlice,
+            IconColumnContentHighlightSliceDefaultPrimaryHighlightedImagesItem,
+            IconColumnContentHighlightSliceDefaultPrimaryColumnsItem,
+            IconColumnContentHighlightSliceDefaultPrimary,
+            IconColumnContentHighlightSliceVariation,
+            IconColumnContentHighlightSliceDefault,
             IconFeatureGridSlice,
             IconFeatureGridSliceDefaultPrimaryItemsItem,
             IconFeatureGridSliceDefaultPrimary,
