@@ -39,6 +39,7 @@ export const components = {
     group_schedule: dynamic(() => import('./GroupSchedule')),
     gurus: dynamic(() => import('./Gurus')),
     hero: dynamic(() => import('./Hero')),
+    hero_cta_image_text: dynamic(() => import('./BaliRetreatHero')),
     hero_with_center_text: dynamic(() => import('./HeroWithCenterText')),
     highlighted_guest_list: dynamic(() => import('./HighlightedGuestList')),
     home_banner: dynamic(() => import('./HomeBanner')),

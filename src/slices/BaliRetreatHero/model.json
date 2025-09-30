@@ -1,0 +1,55 @@
+{
+  "type": "SharedSlice",
+  "id": "hero_cta_image_text",
+  "name": "BaliRetreatHero",
+  "variations": [
+    {
+      "id": "image_left_text_right",
+      "name": "Image Left, Text Right",
+      "description": "Displays a background image filling the section with text content and a main button overlayed on the left half.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image"
+          }
+        },
+        "image_mobile": {
+          "type": "Image",
+          "config": {
+            "label": "Background Image Mobile",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title"
+          }
+        },
+        "subtitle": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Subtitle"
+          }
+        },
+        "primary_cta": {
+          "type": "Link",
+          "config": {
+            "label": "Primary Button",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

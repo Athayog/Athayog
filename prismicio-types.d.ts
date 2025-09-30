@@ -384,6 +384,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | HeroCtaImageTextSlice
     | LocationCardsSlice
     | HomeBannerSlice
     | SimpleGridWithDescriptionSlice
@@ -4811,6 +4812,84 @@ type HeroSliceVariation = HeroSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>
+
+/**
+ * Primary content in *BaliRetreatHero → Image Left, Text Right → Primary*
+ */
+export interface HeroCtaImageTextSliceImageLeftTextRightPrimary {
+    /**
+     * Background Image field in *BaliRetreatHero → Image Left, Text Right → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_cta_image_text.image_left_text_right.primary.image
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image: prismic.ImageField<never>
+
+    /**
+     * Background Image Mobile field in *BaliRetreatHero → Image Left, Text Right → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_cta_image_text.image_left_text_right.primary.image_mobile
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image_mobile: prismic.ImageField<never>
+
+    /**
+     * Title field in *BaliRetreatHero → Image Left, Text Right → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_cta_image_text.image_left_text_right.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    title: prismic.TitleField
+
+    /**
+     * Subtitle field in *BaliRetreatHero → Image Left, Text Right → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_cta_image_text.image_left_text_right.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Primary Button field in *BaliRetreatHero → Image Left, Text Right → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_cta_image_text.image_left_text_right.primary.primary_cta
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    primary_cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Image Left, Text Right variation for BaliRetreatHero Slice
+ *
+ * - **API ID**: `image_left_text_right`
+ * - **Description**: Displays a background image filling the section with text content and a main button overlayed on the left half.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroCtaImageTextSliceImageLeftTextRight = prismic.SharedSliceVariation<'image_left_text_right', Simplify<HeroCtaImageTextSliceImageLeftTextRightPrimary>, never>
+
+/**
+ * Slice variation for *BaliRetreatHero*
+ */
+type HeroCtaImageTextSliceVariation = HeroCtaImageTextSliceImageLeftTextRight
+
+/**
+ * BaliRetreatHero Shared Slice
+ *
+ * - **API ID**: `hero_cta_image_text`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroCtaImageTextSlice = prismic.SharedSlice<'hero_cta_image_text', HeroCtaImageTextSliceVariation>
 
 /**
  * Primary content in *HeroWithCenterText → Default → Primary*
@@ -9683,6 +9762,10 @@ declare module '@prismicio/client' {
             HeroSliceDefaultPrimary,
             HeroSliceVariation,
             HeroSliceDefault,
+            HeroCtaImageTextSlice,
+            HeroCtaImageTextSliceImageLeftTextRightPrimary,
+            HeroCtaImageTextSliceVariation,
+            HeroCtaImageTextSliceImageLeftTextRight,
             HeroWithCenterTextSlice,
             HeroWithCenterTextSliceDefaultPrimary,
             HeroWithCenterTextSliceVariation,

@@ -27,6 +27,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "hero_cta_image_text": {
+                            "type": "SharedSlice"
+                        },
                         "location_cards": {
                             "type": "SharedSlice"
                         },
