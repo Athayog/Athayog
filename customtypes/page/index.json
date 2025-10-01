@@ -1,326 +1,329 @@
 {
-    "id": "page",
-    "label": "Page",
-    "format": "page",
-    "repeatable": true,
-    "status": true,
-    "json": {
-        "Main": {
-            "uid": {
-                "type": "UID",
-                "config": {
-                    "label": "UID",
-                    "placeholder": ""
-                }
-            },
-            "title": {
-                "type": "StructuredText",
-                "config": {
-                    "label": "Title",
-                    "placeholder": "",
-                    "allowTargetBlank": true,
-                    "single": "heading1"
-                }
-            },
-            "slices": {
-                "type": "Slices",
-                "fieldset": "Slice Zone",
-                "config": {
-                    "choices": {
-                        "icon_column_content_highlight": {
-                            "type": "SharedSlice"
-                        },
-                        "hero_cta_image_text": {
-                            "type": "SharedSlice"
-                        },
-                        "location_cards": {
-                            "type": "SharedSlice"
-                        },
-                        "home_banner": {
-                            "type": "SharedSlice"
-                        },
-                        "simple_grid_with_description": {
-                            "type": "SharedSlice"
-                        },
-                        "arambha_content": {
-                            "type": "SharedSlice"
-                        },
-                        "yoga_day_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "icon_feature_grid": {
-                            "type": "SharedSlice"
-                        },
-                        "map": {
-                            "type": "SharedSlice"
-                        },
-                        "event_schedule_details": {
-                            "type": "SharedSlice"
-                        },
-                        "highlighted_guest_list": {
-                            "type": "SharedSlice"
-                        },
-                        "arambha_register": {
-                            "type": "SharedSlice"
-                        },
-                        "arambha_registration": {
-                            "type": "SharedSlice"
-                        },
-                        "rich_text": {
-                            "type": "SharedSlice"
-                        },
-                        "blogs_title": {
-                            "type": "SharedSlice"
-                        },
-                        "weight_loss_videos": {
-                            "type": "SharedSlice"
-                        },
-                        "bulleted_content": {
-                            "type": "SharedSlice"
-                        },
-                        "mental_health_content": {
-                            "type": "SharedSlice"
-                        },
-                        "mental_health_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "courses_list": {
-                            "type": "SharedSlice"
-                        },
-                        "ttc_content_text": {
-                            "type": "SharedSlice"
-                        },
-                        "payment_gateway_group": {
-                            "type": "SharedSlice"
-                        },
-                        "scattered_gallery": {
-                            "type": "SharedSlice"
-                        },
-                        "quote": {
-                            "type": "SharedSlice"
-                        },
-                        "courses_simple_content": {
-                            "type": "SharedSlice"
-                        },
-                        "three_video_layout": {
-                            "type": "SharedSlice"
-                        },
-                        "gurus": {
-                            "type": "SharedSlice"
-                        },
-                        "eligible": {
-                            "type": "SharedSlice"
-                        },
-                        "alumni_archive": {
-                            "type": "SharedSlice"
-                        },
-                        "accommodation": {
-                            "type": "SharedSlice"
-                        },
-                        "amenities": {
-                            "type": "SharedSlice"
-                        },
-                        "why_to_choose": {
-                            "type": "SharedSlice"
-                        },
-                        "courses_cta": {
-                            "type": "SharedSlice"
-                        },
-                        "multi_left_right_courses": {
-                            "type": "SharedSlice"
-                        },
-                        "courses_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "weight_loss_form": {
-                            "type": "SharedSlice"
-                        },
-                        "career_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "testimonials": {
-                            "type": "SharedSlice"
-                        },
-                        "simple_grid": {
-                            "type": "SharedSlice"
-                        },
-                        "weight_loss_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "call_to_action": {
-                            "type": "SharedSlice"
-                        },
-                        "multi_left_right_info_section": {
-                            "type": "SharedSlice"
-                        },
-                        "event_highlights_gallery": {
-                            "type": "SharedSlice"
-                        },
-                        "hero_with_center_text": {
-                            "type": "SharedSlice"
-                        },
-                        "about_us_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "simple_text_block": {
-                            "type": "SharedSlice"
-                        },
-                        "our_team": {
-                            "type": "SharedSlice"
-                        },
-                        "content_with_image": {
-                            "type": "SharedSlice"
-                        },
-                        "yoga_therapy_price": {
-                            "type": "SharedSlice"
-                        },
-                        "yoga_therapy_info": {
-                            "type": "SharedSlice"
-                        },
-                        "yoga_therapy_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "trial_class_form": {
-                            "type": "SharedSlice"
-                        },
-                        "privacy": {
-                            "type": "SharedSlice"
-                        },
-                        "contact_us_form": {
-                            "type": "SharedSlice"
-                        },
-                        "contact_us_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "group_schedule": {
-                            "type": "SharedSlice"
-                        },
-                        "class_intensity_table": {
-                            "type": "SharedSlice"
-                        },
-                        "group_class_format": {
-                            "type": "SharedSlice"
-                        },
-                        "group_information": {
-                            "type": "SharedSlice"
-                        },
-                        "pros_and_cons": {
-                            "type": "SharedSlice"
-                        },
-                        "group_class_pricing": {
-                            "type": "SharedSlice"
-                        },
-                        "group_class_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "class_format": {
-                            "type": "SharedSlice"
-                        },
-                        "personal_session_pricing": {
-                            "type": "SharedSlice"
-                        },
-                        "personal_content": {
-                            "type": "SharedSlice"
-                        },
-                        "consider_personal_training": {
-                            "type": "SharedSlice"
-                        },
-                        "personal_session_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "advantages_of_personal_training": {
-                            "type": "SharedSlice"
-                        },
-                        "enroll_section": {
-                            "type": "SharedSlice"
-                        },
-                        "why_join": {
-                            "type": "SharedSlice"
-                        },
-                        "yoga_practices": {
-                            "type": "SharedSlice"
-                        },
-                        "symptoms": {
-                            "type": "SharedSlice"
-                        },
-                        "how_yoga_helps": {
-                            "type": "SharedSlice"
-                        },
-                        "causes_of_pcos": {
-                            "type": "SharedSlice"
-                        },
-                        "pcos_hero": {
-                            "type": "SharedSlice"
-                        },
-                        "faq": {
-                            "type": "SharedSlice"
-                        },
-                        "yoga_arambha": {
-                            "type": "SharedSlice"
-                        },
-                        "our_yoga_story": {
-                            "type": "SharedSlice"
-                        },
-                        "upcoming_workshop": {
-                            "type": "SharedSlice"
-                        },
-                        "right_content_left_slider_vertical": {
-                            "type": "SharedSlice"
-                        },
-                        "group_class": {
-                            "type": "SharedSlice"
-                        },
-                        "video_testimonials": {
-                            "type": "SharedSlice"
-                        },
-                        "left_content_right_image": {
-                            "type": "SharedSlice"
-                        },
-                        "left_image_righ_content": {
-                            "type": "SharedSlice"
-                        },
-                        "left_content_right_slider_vertical": {
-                            "type": "SharedSlice"
-                        },
-                        "recognition": {
-                            "type": "SharedSlice"
+        "id": "page",
+        "label": "Page",
+        "format": "page",
+        "repeatable": true,
+        "status": true,
+        "json": {
+                "Main": {
+                        "uid": {
+                                "type": "UID",
+                                "config": {
+                                        "label": "UID",
+                                        "placeholder": ""
+                                }
+                        },
+                        "title": {
+                                "type": "StructuredText",
+                                "config": {
+                                        "label": "Title",
+                                        "placeholder": "",
+                                        "allowTargetBlank": true,
+                                        "single": "heading1"
+                                }
                         },
                         "slices": {
-                            "type": "SharedSlice"
-                        },
-                        "hero": {
-                            "type": "SharedSlice"
+                                "type": "Slices",
+                                "fieldset": "Slice Zone",
+                                "config": {
+                                        "choices": {
+                                                "event_info_cta": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "icon_column_content_highlight": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "hero_cta_image_text": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "location_cards": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "home_banner": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "simple_grid_with_description": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "arambha_content": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "yoga_day_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "icon_feature_grid": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "map": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "event_schedule_details": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "highlighted_guest_list": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "arambha_register": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "arambha_registration": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "rich_text": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "blogs_title": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "weight_loss_videos": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "bulleted_content": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "mental_health_content": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "mental_health_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "courses_list": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "ttc_content_text": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "payment_gateway_group": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "scattered_gallery": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "quote": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "courses_simple_content": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "three_video_layout": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "gurus": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "eligible": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "alumni_archive": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "accommodation": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "amenities": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "why_to_choose": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "courses_cta": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "multi_left_right_courses": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "courses_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "weight_loss_form": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "career_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "testimonials": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "simple_grid": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "weight_loss_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "call_to_action": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "multi_left_right_info_section": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "event_highlights_gallery": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "hero_with_center_text": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "about_us_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "simple_text_block": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "our_team": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "content_with_image": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "yoga_therapy_price": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "yoga_therapy_info": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "yoga_therapy_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "trial_class_form": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "privacy": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "contact_us_form": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "contact_us_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "group_schedule": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "class_intensity_table": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "group_class_format": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "group_information": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "pros_and_cons": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "group_class_pricing": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "group_class_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "class_format": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "personal_session_pricing": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "personal_content": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "consider_personal_training": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "personal_session_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "advantages_of_personal_training": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "enroll_section": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "why_join": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "yoga_practices": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "symptoms": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "how_yoga_helps": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "causes_of_pcos": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "pcos_hero": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "faq": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "yoga_arambha": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "our_yoga_story": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "upcoming_workshop": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "right_content_left_slider_vertical": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "group_class": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "video_testimonials": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "left_content_right_image": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "left_image_righ_content": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "left_content_right_slider_vertical": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "recognition": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "slices": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "hero": {
+                                                        "type": "SharedSlice"
+                                                }
+                                        }
+                                }
                         }
-                    }
+                },
+                "SEO & Metadata": {
+                        "meta_title": {
+                                "type": "Text",
+                                "config": {
+                                        "label": "Meta Title",
+                                        "placeholder": "A title of the page used for social media and search engines"
+                                }
+                        },
+                        "meta_description": {
+                                "type": "Text",
+                                "config": {
+                                        "label": "Meta Description",
+                                        "placeholder": "A brief summary of the page"
+                                }
+                        },
+                        "meta_image": {
+                                "type": "Image",
+                                "config": {
+                                        "label": "Meta Image",
+                                        "constraint": {
+                                                "width": 2400,
+                                                "height": 1260
+                                        },
+                                        "thumbnails": []
+                                }
+                        }
                 }
-            }
-        },
-        "SEO & Metadata": {
-            "meta_title": {
-                "type": "Text",
-                "config": {
-                    "label": "Meta Title",
-                    "placeholder": "A title of the page used for social media and search engines"
-                }
-            },
-            "meta_description": {
-                "type": "Text",
-                "config": {
-                    "label": "Meta Description",
-                    "placeholder": "A brief summary of the page"
-                }
-            },
-            "meta_image": {
-                "type": "Image",
-                "config": {
-                    "label": "Meta Image",
-                    "constraint": {
-                        "width": 2400,
-                        "height": 1260
-                    },
-                    "thumbnails": []
-                }
-            }
         }
-    }
 }

@@ -1,191 +1,191 @@
 {
-    "format": "custom",
-    "id": "footer",
-    "label": "Footer",
-    "repeatable": false,
-    "status": true,
-    "json": {
-        "Main": {
-            "section_title": {
-                "type": "Group",
-                "config": {
-                    "label": "Site Links",
-                    "repeat": true,
-                    "fields": {
-                        "label": {
-                            "type": "Text",
-                            "config": {
-                                "label": "Label",
-                                "placeholder": ""
-                            }
+        "format": "custom",
+        "id": "footer",
+        "label": "Footer",
+        "repeatable": false,
+        "status": true,
+        "json": {
+                "Main": {
+                        "section_title": {
+                                "type": "Group",
+                                "config": {
+                                        "label": "Site Links",
+                                        "repeat": true,
+                                        "fields": {
+                                                "label": {
+                                                        "type": "Text",
+                                                        "config": {
+                                                                "label": "Label",
+                                                                "placeholder": ""
+                                                        }
+                                                },
+                                                "link": {
+                                                        "type": "Link",
+                                                        "config": {
+                                                                "label": "Link",
+                                                                "placeholder": "",
+                                                                "allowTargetBlank": false,
+                                                                "select": null
+                                                        }
+                                                }
+                                        }
+                                }
                         },
-                        "link": {
-                            "type": "Link",
-                            "config": {
-                                "label": "Link",
-                                "placeholder": "",
-                                "allowTargetBlank": false,
-                                "select": null
-                            }
+                        "what_we_offer": {
+                                "type": "Group",
+                                "config": {
+                                        "label": "What We Offer",
+                                        "repeat": true,
+                                        "fields": {
+                                                "label": {
+                                                        "type": "Text",
+                                                        "config": {
+                                                                "label": "Label",
+                                                                "placeholder": ""
+                                                        }
+                                                },
+                                                "link": {
+                                                        "type": "Link",
+                                                        "config": {
+                                                                "label": "Link",
+                                                                "placeholder": "",
+                                                                "allowTargetBlank": false,
+                                                                "select": null
+                                                        }
+                                                }
+                                        }
+                                }
+                        },
+                        "legal": {
+                                "type": "Group",
+                                "config": {
+                                        "label": "Legal",
+                                        "repeat": true,
+                                        "fields": {
+                                                "label": {
+                                                        "type": "Text",
+                                                        "config": {
+                                                                "label": "Label",
+                                                                "placeholder": ""
+                                                        }
+                                                },
+                                                "link": {
+                                                        "type": "Link",
+                                                        "config": {
+                                                                "label": "Link",
+                                                                "placeholder": "",
+                                                                "allowTargetBlank": false,
+                                                                "select": null
+                                                        }
+                                                }
+                                        }
+                                }
+                        },
+                        "talk_to_us": {
+                                "type": "Group",
+                                "config": {
+                                        "label": "Talk To Us",
+                                        "repeat": true,
+                                        "fields": {
+                                                "phone": {
+                                                        "type": "Text",
+                                                        "config": {
+                                                                "label": "phone",
+                                                                "placeholder": ""
+                                                        }
+                                                },
+                                                "email": {
+                                                        "type": "Text",
+                                                        "config": {
+                                                                "label": "email",
+                                                                "placeholder": ""
+                                                        }
+                                                }
+                                        }
+                                }
+                        },
+                        "footer_logo": {
+                                "type": "Image",
+                                "config": {
+                                        "label": "Footer Logo",
+                                        "constraint": {},
+                                        "thumbnails": []
+                                }
+                        },
+                        "copyright_title": {
+                                "type": "Text",
+                                "config": {
+                                        "label": "Copyright Title",
+                                        "placeholder": ""
+                                }
+                        },
+                        "copyright_subtitle": {
+                                "type": "Text",
+                                "config": {
+                                        "label": "Copyright Subtitle",
+                                        "placeholder": ""
+                                }
+                        },
+                        "social_links_icons": {
+                                "type": "Group",
+                                "config": {
+                                        "label": "Social Links Icons",
+                                        "repeat": true,
+                                        "fields": {
+                                                "icon": {
+                                                        "type": "Link",
+                                                        "config": {
+                                                                "label": "Icon",
+                                                                "placeholder": "",
+                                                                "select": "media"
+                                                        }
+                                                },
+                                                "link": {
+                                                        "type": "Link",
+                                                        "config": {
+                                                                "label": "Link",
+                                                                "placeholder": "",
+                                                                "allowTargetBlank": false,
+                                                                "select": null
+                                                        }
+                                                }
+                                        }
+                                }
+                        },
+                        "address": {
+                                "type": "Group",
+                                "config": {
+                                        "label": "Address",
+                                        "repeat": true,
+                                        "fields": {
+                                                "locations": {
+                                                        "type": "Text",
+                                                        "config": {
+                                                                "label": "locations",
+                                                                "placeholder": "Add full address of the locations"
+                                                        }
+                                                },
+                                                "title": {
+                                                        "type": "Text",
+                                                        "config": {
+                                                                "label": "Title",
+                                                                "placeholder": "Location Title"
+                                                        }
+                                                },
+                                                "link_to_map": {
+                                                        "type": "Link",
+                                                        "config": {
+                                                                "label": "link to map",
+                                                                "placeholder": "Google Map",
+                                                                "select": null,
+                                                                "allowTargetBlank": true,
+                                                                "allowText": true,
+                                                                "repeat": false
+                                                        }
+                                                }
+                                        }
+                                }
                         }
-                    }
                 }
-            },
-            "what_we_offer": {
-                "type": "Group",
-                "config": {
-                    "label": "What We Offer",
-                    "repeat": true,
-                    "fields": {
-                        "label": {
-                            "type": "Text",
-                            "config": {
-                                "label": "Label",
-                                "placeholder": ""
-                            }
-                        },
-                        "link": {
-                            "type": "Link",
-                            "config": {
-                                "label": "Link",
-                                "placeholder": "",
-                                "allowTargetBlank": false,
-                                "select": null
-                            }
-                        }
-                    }
-                }
-            },
-            "legal": {
-                "type": "Group",
-                "config": {
-                    "label": "Legal",
-                    "repeat": true,
-                    "fields": {
-                        "label": {
-                            "type": "Text",
-                            "config": {
-                                "label": "Label",
-                                "placeholder": ""
-                            }
-                        },
-                        "link": {
-                            "type": "Link",
-                            "config": {
-                                "label": "Link",
-                                "placeholder": "",
-                                "allowTargetBlank": false,
-                                "select": null
-                            }
-                        }
-                    }
-                }
-            },
-            "talk_to_us": {
-                "type": "Group",
-                "config": {
-                    "label": "Talk To Us",
-                    "repeat": true,
-                    "fields": {
-                        "phone": {
-                            "type": "Text",
-                            "config": {
-                                "label": "phone",
-                                "placeholder": ""
-                            }
-                        },
-                        "email": {
-                            "type": "Text",
-                            "config": {
-                                "label": "email",
-                                "placeholder": ""
-                            }
-                        }
-                    }
-                }
-            },
-            "footer_logo": {
-                "type": "Image",
-                "config": {
-                    "label": "Footer Logo",
-                    "constraint": {},
-                    "thumbnails": []
-                }
-            },
-            "copyright_title": {
-                "type": "Text",
-                "config": {
-                    "label": "Copyright Title",
-                    "placeholder": ""
-                }
-            },
-            "copyright_subtitle": {
-                "type": "Text",
-                "config": {
-                    "label": "Copyright Subtitle",
-                    "placeholder": ""
-                }
-            },
-            "social_links_icons": {
-                "type": "Group",
-                "config": {
-                    "label": "Social Links Icons",
-                    "repeat": true,
-                    "fields": {
-                        "icon": {
-                            "type": "Link",
-                            "config": {
-                                "label": "Icon",
-                                "placeholder": "",
-                                "select": "media"
-                            }
-                        },
-                        "link": {
-                            "type": "Link",
-                            "config": {
-                                "label": "Link",
-                                "placeholder": "",
-                                "allowTargetBlank": false,
-                                "select": null
-                            }
-                        }
-                    }
-                }
-            },
-            "address": {
-                "type": "Group",
-                "config": {
-                    "label": "Address",
-                    "repeat": true,
-                    "fields": {
-                        "locations": {
-                            "type": "Text",
-                            "config": {
-                                "label": "locations",
-                                "placeholder": "Add full address of the locations"
-                            }
-                        },
-                        "title": {
-                            "type": "Text",
-                            "config": {
-                                "label": "Title",
-                                "placeholder": "Location Title"
-                            }
-                        },
-                        "link_to_map": {
-                            "type": "Link",
-                            "config": {
-                                "label": "link to map",
-                                "placeholder": "Google Map",
-                                "select": null,
-                                "allowTargetBlank": true,
-                                "allowText": true,
-                                "repeat": false
-                            }
-                        }
-                    }
-                }
-            }
         }
-    }
 }

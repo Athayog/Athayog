@@ -384,6 +384,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+        | EventInfoCtaSlice
         | IconColumnContentHighlightSlice
         | HeroCtaImageTextSlice
         | LocationCardsSlice
@@ -3833,6 +3834,74 @@ type EventHighlightsGallerySliceVariation = EventHighlightsGallerySliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type EventHighlightsGallerySlice = prismic.SharedSlice<'event_highlights_gallery', EventHighlightsGallerySliceVariation>
+
+/**
+ * Primary content in *EventInfoCta → Default → Primary*
+ */
+export interface EventInfoCtaSliceDefaultPrimary {
+        /**
+         * Title field in *EventInfoCta → Default → Primary*
+         *
+         * - **Field Type**: Title
+         * - **Placeholder**: *None*
+         * - **API ID Path**: event_info_cta.default.primary.title
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        title: prismic.TitleField
+
+        /**
+         * Description field in *EventInfoCta → Default → Primary*
+         *
+         * - **Field Type**: Rich Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: event_info_cta.default.primary.description
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        description: prismic.RichTextField
+
+        /**
+         * Primary Call to Action field in *EventInfoCta → Default → Primary*
+         *
+         * - **Field Type**: Link
+         * - **Placeholder**: *None*
+         * - **API ID Path**: event_info_cta.default.primary.primary_cta
+         * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+         */
+        primary_cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+
+        /**
+         * Illustration field in *EventInfoCta → Default → Primary*
+         *
+         * - **Field Type**: Image
+         * - **Placeholder**: *None*
+         * - **API ID Path**: event_info_cta.default.primary.illustration
+         * - **Documentation**: https://prismic.io/docs/field#image
+         */
+        illustration: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for EventInfoCta Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard event info with title, rich description, dates, CTA, and supporting illustration.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventInfoCtaSliceDefault = prismic.SharedSliceVariation<'default', Simplify<EventInfoCtaSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *EventInfoCta*
+ */
+type EventInfoCtaSliceVariation = EventInfoCtaSliceDefault
+
+/**
+ * EventInfoCta Shared Slice
+ *
+ * - **API ID**: `event_info_cta`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventInfoCtaSlice = prismic.SharedSlice<'event_info_cta', EventInfoCtaSliceVariation>
 
 /**
  * Item in *EventScheduleDetails → Default → Primary → Schedule Items*
@@ -7541,69 +7610,6 @@ type ScatteredGallerySliceVariation = ScatteredGallerySliceDefault
 export type ScatteredGallerySlice = prismic.SharedSlice<'scattered_gallery', ScatteredGallerySliceVariation>
 
 /**
- * Item in *SectionDualTextBlocks → Default → Primary → Content Blocks*
- */
-export interface SectionDualTextBlocksSliceDefaultPrimaryContentBlocksItem {
-        /**
-         * Title field in *SectionDualTextBlocks → Default → Primary → Content Blocks*
-         *
-         * - **Field Type**: Title
-         * - **Placeholder**: *None*
-         * - **API ID Path**: section_dual_text_blocks.default.primary.content_blocks[].title
-         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-         */
-        title: prismic.TitleField
-
-        /**
-         * Description field in *SectionDualTextBlocks → Default → Primary → Content Blocks*
-         *
-         * - **Field Type**: Rich Text
-         * - **Placeholder**: *None*
-         * - **API ID Path**: section_dual_text_blocks.default.primary.content_blocks[].description
-         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-         */
-        description: prismic.RichTextField
-}
-
-/**
- * Primary content in *SectionDualTextBlocks → Default → Primary*
- */
-export interface SectionDualTextBlocksSliceDefaultPrimary {
-        /**
-         * Content Blocks field in *SectionDualTextBlocks → Default → Primary*
-         *
-         * - **Field Type**: Group
-         * - **Placeholder**: *None*
-         * - **API ID Path**: section_dual_text_blocks.default.primary.content_blocks[]
-         * - **Documentation**: https://prismic.io/docs/field#group
-         */
-        content_blocks: prismic.GroupField<Simplify<SectionDualTextBlocksSliceDefaultPrimaryContentBlocksItem>>
-}
-
-/**
- * Default variation for SectionDualTextBlocks Slice
- *
- * - **API ID**: `default`
- * - **Description**: Standard variation with two headline+description pairs.
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type SectionDualTextBlocksSliceDefault = prismic.SharedSliceVariation<'default', Simplify<SectionDualTextBlocksSliceDefaultPrimary>, never>
-
-/**
- * Slice variation for *SectionDualTextBlocks*
- */
-type SectionDualTextBlocksSliceVariation = SectionDualTextBlocksSliceDefault
-
-/**
- * SectionDualTextBlocks Shared Slice
- *
- * - **API ID**: `section_dual_text_blocks`
- * - **Description**: *None*
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type SectionDualTextBlocksSlice = prismic.SharedSlice<'section_dual_text_blocks', SectionDualTextBlocksSliceVariation>
-
-/**
  * Item in *SimpleGrid → Default → Primary → Grid*
  */
 export interface SimpleGridSliceDefaultPrimaryGridItem {
@@ -9888,6 +9894,10 @@ declare module '@prismicio/client' {
                         EventHighlightsGallerySliceDefaultPrimary,
                         EventHighlightsGallerySliceVariation,
                         EventHighlightsGallerySliceDefault,
+                        EventInfoCtaSlice,
+                        EventInfoCtaSliceDefaultPrimary,
+                        EventInfoCtaSliceVariation,
+                        EventInfoCtaSliceDefault,
                         EventScheduleDetailsSlice,
                         EventScheduleDetailsSliceDefaultPrimaryScheduleItemsItem,
                         EventScheduleDetailsSliceDefaultPrimary,
@@ -10085,11 +10095,6 @@ declare module '@prismicio/client' {
                         ScatteredGallerySliceDefaultPrimary,
                         ScatteredGallerySliceVariation,
                         ScatteredGallerySliceDefault,
-                        SectionDualTextBlocksSlice,
-                        SectionDualTextBlocksSliceDefaultPrimaryContentBlocksItem,
-                        SectionDualTextBlocksSliceDefaultPrimary,
-                        SectionDualTextBlocksSliceVariation,
-                        SectionDualTextBlocksSliceDefault,
                         SimpleGridSlice,
                         SimpleGridSliceDefaultPrimaryGridItem,
                         SimpleGridSliceDefaultPrimaryBackgroundColorItem,
