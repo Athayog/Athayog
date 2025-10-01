@@ -34,7 +34,6 @@
 							[
 								"image",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
 										"url": "https://images.unsplash.com/photo-1537498425277-c283d32ef9db",
@@ -52,7 +51,9 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "own"
+									"alt": "own",
+									"credits": null,
+									"__TYPE__": "ImageContent"
 								}
 							]
 						]
@@ -68,7 +69,6 @@
 							[
 								"icon",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
 										"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
@@ -86,7 +86,9 @@
 										},
 										"background": "transparent"
 									},
-									"alt": "understanding"
+									"alt": "understanding",
+									"credits": null,
+									"__TYPE__": "ImageContent"
 								}
 							],
 							[
@@ -115,6 +117,63 @@
 											}
 										}
 									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"retreate_information_title": {
+				"__TYPE__": "FieldContent",
+				"value": "eye",
+				"type": "Text"
+			},
+			"retreate_information_grid": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "require",
+									"type": "Text"
+								}
+							],
+							[
+								"retreate_content_description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "officer",
+									"type": "Text"
+								}
+							],
+							[
+								"retreate_content_image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+										"width": 3882,
+										"height": 2584
+									},
+									"url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+									"width": 3882,
+									"height": 2584,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "wooden",
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
 								}
 							]
 						]
