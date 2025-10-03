@@ -27,6 +27,12 @@
                                 "fieldset": "Slice Zone",
                                 "config": {
                                         "choices": {
+                                                "inclusions_pricing_cta": {
+                                                        "type": "SharedSlice"
+                                                },
+                                                "highlighted_cards_with_team": {
+                                                        "type": "SharedSlice"
+                                                },
                                                 "event_info_cta": {
                                                         "type": "SharedSlice"
                                                 },

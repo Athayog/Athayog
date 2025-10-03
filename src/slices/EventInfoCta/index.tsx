@@ -17,7 +17,7 @@ const BackgroundSection = ({
 	mobileUrl?: string | null;
 	children: React.ReactNode;
 }) => (
-	<>
+	<Box sx={{ marginBottom: '100px' }}>
 		<Box
 			sx={{
 				position: 'relative',
@@ -91,7 +91,7 @@ const BackgroundSection = ({
 				{children}
 			</Box>
 		</Box>
-	</>
+	</Box>
 );
 
 

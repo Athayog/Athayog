@@ -1,0 +1,111 @@
+{
+  "type": "SharedSlice",
+  "id": "highlighted_cards_with_team",
+  "name": "HighlightedCardsWithTeam",
+  "variations": [
+    {
+      "id": "with_cards_and_team_grid",
+      "name": "Cards with Team Grid",
+      "description": "Displays a two-column grid of cards with images, info, and CTAs, followed by a team/facilitators row with avatar, name, title, and description.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Section Title"
+          }
+        },
+        "introduction": {
+          "type": "StructuredText",
+          "config": {
+            "multi": "paragraph,strong,em,hyperlink",
+            "label": "Section Introduction"
+          }
+        },
+        "highlighted_cards": {
+          "type": "Group",
+          "config": {
+            "label": "Highlighted Cards",
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Card Image"
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading3",
+                  "label": "Card Title"
+                }
+              },
+              "subtitle": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Card Subtitle"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Card Description"
+                }
+              },
+              "cta": {
+                "type": "Link",
+                "config": {
+                  "label": "Card CTA",
+                  "allowText": true,
+                  "repeat": false,
+                  "select": null
+                }
+              }
+            }
+          }
+        },
+        "team_title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Team Section Title"
+          }
+        },
+        "team_members": {
+          "type": "Group",
+          "config": {
+            "label": "Team Members",
+            "fields": {
+              "avatar": {
+                "type": "Image",
+                "config": {
+                  "label": "Avatar"
+                }
+              },
+              "name": {
+                "type": "StructuredText",
+                "config": {
+                  "single": "heading4",
+                  "label": "Name"
+                }
+              },
+              "bio": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Bio"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

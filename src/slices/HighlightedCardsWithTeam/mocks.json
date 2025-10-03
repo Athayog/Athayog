@@ -1,0 +1,194 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "with_cards_and_team_grid",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Elephant"
+						}
+					}
+				]
+			},
+			"introduction": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation ex proident Lorem consectetur exercitation qui."
+						}
+					}
+				]
+			},
+			"highlighted_cards": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+										"width": 4000,
+										"height": 4000
+									},
+									"url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+									"width": 4000,
+									"height": 4000,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "sound",
+									"credits": null,
+									"__TYPE__": "ImageContent"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Equal"
+											}
+										}
+									]
+								}
+							],
+							[
+								"subtitle",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading4",
+											"content": {
+												"text": "Might"
+											}
+										}
+									]
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Id eu fugiat amet. Sit ut est et do Lorem id."
+											}
+										}
+									]
+								}
+							],
+							[
+								"cta",
+								{
+									"key": "d12a201d-df0d-4bbd-b534-150ae7cb77d8",
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "spread"
+									}
+								}
+							]
+						]
+					}
+				]
+			},
+			"team_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Negative"
+						}
+					}
+				]
+			},
+			"team_members": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"avatar",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+										"width": 6000,
+										"height": 4000
+									},
+									"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
+									"width": 6000,
+									"height": 4000,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "feel",
+									"credits": null,
+									"__TYPE__": "ImageContent"
+								}
+							],
+							[
+								"name",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading4",
+											"content": {
+												"text": "Limited"
+											}
+										}
+									]
+								}
+							],
+							[
+								"bio",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Anim nostrud culpa officia ullamco commodo incididunt mollit pariatur excepteur nisi Lorem nisi. Labore reprehenderit reprehenderit culpa ipsum elit aute ex laboris magna exercitation."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

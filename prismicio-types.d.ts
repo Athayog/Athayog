@@ -384,6 +384,8 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+        | InclusionsPricingCtaSlice
+        | HighlightedCardsWithTeamSlice
         | EventInfoCtaSlice
         | IconColumnContentHighlightSlice
         | HeroCtaImageTextSlice
@@ -5040,6 +5042,174 @@ type HeroWithCenterTextSliceVariation = HeroWithCenterTextSliceDefault
 export type HeroWithCenterTextSlice = prismic.SharedSlice<'hero_with_center_text', HeroWithCenterTextSliceVariation>
 
 /**
+ * Item in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Highlighted Cards*
+ */
+export interface HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimaryHighlightedCardsItem {
+        /**
+         * Card Image field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Highlighted Cards*
+         *
+         * - **Field Type**: Image
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.highlighted_cards[].image
+         * - **Documentation**: https://prismic.io/docs/field#image
+         */
+        image: prismic.ImageField<never>
+
+        /**
+         * Card Title field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Highlighted Cards*
+         *
+         * - **Field Type**: Title
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.highlighted_cards[].title
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        title: prismic.TitleField
+
+        /**
+         * Card Subtitle field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Highlighted Cards*
+         *
+         * - **Field Type**: Title
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.highlighted_cards[].subtitle
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        subtitle: prismic.TitleField
+
+        /**
+         * Card Description field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Highlighted Cards*
+         *
+         * - **Field Type**: Rich Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.highlighted_cards[].description
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        description: prismic.RichTextField
+
+        /**
+         * Card CTA field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Highlighted Cards*
+         *
+         * - **Field Type**: Link
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.highlighted_cards[].cta
+         * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+         */
+        cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Item in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Team Members*
+ */
+export interface HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimaryTeamMembersItem {
+        /**
+         * Avatar field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Team Members*
+         *
+         * - **Field Type**: Image
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.team_members[].avatar
+         * - **Documentation**: https://prismic.io/docs/field#image
+         */
+        avatar: prismic.ImageField<never>
+
+        /**
+         * Name field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Team Members*
+         *
+         * - **Field Type**: Title
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.team_members[].name
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        name: prismic.TitleField
+
+        /**
+         * Bio field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary → Team Members*
+         *
+         * - **Field Type**: Rich Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.team_members[].bio
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        bio: prismic.RichTextField
+}
+
+/**
+ * Primary content in *HighlightedCardsWithTeam → Cards with Team Grid → Primary*
+ */
+export interface HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimary {
+        /**
+         * Section Title field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary*
+         *
+         * - **Field Type**: Title
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.title
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        title: prismic.TitleField
+
+        /**
+         * Section Introduction field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary*
+         *
+         * - **Field Type**: Rich Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.introduction
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        introduction: prismic.RichTextField
+
+        /**
+         * Highlighted Cards field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary*
+         *
+         * - **Field Type**: Group
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.highlighted_cards[]
+         * - **Documentation**: https://prismic.io/docs/field#group
+         */
+        highlighted_cards: prismic.GroupField<Simplify<HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimaryHighlightedCardsItem>>
+
+        /**
+         * Team Section Title field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary*
+         *
+         * - **Field Type**: Title
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.team_title
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        team_title: prismic.TitleField
+
+        /**
+         * Team Members field in *HighlightedCardsWithTeam → Cards with Team Grid → Primary*
+         *
+         * - **Field Type**: Group
+         * - **Placeholder**: *None*
+         * - **API ID Path**: highlighted_cards_with_team.with_cards_and_team_grid.primary.team_members[]
+         * - **Documentation**: https://prismic.io/docs/field#group
+         */
+        team_members: prismic.GroupField<Simplify<HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimaryTeamMembersItem>>
+}
+
+/**
+ * Cards with Team Grid variation for HighlightedCardsWithTeam Slice
+ *
+ * - **API ID**: `with_cards_and_team_grid`
+ * - **Description**: Displays a two-column grid of cards with images, info, and CTAs, followed by a team/facilitators row with avatar, name, title, and description.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightedCardsWithTeamSliceWithCardsAndTeamGrid = prismic.SharedSliceVariation<'with_cards_and_team_grid', Simplify<HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimary>, never>
+
+/**
+ * Slice variation for *HighlightedCardsWithTeam*
+ */
+type HighlightedCardsWithTeamSliceVariation = HighlightedCardsWithTeamSliceWithCardsAndTeamGrid
+
+/**
+ * HighlightedCardsWithTeam Shared Slice
+ *
+ * - **API ID**: `highlighted_cards_with_team`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HighlightedCardsWithTeamSlice = prismic.SharedSlice<'highlighted_cards_with_team', HighlightedCardsWithTeamSliceVariation>
+
+/**
  * Item in *HighlightedGuestList → With Image → Primary → Special Invitees*
  */
 export interface HighlightedGuestListSliceWithImagePrimaryInviteesItem {
@@ -5508,6 +5678,169 @@ type IconFeatureGridSliceVariation = IconFeatureGridSliceDefault
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type IconFeatureGridSlice = prismic.SharedSlice<'icon_feature_grid', IconFeatureGridSliceVariation>
+
+/**
+ * Item in *InclusionsPricingCta → Default → Primary → Features (Left Column)*
+ */
+export interface InclusionsPricingCtaSliceDefaultPrimaryFeaturesLeftItem {
+        /**
+         * Feature field in *InclusionsPricingCta → Default → Primary → Features (Left Column)*
+         *
+         * - **Field Type**: Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.features_left[].feature
+         * - **Documentation**: https://prismic.io/docs/field#key-text
+         */
+        feature: prismic.KeyTextField
+}
+
+/**
+ * Item in *InclusionsPricingCta → Default → Primary → Features (Right Column)*
+ */
+export interface InclusionsPricingCtaSliceDefaultPrimaryFeaturesRightItem {
+        /**
+         * Feature field in *InclusionsPricingCta → Default → Primary → Features (Right Column)*
+         *
+         * - **Field Type**: Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.features_right[].feature
+         * - **Documentation**: https://prismic.io/docs/field#key-text
+         */
+        feature: prismic.KeyTextField
+}
+
+/**
+ * Item in *InclusionsPricingCta → Default → Primary → Price Options*
+ */
+export interface InclusionsPricingCtaSliceDefaultPrimaryPriceOptionsItem {
+        /**
+         * Label field in *InclusionsPricingCta → Default → Primary → Price Options*
+         *
+         * - **Field Type**: Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.price_options[].label
+         * - **Documentation**: https://prismic.io/docs/field#key-text
+         */
+        label: prismic.KeyTextField
+
+        /**
+         * Price field in *InclusionsPricingCta → Default → Primary → Price Options*
+         *
+         * - **Field Type**: Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.price_options[].price
+         * - **Documentation**: https://prismic.io/docs/field#key-text
+         */
+        price: prismic.KeyTextField
+
+        /**
+         * Note field in *InclusionsPricingCta → Default → Primary → Price Options*
+         *
+         * - **Field Type**: Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.price_options[].note
+         * - **Documentation**: https://prismic.io/docs/field#key-text
+         */
+        note: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *InclusionsPricingCta → Default → Primary*
+ */
+export interface InclusionsPricingCtaSliceDefaultPrimary {
+        /**
+         * Title field in *InclusionsPricingCta → Default → Primary*
+         *
+         * - **Field Type**: Title
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.title
+         * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+         */
+        title: prismic.TitleField
+
+        /**
+         * Subtitle field in *InclusionsPricingCta → Default → Primary*
+         *
+         * - **Field Type**: Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.subtitle
+         * - **Documentation**: https://prismic.io/docs/field#key-text
+         */
+        subtitle: prismic.KeyTextField
+
+        /**
+         * Features (Left Column) field in *InclusionsPricingCta → Default → Primary*
+         *
+         * - **Field Type**: Group
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.features_left[]
+         * - **Documentation**: https://prismic.io/docs/field#group
+         */
+        features_left: prismic.GroupField<Simplify<InclusionsPricingCtaSliceDefaultPrimaryFeaturesLeftItem>>
+
+        /**
+         * Features (Right Column) field in *InclusionsPricingCta → Default → Primary*
+         *
+         * - **Field Type**: Group
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.features_right[]
+         * - **Documentation**: https://prismic.io/docs/field#group
+         */
+        features_right: prismic.GroupField<Simplify<InclusionsPricingCtaSliceDefaultPrimaryFeaturesRightItem>>
+
+        /**
+         * Contact Info field in *InclusionsPricingCta → Default → Primary*
+         *
+         * - **Field Type**: Text
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.contact_info
+         * - **Documentation**: https://prismic.io/docs/field#key-text
+         */
+        contact_info: prismic.KeyTextField
+
+        /**
+         * Price Options field in *InclusionsPricingCta → Default → Primary*
+         *
+         * - **Field Type**: Group
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.price_options[]
+         * - **Documentation**: https://prismic.io/docs/field#group
+         */
+        price_options: prismic.GroupField<Simplify<InclusionsPricingCtaSliceDefaultPrimaryPriceOptionsItem>>
+
+        /**
+         * CTA Button field in *InclusionsPricingCta → Default → Primary*
+         *
+         * - **Field Type**: Link
+         * - **Placeholder**: *None*
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.cta_button
+         * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+         */
+        cta_button: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Default variation for InclusionsPricingCta Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Standard layout with a heading, two-column feature list, contact row, price options, and a single call-to-action button.
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InclusionsPricingCtaSliceDefault = prismic.SharedSliceVariation<'default', Simplify<InclusionsPricingCtaSliceDefaultPrimary>, never>
+
+/**
+ * Slice variation for *InclusionsPricingCta*
+ */
+type InclusionsPricingCtaSliceVariation = InclusionsPricingCtaSliceDefault
+
+/**
+ * InclusionsPricingCta Shared Slice
+ *
+ * - **API ID**: `inclusions_pricing_cta`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type InclusionsPricingCtaSlice = prismic.SharedSlice<'inclusions_pricing_cta', InclusionsPricingCtaSliceVariation>
 
 /**
  * Primary content in *LeftContentRightImage → Default → Primary*
@@ -9954,6 +10287,12 @@ declare module '@prismicio/client' {
                         HeroWithCenterTextSliceDefaultPrimary,
                         HeroWithCenterTextSliceVariation,
                         HeroWithCenterTextSliceDefault,
+                        HighlightedCardsWithTeamSlice,
+                        HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimaryHighlightedCardsItem,
+                        HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimaryTeamMembersItem,
+                        HighlightedCardsWithTeamSliceWithCardsAndTeamGridPrimary,
+                        HighlightedCardsWithTeamSliceVariation,
+                        HighlightedCardsWithTeamSliceWithCardsAndTeamGrid,
                         HighlightedGuestListSlice,
                         HighlightedGuestListSliceWithImagePrimaryInviteesItem,
                         HighlightedGuestListSliceWithImagePrimary,
@@ -9980,6 +10319,13 @@ declare module '@prismicio/client' {
                         IconFeatureGridSliceDefaultPrimary,
                         IconFeatureGridSliceVariation,
                         IconFeatureGridSliceDefault,
+                        InclusionsPricingCtaSlice,
+                        InclusionsPricingCtaSliceDefaultPrimaryFeaturesLeftItem,
+                        InclusionsPricingCtaSliceDefaultPrimaryFeaturesRightItem,
+                        InclusionsPricingCtaSliceDefaultPrimaryPriceOptionsItem,
+                        InclusionsPricingCtaSliceDefaultPrimary,
+                        InclusionsPricingCtaSliceVariation,
+                        InclusionsPricingCtaSliceDefault,
                         LeftContentRightImageSlice,
                         LeftContentRightImageSliceDefaultPrimary,
                         LeftContentRightImageSliceVariation,

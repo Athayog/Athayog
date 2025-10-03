@@ -1,0 +1,109 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Visit"
+						}
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "FieldContent",
+				"value": "mouth",
+				"type": "Text"
+			},
+			"features_left": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"feature",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "night",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"features_right": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"feature",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "search",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"contact_info": {
+				"__TYPE__": "FieldContent",
+				"value": "soon",
+				"type": "Text"
+			},
+			"price_options": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "numeral",
+									"type": "Text"
+								}
+							],
+							[
+								"price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "she",
+									"type": "Text"
+								}
+							],
+							[
+								"note",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "column",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"cta_button": {
+				"__TYPE__": "LinkContent",
+				"key": "cc1a3e26-4231-4e6a-9979-1edc34869ec0",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "distant"
+				}
+			}
+		},
+		"items": []
+	}
+]
