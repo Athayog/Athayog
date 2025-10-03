@@ -95,13 +95,18 @@
 				]
 			},
 			"cta_button": {
-				"__TYPE__": "LinkContent",
 				"key": "cc1a3e26-4231-4e6a-9979-1edc34869ec0",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "http://google.com",
 					"text": "distant"
 				}
+			},
+			"contact_info_number": {
+				"__TYPE__": "FieldContent",
+				"value": "chosen",
+				"type": "Text"
 			}
 		},
 		"items": []

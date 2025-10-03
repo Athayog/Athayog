@@ -4,11 +4,13 @@ import { SliceComponentProps } from '@prismicio/react'
 import { PrismicRichText } from '@prismicio/react'
 import { asLink } from '@prismicio/helpers'
 import { Box, Typography, Button, Container, Grid, Divider, List, ListItem } from '@mui/material'
+import CallIcon from '/public/images/call_icon.png'
+import Image from 'next/image'
 
 export type InclusionsPricingCtaProps = SliceComponentProps<Content.InclusionsPricingCtaSlice>
 
 const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
-	const { title, subtitle, features_left, features_right, contact_info, price_options, cta_button } = slice.primary
+	const { title, subtitle, features_left, features_right, contact_info, price_options, cta_button, contact_info_number } = slice.primary
 	const ctaUrl = asLink(cta_button)
 
 	return (
@@ -46,7 +48,12 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 							sx={{
 								fontWeight: 700,
 								color: '#000',
-								fontSize: { xs: '16px', md: '24px' }
+								fontSize: { xs: '16px', md: '24px' },
+								background: '#fff',
+								maxWidth: 'max-content',
+								borderRadius: '40px',
+								margin: '0 auto',
+								padding: '20px 30px 20px 30px'
 							}}
 						>
 							{subtitle}
@@ -59,7 +66,7 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 					<Grid item xs={12} md={6}>
 						<List sx={{ listStyleType: 'disc', pl: 2 }}>
 							{features_left?.map((item, index) => (
-								<ListItem key={index} sx={{ display: 'list-item', pl: 1, mb: 1 }}>
+								<ListItem key={index} sx={{ display: 'list-item', pl: 1, mb: 2 }}>
 									<Typography variant="body1" sx={{ fontSize: { xs: '1rem', md: '26px', fontWeight: '500' } }}>
 										{item.feature}
 									</Typography>
@@ -71,7 +78,7 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 					<Grid item xs={12} md={6}>
 						<List sx={{ listStyleType: 'disc', pl: 2 }}>
 							{features_right?.map((item, index) => (
-								<ListItem key={index} sx={{ display: 'list-item', pl: 1, mb: 1 }}>
+								<ListItem key={index} sx={{ display: 'list-item', pl: 1, mb: 2 }}>
 									<Typography variant="body1" sx={{ fontSize: { xs: '1rem', md: '26px', fontWeight: '500' } }}>
 										{item.feature}
 									</Typography>
@@ -83,35 +90,46 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 
 				{/* Contact Info */}
 				{contact_info && (
-					<Box sx={{ textAlign: 'center', mb: 4 }}>
+					<Box sx={{
+						textAlign: 'center', mb: 4, background: '#fff',
+						maxWidth: 'max-content',
+						borderRadius: '40px',
+						gap: '10px',
+						display: 'flex',
+						margin: '0 auto',
+						padding: '20px 30px 20px 30px',
+
+					}}>
+						<Image src={CallIcon} alt='call icom' />
 						<Typography
 							variant="body1"
 							sx={{
-								fontSize: { xs: '1rem', md: '1.125rem' },
+								fontSize: { xs: '1rem', md: '24px' },
 								fontWeight: 500,
-								color: 'text.secondary'
+								color: '#000',
+
 							}}
 						>
 							{contact_info}
+							<span style={{ fontWeight: 'bold', marginLeft: '10px' }}>{contact_info_number}</span>
 						</Typography>
+
 					</Box>
 				)}
 
-				{/* Divider */}
-				<Divider sx={{ my: 4 }} />
+
 
 				{/* Price Options */}
-				<Box sx={{ mb: 6 }}>
+				<Box sx={{ mb: 6, background: "rgba(255, 255, 255, 0.8)", padding: 6, borderRadius: '219.5px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 					{price_options?.map((option, index) => (
-						<Box key={index} sx={{ textAlign: 'center', mb: 3 }}>
+						<Box key={index} sx={{ textAlign: 'center', mb: 3, display: 'flex', gap: '15px' }}>
 							{option.label && (
 								<Typography
 									variant="h5"
 									component="h3"
 									sx={{
-										fontWeight: 600,
-										fontSize: { xs: '1.25rem', md: '1.5rem' },
-										mb: 1,
+										fontWeight: 700,
+										fontSize: { xs: '1.5rem', md: '34px' },
 										color: 'text.primary'
 									}}
 								>
@@ -123,9 +141,8 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 								<Typography
 									variant="h4"
 									sx={{
-										fontWeight: 700,
-										fontSize: { xs: '1.5rem', md: '2rem' },
-										mb: 1,
+										fontWeight: 600,
+										fontSize: { xs: '1.5rem', md: '34px' },
 										color: 'primary.main'
 									}}
 								>
@@ -135,11 +152,11 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 
 							{option.note && (
 								<Typography
-									variant="body2"
+									variant="h4"
 									sx={{
-										fontSize: { xs: '0.875rem', md: '1rem' },
-										color: 'text.secondary',
-										fontStyle: 'italic'
+										fontWeight: 600,
+										fontSize: { xs: '1.5rem', md: '24px' },
+										color: 'primary.main'
 									}}
 								>
 									{option.note}
@@ -149,8 +166,7 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 					))}
 				</Box>
 
-				{/* Divider */}
-				<Divider sx={{ my: 4 }} />
+
 
 				{/* CTA Button */}
 				{ctaUrl && (

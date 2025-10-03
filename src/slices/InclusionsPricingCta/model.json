@@ -1,99 +1,107 @@
 {
-        "type": "SharedSlice",
-        "id": "inclusions_pricing_cta",
-        "name": "InclusionsPricingCta",
-        "variations": [
-                {
-                        "id": "default",
-                        "name": "Default",
-                        "description": "Standard layout with a heading, two-column feature list, contact row, price options, and a single call-to-action button.",
-                        "version": "initial",
-                        "imageUrl": "",
-                        "docURL": "...",
-                        "primary": {
-                                "title": {
-                                        "type": "StructuredText",
-                                        "config": {
-                                                "single": "heading2",
-                                                "label": "Title"
-                                        }
-                                },
-                                "subtitle": {
-                                        "type": "Text",
-                                        "config": {
-                                                "label": "Subtitle"
-                                        }
-                                },
-                                "features_left": {
-                                        "type": "Group",
-                                        "config": {
-                                                "label": "Features (Left Column)",
-                                                "fields": {
-                                                        "feature": {
-                                                                "type": "Text",
-                                                                "config": {
-                                                                        "label": "Feature"
-                                                                }
-                                                        }
-                                                }
-                                        }
-                                },
-                                "features_right": {
-                                        "type": "Group",
-                                        "config": {
-                                                "label": "Features (Right Column)",
-                                                "fields": {
-                                                        "feature": {
-                                                                "type": "Text",
-                                                                "config": {
-                                                                        "label": "Feature"
-                                                                }
-                                                        }
-                                                }
-                                        }
-                                },
-                                "contact_info": {
-                                        "type": "Text",
-                                        "config": {
-                                                "label": "Contact Info"
-                                        }
-                                },
-                                "price_options": {
-                                        "type": "Group",
-                                        "config": {
-                                                "label": "Price Options",
-                                                "fields": {
-                                                        "label": {
-                                                                "type": "Text",
-                                                                "config": {
-                                                                        "label": "Label"
-                                                                }
-                                                        },
-                                                        "price": {
-                                                                "type": "Text",
-                                                                "config": {
-                                                                        "label": "Price"
-                                                                }
-                                                        },
-                                                        "note": {
-                                                                "type": "Text",
-                                                                "config": {
-                                                                        "label": "Note"
-                                                                }
-                                                        }
-                                                }
-                                        }
-                                },
-                                "cta_button": {
-                                        "type": "Link",
-                                        "config": {
-                                                "label": "CTA Button",
-                                                "allowText": true,
-                                                "repeat": false,
-                                                "select": null
-                                        }
-                                }
-                        }
+  "type": "SharedSlice",
+  "id": "inclusions_pricing_cta",
+  "name": "InclusionsPricingCta",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard layout with a heading, two-column feature list, contact row, price options, and a single call-to-action button.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading2",
+            "label": "Title"
+          }
+        },
+        "subtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Subtitle"
+          }
+        },
+        "features_left": {
+          "type": "Group",
+          "config": {
+            "label": "Features (Left Column)",
+            "fields": {
+              "feature": {
+                "type": "Text",
+                "config": {
+                  "label": "Feature"
                 }
-        ]
+              }
+            }
+          }
+        },
+        "features_right": {
+          "type": "Group",
+          "config": {
+            "label": "Features (Right Column)",
+            "fields": {
+              "feature": {
+                "type": "Text",
+                "config": {
+                  "label": "Feature"
+                }
+              }
+            }
+          }
+        },
+        "contact_info": {
+          "type": "Text",
+          "config": {
+            "label": "Contact Info"
+          }
+        },
+        "contact_info_number": {
+          "type": "Text",
+          "config": {
+            "label": "Contact Info Number",
+            "placeholder": "Add Number"
+          }
+        },
+        "price_options": {
+          "type": "Group",
+          "config": {
+            "label": "Price Options",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label"
+                }
+              },
+              "price": {
+                "type": "Text",
+                "config": {
+                  "label": "Price"
+                }
+              },
+              "note": {
+                "type": "Text",
+                "config": {
+                  "label": "Note"
+                }
+              }
+            }
+          }
+        },
+        "cta_button": {
+          "type": "Link",
+          "config": {
+            "label": "CTA Button",
+            "allowText": true,
+            "repeat": false,
+            "select": null
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
 }

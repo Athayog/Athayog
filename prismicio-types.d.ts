@@ -5799,6 +5799,16 @@ export interface InclusionsPricingCtaSliceDefaultPrimary {
         contact_info: prismic.KeyTextField
 
         /**
+         * Contact Info Number field in *InclusionsPricingCta → Default → Primary*
+         *
+         * - **Field Type**: Text
+         * - **Placeholder**: Add Number
+         * - **API ID Path**: inclusions_pricing_cta.default.primary.contact_info_number
+         * - **Documentation**: https://prismic.io/docs/field#key-text
+         */
+        contact_info_number: prismic.KeyTextField
+
+        /**
          * Price Options field in *InclusionsPricingCta → Default → Primary*
          *
          * - **Field Type**: Group
