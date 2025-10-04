@@ -1,0 +1,69 @@
+{
+    "type": "SharedSlice",
+    "id": "itinerary_days",
+    "name": "ItineraryDays",
+    "variations": [
+        {
+            "id": "with_images_and_schedule",
+            "name": "With Images and Schedule",
+            "description": "Each day includes a schedule, subtitles or highlights, descriptive content, and associated images.",
+            "version": "initial",
+            "imageUrl": "",
+            "docURL": "...",
+            "primary": {
+                "days": {
+                    "type": "Group",
+                    "config": {
+                        "label": "Days",
+                        "fields": {
+                            "day_label": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Day Label"
+                                }
+                            },
+                            "highlight": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Day Highlight/Subtitle"
+                                }
+                            },
+                            "intro_text": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "label": "Introductory Text"
+                                }
+                            },
+                            "schedule": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph,strong,em,hyperlink",
+                                    "label": "Schedule"
+                                }
+                            },
+                            "main_image": {
+                                "type": "Image",
+                                "config": {
+                                    "label": "Main Image"
+                                }
+                            },
+                            "secondary_image_1": {
+                                "type": "Image",
+                                "config": {
+                                    "label": "Secondary Image 1"
+                                }
+                            },
+                            "secondary_image_2": {
+                                "type": "Image",
+                                "config": {
+                                    "label": "Secondary Image 2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

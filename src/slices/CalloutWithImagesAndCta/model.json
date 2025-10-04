@@ -1,0 +1,52 @@
+{
+    "type": "SharedSlice",
+    "id": "callout_with_images_and_cta",
+    "name": "CalloutWithImagesAndCta",
+    "variations": [
+        {
+            "id": "default",
+            "name": "Default",
+            "description": "Standard horizontally-aligned callout with heading, description, CTA, and side images.",
+            "version": "initial",
+            "imageUrl": "",
+            "docURL": "...",
+            "primary": {
+                "title": {
+                    "type": "StructuredText",
+                    "config": {
+                        "single": "heading2",
+                        "label": "Title"
+                    }
+                },
+                "description": {
+                    "type": "StructuredText",
+                    "config": {
+                        "multi": "paragraph,strong,em,hyperlink",
+                        "label": "Description"
+                    }
+                },
+                "cta_button": {
+                    "type": "Link",
+                    "config": {
+                        "label": "CTA Button",
+                        "allowText": true,
+                        "repeat": false,
+                        "select": null
+                    }
+                },
+                "left_image": {
+                    "type": "Image",
+                    "config": {
+                        "label": "Left Image"
+                    }
+                },
+                "right_image": {
+                    "type": "Image",
+                    "config": {
+                        "label": "Right Image"
+                    }
+                }
+            }
+        }
+    ]
+}

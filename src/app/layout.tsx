@@ -4,7 +4,7 @@ import Navbar from '@/components/_header'
 import Footer from '@/components/_footer'
 import { repositoryName } from '@/prismicio'
 import NextTopLoader from 'nextjs-toploader'
-import { Inter, Josefin_Sans, Montserrat } from 'next/font/google'
+import { Inter, Josefin_Sans, Montserrat, Poppins } from 'next/font/google'
 import { PrismicPreview } from '@prismicio/next'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
@@ -30,13 +30,19 @@ const inter = Inter({
     display: 'swap',
 })
 
+const poppins = Poppins({
+    subsets: ['latin'],
+    variable: '--font-poppins',
+    display: 'swap',
+    weight: ['400', '500'], // or you can use an array of weights: ['400', '700']
+});
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en" className={`${josefin.variable} ${monsterrat.variable} ${inter.variable}`}>
+        <html lang="en" className={`${josefin.variable} ${monsterrat.variable} ${inter.variable} ${poppins.variable}`}>
             <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
                 <meta name="google-site-verification" content="MFdD5TUc66yWX-w0hwFHmVkJWyt8BAkzk-g3jR4KLlo" />
