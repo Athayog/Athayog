@@ -136,20 +136,36 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                         }}
                                         onClick={() => formik.setFieldValue('selectedPackage', pkg.name)}
                                     >
-                                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                                        <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
                                             <Radio
+                                                sx={{ display: 'none' }}
                                                 checked={formik.values.selectedPackage === pkg.name}
                                                 onChange={() => formik.setFieldValue('selectedPackage', pkg.name)}
                                             />
                                             <Box sx={{ flex: 1 }}>
-                                                <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                                                {/* Package Icon/Image */}
+                                                {pkg.icon?.url && (
+                                                    <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
+                                                        <img
+                                                            src={pkg.icon.url}
+                                                            alt=""
+                                                            style={{
+                                                                width: '60px',
+                                                                height: '60px',
+                                                                objectFit: 'contain'
+                                                            }}
+                                                        />
+                                                    </Box>
+                                                )}
+
+                                                <Typography variant="h6" sx={{ fontWeight: 600, textAlign: 'center' }}>
                                                     {pkg.name}
                                                 </Typography>
-                                                <Typography variant="body1" sx={{ fontWeight: 600, color: 'primary.main' }}>
+                                                <Typography variant="body1" sx={{ fontWeight: 600, color: 'primary.main', textAlign: 'center' }}>
                                                     {pkg.price}
                                                 </Typography>
                                                 {pkg.subtext && (
-                                                    <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5 }}>
+                                                    <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5, textAlign: 'center' }}>
                                                         {pkg.subtext}
                                                     </Typography>
                                                 )}
