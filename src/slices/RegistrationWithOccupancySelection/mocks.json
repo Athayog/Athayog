@@ -1,0 +1,134 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default_form",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Product"
+						}
+					}
+				]
+			},
+			"subtitle": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Library"
+						}
+					}
+				]
+			},
+			"package_options": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"icon",
+								{
+									"__TYPE__": "ImageContent",
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+										"width": 4752,
+										"height": 3168
+									},
+									"url": "https://images.unsplash.com/photo-1589652717521-10c0d092dea9",
+									"width": 4752,
+									"height": 3168,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"alt": "welcome"
+								}
+							],
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "library",
+									"type": "Text"
+								}
+							],
+							[
+								"price",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "according",
+									"type": "Text"
+								}
+							],
+							[
+								"subtext",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "spin",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"selected_package_note": {
+				"__TYPE__": "FieldContent",
+				"value": "expression",
+				"type": "Text"
+			},
+			"full_name_label": {
+				"__TYPE__": "FieldContent",
+				"value": "wood",
+				"type": "Text"
+			},
+			"email_label": {
+				"__TYPE__": "FieldContent",
+				"value": "occasionally",
+				"type": "Text"
+			},
+			"phone_label": {
+				"__TYPE__": "FieldContent",
+				"value": "personal",
+				"type": "Text"
+			},
+			"location_label": {
+				"__TYPE__": "FieldContent",
+				"value": "swept",
+				"type": "Text"
+			},
+			"emergency_name_label": {
+				"__TYPE__": "FieldContent",
+				"value": "copper",
+				"type": "Text"
+			},
+			"emergency_relation_hint": {
+				"__TYPE__": "FieldContent",
+				"value": "herd",
+				"type": "Text"
+			},
+			"emergency_number_label": {
+				"__TYPE__": "FieldContent",
+				"value": "day",
+				"type": "Text"
+			},
+			"submit_button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "slipped",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

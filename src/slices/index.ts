@@ -72,6 +72,7 @@ export const components = {
     pros_and_cons: dynamic(() => import('./ProsAndCons')),
     quote: dynamic(() => import('./Quote')),
     recognition: dynamic(() => import('./Recognition')),
+    registration_with_occupancy_selection: dynamic(() => import('./RegistrationWithOccupancySelection')),
     rich_text: dynamic(() => import('./RichText')),
     right_content_left_slider_vertical: dynamic(() => import('./RightContentLeftSliderVertical')),
     scattered_gallery: dynamic(() => import('./ScatteredGallery')),

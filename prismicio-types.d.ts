@@ -421,6 +421,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | RegistrationWithOccupancySelectionSlice
     | ItineraryDaysSlice
     | CalloutWithImagesAndCtaSlice
     | FaqListSlice
@@ -8053,6 +8054,199 @@ type RecognitionSliceVariation = RecognitionSliceDefault
 export type RecognitionSlice = prismic.SharedSlice<'recognition', RecognitionSliceVariation>
 
 /**
+ * Item in *RegistrationWithOccupancySelection → Default Form → Primary → Package Options*
+ */
+export interface RegistrationWithOccupancySelectionSliceDefaultFormPrimaryPackageOptionsItem {
+    /**
+     * Icon field in *RegistrationWithOccupancySelection → Default Form → Primary → Package Options*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.package_options[].icon
+     * - **Documentation**: https://prismic.io/docs/fields/image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Package Name field in *RegistrationWithOccupancySelection → Default Form → Primary → Package Options*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.package_options[].name
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    name: prismic.KeyTextField
+
+    /**
+     * Price field in *RegistrationWithOccupancySelection → Default Form → Primary → Package Options*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.package_options[].price
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    price: prismic.KeyTextField
+
+    /**
+     * Subtext field in *RegistrationWithOccupancySelection → Default Form → Primary → Package Options*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.package_options[].subtext
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    subtext: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *RegistrationWithOccupancySelection → Default Form → Primary*
+ */
+export interface RegistrationWithOccupancySelectionSliceDefaultFormPrimary {
+    /**
+     * Title field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.title
+     * - **Documentation**: https://prismic.io/docs/fields/rich-text
+     */
+    title: prismic.RichTextField
+
+    /**
+     * Subtitle field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.subtitle
+     * - **Documentation**: https://prismic.io/docs/fields/rich-text
+     */
+    subtitle: prismic.RichTextField
+
+    /**
+     * Package Options field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.package_options[]
+     * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+     */
+    package_options: prismic.GroupField<Simplify<RegistrationWithOccupancySelectionSliceDefaultFormPrimaryPackageOptionsItem>>
+
+    /**
+     * Selected Package Note field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.selected_package_note
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    selected_package_note: prismic.KeyTextField
+
+    /**
+     * Full Name Label field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.full_name_label
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    full_name_label: prismic.KeyTextField
+
+    /**
+     * Email Address Label field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.email_label
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    email_label: prismic.KeyTextField
+
+    /**
+     * Phone Number Label field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.phone_label
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    phone_label: prismic.KeyTextField
+
+    /**
+     * Current Location Label field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.location_label
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    location_label: prismic.KeyTextField
+
+    /**
+     * Emergency Contact Name Label field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.emergency_name_label
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    emergency_name_label: prismic.KeyTextField
+
+    /**
+     * Emergency Contact Relation Hint field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.emergency_relation_hint
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    emergency_relation_hint: prismic.KeyTextField
+
+    /**
+     * Emergency Contact Number Label field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.emergency_number_label
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    emergency_number_label: prismic.KeyTextField
+
+    /**
+     * Submit Button Text field in *RegistrationWithOccupancySelection → Default Form → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: registration_with_occupancy_selection.default_form.primary.submit_button_text
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    submit_button_text: prismic.KeyTextField
+}
+
+/**
+ * Default Form variation for RegistrationWithOccupancySelection Slice
+ *
+ * - **API ID**: `default_form`
+ * - **Description**: Standard registration form with selectable occupancy/package cards, input fields for user and emergency details, and a primary submit button.
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type RegistrationWithOccupancySelectionSliceDefaultForm = prismic.SharedSliceVariation<'default_form', Simplify<RegistrationWithOccupancySelectionSliceDefaultFormPrimary>, never>
+
+/**
+ * Slice variation for *RegistrationWithOccupancySelection*
+ */
+type RegistrationWithOccupancySelectionSliceVariation = RegistrationWithOccupancySelectionSliceDefaultForm
+
+/**
+ * RegistrationWithOccupancySelection Shared Slice
+ *
+ * - **API ID**: `registration_with_occupancy_selection`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type RegistrationWithOccupancySelectionSlice = prismic.SharedSlice<'registration_with_occupancy_selection', RegistrationWithOccupancySelectionSliceVariation>
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -10755,6 +10949,11 @@ declare module '@prismicio/client' {
             RecognitionSliceDefaultPrimary,
             RecognitionSliceVariation,
             RecognitionSliceDefault,
+            RegistrationWithOccupancySelectionSlice,
+            RegistrationWithOccupancySelectionSliceDefaultFormPrimaryPackageOptionsItem,
+            RegistrationWithOccupancySelectionSliceDefaultFormPrimary,
+            RegistrationWithOccupancySelectionSliceVariation,
+            RegistrationWithOccupancySelectionSliceDefaultForm,
             RichTextSlice,
             RichTextSliceDefaultPrimary,
             RichTextSliceVariation,

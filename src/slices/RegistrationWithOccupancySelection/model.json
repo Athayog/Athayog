@@ -1,0 +1,117 @@
+{
+    "type": "SharedSlice",
+    "id": "registration_with_occupancy_selection",
+    "name": "RegistrationWithOccupancySelection",
+    "variations": [
+        {
+            "id": "default_form",
+            "name": "Default Form",
+            "description": "Standard registration form with selectable occupancy/package cards, input fields for user and emergency details, and a primary submit button.",
+            "version": "initial",
+            "imageUrl": "",
+            "docURL": "...",
+            "primary": {
+                "title": {
+                    "type": "StructuredText",
+                    "config": {
+                        "single": "heading1",
+                        "label": "Title"
+                    }
+                },
+                "subtitle": {
+                    "type": "StructuredText",
+                    "config": {
+                        "single": "heading2",
+                        "label": "Subtitle"
+                    }
+                },
+                "package_options": {
+                    "type": "Group",
+                    "config": {
+                        "label": "Package Options",
+                        "fields": {
+                            "icon": {
+                                "type": "Image",
+                                "config": {
+                                    "label": "Icon"
+                                }
+                            },
+                            "name": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Package Name"
+                                }
+                            },
+                            "price": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Price"
+                                }
+                            },
+                            "subtext": {
+                                "type": "Text",
+                                "config": {
+                                    "label": "Subtext"
+                                }
+                            }
+                        }
+                    }
+                },
+                "selected_package_note": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Selected Package Note"
+                    }
+                },
+                "full_name_label": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Full Name Label"
+                    }
+                },
+                "email_label": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Email Address Label"
+                    }
+                },
+                "phone_label": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Phone Number Label"
+                    }
+                },
+                "location_label": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Current Location Label"
+                    }
+                },
+                "emergency_name_label": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Emergency Contact Name Label"
+                    }
+                },
+                "emergency_relation_hint": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Emergency Contact Relation Hint"
+                    }
+                },
+                "emergency_number_label": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Emergency Contact Number Label"
+                    }
+                },
+                "submit_button_text": {
+                    "type": "Text",
+                    "config": {
+                        "label": "Submit Button Text"
+                    }
+                }
+            }
+        }
+    ]
+}

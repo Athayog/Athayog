@@ -27,6 +27,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "registration_with_occupancy_selection": {
+                            "type": "SharedSlice"
+                        },
                         "itinerary_days": {
                             "type": "SharedSlice"
                         },
