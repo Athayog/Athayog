@@ -27,6 +27,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "itinerary_days": {
+                            "type": "SharedSlice"
+                        },
                         "callout_with_images_and_cta": {
                             "type": "SharedSlice"
                         },

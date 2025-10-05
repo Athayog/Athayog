@@ -421,6 +421,7 @@ interface FooterDocumentData {
 export type FooterDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<FooterDocumentData>, 'footer', Lang>
 
 type PageDocumentDataSlicesSlice =
+    | ItineraryDaysSlice
     | CalloutWithImagesAndCtaSlice
     | FaqListSlice
     | InclusionsPricingCtaSlice
@@ -6043,108 +6044,108 @@ type InclusionsPricingCtaSliceVariation = InclusionsPricingCtaSliceDefault
 export type InclusionsPricingCtaSlice = prismic.SharedSlice<'inclusions_pricing_cta', InclusionsPricingCtaSliceVariation>
 
 /**
- * Item in *ItineraryDays → With Images and Schedule → Primary → Days*
+ * Item in *ItineraryDays → Cards with Side Content → Primary → Days*
  */
-export interface ItineraryDaysSliceWithImagesAndSchedulePrimaryDaysItem {
+export interface ItineraryDaysSliceDefaultCardsWithSideContentPrimaryDaysItem {
     /**
-     * Day Label field in *ItineraryDays → With Images and Schedule → Primary → Days*
+     * Day Label field in *ItineraryDays → Cards with Side Content → Primary → Days*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: itinerary_days.with_images_and_schedule.primary.days[].day_label
+     * - **API ID Path**: itinerary_days.default_cards_with_side_content.primary.days[].label
      * - **Documentation**: https://prismic.io/docs/fields/text
      */
-    day_label: prismic.KeyTextField
+    label: prismic.KeyTextField
 
     /**
-     * Day Highlight/Subtitle field in *ItineraryDays → With Images and Schedule → Primary → Days*
+     * Headline field in *ItineraryDays → Cards with Side Content → Primary → Days*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: itinerary_days.with_images_and_schedule.primary.days[].highlight
+     * - **API ID Path**: itinerary_days.default_cards_with_side_content.primary.days[].headline
      * - **Documentation**: https://prismic.io/docs/fields/text
      */
-    highlight: prismic.KeyTextField
+    headline: prismic.KeyTextField
 
     /**
-     * Introductory Text field in *ItineraryDays → With Images and Schedule → Primary → Days*
+     * Description field in *ItineraryDays → Cards with Side Content → Primary → Days*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: itinerary_days.with_images_and_schedule.primary.days[].intro_text
+     * - **API ID Path**: itinerary_days.default_cards_with_side_content.primary.days[].description
      * - **Documentation**: https://prismic.io/docs/fields/rich-text
      */
-    intro_text: prismic.RichTextField
+    description: prismic.RichTextField
 
     /**
-     * Schedule field in *ItineraryDays → With Images and Schedule → Primary → Days*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: itinerary_days.with_images_and_schedule.primary.days[].schedule
-     * - **Documentation**: https://prismic.io/docs/fields/rich-text
-     */
-    schedule: prismic.RichTextField
-
-    /**
-     * Main Image field in *ItineraryDays → With Images and Schedule → Primary → Days*
+     * Main Image field in *ItineraryDays → Cards with Side Content → Primary → Days*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: itinerary_days.with_images_and_schedule.primary.days[].main_image
+     * - **API ID Path**: itinerary_days.default_cards_with_side_content.primary.days[].main_image
      * - **Documentation**: https://prismic.io/docs/fields/image
      */
     main_image: prismic.ImageField<never>
 
     /**
-     * Secondary Image 1 field in *ItineraryDays → With Images and Schedule → Primary → Days*
+     * Secondary Image field in *ItineraryDays → Cards with Side Content → Primary → Days*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: itinerary_days.with_images_and_schedule.primary.days[].secondary_image_1
+     * - **API ID Path**: itinerary_days.default_cards_with_side_content.primary.days[].secondary_image
      * - **Documentation**: https://prismic.io/docs/fields/image
      */
-    secondary_image_1: prismic.ImageField<never>
+    secondary_image: prismic.ImageField<never>
 
     /**
-     * Secondary Image 2 field in *ItineraryDays → With Images and Schedule → Primary → Days*
+     * Tertiary Image field in *ItineraryDays → Cards with Side Content → Primary → Days*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
-     * - **API ID Path**: itinerary_days.with_images_and_schedule.primary.days[].secondary_image_2
+     * - **API ID Path**: itinerary_days.default_cards_with_side_content.primary.days[].tertiary_image
      * - **Documentation**: https://prismic.io/docs/fields/image
      */
-    secondary_image_2: prismic.ImageField<never>
+    tertiary_image: prismic.ImageField<never>
 }
 
 /**
- * Primary content in *ItineraryDays → With Images and Schedule → Primary*
+ * Primary content in *ItineraryDays → Cards with Side Content → Primary*
  */
-export interface ItineraryDaysSliceWithImagesAndSchedulePrimary {
+export interface ItineraryDaysSliceDefaultCardsWithSideContentPrimary {
     /**
-     * Days field in *ItineraryDays → With Images and Schedule → Primary*
+     * Section Title field in *ItineraryDays → Cards with Side Content → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Section Title
+     * - **API ID Path**: itinerary_days.default_cards_with_side_content.primary.section_title
+     * - **Documentation**: https://prismic.io/docs/fields/text
+     */
+    section_title: prismic.KeyTextField
+
+    /**
+     * Days field in *ItineraryDays → Cards with Side Content → Primary*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
-     * - **API ID Path**: itinerary_days.with_images_and_schedule.primary.days[]
+     * - **API ID Path**: itinerary_days.default_cards_with_side_content.primary.days[]
      * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
      */
-    days: prismic.GroupField<Simplify<ItineraryDaysSliceWithImagesAndSchedulePrimaryDaysItem>>
+    days: prismic.GroupField<Simplify<ItineraryDaysSliceDefaultCardsWithSideContentPrimaryDaysItem>>
 }
 
 /**
- * With Images and Schedule variation for ItineraryDays Slice
+ * Cards with Side Content variation for ItineraryDays Slice
  *
- * - **API ID**: `with_images_and_schedule`
- * - **Description**: Each day includes a schedule, subtitles or highlights, descriptive content, and associated images.
+ * - **API ID**: `default_cards_with_side_content`
+ * - **Description**: Each itinerary day is represented as a card containing a heading, activity breakdown, optional subhead, and supporting images in a side column.
  * - **Documentation**: https://prismic.io/docs/slices
  */
-export type ItineraryDaysSliceWithImagesAndSchedule = prismic.SharedSliceVariation<'with_images_and_schedule', Simplify<ItineraryDaysSliceWithImagesAndSchedulePrimary>, never>
+export type ItineraryDaysSliceDefaultCardsWithSideContent = prismic.SharedSliceVariation<'default_cards_with_side_content', Simplify<ItineraryDaysSliceDefaultCardsWithSideContentPrimary>, never>
 
 /**
  * Slice variation for *ItineraryDays*
  */
-type ItineraryDaysSliceVariation = ItineraryDaysSliceWithImagesAndSchedule
+type ItineraryDaysSliceVariation = ItineraryDaysSliceDefaultCardsWithSideContent
 
 /**
  * ItineraryDays Shared Slice
@@ -10649,10 +10650,10 @@ declare module '@prismicio/client' {
             InclusionsPricingCtaSliceVariation,
             InclusionsPricingCtaSliceDefault,
             ItineraryDaysSlice,
-            ItineraryDaysSliceWithImagesAndSchedulePrimaryDaysItem,
-            ItineraryDaysSliceWithImagesAndSchedulePrimary,
+            ItineraryDaysSliceDefaultCardsWithSideContentPrimaryDaysItem,
+            ItineraryDaysSliceDefaultCardsWithSideContentPrimary,
             ItineraryDaysSliceVariation,
-            ItineraryDaysSliceWithImagesAndSchedule,
+            ItineraryDaysSliceDefaultCardsWithSideContent,
             LeftContentRightImageSlice,
             LeftContentRightImageSliceDefaultPrimary,
             LeftContentRightImageSliceVariation,

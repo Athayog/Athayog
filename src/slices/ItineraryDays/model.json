@@ -1,69 +1,74 @@
 {
-    "type": "SharedSlice",
-    "id": "itinerary_days",
-    "name": "ItineraryDays",
-    "variations": [
-        {
-            "id": "with_images_and_schedule",
-            "name": "With Images and Schedule",
-            "description": "Each day includes a schedule, subtitles or highlights, descriptive content, and associated images.",
-            "version": "initial",
-            "imageUrl": "",
-            "docURL": "...",
-            "primary": {
-                "days": {
-                    "type": "Group",
-                    "config": {
-                        "label": "Days",
-                        "fields": {
-                            "day_label": {
-                                "type": "Text",
-                                "config": {
-                                    "label": "Day Label"
-                                }
-                            },
-                            "highlight": {
-                                "type": "Text",
-                                "config": {
-                                    "label": "Day Highlight/Subtitle"
-                                }
-                            },
-                            "intro_text": {
-                                "type": "StructuredText",
-                                "config": {
-                                    "multi": "paragraph,strong,em,hyperlink",
-                                    "label": "Introductory Text"
-                                }
-                            },
-                            "schedule": {
-                                "type": "StructuredText",
-                                "config": {
-                                    "multi": "paragraph,strong,em,hyperlink",
-                                    "label": "Schedule"
-                                }
-                            },
-                            "main_image": {
-                                "type": "Image",
-                                "config": {
-                                    "label": "Main Image"
-                                }
-                            },
-                            "secondary_image_1": {
-                                "type": "Image",
-                                "config": {
-                                    "label": "Secondary Image 1"
-                                }
-                            },
-                            "secondary_image_2": {
-                                "type": "Image",
-                                "config": {
-                                    "label": "Secondary Image 2"
-                                }
-                            }
-                        }
-                    }
+  "type": "SharedSlice",
+  "id": "itinerary_days",
+  "name": "ItineraryDays",
+  "variations": [
+    {
+      "id": "default_cards_with_side_content",
+      "name": "Cards with Side Content",
+      "description": "Each itinerary day is represented as a card containing a heading, activity breakdown, optional subhead, and supporting images in a side column.",
+      "version": "initial",
+      "imageUrl": "",
+      "docURL": "...",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Section Title"
+          }
+        },
+        "days": {
+          "type": "Group",
+          "config": {
+            "label": "Days",
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Day Label"
                 }
+              },
+              "headline": {
+                "type": "Text",
+                "config": {
+                  "label": "Headline"
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "multi": "paragraph,strong,em,hyperlink",
+                  "label": "Description"
+                }
+              },
+              "main_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Main Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "secondary_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Secondary Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "tertiary_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Tertiary Image"
+                }
+              }
             }
+          }
         }
-    ]
+      },
+      "items": {}
+    }
+  ]
 }

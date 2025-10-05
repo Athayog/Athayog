@@ -16,10 +16,13 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 	return (
 		<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}
 			style={{
-				background: 'linear-gradient(90deg, #FFFFCB 0%, #EAFEDF 100%)'
+				background: 'linear-gradient(90deg, #FFFFCB 0%, #EAFEDF 100%)',
+
 			}}
 		>
-			<Container maxWidth="md">
+			<Container maxWidth="md" sx={{
+				padding: { xs: '80px 10px', md: '40px' }
+			}}>
 				{/* Title */}
 				<Box sx={{ textAlign: 'center', mb: 4 }}>
 					<PrismicRichText
