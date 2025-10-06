@@ -1,15 +1,19 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup'
 import { useFormik } from 'formik'
 import { Content } from '@prismicio/client'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import useFormStore from '@/store/useFormStore'
 import { PrismicRichText } from '@prismicio/react'
 import ResetError from '@/components/FormErrorReset'
 import { SliceComponentProps } from '@prismicio/react'
 import { Box, Typography, TextField, Button, Card, Radio, Divider, Alert, Snackbar } from '@mui/material'
 import Image from 'next/image';
+import Script from 'next/script';
+import { useSnackbar } from '@/components/SnackbarProvider';
+import useAuthStore from '@/store/useAuthStore';
+import { initiateRazorpayPayment } from '@/utils/razorpayWrapper';
 
 export type RegistrationWithOccupancySelectionProps = SliceComponentProps<Content.RegistrationWithOccupancySelectionSlice>
 
@@ -52,6 +56,10 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
     const { title, subtitle, package_options, selected_package_note, full_name_label, email_label, phone_label, location_label, emergency_name_label, emergency_relation_hint, emergency_number_label, submit_button_text } = slice.primary
     const { loading, error, success, submitForm } = useFormStore()
     const router = useRouter()
+    const [process, setInProcess] = useState<boolean>(false)
+    const { showSnackbar } = useSnackbar()
+    const { user, setRedirectPath } = useAuthStore()
+    const pathname = usePathname()
 
     function priceFormatter(price: number) {
         const formattedPrice = new Intl.NumberFormat('en-IN', {
@@ -62,7 +70,6 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
         }).format(price);
         return formattedPrice
     }
-
     const formik = useFormik<FormValues>({
         initialValues: {
             selectedPackage: '',
@@ -76,13 +83,81 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
         },
         validationSchema: validationSchema,
         onSubmit: async (values: FormValues, { resetForm }) => {
-            await submitForm(values, 'bali_retreat_registration', 'info@athayogliving.com')
-            if (!error) {
-                resetForm()
-                router.push('/thank-you')
+            try {
+                setInProcess(true)
+                console.log('Form values:', values);
+
+                // Find selected package
+                const currentPackage = package_options?.find((option: any) => option.name === values.selectedPackage);
+                console.log('Selected package:', currentPackage);
+
+                if (!currentPackage) {
+                    console.error('No package found');
+                    return;
+                }
+
+                // Parse price safely - handle 0 and invalid values
+                const basePrice = Number(currentPackage.price) || 0;
+                console.log('Base price:', basePrice);
+
+                // Calculate GST (5%)
+                const gstAmount = basePrice * 0.05;
+                const totalAmount = basePrice + gstAmount;
+
+                console.log('GST (5%):', gstAmount);
+                console.log('Total amount:', totalAmount);
+
+                // Prepare order data
+                const orderData = {
+                    ...values,
+                    basePrice,
+                    gstAmount,
+                    totalAmount,
+                    packageName: currentPackage.name,
+                    packageDetails: currentPackage
+                };
+
+                console.log('Order data:', orderData);
+
+                // Call your order creation function
+                await createOrder(totalAmount, orderData);
+
+                // If successful, reset form and redirect
+                // resetForm();
+                // router.push('/thank-you');
+
+            } catch (error) {
+                console.error('Error in form submission:', error);
+                // Handle error state if needed
+            } finally {
+                setInProcess(false)
             }
         },
     })
+
+    const handlePaymentSuccess = async (data: any) => {
+        setInProcess(false)
+        router.push(`/payment-success?id=${data.id}`)
+    }
+
+    const handlePaymentFailure = () => {
+        setInProcess(false)
+    }
+
+    const handleModalDismiss = () => {
+        setInProcess(false)
+    }
+
+    const createOrder = (amount: number, courseDetails: any) => {
+        if (user) {
+            setInProcess(true)
+            initiateRazorpayPayment({ amount, onSuccess: handlePaymentSuccess, onFailure: handlePaymentFailure, onDismiss: handleModalDismiss, notes: { userId: user.uid, ...courseDetails } })
+        } else {
+            setRedirectPath(pathname)
+            showSnackbar('Please login or register to continue', 'warning')
+            router.push('/login')
+        }
+    }
 
     // Check if double occupancy is selected
     const showPartnerField = isDoubleOccupancy(formik.values.selectedPackage)
@@ -93,6 +168,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                 background: 'rgba(234, 254, 223, 1)',
                 fontSize: { xs: '14px', md: '18px' },
             }}>
+            <Script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js" />
             <Box sx={{ p: { xs: '100px 15px', md: '190px 200px' } }}>
                 <Box sx={{ maxWidth: '800px', margin: '0 auto', p: 3 }}>
                     {/* Title */}
@@ -411,7 +487,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                 type="submit" // Added type="submit"
                                 variant="contained"
                                 size="medium"
-                                disabled={loading}
+                                disabled={process}
                                 sx={{
                                     px: '58.67px',
                                     py: '14.67px',
@@ -432,7 +508,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                     transition: 'all 0.3s ease',
                                 }}
                             >
-                                {loading ? 'Submitting...' : (submit_button_text || 'Register Now')}
+                                {process ? 'Submitting...' : (submit_button_text || 'Register Now')}
                             </Button>
                         </Box>
                     </form>

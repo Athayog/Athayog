@@ -6,6 +6,7 @@ import { asLink } from '@prismicio/helpers'
 import { Box, Typography, Button, Container, Grid, Divider, List, ListItem } from '@mui/material'
 import CallIcon from '/public/images/call_icon.png'
 import Image from 'next/image'
+import BlurBack from '/public/images/blur_price_bali.png'
 
 export type InclusionsPricingCtaProps = SliceComponentProps<Content.InclusionsPricingCtaSlice>
 
@@ -16,7 +17,7 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 	return (
 		<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}
 			style={{
-				background: 'linear-gradient(90deg, #FFFFCB 0%, #EAFEDF 100%)',
+				background: 'linear-gradient(to bottom, #FFFFCB 0%, #EAFEDF 100%)',
 
 			}}
 		>
@@ -123,48 +124,67 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 
 
 				{/* Price Options */}
-				<Box sx={{ mb: 6, background: "rgba(255, 255, 255, 0.8)", padding: 6, borderRadius: '219.5px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+				<Box sx={{
+					mb: 6,
+					backgroundImage: `url(${BlurBack.src})`,
+					backgroundSize: 'auto',
+					backgroundPosition: 'center',
+					backgroundRepeat: 'no-repeat',
+					position: 'relative',
+					mt: 5,
+					padding: { xs: 2, md: 6 },
+					borderRadius: '219.5px',
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}>
 					{price_options?.map((option, index) => (
-						<Box key={index} sx={{ textAlign: 'center', mb: 3, display: 'flex', gap: '15px' }}>
-							{option.label && (
-								<Typography
-									variant="h5"
-									component="h3"
-									sx={{
-										fontWeight: 700,
-										fontSize: { xs: '1.5rem', md: '34px' },
-										color: 'text.primary'
-									}}
-								>
-									{option.label}
-								</Typography>
-							)}
+						<Box key={index} sx={{
+							textAlign: 'center', mb: 3, display: 'flex', flexDirection: 'column', gap: '15px'
+						}}>
+							{
+								option.label && (
+									<Typography
+										variant="h5"
+										component="h3"
+										sx={{
+											fontWeight: 700,
+											fontSize: { xs: '1.5rem', md: '34px' },
+											color: 'text.primary'
+										}}
+									>
+										{option.label}
+									</Typography>
+								)
+							}
+							<Box sx={{ display: 'flex', flexDirection: { xs: 'row', md: 'column' }, gap: '10px' }}>
+								{option.price && (
+									<Typography
+										variant="h4"
+										sx={{
+											fontWeight: 700,
+											fontSize: { xs: '30px', md: '34px' },
+											color: 'rgba(31, 60, 4, 1)'
+										}}
+									>
+										{option.price}
+									</Typography>
+								)}
 
-							{option.price && (
-								<Typography
-									variant="h4"
-									sx={{
-										fontWeight: 600,
-										fontSize: { xs: '1.5rem', md: '34px' },
-										color: 'primary.main'
-									}}
-								>
-									{option.price}
-								</Typography>
-							)}
-
-							{option.note && (
-								<Typography
-									variant="h4"
-									sx={{
-										fontWeight: 600,
-										fontSize: { xs: '1.5rem', md: '24px' },
-										color: 'primary.main'
-									}}
-								>
-									{option.note}
-								</Typography>
-							)}
+								{option.note && (
+									<Typography
+										variant="h4"
+										sx={{
+											fontWeight: 600,
+											fontSize: { xs: '30px', md: '24px' },
+											color: 'rgba(31, 60, 4, 1)'
+										}}
+									>
+										{option.note}
+									</Typography>
+								)}
+							</Box>
 						</Box>
 					))}
 				</Box>
@@ -172,33 +192,40 @@ const InclusionsPricingCta: FC<InclusionsPricingCtaProps> = ({ slice }) => {
 
 
 				{/* CTA Button */}
-				{ctaUrl && (
-					<Box sx={{ textAlign: 'center' }}>
-						<Button
-							variant="contained"
-							size="large"
-							href={ctaUrl}
-							sx={{
-								px: 4,
-								py: 1.5,
-								fontSize: '1.1rem',
-								fontWeight: 600,
-								borderRadius: 2,
-								textTransform: 'none',
-								boxShadow: 3,
-								'&:hover': {
-									boxShadow: 6,
-									transform: 'translateY(-2px)'
-								},
-								transition: 'all 0.3s ease'
-							}}
-						>
-							{cta_button.text || 'Register Now'}
-						</Button>
-					</Box>
-				)}
-			</Container>
-		</section>
+				{
+					ctaUrl && (
+						<Box sx={{ textAlign: 'center' }}>
+							<Button
+								variant="contained"
+								size="large"
+								href={ctaUrl}
+								sx={{
+									px: '58.67px',
+									py: '14.67px',
+									fontSize: {
+										xs: "20px",
+										md: "26px"
+									},
+									fontWeight: 600,
+									boxShadow: 0,
+									borderRadius: "88.01px",
+									textTransform: 'none',
+									width: "283.34px",
+									height: "57.34px",
+									'&:hover': {
+										boxShadow: 6,
+										transform: 'translateY(-2px)',
+									},
+									transition: 'all 0.3s ease',
+								}}
+							>
+								{cta_button.text || 'Register Now'}
+							</Button>
+						</Box>
+					)
+				}
+			</Container >
+		</section >
 	)
 }
 
