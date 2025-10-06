@@ -1,14 +1,14 @@
 'use client'
+import React from 'react';
 import * as Yup from 'yup'
-import { useState } from 'react'
 import { useFormik } from 'formik'
-import useFormStore from '@/store/useFormStore'
-import { Box, Typography, TextField, Button, Card, Radio, FormControlLabel, Divider, Alert, Snackbar } from '@mui/material'
 import { Content } from '@prismicio/client'
-import { SliceComponentProps } from '@prismicio/react'
-import { PrismicRichText } from '@prismicio/react'
 import { useRouter } from 'next/navigation'
+import useFormStore from '@/store/useFormStore'
+import { PrismicRichText } from '@prismicio/react'
 import ResetError from '@/components/FormErrorReset'
+import { SliceComponentProps } from '@prismicio/react'
+import { Box, Typography, TextField, Button, Card, Radio, Divider, Alert, Snackbar } from '@mui/material'
 
 export type RegistrationWithOccupancySelectionProps = SliceComponentProps<Content.RegistrationWithOccupancySelectionSlice>
 
@@ -43,6 +43,16 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
     const { loading, error, success, submitForm } = useFormStore()
     const router = useRouter()
 
+    function priceFormatter(price: number) {
+        const formattedPrice = new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }).format(price);
+        return formattedPrice
+    }
+
     const formik = useFormik<FormValues>({
         initialValues: {
             selectedPackage: '',
@@ -67,12 +77,13 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} style={{
             background: 'rgba(234, 254, 223, 1)',
+            fontSize: '18px',
 
         }}>
             <Box sx={{ p: '190px 200px' }}>
                 <Box sx={{ maxWidth: '800px', margin: '0 auto', p: 3 }}>
                     {/* Title */}
-                    <Box sx={{ textAlign: 'center', mb: 4 }}>
+                    <Box sx={{ textAlign: 'center', mb: 6 }}>
                         <PrismicRichText
                             field={title}
                             components={{
@@ -81,8 +92,8 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                         variant="h1"
                                         sx={{
                                             fontWeight: 700,
-                                            fontSize: { xs: '2rem', md: '2.5rem' },
-                                            mb: 2,
+                                            fontSize: { xs: '22px', md: '48px' },
+                                            mb: 3,
                                             color: 'text.primary'
                                         }}
                                     >
@@ -99,9 +110,10 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                     <Typography
                                         variant="h2"
                                         sx={{
-                                            fontWeight: 600,
-                                            fontSize: { xs: '1.25rem', md: '1.5rem' },
-                                            color: 'text.secondary'
+                                            fontWeight: 700,
+                                            fontSize: { xs: '16px', md: '38px' },
+                                            color: 'text.primary',
+                                            mb: 2
                                         }}
                                     >
                                         {children}
@@ -113,65 +125,67 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
 
                     <form onSubmit={formik.handleSubmit}>
                         {/* Package Selection */}
-                        <Box sx={{ mb: 6 }}>
-                            <Typography variant="h3" sx={{ fontWeight: 600, mb: 3, fontSize: '1.5rem' }}>
-                                Choose Your Occupancy
-                            </Typography>
-
-                            <Box sx={{ display: 'flex', gap: 3, flexDirection: { xs: 'column', md: 'row' } }}>
+                        <Box sx={{ mb: 2 }}>
+                            <Box sx={{ display: 'flex', gap: '63px', width: '100%', flexDirection: { xs: 'column', md: 'row' } }}>
                                 {package_options?.map((pkg, index) => (
-                                    <Card
-                                        key={index}
-                                        sx={{
-                                            flex: 1,
-                                            p: 3,
-                                            border: formik.values.selectedPackage === pkg.name ? '2px solid' : '1px solid',
-                                            borderColor: formik.values.selectedPackage === pkg.name ? 'primary.main' : 'divider',
-                                            borderRadius: 2,
-                                            cursor: 'pointer',
-                                            transition: 'all 0.3s ease',
-                                            '&:hover': {
-                                                borderColor: 'primary.main',
-                                            }
-                                        }}
-                                        onClick={() => formik.setFieldValue('selectedPackage', pkg.name)}
-                                    >
-                                        <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
-                                            <Radio
-                                                sx={{ display: 'none' }}
-                                                checked={formik.values.selectedPackage === pkg.name}
-                                                onChange={() => formik.setFieldValue('selectedPackage', pkg.name)}
-                                            />
-                                            <Box sx={{ flex: 1 }}>
-                                                {/* Package Icon/Image */}
-                                                {pkg.icon?.url && (
-                                                    <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
-                                                        <img
-                                                            src={pkg.icon.url}
-                                                            alt=""
-                                                            style={{
-                                                                width: '60px',
-                                                                height: '60px',
-                                                                objectFit: 'contain'
-                                                            }}
-                                                        />
-                                                    </Box>
-                                                )}
+                                    <Box key={index} sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                                        <Card
+                                            sx={{
+                                                flex: 1,
+                                                p: 3,
+                                                border: formik.values.selectedPackage === pkg.name ? '2.48px solid' : '2.48px solid',
+                                                borderColor: formik.values.selectedPackage === pkg.name ? 'rgba(71, 130, 13, 1)' : 'rgba(223, 223, 223, 1)',
+                                                backgroundColor: formik.values.selectedPackage === pkg.name ? 'rgba(198, 246, 168, 1)' : 'rgba(247, 250, 245, 1)',
+                                                borderRadius: '16px',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.3s ease',
+                                                maxHeight: '234px',
+                                                minHeight: '234px',
+                                                '&:hover': {
+                                                    borderColor: 'rgba(71, 130, 13, 1)',
+                                                }
+                                            }}
+                                            onClick={() => formik.setFieldValue('selectedPackage', pkg.name)}
+                                        >
+                                            <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
+                                                <Radio
+                                                    sx={{ display: 'none' }}
+                                                    checked={formik.values.selectedPackage === pkg.name}
+                                                    onChange={() => formik.setFieldValue('selectedPackage', pkg.name)}
+                                                />
+                                                <Box sx={{ flex: 1 }}>
+                                                    {/* Package Icon/Image */}
+                                                    {pkg.icon?.url && (
+                                                        <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
+                                                            <img
+                                                                src={pkg.icon.url}
+                                                                alt=""
+                                                                style={{
+                                                                    width: '60px',
+                                                                    height: '60px',
+                                                                    objectFit: 'contain'
+                                                                }}
+                                                            />
+                                                        </Box>
+                                                    )}
 
-                                                <Typography variant="h6" sx={{ fontWeight: 600, textAlign: 'center' }}>
-                                                    {pkg.name}
-                                                </Typography>
-                                                <Typography variant="body1" sx={{ fontWeight: 600, color: 'primary.main', textAlign: 'center' }}>
-                                                    {pkg.price}
-                                                </Typography>
-                                                {pkg.subtext && (
-                                                    <Typography variant="body2" sx={{ color: 'text.secondary', mt: 0.5, textAlign: 'center' }}>
-                                                        {pkg.subtext}
+                                                    <Typography variant="h6" sx={{ fontWeight: 700, textAlign: 'center', fontSize: { xs: '26px', md: '26px' } }}>
+                                                        {pkg.name}
                                                     </Typography>
-                                                )}
+
+                                                    <Typography variant="body1" sx={{ fontWeight: 700, color: "rgba(31, 60, 4, 1)", textAlign: 'center', fontSize: { xs: '26px', md: '28px' } }}>
+                                                        {priceFormatter(Number(pkg.price) || 0)} +  <span style={{ fontSize: "18px" }}>{pkg.subtext}</span>
+                                                    </Typography>
+
+                                                </Box>
                                             </Box>
-                                        </Box>
-                                    </Card>
+                                        </Card>
+                                        {formik.values.selectedPackage === pkg.name && (
+                                            <Typography variant="body1" sx={{ mt: 2, textAlign: 'center', color: "rgba(71, 130, 13, 1)", fontSize: '16px', fontStyle: 'italic' }}>
+                                                {selected_package_note}
+                                            </Typography>
+                                        )}
+                                    </Box >
                                 ))}
                             </Box>
                             {formik.errors.selectedPackage && (
@@ -181,28 +195,14 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                             )}
                         </Box>
 
-                        <Divider sx={{ my: 4 }} />
 
-                        {/* Selected Package Note */}
-                        {selected_package_note && (
-                            <Box sx={{ mb: 4 }}>
-                                <Typography variant="h4" sx={{ fontWeight: 600, mb: 2 }}>
-                                    Selected Package
-                                </Typography>
-                                <Typography variant="body1">
-                                    {selected_package_note}
-                                </Typography>
-                            </Box>
-                        )}
+
 
                         {/* Personal Information */}
-                        <Box sx={{ mb: 4 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 600, mb: 3 }}>
-                                Personal Information
-                            </Typography>
+                        <Box sx={{ mb: 2 }}>
 
                             {/* Full Name */}
-                            <Typography sx={{ mb: 1, fontWeight: 500 }}>
+                            <Typography sx={{ mb: 1, fontWeight: 500, color: "rgba(40, 78, 1, 1)", fontSize: '26px' }}>
                                 {full_name_label || 'Full Name'}
                             </Typography>
                             <TextField
@@ -220,6 +220,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                         '&&&& .MuiFormHelperText-root':
                                         {
                                             background: 'rgba(234, 254, 223, 1)',
+                                            fontSize: '18px',
                                             margin: 0,
                                             paddingTop: '5px !important'
                                         }
@@ -230,7 +231,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                             {/* Email and Phone */}
                             <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', md: 'row' } }}>
                                 <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 1, fontWeight: 500 }}>
+                                    <Typography sx={{ mb: 1, fontWeight: 500, color: "rgba(40, 78, 1, 1)", fontSize: '26px' }}>
                                         {email_label || 'Email Address'}
                                     </Typography>
                                     <TextField
@@ -249,6 +250,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                                 '&&&& .MuiFormHelperText-root':
                                                 {
                                                     background: 'rgba(234, 254, 223, 1)',
+                                                    fontSize: '18px',
                                                     margin: 0,
                                                     paddingTop: '5px !important'
                                                 }
@@ -257,7 +259,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                     />
                                 </Box>
                                 <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 1, fontWeight: 500 }}>
+                                    <Typography sx={{ mb: 1, fontWeight: 500, color: "rgba(40, 78, 1, 1)", fontSize: '26px' }}>
                                         {phone_label || 'Phone Number'}
                                     </Typography>
                                     <TextField
@@ -275,6 +277,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                                 '&&&& .MuiFormHelperText-root':
                                                 {
                                                     background: 'rgba(234, 254, 223, 1)',
+                                                    fontSize: '18px',
                                                     margin: 0,
                                                     paddingTop: '5px !important'
                                                 }
@@ -285,7 +288,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                             </Box>
 
                             {/* Current Location */}
-                            <Typography sx={{ mb: 1, fontWeight: 500 }}>
+                            <Typography sx={{ mb: 1, fontWeight: 500, color: "rgba(40, 78, 1, 1)", fontSize: '26px' }}>
                                 {location_label || 'Current Location'}
                             </Typography>
                             <TextField
@@ -303,6 +306,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                         '&&&& .MuiFormHelperText-root':
                                         {
                                             background: 'rgba(234, 254, 223, 1)',
+                                            fontSize: '18px',
                                             margin: 0,
                                             paddingTop: '5px !important'
                                         }
@@ -311,18 +315,14 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                             />
                         </Box>
 
-                        <Divider sx={{ my: 4 }} />
 
                         {/* Emergency Contact */}
-                        <Box sx={{ mb: 4 }}>
-                            <Typography variant="h4" sx={{ fontWeight: 600, mb: 3 }}>
-                                Emergency Contact
-                            </Typography>
+                        <Box sx={{ mb: 2 }}>
 
                             {/* Emergency Contact Name and Relation */}
                             <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', md: 'row' } }}>
                                 <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 1, fontWeight: 500 }}>
+                                    <Typography sx={{ mb: 1, fontWeight: 500, color: "rgba(40, 78, 1, 1)", fontSize: '26px' }}>
                                         {emergency_name_label || 'Emergency Contact Name'}
                                     </Typography>
                                     <TextField
@@ -340,6 +340,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                                 '&&&& .MuiFormHelperText-root':
                                                 {
                                                     background: 'rgba(234, 254, 223, 1)',
+                                                    fontSize: '18px',
                                                     margin: 0,
                                                     paddingTop: '5px !important'
                                                 }
@@ -348,7 +349,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                     />
                                 </Box>
                                 <Box sx={{ flex: 1 }}>
-                                    <Typography sx={{ mb: 1, fontWeight: 500 }}>
+                                    <Typography sx={{ mb: 1, fontWeight: 500, color: "rgba(40, 78, 1, 1)", fontSize: '26px' }}>
                                         Relation {emergency_relation_hint && `(${emergency_relation_hint})`}
                                     </Typography>
                                     <TextField
@@ -367,6 +368,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                                 '&&&& .MuiFormHelperText-root':
                                                 {
                                                     background: 'rgba(234, 254, 223, 1)',
+                                                    fontSize: '18px',
                                                     margin: 0,
                                                     paddingTop: '5px !important'
                                                 }
@@ -377,7 +379,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                             </Box>
 
                             {/* Emergency Contact Number */}
-                            <Typography sx={{ mb: 1, fontWeight: 500 }}>
+                            <Typography sx={{ mb: 1, fontWeight: 500, color: "rgba(40, 78, 1, 1)", fontSize: '26px' }}>
                                 {emergency_number_label || 'Emergency Contact Number'}
                             </Typography>
                             <TextField
@@ -395,6 +397,7 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                                         '&&&& .MuiFormHelperText-root':
                                         {
                                             background: 'rgba(234, 254, 223, 1)',
+                                            fontSize: '18px',
                                             margin: 0,
                                             paddingTop: '5px !important'
                                         }
@@ -408,17 +411,27 @@ const RegistrationWithOccupancySelection: React.FC<RegistrationWithOccupancySele
                         {/* Submit Button */}
                         <Box sx={{ textAlign: 'center' }}>
                             <Button
-                                type="submit"
                                 variant="contained"
-                                size="large"
+                                size="medium"
                                 disabled={loading}
                                 sx={{
-                                    px: 4,
-                                    py: 1.5,
-                                    fontSize: '1.1rem',
+                                    px: '58.67px',
+                                    py: '14.67px',
+                                    fontSize: {
+                                        xs: "20px",
+                                        md: "26px"
+                                    },
                                     fontWeight: 600,
-                                    borderRadius: 2,
-                                    minWidth: '200px'
+                                    boxShadow: 0,
+                                    borderRadius: "88.01px",
+                                    textTransform: 'none',
+                                    width: "283.34px",
+                                    height: "57.34px",
+                                    '&:hover': {
+                                        boxShadow: 6,
+                                        transform: 'translateY(-2px)',
+                                    },
+                                    transition: 'all 0.3s ease',
                                 }}
                             >
                                 {loading ? 'Submitting...' : (submit_button_text || 'Register Now')}
