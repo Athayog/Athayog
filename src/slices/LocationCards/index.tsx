@@ -5,24 +5,24 @@ import { SliceComponentProps } from "@prismicio/react";
 import { Content } from "@prismicio/client";
 
 const Title = styled(Typography, {
-    shouldForwardProp: (prop) => prop !== 'colorText',
+  shouldForwardProp: (prop) => prop !== 'colorText',
 })<{ colorText?: string }>(({ theme, colorText }) => ({
-    fontSize: '48px',
-    color: '#303030',
-    fontWeight: '700',
-    [theme.breakpoints.down('md')]: {
-        fontSize: '26px',
-    },
-    span: {
-        color: colorText || '#237306', // Default color if colorText isn't provided
-    },
+  fontSize: '48px',
+  color: '#303030',
+  fontWeight: '700',
+  [theme.breakpoints.down('md')]: {
+    fontSize: '26px',
+  },
+  span: {
+    color: colorText || '#237306', // Default color if colorText isn't provided
+  },
 }))
 
 export type LocationCardsProps = SliceComponentProps<Content.LocationCardsSlice>;
 
 const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
-  const sectionTitle =
-    slice.primary.section_title?.[0]?.text || "Two Studios, One Purpose";
+
+  const sectionTitle = (slice.primary.section_title as any)?.text || "One Studio, One Purpose";
 
   return (
     <Box
@@ -43,17 +43,17 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
     >
       <Title
         variant="h4"
-        sx={{ 
-          color: "#154734", 
-          mb: 5, 
-          fontWeight: "bold", 
+        sx={{
+          color: "#154734",
+          mb: 5,
+          fontWeight: "bold",
           textAlign: "center",
           width: '100%'
         }}
       >
         {sectionTitle}
       </Title>
-      
+
       <Box
         sx={{
           display: 'flex',
@@ -68,7 +68,7 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
       >
         {slice.primary.locations.map((location, index) => {
           const iconUrl = location.icon?.url;
-          const title = location.location_title?.[0]?.text || "";
+          const title = (location.location_title?.[0] as any)?.text || "";
           const address = location.address || "";
           const mapLink = location.map_link as any;
 
@@ -95,29 +95,29 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                   component="img"
                   src={iconUrl}
                   alt={`${title} icon`}
-                  sx={{ 
-                    width: 50, 
-                    color:'green',
-                    height: 50, 
+                  sx={{
+                    width: 50,
+                    color: 'green',
+                    height: 50,
                     objectFit: 'contain'
                   }}
                 />
               )}
-              <Typography 
-                variant="h6" 
-                sx={{ 
+              <Typography
+                variant="h6"
+                sx={{
                   color: "#154734",
                   fontWeight: 'bold',
                   textAlign: 'center',
-                  textTransform:'uppercase',
-                  fontSize:{xs:'24px',md:'28px'}
+                  textTransform: 'uppercase',
+                  fontSize: { xs: '24px', md: '28px' }
                 }}
               >
                 {title}
               </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
+              <Typography
+                variant="body1"
+                sx={{
                   textAlign: 'center',
                   color: '#666',
                   flex: 1
@@ -130,30 +130,30 @@ const LocationCards: React.FC<LocationCardsProps> = ({ slice }) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 underline="hover"
-                sx={{ 
+                sx={{
                   fontWeight: "medium",
                   color: "#154734",
-                  marginTop:'10px',
+                  marginTop: '10px',
                   '&:hover': {
                     color: "#2A5F47"
                   }
                 }}
               >
-               <Button  size='large' variant='outlined' sx={{boxShadow:'none'}}>
-                 {mapLink.text}
-               </Button>
+                <Button size='large' variant='outlined' sx={{ boxShadow: 'none' }}>
+                  {mapLink.text}
+                </Button>
               </Link>
             </Box>
           );
         })}
       </Box>
-      
+
       <Typography
         variant="body1"
-        sx={{ 
-          mt: 6, 
-          fontStyle: "italic", 
-          textAlign: "center", 
+        sx={{
+          mt: 6,
+          fontStyle: "italic",
+          textAlign: "center",
           color: "#2A2A2A",
           maxWidth: '600px'
         }}
