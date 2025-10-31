@@ -14,7 +14,7 @@ export type GroupScheduleProps = SliceComponentProps<Content.GroupScheduleSlice>
  * Component for "GroupSchedule" Slices.
  */
 const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
-    const easyGreen  ='#2b9d8f'
+    const easyGreen = '#2b9d8f'
     const orangeIntermediate = '#f68630'
     const advancedRed = '#ed1e24'
     const blueOther = '#3c69b2'
@@ -62,9 +62,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                     overflow: 'auto',
                                 }}
                             >
-                                <Table sx={{
-
-                                }}>
+                                <Table sx={{}}>
                                     <TableHead>
                                         <TableRow>
                                             <TableCell
@@ -150,51 +148,35 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                     zIndex: 2,
                                                 }}
                                             >
-                                                6.00 AM - 7.00 AM
+                                                6:00 AM - 7:00 AM
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-
                                                 Rythm Of Being
-                                                <Dot color={advancedRed} />
-
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-
-                                                Chair Yoga
-                                                <Dot color={easyGreen} />
-
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-
-                                                Uttama Sadhana (Advanced Asana)
                                                 <Dot color={orangeIntermediate} />
-
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-
-                                                Shakthi Yoga
-                                             <Dot color={orangeIntermediate} />
-
-
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-
-                                                Universal Harmony
-                                                <Dot color={advancedRed} />
-
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-
                                                 Transcending Transition
-                                               <Dot color={orangeIntermediate} />
-
-
+                                                <Dot color={advancedRed} />
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-
-                                                Shakthi Yoga
+                                                Deep Space
+                                                <Dot color={blueOther} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Inversions)
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Arm Balance)
                                                 <Dot color={easyGreen} />
-
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Universal Harmony
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow sx={{ backgroundColor: '#fef4eb' }}>
@@ -206,44 +188,41 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                     zIndex: 2,
                                                 }}
                                             >
-                                                7.00 AM - 8.00 AM
+                                                7:00 AM - 8:00 AM
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Transcending Transition
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Rythm of Being
-                                              <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                              <Dot color={easyGreen} />
+                                                <Dot color={easyGreen} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Uttama Sadhana (Inversions)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={easyGreen} />
+                                            </TableCell>
+
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Arm Balance)
                                                 <Dot color={advancedRed} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Shakthi Yoga
-                                               <Dot color={orangeIntermediate} />
-
+                                                Rythm Of Being
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
-                                                 <Dot color={easyGreen} />
+                                                Universal Harmony
+                                                <Dot color={advancedRed} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                              <Dot color={orangeIntermediate} />
-
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>
@@ -255,45 +234,41 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                     zIndex: 2,
                                                 }}
                                             >
-                                                8.00 AM - 9.00 AM
+                                                8:00 AM - 9:00 AM
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
+                                                Uttama Sadhana (Advance Asana)
                                                 <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Shakthi Yoga
-                                               <Dot color={advancedRed} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Univeral Harmony
-                                              <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
-                                                 <Dot color={easyGreen} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Chair Yoga
-                                                 <Dot color={advancedRed} />
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Rythm Of Being
-                                               <Dot color={orangeIntermediate} />
-
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
-                                                <Dot color={orangeIntermediate} />
+                                                Yoga Nidra
+                                                <Dot color={blueOther} />
+                                            </TableCell>
 
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Transcending Transition
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Inversions)
+                                                <Dot color={easyGreen} />
+                                            </TableCell>
+
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Deep Space
+                                                <Dot color={blueOther} />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow sx={{ backgroundColor: '#fef4eb' }}>
@@ -305,96 +280,43 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                     zIndex: 2,
                                                 }}
                                             >
-                                                9.00 AM - 10.00 AM
+                                                9:30 AM - 10:30 AM
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Restorative Yoga
+                                                <Dot color={blueOther} />
+                                            </TableCell>
+
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Rythm Of Being
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
+
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Arm Balance)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Inversions)
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
+
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Universal Harmony
                                                 <Dot color={easyGreen} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Transcending Transition
-                                              <Dot color={orangeIntermediate} />
-
+                                                <Dot color={advancedRed} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
-                                               <Dot color={advancedRed} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Chair Yoga
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advanced Asana)
+                                                Uttama Sadhana (Advance Asana)
                                                 <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Shakthi Yoga
-                                                 <Dot color={easyGreen} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Rythm of Being
-                                                 <Dot color={advancedRed} />
                                             </TableCell>
                                         </TableRow>
-                                        <TableRow>
-                                            <TableCell
-                                                sx={{
-                                                    backgroundColor: '#eff3d7',
-                                                    position: 'sticky',
-                                                    left: 0,
-                                                    zIndex: 2,
-                                                }}
-                                            >
-                                                10.00 AM - 11.00 AM
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Shakthi Yoga
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Inversions)
-                                              <Dot color={advancedRed} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Shakthi Yoga
-                                              <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Rythm of Being
-                                                 <Dot color={advancedRed} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                                 <Dot color={advancedRed} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Yoga Nidra
-                                               <Dot color={easyGreen} />
-                                            </TableCell>
-                                        </TableRow>
-
                                         <TableRow>
                                             <TableCell
                                                 colSpan={8}
@@ -416,174 +338,81 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                     zIndex: 2,
                                                 }}
                                             >
-                                                4.00 PM - 5.00 PM
+                                                4:00 PM - 5:00 PM
                                             </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
-                                              <Dot color={easyGreen} />
-                                            </TableCell>
-
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Universal Harmony
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                                 <Dot color={advancedRed} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Chair Yoga
                                                 <Dot color={easyGreen} />
-                                            </TableCell>
-
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
-                                                 <Dot color={advancedRed} />
                                             </TableCell>
 
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Uttama Sadhana (Arm Balance)
-                                               <Dot color={orangeIntermediate} />
-
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
 
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Rythm of Being
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell
-                                                sx={{
-                                                    backgroundColor: '#eff3d7',
-                                                    position: 'sticky',
-                                                    left: 0,
-                                                    zIndex: 2,
-                                                }}
-                                            >
-                                                5.00 PM - 6.00 PM
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Shakthi Yoga
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Uttama Sadhana (Inversions)
-                                               <Dot color={orangeIntermediate} />
+                                                <Dot color={easyGreen} />
+                                            </TableCell>
 
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Rythm of Being
-                                                 <Dot color={advancedRed} />
-                                            </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Transcending Transition
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
-                                               <Dot color={easyGreen} />
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Inversions)
                                                 <Dot color={advancedRed} />
                                             </TableCell>
-                                        </TableRow>
 
-                                        <TableRow sx={{ backgroundColor: '#fef4eb' }}>
-                                            <TableCell
-                                                sx={{
-                                                    backgroundColor: '#eff3d7',
-                                                    position: 'sticky',
-                                                    left: 0,
-                                                    zIndex: 2,
-                                                }}
-                                            >
-                                                6.00 PM - 7.00 PM
-                                            </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rythm of Being
-                                                 <Dot color={advancedRed} />
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                               <Dot color={easyGreen} />
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
-                                               <Dot color={advancedRed} />
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Shakthi Yoga
-                                               <Dot color={orangeIntermediate} />
 
-                                            </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arms Balance)
-                                               <Dot color={easyGreen} />
+                                                Deep Space
+                                                <Dot color={blueOther} />
                                             </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Chair Yoga
-                                               <Dot color={orangeIntermediate} />
 
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
-                                               <Dot color={easyGreen} />
-                                            </TableCell>
-                                        </TableRow>
-
-                                        <TableRow>
-                                            <TableCell
-                                                sx={{
-                                                    backgroundColor: '#eff3d7',
-                                                    position: 'sticky',
-                                                    left: 0,
-                                                    zIndex: 2,
-                                                }}
-                                            >
-                                                7.00 PM - 8.00 PM
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Sound Meditation
-                                                  <Dot color={blueOther} />
-                                            </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Rythm of Being
                                                 <Dot color={easyGreen} />
                                             </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
-                                               <Dot color={orangeIntermediate} />
-
+                                        </TableRow>
+                                        <TableRow>
+                                            <TableCell
+                                                sx={{
+                                                    backgroundColor: '#eff3d7',
+                                                    position: 'sticky',
+                                                    left: 0,
+                                                    zIndex: 2,
+                                                }}
+                                            >
+                                                5:00 PM - 6:00 PM
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rythm of Being
-                                                 <Dot color={easyGreen} />
+                                                Rythm Of Being
+                                                <Dot color={advancedRed} />
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
-                                                 <Dot color={advancedRed} />
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Yoga Nidra
+                                                <Dot color={blueOther} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Arm Balance)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Universal Harmony
+                                                <Dot color={advancedRed} />
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Transcending Transition
-                                               <Dot color={orangeIntermediate} />
-
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Inversions)
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                         </TableRow>
 
@@ -596,46 +425,81 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                                     zIndex: 2,
                                                 }}
                                             >
-                                                8.00 PM - 9.00 PM
+                                                6:00 PM - 7:00 PM
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Uttama Sadhana (Inversions)
-                                                 <Dot color={advancedRed} />
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
-                                               <Dot color={orangeIntermediate} />
-
+                                                Rythm Of Being
+                                                <Dot color={easyGreen} />
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Chair Yoga
-                                               <Dot color={orangeIntermediate} />
-
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
-                                               <Dot color={easyGreen} />
-                                            </TableCell>
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Power Yoga
+                                                Uttama Sadhana (Arm Balance)
                                                 <Dot color={advancedRed} />
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Trataka & MSRT
-                                               <Dot color={blueOther} />
-
+                                                Transcending Transition
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arms Balance)
-                                               <Dot color={orangeIntermediate} />
-
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Transcending Transition
+                                                <Dot color={easyGreen} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Yin Yoga
+                                                <Dot color={blueOther} />
                                             </TableCell>
                                         </TableRow>
 
+                                        <TableRow>
+                                            <TableCell
+                                                sx={{
+                                                    backgroundColor: '#eff3d7',
+                                                    position: 'sticky',
+                                                    left: 0,
+                                                    zIndex: 2,
+                                                }}
+                                            >
+                                                7:30 PM - 8:30 PM
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Arm Balance)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Sound Meditation
+                                                <Dot color={blueOther} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Inversions)
+                                                <Dot color={easyGreen} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Trakata & Msrt
+                                                <Dot color={blueOther} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Rythm of Being
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Universal Harmony
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
+                                        </TableRow>
                                     </TableBody>
                                 </Table>
                             </TableContainer>
-
 
                             <Box
                                 sx={{
@@ -650,25 +514,25 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                 }}
                             >
                                 <Box>
-                                <List sx={{ listStyleType: 'disc', pl: 2 }}>
-                                    <ListItem
-                                        sx={{
-                                            display: 'list-item',
-                                            bgcolor: '#a9d58b',
-                                            maxWidth: 'max-content',
-                                            borderRadius: '40px',
-                                        }}
-                                    >
-                                        {slice.primary.highlighted_point}
-                                    </ListItem>
-                                    {slice.primary.list.map((item, index) => (
-                                        <ListItem key={index} sx={{ display: 'list-item' }}>
-                                            {item.list_item}
+                                    <List sx={{ listStyleType: 'disc', pl: 2 }}>
+                                        <ListItem
+                                            sx={{
+                                                display: 'list-item',
+                                                bgcolor: '#a9d58b',
+                                                maxWidth: 'max-content',
+                                                borderRadius: '40px',
+                                            }}
+                                        >
+                                            {slice.primary.highlighted_point}
                                         </ListItem>
-                                    ))}
-                                </List>
-                                  <LevelStack/>
-                                  </Box>
+                                        {slice.primary.list.map((item, index) => (
+                                            <ListItem key={index} sx={{ display: 'list-item' }}>
+                                                {item.list_item}
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                    <LevelStack />
+                                </Box>
                                 <Box>
                                     <PrismicNextLink field={slice.primary.download_button_link} target="_blank">
                                         <ActionButton variant="contained" fullWidth sx={{ marginTop: 0 }}>
@@ -676,9 +540,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                         </ActionButton>
                                     </PrismicNextLink>
                                 </Box>
-                              
                             </Box>
-                            
                         </Box>
                     </Box>
                 </Box>
@@ -689,45 +551,35 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
 
 export default GroupSchedule
 
-
-
 export const LevelStack = () => {
-  const easyGreen = '#2b9d8f';
-  const orangeIntermediate = '#f68630';
-  const advancedRed = '#ed1e24';
-  const blueOther = '#3c69b2';
+    const easyGreen = '#2b9d8f'
+    const orangeIntermediate = '#f68630'
+    const advancedRed = '#ed1e24'
+    const blueOther = '#3c69b2'
 
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        minWidth: 300,
-        margin:'20px 0px',
-        minHeight: 120,
-        borderRadius: 1,
-        overflow: 'hidden',
-        boxShadow: 1,
-        fontSize: 12,
-        fontWeight: 'bold',
-        color: 'white',
-        textAlign: 'center',
-        userSelect: 'none',
-        textTransform:'uppercase'
-      }}
-    >
-      <Box sx={{ flex: 1, bgcolor: easyGreen, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        Beginner Friendly / Open to all
-      </Box>
-      <Box sx={{ flex: 1, bgcolor: orangeIntermediate, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        Intermediate
-      </Box>
-      <Box sx={{ flex: 1, bgcolor: advancedRed, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        Advanced
-      </Box>
-      <Box sx={{ flex: 1, bgcolor: blueOther, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        Sound meditation / Msrt
-      </Box>
-    </Box>
-  );
-};
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                minWidth: 300,
+                margin: '20px 0px',
+                minHeight: 120,
+                borderRadius: 1,
+                overflow: 'hidden',
+                boxShadow: 1,
+                fontSize: 12,
+                fontWeight: 'bold',
+                color: 'white',
+                textAlign: 'center',
+                userSelect: 'none',
+                textTransform: 'uppercase',
+            }}
+        >
+            <Box sx={{ flex: 1, bgcolor: easyGreen, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Beginner Friendly / Open to all</Box>
+            <Box sx={{ flex: 1, bgcolor: orangeIntermediate, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Intermediate</Box>
+            <Box sx={{ flex: 1, bgcolor: advancedRed, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Advanced</Box>
+            <Box sx={{ flex: 1, bgcolor: blueOther, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Sound meditation / Msrt / Yin</Box>
+        </Box>
+    )
+}
