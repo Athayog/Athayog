@@ -15,7 +15,7 @@ export type PersonalSessionPricingProps = SliceComponentProps<Content.PersonalSe
  * Component for "PersonalSessionPricing" Slices.
  */
 
-const AdvantagesBox = ({ course_name, course_days, type, course_price }: { course_name: any; course_days: any; type: any; course_price: any }) => {
+const AdvantagesBox = ({ course_name, course_days, type, course_price, oldprice }: { course_name: any; course_days: any; type: any; course_price: any; oldprice?: any }) => {
     const getColorType = (type: string) => {
         switch (type) {
             case 'studio':
@@ -74,15 +74,22 @@ const AdvantagesBox = ({ course_name, course_days, type, course_price }: { cours
                     At: {type}
                 </Typography>
             </Box>
-            <Typography
-                sx={{
-                    marginTop: '10px',
-                    fontWeight: '600',
-                    fontSize: { xs: '20px', md: '45px' },
-                }}
-            >
-                {course_price && formatToCurrency(course_price)}
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', width: '100%', gap: '10px' }}>
+                <Typography
+                    sx={{
+                        marginTop: '10px',
+                        fontWeight: '600',
+                        fontSize: { xs: '20px', md: '45px' },
+                    }}
+                >
+                    {course_price && formatToCurrency(course_price)}
+                </Typography>
+                {oldprice && (
+                    <Typography sx={{ fontSize: { xs: '18px', md: '24px' }, fontWeight: '400', color: '#606060', textDecoration: 'line-through', marginTop: { xs: '10px', md: '15px' } }}>
+                        {formatToCurrency(oldprice)}
+                    </Typography>
+                )}
+            </Box>
         </Box>
     )
 }
@@ -106,6 +113,7 @@ type PersonalSession = {
     course_days: NumberField
     course_price: NumberField
     type: SelectField<'Onsite' | 'Studio' | 'Online'>
+    oldprice?: NumberField
 }
 
 const PersonalSessionPricing = ({ slice }: PersonalSessionPricingProps): JSX.Element => {
@@ -122,7 +130,7 @@ const PersonalSessionPricing = ({ slice }: PersonalSessionPricingProps): JSX.Ele
         selectedType === 'all'
             ? allCourses.map((course) => course as PersonalSession)
             : slice.primary.courses.filter((course) => course.type === selectedType).map((course) => course as PersonalSession)
-
+    console.log(filteredCourses)
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box

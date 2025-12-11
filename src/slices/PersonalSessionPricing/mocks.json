@@ -53,6 +53,14 @@
 									"value": "59",
 									"type": "Number"
 								}
+							],
+							[
+								"oldprice",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "94",
+									"type": "Number"
+								}
 							]
 						]
 					}
@@ -91,6 +99,7 @@
 				"type": "Text"
 			},
 			"enquire_now_button_link": {
+				"key": "ed432936-94bb-44f3-9f54-dd557f0612dd",
 				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",

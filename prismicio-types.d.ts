@@ -6635,6 +6635,16 @@ export interface PersonalSessionPricingSliceDefaultPrimaryCoursesItem {
     course_price: prismic.NumberField
 
     /**
+     * oldPrice field in *PersonalSessionPricing → Default → Primary → Courses*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: personal_session_pricing.default.primary.courses[].oldprice
+     * - **Documentation**: https://prismic.io/docs/field#number
+     */
+    oldprice: prismic.NumberField
+
+    /**
      * GST field in *PersonalSessionPricing → Default → Primary → Courses*
      *
      * - **Field Type**: Number
