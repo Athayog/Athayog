@@ -55,6 +55,13 @@
                   "placeholder": "Add Base Price (GST Exlusive)"
                 }
               },
+              "oldprice": {
+                "type": "Number",
+                "config": {
+                  "label": "oldPrice",
+                  "placeholder": ""
+                }
+              },
               "gst": {
                 "type": "Number",
                 "config": {
