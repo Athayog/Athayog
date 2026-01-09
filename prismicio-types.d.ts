@@ -269,6 +269,31 @@ export interface FooterDocumentDataAddressItem {
 }
 
 /**
+ * Item in *Footer → Payment Option*
+ */
+export interface FooterDocumentDataPaymentOptionItem {
+    /**
+     * Icon field in *Footer → Payment Option*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.payment_option[].icon
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    icon: prismic.ImageField<never>
+
+    /**
+     * Name field in *Footer → Payment Option*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.payment_option[].name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    name: prismic.KeyTextField
+}
+
+/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -370,6 +395,17 @@ interface FooterDocumentData {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     address: prismic.GroupField<Simplify<FooterDocumentDataAddressItem>>
+
+    /**
+     * Payment Option field in *Footer*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.payment_option[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    payment_option: prismic.GroupField<Simplify<FooterDocumentDataPaymentOptionItem>>
 }
 
 /**
@@ -9484,6 +9520,7 @@ declare module '@prismicio/client' {
             FooterDocumentDataTalkToUsItem,
             FooterDocumentDataSocialLinksIconsItem,
             FooterDocumentDataAddressItem,
+            FooterDocumentDataPaymentOptionItem,
             PageDocument,
             PageDocumentData,
             PageDocumentDataSlicesSlice,

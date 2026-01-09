@@ -185,6 +185,30 @@
                         }
                     }
                 }
+            },
+            "payment_option": {
+                "type": "Group",
+                "config": {
+                    "label": "Payment Option",
+                    "repeat": true,
+                    "fields": {
+                        "icon": {
+                            "type": "Image",
+                            "config": {
+                                "label": "Icon",
+                                "constraint": {},
+                                "thumbnails": []
+                            }
+                        },
+                        "name": {
+                            "type": "Text",
+                            "config": {
+                                "label": "Name",
+                                "placeholder": ""
+                            }
+                        }
+                    }
+                }
             }
         }
     }
