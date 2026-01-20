@@ -5855,6 +5855,29 @@ type MentalHealthHeroSliceVariation = MentalHealthHeroSliceDefault
 export type MentalHealthHeroSlice = prismic.SharedSlice<'mental_health_hero', MentalHealthHeroSliceVariation>
 
 /**
+ * Default variation for MetaScript Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MetaScriptSliceDefault = prismic.SharedSliceVariation<'default', Record<string, never>, never>
+
+/**
+ * Slice variation for *MetaScript*
+ */
+type MetaScriptSliceVariation = MetaScriptSliceDefault
+
+/**
+ * MetaScript Shared Slice
+ *
+ * - **API ID**: `meta_script`
+ * - **Description**: MetaScript
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MetaScriptSlice = prismic.SharedSlice<'meta_script', MetaScriptSliceVariation>
+
+/**
  * Item in *MultiLeftRightCourses → Default → Primary → Content*
  */
 export interface MultiLeftRightCoursesSliceDefaultPrimaryContentItem {
@@ -9784,6 +9807,9 @@ declare module '@prismicio/client' {
             MentalHealthHeroSliceDefaultPrimary,
             MentalHealthHeroSliceVariation,
             MentalHealthHeroSliceDefault,
+            MetaScriptSlice,
+            MetaScriptSliceVariation,
+            MetaScriptSliceDefault,
             MultiLeftRightCoursesSlice,
             MultiLeftRightCoursesSliceDefaultPrimaryContentItem,
             MultiLeftRightCoursesSliceDefaultPrimaryBackgroundColorItem,

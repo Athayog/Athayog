@@ -51,6 +51,7 @@ export const components = {
     map: dynamic(() => import('./Map')),
     mental_health_content: dynamic(() => import('./MentalHealthContent')),
     mental_health_hero: dynamic(() => import('./MentalHealthHero')),
+    meta_script: dynamic(() => import('./MetaScript')),
     multi_left_right_courses: dynamic(() => import('./MultiLeftRightCourses')),
     multi_left_right_info_section: dynamic(() => import('./MultiLeftRightInfoSection')),
     our_team: dynamic(() => import('./OurTeam')),

@@ -101,7 +101,7 @@ export default function Stats({ statsData }: any) {
                                 return (
                                     <Grid key={index} component="div">
                                         <StatBox>
-                                            <Image src={Icon} width={stat.icon.dimensions.width} height={stat.icon.dimensions.height} alt={stat.icon.alt} />
+                                            <Image src={Icon} width={stat.icon.dimensions.width} height={stat.icon.dimensions.height} alt={stat.icon.alt ?? 'Image'} />
                                             <StatCount
                                                 ref={(el) => {
                                                     if (el) {
