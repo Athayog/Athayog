@@ -130,7 +130,7 @@ const PersonalSessionPricing = ({ slice }: PersonalSessionPricingProps): JSX.Ele
         selectedType === 'all'
             ? allCourses.map((course) => course as PersonalSession)
             : slice.primary.courses.filter((course) => course.type === selectedType).map((course) => course as PersonalSession)
-    console.log(filteredCourses)
+
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
             <Box

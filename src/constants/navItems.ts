@@ -13,10 +13,10 @@ export const navItems: NavItem[] = [
         type: 'menu',
         path: '/what-we-offer',
         children: [
-            { label: 'Group Class', path: '/group-classes', type: 'nav' },
+            { label: 'Group Class', path: '/group-classes-indiranagar', type: 'nav' },
             {
                 label: 'Personal Training',
-                path: '/personal-session',
+                path: '/personal-yoga-training-indiranagar',
                 type: 'nav',
             },
             { label: 'Workshop', path: '/workshops', type: 'nav' },
@@ -26,18 +26,18 @@ export const navItems: NavItem[] = [
                 type: 'menu',
                 path: '/yoga-academy',
                 children: [
-                    { label: 'Residential', path: '/residential', type: 'nav' },
+                    { label: 'Residential', path: '/residential-yoga-teacher-training', type: 'nav' },
                     {
                         label: 'Non Residential',
-                        path: '/non-residential',
+                        path: '/yoga-teacher-training-ryt-200-non-residential',
                         type: 'nav',
                     },
-                    { label: 'TTC Online', path: '/ttc-online', type: 'nav' },
+                    { label: 'TTC Online', path: '/yoga-ttc-online-certification', type: 'nav' },
                 ],
             },
             { label: 'Excursion / Picnics', path: '/picnics', type: 'nav' },
             // { label: 'PCOS Yoga', path: '/pcos-yoga', type: 'nav' },
-            { label: 'Weight Loss Program', path: '/weight-loss-program', type: 'nav' },
+            { label: 'Weight Loss Program', path: '/weight-loss-program-indiranagar', type: 'nav' },
         ],
     },
     {

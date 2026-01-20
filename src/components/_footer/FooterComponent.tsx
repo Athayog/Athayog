@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, AwaitedReactNode } from 'react'
 import { green } from '@mui/material/colors'
 import Image from 'next/image'
+import React from 'react'
 
 export const HeadingTitle = styled(Typography)(({ theme }) => ({
     fontWeight: '700',
@@ -39,7 +40,7 @@ const FooterComponent = ({ data }: { data: any }) => {
     const legal = data.legal || []
     const talkToUs = data.talk_to_us || []
     const paymentOption = data.payment_option
-    console.log(data)
+
     const pathname = usePathname()
     if (pathname === '/scanner') return null
 
@@ -61,9 +62,11 @@ const FooterComponent = ({ data }: { data: any }) => {
                             Site Links
                         </HeadingTitle>
                         {siteLinks.map((link: any, index: number) => (
-                            <LinksItem key={index}>
-                                <PrismicNextLink field={link.link}>{link.label}</PrismicNextLink>
-                            </LinksItem>
+                            <React.Fragment key={index}>
+                                <LinksItem key={index}>
+                                    <PrismicNextLink field={link.link}>{link.label}</PrismicNextLink>
+                                </LinksItem>
+                            </React.Fragment>
                         ))}
                     </Grid>
 
@@ -140,13 +143,13 @@ const FooterComponent = ({ data }: { data: any }) => {
                                             link_to_map: LinkField | null | undefined
                                         }) => {
                                             return (
-                                                <>
+                                                <React.Fragment key={index}>
                                                     <Typography sx={{ fontSize: { xs: '12px', md: '18px' }, fontWeight: 'bold', marginBottom: '5px' }}>{item.title}</Typography>
                                                     <LinksItem>{item.locations} </LinksItem>
                                                     <Box sx={{ marginBottom: '15px', textDecoration: 'underline', color: 'green', a: { fontSize: { xs: '12px', md: '18px' } } }}>
                                                         <PrismicNextLink field={item.link_to_map} />
                                                     </Box>
-                                                </>
+                                                </React.Fragment>
                                             )
                                         }
                                     )}
