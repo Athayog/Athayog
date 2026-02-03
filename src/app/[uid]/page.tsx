@@ -6,6 +6,7 @@ import * as prismic from '@prismicio/client'
 
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
+import robots from '../robots'
 
 type Params = { uid: string }
 
@@ -16,7 +17,20 @@ type Params = { uid: string }
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
     const client = createClient()
     const page = await client.getByUID('page', params.uid).catch(() => notFound())
+    const pageName = params.uid
+    const noIndexPages = new Set([
+        'weight-loss-program-indiranagar',
+        'group-classes-indiranagar',
+        'personal-yoga-training-indiranagar',
+        'residential-yoga-teacher-training',
+        'yoga-teacher-training-ryt-200-non-residential',
+    ])
 
+    let robots: Metadata['robots'] = { index: true, follow: true }
+
+    if (noIndexPages.has(pageName)) {
+        robots = { index: false, follow: true }
+    }
     return {
         title: prismic.asText(page.data.title),
         description: page.data.meta_description,
@@ -28,6 +42,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
                 },
             ],
         },
+        robots,
     }
 }
 
@@ -38,7 +53,6 @@ export default async function Page({ params }: { params: Params }) {
     const pageName = params.uid
 
     let schema: any = null
-    console.log('🔥🔥🔥 PAGE UID', params.uid)
 
     if (pageName === 'weight-loss-program-indiranagar') {
         schema = {
@@ -96,7 +110,6 @@ export default async function Page({ params }: { params: Params }) {
             },
         }
     }
-
     if (pageName === 'personal-yoga-training-indiranagar') {
         schema = {
             '@context': 'https://schema.org',
@@ -126,7 +139,6 @@ export default async function Page({ params }: { params: Params }) {
             },
         }
     }
-
     if (pageName === 'residential-yoga-teacher-training') {
         schema = {
             '@context': 'https://schema.org',
@@ -156,7 +168,6 @@ export default async function Page({ params }: { params: Params }) {
             },
         }
     }
-
     if (pageName === 'yoga-teacher-training-ryt-200-non-residential') {
         schema = {
             '@context': 'https://schema.org',
@@ -186,7 +197,6 @@ export default async function Page({ params }: { params: Params }) {
             },
         }
     }
-
     if (pageName === 'yoga-ttc-online-certification') {
         schema = {
             '@context': 'https://schema.org',
