@@ -1,14 +1,5 @@
 import React, { useState } from 'react'
-import {
-    Box,
-    Container,
-    Typography,
-    Button,
-    Accordion,
-    AccordionSummary,
-    AccordionDetails,
-    Stack,
-} from '@mui/material'
+import { Box, Container, Typography, Button, Accordion, AccordionSummary, AccordionDetails, Stack } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 
@@ -23,10 +14,8 @@ export interface FAQCTASectionProps {
     faqs: FAQItem[]
     subtext: string
     primaryCtaText: string
-    primaryCtaHref?: string
     onPrimaryCtaClick?: () => void
     secondaryCtaText: string
-    secondaryCtaHref?: string
     onSecondaryCtaClick?: () => void
     showWhatsAppIcon?: boolean
     backgroundColor?: string
@@ -46,10 +35,8 @@ const FAQCTASection: React.FC<FAQCTASectionProps> = ({
     faqs,
     subtext,
     primaryCtaText,
-    primaryCtaHref,
     onPrimaryCtaClick,
     secondaryCtaText,
-    secondaryCtaHref,
     onSecondaryCtaClick,
     showWhatsAppIcon = true,
     backgroundColor = '#f5f5e8',
@@ -63,9 +50,7 @@ const FAQCTASection: React.FC<FAQCTASectionProps> = ({
     secondaryCtaTextColor = '#4a7c2f',
     expandedByDefault = false,
 }) => {
-    const [expanded, setExpanded] = useState<string | false>(
-        expandedByDefault && faqs.length > 0 ? faqs[0].id : false
-    )
+    const [expanded, setExpanded] = useState<string | false>(expandedByDefault && faqs.length > 0 ? faqs[0].id : false)
 
     const handleAccordionChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
         setExpanded(isExpanded ? panel : false)
@@ -200,7 +185,6 @@ const FAQCTASection: React.FC<FAQCTASectionProps> = ({
                     <Button
                         variant="contained"
                         size="large"
-                        href={primaryCtaHref}
                         onClick={handlePrimaryCtaClick}
                         sx={{
                             backgroundColor: primaryCtaBackgroundColor,
@@ -229,13 +213,8 @@ const FAQCTASection: React.FC<FAQCTASectionProps> = ({
                     <Button
                         variant="text"
                         size="large"
-                        href={secondaryCtaHref}
                         onClick={handleSecondaryCtaClick}
-                        startIcon={
-                            showWhatsAppIcon ? (
-                                <WhatsAppIcon sx={{ fontSize: 24 }} />
-                            ) : undefined
-                        }
+                        startIcon={showWhatsAppIcon ? <WhatsAppIcon sx={{ fontSize: 24 }} /> : undefined}
                         sx={{
                             color: secondaryCtaTextColor,
                             fontSize: { xs: '0.95rem', md: '1rem' },
