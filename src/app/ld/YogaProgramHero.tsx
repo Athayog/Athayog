@@ -3,6 +3,7 @@ import Image, { ImageProps } from 'next/image'
 import { Box, Container, Grid, Typography, TextField, Button, Paper, List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
+import Link from 'next/link'
 
 interface FormData {
     name: string
@@ -36,6 +37,7 @@ export interface YogaProgramHeroProps {
     backgroundImageAlt?: string
     backgroundImagePriority?: boolean
     backgroundImageQuality?: number
+    ctaButtonHref?: string
 }
 
 const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
@@ -56,6 +58,7 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
     backgroundImageAlt = 'Yoga background',
     backgroundImagePriority = true,
     backgroundImageQuality = 85,
+    ctaButtonHref = '/',
 }) => {
     const [formData, setFormData] = useState<FormData>({
         name: '',
@@ -238,30 +241,27 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
 
                             {/* CTA Button - Outside the Paper container */}
                             <Box sx={{ mt: 3 }}>
-                                <Button
-                                    variant="contained"
-                                    size="large"
-                                    sx={{
-                                        backgroundColor: '#4a7c2f',
-                                        color: 'white',
-                                        px: 4,
-                                        py: 1.5,
-                                        borderRadius: 8,
-                                        textTransform: 'none',
-                                        fontSize: '1rem',
-                                        fontWeight: 600,
-                                        '&:hover': {
-                                            backgroundColor: '#3d6625',
-                                        },
-                                    }}
-                                    onClick={() => {
-                                        document.getElementById('contact-form')?.scrollIntoView({
-                                            behavior: 'smooth',
-                                        })
-                                    }}
-                                >
-                                    {ctaButtonText}
-                                </Button>
+                                <Link href={ctaButtonHref} passHref>
+                                    <Button
+                                        variant="contained"
+                                        size="large"
+                                        sx={{
+                                            backgroundColor: '#4a7c2f',
+                                            color: 'white',
+                                            px: 4,
+                                            py: 1.5,
+                                            borderRadius: 8,
+                                            textTransform: 'none',
+                                            fontSize: '1rem',
+                                            fontWeight: 600,
+                                            '&:hover': {
+                                                backgroundColor: '#3d6625',
+                                            },
+                                        }}
+                                    >
+                                        {ctaButtonText}
+                                    </Button>
+                                </Link>
                             </Box>
                         </Box>
                     </Grid>

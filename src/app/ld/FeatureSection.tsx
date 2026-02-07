@@ -15,6 +15,8 @@ export interface FeatureSectionProps {
     titleColor?: string
     cardBackgroundColor?: string
     cardTextColor?: string
+    iconColor?: string
+    iconBackgroundColor?: string
 }
 
 const FeatureSection: React.FC<FeatureSectionProps> = ({
@@ -25,6 +27,8 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
     titleColor = '#4a6741',
     cardBackgroundColor = 'rgba(200, 240, 200, 0.6)',
     cardTextColor = '#1a1a1a',
+    iconColor = '#4a7c2f',
+    iconBackgroundColor = 'rgba(74, 124, 47, 0.12)',
 }) => {
     return (
         <Box
@@ -72,16 +76,24 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
                                     },
                                 }}
                             >
-                                {/* Icon */}
+                                {/* Icon with Rounded Background */}
                                 <Box
                                     sx={{
                                         mb: 3,
+                                        width: { xs: 80, md: 96 },
+                                        height: { xs: 80, md: 96 },
+                                        borderRadius: '50%',
+                                        backgroundColor: iconBackgroundColor,
                                         display: 'flex',
                                         justifyContent: 'center',
                                         alignItems: 'center',
+                                        transition: 'transform 0.3s ease-in-out',
+                                        '&:hover': {
+                                            transform: 'scale(1.1)',
+                                        },
                                         '& svg': {
-                                            fontSize: { xs: 60, md: 80 },
-                                            color: cardTextColor,
+                                            fontSize: { xs: 40, md: 48 },
+                                            color: iconColor,
                                         },
                                     }}
                                 >

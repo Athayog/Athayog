@@ -1,24 +1,39 @@
 'use client'
-import { Box, Typography } from '@mui/material'
+import DeviceHubIcon from '@mui/icons-material/DeviceHub'
+import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
+import ForumIcon from '@mui/icons-material/Forum'
+import GavelIcon from '@mui/icons-material/Gavel'
+import HomeIcon from '@mui/icons-material/Home'
+import NightlightIcon from '@mui/icons-material/Nightlight'
+import RepeatIcon from '@mui/icons-material/Repeat'
+import ScheduleIcon from '@mui/icons-material/Schedule'
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
+import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
+import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import { Box } from '@mui/material'
+import BentoGridSection from '../BentoGridSection'
+import FAQCTASection from '../FAQCTASection'
+import FeatureSection from '../FeatureSection'
+import IconListSection from '../IconListSection'
+import ImageFeatureSection from '../ImageFeatureSection'
+import NumberedListSection from '../NumberedListSection'
+import SplitContentSection from '../SplitContentSection'
+import TestimonialCTASection from '../TestimonialCTASection'
 import YogaProgramHero from '../YogaProgramHero'
 import bacgroundImage from '/public/images/Sample.png'
-import FeatureSection from '../FeatureSection'
-import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
-import ImageFeatureSection from '../ImageFeatureSection'
-import BentoGridSection from '../BentoGridSection'
-import TestimonialCTASection from '../TestimonialCTASection'
-import FAQCTASection from '../FAQCTASection'
-import IconListSection from '../IconListSection'
-import SplitContentSection from '../SplitContentSection'
+import Sample4 from '/public/images/Sample (4).png'
+import Image2 from '/public/images/mental-health/2.png'
+import Image1 from '/public/images/mental-health/1.png'
+import Image3 from '/public/images/mental-health/3.png'
 
 export default function LandingPage() {
     return (
         <Box>
             <YogaProgramHero
-                title="Yoga Program in Bangalore for Deep, Structured Yogic Living"
+                title="Residential Yoga Program in Bangalore for Deep, Structured Yogic Living"
                 description="An immersive residential yoga program designed for individuals seeking discipline, clarity, and inner transformation through a structured yogic lifestyle."
                 features={['Full residential stay', 'Structured daily routine', 'Guided asana, pranayama & meditation', 'Limited intake for depth and focus']}
-                ctaButtonText="Start Your Yoga Journey"
+                ctaButtonText="Check Eligibility & Program Availability"
                 submitButtonText="Submit"
                 submittingButtonText="Submitting..."
                 formSubmitUrl="/api/submit-form"
@@ -29,20 +44,22 @@ export default function LandingPage() {
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={bacgroundImage}
+                ctaButtonHref="/residential-yoga-teacher-training"
             />
+
             <FeatureSection
                 title="Who This Residential Yoga Program Is For"
                 cards={[
                     {
-                        icon: <SelfImprovementIcon />,
+                        icon: <SentimentVeryDissatisfiedIcon />,
                         title: 'Feel mentally, emotionally, or physically exhausted',
                     },
                     {
-                        icon: <SelfImprovementIcon />,
+                        icon: <DoNotDisturbOnIcon />,
                         title: 'Want to step away from daily distractions completely',
                     },
                     {
-                        icon: <SelfImprovementIcon />,
+                        icon: <ScheduleIcon />,
                         title: 'Are seeking discipline, silence, and a structured routine',
                     },
                     {
@@ -50,105 +67,126 @@ export default function LandingPage() {
                         title: 'Are open to guided yogic living',
                     },
                     {
-                        icon: <SelfImprovementIcon />,
+                        icon: <HomeIcon />,
                         title: 'Can commit to staying residential for the program duration',
                     },
                 ]}
             />
+
             <ImageFeatureSection
-                title="Who This Residential Yoga Program Is For"
-                image={bacgroundImage}
+                title="What Is a Residential Yoga Program at AthaYog Living?"
+                description="A residential yoga program at AthaYog Living is a full-time, immersive yogic experience where participants live on campus and follow a structured daily routine guided by experienced instructors."
+                image={Image2}
                 imageAlt="Group of people practicing yoga in a peaceful studio"
                 features={[
                     {
-                        icon: <SelfImprovementIcon />,
-                        text: 'Feel mentally, emotionally, or physically exhausted',
+                        icon: <GavelIcon />,
+                        text: 'Yogic discipline over convenience',
                     },
                     {
-                        icon: <SelfImprovementIcon />,
-                        text: 'Want to step away from daily distractions completely',
+                        icon: <RepeatIcon />,
+                        text: 'Consistency over flexibility',
                     },
                     {
-                        icon: <SelfImprovementIcon />,
-                        text: '(PLACEHOLDER) Are seeking discipline, silence, and a structured routine',
-                    },
-                    {
-                        icon: <SelfImprovementIcon />,
-                        text: 'Are open to guided yogic living',
-                    },
-                    {
-                        icon: <SelfImprovementIcon />,
-                        text: 'Can commit to staying residential for the program duration',
+                        icon: <DeviceHubIcon />,
+                        text: 'Lifestyle integration over isolated sessions',
                     },
                 ]}
             />
+
             <BentoGridSection
+                autoLayout={false} // ← Disable auto-layout
                 cards={[
-                    // Row 1
+                    // ROW 1: 4 + 4 + 4 = 12 columns ✅
                     {
                         id: 'title',
                         type: 'title',
-                        title: 'Who This Residential Yoga Program Is For',
-                        gridSize: { xs: 12, sm: 12, md: 4, lg: 4 },
+                        title: 'A Typical Day in the Residential Program',
+                        gridSize: { xs: 12, sm: 12, md: 4, lg: 4 }, // 4 columns
                     },
                     {
-                        id: 'card1',
+                        id: 'morning',
                         type: 'icon',
-                        icon: <SelfImprovementIcon />,
-                        text: 'Can commit to staying residential for the program duration',
-                        gridSize: { xs: 12, sm: 6, md: 2, lg: 2 },
+                        icon: <WbSunnyIcon />,
+                        text: 'Morning asana and pranayama practice',
+                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 }, // 4 columns
                     },
                     {
-                        id: 'image1',
-                        type: 'image',
-                        image: bacgroundImage,
-                        imageAlt: 'Person practicing yoga pose',
-                        gridSize: { xs: 12, sm: 6, md: 3, lg: 3 },
-                    },
-                    {
-                        id: 'text1',
-                        type: 'text',
-                        text: 'Feel mentally, emotionally, or physically exhausted',
-                        gridSize: { xs: 12, sm: 12, md: 3, lg: 3 },
+                        id: 'silence',
+                        type: 'text-image-side',
+                        text: 'Periods of silence and reflection',
+                        image: Image1, // Your image
+                        imageAlt: 'Pranayama practice',
+                        imagePosition: 'right',
+                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 }, // 4 columns
                     },
 
-                    // Row 2
+                    // ROW 2: 5 + 3 + 4 = 12 columns ✅
                     {
-                        id: 'icon2',
-                        type: 'icon',
-                        icon: <SelfImprovementIcon />,
-                        text: 'Are seeking discipline, silence, and a structured routine',
-                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 },
+                        id: 'learning',
+                        type: 'text-image-side',
+                        text: 'Guided learning and practice sessions',
+                        image: Image3, // Your image
+                        imageAlt: 'Guided learning',
+                        imagePosition: 'left',
+                        gridSize: { xs: 12, sm: 6, md: 5, lg: 5 }, // 5 columns
                     },
                     {
-                        id: 'text2',
+                        id: 'meals',
                         type: 'text',
-                        text: 'Are seeking discipline, silence, and a structured routine',
-                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 },
+                        text: 'Mindful meals and rest',
+                        gridSize: { xs: 12, sm: 6, md: 3, lg: 3 }, // 3 columns
                     },
                     {
-                        id: 'image2',
-                        type: 'image',
-                        image: bacgroundImage,
-                        imageAlt: 'Yoga practice session',
-                        gridSize: { xs: 12, sm: 6, md: 2, lg: 2 },
-                    },
-                    {
-                        id: 'icon3',
+                        id: 'evening',
                         type: 'icon',
-                        icon: <SelfImprovementIcon />,
-                        text: 'Can commit to staying residential for the program duration',
-                        gridSize: { xs: 12, sm: 6, md: 2, lg: 2 },
+                        icon: <NightlightIcon />,
+                        text: 'Evening practices and relaxation',
+                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 }, // 4 columns
+                    },
+
+                    // ROW 3: 12 columns ✅
+                    {
+                        id: 'rest',
+                        type: 'text',
+                        text: 'Early rest to support discipline',
+                        gridSize: { xs: 12, sm: 12, md: 12, lg: 12 }, // Full width
                     },
                 ]}
             />
-            <SplitContentSection
-                title="Guided, Safe, and Supportive Environment"
+            <NumberedListSection
+                title="Why Residential Practice Creates Deeper Change"
+                subtitle="True change requires removal from distractions."
                 items={[
-                    { id: '1', text: 'Experienced instructors' },
-                    { id: '2', text: 'Safe, progressive practice' },
-                    { id: '3', text: 'Clear daily structure' },
-                    { id: '4', text: 'Supportive residential environment' },
+                    {
+                        id: '1',
+                        text: 'Detachment from constant stimulation',
+                    },
+                    {
+                        id: '2',
+                        text: 'Resetting of habits and routines',
+                    },
+                    {
+                        id: '3',
+                        text: 'Deeper awareness of body and breath',
+                    },
+                    {
+                        id: '4',
+                        text: 'Mental clarity through disciplined living',
+                    },
+                ]}
+            />
+
+            <SplitContentSection
+                title="Who Typically Chooses This Program"
+                titleImage={Sample4}
+                titleImageAlt="Peaceful yoga studio"
+                items={[
+                    { id: '1', text: 'Burned-out professionals seeking clarity' },
+                    { id: '2', text: 'Entrepreneurs and founders at transition points' },
+                    { id: '3', text: 'Individuals facing emotional or lifestyle shifts' },
+                    { id: '4', text: 'Serious yoga aspirants wanting depth' },
+                    { id: '5', text: 'People seeking long-term mental balance' },
                 ]}
             />
             <IconListSection
@@ -172,6 +210,29 @@ export default function LandingPage() {
                     },
                 ]}
             />
+
+            <FeatureSection
+                title="Program Duration & Commitment"
+                cards={[
+                    {
+                        icon: <ScheduleIcon />,
+                        title: 'Multiple duration options',
+                    },
+                    {
+                        icon: <GavelIcon />,
+                        title: 'Intentional commitment levels',
+                    },
+                    {
+                        icon: <ForumIcon />,
+                        title: 'Suitability discussion before enrollment',
+                    },
+                    {
+                        icon: <DoNotDisturbOnIcon />,
+                        title: 'No pressure to join if not aligned',
+                    },
+                ]}
+            />
+
             <TestimonialCTASection
                 ctaButtonText="Discuss Program Fit & Duration"
                 ctaButtonHref="/contact"
@@ -223,9 +284,16 @@ export default function LandingPage() {
                 ]}
                 subtext="Step Away From Noise. Step Into Structure."
                 primaryCtaText="Check Eligibility & Speak to a Program Advisor"
-                primaryCtaHref="/contact"
                 secondaryCtaText="Or WhatsApp Us for initial guidance"
-                secondaryCtaHref="https://wa.me/1234567890"
+                onSecondaryCtaClick={() => {
+                    const phoneNumber = '+919611771434'
+                    const whatsappUrl = `https://wa.me/${phoneNumber}`
+                    window.open(whatsappUrl, '_blank')
+                }}
+                onPrimaryCtaClick={() => {
+                    const phoneNumber = '+919611771434'
+                    window.open(`tel:${phoneNumber}`, '_self')
+                }}
             />
         </Box>
     )

@@ -10,6 +10,7 @@ export interface FeatureItem {
 
 export interface ImageFeatureSectionProps {
     title: string
+    description?: string
     image: StaticImport | string
     imageAlt: string
     features: FeatureItem[]
@@ -20,16 +21,21 @@ export interface ImageFeatureSectionProps {
     imagePriority?: boolean
     imageQuality?: number
     reverseLayout?: boolean
+    iconColor?: string
+    iconBackgroundColor?: string
 }
 
 const ImageFeatureSection: React.FC<ImageFeatureSectionProps> = ({
     title,
     image,
+    description,
     imageAlt,
     features,
     backgroundColor = '#f5f5e8',
     titleColor = '#4a6741',
     featureCardBackgroundColor = 'rgba(200, 240, 200, 0.7)',
+    iconBackgroundColor = 'rgba(74, 124, 47, 0.12)',
+    iconColor = '#4a7c2f',
     featureTextColor = '#1a1a1a',
     imagePriority = false,
     imageQuality = 85,
@@ -85,16 +91,24 @@ const ImageFeatureSection: React.FC<ImageFeatureSectionProps> = ({
                             },
                         }}
                     >
-                        {/* Icon */}
+                        {/* Icon with Circular Background */}
                         <Box
                             sx={{
                                 flexShrink: 0,
+                                width: { xs: 56, md: 64 },
+                                height: { xs: 56, md: 64 },
+                                borderRadius: '50%',
+                                backgroundColor: iconBackgroundColor,
                                 display: 'flex',
-                                alignItems: 'center',
                                 justifyContent: 'center',
+                                alignItems: 'center',
+                                transition: 'transform 0.3s ease-in-out',
+                                '&:hover': {
+                                    transform: 'scale(1.1)',
+                                },
                                 '& svg': {
-                                    fontSize: { xs: 48, md: 56 },
-                                    color: featureTextColor,
+                                    fontSize: { xs: 28, md: 32 },
+                                    color: iconColor,
                                 },
                             }}
                         >
@@ -109,6 +123,7 @@ const ImageFeatureSection: React.FC<ImageFeatureSectionProps> = ({
                                 fontWeight: 500,
                                 fontSize: { xs: '0.95rem', md: '1.05rem' },
                                 lineHeight: 1.6,
+                                flex: 1,
                             }}
                         >
                             {feature.text}
@@ -136,12 +151,31 @@ const ImageFeatureSection: React.FC<ImageFeatureSectionProps> = ({
                         fontWeight: 700,
                         fontSize: { xs: '1.75rem', md: '2.5rem' },
                         textAlign: 'center',
-                        mb: { xs: 4, md: 6 },
+                        mb: { xs: 2, md: 3 },
                         px: { xs: 2, md: 4 },
                     }}
                 >
                     {title}
                 </Typography>
+
+                {description && (
+                    <Typography
+                        variant="body1"
+                        component="p"
+                        sx={{
+                            color: 'text.secondary',
+                            fontWeight: 400,
+                            fontSize: { xs: '1rem', md: '1.125rem' },
+                            lineHeight: 1.7,
+                            textAlign: 'center',
+                            mx: 'auto',
+                            mb: { xs: 4, md: 6 },
+                            px: { xs: 2, md: 0 },
+                        }}
+                    >
+                        {description}
+                    </Typography>
+                )}
 
                 {/* Two Column Layout: Image + Features */}
                 <Grid container spacing={{ xs: 4, md: 6 }} alignItems="stretch">
