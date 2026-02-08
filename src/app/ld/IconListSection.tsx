@@ -10,21 +10,24 @@ export interface ListItem {
 
 export interface IconListSectionProps {
     title: string
+    description?: string
     items: ListItem[]
     backgroundColor?: string
     titleColor?: string
+    descriptionColor?: string
     itemBackgroundColor?: string
     itemTextColor?: string
     iconColor?: string
     useDefaultIcon?: boolean
     centerTitle?: boolean
 }
-
 const IconListSection: React.FC<IconListSectionProps> = ({
     title,
+    description,
     items,
     backgroundColor = '#f5f5e8',
     titleColor = '#3d5a32',
+    descriptionColor = '#4f5d47',
     itemBackgroundColor = 'rgba(200, 240, 200, 0.5)',
     itemTextColor = '#1a1a1a',
     iconColor = '#4a7c2f',
@@ -48,12 +51,30 @@ const IconListSection: React.FC<IconListSectionProps> = ({
                         fontWeight: 700,
                         fontSize: { xs: '1.75rem', md: '2.5rem' },
                         textAlign: centerTitle ? 'center' : 'left',
-                        mb: { xs: 5, md: 7 },
+                        mb: { xs: 2, md: 3 },
                         lineHeight: 1.3,
                     }}
                 >
                     {title}
                 </Typography>
+
+                {/* Optional Description */}
+                {description && (
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            color: descriptionColor,
+                            maxWidth: 720,
+                            mx: centerTitle ? 'auto' : 0,
+                            textAlign: centerTitle ? 'center' : 'left',
+                            fontSize: { xs: '1rem', md: '1.1rem' },
+                            lineHeight: 1.7,
+                            mb: { xs: 5, md: 7 },
+                        }}
+                    >
+                        {description}
+                    </Typography>
+                )}
 
                 {/* Items List */}
                 <Stack spacing={{ xs: 2.5, md: 3 }}>

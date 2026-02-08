@@ -64,7 +64,6 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
                             helperText={formik.errors.fullName}
                             sx={{ mb: 3 }}
                         />
-
                     </Box>
                     <Box sx={{ width: { xs: '100%', md: '50%' } }}>
                         {/* Full Name */}
@@ -79,7 +78,6 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
                             helperText={formik.errors.location}
                             sx={{ mb: 3 }}
                         />
-
                     </Box>
                 </Box>
                 <ResetError />

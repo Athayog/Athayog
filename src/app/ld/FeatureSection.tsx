@@ -9,6 +9,7 @@ export interface SectionCard {
 
 export interface FeatureSectionProps {
     title: string
+    description?: string
     cards: SectionCard[]
     backgroundColor?: string
     sectionLabelColor?: string
@@ -21,6 +22,7 @@ export interface FeatureSectionProps {
 
 const FeatureSection: React.FC<FeatureSectionProps> = ({
     title,
+    description,
     cards,
     backgroundColor = '#f5f5e8',
     sectionLabelColor = '#d32f2f',
@@ -47,12 +49,31 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({
                         fontWeight: 700,
                         fontSize: { xs: '1.75rem', md: '2.5rem' },
                         textAlign: 'center',
-                        mb: { xs: 4, md: 6 },
+                        mb: { xs: 2, md: 3 },
                         px: { xs: 2, md: 4 },
                     }}
                 >
                     {title}
                 </Typography>
+
+                {description && (
+                    <Typography
+                        variant="body1"
+                        component="p"
+                        sx={{
+                            color: 'text.secondary',
+                            fontWeight: 400,
+                            fontSize: { xs: '1rem', md: '1.125rem' },
+                            lineHeight: 1.7,
+                            textAlign: 'center',
+                            mx: 'auto',
+                            mb: { xs: 4, md: 6 },
+                            px: { xs: 2, md: 0 },
+                        }}
+                    >
+                        {description}
+                    </Typography>
+                )}
 
                 {/* Cards Grid */}
                 <Grid container spacing={{ xs: 2, md: 3 }}>

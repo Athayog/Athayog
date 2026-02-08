@@ -44,7 +44,7 @@ export default function LandingPage() {
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={bacgroundImage}
-                ctaButtonHref="/residential-yoga-teacher-training"
+                ctaButtonHref="/register/residential-form"
             />
 
             <FeatureSection
