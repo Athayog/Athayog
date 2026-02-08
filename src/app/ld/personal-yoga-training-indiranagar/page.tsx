@@ -1,43 +1,32 @@
 'use client'
-import DeviceHubIcon from '@mui/icons-material/DeviceHub'
-import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
-import ForumIcon from '@mui/icons-material/Forum'
-import EventAvailableIcon from '@mui/icons-material/EventAvailable'
-import TuneIcon from '@mui/icons-material/Tune'
-import LayersClearIcon from '@mui/icons-material/LayersClear'
+
+import { Box } from '@mui/material'
 import ChatIcon from '@mui/icons-material/Chat'
-import GavelIcon from '@mui/icons-material/Gavel'
-import HomeIcon from '@mui/icons-material/Home'
-import TrendingUpIcon from '@mui/icons-material/TrendingUp'
+import TuneIcon from '@mui/icons-material/Tune'
+import FAQCTASection from '@/app/ld/FAQCTASection'
+import PersonIcon from '@mui/icons-material/Person'
+import FeatureSection from '@/app/ld/FeatureSection'
+import HealingIcon from '@mui/icons-material/Healing'
+import YogaProgramHero from '@/app/ld/YogaProgramHero'
+import ScheduleIcon from '@mui/icons-material/Schedule'
+import Image1 from '/public/images/mental-health/1.png'
+import Image2 from '/public/images/mental-health/2.png'
+import BentoGridSection from '@/app/ld/BentoGridSection'
+import ComparisonSection from '@/app/ld/ComparisonSection'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import StraightenIcon from '@mui/icons-material/Straighten'
-import HealingIcon from '@mui/icons-material/Healing'
-import PersonIcon from '@mui/icons-material/Person'
-import TrackChangesIcon from '@mui/icons-material/TrackChanges'
+import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import NightlightIcon from '@mui/icons-material/Nightlight'
-import RepeatIcon from '@mui/icons-material/Repeat'
-import ScheduleIcon from '@mui/icons-material/Schedule'
-import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
-import WbSunnyIcon from '@mui/icons-material/WbSunny'
-import { Box } from '@mui/material'
-import BentoGridSection from '../BentoGridSection'
-import FAQCTASection from '../FAQCTASection'
-import FeatureSection from '../FeatureSection'
-import IconListSection from '../IconListSection'
-import ImageFeatureSection from '../ImageFeatureSection'
-import NumberedListSection from '../NumberedListSection'
-import SplitContentSection from '../SplitContentSection'
-import TestimonialCTASection from '../TestimonialCTASection'
-import YogaProgramHero from '../YogaProgramHero'
-import bacgroundImage from '/public/images/landing-page-hero-2.jpg'
-import Sample4 from '/public/images/Sample (4).png'
-import Image2 from '/public/images/mental-health/2.png'
-import Image1 from '/public/images/mental-health/1.png'
-import Image3 from '/public/images/mental-health/3.png'
-import OptionsShowcaseSection from '../OptionsShowcaseSection'
-import ComparisonSection from '../ComparisonSection'
+import WhoChooseImage from '/public/images/Who_Chooses.png'
+import LayersClearIcon from '@mui/icons-material/LayersClear'
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import NumberedListSection from '@/app/ld/NumberedListSection'
+import SplitContentSection from '@/app/ld/SplitContentSection'
+import TrackChangesIcon from '@mui/icons-material/TrackChanges'
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
+import EventAvailableIcon from '@mui/icons-material/EventAvailable'
+import OptionsShowcaseSection from '@/app/ld/OptionsShowcaseSection'
+import BackgroundImageHero from '/public/images/landing-page-hero-2.jpg'
 
 export default function LandingPage() {
     return (
@@ -56,8 +45,8 @@ export default function LandingPage() {
                 messagePlaceholder="Your message"
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
-                backgroundImage={bacgroundImage}
-                ctaButtonHref="/register/residential-form"
+                backgroundImage={BackgroundImageHero}
+                ctaButtonHref="/register/enquire-personal-session-form"
             />
 
             <FeatureSection
@@ -248,7 +237,7 @@ export default function LandingPage() {
             />
             <SplitContentSection
                 title="Guided by Experienced Yoga Professionals"
-                titleImage={Sample4}
+                titleImage={WhoChooseImage}
                 titleImageAlt="Peaceful yoga studio"
                 items={[
                     { id: '1', text: 'Alignment and injury prevention' },
@@ -282,7 +271,11 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText="Get a Personalized Plan & Fee Structure"
-                ctaButtonHref="/contact"
+                onCtaClick={() => {
+                    const phoneNumber = '+919611771434'
+                    const whatsappUrl = `https://wa.me/${phoneNumber}`
+                    window.open(whatsappUrl, '_blank')
+                }}
                 sectionTitle="What Clients Experience"
                 testimonials={[
                     {
