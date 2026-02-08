@@ -52,7 +52,7 @@ const SplitContentSection: React.FC<SplitContentSectionProps> = ({
     ctaVariant = 'contained',
 }) => {
     const TitleColumn = (
-        <Grid item xs={12} md={5}>
+        <Grid item xs={12} md={5} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Box
                 sx={{
                     backgroundColor: titleImage ? 'transparent' : titleBackgroundColor,
@@ -216,12 +216,7 @@ const SplitContentSection: React.FC<SplitContentSectionProps> = ({
         if (ctaHref) {
             return (
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 5, md: 6 } }}>
-                    <Button
-                        component={Link}
-                        href={ctaHref}
-                        variant={ctaVariant}
-                        sx={buttonStyles}
-                    >
+                    <Button component={Link} href={ctaHref} variant={ctaVariant} sx={buttonStyles}>
                         {ctaText}
                     </Button>
                 </Box>
@@ -231,11 +226,7 @@ const SplitContentSection: React.FC<SplitContentSectionProps> = ({
         if (ctaOnClick) {
             return (
                 <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 5, md: 6 } }}>
-                    <Button
-                        onClick={ctaOnClick}
-                        variant={ctaVariant}
-                        sx={buttonStyles}
-                    >
+                    <Button onClick={ctaOnClick} variant={ctaVariant} sx={buttonStyles}>
                         {ctaText}
                     </Button>
                 </Box>
@@ -253,11 +244,7 @@ const SplitContentSection: React.FC<SplitContentSectionProps> = ({
             }}
         >
             <Container maxWidth="lg">
-                <Grid
-                    container
-                    spacing={{ xs: 4, md: 6 }}
-                    alignItems="stretch"
-                >
+                <Grid container spacing={{ xs: 4, md: 6 }} alignItems="stretch">
                     {reverseLayout ? (
                         <>
                             {ContentColumn}

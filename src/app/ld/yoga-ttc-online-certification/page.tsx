@@ -1,40 +1,36 @@
 'use client'
-import DeviceHubIcon from '@mui/icons-material/DeviceHub'
-import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
-import ForumIcon from '@mui/icons-material/Forum'
-import GavelIcon from '@mui/icons-material/Gavel'
-import HomeIcon from '@mui/icons-material/Home'
-import NightlightIcon from '@mui/icons-material/Nightlight'
-import RepeatIcon from '@mui/icons-material/Repeat'
-import ScheduleIcon from '@mui/icons-material/Schedule'
-import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
-import PublicIcon from '@mui/icons-material/Public'
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
-import LocationOffIcon from '@mui/icons-material/LocationOff'
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
-import WbSunnyIcon from '@mui/icons-material/WbSunny'
-import SchoolIcon from '@mui/icons-material/School'
-import LiveTvIcon from '@mui/icons-material/LiveTv'
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
-import VerifiedIcon from '@mui/icons-material/Verified'
-import LaptopMacIcon from '@mui/icons-material/LaptopMac'
 import { Box } from '@mui/material'
-import BentoGridSection from '../BentoGridSection'
-import FAQCTASection from '../FAQCTASection'
-import FeatureSection from '../FeatureSection'
-import IconListSection from '../IconListSection'
-import ImageFeatureSection from '../ImageFeatureSection'
-import NumberedListSection from '../NumberedListSection'
-import SplitContentSection from '../SplitContentSection'
-import TestimonialCTASection from '../TestimonialCTASection'
-import YogaProgramHero from '../YogaProgramHero'
-import bacgroundImage from '/public/images/Sample.png'
-import Sample4 from '/public/images/Sample (4).png'
-import Image2 from '/public/images/mental-health/2.png'
-import Image1 from '/public/images/mental-health/1.png'
-import Image3 from '/public/images/mental-health/3.png'
-import LearningAreasSection from '../LearningAreasSection'
+import GavelIcon from '@mui/icons-material/Gavel'
+import FAQCTASection from '@/app/ld/FAQCTASection'
+import LiveTvIcon from '@mui/icons-material/LiveTv'
+import PublicIcon from '@mui/icons-material/Public'
+import SchoolIcon from '@mui/icons-material/School'
+import FeatureSection from '@/app/ld/FeatureSection'
+import IconListSection from '@/app/ld/IconListSection'
+import YogaProgramHero from '@/app/ld/YogaProgramHero'
+import PranayamaImage from '/public/images/pranayama.png'
+import AnatomyImage from '/public/images/anatomy.jpg'
+import TeachingImage from '/public/images/teaching.jpg'
+import FeedbackImage from '/public/images/feedback.jpg'
+import EhicsImage from '/public/images/ethics.jpg'
+import MeditationImage from '/public/images/Medi.jpg'
+import VerifiedIcon from '@mui/icons-material/Verified'
+import CertificationImage from '/public/images/certification.jpg'
+import WarrirorPose from '/public/images/warrior_pose.png'
+import LaptopMacIcon from '@mui/icons-material/LaptopMac'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import LocationOffIcon from '@mui/icons-material/LocationOff'
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import NumberedListSection from '@/app/ld/NumberedListSection'
+import SplitContentSection from '@/app/ld/SplitContentSection'
+import heroImage from '/public/images/landing-page-hero-10.jpg'
+import LearningAreasSection from '@/app/ld/LearningAreasSection'
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
+import GirlBreathignImage from '/public/images/landing-page-hero-11.jpg'
+import GuidedByTeacherImage from '/public/images/landing-page-hero-12.jpg'
 
 export default function LandingPage() {
     return (
@@ -53,14 +49,14 @@ export default function LandingPage() {
                 messagePlaceholder="Your message"
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
-                backgroundImage={bacgroundImage}
+                backgroundImage={heroImage}
                 ctaButtonHref="/register/residential-form"
             />
 
             <ImageFeatureSection
                 title="Is This Online Yoga Teacher Training Right for You?"
                 description="This online TTC is suitable if you"
-                image={Image2}
+                image={GirlBreathignImage}
                 imageAlt="Group of people practicing yoga in a peaceful studio"
                 features={[
                     {
@@ -116,55 +112,60 @@ export default function LandingPage() {
                     },
                 ]}
             />
-            {/* TODO: GET AI GEN IMAGES */}
+
             <LearningAreasSection
                 title="What You Will Learn in the Online TTC"
                 subtitle="Core Learning Areas:"
-                layout="grid" // Horizontal cards with optional images
+                layout="grid"
                 learningAreas={[
                     {
                         id: '1',
                         title: 'Asana Practice & Alignment',
                         description: 'Safe, mindful practice with functional understanding',
-                        image: Image2, // Add your image
+                        image: WarrirorPose,
                         imageAlt: 'Asana practice and alignment',
                     },
                     {
                         id: '2',
                         title: 'Pranayama & Breath Awareness',
                         description: 'Understanding breath regulation and its effects',
-                        image: Image3, // Add your image
+                        image: PranayamaImage,
                         imageAlt: 'Pranayama breathing techniques',
                     },
                     {
                         id: '3',
                         title: 'Meditation & Inner Practices',
                         description: 'Foundational techniques for focus and clarity',
-                        // Can add image or leave without
+                        image: MeditationImage,
+                        imageAlt: 'Meditation and inner practices',
                     },
                     {
                         id: '4',
                         title: 'Yoga Philosophy & Ethics',
                         description: 'Classical concepts applied to modern life',
-                        image: Image2, // Add your image
+                        image: EhicsImage,
                         imageAlt: 'Yoga philosophy study',
                     },
                     {
                         id: '5',
                         title: 'Applied Anatomy',
                         description: 'Understanding the body for safe teaching (non-medical)',
+                        image: AnatomyImage,
+                        imageAlt: 'Teaching methodology',
                     },
                     {
                         id: '6',
                         title: 'Teaching Methodology',
                         description: 'Cueing, sequencing, observation, and correction',
-                        image: Image2, // Add your image
+                        image: TeachingImage,
                         imageAlt: 'Teaching methodology',
                     },
                     {
                         id: '7',
                         title: 'Practice Teaching & Feedback',
                         description: 'Guided teaching practice with faculty input',
+                        image: FeedbackImage,
+                        imageAlt: 'Practice teaching and feedback',
                     },
                 ]}
             />
@@ -196,7 +197,7 @@ export default function LandingPage() {
             />
             <SplitContentSection
                 title="Guided by Experienced Teachers"
-                titleImage={Sample4}
+                titleImage={CertificationImage}
                 titleImageAlt="Peaceful yoga studio"
                 items={[
                     { id: '1', text: 'Safety and alignment' },
@@ -208,8 +209,7 @@ export default function LandingPage() {
 
             <ImageFeatureSection
                 title="Certification & Professional Outcomes"
-                // description="This online TTC is suitable if you"
-                image={Image2}
+                image={TeachingImage}
                 reverseLayout={true}
                 imageAlt="Group of people practicing yoga in a peaceful studio"
                 features={[
@@ -253,8 +253,11 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText=" Discuss Eligibility & Schedule Fit"
-                ctaButtonHref="/contact"
                 sectionTitle="What Graduates Share"
+                onCtaClick={() => {
+                    const phoneNumber = '+919611771434'
+                    window.open(`tel:${phoneNumber}`, '_self')
+                }}
                 testimonials={[
                     {
                         id: '1',
