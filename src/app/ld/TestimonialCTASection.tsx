@@ -64,7 +64,7 @@ const TestimonialCTASection: React.FC<TestimonialCTASectionProps> = ({
                     <Button
                         variant="contained"
                         size="large"
-                        href={ctaButtonHref}
+                        href={ctaButtonHref ? ctaButtonHref : undefined}
                         onClick={handleCtaClick}
                         sx={{
                             backgroundColor: ctaButtonBackgroundColor,

@@ -19,6 +19,7 @@ export interface LearningAreasSectionProps {
     titleColor?: string
     subtitleColor?: string
     cardBackgroundColor?: string
+    overlayGradient?: string // Gradient for text overlay
     titleTextColor?: string
     descriptionTextColor?: string
     layout?: 'grid' | 'list'
@@ -32,85 +33,98 @@ const LearningAreasSection: React.FC<LearningAreasSectionProps> = ({
     titleColor = '#3d5a32',
     subtitleColor = '#4a7c2f',
     cardBackgroundColor = 'rgba(200, 240, 200, 0.5)',
-    titleTextColor = '#2a3d23',
-    descriptionTextColor = '#1a1a1a',
+    overlayGradient = 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.8) 100%)',
+    titleTextColor = '#ffffff',
+    descriptionTextColor = 'rgba(255, 255, 255, 0.95)',
     layout = 'list',
 }) => {
     const renderCard = (area: LearningArea) => {
         const hasImage = Boolean(area.image)
 
         if (layout === 'list') {
-            // List layout: Image on left (if exists), content on right
+            // List layout: Full-width card with text overlaid on bottom
             return (
                 <Paper
                     key={area.id}
                     elevation={0}
                     sx={{
-                        backgroundColor: cardBackgroundColor,
+                        backgroundColor: hasImage ? 'transparent' : cardBackgroundColor,
                         borderRadius: 4,
                         overflow: 'hidden',
-                        display: 'flex',
-                        flexDirection: { xs: 'column', sm: hasImage ? 'row' : 'column' },
-                        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                        position: 'relative',
+                        height: { xs: '280px', sm: '320px', md: '360px' },
+                        transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                         '&:hover': {
-                            transform: 'translateX(8px)',
-                            boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
+                            transform: 'translateY(-6px)',
+                            boxShadow: '0 12px 32px rgba(0,0,0,0.2)',
                         },
                     }}
                 >
-                    {/* Image (if exists) */}
+                    {/* Image Background */}
                     {hasImage && (
-                        <Box
-                            sx={{
-                                position: 'relative',
-                                width: { xs: '100%', sm: '200px', md: '240px' },
-                                height: { xs: '180px', sm: 'auto' },
-                                minHeight: { sm: '160px' },
-                                flexShrink: 0,
-                            }}
-                        >
+                        <>
                             <Image
                                 src={area.image!}
                                 alt={area.imageAlt || area.title}
                                 fill
-                                sizes="(max-width: 600px) 100vw, 240px"
+                                sizes="(max-width: 600px) 100vw, 1200px"
                                 style={{
                                     objectFit: 'cover',
                                     objectPosition: 'center',
                                 }}
                             />
-                        </Box>
+
+                            {/* Gradient Overlay */}
+                            <Box
+                                sx={{
+                                    position: 'absolute',
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    background: overlayGradient,
+                                    zIndex: 1,
+                                }}
+                            />
+                        </>
                     )}
 
-                    {/* Content */}
+                    {/* Text Content - Overlaid on Bottom */}
                     <Box
                         sx={{
-                            p: { xs: 3, md: 3.5 },
-                            flex: 1,
+                            position: hasImage ? 'absolute' : 'relative',
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            p: { xs: 3, sm: 3.5, md: 4 },
+                            zIndex: 2,
                             display: 'flex',
                             flexDirection: 'column',
-                            justifyContent: 'center',
+                            justifyContent: 'flex-end',
+                            height: '100%',
                         }}
                     >
                         <Typography
-                            variant="h6"
+                            variant="h5"
                             sx={{
-                                color: titleTextColor,
-                                fontWeight: 600,
-                                fontSize: { xs: '1.1rem', md: '1.25rem' },
-                                mb: 1,
+                                color: hasImage ? titleTextColor : '#2a3d23',
+                                fontWeight: 700,
+                                fontSize: { xs: '1.35rem', sm: '1.5rem', md: '1.75rem' },
+                                mb: { xs: 1.5, md: 2 },
                                 lineHeight: 1.3,
+                                textShadow: hasImage ? '0 2px 8px rgba(0,0,0,0.6)' : 'none',
                             }}
                         >
                             {area.title}
                         </Typography>
                         <Typography
-                            variant="body2"
+                            variant="body1"
                             sx={{
-                                color: descriptionTextColor,
+                                color: hasImage ? descriptionTextColor : '#1a1a1a',
                                 fontWeight: 400,
-                                fontSize: { xs: '0.95rem', md: '1rem' },
+                                fontSize: { xs: '1rem', md: '1.1rem' },
                                 lineHeight: 1.6,
+                                textShadow: hasImage ? '0 1px 6px rgba(0,0,0,0.5)' : 'none',
                             }}
                         >
                             {area.description}
@@ -119,34 +133,27 @@ const LearningAreasSection: React.FC<LearningAreasSectionProps> = ({
                 </Paper>
             )
         } else {
-            // Grid layout: Image on top (if exists), content below
+            // Grid layout: Card with text overlaid on bottom
             return (
                 <Grid item xs={12} sm={6} md={4} key={area.id}>
                     <Paper
                         elevation={0}
                         sx={{
-                            backgroundColor: cardBackgroundColor,
+                            backgroundColor: hasImage ? 'transparent' : cardBackgroundColor,
                             borderRadius: 4,
                             overflow: 'hidden',
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                            position: 'relative',
+                            height: { xs: '320px', md: '380px' },
+                            transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
                             '&:hover': {
-                                transform: 'translateY(-4px)',
-                                boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+                                transform: 'translateY(-8px)',
+                                boxShadow: '0 16px 40px rgba(0,0,0,0.2)',
                             },
                         }}
                     >
-                        {/* Image (if exists) */}
+                        {/* Image Background */}
                         {hasImage && (
-                            <Box
-                                sx={{
-                                    position: 'relative',
-                                    width: '100%',
-                                    height: '180px',
-                                }}
-                            >
+                            <>
                                 <Image
                                     src={area.image!}
                                     alt={area.imageAlt || area.title}
@@ -157,24 +164,46 @@ const LearningAreasSection: React.FC<LearningAreasSectionProps> = ({
                                         objectPosition: 'center',
                                     }}
                                 />
-                            </Box>
+
+                                {/* Gradient Overlay */}
+                                <Box
+                                    sx={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        background: overlayGradient,
+                                        zIndex: 1,
+                                    }}
+                                />
+                            </>
                         )}
 
-                        {/* Content */}
+                        {/* Text Content - Overlaid on Bottom */}
                         <Box
                             sx={{
+                                position: hasImage ? 'absolute' : 'relative',
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
                                 p: { xs: 3, md: 3.5 },
-                                flex: 1,
+                                zIndex: 2,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'flex-end',
+                                height: '100%',
                             }}
                         >
                             <Typography
                                 variant="h6"
                                 sx={{
-                                    color: titleTextColor,
-                                    fontWeight: 600,
-                                    fontSize: { xs: '1.1rem', md: '1.2rem' },
-                                    mb: 1.5,
+                                    color: hasImage ? titleTextColor : '#2a3d23',
+                                    fontWeight: 700,
+                                    fontSize: { xs: '1.25rem', md: '1.4rem' },
+                                    mb: { xs: 1.5, md: 2 },
                                     lineHeight: 1.3,
+                                    textShadow: hasImage ? '0 2px 8px rgba(0,0,0,0.6)' : 'none',
                                 }}
                             >
                                 {area.title}
@@ -182,10 +211,11 @@ const LearningAreasSection: React.FC<LearningAreasSectionProps> = ({
                             <Typography
                                 variant="body2"
                                 sx={{
-                                    color: descriptionTextColor,
+                                    color: hasImage ? descriptionTextColor : '#1a1a1a',
                                     fontWeight: 400,
-                                    fontSize: { xs: '0.9rem', md: '0.95rem' },
+                                    fontSize: { xs: '0.95rem', md: '1rem' },
                                     lineHeight: 1.6,
+                                    textShadow: hasImage ? '0 1px 6px rgba(0,0,0,0.5)' : 'none',
                                 }}
                             >
                                 {area.description}
@@ -238,11 +268,9 @@ const LearningAreasSection: React.FC<LearningAreasSectionProps> = ({
 
                 {/* Learning Areas */}
                 {layout === 'list' ? (
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2.5, md: 3 } }}>
-                        {learningAreas.map((area) => renderCard(area))}
-                    </Box>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 3, md: 4 } }}>{learningAreas.map((area) => renderCard(area))}</Box>
                 ) : (
-                    <Grid container spacing={{ xs: 2.5, md: 3 }}>
+                    <Grid container spacing={{ xs: 3, md: 4 }}>
                         {learningAreas.map((area) => renderCard(area))}
                     </Grid>
                 )}

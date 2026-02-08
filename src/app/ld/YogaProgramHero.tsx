@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Image, { ImageProps } from 'next/image'
+import Image from 'next/image'
 import { Box, Container, Grid, Typography, TextField, Button, Paper, List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
@@ -38,6 +38,9 @@ export interface YogaProgramHeroProps {
     backgroundImagePriority?: boolean
     backgroundImageQuality?: number
     ctaButtonHref?: string
+    // NEW: Overlay customization (subtle effect)
+    overlayGradient?: string
+    overlayOpacity?: number
 }
 
 const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
@@ -59,6 +62,8 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
     backgroundImagePriority = true,
     backgroundImageQuality = 85,
     ctaButtonHref = '/',
+    overlayGradient = 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(245, 245, 232, 0.2) 100%)',
+    overlayOpacity = 0.35, // Much lighter than AerialHeroSection (0.7)
 }) => {
     const [formData, setFormData] = useState<FormData>({
         name: '',
@@ -150,26 +155,11 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
                 position: 'relative',
                 display: 'flex',
                 alignItems: 'center',
-                py: { xs: 4, md: 8 },
+                py: { xs: 12, md: 8 },
                 overflow: 'hidden',
             }}
         >
-            {/* Next.js Image as Background */}
-            <Image
-                src={backgroundImage}
-                alt={backgroundImageAlt}
-                fill
-                priority={backgroundImagePriority}
-                quality={backgroundImageQuality}
-                sizes="100vw"
-                style={{
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    zIndex: 0,
-                }}
-            />
-
-            {/* Overlay */}
+            {/* Background Image Layer */}
             <Box
                 sx={{
                     position: 'absolute',
@@ -177,10 +167,35 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                    zIndex: 1,
+                    zIndex: 0,
                 }}
-            />
+            >
+                <Image
+                    src={backgroundImage}
+                    alt={backgroundImageAlt}
+                    fill
+                    priority={backgroundImagePriority}
+                    quality={backgroundImageQuality}
+                    sizes="100vw"
+                    style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                    }}
+                />
+
+                {/* Subtle Gradient Overlay */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: overlayGradient,
+                        opacity: overlayOpacity,
+                    }}
+                />
+            </Box>
 
             {/* Content */}
             <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
@@ -194,6 +209,8 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
                                     backgroundColor: 'rgba(200, 240, 200, 0.95)',
                                     p: { xs: 3, md: 4 },
                                     borderRadius: 3,
+                                    backdropFilter: 'blur(8px)', // NEW: Subtle blur effect
+                                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)', // NEW: Soft shadow
                                 }}
                             >
                                 <Typography
@@ -239,7 +256,7 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
                                 </List>
                             </Paper>
 
-                            {/* CTA Button - Outside the Paper container */}
+                            {/* CTA Button */}
                             <Box sx={{ mt: 3 }}>
                                 <Link href={ctaButtonHref} passHref>
                                     <Button
@@ -254,9 +271,13 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
                                             textTransform: 'none',
                                             fontSize: '1rem',
                                             fontWeight: 600,
+                                            boxShadow: '0 4px 14px rgba(74, 124, 47, 0.3)', // NEW: Button shadow
                                             '&:hover': {
                                                 backgroundColor: '#3d6625',
+                                                transform: 'translateY(-2px)', // NEW: Hover lift
+                                                boxShadow: '0 6px 20px rgba(74, 124, 47, 0.4)',
                                             },
+                                            transition: 'all 0.3s ease-in-out',
                                         }}
                                     >
                                         {ctaButtonText}
@@ -275,6 +296,8 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
                                 backgroundColor: 'rgba(220, 245, 220, 0.98)',
                                 p: { xs: 3, md: 4 },
                                 borderRadius: 3,
+                                backdropFilter: 'blur(8px)', // NEW: Subtle blur effect
+                                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12)', // NEW: Enhanced shadow
                             }}
                         >
                             <Box
@@ -371,12 +394,16 @@ const YogaProgramHero: React.FC<YogaProgramHeroProps> = ({
                                         fontSize: '1.1rem',
                                         fontWeight: 600,
                                         mt: 1,
+                                        boxShadow: '0 4px 14px rgba(74, 124, 47, 0.25)', // NEW: Button shadow
                                         '&:hover': {
                                             backgroundColor: '#3d6625',
+                                            transform: 'translateY(-2px)', // NEW: Hover lift
+                                            boxShadow: '0 6px 20px rgba(74, 124, 47, 0.35)',
                                         },
                                         '&:disabled': {
                                             backgroundColor: '#a5c99a',
                                         },
+                                        transition: 'all 0.3s ease-in-out',
                                     }}
                                 >
                                     {isSubmitting ? submittingButtonText : submitButtonText}
