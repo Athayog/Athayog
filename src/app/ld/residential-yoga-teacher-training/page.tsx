@@ -1,30 +1,31 @@
 'use client'
-import DeviceHubIcon from '@mui/icons-material/DeviceHub'
-import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
+
+import { Box } from '@mui/material'
+import HomeIcon from '@mui/icons-material/Home'
 import ForumIcon from '@mui/icons-material/Forum'
 import GavelIcon from '@mui/icons-material/Gavel'
-import HomeIcon from '@mui/icons-material/Home'
-import NightlightIcon from '@mui/icons-material/Nightlight'
+import FAQCTASection from '@/app/ld/FAQCTASection'
 import RepeatIcon from '@mui/icons-material/Repeat'
+import FeatureSection from '@/app/ld/FeatureSection'
+import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import MeditationImage from '/public/images/Medi.jpg'
+import IconListSection from '@/app/ld/IconListSection'
+import YogaProgramHero from '@/app/ld/YogaProgramHero'
 import ScheduleIcon from '@mui/icons-material/Schedule'
+import BentoGridSection from '@/app/ld/BentoGridSection'
+import DeviceHubIcon from '@mui/icons-material/DeviceHub'
+import PranayamaImage from '/public/images/pranayama.png'
+import NightlightIcon from '@mui/icons-material/Nightlight'
+import WhoChooseImage from '/public/images/Who_Chooses.png'
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import NumberedListSection from '@/app/ld/NumberedListSection'
+import SplitContentSection from '@/app/ld/SplitContentSection'
+import ResidentialHeroImage from '/public/images/residential.jpg'
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
+import ResidentialImage from '/public/images/residential-yoga.jpg'
+import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
 import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
-import WbSunnyIcon from '@mui/icons-material/WbSunny'
-import { Box } from '@mui/material'
-import BentoGridSection from '../BentoGridSection'
-import FAQCTASection from '../FAQCTASection'
-import FeatureSection from '../FeatureSection'
-import IconListSection from '../IconListSection'
-import ImageFeatureSection from '../ImageFeatureSection'
-import NumberedListSection from '../NumberedListSection'
-import SplitContentSection from '../SplitContentSection'
-import TestimonialCTASection from '../TestimonialCTASection'
-import YogaProgramHero from '../YogaProgramHero'
-import bacgroundImage from '/public/images/Sample.png'
-import Sample4 from '/public/images/Sample (4).png'
-import Image2 from '/public/images/mental-health/2.png'
-import Image1 from '/public/images/mental-health/1.png'
-import Image3 from '/public/images/mental-health/3.png'
 
 export default function LandingPage() {
     return (
@@ -43,7 +44,7 @@ export default function LandingPage() {
                 messagePlaceholder="Your message"
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
-                backgroundImage={bacgroundImage}
+                backgroundImage={ResidentialHeroImage}
                 ctaButtonHref="/register/residential-form"
             />
 
@@ -76,7 +77,7 @@ export default function LandingPage() {
             <ImageFeatureSection
                 title="What Is a Residential Yoga Program at AthaYog Living?"
                 description="A residential yoga program at AthaYog Living is a full-time, immersive yogic experience where participants live on campus and follow a structured daily routine guided by experienced instructors."
-                image={Image2}
+                image={ResidentialImage}
                 imageAlt="Group of people practicing yoga in a peaceful studio"
                 features={[
                     {
@@ -95,38 +96,35 @@ export default function LandingPage() {
             />
 
             <BentoGridSection
-                autoLayout={false} // ← Disable auto-layout
+                autoLayout={false}
                 cards={[
-                    // ROW 1: 4 + 4 + 4 = 12 columns ✅
                     {
                         id: 'title',
                         type: 'title',
                         title: 'A Typical Day in the Residential Program',
-                        gridSize: { xs: 12, sm: 12, md: 4, lg: 4 }, // 4 columns
+                        gridSize: { xs: 12, sm: 12, md: 4, lg: 4 },
                     },
                     {
                         id: 'morning',
                         type: 'icon',
                         icon: <WbSunnyIcon />,
                         text: 'Morning asana and pranayama practice',
-                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 }, // 4 columns
+                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 },
                     },
                     {
                         id: 'silence',
                         type: 'text-image-side',
                         text: 'Periods of silence and reflection',
-                        image: Image1, // Your image
+                        image: PranayamaImage,
                         imageAlt: 'Pranayama practice',
                         imagePosition: 'right',
-                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 }, // 4 columns
+                        gridSize: { xs: 12, sm: 6, md: 4, lg: 4 },
                     },
-
-                    // ROW 2: 5 + 3 + 4 = 12 columns ✅
                     {
                         id: 'learning',
                         type: 'text-image-side',
                         text: 'Guided learning and practice sessions',
-                        image: Image3, // Your image
+                        image: MeditationImage,
                         imageAlt: 'Guided learning',
                         imagePosition: 'left',
                         gridSize: { xs: 12, sm: 6, md: 5, lg: 5 }, // 5 columns
@@ -179,7 +177,7 @@ export default function LandingPage() {
 
             <SplitContentSection
                 title="Who Typically Chooses This Program"
-                titleImage={Sample4}
+                titleImage={WhoChooseImage}
                 titleImageAlt="Peaceful yoga studio"
                 items={[
                     { id: '1', text: 'Burned-out professionals seeking clarity' },
@@ -235,7 +233,11 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText="Discuss Program Fit & Duration"
-                ctaButtonHref="/contact"
+                onCtaClick={() => {
+                    const phoneNumber = '+919611771434'
+                    const whatsappUrl = `https://wa.me/${phoneNumber}`
+                    window.open(whatsappUrl, '_blank')
+                }}
                 sectionTitle="Participant Experiences"
                 testimonials={[
                     {
