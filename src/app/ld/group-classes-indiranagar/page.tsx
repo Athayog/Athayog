@@ -1,53 +1,28 @@
 'use client'
-import DeviceHubIcon from '@mui/icons-material/DeviceHub'
-import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
-import ForumIcon from '@mui/icons-material/Forum'
-import EventAvailableIcon from '@mui/icons-material/EventAvailable'
-import TuneIcon from '@mui/icons-material/Tune'
-import LayersClearIcon from '@mui/icons-material/LayersClear'
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
-import GroupsIcon from '@mui/icons-material/Groups'
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
-import SchoolIcon from '@mui/icons-material/School'
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import ChatIcon from '@mui/icons-material/Chat'
-import GavelIcon from '@mui/icons-material/Gavel'
-import HomeIcon from '@mui/icons-material/Home'
-import TrendingUpIcon from '@mui/icons-material/TrendingUp'
-import PsychologyIcon from '@mui/icons-material/Psychology'
-import StraightenIcon from '@mui/icons-material/Straighten'
-import HealingIcon from '@mui/icons-material/Healing'
-import PersonIcon from '@mui/icons-material/Person'
-import TrackChangesIcon from '@mui/icons-material/TrackChanges'
-import VisibilityIcon from '@mui/icons-material/Visibility'
-import NightlightIcon from '@mui/icons-material/Nightlight'
-import RepeatIcon from '@mui/icons-material/Repeat'
-import ScheduleIcon from '@mui/icons-material/Schedule'
-import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
-import WbSunnyIcon from '@mui/icons-material/WbSunny'
+
 import { Box } from '@mui/material'
-import BentoGridSection from '../BentoGridSection'
-import FAQCTASection from '../FAQCTASection'
-import FeatureSection from '../FeatureSection'
-import IconListSection from '../IconListSection'
-import ImageFeatureSection from '../ImageFeatureSection'
-import NumberedListSection from '../NumberedListSection'
-import SplitContentSection from '../SplitContentSection'
-import TestimonialCTASection from '../TestimonialCTASection'
-import YogaProgramHero from '../YogaProgramHero'
-import bacgroundImage from '/public/images/landing-page-hero-4.jpg'
-import Sample4 from '/public/images/Sample (4).png'
-import Image2 from '/public/images/mental-health/2.png'
-import Image1 from '/public/images/mental-health/1.png'
-import Image3 from '/public/images/mental-health/3.png'
-import OptionsShowcaseSection from '../OptionsShowcaseSection'
-import ComparisonSection from '../ComparisonSection'
-import ClassOverviewSection from '../ClassOverviewSection'
+import FAQCTASection from '@/app/ld/FAQCTASection'
+import GroupsIcon from '@mui/icons-material/Groups'
+import SchoolIcon from '@mui/icons-material/School'
+import FeatureSection from '@/app/ld/FeatureSection'
+import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import YogaProgramHero from '@/app/ld/YogaProgramHero'
+import ScheduleIcon from '@mui/icons-material/Schedule'
+import ComparisonSection from '@/app/ld/ComparisonSection'
+import LocationOnIcon from '@mui/icons-material/LocationOn'
+import BackgroundHeroImage from '/public/images/anatomy.jpg'
+import PsychologyIcon from '@mui/icons-material/Psychology'
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import ClassOverviewSection from '@/app/ld/ClassOverviewSection'
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import GirlMeditattngImage from '/public/images/mental-health/2.png'
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline'
 
 export default function LandingPage() {
     return (
@@ -66,8 +41,8 @@ export default function LandingPage() {
                 messagePlaceholder="Your message"
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
-                backgroundImage={bacgroundImage}
-                ctaButtonHref="/register/residential-form"
+                backgroundImage={BackgroundHeroImage}
+                ctaButtonHref="/register/enquire-group-class-form"
             />
 
             <FeatureSection
@@ -125,7 +100,7 @@ export default function LandingPage() {
                     },
                 ]}
                 ctaText="Check Today's Available Batches"
-                ctaHref="/batches"
+                ctaHref="/group-classes-indiranagar"
             />
 
             <ComparisonSection
@@ -152,7 +127,7 @@ export default function LandingPage() {
             <ImageFeatureSection
                 title="Who Commonly Joins Our Indiranagar Group Classes"
                 description="Our group classes are designed for everyday practitioners looking to build consistency, balance, and wellbeing."
-                image={Image2}
+                image={GirlMeditattngImage}
                 imageAlt="Group yoga class at AthaYog Living studio in Indiranagar"
                 features={[
                     {
@@ -203,7 +178,7 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText="Get Trial & Fee Details"
-                ctaButtonHref="/contact"
+                ctaButtonHref="/trial-classes"
                 sectionTitle="What Our Members Say"
                 testimonials={[
                     {
