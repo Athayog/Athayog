@@ -1,34 +1,29 @@
-// Sound Meditation Yoga - Complete Page Implementation
 import React from 'react'
 import { Box } from '@mui/material'
-
-// Reuse ALL components from Aerial Yoga page
-import AerialHeroSection from '@/app/ld/AerialHeroSection'
+import StressIcon from '@mui/icons-material/Spa'
 import InfoBarSection from '@/app/ld/InfoBarSection'
+import FinalCTASection from '@/app/ld/FinalCTASection'
+import BackgroundImage from '/public/images/Sound.jpg'
+import BrainIcon from '@mui/icons-material/Psychology'
+import SleepIcon from '@mui/icons-material/NightsStay'
+import SoundWaveIcon from '@mui/icons-material/GraphicEq'
+import AerialHeroSection from '@/app/ld/AerialHeroSection'
+import RelaxIcon from '@mui/icons-material/SelfImprovement'
+import EmotionIcon from '@mui/icons-material/EmojiEmotions'
+import AnxietyIcon from '@mui/icons-material/FavoriteBorder'
 import IconBenefitsSection from '@/app/ld/IconBenefitsSection'
 import SplitContentSection from '@/app/ld/SplitContentSection'
 import PricingCardsSection from '@/app/ld/PricingCardsSection'
 import NumberedListSection from '@/app/ld/NumberedListSection'
-import FinalCTASection from '@/app/ld/FinalCTASection'
-import bacgroundImage from '/public/images/landing-page-hero-1.jpg'
-// Icons for sound meditation
-import SoundWaveIcon from '@mui/icons-material/GraphicEq'
-import BrainIcon from '@mui/icons-material/Psychology'
-import RelaxIcon from '@mui/icons-material/SelfImprovement'
-import AnxietyIcon from '@mui/icons-material/FavoriteBorder'
-import SleepIcon from '@mui/icons-material/NightsStay'
-import EmotionIcon from '@mui/icons-material/EmojiEmotions'
-import StressIcon from '@mui/icons-material/Spa'
 
 export default function SoundMeditationPage() {
     return (
         <Box>
-            {/* 1. Hero Section - REUSED */}
             <AerialHeroSection
                 h1="Sound Meditation in Indiranagar | Deep Relaxation & Mental Reset"
                 subheadline="Disconnect from noise. Reconnect with calm through guided sound meditation."
                 trustPoints={['Suitable for all age groups', 'No prior meditation experience required', 'Safe, guided, and deeply restorative']}
-                backgroundImage={bacgroundImage} // ← Add image!
+                backgroundImage={BackgroundImage}
                 primaryCTA={{
                     text: 'Book Session – ₹799',
                     href: '/book-sound-meditation',
@@ -39,7 +34,6 @@ export default function SoundMeditationPage() {
                 }}
             />
 
-            {/* 2. Info Bar - REUSED */}
             <InfoBarSection
                 items={[
                     { label: 'Location', value: 'AthaYog Indiranagar' },
@@ -49,7 +43,6 @@ export default function SoundMeditationPage() {
                 ]}
             />
 
-            {/* 3A. How Sound Meditation Works - REUSED with new data */}
             <IconBenefitsSection
                 title="What Is Sound Meditation?"
                 subtitle="How Sound Meditation Works"
@@ -76,7 +69,6 @@ export default function SoundMeditationPage() {
                 backgroundColor="#f5f5e8"
             />
 
-            {/* 3B. Benefits You'll Feel - REUSED with new data */}
             <IconBenefitsSection
                 title="Benefits You'll Feel"
                 benefits={[
@@ -108,7 +100,6 @@ export default function SoundMeditationPage() {
                 backgroundColor="#ffffff"
             />
 
-            {/* 4. Who Should Attend - REUSED */}
             <SplitContentSection
                 title="Perfect For"
                 items={[
@@ -120,7 +111,6 @@ export default function SoundMeditationPage() {
                 backgroundColor="#f5f5e8"
             />
 
-            {/* 5. Pricing - REUSED with new prices */}
             <PricingCardsSection
                 title="Session Pricing"
                 pricingCards={[
@@ -144,7 +134,6 @@ export default function SoundMeditationPage() {
                 backgroundColor="#ffffff"
             />
 
-            {/* 6. What to Expect - REUSED */}
             <NumberedListSection
                 title="What to Expect in the Session"
                 items={[
