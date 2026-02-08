@@ -1,28 +1,29 @@
 'use client'
-import AccountTreeIcon from '@mui/icons-material/AccountTree'
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+
+import { Box } from '@mui/material'
+import FAQCTASection from '@/app/ld/FAQCTASection'
 import GroupsIcon from '@mui/icons-material/Groups'
+import SchoolIcon from '@mui/icons-material/School'
+import FeatureSection from '@/app/ld/FeatureSection'
+import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import AnatomyImage from '/public/images/anatomy.jpg'
+import YogaProgramHero from '@/app/ld/YogaProgramHero'
+import ScheduleIcon from '@mui/icons-material/Schedule'
+import FeedbackImage from '/public/images/feedback.jpg'
+import ComparisonSection from '@/app/ld/ComparisonSection'
 import NightsStayIcon from '@mui/icons-material/NightsStay'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
-import ScheduleIcon from '@mui/icons-material/Schedule'
-import SchoolIcon from '@mui/icons-material/School'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
-import WbSunnyIcon from '@mui/icons-material/WbSunny'
+import AccountTreeIcon from '@mui/icons-material/AccountTree'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
-import { Box } from '@mui/material'
-import ComparisonSection from '../ComparisonSection'
-import FAQCTASection from '../FAQCTASection'
-import FeatureSection from '../FeatureSection'
-import ImageFeatureSection from '../ImageFeatureSection'
-import NumberedListSection from '../NumberedListSection'
-import SplitContentSection from '../SplitContentSection'
-import TestimonialCTASection from '../TestimonialCTASection'
-import YogaProgramHero from '../YogaProgramHero'
-import bacgroundImage from '/public/images/landing-page-hero-1.jpg'
-import Image3 from '/public/images/mental-health/3.png'
-import Sample4 from '/public/images/Sample (4).png'
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import NumberedListSection from '@/app/ld/NumberedListSection'
+import SplitContentSection from '@/app/ld/SplitContentSection'
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
+import BackgroundHeroImage from '/public/images/certification.jpg'
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 
 export default function LandingPage() {
     return (
@@ -41,7 +42,7 @@ export default function LandingPage() {
                 messagePlaceholder="Your message"
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
-                backgroundImage={bacgroundImage}
+                backgroundImage={BackgroundHeroImage}
                 ctaButtonHref="/register/non-residential-form"
             />
 
@@ -100,12 +101,10 @@ export default function LandingPage() {
                 ]}
             />
 
-            {/* DONE */}
-
             <ImageFeatureSection
                 title="Batch Timings Designed Around Work Life"
                 description="The program schedule is structured to support consistency without disrupting professional responsibilities."
-                image={Image3}
+                image={FeedbackImage}
                 imageAlt="Online yoga class with instructor guiding students"
                 features={[
                     {
@@ -126,7 +125,7 @@ export default function LandingPage() {
                     },
                 ]}
                 ctaText="Check Available Batches"
-                ctaHref="/batches"
+                ctaHref="/register/non-residential-form"
             />
 
             <ComparisonSection
@@ -180,7 +179,7 @@ export default function LandingPage() {
 
             <SplitContentSection
                 title="Program Duration, Commitment & Investment"
-                titleImage={Sample4}
+                titleImage={AnatomyImage}
                 titleImageAlt="Peaceful yoga studio"
                 items={[
                     { id: '1', text: 'Multiple duration options available' },
@@ -192,7 +191,7 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText=" Get Program Details & Fee Structure"
-                ctaButtonHref="/contact"
+                ctaButtonHref="/yoga-teacher-training-ryt-200-non-residential"
                 sectionTitle="What Participants Share"
                 testimonials={[
                     {
