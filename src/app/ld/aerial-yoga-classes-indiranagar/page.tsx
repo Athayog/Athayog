@@ -1,25 +1,18 @@
-// Aerial Yoga Classes - Complete Page Implementation
 import React from 'react'
 import { Box } from '@mui/material'
-
-// Import existing components
+import StressIcon from '@mui/icons-material/Spa'
+import InfoBarSection from '@/app/ld/InfoBarSection'
+import FinalCTASection from '@/app/ld/FinalCTASection'
+import SpineIcon from '@mui/icons-material/FitnessCenter'
+import AerialHeroSection from '@/app/ld/AerialHeroSection'
+import MuscleIcon from '@mui/icons-material/Accessibility'
+import BalanceIcon from '@mui/icons-material/SelfImprovement'
 import SplitContentSection from '@/app/ld/SplitContentSection'
 import NumberedListSection from '@/app/ld/NumberedListSection'
-import OptionsShowcaseSection from '@/app/ld/OptionsShowcaseSection'
-
-// Import new components we'll create
-import AerialHeroSection from '@/app/ld/AerialHeroSection'
-import InfoBarSection from '@/app/ld/InfoBarSection'
 import IconBenefitsSection from '@/app/ld/IconBenefitsSection'
 import PricingCardsSection from '@/app/ld/PricingCardsSection'
 import StudioLocationSection from '@/app/ld/StudioLocationSection'
-import FinalCTASection from '@/app/ld/FinalCTASection'
-
-// Icons for benefits
-import SpineIcon from '@mui/icons-material/FitnessCenter'
-import MuscleIcon from '@mui/icons-material/Accessibility'
-import BalanceIcon from '@mui/icons-material/SelfImprovement'
-import StressIcon from '@mui/icons-material/Spa'
+import BackgroundHeroImage from '/public/images/landing-page-hero-4.jpg'
 
 export default function AerialYogaPage() {
     return (
@@ -37,6 +30,7 @@ export default function AerialYogaPage() {
                     text: 'Get Monthly Pass – ₹1,999',
                     href: '/monthly-pass',
                 }}
+                backgroundImage={BackgroundHeroImage}
             />
 
             {/* 2. Info Bar */}
