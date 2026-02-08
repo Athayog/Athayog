@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import { Box, Container, Typography, Grid, Paper, Stack } from '@mui/material'
+import Link from 'next/link'
+import { Box, Container, Typography, Grid, Paper, Stack, Button } from '@mui/material'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 
 export interface FeatureItem {
@@ -23,6 +24,13 @@ export interface ImageFeatureSectionProps {
     reverseLayout?: boolean
     iconColor?: string
     iconBackgroundColor?: string
+    // CTA Button Props
+    ctaText?: string
+    ctaHref?: string
+    ctaOnClick?: () => void
+    ctaButtonColor?: string
+    ctaButtonTextColor?: string
+    ctaVariant?: 'contained' | 'outlined'
 }
 
 const ImageFeatureSection: React.FC<ImageFeatureSectionProps> = ({
@@ -40,6 +48,12 @@ const ImageFeatureSection: React.FC<ImageFeatureSectionProps> = ({
     imagePriority = false,
     imageQuality = 85,
     reverseLayout = false,
+    ctaText,
+    ctaHref,
+    ctaOnClick,
+    ctaButtonColor = '#4a7c2f',
+    ctaButtonTextColor = '#ffffff',
+    ctaVariant = 'contained',
 }) => {
     const ImageColumn = (
         <Grid item xs={12} md={6}>
@@ -134,6 +148,72 @@ const ImageFeatureSection: React.FC<ImageFeatureSectionProps> = ({
         </Grid>
     )
 
+    const renderCTA = () => {
+        if (!ctaText) return null
+
+        const buttonStyles = {
+            px: { xs: 4, md: 5 },
+            py: { xs: 1.5, md: 1.75 },
+            fontSize: { xs: '1rem', md: '1.1rem' },
+            fontWeight: 600,
+            borderRadius: 3,
+            textTransform: 'none' as const,
+            boxShadow: ctaVariant === 'contained' ? '0 4px 14px rgba(74, 124, 47, 0.3)' : 'none',
+            transition: 'all 0.3s ease-in-out',
+            ...(ctaVariant === 'contained' && {
+                backgroundColor: ctaButtonColor,
+                color: ctaButtonTextColor,
+                '&:hover': {
+                    backgroundColor: ctaButtonColor,
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 6px 20px rgba(74, 124, 47, 0.4)',
+                },
+            }),
+            ...(ctaVariant === 'outlined' && {
+                borderColor: ctaButtonColor,
+                color: ctaButtonColor,
+                borderWidth: 2,
+                '&:hover': {
+                    borderColor: ctaButtonColor,
+                    borderWidth: 2,
+                    backgroundColor: `${ctaButtonColor}10`,
+                    transform: 'translateY(-2px)',
+                },
+            }),
+        }
+
+        if (ctaHref) {
+            return (
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 5, md: 6 } }}>
+                    <Button
+                        component={Link}
+                        href={ctaHref}
+                        variant={ctaVariant}
+                        sx={buttonStyles}
+                    >
+                        {ctaText}
+                    </Button>
+                </Box>
+            )
+        }
+
+        if (ctaOnClick) {
+            return (
+                <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 5, md: 6 } }}>
+                    <Button
+                        onClick={ctaOnClick}
+                        variant={ctaVariant}
+                        sx={buttonStyles}
+                    >
+                        {ctaText}
+                    </Button>
+                </Box>
+            )
+        }
+
+        return null
+    }
+
     return (
         <Box
             sx={{
@@ -191,6 +271,9 @@ const ImageFeatureSection: React.FC<ImageFeatureSectionProps> = ({
                         </>
                     )}
                 </Grid>
+
+                {/* CTA Button */}
+                {renderCTA()}
             </Container>
         </Box>
     )

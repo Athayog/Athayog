@@ -6,6 +6,11 @@ import GavelIcon from '@mui/icons-material/Gavel'
 import HomeIcon from '@mui/icons-material/Home'
 import NightlightIcon from '@mui/icons-material/Nightlight'
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
+import NightsStayIcon from '@mui/icons-material/NightsStay'
+import PsychologyIcon from '@mui/icons-material/Psychology'
+import RestartAltIcon from '@mui/icons-material/RestartAlt'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import GroupsIcon from '@mui/icons-material/Groups'
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
@@ -38,6 +43,7 @@ import Image2 from '/public/images/mental-health/2.png'
 import Image1 from '/public/images/mental-health/1.png'
 import Image3 from '/public/images/mental-health/3.png'
 import LearningAreasSection from '../LearningAreasSection'
+import ComparisonSection from '../ComparisonSection'
 
 export default function LandingPage() {
     return (
@@ -83,251 +89,179 @@ export default function LandingPage() {
                 ]}
             />
 
-            <ImageFeatureSection
-                title="Is This Online Yoga Teacher Training Right for You?"
-                description="This online TTC is suitable if you"
-                image={Image2}
-                imageAlt="Group of people practicing yoga in a peaceful studio"
-                features={[
+            <NumberedListSection
+                title="How the Program Works"
+                variant="minimal"
+                subtitle="The training follows a clear, guided flow to ensure steady learning, proper support, and realistic integration with daily life."
+                items={[
                     {
-                        icon: <SchoolIcon />,
-                        text: 'Want to teach yoga professionally or deepen your practice seriously',
+                        id: '1',
+                        text: 'Initial consultation to understand your goals, experience level, and availability',
                     },
                     {
-                        icon: <LiveTvIcon />,
-                        text: 'Prefer live, guided learning over self-paced recordings',
+                        id: '2',
+                        text: 'Batch allocation into morning or evening sessions based on suitability',
                     },
                     {
-                        icon: <AccessTimeIcon />,
-                        text: 'Are willing to commit time, attention, and discipline',
+                        id: '3',
+                        text: 'Guided asana practice with emphasis on alignment, stability, and gradual strength building',
                     },
                     {
-                        icon: <VerifiedIcon />,
-                        text: 'Want a credible yoga teacher certification.',
+                        id: '4',
+                        text: 'Pranayama and breath awareness to support regulation, balance, and inner steadiness',
                     },
                     {
-                        icon: <LaptopMacIcon />,
-                        text: 'Need the flexibility of online learning without losing depth',
+                        id: '5',
+                        text: 'Meditation and relaxation practices to develop focus, calm, and mental clarity',
+                    },
+                    {
+                        id: '6',
+                        text: 'Progressive learning through a structured and continuous training approach',
                     },
                 ]}
             />
 
-            <NumberedListSection
-                title="What Is an Online Yoga Teacher Training Program?"
-                subtitle="An online yoga teacher training course at AthaYog Living is a live, instructor-led educational program that delivers the depth of a traditional TTC through a structured online format."
-                items={[
+            {/* DONE */}
+
+            <ImageFeatureSection
+                title="Batch Timings Designed Around Work Life"
+                description="The program schedule is structured to support consistency without disrupting professional responsibilities."
+                image={Image3}
+                imageAlt="Online yoga class with instructor guiding students"
+                features={[
                     {
-                        id: '1',
-                        text: 'Live asana practice & alignment guidance',
+                        icon: <WbSunnyIcon />,
+                        text: 'Morning batches for early-day clarity and sustained energy',
                     },
                     {
-                        id: '2',
-                        text: 'Pranayama and breath science',
+                        icon: <NightsStayIcon />,
+                        text: 'Evening batches to release stress and unwind after work',
                     },
                     {
-                        id: '3',
-                        text: 'Meditation fundamentals',
+                        icon: <ScheduleIcon />,
+                        text: 'Fixed timings to build discipline and regularity',
                     },
                     {
-                        id: '4',
-                        text: 'Yoga philosophy & ethics',
-                    },
-                    {
-                        id: '5',
-                        text: 'Applied anatomy',
-                    },
-                    {
-                        id: '6',
-                        text: 'Teaching methodology & practice teaching',
+                        icon: <GroupsIcon />,
+                        text: 'Small batch sizes for focused guidance and interaction',
                     },
                 ]}
+                ctaText="Check Available Batches"
+                ctaHref="/batches"
             />
-            {/* TODO: GET AI GEN IMAGES */}
-            <LearningAreasSection
-                title="What You Will Learn in the Online TTC"
-                subtitle="Core Learning Areas:"
-                layout="grid" // Horizontal cards with optional images
-                learningAreas={[
-                    {
-                        id: '1',
-                        title: 'Asana Practice & Alignment',
-                        description: 'Safe, mindful practice with functional understanding',
-                        image: Image2, // Add your image
-                        imageAlt: 'Asana practice and alignment',
-                    },
-                    {
-                        id: '2',
-                        title: 'Pranayama & Breath Awareness',
-                        description: 'Understanding breath regulation and its effects',
-                        image: Image3, // Add your image
-                        imageAlt: 'Pranayama breathing techniques',
-                    },
-                    {
-                        id: '3',
-                        title: 'Meditation & Inner Practices',
-                        description: 'Foundational techniques for focus and clarity',
-                        // Can add image or leave without
-                    },
-                    {
-                        id: '4',
-                        title: 'Yoga Philosophy & Ethics',
-                        description: 'Classical concepts applied to modern life',
-                        image: Image2, // Add your image
-                        imageAlt: 'Yoga philosophy study',
-                    },
-                    {
-                        id: '5',
-                        title: 'Applied Anatomy',
-                        description: 'Understanding the body for safe teaching (non-medical)',
-                    },
-                    {
-                        id: '6',
-                        title: 'Teaching Methodology',
-                        description: 'Cueing, sequencing, observation, and correction',
-                        image: Image2, // Add your image
-                        imageAlt: 'Teaching methodology',
-                    },
-                    {
-                        id: '7',
-                        title: 'Practice Teaching & Feedback',
-                        description: 'Guided teaching practice with faculty input',
-                    },
-                ]}
+
+            <ComparisonSection
+                mainTitle="Why This Is Not a Regular Yoga Class"
+                subtitle="This program focuses on commitment and outcomes."
+                leftColumn={{
+                    title: 'Regular Yoga Classes',
+                    items: [
+                        { id: '1', text: 'Drop-in format' },
+                        { id: '2', text: 'No learning structure' },
+                        { id: '3', text: 'Inconsistent attendance' },
+                        { id: '4', text: 'Limited progression' },
+                    ],
+                }}
+                rightColumn={{
+                    title: 'AthaYog Non-Residential Program',
+                    items: [
+                        { id: '1', text: 'Structured curriculum' },
+                        { id: '2', text: 'Guided learning path' },
+                        { id: '3', text: 'Consistent batch schedule' },
+                        { id: '4', text: 'Long-term physical and mental benefits' },
+                    ],
+                }}
             />
 
             <FeatureSection
-                title="Who Typically Joins This Online TTC"
+                title="Who Typically Chooses This Program"
                 cards={[
                     {
                         icon: <WorkOutlineIcon />,
-                        title: 'Working professionals transitioning into teaching',
+                        title: 'Working professionals managing stress and burnout',
                     },
                     {
-                        icon: <SelfImprovementIcon />,
-                        title: 'Dedicated yoga practitioners seeking depth',
+                        icon: <PsychologyIcon />,
+                        title: 'Entrepreneurs seeking mental clarity',
                     },
                     {
-                        icon: <PublicIcon />,
-                        title: 'International students needing location-independent learning',
-                    },
-                    {
-                        icon: <HealthAndSafetyIcon />,
-                        title: 'Wellness professionals adding yoga credentials',
-                    },
-                    {
-                        icon: <LocationOffIcon />,
-                        title: 'Individuals unable to relocate for residential TTC',
-                    },
-                ]}
-            />
-            <SplitContentSection
-                title="Guided by Experienced Teachers"
-                titleImage={Sample4}
-                titleImageAlt="Peaceful yoga studio"
-                items={[
-                    { id: '1', text: 'Safety and alignment' },
-                    { id: '2', text: 'Traditional principles with modern understanding' },
-                    { id: '3', text: 'Ethical teaching standards' },
-                    { id: '4', text: 'Clarity over complexity' },
-                ]}
-            />
-
-            <ImageFeatureSection
-                title="Certification & Professional Outcomes"
-                // description="This online TTC is suitable if you"
-                image={Image2}
-                reverseLayout={true}
-                imageAlt="Group of people practicing yoga in a peaceful studio"
-                features={[
-                    {
-                        icon: <VerifiedIcon />,
-                        text: 'Participants receive yoga teacher training certification',
+                        icon: <RestartAltIcon />,
+                        title: 'Individuals restarting yoga after a long break',
                     },
                     {
                         icon: <SchoolIcon />,
-                        text: 'Guidance is provided on teaching readiness and scope',
+                        title: 'Beginners who want to learn yoga properly',
                     },
                     {
-                        icon: <GavelIcon />,
-                        text: 'Emphasis is placed on teaching responsibly and ethically',
+                        icon: <FavoriteBorderIcon />,
+                        title: 'Long-term wellness seekers',
                     },
                 ]}
             />
 
-            <IconListSection
-                title="Duration, Schedule & Commitment Expectations"
-                description="This online yoga teacher training requires:"
+            <SplitContentSection
+                title="Program Duration, Commitment & Investment"
+                titleImage={Sample4}
+                titleImageAlt="Peaceful yoga studio"
                 items={[
-                    {
-                        id: '1',
-                        text: 'Consistent live attendance',
-                    },
-                    {
-                        id: '2',
-                        text: 'Weekly study and practice time',
-                    },
-                    {
-                        id: '3',
-                        text: 'Willingness to engage and participate',
-                    },
-                    {
-                        id: '4',
-                        text: 'Commitment to learning',
-                    },
+                    { id: '1', text: 'Multiple duration options available' },
+                    { id: '2', text: 'Monthly and long-term plans' },
+                    { id: '3', text: 'Fees depend on batch and commitment period' },
+                    { id: '4', text: 'Orientation or trial discussion before enrollment' },
                 ]}
             />
 
             <TestimonialCTASection
-                ctaButtonText=" Discuss Eligibility & Schedule Fit"
+                ctaButtonText=" Get Program Details & Fee Structure"
                 ctaButtonHref="/contact"
-                sectionTitle="What Graduates Share"
+                sectionTitle="What Participants Share"
                 testimonials={[
                     {
                         id: '1',
-                        text: `The live format made a huge difference in my understanding.`,
+                        text: `This structure finally helped me stay consistent alongside work.`,
                     },
                     {
                         id: '2',
-                        text: 'I finally felt confident explaining and teaching postures.',
+                        text: 'It’s not a casual class — the discipline changed my routine.',
                     },
                     {
                         id: '3',
-                        text: 'This felt like real teacher training',
+                        text: 'I wanted serious yoga without staying residential. This worked perfectly.',
                     },
                 ]}
-                finalText="Honest learning experiences. No exaggeration."
+                finalText="Real people. Real routines. Real progress."
             />
             <FAQCTASection
                 sectionTitle="Frequently Asked Questions"
                 faqs={[
                     {
                         id: '1',
-                        question: 'Is this yoga teacher training fully online?',
-                        answer: 'Yes. All sessions are conducted online through live, interactive classes.',
+                        question: 'Is accommodation included?',
+                        answer: 'No. This is a non-residential yoga program. Participants attend sessions and return home.',
                     },
                     {
                         id: '2',
-                        question: 'Is prior yoga experience required?',
-                        answer: 'Some prior practice is helpful. Suitability is assessed before enrollment.',
+                        question: 'Can beginners join?',
+                        answer: 'Yes. Beginners are guided step by step with a strong focus on building proper foundations.',
                     },
                     {
                         id: '3',
-                        question: 'Is this program live or recorded?',
-                        answer: 'The training is primarily live-guided. Recordings may be provided for review, not as a replacement for live participation.',
+                        question: 'What if I miss a session?',
+                        answer: 'Guidance is provided to help maintain continuity wherever possible.',
                     },
                     {
                         id: '4',
-                        question: 'How rigorous is the program?',
-                        answer: 'The program requires consistent attendance, practice, and sincere engagement.',
+                        question: 'Is this suitable for working professionals?',
+                        answer: 'Yes. The program is specifically designed around working schedules.',
                     },
                     {
                         id: '5',
-                        question: 'Will I be confident to teach after completion?',
-                        answer: 'The curriculum is designed to progressively build teaching understanding, clarity, and confidence.',
+                        question: 'How long should I commit?',
+                        answer: 'Consistency matters. Our team will help you choose a suitable duration based on your goals and availability.',
                     },
                 ]}
-                subtext="Learn Yoga Deeply. Teach With Integrity. From Anywhere."
-                primaryCtaText="Check Eligibility & Apply"
+                subtext="Build a Consistent Yoga Practice Without Disrupting Your Life"
+                primaryCtaText="Check Program Fit & Speak to a Yoga Advisor"
                 secondaryCtaText="WhatsApp Us for initial guidance"
                 onSecondaryCtaClick={() => {
                     const phoneNumber = '+919611771434'
