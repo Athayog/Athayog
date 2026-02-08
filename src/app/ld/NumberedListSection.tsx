@@ -10,7 +10,7 @@ export type NumberedListVariant = 'default' | 'timeline' | 'minimal' | 'bold'
 
 export interface NumberedListSectionProps {
     title: string
-    subtitle: string
+    subtitle?: string
     items: ListItem[]
     variant?: NumberedListVariant
     backgroundColor?: string
@@ -381,21 +381,23 @@ const NumberedListSection: React.FC<NumberedListSectionProps> = ({
                 </Typography>
 
                 {/* Subtitle */}
-                <Typography
-                    variant="h6"
-                    component="p"
-                    sx={{
-                        color: subtitleColor,
-                        fontWeight: 500,
-                        fontSize: { xs: '1.05rem', md: '1.2rem' },
-                        textAlign: 'center',
-                        mb: { xs: 5, md: 7 },
-                        fontStyle: 'italic',
-                        lineHeight: 1.6,
-                    }}
-                >
-                    {subtitle}
-                </Typography>
+                {subtitle && (
+                    <Typography
+                        variant="h6"
+                        component="p"
+                        sx={{
+                            color: subtitleColor,
+                            fontWeight: 500,
+                            fontSize: { xs: '1.05rem', md: '1.2rem' },
+                            textAlign: 'center',
+                            mb: { xs: 5, md: 7 },
+                            fontStyle: 'italic',
+                            lineHeight: 1.6,
+                        }}
+                    >
+                        {subtitle}
+                    </Typography>
+                )}
 
                 {/* Render Selected Variant */}
                 {renderContent()}
