@@ -51,6 +51,7 @@ export default function LandingPage() {
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={heroImage}
                 ctaButtonHref="/register/residential-form"
+                formKey="ttc_online"
             />
 
             <ImageFeatureSection

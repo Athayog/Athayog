@@ -44,6 +44,7 @@ export default function LandingPage() {
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={BackgroundHeroImage}
                 ctaButtonHref="/register/non-residential-form"
+                formKey="ryt200_non_residential"
             />
 
             <FeatureSection
