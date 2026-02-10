@@ -43,6 +43,7 @@ export default function LandingPage() {
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={BackgroundHeroImage}
                 ctaButtonHref="/register/enquire-group-class-form"
+                formKey="group_classes_indiranagar"
             />
 
             <FeatureSection
