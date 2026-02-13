@@ -43,7 +43,7 @@ export default function LandingPage() {
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={BackgroundHeroImage}
-                ctaButtonHref="/register/non-residential-form"
+                ctaButtonHref="/contact-us"
                 formKey="ryt200_non_residential"
             />
 
@@ -126,7 +126,7 @@ export default function LandingPage() {
                     },
                 ]}
                 ctaText="Check Available Batches"
-                ctaHref="/register/non-residential-form"
+                ctaHref="/contact-us"
             />
 
             <ComparisonSection
@@ -192,7 +192,7 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText=" Get Program Details & Fee Structure"
-                ctaButtonHref="/yoga-teacher-training-ryt-200-non-residential"
+                ctaButtonHref="/contact-us"
                 sectionTitle="What Participants Share"
                 testimonials={[
                     {

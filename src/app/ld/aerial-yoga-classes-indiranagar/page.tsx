@@ -23,12 +23,12 @@ export default function AerialYogaPage() {
                 subheadline="Defy gravity. Build core strength. Release stress — in guided, small-batch Aerial Yoga sessions."
                 trustPoints={['Small batch: Only 10 participants', 'Suitable for 15–50 yrs | Working professionals welcome', 'Beginner-friendly | Instructor-led']}
                 primaryCTA={{
-                    text: 'Book Your Session – ₹599',
-                    href: '/book-session',
+                    text: 'Book Your Session – ₹699',
+                    href: 'https://rzp.io/rzp/UX3HbMvu',
                 }}
                 secondaryCTA={{
                     text: 'Get Monthly Pass – ₹1,999',
-                    href: '/monthly-pass',
+                    href: 'https://rzp.io/rzp/q55F7v2',
                 }}
                 backgroundImage={BackgroundHeroImage}
             />
@@ -92,17 +92,17 @@ export default function AerialYogaPage() {
                 pricingCards={[
                     {
                         title: 'Single Session',
-                        price: '₹599',
+                        price: '₹699',
                         note: 'Excl. GST',
                         ctaText: 'Book Now',
-                        ctaHref: '/book-single',
+                        ctaHref: 'https://rzp.io/rzp/UX3HbMvu',
                     },
                     {
                         title: 'Monthly Pass',
                         price: '₹1,999',
                         note: 'Excl. GST',
                         ctaText: 'Get Pass',
-                        ctaHref: '/monthly-pass',
+                        ctaHref: 'https://rzp.io/rzp/q55F7v2',
                         featured: true,
                     },
                 ]}
@@ -136,12 +136,12 @@ export default function AerialYogaPage() {
             <FinalCTASection
                 title="Ready to Experience Aerial Yoga?"
                 primaryCTA={{
-                    text: 'Book Single Session – ₹599',
-                    href: '/book-single',
+                    text: 'Book Single Session – ₹699',
+                    href: 'https://rzp.io/rzp/UX3HbMvu',
                 }}
                 secondaryCTA={{
                     text: 'Choose Monthly Plan – ₹1,999',
-                    href: '/monthly-pass',
+                    href: 'https://rzp.io/rzp/q55F7v2',
                 }}
             />
         </Box>

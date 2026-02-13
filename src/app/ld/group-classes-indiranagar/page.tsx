@@ -42,7 +42,7 @@ export default function LandingPage() {
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={BackgroundHeroImage}
-                ctaButtonHref="/register/enquire-group-class-form"
+                ctaButtonHref="/contact-us"
                 formKey="group_classes_indiranagar"
             />
 
@@ -101,7 +101,7 @@ export default function LandingPage() {
                     },
                 ]}
                 ctaText="Check Today's Available Batches"
-                ctaHref="/group-classes-indiranagar"
+                ctaHref="/contact-us"
             />
 
             <ComparisonSection
@@ -179,7 +179,7 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText="Get Trial & Fee Details"
-                ctaButtonHref="/trial-classes"
+                ctaButtonHref="/contact-us"
                 sectionTitle="What Our Members Say"
                 testimonials={[
                     {
