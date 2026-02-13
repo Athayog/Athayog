@@ -11,6 +11,15 @@ const nextConfig = {
 
         return config
     },
+    async redirects() {
+        return [
+            {
+                source: '/ld/sound-meditation-yoga-indiranagar',
+                destination: '/',
+                permanent: false,
+            },
+        ]
+    },
 }
 
 export default nextConfig

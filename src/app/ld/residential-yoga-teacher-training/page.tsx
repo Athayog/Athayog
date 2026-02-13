@@ -45,7 +45,7 @@ export default function LandingPage() {
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={ResidentialHeroImage}
-                ctaButtonHref="/register/residential-form"
+                ctaButtonHref="/contact-us"
                 formKey="ryt_residential"
             />
 
@@ -234,11 +234,7 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText="Discuss Program Fit & Duration"
-                onCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    const whatsappUrl = `https://wa.me/${phoneNumber}`
-                    window.open(whatsappUrl, '_blank')
-                }}
+                ctaButtonHref="/contact-us"
                 sectionTitle="Participant Experiences"
                 testimonials={[
                     {

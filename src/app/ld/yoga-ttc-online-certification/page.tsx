@@ -50,7 +50,7 @@ export default function LandingPage() {
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={heroImage}
-                ctaButtonHref="/register/residential-form"
+                ctaButtonHref="/contact-us"
                 formKey="ttc_online"
             />
 
@@ -255,10 +255,7 @@ export default function LandingPage() {
             <TestimonialCTASection
                 ctaButtonText=" Discuss Eligibility & Schedule Fit"
                 sectionTitle="What Graduates Share"
-                onCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    window.open(`tel:${phoneNumber}`, '_self')
-                }}
+                ctaButtonHref="/contact-us"
                 testimonials={[
                     {
                         id: '1',
