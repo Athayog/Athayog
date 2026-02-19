@@ -46,7 +46,7 @@ export default function LandingPage() {
                 successMessage="Thank you! We will contact you soon."
                 errorMessage="Something went wrong. Please try again."
                 backgroundImage={BackgroundImageHero}
-                ctaButtonHref="/register/enquire-personal-session-form"
+                ctaButtonHref="/contact-us"
                 formKey="personal_training_indiranagar"
             />
 
@@ -272,11 +272,7 @@ export default function LandingPage() {
 
             <TestimonialCTASection
                 ctaButtonText="Get a Personalized Plan & Fee Structure"
-                onCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    const whatsappUrl = `https://wa.me/${phoneNumber}`
-                    window.open(whatsappUrl, '_blank')
-                }}
+                ctaButtonHref="/contact-us"
                 sectionTitle="What Clients Experience"
                 testimonials={[
                     {
