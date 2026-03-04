@@ -20,7 +20,6 @@ export const navItems: NavItem[] = [
                 type: 'nav',
             },
             { label: 'Workshop', path: '/workshops', type: 'nav' },
-            { label: 'Yoga Therapy', path: '/yoga-therapy', type: 'nav' },
             {
                 label: 'Yoga Academy',
                 type: 'menu',
