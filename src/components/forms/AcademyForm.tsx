@@ -14,6 +14,7 @@ interface FormValuesAcademy {
     email: string
     location: string
     pageSource: string | KeyTextField
+    message: string
 }
 
 const validationSchemaAcademy = Yup.object({
@@ -23,6 +24,7 @@ const validationSchemaAcademy = Yup.object({
         .required('Phone number is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
     location: Yup.string().required('Location is required'),
+    message: Yup.string(),
 })
 
 const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyTextField; paymentLink: any }): JSX.Element => {
@@ -36,6 +38,7 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
             email: '',
             location: '',
             pageSource: pageSource,
+            message: '',
         },
         validationSchema: validationSchemaAcademy,
         onSubmit: async (values: FormValuesAcademy, { resetForm }) => {
@@ -129,6 +132,24 @@ const AcademyForm = ({ pageSource, paymentLink }: { pageSource: string | KeyText
                             onChange={formik.handleChange}
                             error={Boolean(formik.errors.phoneNumber)}
                             helperText={formik.errors.phoneNumber}
+                            sx={{ mb: 3 }}
+                        />
+                    </Box>
+                </Box>
+                
+                <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' }, mt: 3 }}>
+                    <Box sx={{ width: '100%' }}>
+                        <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Message</Typography>
+                        <TextField
+                            fullWidth
+                            id="message"
+                            name="message"
+                            value={formik.values.message}
+                            onChange={formik.handleChange}
+                            error={Boolean(formik.errors.message)}
+                            helperText={formik.errors.message}
+                            multiline
+                            rows={4}
                             sx={{ mb: 3 }}
                         />
                     </Box>

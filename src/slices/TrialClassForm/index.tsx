@@ -5,7 +5,7 @@ import { Content } from '@prismicio/client'
 import useFormStore from '@/store/useFormStore'
 import { SliceComponentProps } from '@prismicio/react'
 import RegisterButton from '@/components/elements/button/RegisterButton'
-import { Box, Checkbox, FormControl, FormControlLabel, FormHelperText, Radio, RadioGroup, Snackbar, TextField, Typography, Alert } from '@mui/material'
+import { Box, Checkbox, FormControl, FormControlLabel, FormHelperText, Radio, RadioGroup, Snackbar, TextField, Typography, Alert, Select, MenuItem } from '@mui/material'
 import { KeyTextField } from '@prismicio/client'
 import { useRouter } from 'next/navigation'
 
@@ -14,6 +14,9 @@ interface FormValues {
     phoneNumber: string
     email: string
     location: string
+    serviceLookingFor: string
+    source: string
+    message: string
 }
 
 const validationSchema = Yup.object({
@@ -23,6 +26,9 @@ const validationSchema = Yup.object({
         .required('Phone number is required'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
     location: Yup.string().required('Location is required'),
+    serviceLookingFor: Yup.string().required('Service is required'),
+    source: Yup.string().required('Source is required'),
+    message: Yup.string(),
 })
 
 export type TrialClassFormProps = SliceComponentProps<Content.TrialClassFormSlice>
@@ -36,6 +42,9 @@ const TrialClassForm = ({ slice }: TrialClassFormProps): JSX.Element => {
             phoneNumber: '',
             email: '',
             location: '',
+            serviceLookingFor: '',
+            source: '',
+            message: '',
         },
         validationSchema,
         onSubmit: async (values: FormValues, { resetForm }) => {
@@ -125,6 +134,58 @@ const TrialClassForm = ({ slice }: TrialClassFormProps): JSX.Element => {
                                     onChange={formik.handleChange}
                                     error={Boolean(formik.errors.phoneNumber)}
                                     helperText={formik.errors.phoneNumber}
+                                    sx={{ mb: 3 }}
+                                />
+                            </Box>
+                        </Box>
+                        <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' }, mt: 3 }}>
+                            <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+                                <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Service You are looking for</Typography>
+                                <FormControl fullWidth error={Boolean(formik.errors.serviceLookingFor)} sx={{ mb: 3 }}>
+                                    <Select
+                                        id="serviceLookingFor"
+                                        name="serviceLookingFor"
+                                        value={formik.values.serviceLookingFor}
+                                        onChange={formik.handleChange}
+                                        displayEmpty
+                                        sx={{ backgroundColor: '#fff' }}
+                                    >
+                                        <MenuItem value="" disabled>Select Service</MenuItem>
+                                        <MenuItem value="Group class">Group class</MenuItem>
+                                        <MenuItem value="Personal Training">Personal Training</MenuItem>
+                                        <MenuItem value="Teachers Training course">Teachers Training course</MenuItem>
+                                    </Select>
+                                    {formik.errors.serviceLookingFor && <FormHelperText>{formik.errors.serviceLookingFor}</FormHelperText>}
+                                </FormControl>
+                            </Box>
+                            <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+                                <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Source</Typography>
+                                <TextField
+                                    fullWidth
+                                    id="source"
+                                    name="source"
+                                    value={formik.values.source}
+                                    onChange={formik.handleChange}
+                                    error={Boolean(formik.errors.source)}
+                                    helperText={formik.errors.source}
+                                    sx={{ mb: 3 }}
+                                    placeholder="How did you hear about us?"
+                                />
+                            </Box>
+                        </Box>
+                        <Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' } }}>
+                            <Box sx={{ width: '100%' }}>
+                                <Typography sx={{ marginBottom: '12px', color: '#284E01', fontWeight: '500' }}>Message</Typography>
+                                <TextField
+                                    fullWidth
+                                    id="message"
+                                    name="message"
+                                    value={formik.values.message}
+                                    onChange={formik.handleChange}
+                                    error={Boolean(formik.errors.message)}
+                                    helperText={formik.errors.message}
+                                    multiline
+                                    rows={4}
                                     sx={{ mb: 3 }}
                                 />
                             </Box>
