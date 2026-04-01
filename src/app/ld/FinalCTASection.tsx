@@ -13,6 +13,7 @@ export interface FinalCTASectionProps {
     subtitle?: string
     primaryCTA: CTAButton
     secondaryCTA?: CTAButton
+    tertiaryCTA?: CTAButton
     backgroundColor?: string
     titleColor?: string
     subtitleColor?: string
@@ -20,6 +21,8 @@ export interface FinalCTASectionProps {
     primaryButtonTextColor?: string
     secondaryButtonColor?: string
     secondaryButtonTextColor?: string
+    tertiaryButtonColor?: string
+    tertiaryButtonTextColor?: string
 }
 
 const FinalCTASection: React.FC<FinalCTASectionProps> = ({
@@ -27,6 +30,7 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({
     subtitle,
     primaryCTA,
     secondaryCTA,
+    tertiaryCTA,
     backgroundColor = 'linear-gradient(135deg, #4a7c2f 0%, #2a3d23 100%)',
     titleColor = '#ffffff',
     subtitleColor = 'rgba(255, 255, 255, 0.9)',
@@ -34,6 +38,8 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({
     primaryButtonTextColor = '#2a3d23',
     secondaryButtonColor = 'transparent',
     secondaryButtonTextColor = '#ffffff',
+    tertiaryButtonColor = 'transparent',
+    tertiaryButtonTextColor = '#ffffff',
 }) => {
     return (
         <Box
@@ -79,8 +85,8 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({
 
                 {/* CTA Buttons */}
                 <Stack
-                    direction={{ xs: 'column', sm: 'row' }}
-                    spacing={{ xs: 2, sm: 3 }}
+                    direction={{ xs: 'column', md: 'row' }}
+                    spacing={{ xs: 2, md: 3 }}
                     justifyContent="center"
                     alignItems="center"
                 >
@@ -141,6 +147,38 @@ const FinalCTASection: React.FC<FinalCTASectionProps> = ({
                             }}
                         >
                             {secondaryCTA.text}
+                        </Button>
+                    )}
+
+                    {/* Tertiary CTA */}
+                    {tertiaryCTA && (
+                        <Button
+                            component={tertiaryCTA.href ? Link : 'button'}
+                            href={tertiaryCTA.href}
+                            onClick={tertiaryCTA.onClick}
+                            variant="outlined"
+                            size="large"
+                            sx={{
+                                backgroundColor: tertiaryButtonColor,
+                                color: tertiaryButtonTextColor,
+                                borderColor: tertiaryButtonTextColor,
+                                borderWidth: 2,
+                                px: { xs: 5, md: 6 },
+                                py: { xs: 1.75, md: 2 },
+                                fontSize: { xs: '1.05rem', md: '1.15rem' },
+                                fontWeight: 700,
+                                borderRadius: 3,
+                                textTransform: 'none',
+                                '&:hover': {
+                                    backgroundColor: 'rgba(255,255,255,0.1)',
+                                    borderColor: tertiaryButtonTextColor,
+                                    borderWidth: 2,
+                                    transform: 'translateY(-2px)',
+                                },
+                                transition: 'all 0.3s ease-in-out',
+                            }}
+                        >
+                            {tertiaryCTA.text}
                         </Button>
                     )}
                 </Stack>

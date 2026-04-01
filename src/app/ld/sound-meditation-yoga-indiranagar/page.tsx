@@ -25,12 +25,12 @@ export default function SoundMeditationPage() {
                 trustPoints={['Suitable for all age groups', 'No prior meditation experience required', 'Safe, guided, and deeply restorative']}
                 backgroundImage={BackgroundImage}
                 primaryCTA={{
-                    text: 'Book Session – ₹799',
+                    text: 'Book Session – ₹899',
                     href: '/book-sound-meditation',
                 }}
                 secondaryCTA={{
-                    text: 'Monthly Pass – ₹2,799',
-                    href: '/monthly-pass-sound',
+                    text: '4 Sessions – ₹3,299',
+                    href: '#',
                 }}
             />
 
@@ -116,17 +116,17 @@ export default function SoundMeditationPage() {
                 pricingCards={[
                     {
                         title: 'Single Session',
-                        price: '₹799',
+                        price: '₹899',
                         note: 'Excl. GST',
                         ctaText: 'Book Now',
                         ctaHref: '/book-single-sound',
                     },
                     {
-                        title: 'Monthly Pass',
-                        price: '₹2,799',
+                        title: '4 Sessions',
+                        price: '₹3,299',
                         note: 'Excl. GST',
                         ctaText: 'Get Pass',
-                        ctaHref: '/monthly-pass-sound',
+                        ctaHref: '#',
                         featured: true,
                     },
                 ]}
@@ -149,12 +149,12 @@ export default function SoundMeditationPage() {
             <FinalCTASection
                 title="Give Your Mind the Rest It Deserves"
                 primaryCTA={{
-                    text: 'Book One Session – ₹799',
+                    text: 'Book One Session – ₹899',
                     href: '/book-single-sound',
                 }}
                 secondaryCTA={{
-                    text: 'Choose Monthly Pass – ₹2,799',
-                    href: '/monthly-pass-sound',
+                    text: 'Choose 4 Sessions – ₹3,299',
+                    href: '#',
                 }}
             />
         </Box>
