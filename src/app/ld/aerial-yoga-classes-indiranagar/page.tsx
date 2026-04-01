@@ -27,8 +27,12 @@ export default function AerialYogaPage() {
                     href: 'https://rzp.io/rzp/UX3HbMvu',
                 }}
                 secondaryCTA={{
-                    text: 'Get Monthly Pass – ₹1,999',
+                    text: 'Get 4 Sessions – ₹2,499',
                     href: 'https://rzp.io/rzp/q55F7v2',
+                }}
+                tertiaryCTA={{
+                    text: 'Get 8 Sessions – ₹4,699',
+                    href: 'https://rzp.io/rzp/0Abz1tpq',
                 }}
                 backgroundImage={BackgroundHeroImage}
             />
@@ -98,11 +102,19 @@ export default function AerialYogaPage() {
                         ctaHref: 'https://rzp.io/rzp/UX3HbMvu',
                     },
                     {
-                        title: 'Monthly Pass',
-                        price: '₹1,999',
+                        title: '4 Sessions',
+                        price: '₹2,499',
                         note: 'Excl. GST',
                         ctaText: 'Get Pass',
                         ctaHref: 'https://rzp.io/rzp/q55F7v2',
+                        featured: true,
+                    },
+                    {
+                        title: '8 Sessions',
+                        price: '₹4,699',
+                        note: 'Excl. GST',
+                        ctaText: 'Get Pass',
+                        ctaHref: 'https://rzp.io/rzp/0Abz1tpq',
                         featured: true,
                     },
                 ]}
@@ -140,8 +152,12 @@ export default function AerialYogaPage() {
                     href: 'https://rzp.io/rzp/UX3HbMvu',
                 }}
                 secondaryCTA={{
-                    text: 'Choose Monthly Plan – ₹1,999',
+                    text: 'Choose 4 Sessions – ₹2,499',
                     href: 'https://rzp.io/rzp/q55F7v2',
+                }}
+                tertiaryCTA={{
+                    text: 'Choose 8 Sessions – ₹4,699',
+                    href: 'https://rzp.io/rzp/0Abz1tpq',
                 }}
             />
         </Box>
