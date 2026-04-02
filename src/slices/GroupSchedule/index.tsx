@@ -261,7 +261,9 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell sx={{ position: 'relative' }}>—</TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                AERIAL YOGA<br/>(PAID)
+                                                AERIAL YOGA
+                                                <br />
+                                                (PAID)
                                                 <Dot color={purpleColor} />
                                             </TableCell>
                                         </TableRow>
@@ -393,31 +395,6 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             </TableCell>
                                         </TableRow>
 
-                                        {/* 7:00 PM – 8:00 PM */}
-                                        <TableRow>
-                                            <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>7:00 PM – 8:00 PM</TableCell>
-                                            {/* Monday */}
-                                            <TableCell sx={{ position: 'relative' }}>—</TableCell>
-                                            {/* Tuesday */}
-                                            <TableCell sx={{ position: 'relative' }}>—</TableCell>
-                                            {/* Wednesday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
-                                            {/* Thursday */}
-                                            <TableCell sx={{ position: 'relative' }}>—</TableCell>
-                                            {/* Friday */}
-                                            <TableCell sx={{ position: 'relative' }}>—</TableCell>
-                                            {/* Saturday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Rhythm of Being
-                                                <Dot color={orangeIntermediate} />
-                                            </TableCell>
-                                            {/* Sunday */}
-                                            <TableCell sx={{ position: 'relative' }}>—</TableCell>
-                                        </TableRow>
-
                                         {/* 7:30 PM – 8:30 PM */}
                                         <TableRow sx={{ backgroundColor: '#fef4eb' }}>
                                             <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>7:30 PM – 8:30 PM</TableCell>
@@ -433,8 +410,8 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             </TableCell>
                                             {/* Wednesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                SOUND MEDITATION<br/>(PAID)<br/>8:00 pm – 9:00 pm
-                                                <Dot color={purpleColor} />
+                                                Uttama Sadhana (Arm Balance)
+                                                <Dot color={advancedRed} />
                                             </TableCell>
                                             {/* Thursday */}
                                             <TableCell sx={{ position: 'relative' }}>
@@ -443,13 +420,15 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             </TableCell>
                                             {/* Friday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                AERIAL YOGA<br/>(PAID)
+                                                AERIAL YOGA
+                                                <br />
+                                                (PAID)
                                                 <Dot color={purpleColor} />
                                             </TableCell>
                                             {/* Saturday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                SOUND MEDITATION<br/>(PAID)<br/>8:00 pm – 9:00 pm
-                                                <Dot color={purpleColor} />
+                                                Rythm of Being
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
