@@ -48,7 +48,7 @@ const EnquiryForm = ({ pageSource }: { pageSource: string | KeyTextField }): JSX
         },
         validationSchema: validationSchemaEnquiry,
         onSubmit: async (values: FormValuesEnquiry, { resetForm }) => {
-            await submitForm(values, 'enquiryFormsv2', `harsimransinghbarki@gmail.com`)
+            await submitForm(values, 'enquiryFormsv2', `info@athayogliving.com`)
             if (!error) {
                 resetForm()
                 router.push('/thank-you')
