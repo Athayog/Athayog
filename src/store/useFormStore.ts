@@ -48,10 +48,14 @@ const useFormStore = create<FormState>((set) => ({
             if (apiUrl) {
                 ; (async () => {
                     try {
-                        const response = await fetch('https://formsubmit.co/ajax/' + apiUrl, {
+                        const response = await fetch('/api/submit-form', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(formData),
+                            body: JSON.stringify({
+                                toEmail: apiUrl,
+                                formData,
+                                collectionName,
+                            }),
                         })
                         if (!response.ok) {
                             await addDoc(collection(db, 'formErrors'), {
