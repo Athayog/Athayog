@@ -89,38 +89,38 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>6:00 AM – 7:00 AM</TableCell>
                                             {/* Monday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rhythm of Being
+                                                Uttama Sadhana (Advance Asana)
                                                 <Dot color={easyGreen} />
                                             </TableCell>
                                             {/* Tuesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
-                                            {/* Wednesday */}
-                                            <TableCell sx={{ position: 'relative' }}>
                                                 Universal Harmony
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
+                                            {/* Wednesday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Arm Balance)
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
                                             {/* Thursday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
+                                                Rhythm of Being
                                                 <Dot color={easyGreen} />
                                             </TableCell>
                                             {/* Friday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
+                                                Uttama Sadhana (Inversions)
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Saturday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Inversions)
-                                                <Dot color={easyGreen} />
+                                                Transcending Transition
+                                                <Dot color={advancedRed} />
                                             </TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Universal Harmony
-                                                <Dot color={advancedRed} />
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                         </TableRow>
 
@@ -129,38 +129,38 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>7:00 AM – 8:00 AM</TableCell>
                                             {/* Monday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
+                                                Rhythm of Being
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Tuesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
-                                                <Dot color={orangeIntermediate} />
-                                            </TableCell>
-                                            {/* Wednesday */}
-                                            <TableCell sx={{ position: 'relative' }}>
                                                 Uttama Sadhana (Inversions)
                                                 <Dot color={advancedRed} />
                                             </TableCell>
-                                            {/* Thursday */}
+                                            {/* Wednesday */}
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Transcending Transition
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
+                                            {/* Thursday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
                                             {/* Friday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
-                                                <Dot color={advancedRed} />
+                                                Universal Harmony
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Saturday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rhythm of Being
-                                                <Dot color={advancedRed} />
+                                                Uttama Sadhana (Arm Balance)
+                                                <Dot color={easyGreen} />
                                             </TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Inversions)
-                                                <Dot color={easyGreen} />
+                                                Rhythm of Being
+                                                <Dot color={advancedRed} />
                                             </TableCell>
                                         </TableRow>
 
@@ -175,46 +175,6 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             {/* Tuesday */}
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Transcending Transition
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
-                                            {/* Wednesday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Rhythm of Being
-                                                <Dot color={orangeIntermediate} />
-                                            </TableCell>
-                                            {/* Thursday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
-                                            {/* Friday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
-                                                <Dot color={easyGreen} />
-                                            </TableCell>
-                                            {/* Saturday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
-                                                <Dot color={orangeIntermediate} />
-                                            </TableCell>
-                                            {/* Sunday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
-                                        </TableRow>
-
-                                        {/* 9:30 AM – 10:30 AM */}
-                                        <TableRow sx={{ backgroundColor: '#fef4eb' }}>
-                                            <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>9:30 AM – 10:30 AM</TableCell>
-                                            {/* Monday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
-                                            {/* Tuesday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
                                                 <Dot color={easyGreen} />
                                             </TableCell>
                                             {/* Wednesday */}
@@ -224,7 +184,7 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             </TableCell>
                                             {/* Thursday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rhythm of Being
+                                                Universal Harmony
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Friday */}
@@ -234,13 +194,53 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             </TableCell>
                                             {/* Saturday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                                <Dot color={easyGreen} />
+                                                Rhythm of Being
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Uttama Sadhana (Arm Balance)
                                                 <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                        </TableRow>
+
+                                        {/* 9:30 AM – 10:30 AM */}
+                                        <TableRow sx={{ backgroundColor: '#fef4eb' }}>
+                                            <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>9:30 AM – 10:30 AM</TableCell>
+                                            {/* Monday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Universal Harmony
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
+                                            {/* Tuesday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            {/* Wednesday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Rhythm of Being
+                                                <Dot color={easyGreen} />
+                                            </TableCell>
+                                            {/* Thursday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Arm Balance)
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
+                                            {/* Friday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Rhythm of Being
+                                                <Dot color={orangeIntermediate} />
+                                            </TableCell>
+                                            {/* Saturday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Inversions)
+                                                <Dot color={advancedRed} />
+                                            </TableCell>
+                                            {/* Sunday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Transcending Transition
+                                                <Dot color={easyGreen} />
                                             </TableCell>
                                         </TableRow>
 
@@ -280,37 +280,37 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>4:00 PM – 5:00 PM</TableCell>
                                             {/* Monday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
+                                                Uttama Sadhana (Arm Balance)
                                                 <Dot color={advancedRed} />
                                             </TableCell>
                                             {/* Tuesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Deep Space
-                                                <Dot color={blueOther} />
-                                            </TableCell>
-                                            {/* Wednesday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
-                                                <Dot color={advancedRed} />
-                                            </TableCell>
-                                            {/* Thursday */}
-                                            <TableCell sx={{ position: 'relative' }}>
                                                 Universal Harmony
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
-                                            {/* Friday */}
+                                            {/* Wednesday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Deep Space
+                                                <Dot color={blueOther} />
+                                            </TableCell>
+                                            {/* Thursday */}
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Uttama Sadhana (Inversions)
                                                 <Dot color={easyGreen} />
                                             </TableCell>
-                                            {/* Saturday */}
+                                            {/* Friday */}
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Rhythm of Being
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
+                                            {/* Saturday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={easyGreen} />
+                                            </TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
+                                                Transcending Transition
                                                 <Dot color={advancedRed} />
                                             </TableCell>
                                         </TableRow>
@@ -320,38 +320,38 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>5:00 PM – 6:00 PM</TableCell>
                                             {/* Monday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rhythm of Being
-                                                <Dot color={easyGreen} />
+                                                Transcending Transition
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Tuesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Inversions)
-                                                <Dot color={orangeIntermediate} />
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={advancedRed} />
                                             </TableCell>
                                             {/* Wednesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
-                                                <Dot color={easyGreen} />
-                                            </TableCell>
-                                            {/* Thursday */}
-                                            <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
+                                                Uttama Sadhana (Arm Balance)
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
-                                            {/* Friday */}
+                                            {/* Thursday */}
                                             <TableCell sx={{ position: 'relative' }}>
                                                 Universal Harmony
                                                 <Dot color={advancedRed} />
                                             </TableCell>
+                                            {/* Friday */}
+                                            <TableCell sx={{ position: 'relative' }}>
+                                                Deep Space
+                                                <Dot color={blueOther} />
+                                            </TableCell>
                                             {/* Saturday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
-                                                <Dot color={easyGreen} />
+                                                Uttama Sadhana (Inversions)
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rhythm of Being
-                                                <Dot color={orangeIntermediate} />
+                                                Universal Harmony
+                                                <Dot color={easyGreen} />
                                             </TableCell>
                                         </TableRow>
 
@@ -360,38 +360,38 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             <TableCell sx={{ backgroundColor: '#eff3d7', position: 'sticky', left: 0, zIndex: 2 }}>6:00 PM – 7:00 PM</TableCell>
                                             {/* Monday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
-                                                <Dot color={orangeIntermediate} />
+                                                Uttama Sadhana (Inversions)
+                                                <Dot color={easyGreen} />
                                             </TableCell>
                                             {/* Tuesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rhythm of Being
-                                                <Dot color={easyGreen} />
+                                                Transcending Transition
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Wednesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Deep Space
-                                                <Dot color={blueOther} />
+                                                Uttama Sadhana (Advance Asana)
+                                                <Dot color={advancedRed} />
                                             </TableCell>
                                             {/* Thursday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Universal Harmony
-                                                <Dot color={easyGreen} />
+                                                Rhythm of Being
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Friday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
-                                                <Dot color={orangeIntermediate} />
+                                                Uttama Sadhana (Arm Balance)
+                                                <Dot color={easyGreen} />
                                             </TableCell>
                                             {/* Saturday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
+                                                Universal Harmony
                                                 <Dot color={advancedRed} />
                                             </TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Inversions)
-                                                <Dot color={advancedRed} />
+                                                Deep Space
+                                                <Dot color={blueOther} />
                                             </TableCell>
                                         </TableRow>
 
@@ -405,13 +405,13 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             </TableCell>
                                             {/* Tuesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Transcending Transition
+                                                Uttama Sadhana (Arm Balance)
                                                 <Dot color={easyGreen} />
                                             </TableCell>
                                             {/* Wednesday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Arm Balance)
-                                                <Dot color={advancedRed} />
+                                                Transcending Transition
+                                                <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Thursday */}
                                             <TableCell sx={{ position: 'relative' }}>
@@ -427,12 +427,12 @@ const GroupSchedule = ({ slice }: GroupScheduleProps): JSX.Element => {
                                             </TableCell>
                                             {/* Saturday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Rythm of Being
+                                                Uttama Sadhana (Advance Asana)
                                                 <Dot color={orangeIntermediate} />
                                             </TableCell>
                                             {/* Sunday */}
                                             <TableCell sx={{ position: 'relative' }}>
-                                                Uttama Sadhana (Advance Asana)
+                                                Rhythm of Being
                                                 <Dot color={easyGreen} />
                                             </TableCell>
                                         </TableRow>
