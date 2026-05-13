@@ -4,8 +4,8 @@ import Image from 'next/image'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import React, { Key, useRef, useState } from 'react'
-import ArrowLeft from '/public/images/home/ArrowLeft.svg'
-import ArrowRight from '/public/images/home/ArrowRight.svg'
+const ArrowLeft = '/images/home/ArrowLeft.svg';
+const ArrowRight = '/images/home/ArrowRight.svg';
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react'
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material'
@@ -242,10 +242,10 @@ const WhyAthayog = ({ title, content }: { title: string | null; content: any }) 
                         </AthayogSwiper>
                         <ButtonGroupBottom>
                             <StyledIconButton onClick={() => swiperRef?.current?.swiper.slidePrev()}>
-                                <ArrowLeft />
+                                <Image src={ArrowLeft} alt="Previous slide" width={24} height={24} />
                             </StyledIconButton>
                             <StyledIconButton onClick={() => swiperRef?.current?.swiper.slideNext()}>
-                                <ArrowRight />
+                                <Image src={ArrowRight} alt="Next slide" width={24} height={24} />
                             </StyledIconButton>
                         </ButtonGroupBottom>
                     </Container>

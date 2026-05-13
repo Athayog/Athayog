@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material'
 import Banner from '@/components/_shared/Banner'
 import { backgroundColorExtract } from '@/utils/color'
 import Button from '@/components/elements/button/Index'
-import flowerMandela from '/public/images/FlowerMandela.png'
+const flowerMandela = '/images/FlowerMandela.png';
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 /**

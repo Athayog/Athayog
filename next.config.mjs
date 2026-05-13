@@ -1,7 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['img.youtube.com', 'images.prismic.io', 'athayog.cdn.prismic.io', 'images.unsplash.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'img.youtube.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'images.prismic.io',
+            },
+            {
+                protocol: 'https',
+                hostname: 'athayog.cdn.prismic.io',
+            },
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+            },
+        ],
     },
     webpack(config) {
         config.module.rules.push({

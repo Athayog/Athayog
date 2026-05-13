@@ -3,13 +3,13 @@ import { Content } from '@prismicio/client'
 import { SliceComponentProps } from '@prismicio/react'
 import Image from 'next/image'
 import { useState } from 'react'
-import ArrowLeft from '/public/images/home/ArrowLeft.svg'
-import ArrowRight from '/public/images/home/ArrowRight.svg'
+const ArrowLeft = '/images/home/ArrowLeft.svg';
+const ArrowRight = '/images/home/ArrowRight.svg';
 import { YouTubeEmbed } from '@next/third-parties/google'
 import { Box, IconButton, styled, Typography } from '@mui/material'
 import { SectionContent, SectionPadding } from '@/components/_shared/SectionContainer'
 import { LayoutContainer, LayoutContent } from '@/components/_shared/LayoutContainer'
-import VideoImage from '/public/images/home/Video.jpeg'
+const VideoImage = '/images/home/Video.jpeg';
 import { backgroundColorExtract } from '@/utils/color'
 import { PrismicNextImage } from '@prismicio/next'
 
@@ -341,10 +341,10 @@ const VideoTestimonials = ({ slice }: VideoTestimonialsProps): JSX.Element => {
 
                                     <ButtonGroup>
                                         <StyledIconButton onClick={handlePrevClick}>
-                                            <ArrowLeft />
+                                            <Image src={ArrowLeft} alt="Previous video" width={24} height={24} />
                                         </StyledIconButton>
                                         <StyledIconButton onClick={handleNextClick}>
-                                            <ArrowRight />
+                                            <Image src={ArrowRight} alt="Next video" width={24} height={24} />
                                         </StyledIconButton>
                                     </ButtonGroup>
                                 </Wrapper>

@@ -1,9 +1,10 @@
 import { Box } from '@mui/material'
+import Image from 'next/image'
 import { PrismicRichText } from '@prismicio/react'
 import { PCOSLayout } from '@/components/_shared/PCOSLayout'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { Subtitle, Title } from '@/components/_shared/Typography/PCOS'
-import HeroVector from '/public/images/pcos-page/HeroVector.svg'
+const HeroVector = '/images/pcos-page/HeroVector.svg';
 import RegisterButton from '@/components/elements/button/RegisterButton'
 
 const HeroDesktop = ({
@@ -63,11 +64,17 @@ const HeroDesktop = ({
                         overflow: 'hidden',
                     }}
                 >
-                    <HeroVector
+                    <Image
+                        src={HeroVector}
+                        alt=""
+                        width={600}
+                        height={600}
                         style={{
                             position: 'absolute',
                             zIndex: '0',
                             opacity: '0.5',
+                            width: '100%',
+                            height: 'auto',
                         }}
                     />
                     <PrismicNextImage

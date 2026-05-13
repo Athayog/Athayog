@@ -1,9 +1,10 @@
 import { Box } from '@mui/material'
 import { Content } from '@prismicio/client'
 import Banner from '@/components/_shared/Banner'
-import Mandela from '/public/images/Mandela.svg'
+const Mandela = '/images/Mandela.svg';
+import Image from 'next/image'
 import Button from '@/components/elements/button/Index'
-import MandelDesktop from '/public/images/MadelaDesktop.svg'
+const MandelDesktop = '/images/MadelaDesktop.svg';
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 /**
@@ -90,7 +91,7 @@ const WeightLossHero = ({ slice }: WeightLossHeroProps): JSX.Element => {
                                     opacity: 0.4,
                                 }}
                             >
-                                <Mandela />
+                                <Image src={Mandela} alt="" width={600} height={600} style={{ width: '100%', height: 'auto' }} />
                             </Box>
 
                             <Box
@@ -138,7 +139,7 @@ const WeightLossHero = ({ slice }: WeightLossHeroProps): JSX.Element => {
                                 opacity: 0.4,
                             }}
                         >
-                            <MandelDesktop />
+                            <Image src={MandelDesktop} alt="" width={600} height={600} style={{ width: '100%', height: 'auto' }} />
                         </Box>
 
                         {/* Responsive wrapper for Person image */}

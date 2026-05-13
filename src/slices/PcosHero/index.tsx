@@ -6,7 +6,7 @@ import HeroDesktop from '@/slices/PcosHero/HeroDesktop'
 import { styled } from '@mui/system'
 import { Gradient } from '@/components/_shared/Typography/PCOS'
 import { Box } from '@mui/material'
-import PCOSBackground from '/public/images/pcos-page/PCOSBackground.jpeg'
+const PCOSBackground = '/images/pcos-page/PCOSBackground.jpeg';
 
 const MobileWrapper = styled('div')(({ theme }) => ({
     display: 'block',
@@ -39,7 +39,7 @@ const PcosHero = ({ slice }: PcosHeroProps): JSX.Element => {
                 sx={{
                     background:
                         'url(' +
-                        PCOSBackground.src +
+                        PCOSBackground +
                         ') no-repeat center center / cover',
                 }}
             >

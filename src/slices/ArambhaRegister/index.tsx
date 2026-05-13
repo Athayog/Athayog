@@ -5,10 +5,10 @@ import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 import { backgroundColorExtract } from '@/utils/color'
 import { Box, Typography, Container, Button, Grid } from '@mui/material'
 import Image from 'next/image'
-import LeftBack from '/public/images/IDY-1.png'
-import RightBack from '/public/images/IDY-Right.png'
-import Y1 from '/public/images/Y1.png'
-import Y2 from '/public/images/Y2.png'
+const LeftBack = '/images/IDY-1.png';
+const RightBack = '/images/IDY-Right.png';
+const Y1 = '/images/Y1.png';
+const Y2 = '/images/Y2.png';
 import RegisterButton from '@/components/elements/button/RegisterButton'
 /**
  * Props for `ArambhaRegister`.
