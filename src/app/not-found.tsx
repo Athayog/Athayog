@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import { Box, Button, Typography } from '@mui/material'
-import NotFoundImage from '/public/images/404Image.png'
+const NotFoundImage = '/images/404Image.png';
 
 export const metadata: Metadata = {
     title: '404 Not Found | Athayog',

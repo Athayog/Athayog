@@ -1,6 +1,7 @@
 'use client'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import Image from 'next/image'
 import { useRef } from 'react'
 import { Content } from '@prismicio/client'
 import { Navigation } from 'swiper/modules'
@@ -8,8 +9,8 @@ import { Box, Typography } from '@mui/material'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { backgroundColorExtract } from '@/utils/color'
 import { YouTubeEmbed } from '@next/third-parties/google'
-import ArrowForward from '/public/images/OrangeArrowForward.svg'
-import ArrowBackward from '/public/images/OrangeArrowBackward.svg'
+const ArrowForward = '/images/OrangeArrowForward.svg';
+const ArrowBackward = '/images/OrangeArrowBackward.svg';
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 import { nanoid } from 'nanoid'
 import { NavigationOptions } from 'swiper/types'
@@ -155,7 +156,7 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                                 cursor: 'pointer',
                             }}
                         >
-                            <ArrowBackward />
+                            <Image src={ArrowBackward} alt="Previous alumni story" width={24} height={24} />
                         </Box>
                         <Box
                             ref={nextRef}
@@ -171,7 +172,7 @@ const AlumniArchive = ({ slice }: AlumniArchiveProps): JSX.Element => {
                                 cursor: 'pointer',
                             }}
                         >
-                            <ArrowForward />
+                            <Image src={ArrowForward} alt="Next alumni story" width={24} height={24} />
                         </Box>
                     </Box>
                 </Box>

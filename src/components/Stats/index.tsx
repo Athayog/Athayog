@@ -1,5 +1,5 @@
 'use client'
-import Grid from '@mui/material/Grid2'
+import Grid from '@mui/material/Grid'
 import { styled } from '@mui/material/styles'
 import { Paper, Typography } from '@mui/material'
 import { SectionContent, SectionPadding } from '@/components/_shared/SectionContainer'

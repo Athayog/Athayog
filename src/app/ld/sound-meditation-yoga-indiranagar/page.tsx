@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 import StressIcon from '@mui/icons-material/Spa'
 import InfoBarSection from '@/app/ld/InfoBarSection'
 import FinalCTASection from '@/app/ld/FinalCTASection'
-import BackgroundImage from '/public/images/Sound.jpg'
+const BackgroundImage = '/images/Sound.jpg';
 import BrainIcon from '@mui/icons-material/Psychology'
 import SleepIcon from '@mui/icons-material/NightsStay'
 import SoundWaveIcon from '@mui/icons-material/GraphicEq'

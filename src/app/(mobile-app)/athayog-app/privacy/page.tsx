@@ -48,7 +48,7 @@ const Privacy = () => {
                     >
                         WHAT DO WE DO WITH YOUR INFORMATION?{' '}
                     </Typography>
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>
                             When you purchase sevice from our firm, as part of the buying and selling process, we collect the personal information you give us such as your name, address and email
                             address.
@@ -81,7 +81,7 @@ const Privacy = () => {
                         CONSENT
                     </Typography>
                     {/* Second */}
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px', fontWeight: '700' }}>How do you get my consent?</Typography>
                         <Typography sx={{ fontSize: '18px' }}>
                             When you provide us with personal information to complete a transaction, verify your credit card, place an order, arrange for a delivery or return a purchase, we imply that
@@ -119,7 +119,7 @@ const Privacy = () => {
                         DISCLOSURE
                     </Typography>
                     {/* Second */}
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>We may disclose your personal information if we are required by law to do so or if you violate our Terms of Service</Typography>
                     </Stack>
                 </Box>
@@ -141,7 +141,7 @@ const Privacy = () => {
                         PAYMENT
                     </Typography>
 
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>
                             We use Razorpay for processing payments. We/Razorpay do not store your card data on their servers. The data is encrypted through the Payment Card Industry Data Security
                             Standard (PCI-DSS) when processing payment. Your purchase transaction data is only used as long as is necessary to complete your purchase transaction. After that is
@@ -174,7 +174,7 @@ const Privacy = () => {
                         THIRD-PARTY SERVICES
                     </Typography>
 
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>
                             In general, the third-party providers used by us will only collect, use and disclose your information to the extent necessary to allow them to perform the services they
                             provide to us.
@@ -222,7 +222,7 @@ const Privacy = () => {
                         SECURITY
                     </Typography>
                     {/* Second */}
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>
                             To protect your personal information, we take reasonable precautions and follow industry best practices to make sure it is not inappropriately lost, misused, accessed,
                             disclosed, altered or destroyed.
@@ -247,7 +247,7 @@ const Privacy = () => {
                         COOKIES
                     </Typography>
                     {/* Second */}
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>We use cookies to maintain the session of your user. It is not used to personally identify you on other mobile applications.</Typography>
                     </Stack>
                 </Box>
@@ -269,7 +269,7 @@ const Privacy = () => {
                         AGE OF CONSENT
                     </Typography>
                     {/* Second */}
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>
                             By using this site, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or
                             province of residence and you have given us your consent to allow any of your minor dependents to use this site.
@@ -294,7 +294,7 @@ const Privacy = () => {
                         CHANGES TO THIS PRIVACY POLICY
                     </Typography>
                     {/* Second */}
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>
                             We reserve the right to modify this privacy policy at any time, so please review it frequently. Changes and clarifications will take effect immediately upon their posting
                             on the mobile application. If we make material changes to this policy, we will notify you here that it has been updated, so that you are aware of what information we
@@ -323,7 +323,7 @@ const Privacy = () => {
                         QUESTIONS AND CONTACT INFORMATION
                     </Typography>
                     {/* Second */}
-                    <Stack gap="15px" marginTop="20px">
+                    <Stack spacing="15px" sx={{ mt: "20px" }}>
                         <Typography sx={{ fontSize: '18px' }}>
                             If you would like to: access, correct, amend or delete any personal information we have about you, register a complaint, or simply want more information contact our Privacy
                             Compliance Officer at info@athayogliving.com or by mail at No.3293, 1st floor, 12th main, HAL 2nd stage, Indiranagar, Bengaluru, Karnataka - 560038

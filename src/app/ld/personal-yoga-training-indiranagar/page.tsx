@@ -9,15 +9,15 @@ import FeatureSection from '@/app/ld/FeatureSection'
 import HealingIcon from '@mui/icons-material/Healing'
 import YogaProgramHero from '@/app/ld/YogaProgramHero'
 import ScheduleIcon from '@mui/icons-material/Schedule'
-import Image1 from '/public/images/mental-health/1.png'
-import Image2 from '/public/images/mental-health/2.png'
+const Image1 = '/images/mental-health/1.png';
+const Image2 = '/images/mental-health/2.png';
 import BentoGridSection from '@/app/ld/BentoGridSection'
 import ComparisonSection from '@/app/ld/ComparisonSection'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import StraightenIcon from '@mui/icons-material/Straighten'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-import WhoChooseImage from '/public/images/Who_Chooses.png'
+const WhoChooseImage = '/images/Who_Chooses.png';
 import LayersClearIcon from '@mui/icons-material/LayersClear'
 import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
 import NumberedListSection from '@/app/ld/NumberedListSection'
@@ -26,7 +26,7 @@ import TrackChangesIcon from '@mui/icons-material/TrackChanges'
 import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
 import OptionsShowcaseSection from '@/app/ld/OptionsShowcaseSection'
-import BackgroundImageHero from '/public/images/landing-page-hero-2.jpg'
+const BackgroundImageHero = '/images/landing-page-hero-2.jpg';
 
 export default function LandingPage() {
     return (

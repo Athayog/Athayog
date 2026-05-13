@@ -13,8 +13,8 @@ import { Box, IconButton, styled, Typography } from '@mui/material'
 import { Swiper, SwiperSlide, SwiperRef } from 'swiper/react'
 import RegisterButton from '@/components/elements/button/RegisterButton'
 
-import ArrowLeft from '/public/images/home/ArrowLeft.svg'
-import ArrowRight from '/public/images/home/ArrowRight.svg'
+const ArrowLeft = '/images/home/ArrowLeft.svg';
+const ArrowRight = '/images/home/ArrowRight.svg';
 import { PrismicNextLink } from '@prismicio/next'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 

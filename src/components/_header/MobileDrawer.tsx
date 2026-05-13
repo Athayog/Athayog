@@ -1,9 +1,10 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import React, { useState } from 'react'
 import { Close } from '@mui/icons-material'
 import { usePathname, useRouter } from 'next/navigation'
 import { navItems } from '@/constants/navItems'
-import NavMenuMobile from '/public/images/NavMenuMobile.svg'
+const NavMenuMobile = '/images/NavMenuMobile.svg';
 import { Avatar, Box, Button, Collapse, ListItem, ListItemText } from '@mui/material'
 import ArrowRightRoundedIcon from '@mui/icons-material/ArrowRightRounded'
 import ArrowDropDownRoundedIcon from '@mui/icons-material/ArrowDropDownRounded'
@@ -168,7 +169,7 @@ export default function MobileDrawer() {
 
     return (
         <DrawerParent>
-            <NavMenuMobile onClick={handleDrawerOpen} alt="Menu" />
+            <Image src={NavMenuMobile} onClick={handleDrawerOpen} alt="Menu" width={32} height={32} style={{ cursor: 'pointer' }} />
             <Drawer variant="persistent" anchor="top" open={open}>
                 {DrawerList}
             </Drawer>

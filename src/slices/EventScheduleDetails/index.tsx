@@ -4,9 +4,9 @@ import { Box, Typography, TableContainer, Table, TableBody, TableRow, TableCell,
 import { SliceComponentProps } from '@prismicio/react'
 import { Content } from '@prismicio/client'
 import { PrismicRichText } from '@prismicio/react'
-import CalendarIcon from '/public/images/calendar.svg'
-import MapIcon from '/public/images/map-pin.svg'
-import ClockIcon from '/public/images/clock.svg'
+const CalendarIcon = '/images/calendar.svg';
+const MapIcon = '/images/map-pin.svg';
+const ClockIcon = '/images/clock.svg';
 import RegisterButton from '@/components/elements/button/RegisterButton'
 import { styled } from '@mui/material/styles'
 import { fontWeight } from 'html2canvas/dist/types/css/property-descriptors/font-weight'

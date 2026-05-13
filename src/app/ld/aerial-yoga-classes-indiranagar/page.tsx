@@ -12,7 +12,7 @@ import NumberedListSection from '@/app/ld/NumberedListSection'
 import IconBenefitsSection from '@/app/ld/IconBenefitsSection'
 import PricingCardsSection from '@/app/ld/PricingCardsSection'
 import StudioLocationSection from '@/app/ld/StudioLocationSection'
-import BackgroundHeroImage from '/public/images/landing-page-hero-4.jpg'
+const BackgroundHeroImage = '/images/landing-page-hero-4.jpg';
 
 export default function AerialYogaPage() {
     return (

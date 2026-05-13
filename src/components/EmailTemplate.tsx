@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import * as React from 'react';
-import LogoFilled from '/public/images/LogoFilled.jpg'
+const LogoFilled = '/images/LogoFilled.jpg';
 
 interface EmailTemplateProps {
     name: string;
@@ -12,8 +13,8 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
 }) => (
     <div style={{ fontFamily: 'Arial, sans-serif', color: '#333', lineHeight: 1.6 }}>
         <div style={{ display: 'flex' }}>
-            <img height="60px" width="60px" src='https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/ar24_logo.png?alt=media&token=a3971691-5c65-4467-92ab-42580d3ed5cd' />
-            <img height="60px" width="60px" src="https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/LogoFilled.jpg?alt=media&token=2e593810-bb55-4340-8614-f8052f8f63fa" />
+            <img height="60px" width="60px" src='https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/ar24_logo.png?alt=media&token=a3971691-5c65-4467-92ab-42580d3ed5cd' alt="Yoga Arambha logo" />
+            <img height="60px" width="60px" src="https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/LogoFilled.jpg?alt=media&token=2e593810-bb55-4340-8614-f8052f8f63fa" alt="Athayog logo" />
         </div>
         <h2>Namaste {name},</h2>
 

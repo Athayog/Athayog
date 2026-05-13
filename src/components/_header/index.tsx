@@ -3,7 +3,7 @@ import MobileDrawer from '@/components/_header/MobileDrawer'
 import { RenderMenuItems } from '@/components/_header/RenderMenuItems'
 import { Menu, MenuButton, NavContainer, NavLinkButton, Toolbar, TrialButton, TrialAndAuth } from '@/components/_header/styles/Index'
 import { navItems } from '@/constants/navItems'
-import Logo from '../../../public/images/Logo.png'
+const Logo = '/images/Logo.png'
 import { AppBar, Box, Button } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,7 +22,6 @@ const Navbar: React.FC = () => {
     const { navigationVariant, isScrolled } = useThemeStore()
     const { user } = useAuthStore()
     const [gradient, setGradient] = useState('linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0) 100%)')
-
 
     const handleClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
         // Update the anchor element for the clicked menu
@@ -58,7 +57,6 @@ const Navbar: React.FC = () => {
 
     return (
         <>
-
             <AppBar
                 position="fixed"
                 sx={{
@@ -71,7 +69,6 @@ const Navbar: React.FC = () => {
                     }),
                 }}
             >
-
                 <ScrollListener />
                 <Toolbar navigationVariant={navigationVariant}>
                     <Box
@@ -85,7 +82,7 @@ const Navbar: React.FC = () => {
                         </Link>
                     </Box>
 
-                    {pathname !== '/yoga-arambha-25' &&
+                    {pathname !== '/yoga-arambha-25' && (
                         <NavContainer>
                             {navItems.map(({ label, path, type, children }, index) => {
                                 if (type === 'nav') {
@@ -99,7 +96,12 @@ const Navbar: React.FC = () => {
                                 } else if (type === 'menu' && children) {
                                     return (
                                         <React.Fragment key={index}>
-                                            <MenuButton variant="text" aria-controls={anchorEls[index] ? `submenu-${index}` : undefined} aria-haspopup="true" onClick={(event) => handleClick(event, index)}>
+                                            <MenuButton
+                                                variant="text"
+                                                aria-controls={anchorEls[index] ? `submenu-${index}` : undefined}
+                                                aria-haspopup="true"
+                                                onClick={(event) => handleClick(event, index)}
+                                            >
                                                 {label}
                                             </MenuButton>
                                             <Menu
@@ -119,9 +121,9 @@ const Navbar: React.FC = () => {
                                 }
                             })}
                         </NavContainer>
-                    }
+                    )}
 
-                    {pathname !== '/yoga-arambha-25' &&
+                    {pathname !== '/yoga-arambha-25' && (
                         <>
                             <TrialAndAuth>
                                 {!user && (
@@ -150,7 +152,7 @@ const Navbar: React.FC = () => {
 
                             <MobileDrawer />
                         </>
-                    }
+                    )}
                 </Toolbar>
             </AppBar>
         </>

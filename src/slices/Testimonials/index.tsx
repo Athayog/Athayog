@@ -1,5 +1,6 @@
 'use client'
 import { Content } from '@prismicio/client'
+import Image from 'next/image'
 import { Box, IconButton, Typography } from '@mui/material'
 import { backgroundColorExtract } from '@/utils/color'
 import { PrismicNextImage } from '@prismicio/next'
@@ -7,8 +8,8 @@ import { PrismicRichText, SliceComponentProps } from '@prismicio/react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import ArrowLeft from '/public/images/home/ArrowLeft.svg'
-import ArrowRight from '/public/images/home/ArrowRight.svg'
+const ArrowLeft = '/images/home/ArrowLeft.svg';
+const ArrowRight = '/images/home/ArrowRight.svg';
 import Button from '@/components/elements/button/Index'
 import { Navigation } from 'swiper/modules'
 
@@ -139,12 +140,12 @@ const Testimonials = ({ slice }: TestimonialsProps): JSX.Element => {
                             gap: '20px',
                             mt: '30px',
                         }}
-                    >
+                        >
                         <IconButton className="custom-prev" sx={{ backgroundColor: '#FFF' }}>
-                            <ArrowLeft />
+                            <Image src={ArrowLeft} alt="Previous testimonial" width={24} height={24} />
                         </IconButton>
                         <IconButton className="custom-next" sx={{ backgroundColor: '#FFF' }}>
-                            <ArrowRight />
+                            <Image src={ArrowRight} alt="Next testimonial" width={24} height={24} />
                         </IconButton>
                     </Box>
                 </Box>

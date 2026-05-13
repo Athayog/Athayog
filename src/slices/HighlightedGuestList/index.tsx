@@ -5,9 +5,9 @@ import Image from "next/image";
 import { FC } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import SuryaLogo from '/public/images/Surya.png'
-import Blur from '/public/images/blur.jpg'
-import BackgroundImage from '/public/images/back_for_guest.jpg'
+const SuryaLogo = '/images/Surya.png';
+const Blur = '/images/blur.jpg';
+const BackgroundImage = '/images/back_for_guest.jpg';
 
 /**
  * Props for `HighlightedGuestList`.
@@ -45,7 +45,7 @@ const HighlightedGuestList: FC<HighlightedGuestListProps> = ({ slice }) => {
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        backgroundImage: `url(${BackgroundImage.src})`,
+                        backgroundImage: `url(${BackgroundImage})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'right',
                         filter: 'blur(174px)',
