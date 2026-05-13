@@ -33,7 +33,7 @@
         "axios": "^1.16.1",
         "date-fns": "^4.1.0",
         "emailjs-com": "^3.2.0",
-        "firebase": "^10.13.2",
+        "firebase": "^12.13.0",
         "firebase-admin": "^12.7.0",
         "fontkit": "^2.0.4",
         "formik": "^2.4.6",
