@@ -42,7 +42,7 @@
         "jspdf": "^3.0.1",
         "libphonenumber-js": "^1.12.8",
         "nanoid": "^5.0.7",
-        "next": "^14.2.13",
+        "next": "^14.2.35",
         "nextjs-toploader": "^3.6.15",
         "pdf-lib": "^1.17.1",
         "puppeteer": "^24.9.0",
