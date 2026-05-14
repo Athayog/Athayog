@@ -217,10 +217,16 @@ export default function ScannerPage() {
 
     useEffect(() => {
         if (user) {
-            if (
-                !user.email?.includes('athayogliving.com') &&
-                !user.phoneNumber?.includes('+918971613155')
-            ) {
+            const normalizedEmail = user.email?.trim().toLowerCase() ?? '';
+            const emailParts = normalizedEmail.split('@');
+            const emailDomain = emailParts.length === 2 ? emailParts[1] : '';
+            const isAllowedEmailDomain =
+                emailDomain === 'athayogliving.com' || emailDomain.endsWith('.athayogliving.com');
+
+            const normalizedPhone = user.phoneNumber?.replace(/\s+/g, '') ?? '';
+            const isAllowedPhone = normalizedPhone === '+918971613155';
+
+            if (!isAllowedEmailDomain && !isAllowedPhone) {
                 router.push('/');
             }
         }
