@@ -26,9 +26,9 @@ export async function generatePDFBlob({
     });
 
 
-    const title = 'Athayog Yoga Day 2025';
-    const dateLocation = 'June 21, 6:00 AM';
-    const venue = 'Kittur Rani Chennamma Stadium, Jayanagar';
+    const title = 'Yoga Arambha 2026';
+    const dateLocation = 'June 21, 2026, 6:00 AM';
+    const venue = 'Indiranagar Club, Bangalore';
 
     const lines = [title, name, ticketId, dateLocation];
 

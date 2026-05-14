@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
         // Firestore doesn't support OR queries directly, so do two queries and combine results
 
         const phoneQuerySnapshot = await firestore
-            .collection('arambhaForm25')
+            .collection('arambhaForm26')
             .where('phone', '==', phone)
             .limit(1)
             .get();
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
         }
 
         const emailQuerySnapshot = await firestore
-            .collection('arambhaForm25')
+            .collection('arambhaForm26')
             .where('email', '==', email)
             .limit(1)
             .get();
