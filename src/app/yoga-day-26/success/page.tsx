@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { ThemeProvider } from '@mui/material/styles'
@@ -189,7 +189,7 @@ const btnBase = {
 
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-export default function YogaDay26SuccessPage() {
+function SuccessPageContent() {
     const searchParams = useSearchParams()
     const ticketID = searchParams.get('ticketID')
 
@@ -471,5 +471,23 @@ export default function YogaDay26SuccessPage() {
                 </Container>
             </Box>
         </ThemeProvider>
+    )
+}
+
+export default function YogaDay26SuccessPage() {
+    return (
+        <Suspense fallback={
+            <Box sx={{ 
+                display: 'flex', 
+                minHeight: '100vh', 
+                bgcolor: T.cream, 
+                alignItems: 'center', 
+                justifyContent: 'center' 
+            }}>
+                <CircularProgress sx={{ color: T.gold }} />
+            </Box>
+        }>
+            <SuccessPageContent />
+        </Suspense>
     )
 }
