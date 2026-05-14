@@ -15,8 +15,12 @@ export async function POST(request: NextRequest) {
             const decodedToken = await auth.verifyIdToken(token);
             const email = decodedToken.email || '';
             const phone = decodedToken.phone_number || '';
+            const emailDomain = email.includes('@') ? email.split('@')[1].toLowerCase() : '';
+            const allowedEmailDomains = ['athayogliving.com'];
+            const isAllowedEmail = allowedEmailDomains.includes(emailDomain);
+            const isAllowedPhone = phone === '+918971613155';
 
-            if (!email.includes('athayogliving.com') && !phone.includes('+918971613155')) {
+            if (!isAllowedEmail && !isAllowedPhone) {
                 return NextResponse.json({ message: 'Forbidden: Employee access required' }, { status: 403 });
             }
         } catch (error) {
