@@ -22,7 +22,14 @@ export async function POST(request: NextRequest) {
             .get();
 
         if (!phoneQuerySnapshot.empty) {
-            return NextResponse.json({ message: 'Phone number already registered' }, { status: 409 });
+            const doc = phoneQuerySnapshot.docs[0];
+            const data = doc.data();
+            if (data.emailSent === false) {
+                // Delete stuck record and allow proceeding
+                await doc.ref.delete();
+            } else {
+                return NextResponse.json({ message: 'Phone number already registered' }, { status: 409 });
+            }
         }
 
         const emailQuerySnapshot = await firestore
@@ -32,7 +39,14 @@ export async function POST(request: NextRequest) {
             .get();
 
         if (!emailQuerySnapshot.empty) {
-            return NextResponse.json({ message: 'Email already registered' }, { status: 409 });
+            const doc = emailQuerySnapshot.docs[0];
+            const data = doc.data();
+            if (data.emailSent === false) {
+                // Delete stuck record and allow proceeding
+                await doc.ref.delete();
+            } else {
+                return NextResponse.json({ message: 'Email already registered' }, { status: 409 });
+            }
         }
 
         // If both not found, user not registered

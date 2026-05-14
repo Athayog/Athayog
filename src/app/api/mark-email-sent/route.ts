@@ -22,13 +22,13 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'ticketID not found' }, { status: 404 });
         }
 
-        // Return the document data
-        const docData = ticketIDQuerySnapshot.docs[0].data();
+        const doc = ticketIDQuerySnapshot.docs[0];
+        await doc.ref.update({ emailSent: true });
 
-        return NextResponse.json({ message: 'User found', data: docData }, { status: 200 });
+        return NextResponse.json({ message: 'Email status updated' }, { status: 200 });
 
     } catch (error: any) {
-        console.error('Error checking registration:', error.message || error);
+        console.error('Error updating email status:', error.message || error);
         return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
     }
 }
