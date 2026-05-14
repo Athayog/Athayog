@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { ThemeProvider } from '@mui/material/styles'
-import { Box, Button, Container, Skeleton, Typography } from '@mui/material'
+import { Box, Button, Container, Skeleton, Typography, CircularProgress } from '@mui/material'
 import { yogaTheme } from '../_components/theme'
 import TicketDisplay from '@/components/forms/TicketDisplayPDF'
 
@@ -247,42 +247,117 @@ export default function YogaDay26SuccessPage() {
                             pb: { xs: 3, md: 4 },
                             textAlign: 'center',
                         }}>
-                            <AnimatedCheck />
+                            {loading ? (
+                                <>
+                                    <Box sx={{ mb: 2, mt: 1 }}>
+                                        <CircularProgress size={32} sx={{ color: T.gold }} thickness={4} />
+                                    </Box>
+                                    <Typography sx={{
+                                        display: 'block',
+                                        fontSize: '0.68rem',
+                                        letterSpacing: '0.2em',
+                                        textTransform: 'uppercase',
+                                        color: T.gold,
+                                        fontWeight: 500,
+                                        mb: 1,
+                                        fontFamily: 'var(--font-inter)',
+                                    }}>
+                                        Fetching
+                                    </Typography>
+                                    <Typography sx={{
+                                        fontFamily: 'var(--font-playfair)',
+                                        fontSize: 'clamp(1.6rem, 4vw, 2.2rem)',
+                                        fontWeight: 400,
+                                        color: T.white,
+                                        lineHeight: 1.2,
+                                        mb: 3,
+                                    }}>
+                                        Locating{' '}
+                                        <span style={{ color: T.gold, fontStyle: 'italic' }}>Ticket...</span>
+                                    </Typography>
+                                </>
+                            ) : error ? (
+                                <>
+                                    <Box sx={{ mb: 2 }}>
+                                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke={T.gold} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <line x1="12" y1="8" x2="12" y2="12" />
+                                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                                        </svg>
+                                    </Box>
+                                    <Typography sx={{
+                                        display: 'block',
+                                        fontSize: '0.68rem',
+                                        letterSpacing: '0.2em',
+                                        textTransform: 'uppercase',
+                                        color: T.gold,
+                                        fontWeight: 500,
+                                        mb: 1,
+                                        fontFamily: 'var(--font-inter)',
+                                    }}>
+                                        Error
+                                    </Typography>
+                                    <Typography sx={{
+                                        fontFamily: 'var(--font-playfair)',
+                                        fontSize: 'clamp(1.6rem, 4vw, 2.2rem)',
+                                        fontWeight: 400,
+                                        color: T.white,
+                                        lineHeight: 1.2,
+                                        mb: 1,
+                                    }}>
+                                        Ticket{' '}
+                                        <span style={{ color: T.gold, fontStyle: 'italic' }}>Not Found</span>
+                                    </Typography>
+                                    <Typography sx={{
+                                        fontFamily: 'var(--font-inter)',
+                                        fontSize: '0.85rem',
+                                        color: 'rgba(255,255,255,0.5)',
+                                        fontStyle: 'italic',
+                                        mb: 3,
+                                    }}>
+                                        We couldn&apos;t find a registration with those details.
+                                    </Typography>
+                                </>
+                            ) : (
+                                <>
+                                    <AnimatedCheck />
 
-                            <Typography sx={{
-                                display: 'block',
-                                fontSize: '0.68rem',
-                                letterSpacing: '0.2em',
-                                textTransform: 'uppercase',
-                                color: T.gold,
-                                fontWeight: 500,
-                                mb: 1,
-                                fontFamily: 'var(--font-inter)',
-                            }}>
-                                Registration Confirmed
-                            </Typography>
+                                    <Typography sx={{
+                                        display: 'block',
+                                        fontSize: '0.68rem',
+                                        letterSpacing: '0.2em',
+                                        textTransform: 'uppercase',
+                                        color: T.gold,
+                                        fontWeight: 500,
+                                        mb: 1,
+                                        fontFamily: 'var(--font-inter)',
+                                    }}>
+                                        Registration Confirmed
+                                    </Typography>
 
-                            <Typography sx={{
-                                fontFamily: 'var(--font-playfair)',
-                                fontSize: 'clamp(1.6rem, 4vw, 2.2rem)',
-                                fontWeight: 400,
-                                color: T.white,
-                                lineHeight: 1.2,
-                                mb: 1,
-                            }}>
-                                You&apos;re{' '}
-                                <span style={{ color: T.gold, fontStyle: 'italic' }}>all set</span>
-                            </Typography>
+                                    <Typography sx={{
+                                        fontFamily: 'var(--font-playfair)',
+                                        fontSize: 'clamp(1.6rem, 4vw, 2.2rem)',
+                                        fontWeight: 400,
+                                        color: T.white,
+                                        lineHeight: 1.2,
+                                        mb: 1,
+                                    }}>
+                                        You&apos;re{' '}
+                                        <span style={{ color: T.gold, fontStyle: 'italic' }}>all set</span>
+                                    </Typography>
 
-                            <Typography sx={{
-                                fontFamily: 'var(--font-inter)',
-                                fontSize: '0.85rem',
-                                color: 'rgba(255,255,255,0.5)',
-                                fontStyle: 'italic',
-                                mb: 3,
-                            }}>
-                                Your ticket has been sent to your email inbox.
-                            </Typography>
+                                    <Typography sx={{
+                                        fontFamily: 'var(--font-inter)',
+                                        fontSize: '0.85rem',
+                                        color: 'rgba(255,255,255,0.5)',
+                                        fontStyle: 'italic',
+                                        mb: 3,
+                                    }}>
+                                        Your ticket has been sent to your email inbox.
+                                    </Typography>
+                                </>
+                            )}
 
                             {/* Event meta strip */}
                             <Box sx={{

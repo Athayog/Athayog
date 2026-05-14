@@ -11,15 +11,30 @@ export async function POST(request: NextRequest) {
         }
 
         const { firestore } = await initAdmin();
+        const collection = firestore.collection('arambhaForm26');
+        const identifier = ticketID.trim();
 
-        const ticketIDQuerySnapshot = await firestore
-            .collection('arambhaForm26')
-            .where('ticketID', '==', ticketID)
-            .limit(1)
-            .get();
+        let ticketIDQuerySnapshot;
+
+        if (identifier.includes('@')) {
+            // Treat as email
+            ticketIDQuerySnapshot = await collection.where('email', '==', identifier.toLowerCase()).limit(1).get();
+        } else if (identifier.toUpperCase().startsWith('ATH-')) {
+            // Treat as ticketID
+            ticketIDQuerySnapshot = await collection.where('ticketID', '==', identifier.toUpperCase()).limit(1).get();
+        } else {
+            // Treat as phone number
+            // First try direct match
+            ticketIDQuerySnapshot = await collection.where('phone', '==', identifier).limit(1).get();
+            
+            // If empty and it doesn't have a '+', try appending '+91'
+            if (ticketIDQuerySnapshot.empty && !identifier.startsWith('+')) {
+                ticketIDQuerySnapshot = await collection.where('phone', '==', '+91' + identifier).limit(1).get();
+            }
+        }
 
         if (ticketIDQuerySnapshot.empty) {
-            return NextResponse.json({ message: 'ticketID not found' }, { status: 404 });
+            return NextResponse.json({ message: 'Ticket not found for the provided details' }, { status: 404 });
         }
 
         // Return the document data
