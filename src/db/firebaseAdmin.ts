@@ -63,5 +63,6 @@ export async function initAdmin() {
         firestore, // Return the initialized Firestore instance
         storage,
         fieldValue: admin.firestore.FieldValue,
+        auth: admin.auth(),
     }
 }
