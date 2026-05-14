@@ -3,6 +3,26 @@ import { initAdmin } from '@/db/firebaseAdmin';
 
 export async function POST(request: NextRequest) {
     try {
+        const authHeader = request.headers.get('authorization');
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return NextResponse.json({ message: 'Unauthorized: Missing token' }, { status: 401 });
+        }
+
+        const token = authHeader.split('Bearer ')[1];
+        const { auth, firestore, fieldValue } = await initAdmin();
+
+        try {
+            const decodedToken = await auth.verifyIdToken(token);
+            const email = decodedToken.email || '';
+            const phone = decodedToken.phone_number || '';
+
+            if (!email.includes('athayogliving.com') && !phone.includes('+918971613155')) {
+                return NextResponse.json({ message: 'Forbidden: Employee access required' }, { status: 403 });
+            }
+        } catch (error) {
+            return NextResponse.json({ message: 'Unauthorized: Invalid token' }, { status: 401 });
+        }
+
         const body = await request.json();
         const ticketId = body.ticketId;
 
@@ -10,10 +30,8 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'Invalid or missing ticketId' }, { status: 400 });
         }
 
-        const { firestore, fieldValue } = await initAdmin();
-
         const querySnapshot = await firestore
-            .collection('arambhaForm25')
+            .collection('arambhaForm26')
             .where('ticketID', '==', ticketId)
             .limit(1)
             .get();

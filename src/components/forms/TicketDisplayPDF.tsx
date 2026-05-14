@@ -7,9 +7,22 @@ interface TicketContentProps {
     ticketId: string
     qrDataUrl: string
     downloadUrl: string
+    title?: string
+    date?: string
+    venue?: string
+    hideDownload?: boolean
 }
 
-const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl, downloadUrl }) => {
+const TicketContent: React.FC<TicketContentProps> = ({ 
+    name, 
+    ticketId, 
+    qrDataUrl, 
+    downloadUrl,
+    title = 'Athayog Yoga Day 2025',
+    date = 'June 21, 6:00 AM',
+    venue = 'Kittur Rani Chennamma Stadium, Jayanagar',
+    hideDownload = false
+}) => {
     return (
         <Box
             sx={{
@@ -28,7 +41,7 @@ const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl
 
             <Box>
                 <Typography variant="h6" fontWeight="bold" gutterBottom>
-                    Athayog Yoga Day 2025
+                    {title}
                 </Typography>
 
                 <Typography fontSize={14} mb={1.5}>
@@ -40,11 +53,11 @@ const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl
                 </Typography>
 
                 <Typography fontSize={14} mb={1.5}>
-                    📅 <b>Date:</b> June 21, 6:00 AM
+                    📅 <b>Date:</b> {date}
                 </Typography>
 
                 <Typography fontSize={14} mb={2}>
-                    📍 <b>Venue:</b> Kittur Rani Chennamma Stadium, Jayanagar
+                    📍 <b>Venue:</b> {venue}
                 </Typography>
             </Box>
             <Box
@@ -54,12 +67,13 @@ const TicketContent: React.FC<TicketContentProps> = ({ name, ticketId, qrDataUrl
                 sx={{ width: 130, height: 130, display: 'block', mx: 'auto', my: 2 }}
             />
 
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                {downloadUrl && <Link href={downloadUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outlined" sx={{ display: 'flex', justifyContent: 'center' }}>Download Ticket</Button>
-                </Link>
-                }
-            </Box>
+            {!hideDownload && (
+                <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
+                    {downloadUrl && <Link href={downloadUrl} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outlined" sx={{ display: 'flex', justifyContent: 'center' }}>Download Ticket</Button>
+                    </Link>}
+                </Box>
+            )}
         </Box>
 
 

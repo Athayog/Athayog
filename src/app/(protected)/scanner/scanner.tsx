@@ -1,341 +1,423 @@
 'use client';
-import axios from 'axios';
-import { useState, useRef, useEffect } from 'react';
-import { Scanner } from '@yudiel/react-qr-scanner';
-import type { IDetectedBarcode } from '@yudiel/react-qr-scanner';
-import { Paper, Stack, CircularProgress, Alert, TextField, Button, InputAdornment, Card, CardContent, Grid, Typography, Divider, Box, Chip, Avatar } from '@mui/material';
-import { Container, PaperBox, ScannerBox } from './styles/Scanner';
-import useAuthStore from '@/store/useAuthStore';
 import { useRouter } from 'next/navigation';
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { Scanner } from '@yudiel/react-qr-scanner';
+import { ThemeProvider } from '@mui/material/styles';
+import {
+    Box, Stack, Typography, TextField, Button, InputAdornment,
+    CircularProgress, Chip,
+} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import QrCodeScannerIcon from '@mui/icons-material/QrCodeScanner';
+import ReplayIcon from '@mui/icons-material/Replay';
+import axios from 'axios';
+import type { IDetectedBarcode } from '@yudiel/react-qr-scanner';
+import useAuthStore from '@/store/useAuthStore';
+import { yogaTheme } from '@/app/yoga-day-26/_components/theme';
+
 
 type UserDetails = {
     name: string;
     email?: string;
-    ticketId?: string;
+    ticketID?: string;
+    phone?: string;
+    gender?: string;
+    tshirtSize?: string;
+    hasYogaExperience?: string;
+    heardFrom?: string;
+    createdAt?: string;
+    scanned?: number;
     [key: string]: any;
 };
 
+
+const formatDate = (dateStr: string) => {
+    const d = new Date(dateStr);
+    const day = d.getDate();
+    const s = (n: number) => {
+        if (n >= 11 && n <= 13) return 'th';
+        return ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th';
+    };
+    return `${day}${s(day)} ${d.toLocaleString('default', { month: 'short' })} ${d.getFullYear()}`;
+};
+
+
+const Field = ({ label, value }: { label: string; value: React.ReactNode }) => (
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+        <Typography sx={{
+            fontSize: '10px', fontWeight: 600, color: '#9e9e9e',
+            textTransform: 'uppercase', letterSpacing: '0.6px',
+        }}>
+            {label}
+        </Typography>
+        <Typography sx={{ fontSize: '13px', fontWeight: 600, color: '#1a1a1a', wordBreak: 'break-word' }}>
+            {value || '—'}
+        </Typography>
+    </Box>
+);
+
+
+export const AttendeeCard = ({ userDetails }: { userDetails: UserDetails }) => {
+    const isMultiScan = (userDetails.scanned ?? 0) > 1;
+    const accent = isMultiScan ? '#d32f2f' : '#4caf50';
+    const bgTint = isMultiScan ? '#fff5f5' : '#f6fbf6';
+    const statusLabel = isMultiScan ? 'Already Scanned' : 'Entry Allowed';
+
+    return (
+        <Box sx={{
+            width: '100%',
+            bgcolor: '#fff',
+            border: '1px solid #e8e8e8',
+            borderTop: `3px solid ${accent}`,
+            borderRadius: '10px',
+            overflow: 'hidden',
+        }}>
+            {/* Header */}
+            <Box sx={{ px: 2, pt: 2, pb: 1.5, bgcolor: bgTint }}>
+                <Stack direction="row" alignItems="center" justifyContent="space-between">
+                    <Stack direction="row" alignItems="center" spacing={0.75}>
+                        <CheckCircleIcon sx={{ fontSize: 17, color: accent }} />
+                        <Typography sx={{ fontSize: '13px', fontWeight: 700, color: accent }}>
+                            {statusLabel}
+                        </Typography>
+                    </Stack>
+                    <Chip
+                        label={`Scanned: ${userDetails.scanned ?? 0}`}
+                        size="small"
+                        sx={{
+                            height: 22,
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            bgcolor: isMultiScan ? '#ffebee' : '#e8f5e9',
+                            color: accent,
+                            border: `1px solid ${isMultiScan ? '#ffcdd2' : '#c8e6c9'}`,
+                            borderRadius: '6px',
+                        }}
+                    />
+                </Stack>
+                <Typography sx={{
+                    fontFamily: 'var(--font-playfair)',
+                    fontSize: '20px',
+                    fontWeight: 700,
+                    color: '#1a1a1a',
+                    mt: 1,
+                    lineHeight: 1.2,
+                }}>
+                    {userDetails.name}
+                </Typography>
+                <Typography sx={{ fontSize: '12px', color: '#757575', fontWeight: 500, mt: 0.25 }}>
+                    {userDetails.ticketID ?? '—'}
+                </Typography>
+            </Box>
+
+            {/* Info Grid */}
+            <Box sx={{ px: 2, py: 1.5 }}>
+                <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 16px' }}>
+                    <Field label="Email" value={userDetails.email} />
+                    <Field label="Phone" value={userDetails.phone} />
+                    <Field label="Gender" value={userDetails.gender} />
+                    <Field label="T-Shirt" value={userDetails.tshirtSize?.toUpperCase()} />
+                    <Field label="Experience" value={userDetails.hasYogaExperience} />
+                    <Field label="Heard From" value={userDetails.heardFrom} />
+                    <Field label="Registered" value={userDetails.createdAt ? formatDate(userDetails.createdAt) : '—'} />
+                </Box>
+            </Box>
+        </Box>
+    );
+};
+
+
 export default function ScannerPage() {
+    // ✅ ALL hooks before any early return
+    const [phase, setPhase] = useState<'scan' | 'loading' | 'result'>('scan');
     const [scanResult, setScanResult] = useState('');
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [manualId, setManualId] = useState('');
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
     const isVerifyingRef = useRef(false);
-    const { user, handleLogout } = useAuthStore()
+    const { user, handleLogout } = useAuthStore();
     const router = useRouter();
 
     useEffect(() => {
         if (user) {
-            if (!user.email?.includes('athayogliving.com') && !user.phoneNumber?.includes('+918971613155')) {
-                router.push('/')
+            if (
+                !user.email?.includes('athayogliving.com') &&
+                !user.phoneNumber?.includes('+918971613155')
+            ) {
+                router.push('/');
             }
         }
-    }, [user, router])
+    }, [user, router]);
 
-    if (!user) {
-        return (
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-                <Typography variant="h5">Please Wait...</Typography>
-            </Box>
-        )
-    }
-
-
-    const resetStates = () => {
+    const reset = useCallback(() => {
         setScanResult('');
         setError('');
         setUserDetails(null);
-    };
+        setPhase('scan');
+        isVerifyingRef.current = false;
+    }, []);
 
-    const verifyTicket = async (ticketId: string) => {
+    const verifyTicket = useCallback(async (ticketId: string) => {
         if (isVerifyingRef.current) return;
         isVerifyingRef.current = true;
-        resetStates();
-        setLoading(true);
-
+        setScanResult('');
+        setError('');
+        setUserDetails(null);
+        setPhase('loading');
         try {
-            const { data } = await axios.post('/api/yoga-day/', { ticketId });
+            const token = await user?.getIdToken();
+            const { data } = await axios.post('/api/yoga-day/', { ticketId }, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             setScanResult(data.message || 'Entry allowed');
             if (data.user) setUserDetails(data.user);
+            setPhase('result');
         } catch (err: any) {
             setError(err?.response?.data?.message || 'Verification failed.');
+            setPhase('result');
         } finally {
-            setLoading(false);
             isVerifyingRef.current = false;
         }
-    };
+    }, [user]);
 
-    const handleScan = async (detectedCodes: IDetectedBarcode[]) => {
+    const handleScan = useCallback(async (detectedCodes: IDetectedBarcode[]) => {
         if (!detectedCodes?.length || isVerifyingRef.current) return;
-
         let ticketId = detectedCodes[0].rawValue || '';
         try {
             const url = new URL(ticketId);
             ticketId = url.searchParams.get('id') || ticketId;
-        } catch {
-            // Not a URL, fallback to raw value
-        }
-
+        } catch { /* raw value fallback */ }
         await verifyTicket(ticketId);
-    };
+    }, [verifyTicket]);
 
-    const handleManualSubmit = async (e: React.FormEvent) => {
+    const handleManualSubmit = useCallback(async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!manualId.trim()) return setError('Please enter a registration ID.');
-        await verifyTicket('ATH-' + manualId.trim());
-    };
-
-    const handleError = (err: any) => {
-        console.error(err);
-        setError('Error accessing camera or scanning QR code.');
-    };
-
-    return (
-        <Container>
-            <PaperBox elevation={6} sx={{ fontFamily: 'var(--font-inter)' }}>
-                <Stack spacing={3} alignItems="center">
-                    <Typography
-                        sx={{
-                            fontFamily: 'var(--font-montserrat)',
-                            paddingBottom: '10px',
-                            width: '100%',
-                            textAlign: 'center',
-                            fontWeight: 700,
-                            padding: '14px 0',
-                            fontSize: '24px',
-                            color: '#fff',
-                            backgroundColor: '#003da8'
-                        }}>
-                        Event Ticket Scanner
-                    </Typography>
-
-                    <Box sx={{ padding: '20px' }}>
-                        <Stack spacing={3} alignItems="center">
-                            {/* Show scanner if no result and no error */}
-                            {!scanResult && !error && (
-                                <ScannerBox>
-                                    <Scanner
-                                        onScan={handleScan}
-                                        onError={handleError}
-                                        constraints={{ facingMode: 'environment' }}
-                                    />
-                                </ScannerBox>
-                            )}
-
-                            {/* While verifying */}
-                            {loading && (
-                                <Stack direction="row" spacing={1} alignItems="center">
-                                    <CircularProgress size={20} />
-                                    <Typography sx={{ fontFamily: 'var(--font-inter)' }} color="primary">Verifying Details...</Typography>
-                                </Stack>
-                            )}
-                            {/* User details */}
-                            {userDetails && (
-                                <AttendeeCard userDetails={userDetails} />
-                            )}
-                            {/* Show success or error result */}
-                            {!loading && (scanResult || error) && (
-                                <>
-                                    {scanResult && (
-                                        <Alert severity="success" sx={{ width: '100%', textAlign: 'center', fontFamily: 'var(--font-inter)' }}>
-                                            {scanResult}
-                                        </Alert>
-                                    )}
-                                    {error && (
-                                        <Alert severity="error" sx={{ width: '100%', textAlign: 'center', fontFamily: 'var(--font-inter)' }}>
-                                            {error}
-                                        </Alert>
-                                    )}
-                                    <Button
-                                        variant="contained"
-                                        onClick={resetStates}
-                                        startIcon={<DocumentScannerIcon />}
-                                        sx={{ mt: 2, fontFamily: 'var(--font-inter)', width: '100%', borderRadius: '30px', py: '12px', backgroundColor: '#003da8', boxShadow: 'none' }}
-                                    > Start Scanning
-                                    </Button>
-                                </>
-                            )}
-
-
-
-                            <Typography variant="caption" sx={{ mt: 2, fontFamily: 'var(--font-inter)', color: "#191c27" }}>
-                                Allow camera access and scan a valid ticket QR code.
-                            </Typography>
-
-                            <Divider sx={{ width: '100%', my: 3 }} />
-
-                            <Typography variant="h6" fontWeight={600} sx={{ alignSelf: 'flex-start', fontFamily: 'var(--font-montserrat)' }}>
-                                Or enter registration ID manually:
-                            </Typography>
-
-                            <Box
-                                component="form"
-                                onSubmit={handleManualSubmit}
-                                sx={{ width: '100%', display: 'flex', gap: 2 }}
-                            >
-
-                                <TextField
-                                    fullWidth
-                                    size="small"
-                                    label="Registration ID"
-                                    variant="outlined"
-                                    value={manualId}
-                                    onChange={(e) => setManualId(e.target.value)}
-                                    sx={{ fontFamily: 'var(--font-inter)' }}
-                                    disabled={loading}
-                                    autoComplete="off"
-                                    InputProps={{
-                                        startAdornment: (
-                                            <InputAdornment position="start">
-                                                ATH-
-                                            </InputAdornment>
-                                        ),
-                                    }}
-                                />
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    disabled={loading}
-                                    startIcon={<CheckCircleIcon />}
-                                    sx={{ minWidth: 120, width: '100%', borderRadius: '30px', fontSize: '14px', fontWeight: 'normal', fontFamily: 'var(--font-inter)', backgroundColor: '#003da8', boxShadow: 'none' }}
-                                >
-                                    Verify ID
-                                </Button>
-                            </Box>
-                        </Stack>
-                    </Box>
-                </Stack>
-            </PaperBox>
-        </Container>
-    );
-
-}
-
-const formatReadableDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    const day = date.getDate();
-    const month = date.toLocaleString('default', { month: 'long' });
-    const year = date.getFullYear();
-
-    const getDaySuffix = (day: number) => {
-        if (day >= 11 && day <= 13) return 'th';
-        switch (day % 10) {
-            case 1: return 'st';
-            case 2: return 'nd';
-            case 3: return 'rd';
-            default: return 'th';
+        if (!manualId.trim()) {
+            setError('Enter a registration ID.');
+            return;
         }
-    };
+        await verifyTicket('ATH-' + manualId.trim());
+    }, [manualId, verifyTicket]);
 
-    return `${day}${getDaySuffix(day)} ${month} ${year}`;
-};
-
-const InfoItem = ({ label, value }: { label: string; value: React.ReactNode }) => (
-    <Grid item xs={6} sm={6}>
-        <Typography sx={{ fontWeight: 600, color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>
-            {label}
-        </Typography>
-        <Typography
-            sx={{
-                fontWeight: 800,
-                fontFamily: 'var(--font-montserrat)',
-                fontSize: '12px',
-                wordBreak: 'break-word',
-                whiteSpace: 'normal',
-                overflowWrap: 'break-word',
-                mt: 0.5,
-            }}
-        >
-            {value || 'N/A'}
-        </Typography>
-    </Grid>
-);
-
-export const AttendeeCard = ({ userDetails }: any) => {
-    const scanned = userDetails.scanned;
-    const tShirtSize = userDetails.tShirtSize?.toUpperCase();
+    // ✅ Early returns AFTER all hooks
+    if (!user) {
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100dvh' }}>
+                <CircularProgress size={24} />
+            </Box>
+        );
+    }
 
     return (
-        <Card
-            variant="outlined"
-            sx={{
-                mt: 3,
-                boxShadow: 'none',
-                border: 'none',
-                fontFamily: 'var(--font-inter)',
-                backgroundColor: '#ebf3fe',
-                overflow: 'hidden',
-                width: '100%',
-            }}
-        >
-            <CardContent sx={{ p: 0 }}>
-                {/* Header Bar */}
-                <Box sx={{ backgroundColor: '#003da8', width: '100%', p: 2 }}>
+        <ThemeProvider theme={yogaTheme}>
+            <Box sx={{
+                minHeight: '100dvh',
+                bgcolor: '#f5f5f5',
+                display: 'flex',
+                flexDirection: 'column',
+                maxWidth: 480,
+                mx: 'auto',
+            }}>
+
+                {/* Sticky Top Bar */}
+                <Box sx={{
+                    px: 2,
+                    py: 1.5,
+                    bgcolor: '#fff',
+                    borderBottom: '1px solid #eeeeee',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    position: 'sticky',
+                    top: 0,
+                    zIndex: 10,
+                }}>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                        <QrCodeScannerIcon sx={{ fontSize: 20, color: '#b8892a' }} />
+                        <Typography sx={{
+                            fontFamily: 'var(--font-playfair)',
+                            fontWeight: 700,
+                            fontSize: '17px',
+                            color: '#1a1a1a',
+                        }}>
+                            Ticket Scanner
+                        </Typography>
+                    </Stack>
                     <Typography
-                        variant="body1"
-                        color="#deecfb"
-                        fontWeight={800}
-                        sx={{ fontSize: '1rem' }}
+                        onClick={handleLogout}
+                        sx={{ fontSize: '12px', color: '#9e9e9e', cursor: 'pointer', fontWeight: 500 }}
                     >
-                        {userDetails.name}
-                    </Typography>
-                    <Typography
-                        variant="body1"
-                        color="#ecbc57"
-                        fontWeight={800}
-                        sx={{ fontSize: '1rem' }}
-                    >
-                        {userDetails.ticketID || 'N/A'}
+                        Logout
                     </Typography>
                 </Box>
 
-                {/* Grid Info */}
-                <Box sx={{ px: 2, py: 2 }}>
-                    <Grid container spacing={2}>
-                        <InfoItem label="Email" value={userDetails.email} />
-                        <InfoItem label="Phone" value={userDetails.phone} />
-                        <InfoItem label="Registered On" value={formatReadableDate(userDetails.createdAt)} />
-                        <InfoItem label="Event Source" value={userDetails.eventSource} />
-                        <InfoItem label="Location" value={userDetails.location} />
-                        <InfoItem label="Age" value={userDetails.age} />
-                        <InfoItem label="Experience" value={userDetails.experience} />
+                {/* Scrollable Body */}
+                <Box sx={{ flex: 1, overflow: 'auto', px: 2, pt: 2, pb: 3 }}>
+                    <Stack spacing={2}>
 
-                        {/* T-Shirt Size as Chip */}
-                        <Grid item xs={6} sm={6}>
-                            <Typography sx={{ fontWeight: 600, color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>
-                                T-Shirt Size
-                            </Typography>
-                            <Chip
-                                label={tShirtSize || 'N/A'}
-                                color="success"
-                                size="medium"
-                                sx={{ mt: 0.5, fontWeight: 500, fontFamily: 'var(--font-montserrat)' }}
-                            />
-                        </Grid>
+                        {/* Phase: Scanner */}
+                        {phase === 'scan' && (
+                            <Box sx={{
+                                borderRadius: '12px',
+                                overflow: 'hidden',
+                                border: '1px solid #e0e0e0',
+                                bgcolor: '#000',
+                                aspectRatio: '1 / 1',
+                                width: '100%',
+                                '& > div': { width: '100% !important', height: '100% !important' },
+                            }}>
+                                <Scanner
+                                    onScan={handleScan}
+                                    onError={() => setError('Camera error. Please allow access.')}
+                                    constraints={{ facingMode: 'environment' }}
+                                />
+                            </Box>
+                        )}
 
-                        {/* Scanned Count as Chip */}
-                        <Grid item xs={6} sm={6}>
-                            <Typography sx={{ fontWeight: 600, color: '#444', fontFamily: 'var(--font-montserrat)', fontSize: '12px' }}>
-                                Scanned Count
+                        {/* Phase: Loading */}
+                        {phase === 'loading' && (
+                            <Box sx={{
+                                borderRadius: '12px',
+                                border: '1px solid #e0e0e0',
+                                bgcolor: '#fff',
+                                aspectRatio: '1 / 1',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 1.5,
+                            }}>
+                                <CircularProgress size={32} sx={{ color: '#b8892a' }} />
+                                <Typography sx={{ fontSize: '13px', color: '#757575', fontWeight: 500 }}>
+                                    Verifying ticket…
+                                </Typography>
+                            </Box>
+                        )}
+
+                        {/* Phase: Result */}
+                        {phase === 'result' && (
+                            <Stack spacing={1.5}>
+                                {error && (
+                                    <Box sx={{
+                                        borderRadius: '10px',
+                                        border: '1px solid #ffcdd2',
+                                        bgcolor: '#fff5f5',
+                                        px: 2,
+                                        py: 1.5,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: 1,
+                                    }}>
+                                        <ErrorOutlineIcon sx={{ fontSize: 18, color: '#d32f2f', flexShrink: 0 }} />
+                                        <Typography sx={{ fontSize: '13px', fontWeight: 600, color: '#d32f2f' }}>
+                                            {error}
+                                        </Typography>
+                                    </Box>
+                                )}
+                                {userDetails && <AttendeeCard userDetails={userDetails} />}
+                                <Button
+                                    onClick={reset}
+                                    startIcon={<ReplayIcon sx={{ fontSize: '18px !important' }} />}
+                                    fullWidth
+                                    sx={{
+                                        bgcolor: '#1a1a1a',
+                                        color: '#fff',
+                                        borderRadius: '10px',
+                                        py: 1.25,
+                                        fontSize: '14px',
+                                        fontWeight: 600,
+                                        textTransform: 'none',
+                                        boxShadow: 'none',
+                                        fontFamily: 'var(--font-inter)',
+                                        '&:hover': { bgcolor: '#333', boxShadow: 'none' },
+                                    }}
+                                >
+                                    Scan Next Ticket
+                                </Button>
+                            </Stack>
+                        )}
+
+                        {/* Scan hint */}
+                        {phase === 'scan' && (
+                            <Typography sx={{ fontSize: '12px', color: '#9e9e9e', textAlign: 'center' }}>
+                                Point camera at a QR code — auto-scans instantly
                             </Typography>
-                            <Chip
-                                label={scanned || '0'}
-                                sx={{
-                                    mt: 0.5,
-                                    fontWeight: 500,
-                                    fontFamily: 'var(--font-montserrat)',
-                                    backgroundColor: '#4f4c4c',
-                                    color: '#fff',
+                        )}
+
+                        {/* OR Divider */}
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                            <Box sx={{ flex: 1, height: '1px', bgcolor: '#e8e8e8' }} />
+                            <Typography sx={{
+                                fontSize: '11px',
+                                color: '#bdbdbd',
+                                fontWeight: 600,
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.5px',
+                            }}>
+                                or enter ID
+                            </Typography>
+                            <Box sx={{ flex: 1, height: '1px', bgcolor: '#e8e8e8' }} />
+                        </Box>
+
+                        {/* Manual Entry */}
+                        <Box
+                            component="form"
+                            onSubmit={handleManualSubmit}
+                            sx={{ display: 'flex', gap: 1 }}
+                        >
+                            <TextField
+                                fullWidth
+                                size="small"
+                                placeholder="Registration ID"
+                                value={manualId}
+                                onChange={(e) => setManualId(e.target.value)}
+                                disabled={phase === 'loading'}
+                                autoComplete="off"
+                                inputProps={{ style: { fontSize: '14px', fontFamily: 'var(--font-inter)' } }}
+                                InputProps={{
+                                    startAdornment: (
+                                        <InputAdornment position="start">
+                                            <Typography sx={{ fontSize: '14px', color: '#757575', fontWeight: 600 }}>
+                                                ATH-
+                                            </Typography>
+                                        </InputAdornment>
+                                    ),
                                 }}
-                                size="medium"
+                                sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                        borderRadius: '10px',
+                                        bgcolor: '#fff',
+                                        '& fieldset': { borderColor: '#e0e0e0' },
+                                        '&:hover fieldset': { borderColor: '#b8892a' },
+                                        '&.Mui-focused fieldset': { borderColor: '#b8892a', borderWidth: '1.5px' },
+                                    },
+                                }}
                             />
-                        </Grid>
-                    </Grid>
+                            <Button
+                                type="submit"
+                                disabled={phase === 'loading'}
+                                sx={{
+                                    minWidth: 80,
+                                    borderRadius: '10px',
+                                    fontSize: '13px',
+                                    fontWeight: 700,
+                                    fontFamily: 'var(--font-inter)',
+                                    bgcolor: '#b8892a',
+                                    color: '#fff',
+                                    textTransform: 'none',
+                                    boxShadow: 'none',
+                                    whiteSpace: 'nowrap',
+                                    '&:hover': { bgcolor: '#9a7222', boxShadow: 'none' },
+                                }}
+                            >
+                                Verify
+                            </Button>
+                        </Box>
+
+                    </Stack>
                 </Box>
-            </CardContent>
-        </Card>
+            </Box>
+        </ThemeProvider>
     );
-};
+}
