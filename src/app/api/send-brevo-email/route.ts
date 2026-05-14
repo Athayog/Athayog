@@ -80,6 +80,28 @@ function buildHtmlBody(name: string, ticketID: string): string {
   `.trim();
 }
 
+// Allow-list trusted hosts for ticket PDF retrieval
+const ALLOWED_PDF_HOSTS = new Set<string>([
+    'firebasestorage.googleapis.com',
+]);
+
+function validateAndNormalizePdfUrl(input: string): string | null {
+    try {
+        const url = new URL(input);
+
+        if (url.protocol !== 'https:') return null;
+        if (url.username || url.password) return null;
+        if (!ALLOWED_PDF_HOSTS.has(url.hostname)) return null;
+
+        // Basic safeguard: ticket attachment should be a PDF resource.
+        if (!url.pathname.toLowerCase().endsWith('.pdf')) return null;
+
+        return url.toString();
+    } catch {
+        return null;
+    }
+}
+
 // ── Route handler ────────────────────────────────────────────────────────────────
 export async function POST(request: NextRequest) {
     // 1. Parse body
@@ -99,6 +121,14 @@ export async function POST(request: NextRequest) {
         );
     }
 
+    const safeFileUrl = validateAndNormalizePdfUrl(fileUrl);
+    if (!safeFileUrl) {
+        return NextResponse.json(
+            { error: 'Invalid fileUrl. Only HTTPS PDF URLs from trusted hosts are allowed.' },
+            { status: 400 }
+        );
+    }
+
     // 2. Validate env
     const apiKey = process.env.BREVO_API_KEY;
     if (!apiKey) {
@@ -109,7 +139,7 @@ export async function POST(request: NextRequest) {
     // 3. Fetch the PDF and convert to base64 for attachment
     let pdfBase64: string;
     try {
-        const pdfRes = await fetch(fileUrl);
+        const pdfRes = await fetch(safeFileUrl);
         if (!pdfRes.ok) {
             throw new Error(`PDF fetch failed with status ${pdfRes.status}`);
         }
