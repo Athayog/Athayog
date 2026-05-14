@@ -422,6 +422,21 @@ function RegistrationForm() {
 
 // ─── Register Section (layout wrapper) ────────────────────────────────────────
 export function RegisterSection() {
+    const [mode, setMode] = useState<'register' | 'download'>('register');
+    const [downloadId, setDownloadId] = useState('');
+    const router = useRouter();
+
+    const handleDownloadSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (downloadId.trim()) {
+            let id = downloadId.trim().toUpperCase();
+            if (id.startsWith('ATH-')) {
+                id = id.substring(4);
+            }
+            router.push(`/yoga-day-26/success?ticketID=ATH-${id}`);
+        }
+    };
+
     return (
         <Box component="section" id="register" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#faf7f2', scrollMarginTop: '80px' }}>
             <Container maxWidth="lg">
@@ -454,7 +469,75 @@ export function RegisterSection() {
 
                     {/* Right — form card */}
                     <Box sx={{ bgcolor: '#fff', border: '1px solid #e2ddd5', p: { xs: '1.5rem', md: '2rem' } }}>
-                        <RegistrationForm />
+                        {mode === 'register' ? (
+                            <>
+                                <RegistrationForm />
+                                <Box sx={{ mt: 3, pt: 3, borderTop: '1px solid #e2ddd5', textAlign: 'center' }}>
+                                    <Typography sx={{ fontSize: '0.85rem', color: '#555', fontFamily: 'var(--font-inter)' }}>
+                                        Already registered?{' '}
+                                        <Box 
+                                            component="span" 
+                                            onClick={() => setMode('download')} 
+                                            sx={{ color: '#b8892a', fontWeight: 600, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
+                                        >
+                                            Download your ticket here.
+                                        </Box>
+                                    </Typography>
+                                </Box>
+                            </>
+                        ) : (
+                            <Box>
+                                <Typography variant="h5" sx={{ fontFamily: 'var(--font-playfair)', color: '#3d2f1e', mb: 2, fontWeight: 700 }}>
+                                    Retrieve Your Ticket
+                                </Typography>
+                                <Typography sx={{ fontSize: '0.88rem', color: '#555', mb: 3, fontFamily: 'var(--font-inter)' }}>
+                                    Enter your Registration ID to fetch and download your event ticket.
+                                </Typography>
+                                
+                                <Box component="form" onSubmit={handleDownloadSubmit}>
+                                    <TextField
+                                        fullWidth
+                                        variant="outlined"
+                                        label="Registration ID"
+                                        value={downloadId}
+                                        onChange={(e) => setDownloadId(e.target.value)}
+                                        sx={{ 
+                                            mb: 3,
+                                            fontFamily: 'var(--font-inter)',
+                                            '& .MuiOutlinedInput-root': {
+                                                borderRadius: 1,
+                                                '& fieldset': { borderColor: '#e2ddd5' },
+                                                '&:hover fieldset': { borderColor: '#b8892a' },
+                                                '&.Mui-focused fieldset': { borderColor: '#b8892a' }
+                                            }
+                                        }}
+                                        InputProps={{
+                                            startAdornment: <InputAdornment position="start" sx={{ fontFamily: 'var(--font-inter)', fontWeight: 600 }}>ATH-</InputAdornment>,
+                                        }}
+                                    />
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        sx={{ bgcolor: '#4f6148', color: '#fff', py: '0.85rem', fontSize: '0.84rem', mb: 2, boxShadow: 'none', borderRadius: 0, '&:hover': { bgcolor: '#3d2f1e', boxShadow: 'none' } }}
+                                    >
+                                        Retrieve Ticket
+                                    </Button>
+                                </Box>
+
+                                <Box sx={{ mt: 3, pt: 3, borderTop: '1px solid #e2ddd5', textAlign: 'center' }}>
+                                    <Typography sx={{ fontSize: '0.85rem', color: '#555', fontFamily: 'var(--font-inter)' }}>
+                                        Need to register?{' '}
+                                        <Box 
+                                            component="span" 
+                                            onClick={() => setMode('register')} 
+                                            sx={{ color: '#b8892a', fontWeight: 600, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
+                                        >
+                                            Go back to registration.
+                                        </Box>
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        )}
                     </Box>
                 </Box>
             </Container>
