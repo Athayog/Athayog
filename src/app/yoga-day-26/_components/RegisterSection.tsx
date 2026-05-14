@@ -1,8 +1,13 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { v4 as uuidv4 } from 'uuid'
+import QRCode from 'qrcode'
+import emailjs from '@emailjs/browser'
+import { generatePDFBlob } from '@/components/forms/generatePdf'
+import useFormStore from '@/store/useFormStore'
 import {
     Box,
     Button,
@@ -21,10 +26,41 @@ import {
     Stack,
     TextField,
     Typography,
+    Backdrop,
+    CircularProgress,
+    LinearProgress,
+    linearProgressClasses,
+    styled,
+    Snackbar,
+    Alert
 } from '@mui/material'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import { EyebrowLabel } from './ui'
 import { DIGNITARIES } from './data'
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+    height: 12,
+    borderRadius: 6,
+    backgroundColor:
+        theme.palette.mode === 'dark'
+            ? 'rgba(255, 255, 255, 0.1)'
+            : theme.palette.grey[300],
+
+    [`& .${linearProgressClasses.bar}`]: {
+        borderRadius: 6,
+        backgroundImage:
+            theme.palette.mode === 'dark'
+                ? 'linear-gradient(90deg, #b8892a 0%, #d4aa6a 100%)'
+                : 'linear-gradient(90deg, #b8892a 0%, #4f6148 100%)',
+        animation: 'progress-glow 1.5s ease-in-out infinite',
+    },
+
+    '@keyframes progress-glow': {
+        '0%': { boxShadow: '0 0 5px rgba(184, 137, 42, 0.4)' },
+        '50%': { boxShadow: '0 0 15px rgba(184, 137, 42, 0.9)' },
+        '100%': { boxShadow: '0 0 5px rgba(184, 137, 42, 0.4)' },
+    },
+}))
 
 // ─── Validation Schema ─────────────────────────────────────────────────────────
 const registrationSchema = Yup.object({
@@ -38,6 +74,19 @@ const registrationSchema = Yup.object({
     heardFrom: Yup.string().required('Please tell us how you heard about us'),
     hasYogaExperience: Yup.string().required(),
 })
+
+function generateTicketID(): string {
+    const prefix = 'ATH-'
+    const timestampPart = Date.now().toString(36).toUpperCase()
+    const uuidPart = uuidv4().replace(/-/g, '').slice(0, 4).toUpperCase()
+    const merged = `${timestampPart}${uuidPart}`
+    let hash = 0
+    for (let i = 0; i < merged.length; i++) {
+        hash = (hash * 31 + merged.charCodeAt(i)) >>> 0
+    }
+    const finalId = hash.toString(36).toUpperCase().slice(0, 6)
+    return `${prefix}${finalId}`
+}
 
 // ─── Success State ─────────────────────────────────────────────────────────────
 function RegistrationSuccess({ onReset }: { onReset: () => void }) {
@@ -59,7 +108,13 @@ function RegistrationSuccess({ onReset }: { onReset: () => void }) {
 
 // ─── Registration Form ─────────────────────────────────────────────────────────
 function RegistrationForm() {
-    const [submitted, setSubmitted] = React.useState(false)
+    const [submitted, setSubmitted] = useState(false)
+    const { submitForm } = useFormStore()
+
+    // Loading/Error states
+    const [apiError, setApiError] = useState<string | null>(null)
+    const [progressStep, setProgressStep] = useState('')
+    const [percentage, setPercentage] = useState(0)
 
     const formik = useFormik({
         initialValues: {
@@ -72,27 +127,166 @@ function RegistrationForm() {
             hasYogaExperience: 'no',
         },
         validationSchema: registrationSchema,
-        onSubmit: (_values, { setSubmitting, resetForm }) => {
-            // TODO: replace with real API call — POST to /api/yoga-day
-            console.log('Registration submitted:', _values)
-            setTimeout(() => {
-                setSubmitting(false)
-                setSubmitted(true)
+        onSubmit: async (values, { setSubmitting, resetForm }) => {
+            setApiError(null)
+            setSubmitting(true)
+            setPercentage(0)
+            setProgressStep('')
+
+            try {
+                // 1. Verify Duplicates
+                setPercentage(20)
+                setProgressStep('🔍 Verifying your information...')
+
+                // Ensure number has country code for consistency
+                const formattedPhone = values.phone.startsWith('+91') ? values.phone : `+91${values.phone}`
+
+                const res = await fetch('/api/yoga-day-duplicate/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: formattedPhone, email: values.email }),
+                })
+
+                if (res.status === 409) {
+                    const data = await res.json()
+                    setApiError(data.message || 'Either phone or email is already registered for this event.')
+                    setSubmitting(false)
+                    setProgressStep('')
+                    return
+                } else if (!res.ok) {
+                    setApiError('Something went wrong checking registration. Please try again.')
+                    setSubmitting(false)
+                    setProgressStep('')
+                    return
+                }
+
+                // 2. Generate Ticket & PDF
+                setProgressStep('🎫 Generating your ticket...')
+                const ticketID = generateTicketID()
+                const qrDataUrl = await QRCode.toDataURL(ticketID)
+
+                const resPDF = generatePDFBlob({ name: values.fullName, ticketId: ticketID, qrDataUrl })
+                setPercentage(40)
+
+                const pdfBlob = await resPDF
+                const pdfFile = new File([pdfBlob], ticketID + '.pdf', { type: 'application/pdf' })
+
+                let fullData = {
+                    ...values,
+                    phone: formattedPhone, // use formatted
+                    name: values.fullName, // map fullName to name for backend expectations
+                    ticketID,
+                    qrDataUrl,
+                }
+
+                // 3. Save to DB
+                setProgressStep('💾 Saving your details securely...')
+                // Using 'arambhaForm26' as the collection for this new event
+                await submitForm(fullData, 'arambhaForm26', '', pdfFile, 'arambhaForm26')
+
+                setPercentage(80)
+                setProgressStep('📧 Sending ticket to your inbox...')
+
+                // 4. Send Email & WhatsApp (WhatsApp commented out as requested)
+                const [emailRes] = await Promise.allSettled([
+                    fetch('/api/send-brevo-email', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            name: fullData.fullName,
+                            email: fullData.email,
+                            ticketID: fullData.ticketID,
+                            fileUrl: (fullData as any).fileUrl,
+                        }),
+                        headers: { 'Content-Type': 'application/json' },
+                    }),
+                    /*
+                    fetch('/api/send-pinnacle-whatsapp', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            phoneNumber: fullData.phone,
+                            name: fullData.fullName,
+                            registrationId: fullData.ticketID,
+                            pdfUrl: (fullData as any).fileUrl,
+                            destinationUrl: 'www.athayogliving.com',
+                            enableTracking: true,
+                        }),
+                    })
+                    */
+                ])
+
+                // Email fallback
+                if (emailRes.status === 'rejected' || !emailRes.value.ok) {
+                    console.warn('⚠️ Brevo email failed — attempting EmailJS fallback.')
+                    emailjs.send(
+                        "service_33jio54",
+                        "template_9mruadf",
+                        {
+                            email: fullData.email,
+                            name: fullData.fullName,
+                            ticketID: fullData.ticketID,
+                            tiketURL: (fullData as any).fileUrl,
+                        },
+                        "user_Zp6dTdYGxn4E5rxeiLLCh"
+                    ).then(
+                        () => console.log('✅ EmailJS fallback succeeded.'),
+                        (err) => {
+                            console.error('❌ EmailJS fallback also failed:', err)
+                            setApiError('Form submitted, but failed to send confirmation email.')
+                        }
+                    )
+                }
+
+                setPercentage(100)
+                setProgressStep('✅ All done! You’re all set!')
+                await new Promise((resolve) => setTimeout(resolve, 1500))
+
                 resetForm()
-            }, 800)
+                setSubmitted(true)
+            } catch (error) {
+                setApiError('Unexpected error occurred. Please try again.')
+            } finally {
+                setSubmitting(false)
+                setPercentage(0)
+                setProgressStep('')
+            }
         },
     })
 
     if (submitted) return <RegistrationSuccess onReset={() => setSubmitted(false)} />
 
     return (
-        <Box component="form" onSubmit={formik.handleSubmit} noValidate>
+        <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ position: 'relative' }}>
+
+            {/* Loader Backdrop */}
+            <Backdrop
+                open={formik.isSubmitting}
+                sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: '#fff', flexDirection: 'column', position: 'absolute', bgcolor: 'rgba(255, 255, 255, 0.9)' }}
+            >
+                <CircularProgress color="primary" size={60} thickness={4} />
+                <Typography variant="h6" sx={{ mt: 3, fontWeight: 600, color: '#3d2f1e' }}>
+                    {progressStep}
+                </Typography>
+                <Box sx={{ width: '80%', maxWidth: 300, mt: 2 }}>
+                    <BorderLinearProgress variant="determinate" value={percentage} />
+                </Box>
+                <Typography variant="body2" sx={{ mt: 1, color: '#555' }}>
+                    {percentage}%
+                </Typography>
+            </Backdrop>
+
+            {/* Error Snackbar */}
+            <Snackbar open={!!apiError} autoHideDuration={6000} onClose={() => setApiError(null)} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
+                <Alert onClose={() => setApiError(null)} severity="error" sx={{ width: '100%' }}>
+                    {apiError}
+                </Alert>
+            </Snackbar>
+
             <Typography sx={{ fontSize: '0.68rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#555', mb: '1.4rem', fontWeight: 500 }}>
                 Registration Details
             </Typography>
 
             <Stack spacing={2.5}>
-                {/* Full Name */}
                 <TextField
                     fullWidth
                     size="small"
@@ -107,7 +301,6 @@ function RegistrationForm() {
                     helperText={formik.touched.fullName && formik.errors.fullName}
                 />
 
-                {/* Mobile Number */}
                 <TextField
                     fullWidth
                     size="small"
@@ -129,7 +322,6 @@ function RegistrationForm() {
                     }}
                 />
 
-                {/* Email */}
                 <TextField
                     fullWidth
                     size="small"
@@ -145,7 +337,6 @@ function RegistrationForm() {
                     helperText={formik.touched.email && formik.errors.email}
                 />
 
-                {/* Gender + T-shirt Size — equal columns, same size */}
                 <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
                     <FormControl fullWidth size="small" error={formik.touched.gender && Boolean(formik.errors.gender)}>
                         <InputLabel id="gender-label">Gender</InputLabel>
@@ -184,7 +375,6 @@ function RegistrationForm() {
                     </FormControl>
                 </Box>
 
-                {/* How did you hear */}
                 <FormControl fullWidth size="small" error={formik.touched.heardFrom && Boolean(formik.errors.heardFrom)}>
                     <InputLabel id="heard-label">How did you hear about us?</InputLabel>
                     <Select
@@ -203,7 +393,6 @@ function RegistrationForm() {
                     {formik.touched.heardFrom && formik.errors.heardFrom && <FormHelperText>{formik.errors.heardFrom}</FormHelperText>}
                 </FormControl>
 
-                {/* Yoga Experience */}
                 <FormControl component="fieldset" error={formik.touched.hasYogaExperience && Boolean(formik.errors.hasYogaExperience)}>
                     <FormLabel component="legend" sx={{ fontSize: '0.72rem', fontWeight: 500, color: 'text.secondary', letterSpacing: '0.04em', mb: 0.5 }}>
                         Do you have prior yoga experience?
@@ -214,7 +403,6 @@ function RegistrationForm() {
                     </RadioGroup>
                 </FormControl>
 
-                {/* Submit */}
                 <Button
                     type="submit"
                     fullWidth
