@@ -93,8 +93,23 @@ function validateAndNormalizePdfUrl(input: string): string | null {
         if (url.username || url.password) return null;
         if (!ALLOWED_PDF_HOSTS.has(url.hostname)) return null;
 
-        // Basic safeguard: ticket attachment should be a PDF resource.
-        if (!url.pathname.toLowerCase().endsWith('.pdf')) return null;
+        // Enforce Firebase Storage object endpoint for the expected bucket.
+        const requiredPrefix = '/v0/b/authentication-test-7c342.appspot.com/o/';
+        if (!url.pathname.startsWith(requiredPrefix)) return null;
+
+        // Validate object key and file type.
+        const encodedObjectPath = url.pathname.slice(requiredPrefix.length);
+        if (!encodedObjectPath) return null;
+        const objectPath = decodeURIComponent(encodedObjectPath);
+        if (!objectPath.toLowerCase().endsWith('.pdf')) return null;
+        if (objectPath.includes('..')) return null;
+
+        // Only allow expected query params for Firebase media download links.
+        const allowedParams = new Set(['alt', 'token']);
+        for (const key of url.searchParams.keys()) {
+            if (!allowedParams.has(key)) return null;
+        }
+        if (url.searchParams.get('alt') !== 'media') return null;
 
         return url.toString();
     } catch {
