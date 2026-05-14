@@ -163,26 +163,40 @@ const ArambhaForm = ({ data }: any) => {
                 setProgressStep('📧 Sending tickets to your inbox...');
 
                 const [emailRes, whatsAppRes] = await Promise.allSettled([
-                    fetch('/api/send-email', {
+                    // ── Brevo Transactional Email ───────────────────────────────
+                    // Sends the registration confirmation + PDF ticket attachment.
+                    fetch('/api/send-brevo-email', {
                         method: 'POST',
-                        body: JSON.stringify(fullData),
+                        body: JSON.stringify({
+                            name: fullData.name,
+                            email: fullData.email,
+                            ticketID: fullData.ticketID,
+                            fileUrl: (fullData as any).fileUrl,
+                        }),
                         headers: { 'Content-Type': 'application/json' },
                     }),
-                    fetch('/api/send-whatsapp', {
+                    // ── Pinnacle WhatsApp Business API ──────────────────────────
+                    // Sends the PDF ticket as a document header with a "Visit"
+                    // CTA button that routes through Pinnacle's tracking campaign.
+                    // Click data (Mobile, Browser, OS, Timestamp) is recorded in
+                    // the Pinnacle Campaign Tracking Report when enableTracking=true.
+                    fetch('/api/send-pinnacle-whatsapp', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
                             phoneNumber: fullData.phone,
                             name: fullData.name,
-                            ticketId: fullData.ticketID,
-                            media_url: (fullData as any).fileUrl,
+                            registrationId: fullData.ticketID,
+                            pdfUrl: (fullData as any).fileUrl,
+                            destinationUrl: 'www.athayogliving.com',
+                            enableTracking: true,
                         }),
                     })
                 ]);
 
-                // Error handling
+                // ── Email error handling: fall back to EmailJS if Brevo fails ──
                 if (emailRes.status === 'rejected' || !emailRes.value.ok) {
-
+                    console.warn('⚠️ Brevo email failed — attempting EmailJS fallback.');
                     emailjs.send(
                         "service_33jio54",
                         "template_9mruadf",
@@ -195,19 +209,19 @@ const ArambhaForm = ({ data }: any) => {
                         "user_Zp6dTdYGxn4E5rxeiLLCh"
                     ).then(
                         () => {
-                            console.log('✅ SUCCESS!');
+                            console.log('✅ EmailJS fallback succeeded.');
                         },
                         (error) => {
-                            console.error('❌ EmailJS error:', error);
+                            console.error('❌ EmailJS fallback also failed:', error);
                             setApiError('Form submitted, but failed to send confirmation email.');
                         }
                     );
-
-
                 }
 
                 if (whatsAppRes.status === 'rejected' || !whatsAppRes.value.ok) {
-                    setApiError('Form submitted, but failed to send WhatsApp ticket.');
+                    // Non-fatal: registration is already saved; ticket delivery failed
+                    console.warn('⚠️ Pinnacle WhatsApp delivery failed — registration still saved.');
+                    setApiError('Registered successfully, but failed to send WhatsApp ticket.');
                 }
                 setPercentage(100)
                 setProgressStep('✅ All done! You’re all set!');
