@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { v4 as uuidv4 } from 'uuid'
 import QRCode from 'qrcode'
 import emailjs from '@emailjs/browser'
+import { useRouter } from 'next/navigation'
 import { generatePDFBlob } from '@/components/forms/generatePdf'
 import useFormStore from '@/store/useFormStore'
 import {
@@ -88,28 +89,12 @@ function generateTicketID(): string {
     return `${prefix}${finalId}`
 }
 
-// ─── Success State ─────────────────────────────────────────────────────────────
-function RegistrationSuccess({ onReset }: { onReset: () => void }) {
-    return (
-        <Box sx={{ textAlign: 'center', py: 6 }}>
-            <CheckCircleOutlineIcon sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
-            <Typography variant="h3" sx={{ color: '#3d2f1e', mb: 1 }}>
-                You&apos;re Registered!
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-                Thank you for registering. See you on June 21 at Indiranagar Club, Bangalore.
-            </Typography>
-            <Button variant="outlined" color="primary" sx={{ mt: 3 }} onClick={onReset}>
-                Register Another Person
-            </Button>
-        </Box>
-    )
-}
+// Removed RegistrationSuccess component as we will route to a dedicated page
 
 // ─── Registration Form ─────────────────────────────────────────────────────────
 function RegistrationForm() {
-    const [submitted, setSubmitted] = useState(false)
     const { submitForm } = useFormStore()
+    const router = useRouter()
 
     // Loading/Error states
     const [apiError, setApiError] = useState<string | null>(null)
@@ -177,6 +162,7 @@ function RegistrationForm() {
                     name: values.fullName, // map fullName to name for backend expectations
                     ticketID,
                     qrDataUrl,
+                    emailSent: false, // Explicitly mark as not sent initially
                 }
 
                 // 3. Save to DB
@@ -216,25 +202,37 @@ function RegistrationForm() {
                 ])
 
                 // Email fallback
+                let emailSuccess = false
                 if (emailRes.status === 'rejected' || !emailRes.value.ok) {
                     console.warn('⚠️ Brevo email failed — attempting EmailJS fallback.')
-                    emailjs.send(
-                        "service_33jio54",
-                        "template_9mruadf",
-                        {
-                            email: fullData.email,
-                            name: fullData.fullName,
-                            ticketID: fullData.ticketID,
-                            tiketURL: (fullData as any).fileUrl,
-                        },
-                        "user_Zp6dTdYGxn4E5rxeiLLCh"
-                    ).then(
-                        () => console.log('✅ EmailJS fallback succeeded.'),
-                        (err) => {
-                            console.error('❌ EmailJS fallback also failed:', err)
-                            setApiError('Form submitted, but failed to send confirmation email.')
-                        }
-                    )
+                    try {
+                        await emailjs.send(
+                            "service_33jio54",
+                            "template_9mruadf",
+                            {
+                                email: fullData.email,
+                                name: fullData.fullName,
+                                ticketID: fullData.ticketID,
+                                tiketURL: (fullData as any).fileUrl,
+                            },
+                            "user_Zp6dTdYGxn4E5rxeiLLCh"
+                        )
+                        console.log('✅ EmailJS fallback succeeded.')
+                        emailSuccess = true
+                    } catch (err) {
+                        console.error('❌ EmailJS fallback also failed:', err)
+                        setApiError('Form submitted, but failed to send confirmation email.')
+                    }
+                } else {
+                    emailSuccess = true
+                }
+
+                if (emailSuccess) {
+                    await fetch('/api/mark-email-sent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ticketID: fullData.ticketID }),
+                    })
                 }
 
                 setPercentage(100)
@@ -242,7 +240,7 @@ function RegistrationForm() {
                 await new Promise((resolve) => setTimeout(resolve, 1500))
 
                 resetForm()
-                setSubmitted(true)
+                router.push(`/yoga-day-26/success?ticketID=${ticketID}`)
             } catch (error) {
                 setApiError('Unexpected error occurred. Please try again.')
             } finally {
@@ -252,8 +250,6 @@ function RegistrationForm() {
             }
         },
     })
-
-    if (submitted) return <RegistrationSuccess onReset={() => setSubmitted(false)} />
 
     return (
         <Box component="form" onSubmit={formik.handleSubmit} noValidate sx={{ position: 'relative' }}>
