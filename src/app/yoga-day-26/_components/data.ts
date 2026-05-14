@@ -78,3 +78,46 @@ export const FAQS = [
         a: '"Yoga for Wellness, Wisdom & World Peace" — celebrating yoga as a tool for holistic health, mental well-being, and social harmony.',
     },
 ]
+
+export const CLIENTS = [
+    {
+        name: 'CHRIST University',
+        logo: '/images/26/ChristUniversity.jpeg',
+        description: 'Conducting yoga as part of the academic curriculum for management students, helping them develop focus, discipline, stress management, and overall wellbeing through structured yoga education every academic year.',
+    },
+    {
+        name: 'Dongle',
+        logo: '/images/26/Dongle.jpeg',
+        description: 'Conducting regular yoga sessions within the coworking ecosystem to help corporate professionals improve posture, reduce stress, enhance productivity, and maintain work-life balance through guided yoga practices.',
+    },
+    {
+        name: 'Sports Authority of India',
+        logo: '/images/26/Sports Authority of India.png',
+        description: 'Organizing large-scale International Day of Yoga sessions every year for athletes, promoting flexibility, recovery, mental resilience, and overall athletic wellbeing through yoga.',
+    },
+    {
+        name: 'Indian Army',
+        logo: '/images/26/Indian Army.jpg',
+        description: 'Conducting mass yoga sessions on International Day of Yoga for army personnel, focusing on physical fitness, mental strength, breathwork, and stress management.',
+    },
+    {
+        name: 'PM Square',
+        logo: '/images/26/PM Square.png',
+        description: 'Providing regular corporate yoga classes for employees to support workplace wellness, improve concentration, reduce stress, and encourage healthier lifestyles.',
+    },
+    {
+        name: 'Adidas Runners',
+        logo: '/images/26/Adidas Runners.png',
+        description: 'Conducting regular yoga sessions for runners to improve mobility, flexibility, recovery, breathing efficiency, and injury prevention.',
+    },
+    {
+        name: 'Run Pandit Club',
+        logo: '/images/26/Run Pandit Club.png',
+        description: 'Conducting yoga sessions for the running community with a focus on recovery, flexibility, endurance, breath control, and overall performance enhancement for runners.',
+    },
+    {
+        name: 'Indiranagar Run Club',
+        logo: '/images/26/Indiranagar Run Club.jpg',
+        description: 'Partnering with the local running community to provide dedicated yoga sessions aimed at improving athletic performance, flexibility, and post-run recovery.',
+    },
+]

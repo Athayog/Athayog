@@ -9,6 +9,7 @@ import { WhySection } from './_components/WhySection'
 import { ExperienceSection } from './_components/ExperienceSection'
 import { ActivitiesSection } from './_components/ActivitiesSection'
 import { AboutSection } from './_components/AboutSection'
+import { ClientsSection } from './_components/ClientsSection'
 import { LocationSection } from './_components/LocationSection'
 import { RegisterSection } from './_components/RegisterSection'
 import { FaqSection } from './_components/FaqSection'
@@ -25,6 +26,7 @@ export default function YogaArambha2026Page() {
                     <ExperienceSection />
                     <ActivitiesSection />
                     <AboutSection />
+                    <ClientsSection />
                     <LocationSection />
                     <RegisterSection />
                     <FaqSection />
