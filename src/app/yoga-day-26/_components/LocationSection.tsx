@@ -35,35 +35,31 @@ export function LocationSection() {
                         </Box>
                     </Box>
 
-                    <Box sx={{ bgcolor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', p: '2rem', textAlign: 'center' }}>
+                    <Box sx={{ border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden' }}>
                         <Box
+                            component="iframe"
+                            src="https://maps.google.com/maps?q=Indiranagar+Club+Bangalore&output=embed&z=16"
                             sx={{
+                                display: 'block',
+                                width: '100%',
                                 aspectRatio: '16/9',
-                                bgcolor: 'rgba(255,255,255,0.03)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                color: 'rgba(255,255,255,0.2)',
-                                fontSize: '0.8rem',
-                                mb: '1rem',
-                                flexDirection: 'column',
-                                gap: 1,
+                                border: 'none',
+                                filter: 'grayscale(20%) contrast(1.05)',
                             }}
-                        >
-                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style={{ opacity: 0.25 }}>
-                                <circle cx="18" cy="15" r="7" stroke="white" strokeWidth="1.3" />
-                                <path d="M18 3C11 3 5 8.6 5 15C5 23.5 18 33 18 33C18 33 31 23.5 31 15C31 8.6 25 3 18 3Z" stroke="white" strokeWidth="1.3" fill="none" />
-                            </svg>
-                            Indiranagar Club, Bangalore
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Indiranagar Club, Bangalore"
+                        />
+                        <Box sx={{ p: '0.75rem 1rem', bgcolor: 'rgba(255,255,255,0.04)', textAlign: 'center' }}>
+                            <Link
+                                href="https://maps.app.goo.gl/JpW1wbeDugHRp3ZKA"
+                                target="_blank"
+                                rel="noopener"
+                                sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#b8892a', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                            >
+                                ↗ Open in Google Maps
+                            </Link>
                         </Box>
-                        <Link
-                            href="https://maps.app.goo.gl/JpW1wbeDugHRp3ZKA"
-                            target="_blank"
-                            rel="noopener"
-                            sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#b8892a', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
-                        >
-                            Open in Google Maps
-                        </Link>
                     </Box>
                 </Box>
             </Container>

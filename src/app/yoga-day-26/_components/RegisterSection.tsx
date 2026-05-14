@@ -158,7 +158,7 @@ function RegistrationForm() {
                             onChange={formik.handleChange}
                             onBlur={formik.handleBlur}
                         >
-                            {['Male', 'Female', 'Other', 'Prefer not to say'].map((opt) => (
+                            {['Male', 'Female', 'Other'].map((opt) => (
                                 <MenuItem key={opt} value={opt}>{opt}</MenuItem>
                             ))}
                         </Select>
@@ -239,7 +239,7 @@ function RegistrationForm() {
 // ─── Register Section (layout wrapper) ────────────────────────────────────────
 export function RegisterSection() {
     return (
-        <Box component="section" id="register" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#faf7f2' }}>
+        <Box component="section" id="register" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#faf7f2', scrollMarginTop: '80px' }}>
             <Container maxWidth="lg">
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: '3rem', alignItems: 'start' }}>
                     {/* Left — copy */}
