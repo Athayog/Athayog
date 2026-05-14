@@ -429,11 +429,9 @@ export function RegisterSection() {
     const handleDownloadSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (downloadId.trim()) {
-            let id = downloadId.trim().toUpperCase();
-            if (id.startsWith('ATH-')) {
-                id = id.substring(4);
-            }
-            router.push(`/yoga-day-26/success?ticketID=ATH-${id}`);
+            const id = downloadId.trim();
+            // Pass the email or phone exactly as entered
+            router.push(`/yoga-day-26/success?ticketID=${encodeURIComponent(id)}`);
         }
     };
 
@@ -491,14 +489,14 @@ export function RegisterSection() {
                                     Retrieve Your Ticket
                                 </Typography>
                                 <Typography sx={{ fontSize: '0.88rem', color: '#555', mb: 3, fontFamily: 'var(--font-inter)' }}>
-                                    Enter your Registration ID to fetch and download your event ticket.
+                                    Enter your Email Address or Phone Number to fetch and download your event ticket.
                                 </Typography>
                                 
                                 <Box component="form" onSubmit={handleDownloadSubmit}>
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        label="Registration ID"
+                                        label="Email or Phone Number"
                                         value={downloadId}
                                         onChange={(e) => setDownloadId(e.target.value)}
                                         sx={{ 
@@ -510,9 +508,6 @@ export function RegisterSection() {
                                                 '&:hover fieldset': { borderColor: '#b8892a' },
                                                 '&.Mui-focused fieldset': { borderColor: '#b8892a' }
                                             }
-                                        }}
-                                        InputProps={{
-                                            startAdornment: <InputAdornment position="start" sx={{ fontFamily: 'var(--font-inter)', fontWeight: 600 }}>ATH-</InputAdornment>,
                                         }}
                                     />
                                     <Button
