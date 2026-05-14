@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
                         </Link>
                     </Box>
 
-                    {pathname !== '/yoga-arambha-26' && (
+                    {pathname !== '/yoga-day-26' && (
                         <NavContainer>
                             {navItems.map(({ label, path, type, children }, index) => {
                                 if (type === 'nav') {
@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
                         </NavContainer>
                     )}
 
-                    {pathname !== '/yoga-arambha-26' && (
+                    {pathname !== '/yoga-day-26' && (
                         <>
                             <TrialAndAuth>
                                 {!user && (

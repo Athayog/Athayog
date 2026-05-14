@@ -4,7 +4,7 @@ import { FAQS } from './data'
 
 export function FaqSection() {
     return (
-        <Box component="section" id="faq" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#e8ede6' }}>
+        <Box component="section" id="faq" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#e8ede6', scrollMarginTop: '80px' }}>
             <Container maxWidth="lg">
                 <Box sx={{ textAlign: 'center', mb: 4 }}>
                     <EyebrowLabel>FAQ</EyebrowLabel>

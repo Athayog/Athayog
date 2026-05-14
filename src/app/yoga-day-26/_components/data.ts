@@ -14,14 +14,17 @@ export const SCHEDULE = [
 
 export const WHY_ITEMS = [
     {
+        icon: 'heart',
         title: 'Wellness for Women, Wellness for the World',
         body: 'When a woman thrives, communities flourish. Yoga nurtures mind, body, and soul — creating a ripple effect of strength and compassion that extends to families, societies, and the Earth itself.',
     },
     {
+        icon: 'people',
         title: 'Yoga for Every Body, Every Being',
         body: 'Yoga knows no boundaries — welcoming people of all ages, backgrounds, and walks of life. When we come together on the mat, we heal ourselves and contribute to collective planetary health.',
     },
     {
+        icon: 'leaf',
         title: 'Inner Calm, Outer Care',
         body: "Yoga is more than movement — it's mindfulness that grounds us in the present and awakens responsibility to nature. Through breath, balance, and awareness, we create harmony within and with the Earth.",
     },
@@ -35,12 +38,12 @@ export const EXPERIENCE_ITEMS = [
 ]
 
 export const ACTIVITIES = [
-    { title: 'Live Music', body: 'Soothing tunes elevating the yoga atmosphere' },
-    { title: 'Live Painting', body: 'Yoga-inspired art created live on canvas' },
-    { title: 'AI Station', body: 'Where technology meets wellness' },
-    { title: 'Blood Donation', body: 'Give back through our wellness drive' },
-    { title: 'Yoga as Career', body: 'Turn passion into profession' },
-    { title: 'Yoga Clinics', body: 'Therapy, rehab & holistic health' },
+    { icon: 'music',   title: 'Live Music',       body: 'Soothing tunes elevating the yoga atmosphere' },
+    { icon: 'brush',   title: 'Live Painting',     body: 'Yoga-inspired art created live on canvas' },
+    { icon: 'ai',      title: 'AI Station',        body: 'Where technology meets wellness' },
+    { icon: 'blood',   title: 'Blood Donation',    body: 'Give back through our wellness drive' },
+    { icon: 'career',  title: 'Yoga as Career',    body: 'Turn passion into profession' },
+    { icon: 'clinic',  title: 'Yoga Clinics',      body: 'Therapy, rehab & holistic health' },
 ]
 
 export const DIGNITARIES = [

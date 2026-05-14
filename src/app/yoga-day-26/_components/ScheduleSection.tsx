@@ -4,7 +4,7 @@ import { SCHEDULE } from './data'
 
 export function ScheduleSection() {
     return (
-        <Box component="section" id="schedule" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#fff' }}>
+        <Box component="section" id="schedule" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#fff', scrollMarginTop: '80px' }}>
             <Container maxWidth="lg">
                 <SectionHeader
                     eyebrow="Event Programme"
