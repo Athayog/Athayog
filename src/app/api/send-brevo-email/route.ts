@@ -27,6 +27,11 @@ import { BrevoClient } from '@getbrevo/brevo';
 function buildHtmlBody(name: string, ticketID: string): string {
     return `
 <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+  <!-- Preview Text -->
+  <div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+    Your registration is confirmed. Download your QR pass and get ready to celebrate International Day of Yoga 2026.
+  </div>
+  
   <div style="display: flex; gap: 10px; margin-bottom: 16px;">
     <img height="60" width="60"
       src="https://firebasestorage.googleapis.com/v0/b/authentication-test-7c342.appspot.com/o/ar24_logo.png?alt=media&token=a3971691-5c65-4467-92ab-42580d3ed5cd"
@@ -36,46 +41,54 @@ function buildHtmlBody(name: string, ticketID: string): string {
       alt="Athayog logo" />
   </div>
 
-  <h2>Namaste ${name},</h2>
+  <h2>Namaste ${name}, 🙏</h2>
 
   <p>
-    Thank you for registering for the <strong>Yoga Arambha 2026</strong> with Athayog, in association with
-    <strong>Shri P.C. Mohan</strong>, Member of Parliament, Bengaluru Central and <strong>Shri Tejasvi Surya</strong>, Member of Parliament, Bengaluru South. 🙏
+    Thank you for registering for <strong>Yoga Arambha 2026 – International Day of Yoga Celebration</strong>, organized by Athayog.
   </p>
 
   <p>
-    We're honored to have your presence as we unite to celebrate yoga, wellness, and
-    collective harmony on <strong>June 21st</strong>.
+    We are delighted to have you join us as we come together to celebrate wellness, mindfulness, and the spirit of yoga through one of Bengaluru’s largest community yoga gatherings.
   </p>
 
   <p><strong>Here are your registration details:</strong></p>
 
   <p>
-    📅 <strong>Event:</strong> International Day of Yoga 2026<br />
+    📅 <strong>Event:</strong> Yoga Arambha 2026 – International Day of Yoga<br />
     📍 <strong>Venue:</strong> Indiranagar Club, Bengaluru<br />
-    🕒 <strong>Timing:</strong> 6:00 AM onwards
+    🕒 <strong>Reporting Time:</strong> 6:00 AM onwards<br />
+    🧘 <strong>Mass Yoga Session:</strong> 7:00 AM – 8:30 AM<br />
+    🧾 <strong>Registration ID:</strong> ${ticketID}
   </p>
 
-  <p>🔐 <strong>Registration ID:</strong> ${ticketID}</p>
-
-  <p>Your unique QR code is attached. Please present it at the registration counter for a seamless check-in experience.</p>
+  <p>Your unique QR code is attached below. Kindly present it at the registration counter for seamless check-in.</p>
   <p><strong>👇 Your Entry Pass PDF is attached to this email.</strong></p>
 
-  <p><strong>Important Notes:</strong></p>
-  <ul>
-    <li>Please arrive 15 minutes early to avoid queues.</li>
-    <li>Wear comfortable yoga attire and bring your own mat.</li>
-    <li>Follow us on Instagram for updates and sneak peeks!</li>
+  <h3>Special Guests & Dignitaries</h3>
+  <p>
+    <strong>Presided by:</strong> Shri P. C. Mohan, Hon’ble Member of Parliament<br />
+    <strong>Chief Guest:</strong> Shri Tejasvi Surya, Hon’ble Member of Parliament<br />
+    <strong>Guest of Honour:</strong> Shri B.N.S. Reddy (Ex-IPS), President – Indiranagar Club
+  </p>
+
+  <h3>Important Instructions:</h3>
+  <ul style="list-style-type: none; padding-left: 0;">
+    <li>✅ Arrive at sharp 6:00 am for check in.</li>
+    <li>✅ Wear comfortable yoga attire</li>
+    <li>✅ Carry your yoga mat & water bottle</li>
+    <li>✅ Present your QR code at the registration desk</li>
+    <li>✅ Complimentary T-shirt, refreshments & saplings will be provided</li>
   </ul>
 
   <p>
-    If you have any questions, feel free to reach out at
-    <a href="mailto:info@athayogliving.com">info@athayogliving.com</a> or
-    WhatsApp us at <a href="tel:+919535689394">+91 95356 89394</a>.
+    For any assistance, please contact:<br />
+    📧 <a href="mailto:info@athayogliving.com">info@athayogliving.com</a><br />
+    📞 <a href="tel:+918690333111">+91 8690333111</a>
   </p>
 
-  <p>We can't wait to see you on the mat!</p>
-  <p>With gratitude,<br /><strong>Team Athayog</strong></p>
+  <p>We look forward to celebrating International Day of Yoga with you.</p>
+
+  <p>With gratitude,<br /><strong>Team Athayog</strong><br /><a href="https://www.athayogliving.com">www.athayogliving.com</a></p>
 </div>
   `.trim();
 }
@@ -176,7 +189,7 @@ export async function POST(request: NextRequest) {
         const response = await client.transactionalEmails.sendTransacEmail({
             sender: { name: 'AthayogLiving', email: 'info@athayogliving.com' },
             to: [{ email, name }],
-            subject: `You're All Set for Yoga Arambha 2025 with Athayog!`,
+            subject: `Your registration is confirmed. Download your QR pass and get ready to celebrate International Day of Yoga 2026.`,
             htmlContent: buildHtmlBody(name, ticketID),
             attachment: [
                 {

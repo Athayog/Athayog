@@ -224,6 +224,7 @@ function RegistrationForm() {
                     name: values.fullName,
                     ticketID, qrDataUrl,
                     emailSent: false,
+                    whatsappSent: false,
                 }
 
                 // 3. Save to DB
@@ -264,14 +265,40 @@ function RegistrationForm() {
                         }, 'user_Zp6dTdYGxn4E5rxeiLLCh')
                         emailSuccess = true
                     } catch {
-                        setApiError('Registered, but confirmation email failed to send.')
+                        console.error('EmailJS failed')
                     }
                 } else {
                     emailSuccess = true
                 }
 
+                let whatsappSuccess = false
+                if (whatsappRes.status === 'fulfilled' && whatsappRes.value.ok) {
+                    whatsappSuccess = true
+                }
+
+                if (!emailSuccess && !whatsappSuccess) {
+                    setApiError('Failed to send confirmation to both Email and WhatsApp. Please check your details and try again.')
+                    setSubmitting(false)
+                    setProgressStep('')
+                    return
+                }
+
+                if (!emailSuccess) {
+                    setApiError('Registered, but confirmation email failed to send.')
+                } else if (!whatsappSuccess) {
+                    setApiError('Registered, but confirmation WhatsApp failed to send.')
+                }
+
                 if (emailSuccess) {
                     await fetch('/api/mark-email-sent', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ticketID: fullData.ticketID }),
+                    })
+                }
+
+                if (whatsappSuccess) {
+                    await fetch('/api/mark-whatsapp-sent', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ ticketID: fullData.ticketID }),
