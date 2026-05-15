@@ -308,12 +308,12 @@ function RegistrationForm() {
 
                     <TextField
                         fullWidth size="small"
-                        id="phone" name="phone" label="Mobile Number"
+                        id="phone" name="phone" label="WhatsApp Number"
                         placeholder="9XXXXXXXXX"
                         value={formik.values.phone}
                         onChange={formik.handleChange} onBlur={formik.handleBlur}
                         error={formik.touched.phone && Boolean(formik.errors.phone)}
-                        helperText={formik.touched.phone && formik.errors.phone}
+                        helperText={(formik.touched.phone && formik.errors.phone) || 'Your QR pass will be sent to this WhatsApp number'}
                         InputProps={{
                             startAdornment: (
                                 <InputAdornment position="start">
