@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
             { status: 500 }
         );
     }
-    const trackingEndpoint = `${PINNACLE_BASE_URL}/${pinnacleId}`;
+    const trackingEndpoint = `${PINNACLE_BASE_URL}/${pinnacleId}/messages`;
 
     // ── 4. Build payload ─────────────────────────────────────────────────────────
     const payload = buildPinnaclePayload({
