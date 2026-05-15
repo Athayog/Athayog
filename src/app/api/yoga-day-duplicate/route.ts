@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
                 // Delete stuck record and allow proceeding
                 await doc.ref.delete();
             } else {
-                return NextResponse.json({ message: 'Phone number already registered' }, { status: 409 });
+                return NextResponse.json({ message: 'Phone number already registered', ticketID: data.ticketID }, { status: 409 });
             }
         }
 
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
                 // Delete stuck record and allow proceeding
                 await doc.ref.delete();
             } else {
-                return NextResponse.json({ message: 'Email already registered' }, { status: 409 });
+                return NextResponse.json({ message: 'Email already registered', ticketID: data.ticketID }, { status: 409 });
             }
         }
 
