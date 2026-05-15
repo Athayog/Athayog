@@ -234,12 +234,22 @@ function RegistrationForm() {
                 // 4. Send email
                 setProgressStep(STEPS[3].label)
                 setPercentage(85)
-                const [emailRes] = await Promise.allSettled([
+                const [emailRes, whatsappRes] = await Promise.allSettled([
                     fetch('/api/send-brevo-email', {
                         method: 'POST',
                         body: JSON.stringify({
                             name: fullData.fullName, email: fullData.email,
                             ticketID: fullData.ticketID, fileUrl: (fullData as any).fileUrl,
+                        }),
+                        headers: { 'Content-Type': 'application/json' },
+                    }),
+                    fetch('/api/send-pinnacle-whatsapp', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            phoneNumber: fullData.phone,
+                            name: fullData.fullName,
+                            registrationId: fullData.ticketID,
+                            pdfUrl: (fullData as any).fileUrl,
                         }),
                         headers: { 'Content-Type': 'application/json' },
                     }),
@@ -299,152 +309,152 @@ function RegistrationForm() {
         <>
             <Box component="form" onSubmit={formik.handleSubmit} noValidate>
 
-            {/* ── Yoga loading overlay ── */}
-            {formik.isSubmitting && (
-                <YogaLoader step={progressStep} pct={percentage} />
-            )}
+                {/* ── Yoga loading overlay ── */}
+                {formik.isSubmitting && (
+                    <YogaLoader step={progressStep} pct={percentage} />
+                )}
 
-            {/* Error snackbar */}
-            <Snackbar
-                open={!!apiError}
-                autoHideDuration={6000}
-                onClose={() => setApiError(null)}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-            >
-                <Alert onClose={() => setApiError(null)} severity="error" sx={{ width: '100%', borderRadius: 0 }}>
-                    {apiError}
-                </Alert>
-            </Snackbar>
+                {/* Error snackbar */}
+                <Snackbar
+                    open={!!apiError}
+                    autoHideDuration={6000}
+                    onClose={() => setApiError(null)}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                >
+                    <Alert onClose={() => setApiError(null)} severity="error" sx={{ width: '100%', borderRadius: 0 }}>
+                        {apiError}
+                    </Alert>
+                </Snackbar>
 
-            <Typography sx={{
-                fontSize: '0.68rem', letterSpacing: '0.14em', textTransform: 'uppercase',
-                color: T.ink3, mb: '1.4rem', fontWeight: 500, fontFamily: 'var(--font-inter)',
-            }}>
-                Registration Details
-            </Typography>
+                <Typography sx={{
+                    fontSize: '0.68rem', letterSpacing: '0.14em', textTransform: 'uppercase',
+                    color: T.ink3, mb: '1.4rem', fontWeight: 500, fontFamily: 'var(--font-inter)',
+                }}>
+                    Registration Details
+                </Typography>
 
-            <Stack spacing={2.5}>
-                <TextField
-                    fullWidth size="small"
-                    id="fullName" name="fullName" label="Full Name"
-                    placeholder="Your full name"
-                    value={formik.values.fullName}
-                    onChange={formik.handleChange} onBlur={formik.handleBlur}
-                    error={formik.touched.fullName && Boolean(formik.errors.fullName)}
-                    helperText={formik.touched.fullName && formik.errors.fullName}
-                    sx={fieldSx}
-                />
+                <Stack spacing={2.5}>
+                    <TextField
+                        fullWidth size="small"
+                        id="fullName" name="fullName" label="Full Name"
+                        placeholder="Your full name"
+                        value={formik.values.fullName}
+                        onChange={formik.handleChange} onBlur={formik.handleBlur}
+                        error={formik.touched.fullName && Boolean(formik.errors.fullName)}
+                        helperText={formik.touched.fullName && formik.errors.fullName}
+                        sx={fieldSx}
+                    />
 
-                <TextField
-                    fullWidth size="small"
-                    id="phone" name="phone" label="Mobile Number"
-                    placeholder="9XXXXXXXXX"
-                    value={formik.values.phone}
-                    onChange={formik.handleChange} onBlur={formik.handleBlur}
-                    error={formik.touched.phone && Boolean(formik.errors.phone)}
-                    helperText={formik.touched.phone && formik.errors.phone}
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <Typography sx={{ fontSize: '0.8rem', color: T.ink2, fontFamily: 'var(--font-inter)' }}>+91</Typography>
-                            </InputAdornment>
-                        ),
-                    }}
-                    sx={fieldSx}
-                />
+                    <TextField
+                        fullWidth size="small"
+                        id="phone" name="phone" label="Mobile Number"
+                        placeholder="9XXXXXXXXX"
+                        value={formik.values.phone}
+                        onChange={formik.handleChange} onBlur={formik.handleBlur}
+                        error={formik.touched.phone && Boolean(formik.errors.phone)}
+                        helperText={formik.touched.phone && formik.errors.phone}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <Typography sx={{ fontSize: '0.8rem', color: T.ink2, fontFamily: 'var(--font-inter)' }}>+91</Typography>
+                                </InputAdornment>
+                            ),
+                        }}
+                        sx={fieldSx}
+                    />
 
-                <TextField
-                    fullWidth size="small"
-                    id="email" name="email" label="Email Address" type="email"
-                    placeholder="you@email.com"
-                    value={formik.values.email}
-                    onChange={formik.handleChange} onBlur={formik.handleBlur}
-                    error={formik.touched.email && Boolean(formik.errors.email)}
-                    helperText={formik.touched.email && formik.errors.email}
-                    sx={fieldSx}
-                />
+                    <TextField
+                        fullWidth size="small"
+                        id="email" name="email" label="Email Address" type="email"
+                        placeholder="you@email.com"
+                        value={formik.values.email}
+                        onChange={formik.handleChange} onBlur={formik.handleBlur}
+                        error={formik.touched.email && Boolean(formik.errors.email)}
+                        helperText={formik.touched.email && formik.errors.email}
+                        sx={fieldSx}
+                    />
 
-                <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
-                    <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.gender && Boolean(formik.errors.gender)}>
-                        <InputLabel id="gender-label">Gender</InputLabel>
-                        <Select labelId="gender-label" id="gender" name="gender" label="Gender"
-                            value={formik.values.gender} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                    <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+                        <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.gender && Boolean(formik.errors.gender)}>
+                            <InputLabel id="gender-label">Gender</InputLabel>
+                            <Select labelId="gender-label" id="gender" name="gender" label="Gender"
+                                value={formik.values.gender} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                                sx={{ borderRadius: 0 }}
+                            >
+                                {['Male', 'Female', 'Other'].map((opt) => (
+                                    <MenuItem key={opt} value={opt}>{opt}</MenuItem>
+                                ))}
+                            </Select>
+                            {formik.touched.gender && formik.errors.gender && <FormHelperText>{formik.errors.gender}</FormHelperText>}
+                        </FormControl>
+
+                        <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.tshirtSize && Boolean(formik.errors.tshirtSize)}>
+                            <InputLabel id="tshirt-label">T-shirt Size</InputLabel>
+                            <Select labelId="tshirt-label" id="tshirtSize" name="tshirtSize" label="T-shirt Size"
+                                value={formik.values.tshirtSize} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                                sx={{ borderRadius: 0 }}
+                            >
+                                {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((s) => (
+                                    <MenuItem key={s} value={s}>{s}</MenuItem>
+                                ))}
+                            </Select>
+                            {formik.touched.tshirtSize && formik.errors.tshirtSize && <FormHelperText>{formik.errors.tshirtSize}</FormHelperText>}
+                        </FormControl>
+                    </Box>
+
+                    <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.heardFrom && Boolean(formik.errors.heardFrom)}>
+                        <InputLabel id="heard-label">How did you hear about us?</InputLabel>
+                        <Select labelId="heard-label" id="heardFrom" name="heardFrom" label="How did you hear about us?"
+                            value={formik.values.heardFrom} onChange={formik.handleChange} onBlur={formik.handleBlur}
                             sx={{ borderRadius: 0 }}
                         >
-                            {['Male', 'Female', 'Other'].map((opt) => (
+                            {['Instagram / Social Media', 'Friend / Word of mouth', 'Athayog Community', 'Google Search', 'Flyer / Poster', 'Other'].map((opt) => (
                                 <MenuItem key={opt} value={opt}>{opt}</MenuItem>
                             ))}
                         </Select>
-                        {formik.touched.gender && formik.errors.gender && <FormHelperText>{formik.errors.gender}</FormHelperText>}
+                        {formik.touched.heardFrom && formik.errors.heardFrom && <FormHelperText>{formik.errors.heardFrom}</FormHelperText>}
                     </FormControl>
 
-                    <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.tshirtSize && Boolean(formik.errors.tshirtSize)}>
-                        <InputLabel id="tshirt-label">T-shirt Size</InputLabel>
-                        <Select labelId="tshirt-label" id="tshirtSize" name="tshirtSize" label="T-shirt Size"
-                            value={formik.values.tshirtSize} onChange={formik.handleChange} onBlur={formik.handleBlur}
-                            sx={{ borderRadius: 0 }}
-                        >
-                            {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((s) => (
-                                <MenuItem key={s} value={s}>{s}</MenuItem>
-                            ))}
-                        </Select>
-                        {formik.touched.tshirtSize && formik.errors.tshirtSize && <FormHelperText>{formik.errors.tshirtSize}</FormHelperText>}
+                    <FormControl component="fieldset" error={formik.touched.hasYogaExperience && Boolean(formik.errors.hasYogaExperience)}>
+                        <FormLabel component="legend" sx={{ fontSize: '0.72rem', fontWeight: 500, color: T.ink2, letterSpacing: '0.04em', mb: 0.5 }}>
+                            Do you have prior yoga experience?
+                        </FormLabel>
+                        <RadioGroup row name="hasYogaExperience" value={formik.values.hasYogaExperience} onChange={formik.handleChange}>
+                            <FormControlLabel value="yes" control={<Radio size="small" sx={{ color: T.sage, '&.Mui-checked': { color: T.sage } }} />} label={<Typography sx={{ fontSize: '0.84rem' }}>Yes</Typography>} />
+                            <FormControlLabel value="no" control={<Radio size="small" sx={{ color: T.sage, '&.Mui-checked': { color: T.sage } }} />} label={<Typography sx={{ fontSize: '0.84rem' }}>No</Typography>} />
+                        </RadioGroup>
                     </FormControl>
-                </Box>
 
-                <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.heardFrom && Boolean(formik.errors.heardFrom)}>
-                    <InputLabel id="heard-label">How did you hear about us?</InputLabel>
-                    <Select labelId="heard-label" id="heardFrom" name="heardFrom" label="How did you hear about us?"
-                        value={formik.values.heardFrom} onChange={formik.handleChange} onBlur={formik.handleBlur}
-                        sx={{ borderRadius: 0 }}
+                    {/* Submit button — flat, matches .btn-g */}
+                    <Button
+                        type="submit"
+                        fullWidth
+                        disabled={formik.isSubmitting}
+                        sx={{
+                            bgcolor: T.gold,
+                            color: T.white,
+                            borderRadius: 0,
+                            py: '0.85rem',
+                            fontSize: '0.8rem',
+                            fontWeight: 500,
+                            letterSpacing: '0.05em',
+                            fontFamily: 'var(--font-inter)',
+                            textTransform: 'none',
+                            boxShadow: 'none',
+                            '&:hover': { bgcolor: '#9a7222', boxShadow: 'none' },
+                            '&:disabled': { bgcolor: T.border, color: T.ink3 },
+                        }}
                     >
-                        {['Instagram / Social Media', 'Friend / Word of mouth', 'Athayog Community', 'Google Search', 'Flyer / Poster', 'Other'].map((opt) => (
-                            <MenuItem key={opt} value={opt}>{opt}</MenuItem>
-                        ))}
-                    </Select>
-                    {formik.touched.heardFrom && formik.errors.heardFrom && <FormHelperText>{formik.errors.heardFrom}</FormHelperText>}
-                </FormControl>
+                        {formik.isSubmitting ? 'Registering…' : 'Register Now — Free'}
+                    </Button>
 
-                <FormControl component="fieldset" error={formik.touched.hasYogaExperience && Boolean(formik.errors.hasYogaExperience)}>
-                    <FormLabel component="legend" sx={{ fontSize: '0.72rem', fontWeight: 500, color: T.ink2, letterSpacing: '0.04em', mb: 0.5 }}>
-                        Do you have prior yoga experience?
-                    </FormLabel>
-                    <RadioGroup row name="hasYogaExperience" value={formik.values.hasYogaExperience} onChange={formik.handleChange}>
-                        <FormControlLabel value="yes" control={<Radio size="small" sx={{ color: T.sage, '&.Mui-checked': { color: T.sage } }} />} label={<Typography sx={{ fontSize: '0.84rem' }}>Yes</Typography>} />
-                        <FormControlLabel value="no" control={<Radio size="small" sx={{ color: T.sage, '&.Mui-checked': { color: T.sage } }} />} label={<Typography sx={{ fontSize: '0.84rem' }}>No</Typography>} />
-                    </RadioGroup>
-                </FormControl>
-
-                {/* Submit button — flat, matches .btn-g */}
-                <Button
-                    type="submit"
-                    fullWidth
-                    disabled={formik.isSubmitting}
-                    sx={{
-                        bgcolor: T.gold,
-                        color: T.white,
-                        borderRadius: 0,
-                        py: '0.85rem',
-                        fontSize: '0.8rem',
-                        fontWeight: 500,
-                        letterSpacing: '0.05em',
-                        fontFamily: 'var(--font-inter)',
-                        textTransform: 'none',
-                        boxShadow: 'none',
-                        '&:hover': { bgcolor: '#9a7222', boxShadow: 'none' },
-                        '&:disabled': { bgcolor: T.border, color: T.ink3 },
-                    }}
-                >
-                    {formik.isSubmitting ? 'Registering…' : 'Register Now — Free'}
-                </Button>
-
-                <Typography sx={{ textAlign: 'center', fontSize: '0.72rem', color: T.ink3, fontFamily: 'var(--font-inter)' }}>
-                    By registering you agree to Atha Yog Living&apos;s{' '}
-                    <Link href="https://athayogliving.com/privacy-policy" underline="hover" sx={{ color: T.gold }}>
-                        Privacy Policy
-                    </Link>.
-                </Typography>
-            </Stack>
+                    <Typography sx={{ textAlign: 'center', fontSize: '0.72rem', color: T.ink3, fontFamily: 'var(--font-inter)' }}>
+                        By registering you agree to Atha Yog Living&apos;s{' '}
+                        <Link href="https://athayogliving.com/privacy-policy" underline="hover" sx={{ color: T.gold }}>
+                            Privacy Policy
+                        </Link>.
+                    </Typography>
+                </Stack>
             </Box>
         </>
     )

@@ -12,25 +12,24 @@
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
 export interface PinnacleSendPayload {
-    /** Recipient's WhatsApp number (with country code, e.g. "+919876543210") */
-    mobileNumber: string;
-    /** Approved utility template name configured in Pinnacle */
-    template_name: string;
-    /** Publicly accessible URL to the user's unique PDF ticket */
-    header: string;
-    /** Template variable bindings:  {{1}} = Name, {{2}} = Registration ID */
-    body_variables: [string, string];
-    /** When true the API records click data (Mobile, Browser, OS, Timestamp) */
-    enable_tracking?: boolean;
-    /** Destination URL for the "Visit" CTA button (formatted via formatTrackingUrl) */
-    tracking_url?: string;
+    messaging_product: string
+    to: string
+    type: string
+    template: {
+        name: string
+        language: { code: string }
+        components: Array<{
+            type: string
+            parameters: Array<any>
+        }>
+    }
 }
 
 export interface PinnacleResponse {
-    success: boolean;
-    status: number;
-    message: string;
-    data?: unknown;
+    success: boolean
+    status: number
+    message: string
+    data?: unknown
 }
 
 // ─── Helpers ────────────────────────────────────────────────────────────────────
@@ -40,14 +39,15 @@ export interface PinnacleResponse {
  * The API key is read from the server-side env variable PINNACLE_API_KEY.
  */
 export function buildPinnacleHeaders(): HeadersInit {
-    const apiKey = process.env.PINNACLE_API_KEY;
+    const apiKey = process.env.PINNACLE_API_KEY
     if (!apiKey) {
-        throw new Error('PINNACLE_API_KEY is not configured in environment variables.');
+        throw new Error('PINNACLE_API_KEY is not configured in environment variables.')
     }
     return {
         'Content-Type': 'application/json',
+        createTemplate: 'application/json',
         apikey: apiKey,
-    };
+    }
 }
 
 /**
@@ -62,9 +62,9 @@ export function buildPinnacleHeaders(): HeadersInit {
  */
 export function formatTrackingUrl(url: string): string {
     // Strip http:// or https://
-    const stripped = url.replace(/^https?:\/\//i, '');
+    const stripped = url.replace(/^https?:\/\//i, '')
     // Ensure trailing slash
-    return stripped.endsWith('/') ? stripped : `${stripped}/`;
+    return stripped.endsWith('/') ? stripped : `${stripped}/`
 }
 
 /**
@@ -79,34 +79,50 @@ export function formatTrackingUrl(url: string): string {
  * @param options.destinationUrl Raw destination URL to format for tracking CTA button
  */
 export function buildPinnaclePayload(options: {
-    mobileNumber: string;
-    templateName: string;
-    pdfUrl: string;
-    name: string;
-    registrationId: string;
-    enableTracking?: boolean;
-    destinationUrl?: string;
+    mobileNumber: string
+    templateName: string
+    pdfUrl: string
+    name: string
+    registrationId: string
+    enableTracking?: boolean
+    destinationUrl?: string
 }): PinnacleSendPayload {
-    const {
-        mobileNumber,
-        templateName,
-        pdfUrl,
-        name,
-        registrationId,
-        enableTracking = true,
-        destinationUrl = 'www.athayogliving.com',
-    } = options;
+    const { mobileNumber, templateName, pdfUrl, name, registrationId } = options
+
+    const formattedPhone = mobileNumber.replace(/\D/g, '')
 
     const payload: PinnacleSendPayload = {
-        mobileNumber,
-        template_name: templateName,
-        header: pdfUrl,
-        body_variables: [name, registrationId],
-        enable_tracking: enableTracking,
-        tracking_url: formatTrackingUrl(destinationUrl),
-    };
+        messaging_product: 'whatsapp',
+        to: formattedPhone,
+        type: 'template',
+        template: {
+            name: templateName,
+            language: { code: 'en' },
+            components: [
+                {
+                    type: 'header',
+                    parameters: [
+                        {
+                            type: 'document',
+                            document: {
+                                link: pdfUrl,
+                                filename: 'Ticket.pdf'
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: 'body',
+                    parameters: [
+                        { type: 'text', text: name },
+                        { type: 'text', text: registrationId }
+                    ]
+                }
+            ]
+        }
+    }
 
-    return payload;
+    return payload
 }
 
 /**
@@ -114,45 +130,45 @@ export function buildPinnaclePayload(options: {
  * Handles 200/201 (success), 400 (bad request), 401/403 (auth), and 500+ (server).
  */
 export async function parsePinnacleResponse(res: Response): Promise<PinnacleResponse> {
-    let data: unknown;
+    let data: unknown
     try {
-        data = await res.json();
+        data = await res.json()
     } catch {
-        data = null;
+        data = null
     }
 
     if (res.ok) {
         // 200 or 201
-        console.log(`[Pinnacle] ✅ Message sent successfully (${res.status}):`, data);
-        return { success: true, status: res.status, message: 'Message sent successfully.', data };
+        console.log(`[Pinnacle] ✅ Message sent successfully (${res.status}):`, data)
+        return { success: true, status: res.status, message: 'Message sent successfully.', data }
     }
 
     if (res.status === 400) {
-        console.warn('[Pinnacle] ⚠️ Bad request — missing or invalid parameters:', data);
+        console.warn('[Pinnacle] ⚠️ Bad request — missing or invalid parameters:', data)
         return {
             success: false,
             status: 400,
             message: 'Bad request: missing or invalid parameters.',
             data,
-        };
+        }
     }
 
     if (res.status === 401 || res.status === 403) {
-        console.error(`[Pinnacle] 🔐 Authentication/authorization failure (${res.status}):`, data);
+        console.error(`[Pinnacle] 🔐 Authentication/authorization failure (${res.status}):`, data)
         return {
             success: false,
             status: res.status,
             message: 'Authentication or authorization failure. Check your PINNACLE_API_KEY.',
             data,
-        };
+        }
     }
 
     // Catch-all for 5xx and anything else
-    console.error(`[Pinnacle] ❌ Unexpected API error (${res.status}):`, data);
+    console.error(`[Pinnacle] ❌ Unexpected API error (${res.status}):`, data)
     return {
         success: false,
         status: res.status,
         message: `Unexpected API error (${res.status}).`,
         data,
-    };
+    }
 }
