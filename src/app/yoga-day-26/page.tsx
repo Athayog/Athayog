@@ -1,8 +1,4 @@
-'use client'
-
-import { Box } from '@mui/material'
-import { ThemeProvider } from '@mui/material/styles'
-import { yogaTheme } from './_components/theme'
+import ClientWrapper from './_components/ClientWrapper'
 import { HeroSection } from './_components/HeroSection'
 import { ScheduleSection } from './_components/ScheduleSection'
 import { WhySection } from './_components/WhySection'
@@ -14,23 +10,26 @@ import { RegisterSection } from './_components/RegisterSection'
 import { FaqSection } from './_components/FaqSection'
 import { FinalCtaSection } from './_components/FinalCtaSection'
 
+export const metadata = {
+    title: 'Yoga Arambha 2026 | International Day of Yoga Celebration',
+    description: 'Join Athayog for Bengaluru’s largest International Day of Yoga celebration at Indiranagar Club. Free registration, mass yoga session, and wellness community.',
+}
+
 export default function YogaArambha2026Page() {
     return (
-        <ThemeProvider theme={yogaTheme}>
-            <Box sx={{ minHeight: '100vh', bgcolor: '#faf7f2' }}>
-                <main>
-                    <HeroSection />
-                    <ScheduleSection />
-                    <WhySection />
-                    <ExperienceSection />
-                    <ActivitiesSection />
-                    <AboutSection />
-                    <LocationSection />
-                    <RegisterSection />
-                    <FaqSection />
-                    <FinalCtaSection />
-                </main>
-            </Box>
-        </ThemeProvider>
+        <ClientWrapper>
+            <main>
+                <HeroSection />
+                <ScheduleSection />
+                <WhySection />
+                <ExperienceSection />
+                <ActivitiesSection />
+                <AboutSection />
+                <LocationSection />
+                <RegisterSection />
+                <FaqSection />
+                <FinalCtaSection />
+            </main>
+        </ClientWrapper>
     )
 }

@@ -3,12 +3,12 @@ import { EyebrowLabel } from './ui'
 
 export function AboutSection() {
     return (
-        <Box component="section" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#fff' }}>
+        <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#fff' }}>
             <Container maxWidth="lg">
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: '3rem', alignItems: 'center' }}>
                     <Box>
                         <EyebrowLabel>About Atha Yog Living</EyebrowLabel>
-                        <Typography variant="h2" sx={{ mb: 0 }}>
+                        <Typography variant="h2" sx={{ mb: 0, fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' }, whiteSpace: { md: 'nowrap' } }}>
                             A Sanctum for the Spirit
                         </Typography>
                         <Box

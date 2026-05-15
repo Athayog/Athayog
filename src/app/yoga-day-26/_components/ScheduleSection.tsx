@@ -4,7 +4,7 @@ import { SCHEDULE } from './data'
 
 export function ScheduleSection() {
     return (
-        <Box component="section" id="schedule" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#fff', scrollMarginTop: '80px' }}>
+        <Box component="section" id="schedule" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#fff', scrollMarginTop: '80px' }}>
             <Container maxWidth="lg">
                 <SectionHeader
                     eyebrow="Event Programme"
@@ -25,22 +25,40 @@ export function ScheduleSection() {
                                 <Box
                                     component="td"
                                     sx={{
-                                        py: '0.95rem',
+                                        py: '1.2rem',
                                         pr: '2rem',
-                                        pl: item.highlight ? '0.8rem' : 0,
-                                        fontSize: '0.76rem',
-                                        fontWeight: 500,
+                                        pl: item.highlight ? '1.2rem' : 0,
+                                        fontSize: '0.88rem',
+                                        fontWeight: 600,
                                         color: item.highlight ? '#4f6148' : '#b8892a',
                                         whiteSpace: 'nowrap',
-                                        minWidth: 148,
+                                        minWidth: 160,
                                         verticalAlign: 'top',
+                                        fontFamily: 'var(--font-inter)',
                                     }}
                                 >
                                     {item.time}
                                 </Box>
-                                <Box component="td" sx={{ py: '0.95rem', pr: item.highlight ? '0.8rem' : 0, verticalAlign: 'top' }}>
-                                    <Typography sx={{ fontSize: '0.9rem', color: '#1c1c1c' }}>{item.activity}</Typography>
-                                    {item.note && <Typography sx={{ fontSize: '0.78rem', color: '#555', mt: '0.2rem' }}>{item.note}</Typography>}
+                                <Box component="td" sx={{ py: '1.2rem', pr: item.highlight ? '1.2rem' : 0, verticalAlign: 'top' }}>
+                                    <Typography sx={{ 
+                                        fontSize: '1rem', 
+                                        fontWeight: item.highlight ? 600 : 500,
+                                        color: '#3d2f1e',
+                                        fontFamily: 'var(--font-inter)'
+                                    }}>
+                                        {item.activity}
+                                    </Typography>
+                                    {item.note && (
+                                        <Typography sx={{ 
+                                            fontSize: '0.84rem', 
+                                            color: '#555', 
+                                            mt: '0.3rem',
+                                            fontFamily: 'var(--font-inter)',
+                                            lineHeight: 1.5
+                                        }}>
+                                            {item.note}
+                                        </Typography>
+                                    )}
                                 </Box>
                             </Box>
                         ))}
