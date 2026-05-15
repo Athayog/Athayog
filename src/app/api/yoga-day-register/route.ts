@@ -81,6 +81,39 @@ export async function POST(request: NextRequest) {
             whatsappSent: whatsappSuccess
         });
 
+        // 5. If anything failed, send an alert to the admin via Resend
+        if (!emailSuccess || !whatsappSuccess) {
+            const adminEmail = process.env.ADMIN_EMAIL
+            const resendApiKey = process.env.NEXT_PUBLIC_RESEND_API_KEY;
+
+            if (resendApiKey && adminEmail)  {
+                try {
+                    const errorDetail = {
+                        registrant: fullName,
+                        email,
+                        phone,
+                        ticketID,
+                        emailStatus: emailSuccess ? '✅ Success' : '❌ Failed',
+                        whatsappStatus: whatsappSuccess ? '✅ Success' : '❌ Failed',
+                        timestamp: new Date().toLocaleString(),
+                    };
+
+                    await fetch(`${origin}/api/send-email`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: 'Admin Alert',
+                            email: adminEmail,
+                            ticketID: `ALERT: ${ticketID}`,
+                            fileUrl: fileUrl, // Include the ticket link for easy manual forwarding
+                        }),
+                    });
+                } catch (adminErr) {
+                    console.error('[Register API] Failed to send admin alert', adminErr);
+                }
+            }
+        }
+
         if (!emailSuccess && !whatsappSuccess) {
             return NextResponse.json(
                 { message: 'Registered, but failed to send both email and WhatsApp.', ticketID },
