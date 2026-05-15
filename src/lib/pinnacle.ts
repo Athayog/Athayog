@@ -106,8 +106,8 @@ export function buildPinnaclePayload(options: {
                             type: 'document',
                             document: {
                                 link: pdfUrl,
-                                filename: 'Ticket.pdf'
-                            }
+                                filename: registrationId + '_Ticket.pdf'
+                            }   
                         }
                     ]
                 },
