@@ -32,8 +32,19 @@ export async function GET(req: NextRequest) {
         return new NextResponse('URL not allowed', { status: 400 });
     }
 
+    if (parsedUrl.username || parsedUrl.password) {
+        return new NextResponse('Invalid URL', { status: 400 });
+    }
+
+    const decodedPath = decodeURIComponent(parsedUrl.pathname);
+    if (decodedPath.includes('..')) {
+        return new NextResponse('Invalid URL path', { status: 400 });
+    }
+
+    const safeUrl = new URL(`${parsedUrl.pathname}${parsedUrl.search}`, parsedUrl.origin);
+
     try {
-        const response = await fetch(parsedUrl.toString());
+        const response = await fetch(safeUrl.toString());
         if (!response.ok) throw new Error('Failed to fetch file');
 
         const blob = await response.blob();
