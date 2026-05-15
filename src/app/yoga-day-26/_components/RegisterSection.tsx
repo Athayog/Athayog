@@ -5,10 +5,10 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { v4 as uuidv4 } from 'uuid'
 import QRCode from 'qrcode'
-import emailjs from '@emailjs/browser'
 import { useRouter } from 'next/navigation'
 import { generatePDFBlob } from '@/components/forms/generatePdf'
-import useFormStore from '@/store/useFormStore'
+import { storage } from '@/lib/firebase'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import {
     Box, Button, Container, FormControl, FormControlLabel,
     FormHelperText, FormLabel, InputAdornment, InputLabel,
@@ -37,10 +37,9 @@ const T = {
 // ─── Yoga Loading Overlay ─────────────────────────────────────────────────────
 // Animated lotus / breath ring — no emoji, no spinner, pure SVG
 const STEPS = [
-    { label: 'Verifying your information', pct: 20 },
-    { label: 'Generating your ticket', pct: 40 },
-    { label: 'Saving your details', pct: 65 },
-    { label: 'Sending ticket to your inbox', pct: 85 },
+    { label: 'Generating your ticket', pct: 20 },
+    { label: 'Uploading secure pass', pct: 40 },
+    { label: 'Saving and sending details', pct: 70 },
     { label: 'All done', pct: 100 },
 ]
 
@@ -171,7 +170,6 @@ function generateTicketID(): string {
 
 // ─── Registration Form ────────────────────────────────────────────────────────
 function RegistrationForm() {
-    const { submitForm } = useFormStore()
     const router = useRouter()
 
     const [apiError, setApiError] = useState<string | null>(null)
@@ -192,126 +190,62 @@ function RegistrationForm() {
             setProgressStep('')
 
             try {
-                // 1. Verify duplicates
-                setPercentage(20)
+                // 1. Generate Ticket ID & PDF
                 setProgressStep(STEPS[0].label)
+                setPercentage(20)
                 const formattedPhone = values.phone.startsWith('+91') ? values.phone : `+91${values.phone}`
-                const res = await fetch('/api/yoga-day-duplicate/', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ phone: formattedPhone, email: values.email }),
-                })
-                if (res.status === 409) {
-                    const data = await res.json()
-                    setApiError(data.message || 'Phone or email already registered.')
-                    setSubmitting(false); setProgressStep(''); return
-                } else if (!res.ok) {
-                    setApiError('Something went wrong. Please try again.')
-                    setSubmitting(false); setProgressStep(''); return
-                }
-
-                // 2. Generate ticket & PDF
-                setProgressStep(STEPS[1].label)
                 const ticketID = generateTicketID()
                 const qrDataUrl = await QRCode.toDataURL(ticketID)
                 const pdfBlob = await generatePDFBlob({ name: values.fullName, ticketId: ticketID, qrDataUrl })
-                const pdfFile = new File([pdfBlob], ticketID + '.pdf', { type: 'application/pdf' })
+
+                // 2. Upload PDF to Firebase Storage
+                setProgressStep(STEPS[1].label)
                 setPercentage(40)
+                const storageRef = ref(storage, `arambhaForm26/${ticketID}.pdf`)
+                await uploadBytes(storageRef, pdfBlob)
+                const fileUrl = await getDownloadURL(storageRef)
+
+                // 3. Register via Backend API
+                setProgressStep(STEPS[2].label)
+                setPercentage(70)
 
                 const fullData = {
                     ...values,
                     phone: formattedPhone,
                     name: values.fullName,
-                    ticketID, qrDataUrl,
-                    emailSent: false,
-                    whatsappSent: false,
+                    ticketID,
+                    qrDataUrl,
                 }
 
-                // 3. Save to DB
-                setProgressStep(STEPS[2].label)
-                await submitForm(fullData, 'arambhaForm26', '', pdfFile, 'arambhaForm26')
-                setPercentage(65)
-
-                // 4. Send email
-                setProgressStep(STEPS[3].label)
-                setPercentage(85)
-                const [emailRes, whatsappRes] = await Promise.allSettled([
-                    fetch('/api/send-brevo-email', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            name: fullData.fullName, email: fullData.email,
-                            ticketID: fullData.ticketID, fileUrl: (fullData as any).fileUrl,
-                        }),
-                        headers: { 'Content-Type': 'application/json' },
+                const res = await fetch('/api/yoga-day-register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        formData: fullData,
+                        collectionName: 'arambhaForm26',
+                        fileUrl,
                     }),
-                    fetch('/api/send-pinnacle-whatsapp', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            phoneNumber: fullData.phone,
-                            name: fullData.fullName,
-                            registrationId: fullData.ticketID,
-                            pdfUrl: (fullData as any).fileUrl,
-                        }),
-                        headers: { 'Content-Type': 'application/json' },
-                    }),
-                ])
+                })
 
-                let emailSuccess = false
-                if (emailRes.status === 'rejected' || !emailRes.value.ok) {
-                    try {
-                        await emailjs.send('service_33jio54', 'template_9mruadf', {
-                            email: fullData.email, name: fullData.fullName,
-                            ticketID: fullData.ticketID, tiketURL: (fullData as any).fileUrl,
-                        }, 'user_Zp6dTdYGxn4E5rxeiLLCh')
-                        emailSuccess = true
-                    } catch {
-                        console.error('EmailJS failed')
-                    }
-                } else {
-                    emailSuccess = true
-                }
-
-                let whatsappSuccess = false
-                if (whatsappRes.status === 'fulfilled' && whatsappRes.value.ok) {
-                    whatsappSuccess = true
-                }
-
-                if (!emailSuccess && !whatsappSuccess) {
-                    setApiError('Failed to send confirmation to both Email and WhatsApp. Please check your details and try again.')
-                    setSubmitting(false)
-                    setProgressStep('')
+                if (res.status === 409) {
+                    const data = await res.json()
+                    setApiError(data.message || 'Phone or email already registered.')
+                    return
+                } else if (!res.ok) {
+                    const data = await res.json()
+                    setApiError(data.message || 'Something went wrong. Please try again.')
                     return
                 }
 
-                if (!emailSuccess) {
-                    setApiError('Registered, but confirmation email failed to send.')
-                } else if (!whatsappSuccess) {
-                    setApiError('Registered, but confirmation WhatsApp failed to send.')
-                }
-
-                if (emailSuccess) {
-                    await fetch('/api/mark-email-sent', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ ticketID: fullData.ticketID }),
-                    })
-                }
-
-                if (whatsappSuccess) {
-                    await fetch('/api/mark-whatsapp-sent', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ ticketID: fullData.ticketID }),
-                    })
-                }
-
                 setPercentage(100)
-                setProgressStep(STEPS[4].label)
-                await new Promise((r) => setTimeout(r, 1200))
+                setProgressStep(STEPS[3].label)
+
+                // Short buffer to allow state to settle before push
+                await new Promise((r) => setTimeout(r, 300))
 
                 resetForm()
                 router.push(`/yoga-day-26/success?ticketID=${ticketID}`)
-            } catch {
+            } catch (err: any) {
                 setApiError('Unexpected error occurred. Please try again.')
             } finally {
                 setSubmitting(false)
@@ -495,11 +429,36 @@ export function RegisterSection() {
     const [isDownloading, setIsDownloading] = useState(false)
     const router = useRouter()
 
-    const handleDownloadSubmit = (e: React.FormEvent) => {
+    const [retrieveError, setRetrieveError] = useState<string | null>(null)
+
+    const handleDownloadSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
+        setRetrieveError(null)
         if (downloadId.trim()) {
             setIsDownloading(true)
-            router.push(`/yoga-day-26/success?ticketID=${encodeURIComponent(downloadId.trim())}`)
+
+            try {
+                // Check if the phone/email exists and get the ticketID
+                const formattedPhone = downloadId.startsWith('+91') ? downloadId : `+91${downloadId}`
+                const res = await fetch('/api/yoga-day-duplicate/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ phone: formattedPhone, email: downloadId.trim() }),
+                })
+
+                const data = await res.json()
+
+                if (res.status === 409 && data.ticketID) {
+                    // 409 means it exists! We can retrieve it.
+                    router.push(`/yoga-day-26/success?ticketID=${encodeURIComponent(data.ticketID)}`)
+                } else {
+                    setRetrieveError('No registration found with this email or phone number.')
+                    setIsDownloading(false)
+                }
+            } catch (err) {
+                setRetrieveError('Failed to lookup ticket. Please try again.')
+                setIsDownloading(false)
+            }
         }
     }
 
@@ -584,7 +543,12 @@ export function RegisterSection() {
                                         onChange={(e) => setDownloadId(e.target.value)}
                                         sx={{ ...fieldSx, mb: 2 }}
                                     />
-                                    <Button type="submit" fullWidth sx={{
+                                    {retrieveError && (
+                                        <Typography sx={{ color: 'error.main', fontSize: '0.8rem', mb: 2, fontFamily: 'var(--font-inter)' }}>
+                                            {retrieveError}
+                                        </Typography>
+                                    )}
+                                    <Button type="submit" fullWidth disabled={isDownloading} sx={{
                                         bgcolor: T.sage, color: T.white,
                                         borderRadius: 0, py: '0.85rem',
                                         fontSize: '0.8rem', fontWeight: 500,
@@ -592,8 +556,9 @@ export function RegisterSection() {
                                         textTransform: 'none', boxShadow: 'none',
                                         mb: 2,
                                         '&:hover': { bgcolor: T.earth, boxShadow: 'none' },
+                                        '&:disabled': { bgcolor: T.border, color: T.ink3 },
                                     }}>
-                                        Retrieve Ticket
+                                        {isDownloading ? 'Retrieving…' : 'Retrieve Ticket'}
                                     </Button>
                                 </Box>
                                 <Box sx={{ mt: 3, pt: 3, borderTop: `1px solid ${T.border}`, textAlign: 'center' }}>
