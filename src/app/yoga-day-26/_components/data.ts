@@ -40,8 +40,6 @@ export const EXPERIENCE_ITEMS = [
 export const ACTIVITIES = [
     { icon: 'music',   title: 'Live Music',       body: 'Soothing tunes elevating the yoga atmosphere' },
     { icon: 'brush',   title: 'Live Painting',     body: 'Yoga-inspired art created live on canvas' },
-    { icon: 'ai',      title: 'AI Station',        body: 'Where technology meets wellness' },
-    { icon: 'blood',   title: 'Blood Donation',    body: 'Give back through our wellness drive' },
     { icon: 'career',  title: 'Yoga as Career',    body: 'Turn passion into profession' },
     { icon: 'clinic',  title: 'Yoga Clinics',      body: 'Therapy, rehab & holistic health' },
 ]
