@@ -39,13 +39,25 @@ export function HeroSection() {
                             &ldquo;Yoga for Wellness, Wisdom &amp; World Peace&rdquo;
                         </Typography>
 
-                        <Stack direction={{ xs: 'column', sm: 'row' }} flexWrap="wrap" gap="1.2rem" mb="2.2rem">
+                        <Stack direction={{ xs: 'column', sm: 'row' }} flexWrap="wrap" gap="1.4rem" mb="2.2rem">
                             {[
-                                { label: <><strong style={{ color: '#fff' }}>June 21, 2026</strong> — Sunday</> },
-                                { label: <><strong style={{ color: '#fff' }}>Indiranagar Club</strong>, Bangalore</> },
-                                { label: <>6:00 AM — 8:30 AM</> },
+                                { 
+                                    label: <><strong style={{ color: '#fff' }}>June 21, 2026</strong> — Sunday</>,
+                                    icon: <path d="M3 4H13V13H3V4ZM3 4V3H4V4H12V3H13V4M3 7H13M6 2V4M10 2V4" stroke="currentColor" strokeWidth="1.2" />
+                                },
+                                { 
+                                    label: <><strong style={{ color: '#fff' }}>Indiranagar Club</strong>, Bangalore</>,
+                                    icon: <path d="M8 14C8 14 13 10 13 6.5C13 3.73858 10.7614 1.5 8 1.5C5.23858 1.5 3 3.73858 3 6.5C3 10 8 14 8 14ZM8 8.5C9.10457 8.5 10 7.60457 10 6.5C10 5.39543 9.10457 4.5 8 4.5C6.89543 4.5 6 5.39543 6 6.5C6 7.60457 6.89543 8.5 8 8.5Z" stroke="currentColor" strokeWidth="1.2" />
+                                },
+                                { 
+                                    label: <>6:00 AM — 8:30 AM</>,
+                                    icon: <path d="M8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5ZM8 4.5V8.5L11 10.5" stroke="currentColor" strokeWidth="1.2" />
+                                },
                             ].map((m, i) => (
-                                <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>
+                                <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: '0.7rem', fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)' }}>
+                                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.9 }}>
+                                        {m.icon}
+                                    </svg>
                                     {m.label}
                                 </Box>
                             ))}

@@ -10,11 +10,11 @@ const LOCATION_ROWS = [
 
 export function LocationSection() {
     return (
-        <Box component="section" sx={{ py: { xs: 6, md: 8 }, bgcolor: '#3d2f1e' }}>
+        <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#3d2f1e' }}>
             <Container maxWidth="lg">
                 <Box mb={4}>
                     <EyebrowLabel dark>Venue</EyebrowLabel>
-                    <Typography variant="h2" sx={{ color: '#fff' }}>
+                    <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' }, whiteSpace: { md: 'nowrap' } }}>
                         Find Us on June 21
                     </Typography>
                 </Box>

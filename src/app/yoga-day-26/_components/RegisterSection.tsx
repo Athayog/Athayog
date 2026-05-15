@@ -473,14 +473,14 @@ export function RegisterSection() {
     }
 
     return (
-        <Box component="section" id="register" sx={{ py: { xs: 6, md: 8 }, bgcolor: T.cream, scrollMarginTop: '80px' }}>
+        <Box component="section" id="register" sx={{ py: { xs: 8, md: 12 }, bgcolor: T.cream, scrollMarginTop: '80px' }}>
             <Container maxWidth="lg">
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: '3rem', alignItems: 'start' }}>
 
                     {/* Left copy */}
                     <Box>
                         <EyebrowLabel>Free Registration</EyebrowLabel>
-                        <Typography variant="h2" sx={{ mb: '0.8rem' }}>
+                        <Typography variant="h2" sx={{ mb: '0.8rem', fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' }, whiteSpace: { md: 'nowrap' } }}>
                             Join Yoga Arambha 2026
                         </Typography>
                         <Typography sx={{ fontSize: '0.88rem', color: T.ink2, mb: '1.2rem', lineHeight: 1.65 }}>
