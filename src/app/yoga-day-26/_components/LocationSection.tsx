@@ -10,10 +10,10 @@ const LOCATION_ROWS = [
 
 export function LocationSection() {
     return (
-        <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#2b3524' }}>
+        <Box component="section" sx={{ py: { xs: 6, md: 10 }, bgcolor: '#2b3524' }}>
             <Container maxWidth="lg">
                 <Box mb={4}>
-                    <EyebrowLabel dark>Venue</EyebrowLabel>
+                    <EyebrowLabel sx={{ color: 'rgba(255,255,255,0.7) !important' }}>Venue</EyebrowLabel>
                     <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' }, whiteSpace: { md: 'nowrap' } }}>
                         Find Us on June 21
                     </Typography>
@@ -55,7 +55,7 @@ export function LocationSection() {
                                 href="https://maps.app.goo.gl/JpW1wbeDugHRp3ZKA"
                                 target="_blank"
                                 rel="noopener"
-                                sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', color: '#38660a', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                                sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', color: '#fff', opacity: 0.85, textDecoration: 'none', '&:hover': { opacity: 1, textDecoration: 'underline' } }}
                             >
                                 ↗ Open in Google Maps
                             </Link>

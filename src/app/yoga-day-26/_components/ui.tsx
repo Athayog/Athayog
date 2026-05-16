@@ -1,13 +1,14 @@
 import React from 'react'
-import { Typography, Box } from '@mui/material'
+import { Typography, Box, SxProps, Theme } from '@mui/material'
 
 // ─── Eyebrow Label ─────────────────────────────────────────────────────────────
 interface EyebrowLabelProps {
     children: React.ReactNode
     dark?: boolean
+    sx?: SxProps<Theme>
 }
 
-export function EyebrowLabel({ children, dark = false }: EyebrowLabelProps) {
+export function EyebrowLabel({ children, dark = false, sx }: EyebrowLabelProps) {
     return (
         <Typography
             variant="caption"
@@ -19,6 +20,7 @@ export function EyebrowLabel({ children, dark = false }: EyebrowLabelProps) {
                 fontWeight: 600,
                 color: dark ? '#38660a' : 'secondary.main',
                 mb: 1.5,
+                ...sx,
             }}
         >
             {children}
