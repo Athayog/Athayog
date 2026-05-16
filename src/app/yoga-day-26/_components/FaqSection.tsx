@@ -44,9 +44,10 @@ function FaqTile({ item, idx }: { item: { q: string; a: string }; idx: number })
             onMouseLeave={() => setIsHovered(false)}
             sx={{
                 py: '2rem',
+                px: { xs: 2, sm: 0 },
                 borderBottom: '1px solid #e2ddd5',
-                pr: idx % 2 === 0 ? { md: '3rem' } : { xs: 0, md: '1.5rem' },
-                pl: idx % 2 !== 0 ? { md: '3rem' } : { xs: 0, md: '1.5rem' },
+                pr: idx % 2 === 0 ? { md: '3rem' } : { xs: 2, md: '1.5rem' },
+                pl: idx % 2 !== 0 ? { md: '3rem' } : { xs: 2, md: '1.5rem' },
                 borderLeft: idx % 2 !== 0 ? { md: '1px solid #e2ddd5' } : 'none',
                 position: 'relative',
                 transition: 'all 0.3s ease',

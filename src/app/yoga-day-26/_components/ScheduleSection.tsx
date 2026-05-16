@@ -20,26 +20,39 @@ export function ScheduleSection() {
                                 sx={{
                                     borderBottom: idx < SCHEDULE.length - 1 ? '1px solid #e2ddd5' : 'none',
                                     bgcolor: item.highlight ? '#e8ede6' : 'transparent',
+                                    display: { xs: 'flex', sm: 'table-row' },
+                                    flexDirection: { xs: 'column', sm: 'row' },
+                                    py: { xs: 2, sm: 0 },
                                 }}
                             >
                                 <Box
                                     component="td"
                                     sx={{
-                                        py: '1.2rem',
+                                        py: { xs: 0, sm: '1.2rem' },
                                         pr: '2rem',
-                                        pl: item.highlight ? '1.2rem' : 0,
+                                        pl: item.highlight ? '1.2rem' : { xs: 1.5, sm: 0 },
                                         fontSize: '0.88rem',
                                         fontWeight: 600,
                                         color: item.highlight ? '#4f6148' : '#b8892a',
-                                        whiteSpace: 'nowrap',
-                                        minWidth: 160,
+                                        whiteSpace: { xs: 'normal', sm: 'nowrap' },
+                                        minWidth: { xs: 'auto', sm: 160 },
                                         verticalAlign: 'top',
                                         fontFamily: 'var(--font-inter)',
+                                        display: { xs: 'block', sm: 'table-cell' },
                                     }}
                                 >
                                     {item.time}
                                 </Box>
-                                <Box component="td" sx={{ py: '1.2rem', pr: item.highlight ? '1.2rem' : 0, verticalAlign: 'top' }}>
+                                <Box 
+                                    component="td" 
+                                    sx={{ 
+                                        py: { xs: 0.5, sm: '1.2rem' }, 
+                                        pr: item.highlight ? '1.2rem' : 0, 
+                                        pl: { xs: 1.5, sm: 0 },
+                                        verticalAlign: 'top',
+                                        display: { xs: 'block', sm: 'table-cell' },
+                                    }}
+                                >
                                     <Typography sx={{ 
                                         fontSize: '1rem', 
                                         fontWeight: item.highlight ? 600 : 500,

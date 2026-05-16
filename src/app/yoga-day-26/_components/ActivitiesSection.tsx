@@ -25,7 +25,7 @@ export function ActivitiesSection() {
                 <SectionHeader eyebrow="Allied Activities" title="More to Explore on the Day" />
                 <Box sx={{ 
                     display: 'grid', 
-                    gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4, 1fr)' }, 
+                    gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, 
                     gap: '1.2rem', 
                     mt: 3.5 
                 }}>
