@@ -21,14 +21,14 @@ import { DIGNITARIES } from './data'
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const T = {
-    earth: '#3d2f1e',
-    sage: '#4f6148',
-    sageL: '#e8ede6',
-    gold: '#b8892a',
-    goldL: '#f5edd8',
-    cream: '#faf7f2',
-    border: '#e2ddd5',
-    ink2: '#555',
+    earth: '#1a2016',
+    sage: '#47820D',
+    sageL: '#f1f5ee',
+    gold: '#47820D',
+    goldL: '#f1f5ee',
+    cream: '#fcfdfc',
+    border: '#dce3d5',
+    ink2: '#4b5563',
     ink3: '#888',
     white: '#fff',
 }
@@ -502,11 +502,11 @@ export function RegisterSection() {
                                 {DIGNITARIES.map((d) => (
                                     <Box key={d.name} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                                         {d.image && (
-                                            <Box 
-                                                component="img" 
-                                                src={d.image} 
-                                                alt={d.name} 
-                                                sx={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${T.border}` }} 
+                                            <Box
+                                                component="img"
+                                                src={d.image}
+                                                alt={d.name}
+                                                sx={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${T.border}` }}
                                             />
                                         )}
                                         <Box>

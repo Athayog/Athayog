@@ -7,7 +7,7 @@ import { FAQS } from './data'
 
 export function FaqSection() {
     return (
-        <Box component="section" id="faq" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#e8ede6', scrollMarginTop: '80px' }}>
+        <Box component="section" id="faq" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#fcfdfc', scrollMarginTop: '80px' }}>
             <Container maxWidth="lg">
                 <Box sx={{ textAlign: 'center', mb: 6 }}>
                     <EyebrowLabel>FAQ</EyebrowLabel>
@@ -69,24 +69,24 @@ function FaqTile({ item, idx }: { item: { q: string; a: string }; idx: number })
                     opacity: isHovered ? 1 : 0,
                     transition: 'opacity 0.4s ease',
                     pointerEvents: 'none',
-                    background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(184, 137, 42, 0.08), transparent)`,
+                    background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(71, 130, 13, 0.08), transparent)`,
                 }}
             />
-            
-            <Typography sx={{ 
-                fontFamily: 'var(--font-playfair),Georgia,serif', 
-                fontSize: '1.05rem', 
+
+            <Typography sx={{
+                fontFamily: 'var(--font-playfair),Georgia,serif',
+                fontSize: '1.05rem',
                 fontWeight: 600,
-                color: '#3d2f1e', 
+                color: '#1a2016',
                 mb: '0.6rem',
                 position: 'relative',
                 zIndex: 1
             }}>
                 {item.q}
             </Typography>
-            <Typography sx={{ 
-                fontSize: '0.9rem', 
-                color: '#555', 
+            <Typography sx={{
+                fontSize: '0.9rem',
+                color: '#555',
                 lineHeight: 1.7,
                 position: 'relative',
                 zIndex: 1,
