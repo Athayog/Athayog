@@ -4,7 +4,7 @@ import { DIGNITARIES } from './data'
 
 export function HeroSection() {
     return (
-        <Box component="section" sx={{ bgcolor: '#2b3524', pt: { xs: '8rem', md: '10rem' }, pb: { xs: '2.5rem', md: '4.5rem' }, position: 'relative', overflow: 'hidden' }}>
+        <Box component="section" sx={{ bgcolor: '#2b3524', py: { xs: '6rem', md: '10rem' }, position: 'relative', overflow: 'hidden' }}>
             <Container maxWidth="lg">
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr auto' }, gap: '3rem', alignItems: 'start' }}>
                     {/* Left */}
