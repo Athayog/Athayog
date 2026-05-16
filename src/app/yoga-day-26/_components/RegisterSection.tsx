@@ -335,7 +335,7 @@ function RegistrationForm() {
                         sx={fieldSx}
                     />
 
-                    <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+                    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
                         <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.gender && Boolean(formik.errors.gender)}>
                             <InputLabel id="gender-label">Gender</InputLabel>
                             <Select labelId="gender-label" id="gender" name="gender" label="Gender"

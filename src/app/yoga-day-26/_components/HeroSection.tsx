@@ -29,13 +29,13 @@ export function HeroSection() {
                             International Day of Yoga 2026
                         </Box>
 
-                        <Typography variant="h1" sx={{ color: '#fff', fontSize: { xs: '2.4rem', md: '4rem' }, mb: '0.6rem' }}>
+                        <Typography variant="h1" sx={{ color: '#fff', fontSize: { xs: '2.8rem', sm: '3.5rem', md: '4.5rem' }, mb: '0.6rem', lineHeight: 1.1 }}>
                             Yoga Arambha
                             <br />
                             <Box component="span" sx={{ color: '#b8892a', fontStyle: 'italic' }}>2026</Box>
                         </Typography>
 
-                        <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: 'italic', fontSize: { xs: '1rem', md: '1.25rem' }, color: 'rgba(255,255,255,0.5)', mb: '1.8rem' }}>
+                        <Typography sx={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic', fontSize: { xs: '1.1rem', md: '1.25rem' }, color: 'rgba(255,255,255,0.5)', mb: '2rem' }}>
                             &ldquo;Yoga for Wellness, Wisdom &amp; World Peace&rdquo;
                         </Typography>
 

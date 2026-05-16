@@ -12,7 +12,7 @@ export function ClientsSection() {
                     title="Empowering Diverse Communities" 
                     subtitle="At Athayog Living, we collaborate with educational institutions, corporates, sports organizations, wellness communities, and government bodies to bring authentic yoga practices into diverse environments. Our programs are designed to support physical wellbeing, mental clarity, productivity, and holistic lifestyle transformation."
                 />
-                <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '2rem', mt: 4 }}>
+                <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '2rem', mt: 4 }}>
                     {CLIENTS.map((client) => (
                         <Box 
                             key={client.name} 
