@@ -11,7 +11,7 @@ export function ScheduleSection() {
                     title="Schedule — June 21, 2026"
                     subtitle="A morning of movement, community and celebration from 6 AM to 8:35 AM at Indiranagar Club, Bangalore."
                 />
-                <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse', mt: 2 }}>
+                <Box component="table" sx={{ width: '100%', borderCollapse: 'collapse', mt: 2 }} aria-label="Event Schedule">
                     <Box component="tbody">
                         {SCHEDULE.map((item, idx) => (
                             <Box
@@ -26,21 +26,23 @@ export function ScheduleSection() {
                                 }}
                             >
                                 <Box
-                                    component="td"
-                                    sx={{
-                                        py: { xs: 0, sm: '1.2rem' },
-                                        pr: '2rem',
-                                        pl: item.highlight ? '1.2rem' : { xs: 1.5, sm: 0 },
-                                        fontSize: '0.88rem',
-                                        fontWeight: 600,
-                                        color: '#47820D',
-                                        whiteSpace: { xs: 'normal', sm: 'nowrap' },
-                                        minWidth: { xs: 'auto', sm: 160 },
-                                        verticalAlign: 'top',
-                                        fontFamily: 'var(--font-inter)',
-                                        display: { xs: 'block', sm: 'table-cell' },
-                                    }}
-                                >
+                                     component="th"
+                                     scope="row"
+                                     sx={{
+                                         py: { xs: 0, sm: '1.2rem' },
+                                         pr: '2rem',
+                                         pl: item.highlight ? '1.2rem' : { xs: 1.5, sm: 0 },
+                                         fontSize: '0.88rem',
+                                         fontWeight: 600,
+                                         color: '#38660a',
+                                         whiteSpace: { xs: 'normal', sm: 'nowrap' },
+                                         minWidth: { xs: 'auto', sm: 160 },
+                                         verticalAlign: 'top',
+                                         fontFamily: 'var(--font-inter)',
+                                         display: { xs: 'block', sm: 'table-cell' },
+                                         textAlign: 'left',
+                                     }}
+                                 >
                                     {item.time}
                                 </Box>
                                 <Box
@@ -63,8 +65,8 @@ export function ScheduleSection() {
                                     </Typography>
                                     {item.note && (
                                         <Typography sx={{
-                                            fontSize: '0.84rem',
-                                            color: '#555',
+                                            fontSize: '0.88rem',
+                                            color: '#444',
                                             mt: '0.3rem',
                                             fontFamily: 'var(--font-inter)',
                                             lineHeight: 1.5

@@ -10,12 +10,12 @@ import { SectionHeader } from './ui'
 import { ACTIVITIES } from './data'
 
 const ACTIVITY_ICONS: Record<string, React.ReactNode> = {
-    music: <MusicNoteIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} />,
-    brush: <BrushIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} />,
-    ai: <PsychologyIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} />,
-    blood: <BloodtypeIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} />,
-    career: <WorkIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} />,
-    clinic: <HealingIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} />,
+    music: <MusicNoteIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} aria-hidden="true" />,
+    brush: <BrushIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} aria-hidden="true" />,
+    ai: <PsychologyIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} aria-hidden="true" />,
+    blood: <BloodtypeIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} aria-hidden="true" />,
+    career: <WorkIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} aria-hidden="true" />,
+    clinic: <HealingIcon sx={{ fontSize: '1.8rem', color: '#4f6148' }} aria-hidden="true" />,
 }
 
 export function ActivitiesSection() {
@@ -42,7 +42,7 @@ export function ActivitiesSection() {
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                 '&:hover': { 
-                                    borderColor: '#47820D', 
+                                    borderColor: '#38660a', 
                                     bgcolor: '#f1f5ee' 
                                 },
                             }}

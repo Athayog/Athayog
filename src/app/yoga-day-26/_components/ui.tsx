@@ -17,7 +17,7 @@ export function EyebrowLabel({ children, dark = false }: EyebrowLabelProps) {
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
                 fontWeight: 600,
-                color: dark ? '#47820D' : 'secondary.main',
+                color: dark ? '#38660a' : 'secondary.main',
                 mb: 1.5,
             }}
         >
@@ -42,7 +42,7 @@ export function SectionHeader({ eyebrow, title, subtitle, dark = false }: Sectio
                 {title}
             </Typography>
             {subtitle && (
-                <Typography variant="body1" sx={{ mt: 1, color: dark ? 'rgba(255,255,255,0.55)' : 'text.secondary', maxWidth: 540 }}>
+                <Typography variant="body1" sx={{ mt: 1, color: dark ? 'rgba(255,255,255,0.75)' : 'text.secondary', maxWidth: 540, fontSize: '0.95rem' }}>
                     {subtitle}
                 </Typography>
             )}

@@ -9,15 +9,15 @@ import { yogaTheme } from '../_components/theme'
 
 const T = {
     earth: '#1a2016',
-    sage: '#47820D',
+    sage: '#38660a',
     sageL: '#f1f5ee',
-    gold: '#47820D',
+    gold: '#38660a',
     goldL: '#f1f5ee',
     cream: '#fcfdfc',
     border: '#dce3d5',
     ink: '#1c1c1c',
-    ink2: '#4b5563',
-    ink3: '#888',
+    ink2: '#444',
+    ink3: '#666',
     white: '#fff',
 }
 
@@ -92,7 +92,7 @@ function SuccessPageContent() {
 
                         {/* HEADER - Solid Color Band */}
                         <Box sx={{
-                            bgcolor: T.earth,
+                            bgcolor: '#2b3524', // Elegant Green instead of Earth Black
                             color: T.white,
                             p: { xs: 3, sm: 4 },
                             textAlign: 'center',
@@ -246,7 +246,7 @@ function SuccessPageContent() {
                                                 borderRadius: 2,
                                                 textTransform: 'none',
                                                 fontSize: '1rem',
-                                                '&:hover': { bgcolor: '#3d6b0a' }
+                                                '&:hover': { bgcolor: '#2b3524' }
                                             }}
                                         >
                                             Download PDF Ticket
