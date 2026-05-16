@@ -16,10 +16,10 @@ export function ExperienceSection() {
                             transition: 'all 0.3s ease',
                             '&:hover': {
                                 transform: 'translateY(-3px)',
-                                borderColor: '#47820D',
+                                borderColor: '#38660a',
                                 boxShadow: '0 6px 20px rgba(61, 47, 30, 0.04)',
                                 '& .num-label': {
-                                    color: '#47820D',
+                                    color: '#38660a',
                                     opacity: 0.15
                                 }
                             }
@@ -40,10 +40,10 @@ export function ExperienceSection() {
                                 {item.num}
                             </Typography>
                             <Typography sx={{
-                                fontSize: '0.82rem',
+                                fontSize: '0.88rem',
                                 letterSpacing: '0.12em',
                                 textTransform: 'uppercase',
-                                color: '#47820D',
+                                color: '#38660a',
                                 mb: '0.6rem',
                                 fontWeight: 700,
                                 fontFamily: 'var(--font-inter)'
@@ -52,7 +52,7 @@ export function ExperienceSection() {
                             </Typography>
                             <Typography sx={{
                                 fontSize: '0.94rem',
-                                color: '#555',
+                                color: '#444',
                                 lineHeight: 1.6,
                                 fontFamily: 'var(--font-inter)'
                             }}>

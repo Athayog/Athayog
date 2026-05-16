@@ -27,26 +27,26 @@ export function AboutSection() {
                         >
                             &ldquo;Atha&rdquo; means now, here begins. &ldquo;Yog&rdquo; means union.
                         </Box>
-                        <Typography sx={{ fontSize: '0.9rem', color: '#555', mb: '0.9rem', lineHeight: 1.65 }}>
+                        <Typography sx={{ fontSize: '0.94rem', color: '#444', mb: '0.9rem', lineHeight: 1.65 }}>
                             At AthaYog, we are devoted to preserving the long-standing legacy of Yog and propagating its true purpose, philosophies and practices associated with this age-old wisdom.
                         </Typography>
-                        <Typography sx={{ fontSize: '0.9rem', color: '#555', lineHeight: 1.65 }}>
+                        <Typography sx={{ fontSize: '0.94rem', color: '#444', lineHeight: 1.65 }}>
                             Our teachings are rooted in ancient scriptures — the Vedas, Sankhya Philosophy, Bhagwat Geeta, Patanjali&apos;s Yoga Sutras, and Hatha Yoga Pradipika.
                         </Typography>
                         <Box sx={{ display: 'flex', gap: '2rem', mt: '1.5rem' }}>
                             <Box>
                                 <Typography sx={{ fontFamily: 'var(--font-playfair),Georgia,serif', fontSize: '1.5rem', color: '#4f6148', fontWeight: 600, lineHeight: 1 }}>Atha</Typography>
-                                <Typography sx={{ fontSize: '0.7rem', color: '#555', letterSpacing: '0.06em', mt: '0.2rem' }}>Now, Here Begins</Typography>
+                                <Typography sx={{ fontSize: '0.8rem', color: '#444', letterSpacing: '0.06em', mt: '0.2rem' }}>Now, Here Begins</Typography>
                             </Box>
                             <Box>
                                 <Typography sx={{ fontFamily: 'var(--font-playfair),Georgia,serif', fontSize: '1.5rem', color: '#1a2016', fontWeight: 600, lineHeight: 1 }}>Yog</Typography>
-                                <Typography sx={{ fontSize: '0.7rem', color: '#555', letterSpacing: '0.06em', mt: '0.2rem' }}>Union, To Join</Typography>
+                                <Typography sx={{ fontSize: '0.8rem', color: '#444', letterSpacing: '0.06em', mt: '0.2rem' }}>Union, To Join</Typography>
                             </Box>
                         </Box>
                     </Box>
 
                     <Box sx={{ bgcolor: '#e8ede6', p: '3rem 2rem', textAlign: 'center', border: '1px solid #e2ddd5' }}>
-                        <svg width="130" height="130" viewBox="0 0 130 130" fill="none">
+                        <svg width="130" height="130" viewBox="0 0 130 130" fill="none" aria-hidden="true">
                             <circle cx="65" cy="65" r="60" stroke="#4f6148" strokeWidth=".8" />
                             <circle cx="65" cy="65" r="44" stroke="#4f6148" strokeWidth=".6" strokeDasharray="4 4" />
                             <circle cx="65" cy="65" r="28" stroke="#b8892a" strokeWidth="1" />

@@ -4,7 +4,7 @@ export const yogaTheme = createTheme({
     palette: {
         mode: 'light',
         primary: {
-            main: '#47820D',
+            main: '#38660a', // Darkened for 4.5:1 contrast on white
             dark: '#2b3524',
             light: '#f1f5ee',
             contrastText: '#fff',
@@ -20,8 +20,8 @@ export const yogaTheme = createTheme({
         },
         text: {
             primary: '#1a2016',
-            secondary: '#4b5563',
-            disabled: '#888',
+            secondary: '#444444', // Darkened from #4b5563 for better hierarchy
+            disabled: '#666666',  // Darkened from #888 for accessibility
         },
         divider: '#dce3d5',
         error: { main: '#b00020' },
@@ -33,9 +33,9 @@ export const yogaTheme = createTheme({
         h3: { fontFamily: "var(--font-playfair), Georgia, serif", fontWeight: 400 },
         h4: { fontFamily: "var(--font-playfair), Georgia, serif", fontWeight: 400 },
         h5: { fontFamily: "var(--font-playfair), Georgia, serif", fontWeight: 400 },
-        body1: { fontSize: '0.9375rem', lineHeight: 1.65 },
-        body2: { fontSize: '0.875rem', lineHeight: 1.65 },
-        caption: { fontSize: '0.72rem', letterSpacing: '0.08em' },
+        body1: { fontSize: '1rem', lineHeight: 1.6 },
+        body2: { fontSize: '0.88rem', lineHeight: 1.6 },
+        caption: { fontSize: '0.75rem', letterSpacing: '0.04em' },
     },
     shape: { borderRadius: 2 },
     components: {

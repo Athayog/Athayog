@@ -1,4 +1,5 @@
 import { Box, Button, Container, Stack, Typography } from '@mui/material'
+import Image from 'next/image'
 import { DIGNITARIES } from './data'
 
 export function HeroSection() {
@@ -13,18 +14,18 @@ export function HeroSection() {
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: '0.6rem',
-                                border: '1px solid rgba(184,137,42,0.4)',
+                                border: '1px solid rgba(255,255,255,0.2)',
                                 px: '1rem',
                                 py: '0.35rem',
-                                fontSize: '0.68rem',
+                                fontSize: '0.75rem',
                                 letterSpacing: '0.14em',
                                 textTransform: 'uppercase',
-                                color: '#47820D',
+                                color: '#fff',
                                 mb: '1.4rem',
                             }}
                         >
-                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                                <path d="M5.5 1L6.8 4.2H10.3L7.5 6.3L8.5 9.5L5.5 7.5L2.5 9.5L3.5 6.3L0.7 4.2H4.2Z" stroke="#47820D" strokeWidth="1" fill="rgba(71,130,13,.15)" />
+                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                                <path d="M5.5 1L6.8 4.2H10.3L7.5 6.3L8.5 9.5L5.5 7.5L2.5 9.5L3.5 6.3L0.7 4.2H4.2Z" stroke="#fff" strokeWidth="1" fill="rgba(255,255,255,0.15)" />
                             </svg>
                             International Day of Yoga 2026
                         </Box>
@@ -32,10 +33,10 @@ export function HeroSection() {
                         <Typography variant="h1" sx={{ color: '#fff', fontSize: { xs: '2.8rem', sm: '3.5rem', md: '4.5rem' }, mb: '0.6rem', lineHeight: 1.1 }}>
                             Yoga Arambha
                             <br />
-                            <Box component="span" sx={{ color: '#47820D', fontStyle: 'italic' }}>2026</Box>
+                            <Box component="span" sx={{ color: '#6fa33b', fontStyle: 'italic' }}>2026</Box>
                         </Typography>
 
-                        <Typography sx={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic', fontSize: { xs: '1.1rem', md: '1.25rem' }, color: 'rgba(255,255,255,0.5)', mb: '2rem' }}>
+                        <Typography sx={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic', fontSize: { xs: '1.1rem', md: '1.25rem' }, color: 'rgba(255,255,255,0.75)', mb: '2rem' }}>
                             &ldquo;Yoga for Wellness, Wisdom &amp; World Peace&rdquo;
                         </Typography>
 
@@ -55,7 +56,7 @@ export function HeroSection() {
                                 },
                             ].map((m, i) => (
                                 <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: '0.7rem', fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)' }}>
-                                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.9 }}>
+                                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.9 }} aria-hidden="true">
                                         {m.icon}
                                     </svg>
                                     {m.label}
@@ -64,7 +65,7 @@ export function HeroSection() {
                         </Stack>
 
                         <Stack direction="row" flexWrap="wrap" gap="0.8rem" alignItems="center">
-                            <Button href="#register" sx={{ bgcolor: '#47820D', color: '#fff', px: '2.4rem', py: '0.95rem', fontSize: '0.85rem', '&:hover': { bgcolor: '#3d6b0a' } }}>
+                            <Button href="#register" sx={{ bgcolor: '#38660a', color: '#fff', px: '2.4rem', py: '0.95rem', fontSize: '0.85rem', '&:hover': { bgcolor: '#2b3524' } }}>
                                 Register Now
                             </Button>
                             <Button
@@ -73,7 +74,7 @@ export function HeroSection() {
                             >
                                 View Schedule
                             </Button>
-                            <Box sx={{ display: 'inline-block', bgcolor: '#f1f5ee', color: '#47820D', fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', px: '0.8rem', py: '0.25rem', border: '1px solid rgba(71,130,13,0.3)' }}>
+                            <Box sx={{ display: 'inline-block', bgcolor: '#f1f5ee', color: '#38660a', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', px: '0.8rem', py: '0.25rem', border: '1px solid rgba(56,102,10,0.3)' }}>
                                 Free &amp; For Everyone
                             </Box>
                         </Stack>
@@ -88,9 +89,9 @@ export function HeroSection() {
                         minWidth: { md: 240 },
                         mt: { xs: 4, md: 0 }
                     }}>
-                        <Typography sx={{ fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', mb: '0.8rem' }}>Organised by</Typography>
-                        <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1rem', color: '#fff', mb: '0.2rem' }}>Atha Yog Living</Typography>
-                        <Typography sx={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.4)', mb: '1.2rem' }}>A Celebration of Yoga</Typography>
+                        <Typography sx={{ fontSize: '0.75rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', mb: '0.8rem' }}>Organised by</Typography>
+                        <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.15rem', color: '#fff', mb: '0.2rem' }}>Atha Yog Living</Typography>
+                        <Typography sx={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', mb: '1.2rem' }}>A Celebration of Yoga</Typography>
                         <Box sx={{ height: '1px', bgcolor: 'rgba(255,255,255,0.1)', mb: '1.2rem' }} />
 
                         <Stack gap="1.5rem">
@@ -112,7 +113,7 @@ export function HeroSection() {
                                             />
                                         )}
                                         <Box>
-                                            <Typography sx={{ fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#47820D', mb: '0.2rem' }}>{d.tag}</Typography>
+                                            <Typography sx={{ fontSize: '0.75rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', mb: '0.2rem', fontWeight: 600 }}>{d.tag}</Typography>
                                             <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.05rem', color: '#fff', lineHeight: 1.2 }}>{d.name}</Typography>
                                             <Typography sx={{ fontSize: '0.74rem', color: 'rgba(255,255,255,0.38)', fontStyle: 'italic', mt: 0.3 }}>{d.role}</Typography>
                                         </Box>

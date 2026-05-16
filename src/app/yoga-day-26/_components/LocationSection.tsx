@@ -23,13 +23,13 @@ export function LocationSection() {
                         {LOCATION_ROWS.map((r) => (
                             <Box key={r.label} sx={{ display: 'flex', gap: '0.9rem', mb: '1rem', alignItems: 'flex-start' }}>
                                 <Box>
-                                    <Typography sx={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.35)', mb: '0.12rem' }}>{r.label}</Typography>
+                                    <Typography sx={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'rgba(255,255,255,0.55)', mb: '0.12rem' }}>{r.label}</Typography>
                                     <Typography sx={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.82)' }}>{r.val}</Typography>
                                 </Box>
                             </Box>
                         ))}
                         <Box mt={2}>
-                            <Button href="#register" sx={{ bgcolor: '#47820D', color: '#fff', px: '1.8rem', py: '0.75rem', fontSize: '0.8rem', '&:hover': { bgcolor: '#3d6b0a' } }}>
+                            <Button href="#register" sx={{ bgcolor: '#38660a', color: '#fff', px: '1.8rem', py: '0.75rem', fontSize: '0.8rem', '&:hover': { bgcolor: '#2b3524' } }}>
                                 Register — Free Entry
                             </Button>
                         </Box>
@@ -55,7 +55,7 @@ export function LocationSection() {
                                 href="https://maps.app.goo.gl/JpW1wbeDugHRp3ZKA"
                                 target="_blank"
                                 rel="noopener"
-                                sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#47820D', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                                sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.82rem', color: '#38660a', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                             >
                                 ↗ Open in Google Maps
                             </Link>

@@ -22,14 +22,14 @@ import { DIGNITARIES } from './data'
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const T = {
     earth: '#1a2016',
-    sage: '#47820D',
+    sage: '#38660a',
     sageL: '#f1f5ee',
-    gold: '#47820D',
+    gold: '#38660a',
     goldL: '#f1f5ee',
     cream: '#fcfdfc',
     border: '#dce3d5',
-    ink2: '#4b5563',
-    ink3: '#888',
+    ink2: '#444',
+    ink3: '#666',
     white: '#fff',
 }
 
@@ -45,9 +45,12 @@ const STEPS = [
 
 function YogaLoader({ step, pct }: { step: string; pct: number }) {
     return (
-        <Box sx={{
+        <Box 
+            role="status"
+            aria-live="polite"
+            sx={{
             position: 'absolute', inset: 0, zIndex: 10,
-            bgcolor: 'rgba(250,247,242,0.97)',
+            bgcolor: 'rgba(252,253,252,0.98)',
             display: 'flex', flexDirection: 'column',
             alignItems: 'center', justifyContent: 'center',
             gap: 0,
@@ -402,7 +405,7 @@ function RegistrationForm() {
                             fontFamily: 'var(--font-inter)',
                             textTransform: 'none',
                             boxShadow: 'none',
-                            '&:hover': { bgcolor: '#9a7222', boxShadow: 'none' },
+                            '&:hover': { bgcolor: '#2b3524', boxShadow: 'none' },
                             '&:disabled': { bgcolor: T.border, color: T.ink3 },
                         }}
                     >
@@ -530,7 +533,12 @@ export function RegisterSection() {
                                 <Box sx={{ mt: 3, pt: 3, borderTop: `1px solid ${T.border}`, textAlign: 'center' }}>
                                     <Typography sx={{ fontSize: '0.85rem', color: T.ink2, fontFamily: 'var(--font-inter)' }}>
                                         Already registered?{' '}
-                                        <Box component="span" onClick={() => setMode('download')}
+                                        <Box 
+                                            component="span" 
+                                            role="button"
+                                            tabIndex={0}
+                                            onClick={() => setMode('download')}
+                                            onKeyDown={(e) => e.key === 'Enter' && setMode('download')}
                                             sx={{ color: T.gold, fontWeight: 600, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>
                                             Download your ticket here.
                                         </Box>
@@ -577,7 +585,12 @@ export function RegisterSection() {
                                 <Box sx={{ mt: 3, pt: 3, borderTop: `1px solid ${T.border}`, textAlign: 'center' }}>
                                     <Typography sx={{ fontSize: '0.85rem', color: T.ink2, fontFamily: 'var(--font-inter)' }}>
                                         Need to register?{' '}
-                                        <Box component="span" onClick={() => setMode('register')}
+                                        <Box 
+                                            component="span" 
+                                            role="button"
+                                            tabIndex={0}
+                                            onClick={() => setMode('register')}
+                                            onKeyDown={(e) => e.key === 'Enter' && setMode('register')}
                                             sx={{ color: T.gold, fontWeight: 600, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>
                                             Go back to registration.
                                         </Box>
