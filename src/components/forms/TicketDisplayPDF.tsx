@@ -109,7 +109,6 @@ const TicketContent: React.FC<TicketContentProps> = ({
                                 Distinguished Guests
                             </Typography>
                             <Typography fontSize={13} mb={0.5}><b>Presided by:</b> Shri P. C. Mohan, Hon’ble Member of Parliament</Typography>
-                            <Typography fontSize={13} mb={0.5}><b>Chief Guest:</b> Shri Tejasvi Surya, Hon’ble Member of Parliament</Typography>
                             <Typography fontSize={13}><b>Guest of Honour:</b> Shri B.N.S. Reddy (Ex-IPS), President – Indiranagar Club</Typography>
                         </Grid>
                     </Grid>

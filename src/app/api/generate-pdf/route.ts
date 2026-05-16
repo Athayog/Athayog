@@ -45,8 +45,7 @@ export async function POST(req: Request) {
       </head>
       <body>
         <h3>Namaste ${name} <span class="emoji">🙏</span></h3>
-        <p>Thank you for registering for the International Day of Yoga 2025 with Athayog,<br/>
-        in association with Shri Tejasvi Surya, Member of Parliament, Bengaluru South. <span class="emoji">🙏</span></p>
+        <p>Thank you for registering for the International Day of Yoga 2025 with Athayog. <span class="emoji">🙏</span></p>
         
         <p>We’re honored to have your presence as we unite to celebrate yoga, wellness, and collective harmony on June 21st.</p>
         
@@ -95,7 +94,7 @@ export async function POST(req: Request) {
 
     await browser.close()
 
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(Buffer.from(pdfBuffer) as any, {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': 'attachment; filename="entry-pass.pdf"',

@@ -45,9 +45,8 @@ export const ACTIVITIES = [
 ]
 
 export const DIGNITARIES = [
-    { tag: 'Presided by', name: 'Shri P.C. Mohan', role: 'MP, Central Bengaluru' },
-    { tag: 'Chief Guest', name: 'Shri Tejasvi Surya', role: 'MP, South Bengaluru' },
-    { tag: 'Guest of Honour', name: 'Shri BNS Reddy', role: 'Indiranagar Club President, Ex IPS' },
+    { tag: 'Presided by', name: 'Shri P.C. Mohan', role: 'MP, Central Bengaluru', image: '/images/26/PC_MOHAN.jpg' },
+    { tag: 'Guest of Honour', name: 'Shri BNS Reddy', role: 'Indiranagar Club President, Ex IPS', image: '/images/26/BNS-Reddy.webp' },
 ]
 
 export const FAQS = [
@@ -69,7 +68,7 @@ export const FAQS = [
     },
     {
         q: 'Who are the dignitaries at Yoga Arambha 2026?',
-        a: 'The event is presided by Shri P.C. Mohan (MP, Central Bengaluru). Chief Guest is Shri Tejasvi Surya (MP, South Bengaluru). Guest of Honour is Shri BNS Reddy (Indiranagar Club President, Ex IPS).',
+        a: 'The event is presided by Shri P.C. Mohan (MP, Central Bengaluru). Guest of Honour is Shri BNS Reddy (Indiranagar Club President, Ex IPS).',
     },
     {
         q: 'What is the theme of Yoga Arambha 2026?',
