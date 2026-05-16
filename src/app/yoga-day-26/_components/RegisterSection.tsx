@@ -476,7 +476,7 @@ export function RegisterSection() {
     }
 
     return (
-        <Box component="section" id="register" sx={{ py: { xs: 8, md: 12 }, bgcolor: T.cream, scrollMarginTop: '80px' }}>
+        <Box component="section" id="register-section" sx={{ py: { xs: 8, md: 12 }, bgcolor: T.cream }}>
             <Container maxWidth="lg">
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: '3rem', alignItems: 'start' }}>
 
@@ -523,7 +523,17 @@ export function RegisterSection() {
                     </Box>
 
                     {/* Right form card */}
-                    <Box sx={{ position: 'relative', overflow: 'hidden', bgcolor: T.white, border: `1px solid ${T.border}`, p: { xs: '1.5rem', md: '2rem' } }}>
+                    <Box 
+                        id="register" 
+                        sx={{ 
+                            position: 'relative', 
+                            overflow: 'hidden', 
+                            bgcolor: T.white, 
+                            border: `1px solid ${T.border}`, 
+                            p: { xs: '1.5rem', md: '2rem' },
+                            scrollMarginTop: { xs: '100px', md: '120px' } 
+                        }}
+                    >
                         {isDownloading && (
                             <YogaLoader step="Looking up ticket details..." pct={50} />
                         )}
