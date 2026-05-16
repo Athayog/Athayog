@@ -23,18 +23,18 @@ export function FinalCtaSection() {
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     }
-                        sx={{ 
-                            bgcolor: '#47820D', 
-                            color: '#fff', 
-                            px: '2.4rem', 
-                            py: '0.95rem', 
-                            fontSize: '0.9rem', 
-                            fontWeight: 600,
-                            textTransform: 'none',
-                            '&:hover': { 
-                                bgcolor: '#3d6b0a',
-                                '& .MuiButton-endIcon': { transform: 'translateX(4px)' } 
-                            },
+                    sx={{
+                        bgcolor: '#47820D',
+                        color: '#fff',
+                        px: '2.4rem',
+                        py: '0.95rem',
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        textTransform: 'none',
+                        '&:hover': {
+                            bgcolor: '#3d6b0a',
+                            '& .MuiButton-endIcon': { transform: 'translateX(4px)' }
+                        },
                         '& .MuiButton-endIcon': { transition: 'transform 0.3s ease' }
                     }}
                 >
