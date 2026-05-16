@@ -147,21 +147,36 @@ function SuccessPageContent() {
 
                                 <Box mb={4}>
                                     <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 2, fontWeight: 600, borderBottom: `1px solid ${T.border}`, pb: 1 }}>Distinguished Guests</Typography>
-                                    <Grid container spacing={2}>
+                                    <Grid container spacing={3}>
                                         <Grid item xs={12} sm={6}>
-                                            <Typography sx={{ color: T.ink3, fontWeight: 500, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1 }}>Presided by</Typography>
-                                            <Typography sx={{ color: T.ink, fontWeight: 600 }}>Shri P. C. Mohan</Typography>
-                                            <Typography sx={{ color: T.ink2, fontSize: '0.85rem' }}>Hon’ble Member of Parliament</Typography>
+                                            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                                                <Box 
+                                                    component="img" 
+                                                    src="/images/26/PC_MOHAN.jpg" 
+                                                    alt="Shri P. C. Mohan" 
+                                                    sx={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${T.border}` }} 
+                                                />
+                                                <Box>
+                                                    <Typography sx={{ color: T.ink3, fontWeight: 500, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1 }}>Presided by</Typography>
+                                                    <Typography sx={{ color: T.ink, fontWeight: 600 }}>Shri P. C. Mohan</Typography>
+                                                    <Typography sx={{ color: T.ink2, fontSize: '0.85rem' }}>Hon’ble Member of Parliament</Typography>
+                                                </Box>
+                                            </Box>
                                         </Grid>
                                         <Grid item xs={12} sm={6}>
-                                            <Typography sx={{ color: T.ink3, fontWeight: 500, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1 }}>Chief Guest</Typography>
-                                            <Typography sx={{ color: T.ink, fontWeight: 600 }}>Shri Tejasvi Surya</Typography>
-                                            <Typography sx={{ color: T.ink2, fontSize: '0.85rem' }}>Hon’ble Member of Parliament</Typography>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <Typography sx={{ color: T.ink3, fontWeight: 500, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1, mt: 1 }}>Guest of Honour</Typography>
-                                            <Typography sx={{ color: T.ink, fontWeight: 600 }}>Shri B.N.S. Reddy (Ex-IPS)</Typography>
-                                            <Typography sx={{ color: T.ink2, fontSize: '0.85rem' }}>President – Indiranagar Club</Typography>
+                                            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                                                <Box 
+                                                    component="img" 
+                                                    src="/images/26/BNS-Reddy.webp" 
+                                                    alt="Shri B.N.S. Reddy" 
+                                                    sx={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${T.border}` }} 
+                                                />
+                                                <Box>
+                                                    <Typography sx={{ color: T.ink3, fontWeight: 500, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1 }}>Guest of Honour</Typography>
+                                                    <Typography sx={{ color: T.ink, fontWeight: 600 }}>Shri B.N.S. Reddy (Ex-IPS)</Typography>
+                                                    <Typography sx={{ color: T.ink2, fontSize: '0.85rem' }}>President – Indiranagar Club</Typography>
+                                                </Box>
+                                            </Box>
                                         </Grid>
                                     </Grid>
                                 </Box>

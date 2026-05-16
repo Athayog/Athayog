@@ -79,19 +79,47 @@ export function HeroSection() {
                         </Stack>
                     </Box>
 
-                    {/* Side dignitary box — hidden on mobile */}
-                    <Box sx={{ display: { xs: 'none', md: 'block' }, bgcolor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', p: '1.5rem 1.8rem', minWidth: 210 }}>
+                    {/* Side dignitary box */}
+                    <Box sx={{ 
+                        display: 'block', 
+                        bgcolor: 'rgba(255,255,255,0.05)', 
+                        border: '1px solid rgba(255,255,255,0.1)', 
+                        p: '1.5rem 1.8rem', 
+                        minWidth: { md: 240 },
+                        mt: { xs: 4, md: 0 }
+                    }}>
                         <Typography sx={{ fontSize: '0.62rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', mb: '0.8rem' }}>Organised by</Typography>
                         <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1rem', color: '#fff', mb: '0.2rem' }}>Atha Yog Living</Typography>
                         <Typography sx={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.4)', mb: '1.2rem' }}>A Celebration of Yoga</Typography>
                         <Box sx={{ height: '1px', bgcolor: 'rgba(255,255,255,0.1)', mb: '1.2rem' }} />
-                        {DIGNITARIES.map((d, i) => (
-                            <Box key={d.name} sx={{ mt: i > 0 ? '1rem' : 0, pt: i > 0 ? '1rem' : 0, borderTop: i > 0 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
-                                <Typography sx={{ fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#b8892a', mb: '0.4rem' }}>{d.tag}</Typography>
-                                <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.05rem', color: '#fff' }}>{d.name}</Typography>
-                                <Typography sx={{ fontSize: '0.74rem', color: 'rgba(255,255,255,0.38)', fontStyle: 'italic' }}>{d.role}</Typography>
-                            </Box>
-                        ))}
+                        
+                        <Stack gap="1.5rem">
+                            {DIGNITARIES.map((d, i) => (
+                                <Box key={d.name} sx={{ pt: i > 0 ? '1rem' : 0, borderTop: i > 0 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
+                                    <Box sx={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                                        {d.image && (
+                                            <Box 
+                                                component="img" 
+                                                src={d.image} 
+                                                alt={d.name} 
+                                                sx={{ 
+                                                    width: 50, 
+                                                    height: 50, 
+                                                    borderRadius: '50%', 
+                                                    objectFit: 'cover',
+                                                    border: '1px solid rgba(184,137,42,0.3)'
+                                                }} 
+                                            />
+                                        )}
+                                        <Box>
+                                            <Typography sx={{ fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#b8892a', mb: '0.2rem' }}>{d.tag}</Typography>
+                                            <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.05rem', color: '#fff', lineHeight: 1.2 }}>{d.name}</Typography>
+                                            <Typography sx={{ fontSize: '0.74rem', color: 'rgba(255,255,255,0.38)', fontStyle: 'italic', mt: 0.3 }}>{d.role}</Typography>
+                                        </Box>
+                                    </Box>
+                                </Box>
+                            ))}
+                        </Stack>
                     </Box>
                 </Box>
             </Container>

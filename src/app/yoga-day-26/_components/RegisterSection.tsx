@@ -496,13 +496,26 @@ export function RegisterSection() {
                                 Mass yoga session from 7:00&ndash;8:00 AM. All levels welcome.
                             </Typography>
                         </Box>
-                        <Box>
-                            <Typography sx={{ fontSize: '0.78rem', color: T.ink3, mb: '0.6rem' }}>Dignitaries</Typography>
-                            {DIGNITARIES.map((d) => (
-                                <Typography key={d.name} sx={{ fontSize: '0.78rem', color: T.ink2, mb: '0.2rem' }}>
-                                    <Box component="strong" sx={{ color: T.earth }}>{d.name}</Box> &mdash; {d.role}
-                                </Typography>
-                            ))}
+                        <Box sx={{ mt: 3 }}>
+                            <Typography sx={{ fontSize: '0.78rem', color: T.ink3, mb: '1rem', textTransform: 'uppercase', letterSpacing: 1, fontWeight: 600 }}>Dignitaries</Typography>
+                            <Stack gap={2}>
+                                {DIGNITARIES.map((d) => (
+                                    <Box key={d.name} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                        {d.image && (
+                                            <Box 
+                                                component="img" 
+                                                src={d.image} 
+                                                alt={d.name} 
+                                                sx={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${T.border}` }} 
+                                            />
+                                        )}
+                                        <Box>
+                                            <Typography sx={{ fontSize: '0.88rem', color: T.earth, fontWeight: 600, lineHeight: 1.2 }}>{d.name}</Typography>
+                                            <Typography sx={{ fontSize: '0.74rem', color: T.ink2 }}>{d.role}</Typography>
+                                        </Box>
+                                    </Box>
+                                ))}
+                            </Stack>
                         </Box>
                     </Box>
 

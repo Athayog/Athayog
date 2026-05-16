@@ -19,7 +19,7 @@ export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
         <h2>Namaste {name},</h2>
 
         <p>
-            Thank you for registering for the Yoga Arambha 2025 with Athayog, in association with Shri Tejasvi Surya, Member of Parliament, Bengaluru South. 🙏
+            Thank you for registering for the Yoga Arambha 2025 with Athayog. 🙏
         </p>
 
         <p>
