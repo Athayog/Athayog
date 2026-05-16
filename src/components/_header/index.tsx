@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
             <AppBar
                 position="fixed"
                 sx={{
-                    background: isYogaDay26 ? (isScrolled ? '#3d2f1e' : gradient) : (isScrolled ? '#556940' : gradient),
+                    background: isYogaDay26 ? (isScrolled ? '#2b3524' : gradient) : (isScrolled ? '#556940' : gradient),
                     boxShadow: 'none',
                     padding: isYogaDay26 ? (isScrolled ? '6px 20px' : '12px 20px') : (isScrolled ? '10px 20px' : '25px 20px'),
                     transition: 'padding 0.5s ease-in-out, background 0.5s ease-in-out',
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                             {pathname !== '/yoga-day-26/success' && (
                                 <Link href="/yoga-day-26#register" passHref>
                                     <Button sx={{
-                                        bgcolor: '#b8892a',
+                                        bgcolor: '#47820D',
                                         color: '#fff',
                                         borderRadius: 0,
                                         py: { xs: '6px', md: '8px' },
@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
                                         fontFamily: 'var(--font-inter)',
                                         textTransform: 'none',
                                         boxShadow: 'none',
-                                        '&:hover': { bgcolor: '#9a7222', boxShadow: 'none' },
+                                        '&:hover': { bgcolor: '#3d6b0a', boxShadow: 'none' },
                                     }}>
                                         Register Now
                                     </Button>
