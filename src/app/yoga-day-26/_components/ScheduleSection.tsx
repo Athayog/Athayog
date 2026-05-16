@@ -19,7 +19,7 @@ export function ScheduleSection() {
                                 component="tr"
                                 sx={{
                                     borderBottom: idx < SCHEDULE.length - 1 ? '1px solid #e2ddd5' : 'none',
-                                    bgcolor: item.highlight ? '#e8ede6' : 'transparent',
+                                    bgcolor: item.highlight ? '#f1f5ee' : 'transparent',
                                     display: { xs: 'flex', sm: 'table-row' },
                                     flexDirection: { xs: 'column', sm: 'row' },
                                     py: { xs: 2, sm: 0 },
@@ -33,7 +33,7 @@ export function ScheduleSection() {
                                         pl: item.highlight ? '1.2rem' : { xs: 1.5, sm: 0 },
                                         fontSize: '0.88rem',
                                         fontWeight: 600,
-                                        color: item.highlight ? '#4f6148' : '#b8892a',
+                                        color: '#47820D',
                                         whiteSpace: { xs: 'normal', sm: 'nowrap' },
                                         minWidth: { xs: 'auto', sm: 160 },
                                         verticalAlign: 'top',
@@ -43,28 +43,28 @@ export function ScheduleSection() {
                                 >
                                     {item.time}
                                 </Box>
-                                <Box 
-                                    component="td" 
-                                    sx={{ 
-                                        py: { xs: 0.5, sm: '1.2rem' }, 
-                                        pr: item.highlight ? '1.2rem' : 0, 
+                                <Box
+                                    component="td"
+                                    sx={{
+                                        py: { xs: 0.5, sm: '1.2rem' },
+                                        pr: item.highlight ? '1.2rem' : 0,
                                         pl: { xs: 1.5, sm: 0 },
                                         verticalAlign: 'top',
                                         display: { xs: 'block', sm: 'table-cell' },
                                     }}
                                 >
-                                    <Typography sx={{ 
-                                        fontSize: '1rem', 
+                                    <Typography sx={{
+                                        fontSize: '1rem',
                                         fontWeight: item.highlight ? 600 : 500,
-                                        color: '#3d2f1e',
+                                        color: '#1a2016',
                                         fontFamily: 'var(--font-inter)'
                                     }}>
                                         {item.activity}
                                     </Typography>
                                     {item.note && (
-                                        <Typography sx={{ 
-                                            fontSize: '0.84rem', 
-                                            color: '#555', 
+                                        <Typography sx={{
+                                            fontSize: '0.84rem',
+                                            color: '#555',
                                             mt: '0.3rem',
                                             fontFamily: 'var(--font-inter)',
                                             lineHeight: 1.5
@@ -78,7 +78,7 @@ export function ScheduleSection() {
                     </Box>
                 </Box>
                 <Box mt={3}>
-                    <Button href="#register" sx={{ bgcolor: '#4f6148', color: '#fff', px: '1.8rem', py: '0.75rem', fontSize: '0.8rem', '&:hover': { bgcolor: '#3d4e38' } }}>
+                    <Button href="#register" sx={{ bgcolor: '#47820D', color: '#fff', px: '1.8rem', py: '0.75rem', fontSize: '0.8rem', '&:hover': { bgcolor: '#3d6b0a' } }}>
                         Secure Your Spot — It&apos;s Free
                     </Button>
                 </Box>

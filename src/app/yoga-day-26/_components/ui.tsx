@@ -17,7 +17,7 @@ export function EyebrowLabel({ children, dark = false }: EyebrowLabelProps) {
                 textTransform: 'uppercase',
                 letterSpacing: '0.18em',
                 fontWeight: 600,
-                color: dark ? '#b8892a' : 'secondary.main',
+                color: dark ? '#47820D' : 'secondary.main',
                 mb: 1.5,
             }}
         >

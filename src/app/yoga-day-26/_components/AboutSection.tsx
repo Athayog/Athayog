@@ -17,8 +17,8 @@ export function AboutSection() {
                                 fontFamily: 'var(--font-playfair),Georgia,serif',
                                 fontSize: '1.25rem',
                                 fontStyle: 'italic',
-                                color: '#3d2f1e',
-                                borderLeft: '2px solid #b8892a',
+                                color: '#1a2016',
+                                borderLeft: '2px solid #47820D',
                                 pl: '1.2rem',
                                 my: '1.5rem',
                                 lineHeight: 1.5,
@@ -39,7 +39,7 @@ export function AboutSection() {
                                 <Typography sx={{ fontSize: '0.7rem', color: '#555', letterSpacing: '0.06em', mt: '0.2rem' }}>Now, Here Begins</Typography>
                             </Box>
                             <Box>
-                                <Typography sx={{ fontFamily: 'var(--font-playfair),Georgia,serif', fontSize: '1.5rem', color: '#4f6148', fontWeight: 600, lineHeight: 1 }}>Yog</Typography>
+                                <Typography sx={{ fontFamily: 'var(--font-playfair),Georgia,serif', fontSize: '1.5rem', color: '#1a2016', fontWeight: 600, lineHeight: 1 }}>Yog</Typography>
                                 <Typography sx={{ fontSize: '0.7rem', color: '#555', letterSpacing: '0.06em', mt: '0.2rem' }}>Union, To Join</Typography>
                             </Box>
                         </Box>

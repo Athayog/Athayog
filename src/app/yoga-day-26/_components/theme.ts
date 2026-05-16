@@ -4,26 +4,26 @@ export const yogaTheme = createTheme({
     palette: {
         mode: 'light',
         primary: {
-            main: '#4f6148',
-            dark: '#3d4e38',
-            light: '#e8ede6',
+            main: '#47820D',
+            dark: '#2b3524',
+            light: '#f1f5ee',
             contrastText: '#fff',
         },
         secondary: {
-            main: '#b8892a',
-            light: '#f5edd8',
+            main: '#4f6148',
+            light: '#f1f5ef',
             contrastText: '#fff',
         },
         background: {
-            default: '#faf7f2',
+            default: '#fcfdfc',
             paper: '#ffffff',
         },
         text: {
-            primary: '#1c1c1c',
-            secondary: '#555',
+            primary: '#1a2016',
+            secondary: '#4b5563',
             disabled: '#888',
         },
-        divider: '#e2ddd5',
+        divider: '#dce3d5',
         error: { main: '#b00020' },
     },
     typography: {

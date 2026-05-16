@@ -10,7 +10,7 @@ const LOCATION_ROWS = [
 
 export function LocationSection() {
     return (
-        <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#3d2f1e' }}>
+        <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#2b3524' }}>
             <Container maxWidth="lg">
                 <Box mb={4}>
                     <EyebrowLabel dark>Venue</EyebrowLabel>
@@ -29,7 +29,7 @@ export function LocationSection() {
                             </Box>
                         ))}
                         <Box mt={2}>
-                            <Button href="#register" sx={{ bgcolor: '#b8892a', color: '#fff', px: '1.8rem', py: '0.75rem', fontSize: '0.8rem', '&:hover': { bgcolor: '#9a7222' } }}>
+                            <Button href="#register" sx={{ bgcolor: '#47820D', color: '#fff', px: '1.8rem', py: '0.75rem', fontSize: '0.8rem', '&:hover': { bgcolor: '#3d6b0a' } }}>
                                 Register — Free Entry
                             </Button>
                         </Box>
@@ -55,7 +55,7 @@ export function LocationSection() {
                                 href="https://maps.app.goo.gl/JpW1wbeDugHRp3ZKA"
                                 target="_blank"
                                 rel="noopener"
-                                sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#b8892a', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                                sx={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.78rem', color: '#47820D', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                             >
                                 ↗ Open in Google Maps
                             </Link>

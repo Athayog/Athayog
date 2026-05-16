@@ -20,14 +20,14 @@ const ACTIVITY_ICONS: Record<string, React.ReactNode> = {
 
 export function ActivitiesSection() {
     return (
-        <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#e8ede6' }}>
+        <Box component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#f1f5ee' }}>
             <Container maxWidth="lg">
                 <SectionHeader eyebrow="Allied Activities" title="More to Explore on the Day" />
-                <Box sx={{ 
-                    display: 'grid', 
-                    gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, 
-                    gap: '1.2rem', 
-                    mt: 3.5 
+                <Box sx={{
+                    display: 'grid',
+                    gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+                    gap: '1.2rem',
+                    mt: 3.5
                 }}>
                     {ACTIVITIES.map((item) => (
                         <Box
@@ -42,26 +42,26 @@ export function ActivitiesSection() {
                                 flexDirection: 'column',
                                 alignItems: 'center',
                                 '&:hover': { 
-                                    borderColor: '#4f6148', 
-                                    bgcolor: '#e8ede6' 
+                                    borderColor: '#47820D', 
+                                    bgcolor: '#f1f5ee' 
                                 },
                             }}
                         >
                             <Box sx={{ mb: '1.2rem', display: 'flex', justifyContent: 'center' }}>
                                 {ACTIVITY_ICONS[item.icon]}
                             </Box>
-                            <Typography sx={{ 
-                                fontSize: '1rem', 
-                                color: '#3d2f1e', 
-                                fontWeight: 600, 
+                            <Typography sx={{
+                                fontSize: '1rem',
+                                color: '#1a2016',
+                                fontWeight: 600,
                                 mb: '0.6rem',
                                 fontFamily: 'var(--font-inter)'
                             }}>
                                 {item.title}
                             </Typography>
-                            <Typography sx={{ 
-                                fontSize: '0.88rem', 
-                                color: '#555', 
+                            <Typography sx={{
+                                fontSize: '0.88rem',
+                                color: '#555',
                                 lineHeight: 1.6,
                                 fontFamily: 'var(--font-inter)'
                             }}>
