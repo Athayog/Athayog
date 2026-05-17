@@ -45,7 +45,7 @@ export const ACTIVITIES = [
 ]
 
 export const DIGNITARIES = [
-    { tag: 'Presided by', name: 'Shri P.C. Mohan', role: 'MP, Central Bengaluru', image: '/images/26/PC_MOHAN.jpg' },
+    { tag: 'Chief Guest', name: 'Shri P.C. Mohan', role: 'MP, Central Bengaluru', image: '/images/26/PC_MOHAN.jpg' },
     { tag: 'Guest of Honour', name: 'Shri BNS Reddy', role: 'Indiranagar Club President, Ex IPS', image: '/images/26/BNS-Reddy.webp' },
 ]
 
@@ -68,7 +68,7 @@ export const FAQS = [
     },
     {
         q: 'Who are the dignitaries at Yoga Arambha 2026?',
-        a: 'The event is presided by Shri P.C. Mohan (MP, Central Bengaluru). Guest of Honour is Shri BNS Reddy (Indiranagar Club President, Ex IPS).',
+        a: 'The event is Chief Guest Shri P.C. Mohan (MP, Central Bengaluru). Guest of Honour is Shri BNS Reddy (Indiranagar Club President, Ex IPS).',
     },
     {
         q: 'What is the theme of Yoga Arambha 2026?',
@@ -116,5 +116,44 @@ export const CLIENTS = [
         name: 'Indiranagar Run Club',
         logo: '/images/26/Indiranagar Run Club.jpg',
         description: 'Partnering with the local running community to provide dedicated yoga sessions aimed at improving athletic performance, flexibility, and post-run recovery.',
+    },
+]
+
+export const GALLERY_ITEMS = [
+    {
+        image: '/images/yoga-day-26/Framesbyadrian-22.webp',
+        category: 'Gathering',
+        title: 'Mass Yoga Session',
+        description: 'A sea of practitioners breathing and practicing asanas in unison under the open sky.',
+    },
+    {
+        image: '/images/yoga-day-26/Framesbyadrian-26.webp',
+        category: 'Mindfulness',
+        title: 'Deep Meditation',
+        description: 'Cultivating inner silence, breathwork, and deep connection amidst a vibrant community.',
+    },
+    {
+        image: '/images/yoga-day-26/Framesbyadrian-30.webp',
+        category: 'Wisdom',
+        title: 'Guided Practice',
+        description: 'Led by founder and senior Athayog team members, preserving authentic yoga philosophies.',
+    },
+    {
+        image: '/images/yoga-day-26/Framesbyadrian-40.webp',
+        category: 'Vitality',
+        title: 'Active Asana Flows',
+        description: 'Stretching, building strength, and active physical alignment suitable for every level.',
+    },
+    {
+        image: '/images/yoga-day-26/Framesbyadrian-57.webp',
+        category: 'Guidance',
+        title: 'Personalized Instruction',
+        description: 'Dedicated Athayog teachers providing helpful posture adjustments and personalized support.',
+    },
+    {
+        image: '/images/yoga-day-26/Framesbyadrian-69.webp',
+        category: 'Artistic Vibrations',
+        title: 'Live Acoustic Music',
+        description: 'Traditional stringed music and acoustic instruments elevating the positive energy of the day.',
     },
 ]

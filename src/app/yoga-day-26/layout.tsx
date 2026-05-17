@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Yoga Arambha 2026 — Free Yoga Event | June 21, Bangalore',
         description:
-            'Celebrate International Day of Yoga 2026 with a free mass yoga session at Indiranagar Club, Bangalore. Presided by Shri P.C. Mohan, MP. Open to everyone.',
+            'Celebrate International Day of Yoga 2026 with a free mass yoga session at Indiranagar Club, Bangalore. Chief Guest Shri P.C. Mohan, MP. Open to everyone.',
         url: 'https://athayogliving.com/yoga-arambha-26',
         siteName: 'Atha Yog Living',
         type: 'website',

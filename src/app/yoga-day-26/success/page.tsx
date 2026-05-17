@@ -157,7 +157,7 @@ function SuccessPageContent() {
                                                     sx={{ width: 56, height: 56, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${T.border}` }}
                                                 />
                                                 <Box>
-                                                    <Typography sx={{ color: T.ink3, fontWeight: 500, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1 }}>Presided by</Typography>
+                                                    <Typography sx={{ color: T.ink3, fontWeight: 500, fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 1 }}>Chief Guest</Typography>
                                                     <Typography sx={{ color: T.ink, fontWeight: 600 }}>Shri P. C. Mohan</Typography>
                                                     <Typography sx={{ color: T.ink2, fontSize: '0.85rem' }}>Hon’ble Member of Parliament</Typography>
                                                 </Box>

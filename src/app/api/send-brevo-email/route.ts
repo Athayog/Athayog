@@ -66,7 +66,7 @@ function buildHtmlBody(name: string, ticketID: string): string {
 
   <h3>Special Guests & Dignitaries</h3>
   <p>
-    <strong>Presided by:</strong> Shri P. C. Mohan, Hon’ble Member of Parliament<br />
+    <strong>Chief Guest:</strong> Shri P. C. Mohan, Hon’ble Member of Parliament<br />
     <strong>Guest of Honour:</strong> Shri B.N.S. Reddy (Ex-IPS), President – Indiranagar Club
   </p>
 
