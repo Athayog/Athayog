@@ -15,10 +15,10 @@ interface TicketContentProps {
     hideDownload?: boolean
 }
 
-const TicketContent: React.FC<TicketContentProps> = ({ 
-    name, 
-    ticketId, 
-    qrDataUrl, 
+const TicketContent: React.FC<TicketContentProps> = ({
+    name,
+    ticketId,
+    qrDataUrl,
     downloadUrl,
     title = 'Yoga Arambha 2026',
     date = 'June 21, 2026, 6:00 AM',
@@ -48,7 +48,7 @@ const TicketContent: React.FC<TicketContentProps> = ({
             <Typography variant="subtitle2" fontWeight="bold" color="text.secondary" gutterBottom sx={{ fontFamily: 'var(--font-inter)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 🧘 Athayog Presents
             </Typography>
-            
+
             <Typography variant="h4" fontWeight="bold" gutterBottom sx={{ fontFamily: 'var(--font-playfair)', mt: 1 }}>
                 Yoga Arambha 2026
             </Typography>
@@ -103,12 +103,12 @@ const TicketContent: React.FC<TicketContentProps> = ({
                             <Typography fontSize={13} mb={0.5}><b>Mass Yoga:</b> 7:00 AM – 8:30 AM</Typography>
                             <Typography fontSize={13}><b>Refreshments:</b> 8:30 AM onwards</Typography>
                         </Grid>
-                        
+
                         <Grid item xs={12}>
                             <Typography variant="subtitle2" fontWeight="bold" gutterBottom color="#b8892a" mt={1}>
                                 Distinguished Guests
                             </Typography>
-                            <Typography fontSize={13} mb={0.5}><b>Presided by:</b> Shri P. C. Mohan, Hon’ble Member of Parliament</Typography>
+                            <Typography fontSize={13} mb={0.5}><b>Chief Guest:</b> Shri P. C. Mohan, Hon’ble Member of Parliament</Typography>
                             <Typography fontSize={13}><b>Guest of Honour:</b> Shri B.N.S. Reddy (Ex-IPS), President – Indiranagar Club</Typography>
                         </Grid>
                     </Grid>

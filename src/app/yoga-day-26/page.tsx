@@ -4,6 +4,7 @@ import { ScheduleSection } from './_components/ScheduleSection'
 import { WhySection } from './_components/WhySection'
 import { ExperienceSection } from './_components/ExperienceSection'
 import { ActivitiesSection } from './_components/ActivitiesSection'
+import { GallerySection } from './_components/GallerySection'
 import { AboutSection } from './_components/AboutSection'
 import { LocationSection } from './_components/LocationSection'
 import { RegisterSection } from './_components/RegisterSection'
@@ -24,6 +25,7 @@ export default function YogaArambha2026Page() {
                 <WhySection />
                 <ExperienceSection />
                 <ActivitiesSection />
+                <GallerySection />
                 <AboutSection />
                 <LocationSection />
                 <RegisterSection />
