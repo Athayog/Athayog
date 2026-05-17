@@ -124,37 +124,37 @@ export const CLIENTS = [
 
 export const GALLERY_ITEMS = [
     {
-        image: '/images/yoga-day-26/Framesbyadrian-22.webp',
+        image: '/images/yoga-day-26/Framesbyadrian-22.jpg',
         category: 'Gathering',
         title: 'Mass Yoga Session',
         description: 'A sea of practitioners breathing and practicing asanas in unison under the open sky.',
     },
     {
-        image: '/images/yoga-day-26/Framesbyadrian-26.webp',
+        image: '/images/yoga-day-26/Framesbyadrian-26.jpg',
         category: 'Mindfulness',
         title: 'Deep Meditation',
         description: 'Cultivating inner silence, breathwork, and deep connection amidst a vibrant community.',
     },
     {
-        image: '/images/yoga-day-26/Framesbyadrian-30.webp',
+        image: '/images/yoga-day-26/Framesbyadrian-30.jpg',
         category: 'Wisdom',
         title: 'Guided Practice',
         description: 'Led by founder and senior Athayog team members, preserving authentic yoga philosophies.',
     },
     {
-        image: '/images/yoga-day-26/Framesbyadrian-40.webp',
+        image: '/images/yoga-day-26/Framesbyadrian-40.jpg',
         category: 'Vitality',
         title: 'Active Asana Flows',
         description: 'Stretching, building strength, and active physical alignment suitable for every level.',
     },
     {
-        image: '/images/yoga-day-26/Framesbyadrian-57.webp',
+        image: '/images/yoga-day-26/Framesbyadrian-57.jpg',
         category: 'Guidance',
         title: 'Personalized Instruction',
         description: 'Dedicated Athayog teachers providing helpful posture adjustments and personalized support.',
     },
     {
-        image: '/images/yoga-day-26/Framesbyadrian-69.webp',
+        image: '/images/yoga-day-26/Framesbyadrian-69.jpg',
         category: 'Artistic Vibrations',
         title: 'Live Acoustic Music',
         description: 'Traditional stringed music and acoustic instruments elevating the positive energy of the day.',
