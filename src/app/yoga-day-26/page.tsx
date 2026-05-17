@@ -3,6 +3,7 @@ import { HeroSection } from './_components/HeroSection'
 import { ScheduleSection } from './_components/ScheduleSection'
 import { WhySection } from './_components/WhySection'
 import { ExperienceSection } from './_components/ExperienceSection'
+import { VisualDivider } from './_components/VisualDivider'
 import { ActivitiesSection } from './_components/ActivitiesSection'
 import { GallerySection } from './_components/GallerySection'
 import { AboutSection } from './_components/AboutSection'
@@ -23,6 +24,7 @@ export default function YogaArambha2026Page() {
                 <HeroSection />
                 <ScheduleSection />
                 <WhySection />
+                <VisualDivider />
                 <ExperienceSection />
                 <ActivitiesSection />
                 <GallerySection />

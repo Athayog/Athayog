@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from '@mui/material'
+import Image from 'next/image'
 import { EyebrowLabel } from './ui'
 
 export function AboutSection() {
@@ -45,21 +46,30 @@ export function AboutSection() {
                         </Box>
                     </Box>
 
-                    <Box sx={{ bgcolor: '#e8ede6', p: '3rem 2rem', textAlign: 'center', border: '1px solid #e2ddd5' }}>
-                        <svg width="130" height="130" viewBox="0 0 130 130" fill="none" aria-hidden="true">
-                            <circle cx="65" cy="65" r="60" stroke="#4f6148" strokeWidth=".8" />
-                            <circle cx="65" cy="65" r="44" stroke="#4f6148" strokeWidth=".6" strokeDasharray="4 4" />
-                            <circle cx="65" cy="65" r="28" stroke="#b8892a" strokeWidth="1" />
-                            <ellipse cx="65" cy="93" rx="25" ry="7" fill="rgba(79,97,72,.12)" />
-                            <path d="M48 91Q46 77 52 66Q57 58 65 54Q73 58 78 66Q84 77 82 91Z" fill="rgba(79,97,72,.18)" stroke="#4f6148" strokeWidth=".9" />
-                            <path d="M52 75Q41 73 34 80" stroke="#4f6148" strokeWidth="1.1" strokeLinecap="round" />
-                            <path d="M78 75Q89 73 96 80" stroke="#4f6148" strokeWidth="1.1" strokeLinecap="round" />
-                            <circle cx="65" cy="47" r="10" fill="rgba(79,97,72,.14)" stroke="#4f6148" strokeWidth=".9" />
-                            <circle cx="65" cy="47" r="2.5" fill="#b8892a" />
-                            <line x1="65" y1="14" x2="65" y2="37" stroke="#b8892a" strokeWidth=".7" />
-                            <circle cx="65" cy="11" r="2.5" fill="#b8892a" opacity=".5" />
-                        </svg>
-                        <Typography sx={{ mt: '1rem', fontSize: '0.82rem', color: '#4f6148', fontStyle: 'italic', fontFamily: 'var(--font-playfair),Georgia,serif' }}>
+                    <Box>
+                        <Box sx={{
+                            position: 'relative',
+                            width: '100%',
+                            aspectRatio: { xs: '4/3', sm: '1/1' },
+                            border: '1px solid #e2ddd5',
+                            p: '0.75rem',
+                            bgcolor: '#fff',
+                            boxShadow: '0 8px 24px rgba(61,47,30,0.04)',
+                            mb: '1.5rem',
+                        }}>
+                            <Box sx={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
+                                <Image
+                                    src="/images/yoga-day-26/Framesbyadrian-26.webp"
+                                    alt="Serene Practitioner in Deep Meditation"
+                                    fill
+                                    sizes="(max-width: 900px) 100vw, 50vw"
+                                    style={{ objectFit: 'cover' }}
+                                    loading="lazy"
+                                />
+                            </Box>
+                        </Box>
+                        
+                        <Typography sx={{ mt: '1rem', fontSize: '0.9rem', color: '#4f6148', fontStyle: 'italic', fontFamily: 'var(--font-playfair),Georgia,serif', textAlign: 'center', px: 2 }}>
                             &ldquo;Reinstating belief in the ancient wisdom of Yog&rdquo;
                         </Typography>
                     </Box>
