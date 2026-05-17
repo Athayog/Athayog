@@ -157,3 +157,25 @@ export const GALLERY_ITEMS = [
         description: 'Traditional stringed music and acoustic instruments elevating the positive energy of the day.',
     },
 ]
+
+// Add subtle background SVGs
+const YogaDayBackground = () => (
+  <div className={styles.backgroundContainer}>
+    <Image
+      src="/images/yoga-pose.svg"
+      alt="Yoga Pose"
+      className={styles.topLeftBackground}
+      width={100}
+      height={100}
+    />
+    <Image
+      src="/images/yoga-pose.svg"
+      alt="Yoga Pose"
+      className={styles.bottomRightBackground}
+      width={100}
+      height={100}
+    />
+  </div>
+);
+
+export default YogaDayBackground;
