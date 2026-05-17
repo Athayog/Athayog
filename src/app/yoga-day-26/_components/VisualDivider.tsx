@@ -18,7 +18,7 @@ export function VisualDivider() {
             }}
         >
             {/* Immersive Wide Event Image */}
-            <Image src="/images/yoga-day-26/Framesbyadrian-15.webp" alt="Mass Yoga Gathering and Community Mat Layout" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.9 }} loading="lazy" />
+            <Image src="/images/yoga-day-26/Framesbyadrian-15.jpg" alt="Mass Yoga Gathering and Community Mat Layout" fill sizes="100vw" style={{ objectFit: 'cover', opacity: 0.9 }} loading="lazy" />
 
             {/*
              * Top edge: solid #f1f5ee (WhySection bgcolor) → transparent
