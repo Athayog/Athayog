@@ -4,118 +4,373 @@ import { DIGNITARIES } from './data'
 
 export function HeroSection() {
     return (
-        <Box component="section" sx={{ bgcolor: '#2b3524', py: { xs: '6rem', md: '10rem' }, position: 'relative', overflow: 'hidden' }}>
-            <Container maxWidth="lg">
-                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr auto' }, gap: '3rem', alignItems: 'start' }}>
-                    {/* Left */}
+        <Box
+            component="section"
+            sx={{
+                bgcolor: '#1a2410',
+                py: { xs: '6rem', md: '10rem' },
+                position: 'relative',
+                overflow: 'hidden',
+            }}
+        >
+            {/* Background Image — lower opacity, objectPosition centres on crowd */}
+            <Image
+                src="/images/yoga-day-26/Framesbyadrian-22.webp"
+                alt="Yoga Arambha Mass Crowd Gathering"
+                fill
+                priority
+                sizes="100vw"
+                style={{
+                    objectFit: 'cover',
+                    objectPosition: 'center 30%',
+                    opacity: 0.55,
+                    zIndex: 0,
+                }}
+            />
+
+            {/*
+             * Diagonal gradient — dark bottom-left (text side) fades to
+             * semi-transparent top-right (image visible in corner).
+             * Two-layer approach:
+             *   1. Base radial vignette adds depth around edges
+             *   2. Directional linear keeps left/bottom locked solid
+             */}
+            <Box
+                aria-hidden="true"
+                sx={{
+                    position: 'absolute',
+                    inset: 0,
+                    zIndex: 0,
+                    background: 'linear-gradient(155deg, rgba(18,26,10,0.97) 0%, rgba(26,38,14,0.88) 35%, rgba(36,50,20,0.55) 60%, rgba(36,50,20,0.1) 100%)',
+                }}
+            />
+
+            {/* Subtle top edge fade so header nav blends cleanly */}
+            <Box
+                aria-hidden="true"
+                sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '120px',
+                    background: 'linear-gradient(to bottom, rgba(18,26,10,0.6) 0%, transparent 100%)',
+                    zIndex: 0,
+                }}
+            />
+
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gridTemplateColumns: { xs: '1fr', md: '1fr auto' },
+                        gap: { xs: '3rem', md: '4rem' },
+                        alignItems: 'start',
+                    }}
+                >
+                    {/* ── Left column ── */}
                     <Box>
+                        {/* Event badge */}
                         <Box
                             sx={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
-                                gap: '0.6rem',
-                                border: '1px solid rgba(255,255,255,0.2)',
-                                px: '1rem',
-                                py: '0.35rem',
-                                fontSize: '0.75rem',
-                                letterSpacing: '0.14em',
+                                gap: '0.55rem',
+                                border: '1px solid rgba(255,255,255,0.18)',
+                                bgcolor: 'rgba(255,255,255,0.05)',
+                                px: '0.9rem',
+                                py: '0.38rem',
+                                fontSize: '0.72rem',
+                                letterSpacing: '0.15em',
                                 textTransform: 'uppercase',
-                                color: '#fff',
-                                mb: '1.4rem',
+                                color: 'rgba(255,255,255,0.75)',
+                                mb: '1.6rem',
+                                backdropFilter: 'blur(8px)',
+                                WebkitBackdropFilter: 'blur(8px)',
                             }}
                         >
-                            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
-                                <path d="M5.5 1L6.8 4.2H10.3L7.5 6.3L8.5 9.5L5.5 7.5L2.5 9.5L3.5 6.3L0.7 4.2H4.2Z" stroke="#fff" strokeWidth="1" fill="rgba(255,255,255,0.15)" />
+                            <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                                <path d="M5.5 1L6.8 4.2H10.3L7.5 6.3L8.5 9.5L5.5 7.5L2.5 9.5L3.5 6.3L0.7 4.2H4.2Z" stroke="rgba(255,255,255,0.6)" strokeWidth="1" fill="rgba(255,255,255,0.12)" />
                             </svg>
                             International Day of Yoga 2026
                         </Box>
 
-                        <Typography variant="h1" sx={{ color: '#fff', fontSize: { xs: '2.8rem', sm: '3.5rem', md: '4.5rem' }, mb: '0.6rem', lineHeight: 1.1 }}>
+                        {/* Headline */}
+                        <Typography
+                            variant="h1"
+                            sx={{
+                                color: '#fff',
+                                fontSize: { xs: '2.8rem', sm: '3.6rem', md: '4.8rem' },
+                                fontWeight: 700,
+                                mb: '0.5rem',
+                                lineHeight: 1.08,
+                                letterSpacing: '-0.02em',
+                                textShadow: '0 2px 24px rgba(0,0,0,0.4)',
+                            }}
+                        >
                             Yoga Arambha
                             <br />
-                            <Box component="span" sx={{ color: '#6fa33b', fontStyle: 'italic' }}>2026</Box>
+                            <Box
+                                component="span"
+                                sx={{
+                                    color: '#7dc040',
+                                    fontStyle: 'italic',
+                                    // subtle text glow so green reads on varied backgrounds
+                                    textShadow: '0 0 40px rgba(111,163,59,0.35)',
+                                }}
+                            >
+                                2026
+                            </Box>
                         </Typography>
 
-                        <Typography sx={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontStyle: 'italic', fontSize: { xs: '1.1rem', md: '1.25rem' }, color: 'rgba(255,255,255,0.75)', mb: '2rem' }}>
+                        {/* Tagline */}
+                        <Typography
+                            sx={{
+                                fontFamily: 'var(--font-playfair), Georgia, serif',
+                                fontStyle: 'italic',
+                                fontSize: { xs: '1.05rem', md: '1.2rem' },
+                                // bumped from 0.75 → 0.88 for WCAG AA
+                                color: 'rgba(255,255,255,0.88)',
+                                mb: '2.2rem',
+                                lineHeight: 1.5,
+                            }}
+                        >
                             &ldquo;Yoga for Wellness, Wisdom &amp; World Peace&rdquo;
                         </Typography>
 
-                        <Stack direction={{ xs: 'column', sm: 'row' }} flexWrap="wrap" gap="1.4rem" mb="2.2rem">
+                        {/* Meta row */}
+                        <Stack direction={{ xs: 'column', sm: 'row' }} flexWrap="wrap" gap="1.2rem" mb="2.4rem">
                             {[
                                 {
-                                    label: <><strong style={{ color: '#fff' }}>June 21, 2026</strong> — Sunday</>,
-                                    icon: <path d="M3 4H13V13H3V4ZM3 4V3H4V4H12V3H13V4M3 7H13M6 2V4M10 2V4" stroke="currentColor" strokeWidth="1.2" />
+                                    label: (
+                                        <>
+                                            <strong style={{ color: '#fff', fontWeight: 600 }}>June 21, 2026</strong>
+                                            &nbsp;— Sunday
+                                        </>
+                                    ),
+                                    icon: <path d="M3 4H13V13H3V4ZM3 4V3H4V4H12V3H13V4M3 7H13M6 2V4M10 2V4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />,
                                 },
                                 {
-                                    label: <><strong style={{ color: '#fff' }}>Indiranagar Club</strong>, Bangalore</>,
-                                    icon: <path d="M8 14C8 14 13 10 13 6.5C13 3.73858 10.7614 1.5 8 1.5C5.23858 1.5 3 3.73858 3 6.5C3 10 8 14 8 14ZM8 8.5C9.10457 8.5 10 7.60457 10 6.5C10 5.39543 9.10457 4.5 8 4.5C6.89543 4.5 6 5.39543 6 6.5C6 7.60457 6.89543 8.5 8 8.5Z" stroke="currentColor" strokeWidth="1.2" />
+                                    label: (
+                                        <>
+                                            <strong style={{ color: '#fff', fontWeight: 600 }}>Indiranagar Club</strong>, Bangalore
+                                        </>
+                                    ),
+                                    icon: (
+                                        <path
+                                            d="M8 14C8 14 13 10 13 6.5C13 3.74 10.76 1.5 8 1.5S3 3.74 3 6.5C3 10 8 14 8 14ZM8 8.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
+                                            stroke="currentColor"
+                                            strokeWidth="1.3"
+                                            strokeLinecap="round"
+                                        />
+                                    ),
                                 },
                                 {
                                     label: <>6:00 AM — 8:30 AM</>,
-                                    icon: <path d="M8 14.5C11.5899 14.5 14.5 11.5899 14.5 8C14.5 4.41015 11.5899 1.5 8 1.5C4.41015 1.5 1.5 4.41015 1.5 8C1.5 11.5899 4.41015 14.5 8 14.5ZM8 4.5V8.5L11 10.5" stroke="currentColor" strokeWidth="1.2" />
+                                    icon: <path d="M8 14.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13ZM8 4.5V8.5l3 2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />,
                                 },
                             ].map((m, i) => (
-                                <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: '0.7rem', fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)' }}>
-                                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none" style={{ opacity: 0.9 }} aria-hidden="true">
-                                        {m.icon}
-                                    </svg>
+                                <Box
+                                    key={i}
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.6rem',
+                                        fontSize: '0.92rem',
+                                        // bumped from 0.7 → 0.82
+                                        color: 'rgba(255,255,255,0.82)',
+                                    }}
+                                >
+                                    <Box
+                                        sx={{
+                                            width: 30,
+                                            height: 30,
+                                            borderRadius: '50%',
+                                            bgcolor: 'rgba(111,163,59,0.15)',
+                                            border: '1px solid rgba(111,163,59,0.25)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            flexShrink: 0,
+                                            color: '#7dc040',
+                                        }}
+                                    >
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                            {m.icon}
+                                        </svg>
+                                    </Box>
                                     {m.label}
                                 </Box>
                             ))}
                         </Stack>
 
-                        <Stack direction="row" flexWrap="wrap" gap="0.8rem" alignItems="center">
-                            <Button href="#register" sx={{ bgcolor: '#38660a', color: '#fff', px: '2.4rem', py: '0.95rem', fontSize: '0.85rem', '&:hover': { bgcolor: '#2b3524' } }}>
+                        {/* CTAs */}
+                        <Stack direction="row" flexWrap="wrap" gap="0.9rem" alignItems="center">
+                            <Button
+                                href="#register"
+                                sx={{
+                                    bgcolor: '#4a8a12',
+                                    color: '#fff',
+                                    px: '2.2rem',
+                                    py: '0.9rem',
+                                    fontSize: '0.85rem',
+                                    fontWeight: 600,
+                                    letterSpacing: '0.04em',
+                                    borderRadius: 0,
+                                    boxShadow: '0 4px 20px rgba(74,138,18,0.35)',
+                                    '&:hover': {
+                                        bgcolor: '#3a6e0e',
+                                        boxShadow: '0 4px 28px rgba(74,138,18,0.5)',
+                                    },
+                                }}
+                            >
                                 Register Now
                             </Button>
                             <Button
                                 href="#schedule"
-                                sx={{ border: '1.5px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.6)', px: '1.8rem', py: '0.75rem', '&:hover': { borderColor: 'rgba(255,255,255,0.5)', color: '#fff' } }}
+                                sx={{
+                                    border: '1.5px solid rgba(255,255,255,0.28)',
+                                    color: 'rgba(255,255,255,0.82)',
+                                    px: '1.8rem',
+                                    py: '0.75rem',
+                                    fontSize: '0.85rem',
+                                    borderRadius: 0,
+                                    backdropFilter: 'blur(6px)',
+                                    WebkitBackdropFilter: 'blur(6px)',
+                                    '&:hover': {
+                                        borderColor: 'rgba(255,255,255,0.55)',
+                                        color: '#fff',
+                                        bgcolor: 'rgba(255,255,255,0.06)',
+                                    },
+                                }}
                             >
                                 View Schedule
                             </Button>
-                            <Box sx={{ display: 'inline-block', bgcolor: '#f1f5ee', color: '#38660a', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', px: '0.8rem', py: '0.25rem', border: '1px solid rgba(56,102,10,0.3)' }}>
+                            <Box
+                                sx={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '0.4rem',
+                                    bgcolor: 'rgba(125,192,64,0.12)',
+                                    color: '#7dc040',
+                                    fontSize: '0.72rem',
+                                    fontWeight: 700,
+                                    letterSpacing: '0.1em',
+                                    textTransform: 'uppercase',
+                                    px: '0.9rem',
+                                    py: '0.4rem',
+                                    border: '1px solid rgba(125,192,64,0.3)',
+                                }}
+                            >
+                                {/* checkmark dot */}
+                                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
+                                    <circle cx="4.5" cy="4.5" r="4.5" fill="rgba(125,192,64,0.25)" />
+                                    <path d="M2.5 4.5L4 6L6.5 3" stroke="#7dc040" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
                                 Free &amp; For Everyone
                             </Box>
                         </Stack>
                     </Box>
 
-                    {/* Side dignitary box */}
-                    <Box sx={{
-                        display: 'block',
-                        bgcolor: 'rgba(255,255,255,0.05)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        p: '1.5rem 1.8rem',
-                        minWidth: { md: 240 },
-                        mt: { xs: 4, md: 0 }
-                    }}>
-                        <Typography sx={{ fontSize: '0.75rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', mb: '0.8rem' }}>Organised by</Typography>
-                        <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.15rem', color: '#fff', mb: '0.2rem' }}>Atha Yog Living</Typography>
-                        <Typography sx={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', mb: '1.2rem' }}>A Celebration of Yoga</Typography>
-                        <Box sx={{ height: '1px', bgcolor: 'rgba(255,255,255,0.1)', mb: '1.2rem' }} />
+                    {/* ── Right column — dignitary card ── */}
+                    <Box
+                        sx={{
+                            bgcolor: 'rgba(10,16,6,0.82)',
+                            backdropFilter: 'blur(20px)',
+                            WebkitBackdropFilter: 'blur(20px)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            // thin left accent line in brand green
+                            borderLeft: '3px solid rgba(125,192,64,0.5)',
+                            p: '1.6rem 1.8rem',
+                            minWidth: { md: 248 },
+                            mt: { xs: 0, md: 0 },
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                fontSize: '0.68rem',
+                                letterSpacing: '0.18em',
+                                textTransform: 'uppercase',
+                                color: 'rgba(255,255,255,0.45)',
+                                mb: '0.6rem',
+                            }}
+                        >
+                            Organised by
+                        </Typography>
+                        <Typography
+                            sx={{
+                                fontFamily: "'Playfair Display', Georgia, serif",
+                                fontSize: '1.1rem',
+                                color: '#fff',
+                                mb: '0.15rem',
+                                lineHeight: 1.3,
+                            }}
+                        >
+                            Atha Yog Living
+                        </Typography>
+                        <Typography sx={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.45)', mb: '1.2rem' }}>A Celebration of Yoga</Typography>
 
-                        <Stack gap="1.5rem">
+                        <Box sx={{ height: '1px', bgcolor: 'rgba(255,255,255,0.08)', mb: '1.4rem' }} />
+
+                        <Stack gap="1.4rem">
                             {DIGNITARIES.map((d, i) => (
-                                <Box key={d.name} sx={{ pt: i > 0 ? '1rem' : 0, borderTop: i > 0 ? '1px solid rgba(255,255,255,0.08)' : 'none' }}>
-                                    <Box sx={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                                <Box
+                                    key={d.name}
+                                    sx={{
+                                        pt: i > 0 ? '1.1rem' : 0,
+                                        borderTop: i > 0 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                                    }}
+                                >
+                                    <Box sx={{ display: 'flex', gap: '0.9rem', alignItems: 'center' }}>
                                         {d.image && (
                                             <Box
                                                 component="img"
                                                 src={d.image}
                                                 alt={d.name}
                                                 sx={{
-                                                    width: 50,
-                                                    height: 50,
+                                                    width: 48,
+                                                    height: 48,
                                                     borderRadius: '50%',
                                                     objectFit: 'cover',
-                                                    border: '1px solid rgba(184,137,42,0.3)'
+                                                    border: '1.5px solid rgba(184,137,42,0.4)',
+                                                    flexShrink: 0,
                                                 }}
                                             />
                                         )}
                                         <Box>
-                                            <Typography sx={{ fontSize: '0.75rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', mb: '0.2rem', fontWeight: 600 }}>{d.tag}</Typography>
-                                            <Typography sx={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.05rem', color: '#fff', lineHeight: 1.2 }}>{d.name}</Typography>
-                                            <Typography sx={{ fontSize: '0.74rem', color: 'rgba(255,255,255,0.38)', fontStyle: 'italic', mt: 0.3 }}>{d.role}</Typography>
+                                            <Typography
+                                                sx={{
+                                                    fontSize: '0.68rem',
+                                                    letterSpacing: '0.15em',
+                                                    textTransform: 'uppercase',
+                                                    // bumped from 0.7 → 0.82
+                                                    color: 'rgba(255,255,255,0.82)',
+                                                    mb: '0.15rem',
+                                                    fontWeight: 600,
+                                                }}
+                                            >
+                                                {d.tag}
+                                            </Typography>
+                                            <Typography
+                                                sx={{
+                                                    fontFamily: "'Playfair Display', Georgia, serif",
+                                                    fontSize: '1rem',
+                                                    color: '#fff',
+                                                    lineHeight: 1.25,
+                                                }}
+                                            >
+                                                {d.name}
+                                            </Typography>
+                                            <Typography
+                                                sx={{
+                                                    fontSize: '0.72rem',
+                                                    color: 'rgba(255,255,255,0.42)',
+                                                    fontStyle: 'italic',
+                                                    mt: '0.2rem',
+                                                }}
+                                            >
+                                                {d.role}
+                                            </Typography>
                                         </Box>
                                     </Box>
                                 </Box>
