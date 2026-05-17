@@ -47,19 +47,21 @@ export function AboutSection() {
                     </Box>
 
                     <Box>
-                        <Box sx={{
-                            position: 'relative',
-                            width: '100%',
-                            aspectRatio: { xs: '4/3', sm: '1/1' },
-                            border: '1px solid #e2ddd5',
-                            p: '0.75rem',
-                            bgcolor: '#fff',
-                            boxShadow: '0 8px 24px rgba(61,47,30,0.04)',
-                            mb: '1.5rem',
-                        }}>
+                        <Box
+                            sx={{
+                                position: 'relative',
+                                width: '100%',
+                                aspectRatio: { xs: '4/3', sm: '1/1' },
+                                border: '1px solid #e2ddd5',
+                                p: '0.75rem',
+                                bgcolor: '#fff',
+                                boxShadow: '0 8px 24px rgba(61,47,30,0.04)',
+                                mb: '1.5rem',
+                            }}
+                        >
                             <Box sx={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}>
                                 <Image
-                                    src="/images/yoga-day-26/Framesbyadrian-26.webp"
+                                    src="/images/yoga-day-26/Breathing Sharath.jpg"
                                     alt="Serene Practitioner in Deep Meditation"
                                     fill
                                     sizes="(max-width: 900px) 100vw, 50vw"
@@ -68,7 +70,7 @@ export function AboutSection() {
                                 />
                             </Box>
                         </Box>
-                        
+
                         <Typography sx={{ mt: '1rem', fontSize: '0.9rem', color: '#4f6148', fontStyle: 'italic', fontFamily: 'var(--font-playfair),Georgia,serif', textAlign: 'center', px: 2 }}>
                             &ldquo;Reinstating belief in the ancient wisdom of Yog&rdquo;
                         </Typography>
