@@ -38,10 +38,10 @@ export const EXPERIENCE_ITEMS = [
 ]
 
 export const ACTIVITIES = [
-    { icon: 'music',   title: 'Live Music',       body: 'Soothing tunes elevating the yoga atmosphere' },
-    { icon: 'brush',   title: 'Live Painting',     body: 'Yoga-inspired art created live on canvas' },
-    { icon: 'career',  title: 'Yoga as Career',    body: 'Turn passion into profession' },
-    { icon: 'clinic',  title: 'Yoga Clinics',      body: 'Therapy, rehab & holistic health' },
+    { icon: 'music', title: 'Live Music', body: 'Soothing tunes elevating the yoga atmosphere' },
+    { icon: 'brush', title: 'Live Painting', body: 'Yoga-inspired art created live on canvas' },
+    { icon: 'career', title: 'Yoga as Career', body: 'Turn passion into profession' },
+    { icon: 'clinic', title: 'Yoga Clinics', body: 'Therapy, rehab & holistic health' },
 ]
 
 export const DIGNITARIES = [
@@ -80,17 +80,20 @@ export const CLIENTS = [
     {
         name: 'CHRIST University',
         logo: '/images/26/ChristUniversity.jpeg',
-        description: 'Conducting yoga as part of the academic curriculum for management students, helping them develop focus, discipline, stress management, and overall wellbeing through structured yoga education every academic year.',
+        description:
+            'Conducting yoga as part of the academic curriculum for management students, helping them develop focus, discipline, stress management, and overall wellbeing through structured yoga education every academic year.',
     },
     {
         name: 'Dongle',
         logo: '/images/26/Dongle.jpeg',
-        description: 'Conducting regular yoga sessions within the coworking ecosystem to help corporate professionals improve posture, reduce stress, enhance productivity, and maintain work-life balance through guided yoga practices.',
+        description:
+            'Conducting regular yoga sessions within the coworking ecosystem to help corporate professionals improve posture, reduce stress, enhance productivity, and maintain work-life balance through guided yoga practices.',
     },
     {
         name: 'Sports Authority of India',
         logo: '/images/26/Sports Authority of India.png',
-        description: 'Organizing large-scale International Day of Yoga sessions every year for athletes, promoting flexibility, recovery, mental resilience, and overall athletic wellbeing through yoga.',
+        description:
+            'Organizing large-scale International Day of Yoga sessions every year for athletes, promoting flexibility, recovery, mental resilience, and overall athletic wellbeing through yoga.',
     },
     {
         name: 'Indian Army',
@@ -157,25 +160,3 @@ export const GALLERY_ITEMS = [
         description: 'Traditional stringed music and acoustic instruments elevating the positive energy of the day.',
     },
 ]
-
-// Add subtle background SVGs
-const YogaDayBackground = () => (
-  <div className={styles.backgroundContainer}>
-    <Image
-      src="/images/yoga-pose.svg"
-      alt="Yoga Pose"
-      className={styles.topLeftBackground}
-      width={100}
-      height={100}
-    />
-    <Image
-      src="/images/yoga-pose.svg"
-      alt="Yoga Pose"
-      className={styles.bottomRightBackground}
-      width={100}
-      height={100}
-    />
-  </div>
-);
-
-export default YogaDayBackground;
