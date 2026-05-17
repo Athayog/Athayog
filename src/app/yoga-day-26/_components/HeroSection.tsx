@@ -15,7 +15,7 @@ export function HeroSection() {
         >
             {/* Background Image — lower opacity, objectPosition centres on crowd */}
             <Image
-                src="/images/yoga-day-26/Framesbyadrian-22.webp"
+                src="/images/yoga-day-26/Framesbyadrian-35.jpg"
                 alt="Yoga Arambha Mass Crowd Gathering"
                 fill
                 priority
