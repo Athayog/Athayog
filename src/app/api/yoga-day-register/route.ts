@@ -67,6 +67,15 @@ export async function POST(request: NextRequest) {
         let emailSuccess = false
         let whatsappSuccess = false
 
+        if (emailRes.status === 'fulfilled') {
+            const body = await emailRes.value.text()
+
+            console.error('[Register API] Email failed', {
+                status: emailRes.value.status,
+                body,
+            })
+        }
+
         if (emailRes.status === 'fulfilled' && emailRes.value.ok) {
             emailSuccess = true
         } else {
