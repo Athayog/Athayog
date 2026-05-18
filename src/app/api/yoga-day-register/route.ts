@@ -3,7 +3,7 @@ import { initAdmin } from '@/db/firebaseAdmin'
 
 // ─── Constants ──────────────────────────────────────────────────────────────────
 const COLLECTION = 'arambhaForm26'
-const NOTIFY_TIMEOUT_MS = 5000
+const NOTIFY_TIMEOUT_MS = 15000
 const ADMIN_ALERT_TIMEOUT_MS = 3000
 
 // ─── Helpers ────────────────────────────────────────────────────────────────────
