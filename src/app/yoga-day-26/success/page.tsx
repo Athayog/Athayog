@@ -184,7 +184,7 @@ function SuccessPageContent() {
                                     <WarningAmberRounded sx={{ fontSize: 16, color: '#b45309' }} />
                                 </Box>
                                 <Box>
-                                    <Typography sx={{ fontSize: '0.875rem', fontWeight: 500, color: '#92400e', mb: '2px' }}>Confirmation couldn't be sent</Typography>
+                                    <Typography sx={{ fontSize: '0.875rem', fontWeight: 500, color: '#92400e', mb: '2px' }}>Confirmation couldn&apos;t be sent</Typography>
                                     <Typography sx={{ fontSize: '0.8125rem', color: T.ink3 }}>
                                         Download your ticket using the button below. If you need help, email{' '}
                                         <a href={`mailto:info@athayogliving.com?subject=Ticket Confirmation&body=My registration ID: ${ticketID}`} style={{ color: T.sage, fontWeight: 500 }}>
