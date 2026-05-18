@@ -10,14 +10,28 @@ import { generatePDFBlob } from '@/components/forms/generatePdf'
 import { storage } from '@/lib/firebase'
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import {
-    Box, Button, Container, FormControl, FormControlLabel,
-    FormHelperText, FormLabel, InputAdornment, InputLabel,
-    Link, MenuItem, Radio, RadioGroup, Select, Stack,
-    TextField, Typography, Snackbar, Alert,
+    Box,
+    Button,
+    Container,
+    FormControl,
+    FormControlLabel,
+    FormHelperText,
+    FormLabel,
+    InputAdornment,
+    InputLabel,
+    Link,
+    MenuItem,
+    Radio,
+    RadioGroup,
+    Select,
+    Stack,
+    TextField,
+    Typography,
+    Snackbar,
+    Alert,
 } from '@mui/material'
 import { EyebrowLabel } from './ui'
 import { DIGNITARIES } from './data'
-
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const T = {
@@ -33,7 +47,6 @@ const T = {
     white: '#fff',
 }
 
-
 // ─── Yoga Loading Overlay ─────────────────────────────────────────────────────
 // Animated lotus / breath ring — no emoji, no spinner, pure SVG
 const STEPS = [
@@ -45,39 +58,51 @@ const STEPS = [
 
 function YogaLoader({ step, pct }: { step: string; pct: number }) {
     return (
-        <Box 
+        <Box
             role="status"
             aria-live="polite"
             sx={{
-            position: 'absolute', inset: 0, zIndex: 10,
-            bgcolor: 'rgba(252,253,252,0.98)',
-            display: 'flex', flexDirection: 'column',
-            alignItems: 'center', justifyContent: 'center',
-            gap: 0,
-            '@keyframes petalPulse0': {
-                '0%, 100%': { fillOpacity: 0.55 },
-                '50%': { fillOpacity: 0.85 },
-            },
-            '@keyframes petalPulse1': {
-                '0%, 100%': { fillOpacity: 0.4 },
-                '50%': { fillOpacity: 0.7 },
-            },
-        }}>
-            {/* Breathing lotus SVG */}
-            <Box sx={{
-                width: 96, height: 96, mb: 3,
-                '@keyframes breathe': {
-                    '0%, 100%': { transform: 'scale(1)', opacity: 0.85 },
-                    '50%': { transform: 'scale(1.1)', opacity: 1 },
+                position: 'absolute',
+                inset: 0,
+                zIndex: 10,
+                bgcolor: 'rgba(252,253,252,0.98)',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 0,
+                '@keyframes petalPulse0': {
+                    '0%, 100%': { fillOpacity: 0.55 },
+                    '50%': { fillOpacity: 0.85 },
                 },
-                animation: 'breathe 3s ease-in-out infinite',
-            }}>
+                '@keyframes petalPulse1': {
+                    '0%, 100%': { fillOpacity: 0.4 },
+                    '50%': { fillOpacity: 0.7 },
+                },
+            }}
+        >
+            {/* Breathing lotus SVG */}
+            <Box
+                sx={{
+                    width: 96,
+                    height: 96,
+                    mb: 3,
+                    '@keyframes breathe': {
+                        '0%, 100%': { transform: 'scale(1)', opacity: 0.85 },
+                        '50%': { transform: 'scale(1.1)', opacity: 1 },
+                    },
+                    animation: 'breathe 3s ease-in-out infinite',
+                }}
+            >
                 <svg viewBox="0 0 96 96" width={96} height={96} fill="none">
                     {/* Outer petals */}
                     {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
                         <ellipse
                             key={i}
-                            cx="48" cy="30" rx="7" ry="18"
+                            cx="48"
+                            cy="30"
+                            rx="7"
+                            ry="18"
                             fill={i % 2 === 0 ? T.gold : T.sage}
                             transform={`rotate(${deg} 48 48)`}
                             style={{
@@ -88,13 +113,7 @@ function YogaLoader({ step, pct }: { step: string; pct: number }) {
                     ))}
                     {/* Inner petals */}
                     {[22, 67, 112, 157, 202, 247].map((deg, i) => (
-                        <ellipse
-                            key={`inner-${i}`}
-                            cx="48" cy="36" rx="5" ry="11"
-                            fill={T.gold}
-                            fillOpacity={0.7}
-                            transform={`rotate(${deg} 48 48)`}
-                        />
+                        <ellipse key={`inner-${i}`} cx="48" cy="36" rx="5" ry="11" fill={T.gold} fillOpacity={0.7} transform={`rotate(${deg} 48 48)`} />
                     ))}
                     {/* Centre circle */}
                     <circle cx="48" cy="48" r="9" fill={T.earth} fillOpacity={0.9} />
@@ -103,62 +122,73 @@ function YogaLoader({ step, pct }: { step: string; pct: number }) {
             </Box>
 
             {/* Step label */}
-            <Typography sx={{
-                fontFamily: 'var(--font-inter)',
-                fontSize: '1.05rem',
-                fontWeight: 600,
-                color: T.earth,
-                mb: 0.75,
-                textAlign: 'center',
-                px: 3,
-            }}>
+            <Typography
+                sx={{
+                    fontFamily: 'var(--font-inter)',
+                    fontSize: '1.05rem',
+                    fontWeight: 600,
+                    color: T.earth,
+                    mb: 0.75,
+                    textAlign: 'center',
+                    px: 3,
+                }}
+            >
                 {step || 'Processing...'}
             </Typography>
 
             {/* Thin gold progress line */}
-            <Box sx={{
-                width: '160px',
-                height: '3px',
-                bgcolor: T.border,
-                mt: 2.5,
-                position: 'relative',
-                overflow: 'hidden',
-                borderRadius: '2px',
-            }}>
-                <Box sx={{
-                    position: 'absolute', left: 0, top: 0, bottom: 0,
-                    width: `${pct}%`,
-                    bgcolor: T.gold,
-                    transition: 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-                }} />
+            <Box
+                sx={{
+                    width: '160px',
+                    height: '3px',
+                    bgcolor: T.border,
+                    mt: 2.5,
+                    position: 'relative',
+                    overflow: 'hidden',
+                    borderRadius: '2px',
+                }}
+            >
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        left: 0,
+                        top: 0,
+                        bottom: 0,
+                        width: `${pct}%`,
+                        bgcolor: T.gold,
+                        transition: 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                />
             </Box>
 
             {/* Readable message */}
-            <Typography sx={{
-                fontSize: '0.78rem',
-                color: T.ink2,
-                mt: 1.5,
-                fontWeight: 500,
-                fontFamily: 'var(--font-inter)',
-            }}>
+            <Typography
+                sx={{
+                    fontSize: '0.78rem',
+                    color: T.ink2,
+                    mt: 1.5,
+                    fontWeight: 500,
+                    fontFamily: 'var(--font-inter)',
+                }}
+            >
                 Please do not close this window
             </Typography>
         </Box>
     )
 }
 
-
 // ─── Validation Schema ────────────────────────────────────────────────────────
 const registrationSchema = Yup.object({
     fullName: Yup.string().min(2, 'Name is too short').required('Full name is required'),
-    phone: Yup.string().matches(/^[6-9]\d{9}$/, 'Enter a valid 10-digit mobile number').required('Phone number is required'),
+    phone: Yup.string()
+        .matches(/^[6-9]\d{9}$/, 'Enter a valid 10-digit mobile number')
+        .required('Phone number is required'),
     email: Yup.string().email('Enter a valid email address').required('Email is required'),
     gender: Yup.string().required('Please select your gender'),
     tshirtSize: Yup.string().required('Please select a T-shirt size'),
     heardFrom: Yup.string().required('Please tell us how you heard about us'),
     hasYogaExperience: Yup.string().required(),
 })
-
 
 function generateTicketID(): string {
     const prefix = 'ATH-'
@@ -170,7 +200,6 @@ function generateTicketID(): string {
     return `${prefix}${hash.toString(36).toUpperCase().slice(0, 6)}`
 }
 
-
 // ─── Registration Form ────────────────────────────────────────────────────────
 function RegistrationForm() {
     const router = useRouter()
@@ -181,8 +210,12 @@ function RegistrationForm() {
 
     const formik = useFormik({
         initialValues: {
-            fullName: '', phone: '', email: '',
-            gender: '', tshirtSize: '', heardFrom: '',
+            fullName: '',
+            phone: '',
+            email: '',
+            gender: '',
+            tshirtSize: '',
+            heardFrom: '',
             hasYogaExperience: 'no',
         },
         validationSchema: registrationSchema,
@@ -225,18 +258,19 @@ function RegistrationForm() {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         formData: fullData,
-                        collectionName: 'arambhaForm26',
                         fileUrl,
                     }),
                 })
 
+                const data = await res.json()
+
                 if (res.status === 409) {
-                    const data = await res.json()
                     setApiError(data.message || 'Phone or email already registered.')
+                    setSubmitting(false)
                     return
                 } else if (!res.ok) {
-                    const data = await res.json()
                     setApiError(data.message || 'Something went wrong. Please try again.')
+                    setSubmitting(false)
                     return
                 }
 
@@ -246,12 +280,18 @@ function RegistrationForm() {
                 // Short buffer to allow state to settle before push
                 await new Promise((r) => setTimeout(r, 300))
 
+                // Build success URL with notification status for the success page
+                const notifications = data.notifications || {}
+                const emailSent = notifications.email ? '1' : '0'
+                const whatsappSent = notifications.whatsapp ? '1' : '0'
+
                 resetForm()
-                router.push(`/yoga-day-26/success?ticketID=${ticketID}`)
+                router.push(`/yoga-day-26/success?ticketID=${ticketID}&email=${emailSent}&whatsapp=${whatsappSent}`)
+                // Button stays disabled — user is navigating away
             } catch (err: any) {
                 setApiError('Unexpected error occurred. Please try again.')
+                setSubmitting(false) // Re-enable only on error
             } finally {
-                setSubmitting(false)
                 setPercentage(0)
                 setProgressStep('')
             }
@@ -272,49 +312,56 @@ function RegistrationForm() {
     return (
         <>
             <Box component="form" onSubmit={formik.handleSubmit} noValidate>
-
                 {/* ── Yoga loading overlay ── */}
-                {formik.isSubmitting && (
-                    <YogaLoader step={progressStep} pct={percentage} />
-                )}
+                {formik.isSubmitting && <YogaLoader step={progressStep} pct={percentage} />}
 
                 {/* Error snackbar */}
-                <Snackbar
-                    open={!!apiError}
-                    autoHideDuration={6000}
-                    onClose={() => setApiError(null)}
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                >
+                <Snackbar open={!!apiError} autoHideDuration={6000} onClose={() => setApiError(null)} anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
                     <Alert onClose={() => setApiError(null)} severity="error" sx={{ width: '100%', borderRadius: 0 }}>
                         {apiError}
                     </Alert>
                 </Snackbar>
 
-                <Typography sx={{
-                    fontSize: '0.68rem', letterSpacing: '0.14em', textTransform: 'uppercase',
-                    color: T.ink3, mb: '1.4rem', fontWeight: 500, fontFamily: 'var(--font-inter)',
-                }}>
+                <Typography
+                    sx={{
+                        fontSize: '0.68rem',
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
+                        color: T.ink3,
+                        mb: '1.4rem',
+                        fontWeight: 500,
+                        fontFamily: 'var(--font-inter)',
+                    }}
+                >
                     Registration Details
                 </Typography>
 
                 <Stack spacing={2.5}>
                     <TextField
-                        fullWidth size="small"
-                        id="fullName" name="fullName" label="Full Name"
+                        fullWidth
+                        size="small"
+                        id="fullName"
+                        name="fullName"
+                        label="Full Name"
                         placeholder="Your full name"
                         value={formik.values.fullName}
-                        onChange={formik.handleChange} onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         error={formik.touched.fullName && Boolean(formik.errors.fullName)}
                         helperText={formik.touched.fullName && formik.errors.fullName}
                         sx={fieldSx}
                     />
 
                     <TextField
-                        fullWidth size="small"
-                        id="phone" name="phone" label="WhatsApp Number"
+                        fullWidth
+                        size="small"
+                        id="phone"
+                        name="phone"
+                        label="WhatsApp Number"
                         placeholder="9XXXXXXXXX"
                         value={formik.values.phone}
-                        onChange={formik.handleChange} onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         error={formik.touched.phone && Boolean(formik.errors.phone)}
                         helperText={(formik.touched.phone && formik.errors.phone) || 'Your QR pass will be sent to this WhatsApp number'}
                         InputProps={{
@@ -328,11 +375,16 @@ function RegistrationForm() {
                     />
 
                     <TextField
-                        fullWidth size="small"
-                        id="email" name="email" label="Email Address" type="email"
+                        fullWidth
+                        size="small"
+                        id="email"
+                        name="email"
+                        label="Email Address"
+                        type="email"
                         placeholder="you@email.com"
                         value={formik.values.email}
-                        onChange={formik.handleChange} onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                         error={formik.touched.email && Boolean(formik.errors.email)}
                         helperText={formik.touched.email && formik.errors.email}
                         sx={fieldSx}
@@ -341,12 +393,20 @@ function RegistrationForm() {
                     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
                         <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.gender && Boolean(formik.errors.gender)}>
                             <InputLabel id="gender-label">Gender</InputLabel>
-                            <Select labelId="gender-label" id="gender" name="gender" label="Gender"
-                                value={formik.values.gender} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                            <Select
+                                labelId="gender-label"
+                                id="gender"
+                                name="gender"
+                                label="Gender"
+                                value={formik.values.gender}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 sx={{ borderRadius: 0 }}
                             >
                                 {['Male', 'Female', 'Other'].map((opt) => (
-                                    <MenuItem key={opt} value={opt}>{opt}</MenuItem>
+                                    <MenuItem key={opt} value={opt}>
+                                        {opt}
+                                    </MenuItem>
                                 ))}
                             </Select>
                             {formik.touched.gender && formik.errors.gender && <FormHelperText>{formik.errors.gender}</FormHelperText>}
@@ -354,12 +414,20 @@ function RegistrationForm() {
 
                         <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.tshirtSize && Boolean(formik.errors.tshirtSize)}>
                             <InputLabel id="tshirt-label">T-shirt Size</InputLabel>
-                            <Select labelId="tshirt-label" id="tshirtSize" name="tshirtSize" label="T-shirt Size"
-                                value={formik.values.tshirtSize} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                            <Select
+                                labelId="tshirt-label"
+                                id="tshirtSize"
+                                name="tshirtSize"
+                                label="T-shirt Size"
+                                value={formik.values.tshirtSize}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
                                 sx={{ borderRadius: 0 }}
                             >
                                 {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map((s) => (
-                                    <MenuItem key={s} value={s}>{s}</MenuItem>
+                                    <MenuItem key={s} value={s}>
+                                        {s}
+                                    </MenuItem>
                                 ))}
                             </Select>
                             {formik.touched.tshirtSize && formik.errors.tshirtSize && <FormHelperText>{formik.errors.tshirtSize}</FormHelperText>}
@@ -368,12 +436,20 @@ function RegistrationForm() {
 
                     <FormControl fullWidth size="small" sx={fieldSx} error={formik.touched.heardFrom && Boolean(formik.errors.heardFrom)}>
                         <InputLabel id="heard-label">How did you hear about us?</InputLabel>
-                        <Select labelId="heard-label" id="heardFrom" name="heardFrom" label="How did you hear about us?"
-                            value={formik.values.heardFrom} onChange={formik.handleChange} onBlur={formik.handleBlur}
+                        <Select
+                            labelId="heard-label"
+                            id="heardFrom"
+                            name="heardFrom"
+                            label="How did you hear about us?"
+                            value={formik.values.heardFrom}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
                             sx={{ borderRadius: 0 }}
                         >
                             {['Instagram / Social Media', 'Friend / Word of mouth', 'Athayog Community', 'Google Search', 'Flyer / Poster', 'Other'].map((opt) => (
-                                <MenuItem key={opt} value={opt}>{opt}</MenuItem>
+                                <MenuItem key={opt} value={opt}>
+                                    {opt}
+                                </MenuItem>
                             ))}
                         </Select>
                         {formik.touched.heardFrom && formik.errors.heardFrom && <FormHelperText>{formik.errors.heardFrom}</FormHelperText>}
@@ -384,8 +460,16 @@ function RegistrationForm() {
                             Do you have prior yoga experience?
                         </FormLabel>
                         <RadioGroup row name="hasYogaExperience" value={formik.values.hasYogaExperience} onChange={formik.handleChange}>
-                            <FormControlLabel value="yes" control={<Radio size="small" sx={{ color: T.sage, '&.Mui-checked': { color: T.sage } }} />} label={<Typography sx={{ fontSize: '0.84rem' }}>Yes</Typography>} />
-                            <FormControlLabel value="no" control={<Radio size="small" sx={{ color: T.sage, '&.Mui-checked': { color: T.sage } }} />} label={<Typography sx={{ fontSize: '0.84rem' }}>No</Typography>} />
+                            <FormControlLabel
+                                value="yes"
+                                control={<Radio size="small" sx={{ color: T.sage, '&.Mui-checked': { color: T.sage } }} />}
+                                label={<Typography sx={{ fontSize: '0.84rem' }}>Yes</Typography>}
+                            />
+                            <FormControlLabel
+                                value="no"
+                                control={<Radio size="small" sx={{ color: T.sage, '&.Mui-checked': { color: T.sage } }} />}
+                                label={<Typography sx={{ fontSize: '0.84rem' }}>No</Typography>}
+                            />
                         </RadioGroup>
                     </FormControl>
 
@@ -416,14 +500,14 @@ function RegistrationForm() {
                         By registering you agree to Atha Yog Living&apos;s{' '}
                         <Link href="https://athayogliving.com/privacy-policy" underline="hover" sx={{ color: T.gold }}>
                             Privacy Policy
-                        </Link>.
+                        </Link>
+                        .
                     </Typography>
                 </Stack>
             </Box>
         </>
     )
 }
-
 
 // ─── Register Section ─────────────────────────────────────────────────────────
 export function RegisterSection() {
@@ -479,7 +563,6 @@ export function RegisterSection() {
         <Box component="section" id="register-section" sx={{ py: { xs: 8, md: 12 }, bgcolor: T.cream }}>
             <Container maxWidth="lg">
                 <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: '3rem', alignItems: 'start' }}>
-
                     {/* Left copy */}
                     <Box>
                         <EyebrowLabel>Free Registration</EyebrowLabel>
@@ -490,14 +573,10 @@ export function RegisterSection() {
                             Reserve your spot at Bangalore&apos;s International Day of Yoga 2026 celebration. Free and open to everyone — residents, professionals, students, and wellness enthusiasts.
                         </Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.8rem', p: '0.9rem 1.1rem', mb: '0.9rem', bgcolor: T.sageL, borderLeft: `3px solid ${T.sage}` }}>
-                            <Typography sx={{ fontSize: '0.8rem', color: T.sage, fontWeight: 500 }}>
-                                On-site registration opens at 6:00 AM. Pre-register to secure your spot.
-                            </Typography>
+                            <Typography sx={{ fontSize: '0.8rem', color: T.sage, fontWeight: 500 }}>On-site registration opens at 6:00 AM. Pre-register to secure your spot.</Typography>
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.8rem', p: '0.9rem 1.1rem', mb: '1.4rem', bgcolor: T.goldL, borderLeft: `3px solid ${T.gold}` }}>
-                            <Typography sx={{ fontSize: '0.8rem', color: T.gold, fontWeight: 500 }}>
-                                Mass yoga session from 7:00&ndash;8:00 AM. All levels welcome.
-                            </Typography>
+                            <Typography sx={{ fontSize: '0.8rem', color: T.gold, fontWeight: 500 }}>Mass yoga session from 7:00&ndash;8:00 AM. All levels welcome.</Typography>
                         </Box>
                         <Box sx={{ mt: 3 }}>
                             <Typography sx={{ fontSize: '0.78rem', color: T.ink3, mb: '1rem', textTransform: 'uppercase', letterSpacing: 1, fontWeight: 600 }}>Dignitaries</Typography>
@@ -505,12 +584,7 @@ export function RegisterSection() {
                                 {DIGNITARIES.map((d) => (
                                     <Box key={d.name} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                                         {d.image && (
-                                            <Box
-                                                component="img"
-                                                src={d.image}
-                                                alt={d.name}
-                                                sx={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${T.border}` }}
-                                            />
+                                            <Box component="img" src={d.image} alt={d.name} sx={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover', border: `1px solid ${T.border}` }} />
                                         )}
                                         <Box>
                                             <Typography sx={{ fontSize: '0.88rem', color: T.earth, fontWeight: 600, lineHeight: 1.2 }}>{d.name}</Typography>
@@ -523,33 +597,32 @@ export function RegisterSection() {
                     </Box>
 
                     {/* Right form card */}
-                    <Box 
-                        id="register" 
-                        sx={{ 
-                            position: 'relative', 
-                            overflow: 'hidden', 
-                            bgcolor: T.white, 
-                            border: `1px solid ${T.border}`, 
+                    <Box
+                        id="register"
+                        sx={{
+                            position: 'relative',
+                            overflow: 'hidden',
+                            bgcolor: T.white,
+                            border: `1px solid ${T.border}`,
                             p: { xs: '1.5rem', md: '2rem' },
-                            scrollMarginTop: { xs: '100px', md: '120px' } 
+                            scrollMarginTop: { xs: '100px', md: '120px' },
                         }}
                     >
-                        {isDownloading && (
-                            <YogaLoader step="Looking up ticket details..." pct={50} />
-                        )}
+                        {isDownloading && <YogaLoader step="Looking up ticket details..." pct={50} />}
                         {mode === 'register' ? (
                             <>
                                 <RegistrationForm />
                                 <Box sx={{ mt: 3, pt: 3, borderTop: `1px solid ${T.border}`, textAlign: 'center' }}>
                                     <Typography sx={{ fontSize: '0.85rem', color: T.ink2, fontFamily: 'var(--font-inter)' }}>
                                         Already registered?{' '}
-                                        <Box 
-                                            component="span" 
+                                        <Box
+                                            component="span"
                                             role="button"
                                             tabIndex={0}
                                             onClick={() => setMode('download')}
                                             onKeyDown={(e) => e.key === 'Enter' && setMode('download')}
-                                            sx={{ color: T.gold, fontWeight: 600, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>
+                                            sx={{ color: T.gold, fontWeight: 600, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
+                                        >
                                             Download your ticket here.
                                         </Box>
                                     </Typography>
@@ -557,51 +630,57 @@ export function RegisterSection() {
                             </>
                         ) : (
                             <Box>
-                                <Typography sx={{
-                                    fontFamily: 'var(--font-playfair)', fontSize: '1.3rem',
-                                    color: T.earth, mb: 1, fontWeight: 400,
-                                }}>
+                                <Typography
+                                    sx={{
+                                        fontFamily: 'var(--font-playfair)',
+                                        fontSize: '1.3rem',
+                                        color: T.earth,
+                                        mb: 1,
+                                        fontWeight: 400,
+                                    }}
+                                >
                                     Retrieve Your Ticket
                                 </Typography>
                                 <Typography sx={{ fontSize: '0.84rem', color: T.ink2, mb: 3, fontFamily: 'var(--font-inter)', lineHeight: 1.65 }}>
                                     Enter your email or phone number to fetch your event ticket.
                                 </Typography>
                                 <Box component="form" onSubmit={handleDownloadSubmit}>
-                                    <TextField
-                                        fullWidth size="small"
-                                        label="Email or Phone Number"
-                                        value={downloadId}
-                                        onChange={(e) => setDownloadId(e.target.value)}
-                                        sx={{ ...fieldSx, mb: 2 }}
-                                    />
-                                    {retrieveError && (
-                                        <Typography sx={{ color: 'error.main', fontSize: '0.8rem', mb: 2, fontFamily: 'var(--font-inter)' }}>
-                                            {retrieveError}
-                                        </Typography>
-                                    )}
-                                    <Button type="submit" fullWidth disabled={isDownloading} sx={{
-                                        bgcolor: T.sage, color: T.white,
-                                        borderRadius: 0, py: '0.85rem',
-                                        fontSize: '0.8rem', fontWeight: 500,
-                                        letterSpacing: '0.05em', fontFamily: 'var(--font-inter)',
-                                        textTransform: 'none', boxShadow: 'none',
-                                        mb: 2,
-                                        '&:hover': { bgcolor: T.earth, boxShadow: 'none' },
-                                        '&:disabled': { bgcolor: T.border, color: T.ink3 },
-                                    }}>
+                                    <TextField fullWidth size="small" label="Email or Phone Number" value={downloadId} onChange={(e) => setDownloadId(e.target.value)} sx={{ ...fieldSx, mb: 2 }} />
+                                    {retrieveError && <Typography sx={{ color: 'error.main', fontSize: '0.8rem', mb: 2, fontFamily: 'var(--font-inter)' }}>{retrieveError}</Typography>}
+                                    <Button
+                                        type="submit"
+                                        fullWidth
+                                        disabled={isDownloading}
+                                        sx={{
+                                            bgcolor: T.sage,
+                                            color: T.white,
+                                            borderRadius: 0,
+                                            py: '0.85rem',
+                                            fontSize: '0.8rem',
+                                            fontWeight: 500,
+                                            letterSpacing: '0.05em',
+                                            fontFamily: 'var(--font-inter)',
+                                            textTransform: 'none',
+                                            boxShadow: 'none',
+                                            mb: 2,
+                                            '&:hover': { bgcolor: T.earth, boxShadow: 'none' },
+                                            '&:disabled': { bgcolor: T.border, color: T.ink3 },
+                                        }}
+                                    >
                                         {isDownloading ? 'Retrieving…' : 'Retrieve Ticket'}
                                     </Button>
                                 </Box>
                                 <Box sx={{ mt: 3, pt: 3, borderTop: `1px solid ${T.border}`, textAlign: 'center' }}>
                                     <Typography sx={{ fontSize: '0.85rem', color: T.ink2, fontFamily: 'var(--font-inter)' }}>
                                         Need to register?{' '}
-                                        <Box 
-                                            component="span" 
+                                        <Box
+                                            component="span"
                                             role="button"
                                             tabIndex={0}
                                             onClick={() => setMode('register')}
                                             onKeyDown={(e) => e.key === 'Enter' && setMode('register')}
-                                            sx={{ color: T.gold, fontWeight: 600, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}>
+                                            sx={{ color: T.gold, fontWeight: 600, cursor: 'pointer', '&:hover': { textDecoration: 'underline' } }}
+                                        >
                                             Go back to registration.
                                         </Box>
                                     </Typography>
