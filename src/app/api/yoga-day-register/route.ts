@@ -1,37 +1,41 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { initAdmin } from '@/db/firebaseAdmin';
+import { NextRequest, NextResponse } from 'next/server'
+import { initAdmin } from '@/db/firebaseAdmin'
 
 export async function POST(request: NextRequest) {
     try {
-        const body = await request.json();
-        const { formData, collectionName, fileUrl } = body;
+        const body = await request.json()
+        const { formData, collectionName, fileUrl } = body
 
         if (!formData || !collectionName || !fileUrl) {
-            return NextResponse.json({ message: 'Missing required data' }, { status: 400 });
+            return NextResponse.json({ message: 'Missing required data' }, { status: 400 })
         }
 
-        const { phone, email, fullName, ticketID } = formData;
+        if (collectionName !== 'arambhaForm26') {
+            return NextResponse.json({ message: 'Invalid collection' }, { status: 400 })
+        }
+
+        const { phone, email, fullName, ticketID } = formData
 
         if (!phone || !email || !fullName || !ticketID) {
-            return NextResponse.json({ message: 'Missing required user fields' }, { status: 400 });
+            return NextResponse.json({ message: 'Missing required user fields' }, { status: 400 })
         }
 
-        const { firestore } = await initAdmin();
-        const origin = request.nextUrl.origin;
+        const { firestore } = await initAdmin()
+        const origin = request.nextUrl.origin
 
         // 1. Verify duplicates to prevent double-charging/registering if user double clicks
-        const phoneQuery = await firestore.collection(collectionName).where('phone', '==', phone).limit(1).get();
-        const emailQuery = await firestore.collection(collectionName).where('email', '==', email).limit(1).get();
+        const phoneQuery = await firestore.collection(collectionName).where('phone', '==', phone).limit(1).get()
+        const emailQuery = await firestore.collection(collectionName).where('email', '==', email).limit(1).get()
 
         if (!phoneQuery.empty || !emailQuery.empty) {
-             // If the existing record is valid (emailSent), block duplicate.
+            // If the existing record is valid (emailSent), block duplicate.
             // If emailSent is false, it might be an orphaned record, we could delete it, but let's just block it to be safe or follow previous duplicate logic.
-            const existingDoc = !phoneQuery.empty ? phoneQuery.docs[0] : emailQuery.docs[0];
+            const existingDoc = !phoneQuery.empty ? phoneQuery.docs[0] : emailQuery.docs[0]
             if (existingDoc.data().emailSent !== false) {
-                 return NextResponse.json({ message: 'Phone or email already registered' }, { status: 409 });
+                return NextResponse.json({ message: 'Phone or email already registered' }, { status: 409 })
             } else {
-                 // Delete stuck record and allow proceeding
-                 await existingDoc.ref.delete();
+                // Delete stuck record and allow proceeding
+                await existingDoc.ref.delete()
             }
         }
 
@@ -41,10 +45,10 @@ export async function POST(request: NextRequest) {
             fileUrl,
             emailSent: false,
             whatsappSent: false,
-            createdAt: new Date().toISOString()
-        };
+            createdAt: new Date().toISOString(),
+        }
 
-        const docRef = await firestore.collection(collectionName).add(newRecord);
+        const docRef = await firestore.collection(collectionName).add(newRecord)
 
         // 3. Send Email and WhatsApp sequentially/concurrently via local endpoints
         const [emailRes, whatsappRes] = await Promise.allSettled([
@@ -57,36 +61,36 @@ export async function POST(request: NextRequest) {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: fullName, phoneNumber: phone, registrationId: ticketID, pdfUrl: fileUrl }),
-            })
-        ]);
+            }),
+        ])
 
-        let emailSuccess = false;
-        let whatsappSuccess = false;
+        let emailSuccess = false
+        let whatsappSuccess = false
 
         if (emailRes.status === 'fulfilled' && emailRes.value.ok) {
-            emailSuccess = true;
+            emailSuccess = true
         } else {
-             console.error('[Register API] Email failed', emailRes);
+            console.error('[Register API] Email failed', emailRes)
         }
 
         if (whatsappRes.status === 'fulfilled' && whatsappRes.value.ok) {
-            whatsappSuccess = true;
+            whatsappSuccess = true
         } else {
-             console.error('[Register API] WhatsApp failed', whatsappRes);
+            console.error('[Register API] WhatsApp failed', whatsappRes)
         }
 
         // 4. Update the DB with the status
         await docRef.update({
             emailSent: emailSuccess,
-            whatsappSent: whatsappSuccess
-        });
+            whatsappSent: whatsappSuccess,
+        })
 
         // 5. If anything failed, send an alert to the admin via Resend
         if (!emailSuccess || !whatsappSuccess) {
             const adminEmail = process.env.ADMIN_EMAIL
-            const resendApiKey = process.env.NEXT_PUBLIC_RESEND_API_KEY;
+            const resendApiKey = process.env.NEXT_PUBLIC_RESEND_API_KEY
 
-            if (resendApiKey && adminEmail)  {
+            if (resendApiKey && adminEmail) {
                 try {
                     const errorDetail = {
                         registrant: fullName,
@@ -96,7 +100,7 @@ export async function POST(request: NextRequest) {
                         emailStatus: emailSuccess ? '✅ Success' : '❌ Failed',
                         whatsappStatus: whatsappSuccess ? '✅ Success' : '❌ Failed',
                         timestamp: new Date().toLocaleString(),
-                    };
+                    }
 
                     await fetch(`${origin}/api/send-email`, {
                         method: 'POST',
@@ -107,9 +111,9 @@ export async function POST(request: NextRequest) {
                             ticketID: `ALERT: ${ticketID}`,
                             fileUrl: fileUrl, // Include the ticket link for easy manual forwarding
                         }),
-                    });
+                    })
                 } catch (adminErr) {
-                    console.error('[Register API] Failed to send admin alert', adminErr);
+                    console.error('[Register API] Failed to send admin alert', adminErr)
                 }
             }
         }
@@ -118,23 +122,16 @@ export async function POST(request: NextRequest) {
             return NextResponse.json(
                 { message: 'Registered, but failed to send both email and WhatsApp.', ticketID },
                 { status: 206 } // Partial Content
-            );
+            )
         } else if (!emailSuccess) {
-             return NextResponse.json(
-                { message: 'Registered, but failed to send email.', ticketID },
-                { status: 206 }
-            );
+            return NextResponse.json({ message: 'Registered, but failed to send email.', ticketID }, { status: 206 })
         } else if (!whatsappSuccess) {
-             return NextResponse.json(
-                { message: 'Registered, but failed to send WhatsApp.', ticketID },
-                { status: 206 }
-            );
+            return NextResponse.json({ message: 'Registered, but failed to send WhatsApp.', ticketID }, { status: 206 })
         }
 
-        return NextResponse.json({ message: 'Registration successful', ticketID }, { status: 200 });
-
+        return NextResponse.json({ message: 'Registration successful', ticketID }, { status: 200 })
     } catch (error: any) {
-        console.error('Error in /api/yoga-day-register:', error.message || error);
-        return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
+        console.error('Error in /api/yoga-day-register:', error.message || error)
+        return NextResponse.json({ message: 'Internal server error' }, { status: 500 })
     }
 }
