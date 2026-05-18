@@ -2,7 +2,7 @@ import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
 import FormSubmissionTemplate from '@/components/FormSubmissionTemplate'
 
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: Request) {
     try {
@@ -14,9 +14,7 @@ export async function POST(req: Request) {
         }
 
         // Format the subject line nicely
-        const formattedTitle = collectionName
-            .replace(/([A-Z])/g, ' $1')
-            .replace(/^./, (str: string) => str.toUpperCase())
+        const formattedTitle = collectionName.replace(/([A-Z])/g, ' $1').replace(/^./, (str: string) => str.toUpperCase())
 
         const { data, error } = await resend.emails.send({
             from: 'AthayogLiving Forms <info@athayogliving.com>',

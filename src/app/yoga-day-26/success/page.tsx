@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { ThemeProvider } from '@mui/material/styles'
 import { Box, Container, Typography, CircularProgress, List, ListItem, ListItemText, Button, Grid } from '@mui/material'
 import { yogaTheme } from '../_components/theme'
+import { CheckCircleOutlineRounded, WarningAmberRounded } from '@mui/icons-material'
 
 const T = {
     earth: '#1a2016',
@@ -21,17 +22,67 @@ const T = {
     white: '#fff',
 }
 
+const bannerBase = {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: '12px',
+    px: { xs: 2.5, sm: 3 },
+    py: 1.75,
+    borderRadius: 'var(--border-radius-lg)',
+}
+
+const iconCircle = {
+    width: 32,
+    height: 32,
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    mt: '2px',
+}
+
+const TicketChip = ({ id }: { id: string }) => (
+    <Box
+        component="span"
+        sx={{
+            display: 'inline-block',
+            mt: 0.75,
+            px: 1,
+            py: '2px',
+            fontFamily: 'monospace',
+            fontSize: '0.75rem',
+            bgcolor: 'background.paper',
+            border: '0.5px solid',
+            borderColor: 'divider',
+            borderRadius: 1,
+        }}
+    >
+        Ticket #{id}
+    </Box>
+)
+
 function SuccessPageContent() {
     const searchParams = useSearchParams()
     const ticketID = searchParams.get('ticketID')
+    const emailSent = searchParams.get('email') === '1'
+    const whatsappSent = searchParams.get('whatsapp') === '1'
+
+    // Determine notification status (defaults to true for backwards-compat)
+    const bothFailed = searchParams.has('email') && searchParams.has('whatsapp') && !emailSent && !whatsappSent
+    const oneSucceeded = (emailSent || whatsappSent) && !(emailSent && whatsappSent)
+    const bothSucceeded = emailSent && whatsappSent
 
     const [ticketData, setTicketData] = useState<any>(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
 
     useEffect(() => {
-        if (!ticketID) { setLoading(false); return }
-        ; (async () => {
+        if (!ticketID) {
+            setLoading(false)
+            return
+        }
+        ;(async () => {
             try {
                 const res = await fetch('/api/verify-yoga-day', {
                     method: 'POST',
@@ -39,7 +90,10 @@ function SuccessPageContent() {
                     body: JSON.stringify({ ticketID }),
                 })
                 const data = await res.json()
-                if (!res.ok) { setError(data.message || 'Could not fetch ticket.'); return }
+                if (!res.ok) {
+                    setError(data.message || 'Could not fetch ticket.')
+                    return
+                }
                 setTicketData(data.data)
             } catch {
                 setError('Failed to fetch ticket info.')
@@ -50,11 +104,11 @@ function SuccessPageContent() {
     }, [ticketID])
 
     const handleDownload = (e: React.MouseEvent) => {
-        if (!ticketData?.fileUrl) return;
-        e.preventDefault();
-        const downloadUrl = `/api/download-ticket?url=${encodeURIComponent(ticketData.fileUrl)}&name=${encodeURIComponent(`Athayog-Yoga-Day-Ticket-${ticketData.ticketID}.pdf`)}`;
-        window.location.href = downloadUrl;
-    };
+        if (!ticketData?.fileUrl) return
+        e.preventDefault()
+        const downloadUrl = `/api/download-ticket?url=${encodeURIComponent(ticketData.fileUrl)}&name=${encodeURIComponent(`Athayog-Yoga-Day-Ticket-${ticketData.ticketID}.pdf`)}`
+        window.location.href = downloadUrl
+    }
 
     if (loading) {
         return (
@@ -67,60 +121,114 @@ function SuccessPageContent() {
     if (error) {
         return (
             <Box sx={{ minHeight: '100dvh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', bgcolor: T.cream }}>
-                <Typography color="error" variant="h6">{error}</Typography>
-                <Button component={Link} href="/yoga-day-26" sx={{ mt: 2, bgcolor: T.earth, color: T.white }}>Go Back</Button>
+                <Typography color="error" variant="h6">
+                    {error}
+                </Typography>
+                <Button component={Link} href="/yoga-day-26" sx={{ mt: 2, bgcolor: T.earth, color: T.white }}>
+                    Go Back
+                </Button>
             </Box>
         )
     }
 
-    if (!ticketData) return null;
+    if (!ticketData) return null
 
     return (
         <ThemeProvider theme={yogaTheme}>
             <Box sx={{ minHeight: '100dvh', bgcolor: T.cream, pt: { xs: 12, md: 16 }, pb: { xs: 4, md: 8 }, fontFamily: 'var(--font-inter)' }}>
                 <Container maxWidth="md">
-
                     {/* Main Ticket Card */}
-                    <Box sx={{
-                        bgcolor: T.white,
-                        borderRadius: 3,
-                        boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
-                        overflow: 'hidden',
-                        display: 'flex',
-                        flexDirection: 'column'
-                    }}>
-
+                    <Box
+                        sx={{
+                            bgcolor: T.white,
+                            borderRadius: 3,
+                            border: `1px solid ${T.border}`, // ← replaces boxShadow
+                            overflow: 'hidden',
+                            display: 'flex',
+                            flexDirection: 'column',
+                        }}
+                    >
                         {/* HEADER - Solid Color Band */}
-                        <Box sx={{
-                            bgcolor: '#2b3524', // Elegant Green instead of Earth Black
-                            color: T.white,
-                            p: { xs: 3, sm: 4 },
-                            textAlign: 'center',
-                            position: 'relative'
-                        }}>
-                            <Typography variant="overline" sx={{ color: T.gold, fontWeight: 700, letterSpacing: 3 }}>Athayog Presents</Typography>
-                            <Typography variant="h3" sx={{ fontFamily: 'var(--font-playfair)', mt: 1, mb: 1, fontWeight: 600, fontSize: { xs: '2rem', md: '2.5rem' } }}>Yoga Arambha 2026</Typography>
-                            <Typography variant="subtitle1" sx={{ color: T.sageL, fontWeight: 500, mb: 2 }}>International Day of Yoga Celebration</Typography>
+                        <Box
+                            sx={{
+                                bgcolor: '#2b3524', // Elegant Green instead of Earth Black
+                                color: T.white,
+                                p: { xs: 3, sm: 4 },
+                                textAlign: 'center',
+                                position: 'relative',
+                            }}
+                        >
+                            <Typography variant="overline" sx={{ color: T.gold, fontWeight: 700, letterSpacing: 3 }}>
+                                Athayog Presents
+                            </Typography>
+                            <Typography variant="h3" sx={{ fontFamily: 'var(--font-playfair)', mt: 1, mb: 1, fontWeight: 600, fontSize: { xs: '2rem', md: '2.5rem' } }}>
+                                Yoga Arambha 2026
+                            </Typography>
+                            <Typography variant="subtitle1" sx={{ color: T.sageL, fontWeight: 500, mb: 2 }}>
+                                International Day of Yoga Celebration
+                            </Typography>
 
                             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap', color: T.white }}>
-                                <Typography variant="subtitle2" sx={{ bgcolor: 'rgba(255,255,255,0.1)', px: 2, py: 0.5, borderRadius: 1 }}>21st June 2026 | Sunday</Typography>
-                                <Typography variant="subtitle2" sx={{ bgcolor: 'rgba(255,255,255,0.1)', px: 2, py: 0.5, borderRadius: 1 }}>Indiranagar Club, Bengaluru</Typography>
+                                <Typography variant="subtitle2" sx={{ bgcolor: 'rgba(255,255,255,0.1)', px: 2, py: 0.5, borderRadius: 1 }}>
+                                    21st June 2026 | Sunday
+                                </Typography>
+                                <Typography variant="subtitle2" sx={{ bgcolor: 'rgba(255,255,255,0.1)', px: 2, py: 0.5, borderRadius: 1 }}>
+                                    Indiranagar Club, Bengaluru
+                                </Typography>
                             </Box>
                         </Box>
 
+                        {bothFailed && (
+                            <Box sx={{ ...bannerBase, bgcolor: '#fffbeb', border: `0.5px solid #f59e0b` }}>
+                                <Box sx={{ ...iconCircle, bgcolor: '#fef3c7', border: `0.5px solid #f59e0b` }}>
+                                    <WarningAmberRounded sx={{ fontSize: 16, color: '#b45309' }} />
+                                </Box>
+                                <Box>
+                                    <Typography sx={{ fontSize: '0.875rem', fontWeight: 500, color: '#92400e', mb: '2px' }}>Confirmation couldn't be sent</Typography>
+                                    <Typography sx={{ fontSize: '0.8125rem', color: T.ink3 }}>
+                                        Download your ticket using the button below. If you need help, email{' '}
+                                        <a href={`mailto:info@athayogliving.com?subject=Ticket Confirmation&body=My registration ID: ${ticketID}`} style={{ color: T.sage, fontWeight: 500 }}>
+                                            info@athayogliving.com
+                                        </a>{' '}
+                                        with your registration ID <strong>{ticketID}</strong>.
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        )}
+
+                        {oneSucceeded && (
+                            <Box sx={{ ...bannerBase, bgcolor: '#fffbeb', border: `0.5px solid #f59e0b` }}>
+                                <Box sx={{ ...iconCircle, bgcolor: '#fef3c7', border: `0.5px solid #f59e0b` }}>
+                                    <WarningAmberRounded sx={{ fontSize: 16, color: '#b45309' }} />
+                                </Box>
+                                <Box>
+                                    <Typography sx={{ fontSize: '0.875rem', fontWeight: 500, color: '#92400e', mb: '2px' }}>
+                                        {emailSent ? 'Confirmation email sent' : 'WhatsApp confirmation sent'}
+                                    </Typography>
+                                    <Typography sx={{ fontSize: '0.8125rem', color: T.ink3 }}>
+                                        {emailSent
+                                            ? "We couldn't reach you on WhatsApp — check your email or download your ticket using the button below."
+                                            : "We couldn't reach your email — check your WhatsApp or download your ticket using the button below."}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        )}
+
                         {/* BODY - Split Layout on Desktop */}
                         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
-
                             {/* LEFT COLUMN: Details & Information */}
-                            <Box sx={{
-                                flex: 1,
-                                p: { xs: 3, sm: 4 },
-                                borderRight: { md: `2px dashed ${T.border}` },
-                                borderBottom: { xs: `2px dashed ${T.border}`, md: 'none' }
-                            }}>
-
+                            <Box
+                                sx={{
+                                    flex: 1,
+                                    p: { xs: 3, sm: 4 },
+                                    borderRight: { md: `2px dashed ${T.border}` },
+                                    borderBottom: { xs: `2px dashed ${T.border}`, md: 'none' },
+                                }}
+                            >
                                 <Box mb={4}>
-                                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 2, fontWeight: 600, borderBottom: `1px solid ${T.border}`, pb: 1 }}>Participant Details</Typography>
+                                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 2, fontWeight: 600, borderBottom: `1px solid ${T.border}`, pb: 1 }}>
+                                        Participant Details
+                                    </Typography>
                                     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '130px 1fr' }, gap: { xs: 1, sm: 1.5 } }}>
                                         <Typography sx={{ color: T.ink3, fontWeight: 500 }}>Name:</Typography>
                                         <Typography sx={{ color: T.ink, fontWeight: 500 }}>{ticketData.name}</Typography>
@@ -134,7 +242,9 @@ function SuccessPageContent() {
                                 </Box>
 
                                 <Box mb={4}>
-                                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 2, fontWeight: 600, borderBottom: `1px solid ${T.border}`, pb: 1 }}>Event Schedule</Typography>
+                                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 2, fontWeight: 600, borderBottom: `1px solid ${T.border}`, pb: 1 }}>
+                                        Event Schedule
+                                    </Typography>
                                     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '200px 1fr' }, gap: { xs: 1, sm: 1.5 } }}>
                                         <Typography sx={{ color: T.ink3, fontWeight: 500 }}>Reporting & Registration:</Typography>
                                         <Typography sx={{ color: T.ink }}>6:00 AM onwards</Typography>
@@ -146,7 +256,9 @@ function SuccessPageContent() {
                                 </Box>
 
                                 <Box mb={4}>
-                                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 2, fontWeight: 600, borderBottom: `1px solid ${T.border}`, pb: 1 }}>Distinguished Guests</Typography>
+                                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 2, fontWeight: 600, borderBottom: `1px solid ${T.border}`, pb: 1 }}>
+                                        Distinguished Guests
+                                    </Typography>
                                     <Grid container spacing={3}>
                                         <Grid item xs={12} sm={6}>
                                             <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
@@ -182,15 +294,17 @@ function SuccessPageContent() {
                                 </Box>
 
                                 <Box>
-                                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 1, fontWeight: 600 }}>Important Instructions</Typography>
+                                    <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.sage, mb: 1, fontWeight: 600 }}>
+                                        Important Instructions
+                                    </Typography>
                                     <List sx={{ pt: 0, '& .MuiListItem-root': { py: 0.25, px: 0 } }}>
                                         {[
-                                            "Carry this pass on event day",
-                                            "Present QR code at registration desk",
-                                            "Wear appropriate yoga attire",
-                                            "Bring yoga mat & water bottle",
-                                            "Arrive 15 minutes before reporting time",
-                                            "Complimentary T-shirt, refreshments & saplings provided"
+                                            'Carry this pass on event day',
+                                            'Present QR code at registration desk',
+                                            'Wear appropriate yoga attire',
+                                            'Bring yoga mat & water bottle',
+                                            'Arrive 15 minutes before reporting time',
+                                            'Complimentary T-shirt, refreshments & saplings provided',
                                         ].map((instruction, index) => (
                                             <ListItem key={index} sx={{ alignItems: 'flex-start' }}>
                                                 <Box sx={{ width: 5, height: 5, borderRadius: '50%', bgcolor: T.gold, mr: 1.5, mt: 1, flexShrink: 0 }} />
@@ -199,28 +313,42 @@ function SuccessPageContent() {
                                         ))}
                                     </List>
                                 </Box>
-
                             </Box>
 
                             {/* RIGHT COLUMN: QR Code & Actions */}
-                            <Box sx={{
-                                width: { xs: '100%', md: '340px' },
-                                bgcolor: T.cream,
-                                p: { xs: 3, sm: 4 },
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}>
-
-                                <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.earth, mb: 3, fontWeight: 600, textAlign: 'center' }}>Your Entry Pass</Typography>
+                            <Box
+                                sx={{
+                                    width: { xs: '100%', md: '340px' },
+                                    bgcolor: T.cream,
+                                    p: { xs: 3, sm: 4 },
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <Typography variant="h6" sx={{ fontFamily: 'var(--font-playfair)', color: T.earth, mb: 3, fontWeight: 600, textAlign: 'center' }}>
+                                    Your Entry Pass
+                                </Typography>
 
                                 {ticketData.qrDataUrl ? (
                                     <Box sx={{ p: 2, display: 'inline-block', border: `1px solid ${T.border}`, borderRadius: 3, bgcolor: T.white, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
                                         <img src={ticketData.qrDataUrl} alt="Entry QR Code" width={220} height={220} style={{ display: 'block' }} />
                                     </Box>
                                 ) : (
-                                    <Box sx={{ width: 220, height: 220, border: `1px solid ${T.border}`, mx: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: T.white, borderRadius: 3 }}>
+                                    <Box
+                                        sx={{
+                                            width: 220,
+                                            height: 220,
+                                            border: `1px solid ${T.border}`,
+                                            mx: 'auto',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            bgcolor: T.white,
+                                            borderRadius: 3,
+                                        }}
+                                    >
                                         <Typography sx={{ color: T.ink3 }}>QR Code</Typography>
                                     </Box>
                                 )}
@@ -246,7 +374,7 @@ function SuccessPageContent() {
                                                 borderRadius: 2,
                                                 textTransform: 'none',
                                                 fontSize: '1rem',
-                                                '&:hover': { bgcolor: '#2b3524' }
+                                                '&:hover': { bgcolor: '#2b3524' },
                                             }}
                                         >
                                             Download PDF Ticket
@@ -262,7 +390,7 @@ function SuccessPageContent() {
                                                 color: T.sage,
                                                 fontWeight: 500,
                                                 textTransform: 'none',
-                                                '&:hover': { bgcolor: 'transparent', textDecoration: 'underline' }
+                                                '&:hover': { bgcolor: 'transparent', textDecoration: 'underline' },
                                             }}
                                         >
                                             ← Register Another Person / Go Back
@@ -275,17 +403,18 @@ function SuccessPageContent() {
                                     <Typography sx={{ fontFamily: 'var(--font-playfair)', color: T.earth, fontSize: '1.1rem', mb: 1.5, fontWeight: 600 }}>Athayog</Typography>
 
                                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, fontSize: '0.85rem' }}>
-                                        <Link href="https://www.athayogliving.com" target="_blank" style={{ color: T.gold, textDecoration: 'none', fontWeight: 500 }}>www.athayogliving.com</Link>
-                                        <Link href="mailto:info@athayogliving.com" style={{ color: T.gold, textDecoration: 'none', fontWeight: 500 }}>info@athayogliving.com</Link>
+                                        <Link href="https://www.athayogliving.com" target="_blank" style={{ color: T.gold, textDecoration: 'none', fontWeight: 500 }}>
+                                            www.athayogliving.com
+                                        </Link>
+                                        <Link href="mailto:info@athayogliving.com" style={{ color: T.gold, textDecoration: 'none', fontWeight: 500 }}>
+                                            info@athayogliving.com
+                                        </Link>
                                         <Typography sx={{ color: T.ink2, fontWeight: 500 }}>+91 8690333111</Typography>
                                     </Box>
                                 </Box>
-
                             </Box>
-
                         </Box>
                     </Box>
-
                 </Container>
             </Box>
         </ThemeProvider>
@@ -294,11 +423,13 @@ function SuccessPageContent() {
 
 export default function YogaDay26SuccessPage() {
     return (
-        <Suspense fallback={
-            <Box sx={{ display: 'flex', minHeight: '100dvh', bgcolor: T.cream, alignItems: 'center', justifyContent: 'center' }}>
-                <CircularProgress sx={{ color: T.gold }} />
-            </Box>
-        }>
+        <Suspense
+            fallback={
+                <Box sx={{ display: 'flex', minHeight: '100dvh', bgcolor: T.cream, alignItems: 'center', justifyContent: 'center' }}>
+                    <CircularProgress sx={{ color: T.gold }} />
+                </Box>
+            }
+        >
             <SuccessPageContent />
         </Suspense>
     )
