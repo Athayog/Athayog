@@ -20,8 +20,8 @@
  *   BREVO_API_KEY  – your Brevo API v3 key
  */
 
-import { NextRequest, NextResponse } from 'next/server';
-import { BrevoClient } from '@getbrevo/brevo';
+import { NextRequest, NextResponse } from 'next/server'
+import { BrevoClient } from '@getbrevo/brevo'
 
 // ── HTML email body (mirrors EmailTemplate.tsx) ─────────────────────────────────
 function buildHtmlBody(name: string, ticketID: string): string {
@@ -89,99 +89,106 @@ function buildHtmlBody(name: string, ticketID: string): string {
 
   <p>With gratitude,<br /><strong>Team Athayog</strong><br /><a href="https://www.athayogliving.com">www.athayogliving.com</a></p>
 </div>
-  `.trim();
+  `.trim()
 }
 
 // Allow-list trusted hosts for ticket PDF retrieval
-const ALLOWED_PDF_HOSTS = new Set<string>([
-    'firebasestorage.googleapis.com',
-]);
+// Allow-list trusted hosts for ticket PDF retrieval
+const ALLOWED_PDF_HOSTS = new Set<string>(['firebasestorage.googleapis.com'])
 
 function validateAndNormalizePdfUrl(input: string): string | null {
     try {
-        const url = new URL(input);
+        const url = new URL(input)
 
-        if (url.protocol !== 'https:') return null;
-        if (url.username || url.password) return null;
-        if (!ALLOWED_PDF_HOSTS.has(url.hostname)) return null;
+        // Basic protocol + auth validation
+        if (url.protocol !== 'https:') return null
+        if (url.username || url.password) return null
 
-        // Enforce Firebase Storage object endpoint for the expected bucket.
-        const requiredPrefix = '/v0/b/authentication-test-7c342.appspot.com/o/';
-        if (!url.pathname.startsWith(requiredPrefix)) return null;
+        // Only allow Firebase Storage host
+        if (!ALLOWED_PDF_HOSTS.has(url.hostname)) return null
 
-        // Validate object key and file type.
-        const encodedObjectPath = url.pathname.slice(requiredPrefix.length);
-        if (!encodedObjectPath) return null;
-        const objectPath = decodeURIComponent(encodedObjectPath);
-        if (!objectPath.toLowerCase().endsWith('.pdf')) return null;
-        if (objectPath.includes('..')) return null;
+        // Allowed Firebase buckets
+        const allowedBuckets = ['authentication-test-7c342.appspot.com', 'athayog-e4ff7.appspot.com']
 
-        // Only allow expected query params for Firebase media download links.
-        const allowedParams = new Set(['alt', 'token']);
+        // Find matching bucket
+        const matchedBucket = allowedBuckets.find((bucket) => url.pathname.startsWith(`/v0/b/${bucket}/o/`))
+
+        if (!matchedBucket) return null
+
+        // Build bucket prefix dynamically
+        const prefix = `/v0/b/${matchedBucket}/o/`
+
+        // Extract encoded object path
+        const encodedObjectPath = url.pathname.slice(prefix.length)
+
+        if (!encodedObjectPath) return null
+
+        // Decode Firebase object path
+        const objectPath = decodeURIComponent(encodedObjectPath)
+
+        // Prevent traversal attempts
+        if (objectPath.includes('..')) return null
+
+        // Only allow expected Firebase query params
+        const allowedParams = new Set(['alt', 'token'])
+
         for (const key of url.searchParams.keys()) {
-            if (!allowedParams.has(key)) return null;
+            if (!allowedParams.has(key)) return null
         }
-        if (url.searchParams.get('alt') !== 'media') return null;
 
-        return url.toString();
+        // Firebase media download URLs should use alt=media
+        if (url.searchParams.get('alt') !== 'media') return null
+
+        return url.toString()
     } catch {
-        return null;
+        return null
     }
 }
 
 // ── Route handler ────────────────────────────────────────────────────────────────
 export async function POST(request: NextRequest) {
     // 1. Parse body
-    let body: { name?: string; email?: string; ticketID?: string; fileUrl?: string };
+    let body: { name?: string; email?: string; ticketID?: string; fileUrl?: string }
     try {
-        body = await request.json();
+        body = await request.json()
     } catch {
-        return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 });
+        return NextResponse.json({ error: 'Invalid JSON body.' }, { status: 400 })
     }
 
-    const { name, email, ticketID, fileUrl } = body;
+    const { name, email, ticketID, fileUrl } = body
 
     if (!name || !email || !ticketID || !fileUrl) {
-        return NextResponse.json(
-            { error: 'Missing required fields: name, email, ticketID, fileUrl.' },
-            { status: 400 }
-        );
+        return NextResponse.json({ error: 'Missing required fields: name, email, ticketID, fileUrl.' }, { status: 400 })
     }
 
-    const safeFileUrl = validateAndNormalizePdfUrl(fileUrl);
+    const safeFileUrl = validateAndNormalizePdfUrl(fileUrl)
     if (!safeFileUrl) {
-        return NextResponse.json(
-            { error: 'Invalid fileUrl. Only HTTPS PDF URLs from trusted hosts are allowed.' },
-            { status: 400 }
-        );
+        return NextResponse.json({ error: 'Invalid fileUrl. Only HTTPS PDF URLs from trusted hosts are allowed.' }, { status: 400 })
     }
 
     // 2. Validate env
-    const apiKey = process.env.BREVO_API_KEY;
+    const apiKey = process.env.BREVO_API_KEY
     if (!apiKey) {
-        console.error('[Brevo] BREVO_API_KEY is not configured.');
-        return NextResponse.json({ error: 'Email service is not configured.' }, { status: 500 });
+        console.error('[Brevo] BREVO_API_KEY is not configured.')
+        return NextResponse.json({ error: 'Email service is not configured.' }, { status: 500 })
     }
 
     // 3. Fetch the PDF and convert to base64 for attachment
-    let pdfBase64: string;
+    let pdfBase64: string
     try {
-        const pdfRes = await fetch(safeFileUrl);
+        const pdfRes = await fetch(safeFileUrl)
         if (!pdfRes.ok) {
-            throw new Error(`PDF fetch failed with status ${pdfRes.status}`);
+            throw new Error(`PDF fetch failed with status ${pdfRes.status}`)
         }
-        const pdfBuffer = await pdfRes.arrayBuffer();
-        pdfBase64 = Buffer.from(pdfBuffer).toString('base64');
+        const pdfBuffer = await pdfRes.arrayBuffer()
+        pdfBase64 = Buffer.from(pdfBuffer).toString('base64')
     } catch (err: any) {
-        console.error('[Brevo] Failed to fetch PDF:', err.message);
-        return NextResponse.json(
-            { error: 'Failed to fetch PDF ticket for attachment.' },
-            { status: 502 }
-        );
+        console.error('[Brevo] Failed to fetch PDF:', err.message)
+        return NextResponse.json({ error: 'Failed to fetch PDF ticket for attachment.' }, { status: 502 })
     }
 
     // 4. Configure Brevo client (new SDK: BrevoClient)
-    const client = new BrevoClient({ apiKey });
+    const client = new BrevoClient({ apiKey })
 
     // 5. Send transactional email
     try {
@@ -196,30 +203,21 @@ export async function POST(request: NextRequest) {
                     name: `${ticketID}.pdf`,
                 },
             ],
-        });
+        })
 
-        console.log('[Brevo] ✅ Email sent successfully:', response);
-        return NextResponse.json({ success: true, data: response });
+        console.log('[Brevo] ✅ Email sent successfully:', response)
+        return NextResponse.json({ success: true, data: response })
     } catch (err: any) {
-        const status = err?.response?.status ?? err?.statusCode;
-        const errBody = err?.response?.body ?? err?.message;
-        console.error(`[Brevo] ❌ Failed to send email (${status}):`, errBody);
+        const status = err?.response?.status ?? err?.statusCode
+        const errBody = err?.response?.body ?? err?.message
+        console.error(`[Brevo] ❌ Failed to send email (${status}):`, errBody)
 
         if (status === 401) {
-            return NextResponse.json(
-                { error: 'Brevo authentication failed. Check BREVO_API_KEY.' },
-                { status: 401 }
-            );
+            return NextResponse.json({ error: 'Brevo authentication failed. Check BREVO_API_KEY.' }, { status: 401 })
         }
         if (status === 400) {
-            return NextResponse.json(
-                { error: 'Brevo rejected the request.', detail: errBody },
-                { status: 400 }
-            );
+            return NextResponse.json({ error: 'Brevo rejected the request.', detail: errBody }, { status: 400 })
         }
-        return NextResponse.json(
-            { error: 'Failed to send email via Brevo.', detail: errBody },
-            { status: 500 }
-        );
+        return NextResponse.json({ error: 'Failed to send email via Brevo.', detail: errBody }, { status: 500 })
     }
 }
