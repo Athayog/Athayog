@@ -1,6 +1,5 @@
 import '@/styles/global.css'
 import theme from '@/styles/theme'
-import Navbar from '@/components/_header'
 import Footer from '@/components/_footer'
 import YogaDayBanner from '@/components/Banner/YogaDayBanner'
 import { repositoryName } from '@/prismicio'
@@ -11,7 +10,10 @@ import { CssBaseline, ThemeProvider } from '@mui/material'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import { SnackbarProvider } from '@/components/SnackbarProvider'
 import { GoogleTagManager } from '@next/third-parties/google'
-import WhatsAppWidget from '@/components/WhatsApp'
+import dynamic from 'next/dynamic'
+
+const Navbar = dynamic(() => import('@/components/_header'))
+const WhatsAppWidget = dynamic(() => import('@/components/WhatsApp'))
 
 const josefin = Josefin_Sans({
     subsets: ['latin'],
