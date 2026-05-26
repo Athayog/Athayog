@@ -111,7 +111,7 @@ export default async function Page({ params }: { params: Params }) {
             name: 'Athayog Living - Personal Yoga Trainer in Indiranagar',
             image: '',
             description:
-                'Book 1-on-1 personal yoga sessions in Indiranagar, Bangalore. Certified trainers, customized one-on-one sessions with expert guidance. Consultation first.',
+                'Become a globally certified yoga teacher in 30 days with AthaYog Living’s residential course. Accredited by Yoga Alliance USA + VYASA with accommodation, practical learning, mentorship, and career support.',
             brand: {
                 '@type': 'Brand',
                 name: 'AthaYog Living',
