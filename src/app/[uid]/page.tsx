@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     //     robots = { index: false, follow: true }
     // }
     return {
-        title: prismic.asText(page.data.title),
+        title: page.data.meta_title || prismic.asText(page.data.title),
         description: page.data.meta_description,
         openGraph: {
             title: page.data.meta_title || undefined,
@@ -111,7 +111,7 @@ export default async function Page({ params }: { params: Params }) {
             name: 'Athayog Living - Personal Yoga Trainer in Indiranagar',
             image: '',
             description:
-                'Become a globally certified yoga teacher in 30 days with AthaYog Living’s residential course. Accredited by Yoga Alliance USA + VYASA with accommodation, practical learning, mentorship, and career support.',
+                'Book 1-on-1 personal yoga sessions in Indiranagar, Bangalore. Certified trainers, customized one-on-one sessions with expert guidance. Consultation first.',
             brand: {
                 '@type': 'Brand',
                 name: 'AthaYog Living',
