@@ -1,30 +1,28 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import { Box } from '@mui/material'
+import FAQCTASection from '@/app/ld/FAQCTASection'
 import GroupsIcon from '@mui/icons-material/Groups'
 import SchoolIcon from '@mui/icons-material/School'
+import FeatureSection from '@/app/ld/FeatureSection'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
 import YogaProgramHero from '@/app/ld/YogaProgramHero'
 import ScheduleIcon from '@mui/icons-material/Schedule'
+import ComparisonSection from '@/app/ld/ComparisonSection'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 const BackgroundHeroImage = '/images/anatomy.jpg'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutlineOutlined'
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import ClassOverviewSection from '@/app/ld/ClassOverviewSection'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 const GirlMeditattngImage = '/images/mental-health/2.png'
 import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutlined'
-
-const FeatureSection = dynamic(() => import('@/app/ld/FeatureSection'))
-const ClassOverviewSection = dynamic(() => import('@/app/ld/ClassOverviewSection'))
-const ComparisonSection = dynamic(() => import('@/app/ld/ComparisonSection'))
-const ImageFeatureSection = dynamic(() => import('@/app/ld/ImageFeatureSection'))
-const TestimonialCTASection = dynamic(() => import('@/app/ld/TestimonialCTASection'))
-const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'))
 
 export default function LandingPage() {
     return (
