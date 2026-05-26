@@ -1,33 +1,31 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import { Box } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home'
 import ForumIcon from '@mui/icons-material/Forum'
 import GavelIcon from '@mui/icons-material/Gavel'
+import FAQCTASection from '@/app/ld/FAQCTASection'
 import RepeatIcon from '@mui/icons-material/Repeat'
+import FeatureSection from '@/app/ld/FeatureSection'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
 const MeditationImage = '/images/Medi.jpg';
+import IconListSection from '@/app/ld/IconListSection'
 import YogaProgramHero from '@/app/ld/YogaProgramHero'
 import ScheduleIcon from '@mui/icons-material/Schedule'
+import BentoGridSection from '@/app/ld/BentoGridSection'
 import DeviceHubIcon from '@mui/icons-material/DeviceHub'
 const PranayamaImage = '/images/pranayama.png';
 import NightlightIcon from '@mui/icons-material/Nightlight'
 const WhoChooseImage = '/images/Who_Chooses.png';
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import NumberedListSection from '@/app/ld/NumberedListSection'
+import SplitContentSection from '@/app/ld/SplitContentSection'
 const ResidentialHeroImage = '/images/residential.jpg';
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
 const ResidentialImage = '/images/residential-yoga.jpg';
 import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
 import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
-
-const FeatureSection = dynamic(() => import('@/app/ld/FeatureSection'))
-const IconListSection = dynamic(() => import('@/app/ld/IconListSection'))
-const BentoGridSection = dynamic(() => import('@/app/ld/BentoGridSection'))
-const ImageFeatureSection = dynamic(() => import('@/app/ld/ImageFeatureSection'))
-const NumberedListSection = dynamic(() => import('@/app/ld/NumberedListSection'))
-const SplitContentSection = dynamic(() => import('@/app/ld/SplitContentSection'))
-const TestimonialCTASection = dynamic(() => import('@/app/ld/TestimonialCTASection'))
-const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'))
 
 export default function LandingPage() {
     return (

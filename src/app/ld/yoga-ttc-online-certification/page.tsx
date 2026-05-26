@@ -1,14 +1,16 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import { Box } from '@mui/material'
 import GavelIcon from '@mui/icons-material/Gavel'
+import FAQCTASection from '@/app/ld/FAQCTASection'
 const EhicsImage = '/images/ethics.jpg'
 import LiveTvIcon from '@mui/icons-material/LiveTv'
 import PublicIcon from '@mui/icons-material/Public'
 import SchoolIcon from '@mui/icons-material/School'
+import FeatureSection from '@/app/ld/FeatureSection'
 const AnatomyImage = '/images/anatomy.jpg'
 const MeditationImage = '/images/Medi.jpg'
+import IconListSection from '@/app/ld/IconListSection'
 import YogaProgramHero from '@/app/ld/YogaProgramHero'
 const TeachingImage = '/images/teaching.jpg'
 const FeedbackImage = '/images/feedback.jpg'
@@ -19,17 +21,13 @@ const WarrirorPose = '/images/warrior_pose.png'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LocationOffIcon from '@mui/icons-material/LocationOff'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutlineOutlined'
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import NumberedListSection from '@/app/ld/NumberedListSection'
+import SplitContentSection from '@/app/ld/SplitContentSection'
 const heroImage = '/images/landing-page-hero-10.jpg'
+import LearningAreasSection from '@/app/ld/LearningAreasSection'
 const CertificationImage = '/images/certification.jpg'
-
-const FeatureSection = dynamic(() => import('@/app/ld/FeatureSection'))
-const IconListSection = dynamic(() => import('@/app/ld/IconListSection'))
-const ImageFeatureSection = dynamic(() => import('@/app/ld/ImageFeatureSection'))
-const NumberedListSection = dynamic(() => import('@/app/ld/NumberedListSection'))
-const SplitContentSection = dynamic(() => import('@/app/ld/SplitContentSection'))
-const LearningAreasSection = dynamic(() => import('@/app/ld/LearningAreasSection'))
-const TestimonialCTASection = dynamic(() => import('@/app/ld/TestimonialCTASection'))
-const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'))
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
 import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
 const GirlBreathignImage = '/images/landing-page-hero-11.jpg'
