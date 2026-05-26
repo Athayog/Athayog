@@ -13,6 +13,7 @@ import useThemeStore from '@/store/useThemeStore'
 import AccountMenu from '@/components/_header/AccountMenu'
 import ScrollListener from '@/hooks/ScrollListener'
 import useAuthStore from '@/store/useAuthStore'
+import { BANNER_HEIGHT } from '@/components/Banner/YogaDayBanner'
 
 const Navbar: React.FC = () => {
     // State for managing open menus independently
@@ -62,6 +63,7 @@ const Navbar: React.FC = () => {
             <AppBar
                 position="fixed"
                 sx={{
+                    top: isYogaDay26 ? 0 : BANNER_HEIGHT,
                     background: isYogaDay26 ? (isScrolled ? '#2b3524' : gradient) : (isScrolled ? '#556940' : gradient),
                     boxShadow: 'none',
                     padding: isYogaDay26 ? (isScrolled ? '6px 20px' : '12px 20px') : (isScrolled ? '10px 20px' : '25px 20px'),
