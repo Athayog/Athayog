@@ -135,7 +135,7 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
                                                 opacity: 0.4,
                                             }}
                                         >
-                                            <Image src={flowerMandela} alt="Flower Mandela" style={{ width: '100%', height: '100%' }} />
+                                            <Image src={flowerMandela} alt="Flower Mandela" width={2270} height={2118} style={{ width: '100%', height: '100%' }} />
                                         </Box>
                                     )}
 
@@ -217,7 +217,7 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
                                             opacity: 0.4,
                                         }}
                                     >
-                                        <Image src={flowerMandela} alt="Flower Mandela" style={{ width: '100%', height: '100%' }} />
+                                        <Image src={flowerMandela} alt="Flower Mandela" width={2270} height={2118} style={{ width: '100%', height: '100%' }} />
                                     </Box>
                                 )}
                                 {/* Responsive wrapper for Person image */}
@@ -340,7 +340,7 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
                                                 opacity: 0.4,
                                             }}
                                         >
-                                            <Image src={flowerMandela} alt="Flower Mandela" style={{ width: '100%', height: '100%' }} />
+                                            <Image src={flowerMandela} alt="Flower Mandela" width={2270} height={2118} style={{ width: '100%', height: '100%' }} />
                                         </Box>
                                     )}
                                     <Box sx={{ display: { xs: 'block', lg: 'none' }, alignSelf: 'flex-start' }}>
@@ -421,7 +421,7 @@ const CoursesHero = ({ slice }: CoursesHeroProps): JSX.Element => {
                                             opacity: 0.4,
                                         }}
                                     >
-                                        <Image src={flowerMandela} alt="Flower Mandela" style={{ width: '100%', height: '100%' }} />
+                                        <Image src={flowerMandela} alt="Flower Mandela" width={2270} height={2118} style={{ width: '100%', height: '100%' }} />
                                     </Box>
                                 )}
 
