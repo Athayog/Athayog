@@ -1,10 +1,9 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { Box } from '@mui/material'
-import FAQCTASection from '@/app/ld/FAQCTASection'
 import GroupsIcon from '@mui/icons-material/Groups'
 import SchoolIcon from '@mui/icons-material/School'
-import FeatureSection from '@/app/ld/FeatureSection'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
 const AnatomyImage = '/images/anatomy.jpg'
 import YogaProgramHero from '@/app/ld/YogaProgramHero'
@@ -17,13 +16,16 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutlineOutlined'
-import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
-import NumberedListSection from '@/app/ld/NumberedListSection'
-import SplitContentSection from '@/app/ld/SplitContentSection'
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
 const BackgroundHeroImage = '/images/certification.jpg'
-import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+
+const FeatureSection = dynamic(() => import('@/app/ld/FeatureSection'))
+const ImageFeatureSection = dynamic(() => import('@/app/ld/ImageFeatureSection'))
+const NumberedListSection = dynamic(() => import('@/app/ld/NumberedListSection'))
+const SplitContentSection = dynamic(() => import('@/app/ld/SplitContentSection'))
+const TestimonialCTASection = dynamic(() => import('@/app/ld/TestimonialCTASection'))
+const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'))
 
 export default function LandingPage() {
     return (

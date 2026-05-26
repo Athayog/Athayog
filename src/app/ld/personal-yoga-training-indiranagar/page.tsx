@@ -1,17 +1,15 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { Box } from '@mui/material'
 import ChatIcon from '@mui/icons-material/Chat'
 import TuneIcon from '@mui/icons-material/Tune'
-import FAQCTASection from '@/app/ld/FAQCTASection'
 import PersonIcon from '@mui/icons-material/Person'
-import FeatureSection from '@/app/ld/FeatureSection'
 import HealingIcon from '@mui/icons-material/Healing'
 import YogaProgramHero from '@/app/ld/YogaProgramHero'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 const Image1 = '/images/mental-health/1.png';
 const Image2 = '/images/mental-health/2.png';
-import BentoGridSection from '@/app/ld/BentoGridSection'
 import ComparisonSection from '@/app/ld/ComparisonSection'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import StraightenIcon from '@mui/icons-material/Straighten'
@@ -19,14 +17,18 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 const WhoChooseImage = '/images/Who_Chooses.png';
 import LayersClearIcon from '@mui/icons-material/LayersClear'
-import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
-import NumberedListSection from '@/app/ld/NumberedListSection'
-import SplitContentSection from '@/app/ld/SplitContentSection'
 import TrackChangesIcon from '@mui/icons-material/TrackChanges'
-import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
 import EventAvailableIcon from '@mui/icons-material/EventAvailable'
-import OptionsShowcaseSection from '@/app/ld/OptionsShowcaseSection'
 const BackgroundImageHero = '/images/landing-page-hero-2.jpg';
+
+const FeatureSection = dynamic(() => import('@/app/ld/FeatureSection'))
+const BentoGridSection = dynamic(() => import('@/app/ld/BentoGridSection'))
+const ImageFeatureSection = dynamic(() => import('@/app/ld/ImageFeatureSection'))
+const NumberedListSection = dynamic(() => import('@/app/ld/NumberedListSection'))
+const SplitContentSection = dynamic(() => import('@/app/ld/SplitContentSection'))
+const OptionsShowcaseSection = dynamic(() => import('@/app/ld/OptionsShowcaseSection'))
+const TestimonialCTASection = dynamic(() => import('@/app/ld/TestimonialCTASection'))
+const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'))
 
 export default function LandingPage() {
     return (
