@@ -20,9 +20,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     return {
         title: page.data.meta_title || prismic.asText(page.data.title),
         description: page.data.meta_description,
+        alternates: {
+            canonical: `https://athayogliving.com/blogs/${params.uid}`,
+        },
         openGraph: {
             title: page.data.meta_title || undefined,
             description: page.data.meta_description || undefined,
+            url: `https://athayogliving.com/blogs/${params.uid}`,
             images: page.data.meta_image.url
                 ? [{ url: page.data.meta_image.url, width: 1200, height: 630 }]
                 : [],

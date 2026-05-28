@@ -51,6 +51,7 @@ export default function RootLayout({
         <html lang="en" className={`${josefin.variable} ${monsterrat.variable} ${inter.variable} ${playfair.variable}`}>
             <head>
                 <link rel="icon" href="/favicon.ico" sizes="any" />
+                <link rel="preload" href="/images/root/home-bg.png" as="image" />
                 <meta name="google-site-verification" content="MFdD5TUc66yWX-w0hwFHmVkJWyt8BAkzk-g3jR4KLlo" />
 
                 <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID || ''} />
@@ -96,7 +97,7 @@ export default function RootLayout({
                     </ThemeProvider>
                 </AppRouterCacheProvider>
             </body>
-            <PrismicPreview repositoryName={repositoryName} />
+            {process.env.NODE_ENV === 'development' && <PrismicPreview repositoryName={repositoryName} />}
         </html>
     )
 }

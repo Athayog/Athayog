@@ -114,7 +114,7 @@ const GroupClassPricing = ({ slice }: GroupClassPricingProps): JSX.Element => {
 
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-            <Script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js" />
+            <Script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
             <>
                 <Box sx={{ background: 'linear-gradient(to bottom, #cdf7c9, #EAFEDF)', height: '100%', margin: 0, padding: { xs: '30px 10px', md: '60px 50px' } }}>
                     <Box sx={{ maxWidth: { xs: '100%', md: '1200px' }, margin: '0 auto' }}>

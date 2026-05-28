@@ -33,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Generate sitemap for blog posts
     const blogsSitemap: MetadataRoute.Sitemap = blogs.map((blog) => ({
-        url: `${ROOT_URL}/blog/${blog.uid}`, // Assuming blog posts are under `/blog/`
+        url: `${ROOT_URL}/blogs/${blog.uid}`,
         lastModified: new Date(blog.last_publication_date || new Date()), // Use `last_publication_date` if available
         changeFrequency: "weekly" as const,
         priority: 0.7,

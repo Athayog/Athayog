@@ -1,7 +1,7 @@
 'use client'
-import { Box } from '@mui/material'
-import Image, { StaticImageData } from 'next/image'
-import { useEffect, useState } from 'react'
+
+import { Box, useMediaQuery, useTheme } from '@mui/material'
+import Image from 'next/image'
 
 interface BannerProps {
     imageSrc: {
@@ -21,55 +21,35 @@ interface BannerProps {
         md?: string
         lg?: string
         xl?: string
-    } // Adjusted for responsive objectPosition
+    }
     minHeight?: { xs?: string; sm?: string; md?: string; lg?: string; xl?: string }
 }
 
 const Banner: React.FC<BannerProps> = ({ imageSrc, imageAlt, height, objectPosition, children, blurHash, minHeight }) => {
-    const [selectedImageSrc, setSelectedImageSrc] = useState(imageSrc.xs)
-    const [selectedObjectPosition, setSelectedObjectPosition] = useState(objectPosition.xs) // Default to xs
+    const theme = useTheme()
+    const isMdUp = useMediaQuery(theme.breakpoints.up('md'))
+    const isLgUp = useMediaQuery(theme.breakpoints.up('lg'))
 
-    useEffect(() => {
-        const updateImageSrcAndPosition = () => {
-            const width = window.innerWidth
+    const src = isLgUp ? (imageSrc.lg || imageSrc.md || imageSrc.sm || imageSrc.xs)
+        : isMdUp ? (imageSrc.md || imageSrc.sm || imageSrc.xs)
+        : (imageSrc.xs)
 
-            // Update the selected image source based on the width
-            if (width >= 1536 && imageSrc.xl) {
-                setSelectedImageSrc(imageSrc.xl)
-                setSelectedObjectPosition(objectPosition.xl || objectPosition.xs)
-            } else if (width >= 1200 && imageSrc.lg) {
-                setSelectedImageSrc(imageSrc.lg)
-                setSelectedObjectPosition(objectPosition.lg || objectPosition.xs)
-            } else if (width >= 900 && imageSrc.md) {
-                setSelectedImageSrc(imageSrc.md)
-                setSelectedObjectPosition(objectPosition.md || objectPosition.xs)
-            } else if (width >= 600 && imageSrc.sm) {
-                setSelectedImageSrc(imageSrc.sm)
-                setSelectedObjectPosition(objectPosition.sm || objectPosition.xs)
-            } else {
-                setSelectedImageSrc(imageSrc.xs)
-                setSelectedObjectPosition(objectPosition.xs)
-            }
-        }
+    const pos = isLgUp ? (objectPosition.lg || objectPosition.md || objectPosition.xs)
+        : isMdUp ? (objectPosition.md || objectPosition.xs)
+        : (objectPosition.xs)
 
-        updateImageSrcAndPosition()
-        window.addEventListener('resize', updateImageSrcAndPosition)
-        return () => {
-            window.removeEventListener('resize', updateImageSrcAndPosition)
-        }
-    }, [imageSrc, objectPosition])
-
-    if (!selectedImageSrc) return null
+    if (!src) return null
 
     return (
         <Box sx={{ position: 'relative', height, overflow: 'hidden', minHeight: minHeight ?? '100%' }}>
             <Image
                 fill
+                sizes="100vw"
                 style={{
                     objectFit: 'cover',
-                    objectPosition: selectedObjectPosition,
-                }} // Use the selected object position
-                src={selectedImageSrc}
+                    objectPosition: pos,
+                }}
+                src={src}
                 blurDataURL={blurHash}
                 placeholder="blur"
                 alt={imageAlt ?? 'Image'}

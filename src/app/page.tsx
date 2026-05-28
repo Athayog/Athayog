@@ -21,9 +21,13 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: home.data.meta_title ?? prismic.asText(home.data.title),
         description: home.data.meta_description,
+        alternates: {
+            canonical: 'https://athayogliving.com',
+        },
         openGraph: {
             title: home.data.meta_title ?? undefined,
             description: home.data.meta_description ?? undefined,
+            url: 'https://athayogliving.com',
             images: home.data.meta_image.url
                 ? [{ url: home.data.meta_image.url, width: 1200, height: 630 }]
                 : [],

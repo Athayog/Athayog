@@ -78,7 +78,7 @@ const YogaTherapyPrice = ({ slice }: YogaTherapyPriceProps): JSX.Element => {
 
     return (
         <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-            <Script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js" />
+            <Script type="text/javascript" src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
             <Box sx={{ background: 'linear-gradient(to bottom, #e5fbd3, #EAFEDF)', height: '100%', margin: 0, padding: { xs: '30px 10px', md: '60px 50px' } }}>
                 <Box sx={{ margin: '0 auto', maxWidth: '1400px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                     <Typography sx={{ fontSize: '48px', color: '#284E01', fontWeight: '700', [theme.breakpoints.down('md')]: { fontSize: '28px' } }}>{slice.primary.title}</Typography>

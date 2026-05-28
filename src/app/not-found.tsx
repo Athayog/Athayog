@@ -29,7 +29,7 @@ export default function NotFound() {
                     color: '#000',
                 }}
             >
-                <Image src={NotFoundImage} width={400} alt="404" />
+                <Image src={NotFoundImage} width={400} height={400} alt="404" />
                 <Typography
                     sx={{
                         color: '#6D1102',
