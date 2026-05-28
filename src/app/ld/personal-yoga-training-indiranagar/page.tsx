@@ -1,32 +1,36 @@
-'use client'
-
 import { Box } from '@mui/material'
 import ChatIcon from '@mui/icons-material/Chat'
 import TuneIcon from '@mui/icons-material/Tune'
-import FAQCTASection from '@/app/ld/FAQCTASection'
 import PersonIcon from '@mui/icons-material/Person'
-import FeatureSection from '@/app/ld/FeatureSection'
 import HealingIcon from '@mui/icons-material/Healing'
-import YogaProgramHero from '@/app/ld/YogaProgramHero'
 import ScheduleIcon from '@mui/icons-material/Schedule'
-const Image1 = '/images/mental-health/1.png';
-const Image2 = '/images/mental-health/2.png';
-import BentoGridSection from '@/app/ld/BentoGridSection'
-import ComparisonSection from '@/app/ld/ComparisonSection'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import StraightenIcon from '@mui/icons-material/Straighten'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import VisibilityIcon from '@mui/icons-material/Visibility'
-const WhoChooseImage = '/images/Who_Chooses.png';
 import LayersClearIcon from '@mui/icons-material/LayersClear'
+import TrackChangesIcon from '@mui/icons-material/TrackChanges'
+import EventAvailableIcon from '@mui/icons-material/EventAvailable'
+import dynamic from 'next/dynamic'
+
+const YogaProgramHero = dynamic(() => import('@/app/ld/YogaProgramHero'), { ssr: false })
+const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'), { ssr: false })
+import FeatureSection from '@/app/ld/FeatureSection'
 import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
 import NumberedListSection from '@/app/ld/NumberedListSection'
 import SplitContentSection from '@/app/ld/SplitContentSection'
-import TrackChangesIcon from '@mui/icons-material/TrackChanges'
-import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
-import EventAvailableIcon from '@mui/icons-material/EventAvailable'
+import BentoGridSection from '@/app/ld/BentoGridSection'
+import ComparisonSection from '@/app/ld/ComparisonSection'
 import OptionsShowcaseSection from '@/app/ld/OptionsShowcaseSection'
-const BackgroundImageHero = '/images/landing-page-hero-2.jpg';
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
+
+const Image1 = '/images/mental-health/1.png'
+const Image2 = '/images/mental-health/2.png'
+const WhoChooseImage = '/images/Who_Chooses.png'
+const BackgroundImageHero = '/images/landing-page-hero-2.jpg'
+
+const WHATSAPP_URL = 'https://wa.me/+919611771434'
+const PHONE_URL = 'tel:+919611771434'
 
 export default function LandingPage() {
     return (
@@ -301,7 +305,7 @@ export default function LandingPage() {
                     {
                         id: '2',
                         question: 'How often should personal yoga sessions be?',
-                        answer: 'Frequency depends on your goals, availability, and physical condition. Your trainer will guide you on what’s appropriate.',
+                        answer: 'Frequency depends on your goals, availability, and physical condition. Your trainer will guide you on what is appropriate.',
                     },
                     {
                         id: '3',
@@ -321,16 +325,9 @@ export default function LandingPage() {
                 ]}
                 subtext="A Yoga Program Designed Entirely Around You"
                 primaryCtaText=" Book a Personal Consultation"
+                primaryCtaHref={PHONE_URL}
                 secondaryCtaText="Or WhatsApp Us for initial guidance"
-                onSecondaryCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    const whatsappUrl = `https://wa.me/${phoneNumber}`
-                    window.open(whatsappUrl, '_blank')
-                }}
-                onPrimaryCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    window.open(`tel:${phoneNumber}`, '_self')
-                }}
+                secondaryCtaHref={WHATSAPP_URL}
             />
         </Box>
     )

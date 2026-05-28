@@ -32,7 +32,6 @@ export interface ClassOverviewSectionProps {
     // CTA Props
     ctaText?: string
     ctaHref?: string
-    ctaOnClick?: () => void
     ctaButtonColor?: string
     ctaButtonTextColor?: string
     ctaVariant?: 'contained' | 'outlined'
@@ -54,13 +53,12 @@ const ClassOverviewSection: React.FC<ClassOverviewSectionProps> = ({
     noteBackgroundColor = 'rgba(255, 193, 7, 0.1)',
     ctaText,
     ctaHref,
-    ctaOnClick,
     ctaButtonColor = '#4a7c2f',
     ctaButtonTextColor = '#ffffff',
     ctaVariant = 'contained',
 }) => {
     const renderCTA = () => {
-        if (!ctaText) return null
+        if (!ctaText || !ctaHref) return null
 
         const buttonStyles = {
             px: { xs: 5, md: 6 },
@@ -93,36 +91,19 @@ const ClassOverviewSection: React.FC<ClassOverviewSectionProps> = ({
             }),
         }
 
-        if (ctaHref) {
-            return (
-                <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 6, md: 8 } }}>
-                    <Button
-                        component={Link}
-                        href={ctaHref}
-                        variant={ctaVariant}
-                        size="large"
-                        sx={buttonStyles}
-                    >
-                        {ctaText}
-                    </Button>
-                </Box>
-            )
-        }
-
-        if (ctaOnClick) {
-            return (
-                <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 6, md: 8 } }}>
-                    <Button
-                        onClick={ctaOnClick}
-                        variant={ctaVariant}
-                        size="large"
-                        sx={buttonStyles}
-                    >
-                        {ctaText}
-                    </Button>
-                </Box>
-            )
-        }
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 6, md: 8 } }}>
+                <Button
+                    component={Link}
+                    href={ctaHref}
+                    variant={ctaVariant}
+                    size="large"
+                    sx={buttonStyles}
+                >
+                    {ctaText}
+                </Button>
+            </Box>
+        )
 
         return null
     }

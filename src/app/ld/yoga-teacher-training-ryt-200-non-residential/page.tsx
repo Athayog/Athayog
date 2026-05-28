@@ -1,29 +1,33 @@
-'use client'
-
 import { Box } from '@mui/material'
-import FAQCTASection from '@/app/ld/FAQCTASection'
 import GroupsIcon from '@mui/icons-material/Groups'
 import SchoolIcon from '@mui/icons-material/School'
-import FeatureSection from '@/app/ld/FeatureSection'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
-const AnatomyImage = '/images/anatomy.jpg'
-import YogaProgramHero from '@/app/ld/YogaProgramHero'
 import ScheduleIcon from '@mui/icons-material/Schedule'
-const FeedbackImage = '/images/feedback.jpg'
-import ComparisonSection from '@/app/ld/ComparisonSection'
 import NightsStayIcon from '@mui/icons-material/NightsStay'
 import PsychologyIcon from '@mui/icons-material/Psychology'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import AccountTreeIcon from '@mui/icons-material/AccountTree'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutlineOutlined'
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import dynamic from 'next/dynamic'
+
+const YogaProgramHero = dynamic(() => import('@/app/ld/YogaProgramHero'), { ssr: false })
+const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'), { ssr: false })
+import FeatureSection from '@/app/ld/FeatureSection'
 import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
 import NumberedListSection from '@/app/ld/NumberedListSection'
 import SplitContentSection from '@/app/ld/SplitContentSection'
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
-const BackgroundHeroImage = '/images/certification.jpg'
+import ComparisonSection from '@/app/ld/ComparisonSection'
 import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+
+const AnatomyImage = '/images/anatomy.jpg'
+const FeedbackImage = '/images/feedback.jpg'
+const BackgroundHeroImage = '/images/certification.jpg'
+
+const WHATSAPP_URL = 'https://wa.me/+919611771434'
+const PHONE_URL = 'tel:+919611771434'
 
 export default function LandingPage() {
     return (
@@ -241,16 +245,9 @@ export default function LandingPage() {
                 ]}
                 subtext="Build a Consistent Yoga Practice Without Disrupting Your Life"
                 primaryCtaText="Check Program Fit & Speak to a Yoga Advisor"
+                primaryCtaHref={PHONE_URL}
                 secondaryCtaText="WhatsApp Us for initial guidance"
-                onSecondaryCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    const whatsappUrl = `https://wa.me/${phoneNumber}`
-                    window.open(whatsappUrl, '_blank')
-                }}
-                onPrimaryCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    window.open(`tel:${phoneNumber}`, '_self')
-                }}
+                secondaryCtaHref={WHATSAPP_URL}
             />
         </Box>
     )

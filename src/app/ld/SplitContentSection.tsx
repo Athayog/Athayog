@@ -23,10 +23,8 @@ export interface SplitContentSectionProps {
     reverseLayout?: boolean
     titleImage?: StaticImport | string
     titleImageAlt?: string
-    // CTA Button Props
     ctaText?: string
     ctaHref?: string
-    ctaOnClick?: () => void
     ctaButtonColor?: string
     ctaButtonTextColor?: string
     ctaVariant?: 'contained' | 'outlined'
@@ -46,7 +44,6 @@ const SplitContentSection: React.FC<SplitContentSectionProps> = ({
     titleImageAlt = '',
     ctaText,
     ctaHref,
-    ctaOnClick,
     ctaButtonColor = '#4a7c2f',
     ctaButtonTextColor = '#ffffff',
     ctaVariant = 'contained',
@@ -180,7 +177,7 @@ const SplitContentSection: React.FC<SplitContentSectionProps> = ({
     )
 
     const renderCTA = () => {
-        if (!ctaText) return null
+        if (!ctaText || !ctaHref) return null
 
         const buttonStyles = {
             px: { xs: 4, md: 5 },
@@ -213,27 +210,13 @@ const SplitContentSection: React.FC<SplitContentSectionProps> = ({
             }),
         }
 
-        if (ctaHref) {
-            return (
-                <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 5, md: 6 } }}>
-                    <Button component={Link} href={ctaHref} variant={ctaVariant} sx={buttonStyles}>
-                        {ctaText}
-                    </Button>
-                </Box>
-            )
-        }
-
-        if (ctaOnClick) {
-            return (
-                <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 5, md: 6 } }}>
-                    <Button onClick={ctaOnClick} variant={ctaVariant} sx={buttonStyles}>
-                        {ctaText}
-                    </Button>
-                </Box>
-            )
-        }
-
-        return null
+        return (
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: { xs: 5, md: 6 } }}>
+                <Button component={Link} href={ctaHref} variant={ctaVariant} sx={buttonStyles}>
+                    {ctaText}
+                </Button>
+            </Box>
+        )
     }
 
     return (

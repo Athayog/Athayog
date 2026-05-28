@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react'
 import { Box, Container, Typography, Button, Accordion, AccordionSummary, AccordionDetails, Stack } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
@@ -14,8 +16,10 @@ export interface FAQCTASectionProps {
     faqs: FAQItem[]
     subtext: string
     primaryCtaText: string
+    primaryCtaHref?: string
     onPrimaryCtaClick?: () => void
     secondaryCtaText: string
+    secondaryCtaHref?: string
     onSecondaryCtaClick?: () => void
     showWhatsAppIcon?: boolean
     backgroundColor?: string
@@ -35,8 +39,10 @@ const FAQCTASection: React.FC<FAQCTASectionProps> = ({
     faqs,
     subtext,
     primaryCtaText,
+    primaryCtaHref,
     onPrimaryCtaClick,
     secondaryCtaText,
+    secondaryCtaHref,
     onSecondaryCtaClick,
     showWhatsAppIcon = true,
     backgroundColor = '#f5f5e8',
@@ -54,18 +60,6 @@ const FAQCTASection: React.FC<FAQCTASectionProps> = ({
 
     const handleAccordionChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
         setExpanded(isExpanded ? panel : false)
-    }
-
-    const handlePrimaryCtaClick = () => {
-        if (onPrimaryCtaClick) {
-            onPrimaryCtaClick()
-        }
-    }
-
-    const handleSecondaryCtaClick = () => {
-        if (onSecondaryCtaClick) {
-            onSecondaryCtaClick()
-        }
     }
 
     return (
@@ -185,7 +179,8 @@ const FAQCTASection: React.FC<FAQCTASectionProps> = ({
                     <Button
                         variant="contained"
                         size="large"
-                        onClick={handlePrimaryCtaClick}
+                        href={primaryCtaHref}
+                        onClick={onPrimaryCtaClick}
                         sx={{
                             backgroundColor: primaryCtaBackgroundColor,
                             color: primaryCtaTextColor,
@@ -213,7 +208,8 @@ const FAQCTASection: React.FC<FAQCTASectionProps> = ({
                     <Button
                         variant="text"
                         size="large"
-                        onClick={handleSecondaryCtaClick}
+                        href={secondaryCtaHref}
+                        onClick={onSecondaryCtaClick}
                         startIcon={showWhatsAppIcon ? <WhatsAppIcon sx={{ fontSize: 24 }} /> : undefined}
                         sx={{
                             color: secondaryCtaTextColor,

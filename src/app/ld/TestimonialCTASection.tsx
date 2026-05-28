@@ -11,7 +11,6 @@ export interface Testimonial {
 export interface TestimonialCTASectionProps {
     ctaButtonText: string
     ctaButtonHref?: string
-    onCtaClick?: () => void
     sectionTitle: string
     testimonials: Testimonial[]
     finalText: string
@@ -27,7 +26,6 @@ export interface TestimonialCTASectionProps {
 const TestimonialCTASection: React.FC<TestimonialCTASectionProps> = ({
     ctaButtonText,
     ctaButtonHref,
-    onCtaClick,
     sectionTitle,
     testimonials,
     finalText,
@@ -39,12 +37,6 @@ const TestimonialCTASection: React.FC<TestimonialCTASectionProps> = ({
     testimonialTextColor = '#1a1a1a',
     finalTextColor = '#3d5a32',
 }) => {
-    const handleCtaClick = () => {
-        if (onCtaClick) {
-            onCtaClick()
-        }
-    }
-
     return (
         <Box
             sx={{
@@ -65,7 +57,6 @@ const TestimonialCTASection: React.FC<TestimonialCTASectionProps> = ({
                         variant="contained"
                         size="large"
                         href={ctaButtonHref ? ctaButtonHref : undefined}
-                        onClick={handleCtaClick}
                         sx={{
                             backgroundColor: ctaButtonBackgroundColor,
                             color: ctaButtonTextColor,

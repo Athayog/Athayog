@@ -1,36 +1,40 @@
-'use client'
-
 import { Box } from '@mui/material'
 import GavelIcon from '@mui/icons-material/Gavel'
-import FAQCTASection from '@/app/ld/FAQCTASection'
-const EhicsImage = '/images/ethics.jpg'
 import LiveTvIcon from '@mui/icons-material/LiveTv'
 import PublicIcon from '@mui/icons-material/Public'
 import SchoolIcon from '@mui/icons-material/School'
-import FeatureSection from '@/app/ld/FeatureSection'
-const AnatomyImage = '/images/anatomy.jpg'
-const MeditationImage = '/images/Medi.jpg'
-import IconListSection from '@/app/ld/IconListSection'
-import YogaProgramHero from '@/app/ld/YogaProgramHero'
-const TeachingImage = '/images/teaching.jpg'
-const FeedbackImage = '/images/feedback.jpg'
 import VerifiedIcon from '@mui/icons-material/Verified'
-const PranayamaImage = '/images/pranayama.png'
 import LaptopMacIcon from '@mui/icons-material/LaptopMac'
-const WarrirorPose = '/images/warrior_pose.png'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import LocationOffIcon from '@mui/icons-material/LocationOff'
 import WorkOutlineIcon from '@mui/icons-material/WorkOutlineOutlined'
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
+import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
+import dynamic from 'next/dynamic'
+
+const YogaProgramHero = dynamic(() => import('@/app/ld/YogaProgramHero'), { ssr: false })
+const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'), { ssr: false })
+import FeatureSection from '@/app/ld/FeatureSection'
 import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
 import NumberedListSection from '@/app/ld/NumberedListSection'
 import SplitContentSection from '@/app/ld/SplitContentSection'
-const heroImage = '/images/landing-page-hero-10.jpg'
 import LearningAreasSection from '@/app/ld/LearningAreasSection'
-const CertificationImage = '/images/certification.jpg'
 import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
-import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
+import IconListSection from '@/app/ld/IconListSection'
+
+const EhicsImage = '/images/ethics.jpg'
+const AnatomyImage = '/images/anatomy.jpg'
+const MeditationImage = '/images/Medi.jpg'
+const TeachingImage = '/images/teaching.jpg'
+const FeedbackImage = '/images/feedback.jpg'
+const PranayamaImage = '/images/pranayama.png'
+const WarrirorPose = '/images/warrior_pose.png'
+const heroImage = '/images/landing-page-hero-10.jpg'
+const CertificationImage = '/images/certification.jpg'
 const GirlBreathignImage = '/images/landing-page-hero-11.jpg'
+
+const WHATSAPP_URL = 'https://wa.me/+919611771434'
+const PHONE_URL = 'tel:+919611771434'
 
 export default function LandingPage() {
     return (
@@ -303,16 +307,9 @@ export default function LandingPage() {
                 ]}
                 subtext="Learn Yoga Deeply. Teach With Integrity. From Anywhere."
                 primaryCtaText="Check Eligibility & Apply"
+                primaryCtaHref={PHONE_URL}
                 secondaryCtaText="WhatsApp Us for initial guidance"
-                onSecondaryCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    const whatsappUrl = `https://wa.me/${phoneNumber}`
-                    window.open(whatsappUrl, '_blank')
-                }}
-                onPrimaryCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    window.open(`tel:${phoneNumber}`, '_self')
-                }}
+                secondaryCtaHref={WHATSAPP_URL}
             />
         </Box>
     )

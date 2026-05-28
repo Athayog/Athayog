@@ -1,31 +1,35 @@
-'use client'
-
 import { Box } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home'
 import ForumIcon from '@mui/icons-material/Forum'
 import GavelIcon from '@mui/icons-material/Gavel'
-import FAQCTASection from '@/app/ld/FAQCTASection'
 import RepeatIcon from '@mui/icons-material/Repeat'
-import FeatureSection from '@/app/ld/FeatureSection'
 import WbSunnyIcon from '@mui/icons-material/WbSunny'
-const MeditationImage = '/images/Medi.jpg';
-import IconListSection from '@/app/ld/IconListSection'
-import YogaProgramHero from '@/app/ld/YogaProgramHero'
 import ScheduleIcon from '@mui/icons-material/Schedule'
-import BentoGridSection from '@/app/ld/BentoGridSection'
 import DeviceHubIcon from '@mui/icons-material/DeviceHub'
-const PranayamaImage = '/images/pranayama.png';
 import NightlightIcon from '@mui/icons-material/Nightlight'
-const WhoChooseImage = '/images/Who_Chooses.png';
-import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
-import NumberedListSection from '@/app/ld/NumberedListSection'
-import SplitContentSection from '@/app/ld/SplitContentSection'
-const ResidentialHeroImage = '/images/residential.jpg';
-import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
-const ResidentialImage = '/images/residential-yoga.jpg';
 import DoNotDisturbOnIcon from '@mui/icons-material/DoNotDisturbOn'
 import SelfImprovementIcon from '@mui/icons-material/SelfImprovement'
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied'
+import dynamic from 'next/dynamic'
+
+const YogaProgramHero = dynamic(() => import('@/app/ld/YogaProgramHero'), { ssr: false })
+const FAQCTASection = dynamic(() => import('@/app/ld/FAQCTASection'), { ssr: false })
+import FeatureSection from '@/app/ld/FeatureSection'
+import ImageFeatureSection from '@/app/ld/ImageFeatureSection'
+import BentoGridSection from '@/app/ld/BentoGridSection'
+import NumberedListSection from '@/app/ld/NumberedListSection'
+import SplitContentSection from '@/app/ld/SplitContentSection'
+import IconListSection from '@/app/ld/IconListSection'
+import TestimonialCTASection from '@/app/ld/TestimonialCTASection'
+
+const MeditationImage = '/images/Medi.jpg'
+const PranayamaImage = '/images/pranayama.png'
+const WhoChooseImage = '/images/Who_Chooses.png'
+const ResidentialHeroImage = '/images/residential.jpg'
+const ResidentialImage = '/images/residential-yoga.jpg'
+
+const WHATSAPP_URL = 'https://wa.me/+919611771434'
+const PHONE_URL = 'tel:+919611771434'
 
 export default function LandingPage() {
     return (
@@ -283,16 +287,9 @@ export default function LandingPage() {
                 ]}
                 subtext="Step Away From Noise. Step Into Structure."
                 primaryCtaText="Check Eligibility & Speak to a Program Advisor"
+                primaryCtaHref={PHONE_URL}
                 secondaryCtaText="Or WhatsApp Us for initial guidance"
-                onSecondaryCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    const whatsappUrl = `https://wa.me/${phoneNumber}`
-                    window.open(whatsappUrl, '_blank')
-                }}
-                onPrimaryCtaClick={() => {
-                    const phoneNumber = '+919611771434'
-                    window.open(`tel:${phoneNumber}`, '_self')
-                }}
+                secondaryCtaHref={WHATSAPP_URL}
             />
         </Box>
     )
