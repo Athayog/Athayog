@@ -15,11 +15,15 @@ export async function generateMetadata(): Promise<Metadata> {
         description: blogs.data.meta_description,
         openGraph: {
             title: blogs.data.meta_title || undefined,
-            images: [
-                {
-                    url: blogs.data.meta_image.url || '',
-                },
-            ],
+            description: blogs.data.meta_description || undefined,
+            images: blogs.data.meta_image.url
+                ? [{ url: blogs.data.meta_image.url, width: 1200, height: 630 }]
+                : [],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: blogs.data.meta_title || undefined,
+            description: blogs.data.meta_description || undefined,
         },
     }
 }

@@ -6,6 +6,8 @@ import * as prismic from '@prismicio/client'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
 
+export const revalidate = 3600 // ISR: revalidate homepage every hour
+
 // This component renders your homepage.
 //
 // Use Next's generateMetadata function to render page metadata.
@@ -21,7 +23,15 @@ export async function generateMetadata(): Promise<Metadata> {
         description: home.data.meta_description,
         openGraph: {
             title: home.data.meta_title ?? undefined,
-            images: [{ url: home.data.meta_image.url ?? '' }],
+            description: home.data.meta_description ?? undefined,
+            images: home.data.meta_image.url
+                ? [{ url: home.data.meta_image.url, width: 1200, height: 630 }]
+                : [],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: home.data.meta_title ?? undefined,
+            description: home.data.meta_description ?? undefined,
         },
     }
 }

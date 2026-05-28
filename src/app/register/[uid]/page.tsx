@@ -22,11 +22,15 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
         description: page.data.meta_description,
         openGraph: {
             title: page.data.meta_title || undefined,
-            images: [
-                {
-                    url: page.data.meta_image.url || '',
-                },
-            ],
+            description: page.data.meta_description || undefined,
+            images: page.data.meta_image.url
+                ? [{ url: page.data.meta_image.url, width: 1200, height: 630 }]
+                : [],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: page.data.meta_title || undefined,
+            description: page.data.meta_description || undefined,
         },
     }
 }

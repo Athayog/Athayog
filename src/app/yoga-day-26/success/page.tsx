@@ -3,6 +3,7 @@
 import React, { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ThemeProvider } from '@mui/material/styles'
 import { Box, Container, Typography, CircularProgress, List, ListItem, ListItemText, Button, Grid } from '@mui/material'
 import { yogaTheme } from '../_components/theme'
@@ -333,7 +334,7 @@ function SuccessPageContent() {
 
                                 {ticketData.qrDataUrl ? (
                                     <Box sx={{ p: 2, display: 'inline-block', border: `1px solid ${T.border}`, borderRadius: 3, bgcolor: T.white, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-                                        <img src={ticketData.qrDataUrl} alt="Entry QR Code" width={220} height={220} style={{ display: 'block' }} />
+                                        <Image src={ticketData.qrDataUrl} alt="Entry QR Code" width={220} height={220} style={{ display: 'block' }} />
                                     </Box>
                                 ) : (
                                     <Box

@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    compress: true,
+    poweredByHeader: false,
     images: {
+        formats: ['image/webp', 'image/avif'],
         remotePatterns: [
             {
                 protocol: 'https',
@@ -19,6 +22,9 @@ const nextConfig = {
                 hostname: 'images.unsplash.com',
             },
         ],
+    },
+    experimental: {
+        optimizePackageImports: ['@mui/material', '@mui/icons-material', 'date-fns'],
     },
     webpack(config) {
         config.module.rules.push({
