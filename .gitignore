@@ -41,3 +41,4 @@ videos/*
 !videos/*.ts
 public/_next-video
 .vscode/settings.json
+.env*
