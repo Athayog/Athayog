@@ -248,7 +248,7 @@ export default function ScannerPage() {
     const [manualId, setManualId] = useState('')
     const [userDetails, setUserDetails] = useState<UserDetails | null>(null)
     const isVerifyingRef = useRef(false)
-    const { user, handleLogout } = useAuthStore()
+    const { handleLogout } = useAuthStore()
 
     const reset = useCallback(() => {
         setScanResult('')
@@ -258,35 +258,25 @@ export default function ScannerPage() {
         isVerifyingRef.current = false
     }, [])
 
-    const verifyTicket = useCallback(
-        async (ticketId: string) => {
-            if (isVerifyingRef.current) return
-            isVerifyingRef.current = true
-            setScanResult('')
-            setError('')
-            setUserDetails(null)
-            setPhase('loading')
-            try {
-                const token = await user?.getIdToken()
-                const { data } = await axios.post(
-                    '/api/yoga-day/',
-                    { ticketId },
-                    {
-                        headers: { Authorization: `Bearer ${token}` },
-                    }
-                )
-                setScanResult(data.message || 'Entry allowed')
-                if (data.user) setUserDetails(data.user)
-                setPhase('result')
-            } catch (err: any) {
-                setError(err?.response?.data?.message || 'Verification failed.')
-                setPhase('result')
-            } finally {
-                isVerifyingRef.current = false
-            }
-        },
-        [user]
-    )
+    const verifyTicket = useCallback(async (ticketId: string) => {
+        if (isVerifyingRef.current) return
+        isVerifyingRef.current = true
+        setScanResult('')
+        setError('')
+        setUserDetails(null)
+        setPhase('loading')
+        try {
+            const { data } = await axios.post('/api/yoga-day/', { ticketId })
+            setScanResult(data.message || 'Entry allowed')
+            if (data.user) setUserDetails(data.user)
+            setPhase('result')
+        } catch (err: any) {
+            setError(err?.response?.data?.message || 'Verification failed.')
+            setPhase('result')
+        } finally {
+            isVerifyingRef.current = false
+        }
+    }, [])
 
     const handleScan = useCallback(
         async (detectedCodes: IDetectedBarcode[]) => {
@@ -314,14 +304,6 @@ export default function ScannerPage() {
         },
         [manualId, verifyTicket]
     )
-
-    if (!user) {
-        return (
-            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100dvh', bgcolor: T.cream }}>
-                <CircularProgress size={22} sx={{ color: T.gold }} />
-            </Box>
-        )
-    }
 
     return (
         <ThemeProvider theme={yogaTheme}>
