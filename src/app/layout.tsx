@@ -2,7 +2,6 @@ import '@/styles/global.css'
 import theme from '@/styles/theme'
 import Navbar from '@/components/_header'
 import Footer from '@/components/_footer'
-import YogaDayBanner from '@/components/Banner/YogaDayBanner'
 import { repositoryName } from '@/prismicio'
 import NextTopLoader from 'nextjs-toploader'
 import { Inter, Josefin_Sans, Montserrat, Playfair_Display } from 'next/font/google'
@@ -83,7 +82,6 @@ export default function RootLayout({
                     <ThemeProvider theme={theme}>
                         <SnackbarProvider>
                             <CssBaseline />
-                            <YogaDayBanner />
                             <Navbar />
                             <NextTopLoader />
                             <div id="scroll-target" />
