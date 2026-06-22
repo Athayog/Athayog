@@ -4,7 +4,7 @@ import { RenderMenuItems } from '@/components/_header/RenderMenuItems'
 import { Menu, MenuButton, NavContainer, NavLinkButton, Toolbar, TrialButton, TrialAndAuth } from '@/components/_header/styles/Index'
 import { navItems } from '@/constants/navItems'
 const Logo = '/images/Logo.png'
-import { AppBar, Box, Button, Typography } from '@mui/material'
+import { AppBar, Box, Button } from '@mui/material'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -13,7 +13,6 @@ import useThemeStore from '@/store/useThemeStore'
 import AccountMenu from '@/components/_header/AccountMenu'
 import ScrollListener from '@/hooks/ScrollListener'
 import useAuthStore from '@/store/useAuthStore'
-import { BANNER_HEIGHT } from '@/components/Banner/YogaDayBanner'
 
 const Navbar: React.FC = () => {
     // State for managing open menus independently
@@ -56,19 +55,17 @@ const Navbar: React.FC = () => {
 
     if (pathname === '/scanner') return null
 
-    const isYogaDay26 = pathname?.startsWith('/yoga-day-26')
-
     return (
         <>
             <AppBar
                 position="fixed"
                 sx={{
-                    top: isYogaDay26 ? 0 : BANNER_HEIGHT,
-                    background: isYogaDay26 ? (isScrolled ? '#2b3524' : gradient) : (isScrolled ? '#556940' : gradient),
+                    top: 0,
+                    background: isScrolled ? '#556940' : gradient,
                     boxShadow: 'none',
-                    padding: isYogaDay26 ? (isScrolled ? '6px 20px' : '12px 20px') : (isScrolled ? '10px 20px' : '25px 20px'),
+                    padding: isScrolled ? '10px 20px' : '25px 20px',
                     transition: 'padding 0.5s ease-in-out, background 0.5s ease-in-out',
-                    borderBottom: isYogaDay26 && isScrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                    borderBottom: 'none',
                     ...(pathname === '/yoga-arambha-25' && {
                         pointerEvents: 'none',
                     }),
@@ -87,42 +84,7 @@ const Navbar: React.FC = () => {
                         </Link>
                     </Box>
 
-                    {isYogaDay26 && (
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1.5, md: 3 }, ml: 'auto' }}>
-                            <Typography sx={{ 
-                                fontFamily: 'var(--font-inter)', 
-                                color: '#faf7f2', 
-                                fontSize: { xs: '0.75rem', md: '0.85rem' },
-                                display: { xs: 'none', sm: 'block' },
-                                letterSpacing: '0.05em'
-                            }}>
-                                June 21, 2026
-                            </Typography>
-                            {pathname !== '/yoga-day-26/success' && (
-                                <Link href="/yoga-day-26#register" passHref>
-                                    <Button sx={{
-                                        bgcolor: '#47820D',
-                                        color: '#fff',
-                                        borderRadius: 0,
-                                        py: { xs: '6px', md: '8px' },
-                                        px: { xs: '16px', md: '24px' },
-                                        fontSize: { xs: '0.75rem', md: '0.8rem' },
-                                        fontWeight: 600,
-                                        letterSpacing: '0.05em',
-                                        fontFamily: 'var(--font-inter)',
-                                        textTransform: 'none',
-                                        boxShadow: 'none',
-                                        '&:hover': { bgcolor: '#3d6b0a', boxShadow: 'none' },
-                                    }}>
-                                        Register Now
-                                    </Button>
-                                </Link>
-                            )}
-                        </Box>
-                    )}
-
-                    {!isYogaDay26 && (
-                        <NavContainer>
+                    <NavContainer>
                             {navItems.map(({ label, path, type, children }, index) => {
                                 if (type === 'nav') {
                                     return (
@@ -160,11 +122,9 @@ const Navbar: React.FC = () => {
                                 }
                             })}
                         </NavContainer>
-                    )}
 
-                    {!isYogaDay26 && (
-                        <>
-                            <TrialAndAuth>
+                    <>
+                        <TrialAndAuth>
                                 {!user && (
                                     <Link href="/login">
                                         <Button
@@ -190,8 +150,7 @@ const Navbar: React.FC = () => {
                             </TrialAndAuth>
 
                             <MobileDrawer />
-                        </>
-                    )}
+                    </>
                 </Toolbar>
             </AppBar>
         </>
