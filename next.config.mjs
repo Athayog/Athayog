@@ -35,6 +35,16 @@ const nextConfig = {
                 destination: '/',
                 permanent: false,
             },
+            {
+                source: '/yoga-day-26',
+                destination: '/',
+                permanent: false,
+            },
+            {
+                source: '/yoga-day-26/:path*',
+                destination: '/',
+                permanent: false,
+            },
         ]
     },
 }
